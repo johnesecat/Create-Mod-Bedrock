@@ -1,4 +1,4 @@
-﻿{
+{
     "pause_screen_content":  {
                                  "modifications":  [
                                                        {
@@ -3786,7 +3786,7 @@
                                                           "machine_mechanical_saw_guide_card@pause.hover_machine_guide_text":  {
                                                                                                                                    "$hover_text_item":  "Mechanical Saw",
                                                                                                                                    "$layout_item_button":  "machine_guide_mechanical_saw",
-                                                                                                                                   "$guide_image":  "textures/ui/crafters/machines/nechanical_saw",
+                                                                                                                                   "$guide_image":  "textures/ui/crafters/machines/mechanical_saw",
                                                                                                                                    "$guide_text":  "create.ui.machine_guide.mechanical_saw.description",
                                                                                                                                    "$guide_text_page1":  "create.ui.machine_guide.mechanical_saw.description.page1",
                                                                                                                                    "$guide_text_page2":  "create.ui.machine_guide.mechanical_saw.description.page2"
@@ -6488,7 +6488,7 @@
     "button_machine_guide_mechanical_saw@pause.items_bp_toggle_button":  {
                                                                              "$forced_index_bp":  315,
                                                                              "$tab_binding_name":  "machine_guide_mechanical_saw",
-                                                                             "$t_item_b":  "ui/crafters/misc/nechanical_saw"
+                                                                             "$t_item_b":  "ui/crafters/misc/mechanical_saw"
                                                                          },
     "button_machine_guide_smart_chute@pause.items_bp_toggle_button":  {
                                                                           "$forced_index_bp":  316,

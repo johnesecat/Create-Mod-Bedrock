@@ -7,7 +7,6 @@
             "is_summonable": true,
             "is_experimental": false,
 			"properties": {
-                // As parada de RPM
                 "create:rpm": { 
                     "client_sync": true, 
                     "type": "float", 
@@ -36,7 +35,6 @@
                     "default": false
                 },
                 
-                // As parada q tinha antes
                 "create:speed": {
                     "client_sync": true,
                     "type": "int",

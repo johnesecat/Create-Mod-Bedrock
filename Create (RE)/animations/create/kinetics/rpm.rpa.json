@@ -60,7 +60,7 @@
         		    "rotation": [0, "q.property('create:offset_vertical') ? 22.5 : 0", 0]
         		},
 
-				// Gearbox
+
 				"gearbox_north": {
 					"rotation": [0, 0, "(q.property('create:offset') ? -22.5 : 0)"]
 				},
