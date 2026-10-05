@@ -1,0 +1,291 @@
+{
+    "format_version": "1.10.0",
+    "animation_controllers": {
+        "controller.animation.create.mechanical_arm_mov": {
+            "initial_state": "initial",
+            "states": {
+                "initial": {
+                    "animations": ["rot_0"],
+                    "transitions": [
+                        { "rot_0": "q.property('create:speed') == 0" },
+                        { "rot_1": "q.property('create:speed') == 1" },
+                        { "rot_2": "q.property('create:speed') == 2" },
+                        { "rot_3": "q.property('create:speed') == 3" },
+                        { "rot_4": "q.property('create:speed') == 4" },
+                        { "rot_5": "q.property('create:speed') == 5" },
+                        { "rot_6": "q.property('create:speed') == 6" },
+                        { "rot_7": "q.property('create:speed') == 7" },
+                        { "rot_8": "q.property('create:speed') == 8" }
+                    ],
+                    "blend_transition": 1
+                },
+                "rot_0": {
+                    "animations": ["rot_0"],
+                    "transitions": [
+                        { "rot_1": "q.property('create:speed') == 1" },
+                        { "rot_2": "q.property('create:speed') == 2" },
+                        { "rot_3": "q.property('create:speed') == 3" },
+                        { "rot_4": "q.property('create:speed') == 4" },
+                        { "rot_5": "q.property('create:speed') == 5" },
+                        { "rot_6": "q.property('create:speed') == 6" },
+                        { "rot_7": "q.property('create:speed') == 7" },
+                        { "rot_8": "q.property('create:speed') == 8" },
+                        {
+                            "last0": "query.property('create:arm_1') != query.property('create:arm_1_new') || query.property('create:arm_2') != query.property('create:arm_2_new') || query.property('create:arm_3') != query.property('create:arm_3_new')"
+                        }
+                    ],
+                    "blend_transition": 40
+                },
+                "rot_1": {
+                    "animations": ["rot_0"],
+                    "transitions": [
+                        { "rot_0": "q.property('create:speed') == 0" },
+                        { "rot_2": "q.property('create:speed') == 2" },
+                        { "rot_3": "q.property('create:speed') == 3" },
+                        { "rot_4": "q.property('create:speed') == 4" },
+                        { "rot_5": "q.property('create:speed') == 5" },
+                        { "rot_6": "q.property('create:speed') == 6" },
+                        { "rot_7": "q.property('create:speed') == 7" },
+                        { "rot_8": "q.property('create:speed') == 8" },
+                        {
+                            "last1": "query.property('create:arm_1') != query.property('create:arm_1_new') || query.property('create:arm_2') != query.property('create:arm_2_new') || query.property('create:arm_3') != query.property('create:arm_3_new')"
+                        }
+                    ],
+                    "blend_transition": 20
+                },
+                "rot_2": {
+                    "animations": ["rot_0"],
+                    "transitions": [
+                        { "rot_1": "q.property('create:speed') == 1" },
+                        { "rot_0": "q.property('create:speed') == 0" },
+                        { "rot_3": "q.property('create:speed') == 3" },
+                        { "rot_4": "q.property('create:speed') == 4" },
+                        { "rot_5": "q.property('create:speed') == 5" },
+                        { "rot_6": "q.property('create:speed') == 6" },
+                        { "rot_7": "q.property('create:speed') == 7" },
+                        { "rot_8": "q.property('create:speed') == 8" },
+                        {
+                            "last2": "query.property('create:arm_1') != query.property('create:arm_1_new') || query.property('create:arm_2') != query.property('create:arm_2_new') || query.property('create:arm_3') != query.property('create:arm_3_new')"
+                        }
+                    ],
+                    "blend_transition": 10
+                },
+                "rot_3": {
+                    "animations": ["rot_0"],
+                    "transitions": [
+                        { "rot_1": "q.property('create:speed') == 1" },
+                        { "rot_2": "q.property('create:speed') == 2" },
+                        { "rot_0": "q.property('create:speed') == 0" },
+                        { "rot_4": "q.property('create:speed') == 4" },
+                        { "rot_5": "q.property('create:speed') == 5" },
+                        { "rot_6": "q.property('create:speed') == 6" },
+                        { "rot_7": "q.property('create:speed') == 7" },
+                        { "rot_8": "q.property('create:speed') == 8" },
+                        {
+                            "last3": "query.property('create:arm_1') != query.property('create:arm_1_new') || query.property('create:arm_2') != query.property('create:arm_2_new') || query.property('create:arm_3') != query.property('create:arm_3_new')"
+                        }
+                    ],
+                    "blend_transition": 5
+                },
+                "rot_4": {
+                    "animations": ["rot_0"],
+                    "transitions": [
+                        { "rot_1": "q.property('create:speed') == 1" },
+                        { "rot_2": "q.property('create:speed') == 2" },
+                        { "rot_3": "q.property('create:speed') == 3" },
+                        { "rot_0": "q.property('create:speed') == 0" },
+                        { "rot_5": "q.property('create:speed') == 5" },
+                        { "rot_6": "q.property('create:speed') == 6" },
+                        { "rot_7": "q.property('create:speed') == 7" },
+                        { "rot_8": "q.property('create:speed') == 8" },
+                        {
+                            "last4": "query.property('create:arm_1') != query.property('create:arm_1_new') || query.property('create:arm_2') != query.property('create:arm_2_new') || query.property('create:arm_3') != query.property('create:arm_3_new')"
+                        }
+                    ],
+                    "blend_transition": 2.5
+                },
+                "rot_5": {
+                    "animations": ["rot_0"],
+                    "transitions": [
+                        { "rot_1": "q.property('create:speed') == 1" },
+                        { "rot_2": "q.property('create:speed') == 2" },
+                        { "rot_3": "q.property('create:speed') == 3" },
+                        { "rot_4": "q.property('create:speed') == 4" },
+                        { "rot_0": "q.property('create:speed') == 0" },
+                        { "rot_6": "q.property('create:speed') == 6" },
+                        { "rot_7": "q.property('create:speed') == 7" },
+                        { "rot_8": "q.property('create:speed') == 8" },
+                        {
+                            "last5": "query.property('create:arm_1') != query.property('create:arm_1_new') || query.property('create:arm_2') != query.property('create:arm_2_new') || query.property('create:arm_3') != query.property('create:arm_3_new')"
+                        }
+                    ],
+                    "blend_transition": 1.25
+                },
+                "rot_6": {
+                    "animations": ["rot_0"],
+                    "transitions": [
+                        { "rot_1": "q.property('create:speed') == 1" },
+                        { "rot_2": "q.property('create:speed') == 2" },
+                        { "rot_3": "q.property('create:speed') == 3" },
+                        { "rot_4": "q.property('create:speed') == 4" },
+                        { "rot_5": "q.property('create:speed') == 5" },
+                        { "rot_0": "q.property('create:speed') == 0" },
+                        { "rot_7": "q.property('create:speed') == 7" },
+                        { "rot_8": "q.property('create:speed') == 8" },
+                        {
+                            "last6": "query.property('create:arm_1') != query.property('create:arm_1_new') || query.property('create:arm_2') != query.property('create:arm_2_new') || query.property('create:arm_3') != query.property('create:arm_3_new')"
+                        }
+                    ],
+                    "blend_transition": 0.625
+                },
+                "rot_7": {
+                    "animations": ["rot_0"],
+                    "transitions": [
+                        { "rot_1": "q.property('create:speed') == 1" },
+                        { "rot_2": "q.property('create:speed') == 2" },
+                        { "rot_3": "q.property('create:speed') == 3" },
+                        { "rot_4": "q.property('create:speed') == 4" },
+                        { "rot_5": "q.property('create:speed') == 5" },
+                        { "rot_6": "q.property('create:speed') == 6" },
+                        { "rot_0": "q.property('create:speed') == 0" },
+                        { "rot_8": "q.property('create:speed') == 8" },
+                        {
+                            "last7": "query.property('create:arm_1') != query.property('create:arm_1_new') || query.property('create:arm_2') != query.property('create:arm_2_new') || query.property('create:arm_3') != query.property('create:arm_3_new')"
+                        }
+                    ],
+                    "blend_transition": 0.3125
+                },
+                "rot_8": {
+                    "animations": ["rot_0"],
+                    "transitions": [
+                        { "rot_1": "q.property('create:speed') == 1" },
+                        { "rot_2": "q.property('create:speed') == 2" },
+                        { "rot_3": "q.property('create:speed') == 3" },
+                        { "rot_4": "q.property('create:speed') == 4" },
+                        { "rot_5": "q.property('create:speed') == 5" },
+                        { "rot_6": "q.property('create:speed') == 6" },
+                        { "rot_7": "q.property('create:speed') == 7" },
+                        { "rot_0": "q.property('create:speed') == 0" },
+                        {
+                            "last8": "query.property('create:arm_1') != query.property('create:arm_1_new') || query.property('create:arm_2') != query.property('create:arm_2_new') || query.property('create:arm_3') != query.property('create:arm_3_new')"
+                        }
+                    ],
+                    "blend_transition": 0.15625
+                },
+                "last0": {
+                    "animations": ["rot_1"],
+                    "transitions": [
+                        {
+                            "initial": "query.property('create:arm_1') == query.property('create:arm_1_new') && query.property('create:arm_2') == query.property('create:arm_2_new') && query.property('create:arm_3') == query.property('create:arm_3_new')"
+                        }
+                    ]
+                },
+                "last1": {
+                    "animations": ["rot_1"],
+                    "transitions": [
+                        {
+                            "initial": "query.property('create:arm_1') == query.property('create:arm_1_new') && query.property('create:arm_2') == query.property('create:arm_2_new') && query.property('create:arm_3') == query.property('create:arm_3_new')"
+                        }
+                    ]
+                },
+                "last2": {
+                    "animations": ["rot_1"],
+                    "transitions": [
+                        {
+                            "initial": "query.property('create:arm_1') == query.property('create:arm_1_new') && query.property('create:arm_2') == query.property('create:arm_2_new') && query.property('create:arm_3') == query.property('create:arm_3_new')"
+                        }
+                    ]
+                },
+                "last3": {
+                    "animations": ["rot_1"],
+                    "transitions": [
+                        {
+                            "initial": "query.property('create:arm_1') == query.property('create:arm_1_new') && query.property('create:arm_2') == query.property('create:arm_2_new') && query.property('create:arm_3') == query.property('create:arm_3_new')"
+                        }
+                    ]
+                },
+                "last4": {
+                    "animations": ["rot_1"],
+                    "transitions": [
+                        {
+                            "initial": "query.property('create:arm_1') == query.property('create:arm_1_new') && query.property('create:arm_2') == query.property('create:arm_2_new') && query.property('create:arm_3') == query.property('create:arm_3_new')"
+                        }
+                    ]
+                },
+                "last5": {
+                    "animations": ["rot_1"],
+                    "transitions": [
+                        {
+                            "initial": "query.property('create:arm_1') == query.property('create:arm_1_new') && query.property('create:arm_2') == query.property('create:arm_2_new') && query.property('create:arm_3') == query.property('create:arm_3_new')"
+                        }
+                    ]
+                },
+                "last6": {
+                    "animations": ["rot_1"],
+                    "transitions": [
+                        {
+                            "initial": "query.property('create:arm_1') == query.property('create:arm_1_new') && query.property('create:arm_2') == query.property('create:arm_2_new') && query.property('create:arm_3') == query.property('create:arm_3_new')"
+                        }
+                    ]
+                },
+                "last7": {
+                    "animations": ["rot_1"],
+                    "transitions": [
+                        {
+                            "initial": "query.property('create:arm_1') == query.property('create:arm_1_new') && query.property('create:arm_2') == query.property('create:arm_2_new') && query.property('create:arm_3') == query.property('create:arm_3_new')"
+                        }
+                    ]
+                },
+                "last8": {
+                    "animations": ["rot_1"],
+                    "transitions": [
+                        {
+                            "initial": "query.property('create:arm_1') == query.property('create:arm_1_new') && query.property('create:arm_2') == query.property('create:arm_2_new') && query.property('create:arm_3') == query.property('create:arm_3_new')"
+                        }
+                    ]
+                }
+            }
+        },
+        "controller.animation.create.mechanical_arm_pointer": {
+            "initial_state": "claw",
+            "states": {
+                "drill": {
+                    "animations": ["drill"],
+                    "transitions": [
+                        { "claw": "query.property('create:point') == 0" }
+                    ]
+                },
+                "claw": {
+                    "animations": ["claw"],
+                    "transitions": [
+                        { "drill": "query.property('create:point') == 1" }
+                    ]
+                }
+            }
+        },
+        "controller.animation.create.mechanical_arm_default": {
+            "initial_state": "default",
+            "states": {
+                "default": {
+                    "animations": [
+                        "rotation",
+                        "gear_connection",
+                        {
+                            "claw_offset_item": "q.property('create:type_claw') == 0"
+                        },
+                        {
+                            "claw_offset_block": "q.property('create:type_claw') == 1"
+                        },
+                        {
+                            "filter_offset_item": "q.property('create:type_filter') == 0"
+                        },
+                        {
+                            "filter_offset_block": "q.property('create:type_filter') == 1"
+                        },
+                        { "drill_rotate": "q.property('create:point') == 1" }
+                    ]
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,38 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "create:smart_observer_entity",
+      "materials": {
+        "default": "zombie"
+      },
+      "textures": {
+        "default": "textures/create/common/blocks/invisible_texture"
+      },
+      "geometry": {
+        "default": "geometry.create.smart_hopper_entity"
+      },
+      "animations": {
+        "constant": "animation.create.basic_filter.constant",
+        "right_block": "animation.create.basic_filter.right_block",
+        "right_item": "animation.create.basic_filter.right_item",
+        "right_hand_equipped": "animation.create.basic_filter.right_hand_equipped",
+        "left_block": "animation.create.basic_filter.left_block",
+        "left_item": "animation.create.basic_filter.left_item"
+        ,"left_hand_equipped": "animation.create.basic_filter.left_hand_equipped"
+      },
+      "scripts": {
+        "animate": [
+          "constant",
+          { "right_block": "query.property('create:type') == 'block'" },
+          { "right_item": "query.property('create:type') == 'item'" },
+          { "right_hand_equipped": "query.property('create:type') == 'hand_equipped'" },
+          { "left_block": "query.property('create:type') == 'block'" },
+          { "left_item": "query.property('create:type') == 'item'" }
+          ,{ "left_hand_equipped": "query.property('create:type') == 'hand_equipped'" }
+        ]
+      },
+      "render_controllers": ["controller.render.default"]
+    }
+  }
+}

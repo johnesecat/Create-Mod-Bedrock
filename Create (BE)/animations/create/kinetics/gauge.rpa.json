@@ -1,0 +1,16 @@
+{
+	"format_version": "1.8.0",
+	"animations": {
+		"animation.create.gauge.pointer": {
+			"loop": true,
+			"bones": {
+				"gauge": {
+					"rotation": ["v.rotation == 'up' ? 90 : v.rotation == 'down' ? -90 : 0", 0, 0]
+				},
+				"pointer": {
+					"rotation": ["v.dial_state * 90", 0, 0]
+				}
+			}
+		}
+	}
+}

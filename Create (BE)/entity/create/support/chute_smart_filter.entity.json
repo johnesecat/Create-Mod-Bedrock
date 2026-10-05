@@ -1,0 +1,32 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "create:chute_smart_filter",
+      "materials": {
+        "default": "zombie"
+      },
+      "textures": {
+        "default": "textures/create/common/blocks/invisible"
+      },
+      "geometry": {
+        "default": "geometry.create.brass_funnel_entity"
+      },
+      "animations": {
+        "constant": "animation.create.chute_smart_filter.constant",
+        "filter_item": "animation.create.chute_smart_filter.filter_item",
+        "filter_block": "animation.create.chute_smart_filter.filter_block",
+        "filter_hand_equipped": "animation.create.chute_smart_filter.filter_hand_equipped"
+      },
+      "scripts": {
+        "animate": [
+          "constant",
+          { "filter_item": "q.property('create:type') == 'item'" },
+          { "filter_block": "q.property('create:type') == 'block'" },
+          { "filter_hand_equipped": "q.property('create:type') == 'hand_equipped'" }
+        ]
+      },
+      "render_controllers": ["controller.render.default"]
+    }
+  }
+}

@@ -1,0 +1,172 @@
+{
+    "format_version": "1.8.0",
+    "animations": {
+        "animation.create.deployer.constant": {
+            "loop": true,
+            "bones": {
+                "all": {
+                    "rotation": [0, 180, 0],
+                    "position": [0, 0, 0]
+                }
+            }
+        },
+        "animation.create.deployer.hand_movement": {
+            "loop": true,
+            "bones": {
+                "hand": {
+                    "position": [0, 0, "v.arm_smooth"]
+                }
+            }
+        },
+        "animation.create.deployer.right_item": {
+            "loop": true,
+            "bones": {
+                "bone2":  { "scale": 2.5, "position": [0, 0, 0] },
+                "pivot2": { "rotation": [-74, -11.5, -15], "position": [-0.45, -2.3, 0.55] },
+                "rightitem": { "scale": 0.4 }
+            }
+        },
+        "animation.create.deployer.right_hand_equipped": {
+            "loop": true,
+            "bones": {
+                "bone2":  { "scale": 2.15, "position": [0, 0, 0] },
+                "pivot2": { "rotation": [-55, 180, 0], "position": [0.15, -0.25, -2.50] },
+                "rightitem": { "scale": 0.5 }
+            }
+        },
+        "animation.create.deployer.right_block": {
+            "loop": true,
+            "bones": {
+                "bone2":  { "scale": 1.8, "position": [0, 0, 0] },
+                "root2":  { "rotation": [0, 0, 0] },
+                "pivot2": { "rotation": [-20, 225, 0], "position": [-2.5, 0.66, -2.4] },
+                "rightitem": { "scale": 0.6 }
+            }
+        },
+        "animation.create.deployer.move_1": {
+            "loop": true,
+            "animation_length": 40.0,
+            "bones": {
+                "hand": {
+                    "position": {
+                        "0.0":  { "post": [0, 0, 0],   "lerp_mode": "catmullrom" },
+                        "20.0": { "post": [0, 0, -14], "lerp_mode": "catmullrom" },
+                        "40.0": { "post": [0, 0, 0],   "lerp_mode": "catmullrom" }
+                    }
+                }
+            }
+        },
+        "animation.create.deployer.move_2": {
+            "loop": true,
+            "animation_length": 20.0,
+            "bones": {
+                "hand": {
+                    "position": {
+                        "0.0":  { "post": [0, 0, 0],   "lerp_mode": "catmullrom" },
+                        "10.0": { "post": [0, 0, -14], "lerp_mode": "catmullrom" },
+                        "20.0": { "post": [0, 0, 0],   "lerp_mode": "catmullrom" }
+                    }
+                }
+            }
+        },
+        "animation.create.deployer.move_4": {
+            "loop": true,
+            "animation_length": 10.0,
+            "bones": {
+                "hand": {
+                    "position": {
+                        "0.0":  { "post": [0, 0, 0],   "lerp_mode": "catmullrom" },
+                        "5.0":  { "post": [0, 0, -14], "lerp_mode": "catmullrom" },
+                        "10.0": { "post": [0, 0, 0],   "lerp_mode": "catmullrom" }
+                    }
+                }
+            }
+        },
+        "animation.create.deployer.move_8": {
+            "loop": true,
+            "animation_length": 5.0,
+            "bones": {
+                "hand": {
+                    "position": {
+                        "0.0": { "post": [0, 0, 0],   "lerp_mode": "catmullrom" },
+                        "2.5": { "post": [0, 0, -14], "lerp_mode": "catmullrom" },
+                        "5.0": { "post": [0, 0, 0],   "lerp_mode": "catmullrom" }
+                    }
+                }
+            }
+        },
+        "animation.create.deployer.move_16": {
+            "loop": true,
+            "animation_length": 2.5,
+            "bones": {
+                "hand": {
+                    "position": {
+                        "0.0":  { "post": [0, 0, 0],   "lerp_mode": "catmullrom" },
+                        "1.25": { "post": [0, 0, -14], "lerp_mode": "catmullrom" },
+                        "2.5":  { "post": [0, 0, 0],   "lerp_mode": "catmullrom" }
+                    }
+                }
+            }
+        },
+        "animation.create.deployer.move_32": {
+            "loop": true,
+            "animation_length": 1.25,
+            "bones": {
+                "hand": {
+                    "position": {
+                        "0.0":   { "post": [0, 0, 0],   "lerp_mode": "catmullrom" },
+                        "0.625": { "post": [0, 0, -14], "lerp_mode": "catmullrom" },
+                        "1.25":  { "post": [0, 0, 0],   "lerp_mode": "catmullrom" }
+                    }
+                }
+            }
+        },
+        "animation.create.deployer.move_64": {
+            "loop": true,
+            "animation_length": 0.625,
+            "bones": {
+                "hand": {
+                    "position": {
+                        "0.0":    { "post": [0, 0, 0],   "lerp_mode": "catmullrom" },
+                        "0.3125": { "post": [0, 0, -14], "lerp_mode": "catmullrom" },
+                        "0.625":  { "post": [0, 0, 0],   "lerp_mode": "catmullrom" }
+                    }
+                }
+            }
+        },
+        "animation.create.deployer.move_128": {
+            "loop": true,
+            "animation_length": 0.3125,
+            "bones": {
+                "hand": {
+                    "position": {
+                        "0.0":    { "post": [0, 0, 0],   "lerp_mode": "catmullrom" },
+                        "0.1563": { "post": [0, 0, -14], "lerp_mode": "catmullrom" },
+                        "0.3125": { "post": [0, 0, 0],   "lerp_mode": "catmullrom" }
+                    }
+                }
+            }
+        },
+        "animation.create.deployer.move_256": {
+            "loop": true,
+            "animation_length": 0.1563,
+            "bones": {
+                "hand": {
+                    "position": {
+                        "0.0":    { "post": [0, 0, 0],   "lerp_mode": "catmullrom" },
+                        "0.0781": { "post": [0, 0, -14], "lerp_mode": "catmullrom" },
+                        "0.1563": { "post": [0, 0, 0],   "lerp_mode": "catmullrom" }
+                    }
+                }
+            }
+        },
+        "animation.create.deployer.construct_rotation": {
+            "loop": true,
+            "bones": {
+                "facing_rotation": {
+                    "rotation": [0, "v.construct_angle", 0]
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,175 @@
+{
+	"format_version": "1.21.110",
+	"minecraft:geometry": [
+		{
+			"description": {
+				"identifier": "geometry.windmill_sail",
+				"texture_width": 16,
+				"texture_height": 16,
+				"visible_bounds_width": 2,
+				"visible_bounds_height": 3.5,
+				"visible_bounds_offset": [0, 1.25, 0]
+			},
+			"bones": [
+				{
+					"name": "windmill_sail",
+					"pivot": [0, 8, -0.5],
+					"rotation": [0, 180, 0],
+					"cubes": [
+						{
+							"origin": [5, 0, -3],
+							"size": [3, 3, 4],
+							"uv": {
+								"north": {"uv": [13, 13], "uv_size": [3, 3]},
+								"east": {"uv": [2, 9], "uv_size": [3, 4], "uv_rotation": 270},
+								"west": {"uv": [11, 9], "uv_size": [3, 4], "uv_rotation": 90},
+								"up": {"uv": [8, 13], "uv_size": [-3, -4], "uv_rotation": 180},
+								"down": {"uv": [11, 13], "uv_size": [-3, -4]}
+							}
+						},
+						{
+							"origin": [5, 13, -3],
+							"size": [3, 3, 4],
+							"uv": {
+								"north": {"uv": [13, 0], "uv_size": [3, 3]},
+								"east": {"uv": [5, 9], "uv_size": [3, 4], "uv_rotation": 270},
+								"west": {"uv": [8, 9], "uv_size": [3, 4], "uv_rotation": 90},
+								"up": {"uv": [14, 13], "uv_size": [-3, -4], "uv_rotation": 180},
+								"down": {"uv": [5, 13], "uv_size": [-3, -4]}
+							}
+						},
+						{
+							"origin": [-8, 0, -3],
+							"size": [3, 3, 4],
+							"uv": {
+								"north": {"uv": [0, 13], "uv_size": [3, 3]},
+								"east": {"uv": [8, 9], "uv_size": [3, 4], "uv_rotation": 270},
+								"west": {"uv": [5, 9], "uv_size": [3, 4], "uv_rotation": 90},
+								"up": {"uv": [5, 13], "uv_size": [-3, -4], "uv_rotation": 180},
+								"down": {"uv": [14, 13], "uv_size": [-3, -4]}
+							}
+						},
+						{
+							"origin": [-8, 13, -3],
+							"size": [3, 3, 4],
+							"uv": {
+								"north": {"uv": [0, 0], "uv_size": [3, 3]},
+								"east": {"uv": [11, 9], "uv_size": [3, 4], "uv_rotation": 270},
+								"west": {"uv": [2, 9], "uv_size": [3, 4], "uv_rotation": 90},
+								"up": {"uv": [11, 13], "uv_size": [-3, -4], "uv_rotation": 180},
+								"down": {"uv": [8, 13], "uv_size": [-3, -4]}
+							}
+						},
+						{
+							"origin": [-5, 0, -2],
+							"size": [10, 2, 3],
+							"uv": {
+								"north": {"uv": [3, 14], "uv_size": [10, 2]},
+								"up": {"uv": [13, 9], "uv_size": [-10, -3], "uv_rotation": 180},
+								"down": {"uv": [13, 6], "uv_size": [-10, -3]}
+							}
+						},
+						{
+							"origin": [6, 3, -2],
+							"size": [2, 10, 3],
+							"uv": {
+								"north": {"uv": [14, 3], "uv_size": [2, 10]},
+								"east": {"uv": [3, 6], "uv_size": [10, 3], "uv_rotation": 270},
+								"west": {"uv": [3, 3], "uv_size": [10, 3], "uv_rotation": 90}
+							}
+						},
+						{
+							"origin": [-5, 14, -2],
+							"size": [10, 2, 3],
+							"uv": {
+								"north": {"uv": [3, 0], "uv_size": [10, 2]},
+								"up": {"uv": [13, 6], "uv_size": [-10, -3], "uv_rotation": 180},
+								"down": {"uv": [13, 9], "uv_size": [-10, -3]}
+							}
+						},
+						{
+							"origin": [-8, 3, -2],
+							"size": [2, 10, 3],
+							"uv": {
+								"north": {"uv": [0, 3], "uv_size": [2, 10]},
+								"east": {"uv": [3, 3], "uv_size": [10, 3], "uv_rotation": 270},
+								"west": {"uv": [3, 6], "uv_size": [10, 3], "uv_rotation": 90}
+							}
+						}
+					]
+				},
+				{
+					"name": "sail",
+					"parent": "windmill_sail",
+					"pivot": [0, 10, -0.5],
+					"cubes": [
+						{
+							"origin": [-8, 0, 1],
+							"size": [16, 16, 1],
+							"uv": {
+								"north": {"uv": [0, 0], "uv_size": [16, 16], "material_instance": "canvas"},
+								"east": {"uv": [15, 0], "uv_size": [1, 16], "material_instance": "canvas"},
+								"south": {"uv": [16, 16], "uv_size": [-16, -16], "material_instance": "canvas"},
+								"west": {"uv": [0, 0], "uv_size": [1, 16], "material_instance": "canvas"},
+								"up": {"uv": [16, 1], "uv_size": [-16, -1], "material_instance": "canvas"},
+								"down": {"uv": [16, 16], "uv_size": [-16, -1], "material_instance": "canvas"}
+							}
+						}
+					]
+				}
+			],
+			"item_display_transforms": {
+				"thirdperson_righthand": {
+					"rotation": [75, 45, 0],
+					"translation": [0, 2.5, 0],
+					"scale": [0.375, 0.375, 0.375],
+					"rotation_pivot": [0, 0, 0],
+					"scale_pivot": [0, 0, 0]
+				},
+				"thirdperson_lefthand": {
+					"rotation": [75, 45, 0],
+					"translation": [0, 2.5, 0],
+					"scale": [0.375, 0.375, 0.375],
+					"rotation_pivot": [0, 0, 0],
+					"scale_pivot": [0, 0, 0]
+				},
+				"firstperson_righthand": {
+					"rotation": [0, 45, 0],
+					"translation": [0, 0, 0],
+					"scale": [0.4, 0.4, 0.4],
+					"rotation_pivot": [0, 0, 0],
+					"scale_pivot": [0, 0, 0]
+				},
+				"firstperson_lefthand": {
+					"rotation": [0, -135, 0],
+					"translation": [0, 0, 0],
+					"scale": [0.4, 0.4, 0.4],
+					"rotation_pivot": [0, 0, 0],
+					"scale_pivot": [0, 0, 0]
+				},
+				"ground": {
+					"rotation": [0, 0, 0],
+					"translation": [0, 3, 0],
+					"scale": [0.25, 0.25, 0.25],
+					"rotation_pivot": [0, 0, 0],
+					"scale_pivot": [0, 0, 0]
+				},
+				"gui": {
+					"rotation": [30, 137, -90],
+					"translation": [0.75, 0, 0],
+					"scale": [0.625, 0.625, 0.625],
+					"rotation_pivot": [0, 0, 0],
+					"scale_pivot": [0, 0, 0],
+					"fit_to_frame": false
+				},
+				"fixed": {
+					"rotation": [-90, 0, 0],
+					"translation": [0, 0, -1.25],
+					"scale": [0.5, 0.5, 0.5],
+					"rotation_pivot": [0, 0, 0],
+					"scale_pivot": [0, 0, 0]
+				}
+			}
+		}
+	]
+}

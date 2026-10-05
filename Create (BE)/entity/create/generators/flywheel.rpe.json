@@ -1,0 +1,44 @@
+{
+    "format_version": "1.10.0",
+    "minecraft:client_entity": {
+        "description": {
+            "identifier": "create:flywheel_entity",
+            "materials": {
+                "default": "create_entity_block"
+            },
+            "textures": {
+                "default": "textures/create/common/blocks/flywheel"
+            },
+            "geometry": {
+                "default": "geometry.create.flywheel_entity"
+            },
+            "animations": {
+                "rotation": "animation.create.rpm.rotation",
+                "offset": "animation.create.rpm.offsets",
+                "flywheel": "animation.create.flywheel"
+            },
+            "scripts": {
+                "animate": [ "rotation", "offset", "flywheel" ],
+                "initialize": [
+                    "v.visual_speed = 0;",
+                    "v.wheel_angle = 0;"
+                ],
+                "pre_animation": [
+                    "v.rotation = q.property('create:cardinal_rotation');",
+                    "v.offset_sign = (v.rotation == 'down' || v.rotation == 'east' || v.rotation == 'south') ? -1 : 1;",
+
+                    "v.visual_sign = (v.rotation == 'down' || v.rotation == 'east' || v.rotation == 'south') ? -1 : 1;",
+                    "v.rpm = ((q.frame_alpha + q.time_stamp) / 3.33) * -q.property('create:rpm');",
+                    "v.rpm2 = 0;",
+                
+                    "v.visual_speed = v.visual_speed + (q.property('create:rpm') - v.visual_speed) * 0.015625 * q.delta_time * 20;",
+                    "v.wheel_angle = math.mod(v.wheel_angle + v.visual_speed * 0.3 * q.delta_time * 20, 360);",
+                    "v.connector_offset = math.sin(v.wheel_angle) * 0.25;"
+                ]
+            },
+            "render_controllers": [
+                "controller.render.default"
+            ]
+        }
+    }
+}

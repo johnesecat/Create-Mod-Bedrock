@@ -1,0 +1,23 @@
+{
+	"format_version": "1.8.0",
+	"animations": {
+		"animation.fluid.item_drain.flow": {
+			"loop": "hold_on_last_frame",
+			"animation_length": 0.875,
+			"bones": {
+				"bone": {
+					"scale": {
+						"0.0": [1, 0.2, 1],
+						"0.875": [1, 0.7, 1]
+					}
+				},
+				"bb_main": {
+					"scale": {
+						"0.0": [1, 0.2, 1],
+						"0.875": [1, 0.7, 1]
+					}
+				}
+			}
+		}
+	}
+}

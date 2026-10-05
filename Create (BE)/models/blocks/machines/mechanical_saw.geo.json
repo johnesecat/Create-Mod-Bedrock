@@ -1,0 +1,198 @@
+{
+	"format_version": "1.21.110",
+	"minecraft:geometry": [
+		{
+			"description": {
+				"identifier": "geometry.create.mechanical_saw",
+				"texture_width": 64,
+				"texture_height": 64,
+				"visible_bounds_width": 2,
+				"visible_bounds_height": 2.5,
+				"visible_bounds_offset": [0, 0.75, 0]
+			},
+			"bones": [
+				{
+					"name": "block",
+					"pivot": [8, 0, -8],
+					"cubes": [
+						{
+							"origin": [-6, 2, -7.05],
+							"size": [12, 12, 1],
+							"pivot": [0, 8, 0],
+							"rotation": [0, 180, 0],
+							"uv": {
+								"north": {"uv": [16, 0], "uv_size": [12, 12]}
+							}
+						},
+						{
+							"origin": [-8, 0, -8],
+							"size": [16, 2, 12],
+							"pivot": [0, 8, 0],
+							"rotation": [0, 180, 0],
+							"uv": {
+								"north": {"uv": [0, 24], "uv_size": [16, 2]},
+								"east": {"uv": [25, 16], "uv_size": [12, 2]},
+								"south": {"uv": [16, 24], "uv_size": [16, 2]},
+								"west": {"uv": [25, 18], "uv_size": [12, 2]},
+								"up": {"uv": [0, 0], "uv_size": [16, 12]},
+								"down": {"uv": [0, 12], "uv_size": [16, -12]}
+							}
+						},
+						{
+							"origin": [-8, 14, -8],
+							"size": [16, 2, 12],
+							"pivot": [0, 8, 0],
+							"rotation": [0, 180, 0],
+							"uv": {
+								"north": {"uv": [25, 12], "uv_size": [16, 2]},
+								"east": {"uv": [25, 20], "uv_size": [12, 2]},
+								"south": {"uv": [25, 14], "uv_size": [16, 2]},
+								"west": {"uv": [25, 22], "uv_size": [12, 2]},
+								"up": {"uv": [0, 0], "uv_size": [16, 12]},
+								"down": {"uv": [0, 12], "uv_size": [16, -12]}
+							}
+						},
+						{
+							"origin": [-7, 8, -10],
+							"size": [14, 0, 7],
+							"pivot": [0, 8, -6.5],
+							"rotation": [0, 180, 0],
+							"uv": {
+								"up": {"uv": [60, 64], "uv_size": [-56, -28], "uv_rotation": 180, "material_instance": "create:saw"}
+							}
+						},
+						{
+							"origin": [6, 2, -8],
+							"size": [2, 12, 2],
+							"pivot": [0, 8, 0],
+							"rotation": [0, 180, 0],
+							"uv": {
+								"north": {"uv": [0, 26], "uv_size": [2, 12]},
+								"east": {"uv": [0, 26], "uv_size": [2, 12]},
+								"south": {"uv": [2, 26], "uv_size": [2, 12]},
+								"west": {"uv": [2, 26], "uv_size": [2, 12]}
+							}
+						},
+						{
+							"origin": [-8, 2, -6],
+							"size": [16, 12, 9.025],
+							"pivot": [0, 8, 0],
+							"rotation": [0, 180, 0],
+							"uv": {
+								"east": {"uv": [16, 12], "uv_size": [9, 12]},
+								"south": {"uv": [0, 12], "uv_size": [16, 12]},
+								"west": {"uv": [16, 12], "uv_size": [9, 12]}
+							}
+						},
+						{
+							"origin": [-8, 2, -8],
+							"size": [2, 12, 2],
+							"pivot": [0, 8, 0],
+							"rotation": [0, 180, 0],
+							"uv": {
+								"north": {"uv": [2, 26], "uv_size": [2, 12]},
+								"east": {"uv": [0, 26], "uv_size": [2, 12]},
+								"south": {"uv": [2, 26], "uv_size": [2, 12]},
+								"west": {"uv": [2, 26], "uv_size": [2, 12]}
+							}
+						}
+					]
+				},
+				{
+					"name": "rpm",
+					"parent": "block",
+					"pivot": [0, 0, 0],
+					"cubes": [
+						{
+							"origin": [-2, 6, 3],
+							"size": [4, 4, 5],
+							"uv": {
+								"north": {"uv": [9, 26], "uv_size": [4, 4]},
+								"east": {"uv": [4, 26], "uv_size": [5, 4]},
+								"south": {"uv": [13, 26], "uv_size": [4, 4]},
+								"west": {"uv": [4, 26], "uv_size": [5, 4]},
+								"up": {"uv": [9, 26], "uv_size": [-5, 4], "uv_rotation": 90},
+								"down": {"uv": [9, 26], "uv_size": [-5, 4], "uv_rotation": 90}
+							}
+						}
+					]
+				}
+			],
+			"item_display_transforms": {
+				"gui": {
+					"rotation": [30, -135, 0],
+					"translation": [0, 0, 0],
+					"scale": [0.625, 0.625, 0.625],
+					"rotation_pivot": [0, 0, 0],
+					"scale_pivot": [0, 0, 0],
+					"fit_to_frame": false
+				}
+			}
+		},
+		{
+			"description": {
+				"identifier": "geometry.create.mechanical_saw_entity",
+				"texture_width": 64,
+				"texture_height": 64,
+				"visible_bounds_width": 2,
+				"visible_bounds_height": 2.5,
+				"visible_bounds_offset": [0, 0.75, 0]
+			},
+			"bones": [
+				{
+					"name": "facing_rotation",
+					"pivot": [0, 8, 0]
+				},
+				{
+					"name": "rpm",
+					"parent": "facing_rotation",
+					"pivot": [0, 8, 0],
+					"cubes": [
+						{
+							"origin": [-2, 6, 3],
+							"size": [4, 4, 5],
+							"uv": {
+								"north": {
+									"uv": [9, 26],
+									"uv_size": [4, 4]
+								},
+								"east": {
+									"uv": [4, 26],
+									"uv_size": [5, 4]
+								},
+								"south": {
+									"uv": [13, 26],
+									"uv_size": [4, 4]
+								},
+								"west": {
+									"uv": [4, 26],
+									"uv_size": [5, 4]
+								},
+								"up": {
+									"uv": [9, 26],
+									"uv_size": [-5, 4],
+									"uv_rotation": 90
+								},
+								"down": {
+									"uv": [9, 26],
+									"uv_size": [-5, 4],
+									"uv_rotation": 90
+								}
+							}
+						}
+					]
+				}
+			],
+			"item_display_transforms": {
+				"gui": {
+					"rotation": [30, -135, 0],
+					"translation": [0, 0, 0],
+					"scale": [0.625, 0.625, 0.625],
+					"rotation_pivot": [0, 0, 0],
+					"scale_pivot": [0, 0, 0],
+					"fit_to_frame": false
+				}
+			}
+		}
+	]
+}

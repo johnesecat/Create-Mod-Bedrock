@@ -1,0 +1,45 @@
+{
+    "format_version": "1.10.0",
+    "minecraft:client_entity": {
+        "description": {
+            "identifier": "create:stressometer_entity",
+            "materials": {
+                "default": "create_entity_block"
+            },
+            "textures": {
+                "default": "textures/create/common/blocks/gauge"
+            },
+            "geometry": {
+                "default": "geometry.create.stressometer_entity"
+            },
+            "animations": {
+                "rotation": "animation.create.rpm.rotation",
+                "offset": "animation.create.rpm.offsets",
+                "stressometer": "animation.create.gauge.pointer"
+            },
+            "scripts": {
+                "animate": [ "rotation", "offset", "stressometer" ],
+                "initialize": [
+                    "v.stress = q.property('create:stress_impact');",
+                    "v.dial_state = v.stress / 100 * 1.125;"
+                ],
+                "pre_animation": [
+                    "v.rotation = q.property('create:cardinal_rotation');",
+                    "v.offset_sign = 1;",
+                    "v.visual_sign = 1;",
+                    "v.rpm = ((q.frame_alpha + q.time_stamp) / 3.33) * -q.property('create:rpm');",
+                    "v.rpm2 = 0;",
+
+                    // stressometer dial
+                    "v.stress = q.property('create:stress_impact');",
+                    "v.dial_target = v.stress / 100 * 1.125;",
+                    "v.dial_state = v.dial_state + (v.dial_target - v.dial_state) * 0.125 * q.delta_time * 20;",
+                    "v.dial_state = (v.dial_state > 1 && math.random(0, 1) < 0.025) ? v.dial_state - (v.dial_state - 1) * math.random(0, 1) : v.dial_state;"
+                ]
+            },
+            "render_controllers": [
+                "controller.render.default"
+            ]
+        }
+    }
+}

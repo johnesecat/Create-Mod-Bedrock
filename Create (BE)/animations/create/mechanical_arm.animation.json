@@ -1,0 +1,103 @@
+{
+    "format_version": "1.8.0",
+    "animations": {
+        "animation.create.mechanical_arm.rot_0": {
+            "loop": "hold_on_last_frame",
+            "bones": {
+                "moving": { "rotation": [0, "v.base", 0] },
+                "arm":    { "rotation": ["v.shoulder", 0, 0] },
+                "arm2":   { "rotation": ["v.elbow", 0, 0] }
+            }
+        },
+        "animation.create.mechanical_arm.rot_1": {
+            "loop": "hold_on_last_frame",
+            "bones": {
+                "moving": { "rotation": [0, "v.base_new", 0] },
+                "arm":    { "rotation": ["v.shoulder_new", 0, 0] },
+                "arm2":   { "rotation": ["v.elbow_new", 0, 0] }
+            }
+        },
+        "animation.create.mechanical_arm.claw_item": {
+            "loop": true,
+            "bones": {
+                "claw_item": { "scale": 2 },
+                "root": {
+                    "rotation": [0, "v.rotation == 'south' ? 180 : v.rotation == 'west' ? 270 : v.rotation == 'north' ? 0 : v.rotation == 'east' ? 90 : 0", 0]
+                },
+                "pivot": {
+                    "rotation": [-74, -11.5, -15],
+                    "position": [0.3, -2.1, 0.75]
+                },
+                "leftitem": { "scale": 0.4 }
+            }
+        },
+        "animation.create.mechanical_arm.claw_block": {
+            "loop": true,
+            "bones": {
+                "claw_item": { "scale": 2 },
+                "root": {
+                    "rotation": [0, "v.rotation == 'south' ? 180 : v.rotation == 'west' ? 270 : v.rotation == 'north' ? 0 : v.rotation == 'east' ? 90 : 0", 0]
+                },
+                "pivot": {
+                    "rotation": [-20, 225, 0],
+                    "position": [-1.4, 0.5, -1.2]
+                },
+                "leftitem": { "scale": 0.3 }
+            }
+        },
+        "animation.create.mechanical_arm.filter_item": {
+            "loop": true,
+            "bones": {
+                "root2": {
+                    "rotation": [0, "v.rotation == 'south' ? 180 : v.rotation == 'west' ? 270 : v.rotation == 'north' ? 0 : v.rotation == 'east' ? 90 : 0", 0]
+                },
+                "bone": {
+                    "scale": 1.5,
+                    "position": [0, 0, 1]
+                },
+                "pivot2": {
+                    "rotation": [-74, -11.5, -15],
+                    "position": [-0.5, -2.3, 0.55]
+                },
+                "rightitem": { "scale": 0.4 }
+            }
+        },
+        "animation.create.mechanical_arm.claw_hand_equipped": {
+            "loop": true,
+            "bones": {
+                "claw_item": { "scale": 2 },
+                "root": { "rotation": [0, "v.rotation == 'south' ? 180 : v.rotation == 'west' ? 270 : v.rotation == 'north' ? 0 : v.rotation == 'east' ? 90 : 0", 0] },
+                "pivot": { "rotation": [0, 0, 0], "position": [0.3, -2.1, 0.75] },
+                "leftitem": { "scale": 0.25, "rotation": [-90, 90, 0] }
+            }
+        },
+        "animation.create.mechanical_arm.filter_hand_equipped": {
+            "loop": true,
+            "bones": {
+                "root2": {
+                    "rotation": [0, "v.rotation == 'south' ? 180 : v.rotation == 'west' ? 270 : v.rotation == 'north' ? 0 : v.rotation == 'east' ? 90 : 0", 0]
+                },
+                "bone": { "scale": 1.5, "position": [0, 0, 1] },
+                "pivot2": { "rotation": [0, 0, 0], "position": [-0.5, -2.3, 0.55] },
+                "rightitem": { "scale": 0.25, "rotation": [-90, 90, 0] }
+            }
+        },
+        "animation.create.mechanical_arm.filter_block": {
+            "loop": true,
+            "bones": {
+                "root2": {
+                    "rotation": [0, "v.rotation == 'south' ? 180 : v.rotation == 'west' ? 270 : v.rotation == 'north' ? 0 : v.rotation == 'east' ? 90 : 0", 0]
+                },
+                "bone": {
+                    "scale": 1.5,
+                    "position": [0, 0, 1]
+                },
+                "pivot2": {
+                    "rotation": [-20, 225, 0],
+                    "position": [-2.4, 0.66, -1.6]
+                },
+                "rightitem": { "scale": 0.6 }
+            }
+        }
+    }
+}

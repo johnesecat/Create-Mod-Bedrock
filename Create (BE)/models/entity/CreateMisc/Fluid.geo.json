@@ -1,0 +1,35 @@
+{
+	"format_version": "1.12.0",
+	"minecraft:geometry": [
+		{
+			"description": {
+				"identifier": "geometry.fluid",
+				"texture_width": 16,
+				"texture_height": 16,
+				"visible_bounds_width": 2,
+				"visible_bounds_height": 3.5,
+				"visible_bounds_offset": [0, 1.25, 0]
+			},
+			"bones": [
+				{
+					"name": "fluid",
+					"pivot": [0, 7, 0],
+					"cubes": [
+						{
+							"origin": [-5.5, 0.3, -5.4],
+							"size": [11, 11, 11],
+							"uv": {
+								"north": {"uv": [0, 1], "uv_size": [11, 11]},
+								"east": {"uv": [0, 1], "uv_size": [11, 11]},
+								"south": {"uv": [1, 1], "uv_size": [11, 11]},
+								"west": {"uv": [1, 1], "uv_size": [11, 11]},
+								"up": {"uv": [12, 12], "uv_size": [-11, -11]},
+								"down": {"uv": [12, 11], "uv_size": [-11, -11]}
+							}
+						}
+					]
+				}
+			]
+		}
+	]
+}

@@ -1,0 +1,32 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "create:pipe_fluid",
+      "materials": {
+        "default": "create_entity_block"
+      },
+      "textures": {
+        "lava": "textures/create/common/fluid/lava",
+        "water": "textures/create/common/fluid/water",
+        "honey": "textures/create/common/fluid/honey_spout",
+        "chocolate": "textures/create/common/fluid/chocolate_spout",
+        "milk": "textures/create/common/fluid/milk_spout"
+      },
+      "geometry": {
+        "default": "geometry.create.pipe_fluid"
+      },
+      "animations": {
+        "orient": "animation.create.pipe_fluid.orient"
+      },
+      "scripts": {
+        "animate": [
+          "orient"
+        ]
+      },
+      "render_controllers": [
+        "controller.render.create.pipe_fluid"
+      ]
+    }
+  }
+}

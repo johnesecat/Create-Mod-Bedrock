@@ -1,0 +1,26 @@
+{
+    "format_version": "1.10.0",
+    "minecraft:client_entity": {
+        "description": {
+            "identifier": "create:portable_storage_interface_construct",
+            "materials": {
+                "default": "create_entity_block"
+            },
+            "textures": {
+                "default": "textures/create/common/blocks/portable_storage_interface"
+            },
+            "geometry": {
+                "default": "geometry.portable_storage_interface"
+            },
+            "animations": {
+                "connect": "animation.portable_storage_interface.conect"
+            },
+            "scripts": {
+                "animate": [
+                    { "connect": "q.property('create:connected')" }
+                ]
+            },
+            "render_controllers": ["controller.render.default"]
+        }
+    }
+}

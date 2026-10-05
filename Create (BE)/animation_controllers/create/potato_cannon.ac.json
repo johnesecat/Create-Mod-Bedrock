@@ -1,0 +1,37 @@
+{
+    "format_version": "1.10.0",
+    "animation_controllers": {
+        "controller.animation.create.potato_cannon.fire_first_person": {
+            "initial_state": "default",
+            "states": {
+                "default": {
+                    "transitions": [
+                        { "fire": "q.is_using_item" }
+                    ]
+                },
+                "fire": {
+                    "animations": ["fire_first_person"],
+                    "transitions": [
+                        { "default": "!q.is_using_item && q.all_animations_finished" }
+                    ]
+                }
+            }
+        },
+        "controller.animation.create.potato_cannon.fire_third_person": {
+            "initial_state": "default",
+            "states": {
+                "default": {
+                    "transitions": [
+                        { "fire": "q.is_using_item" }
+                    ]
+                },
+                "fire": {
+                    "animations": ["fire_third_person"],
+                    "transitions": [
+                        { "default": "!q.is_using_item && q.all_animations_finished" }
+                    ]
+                }
+            }
+        }
+    }
+}

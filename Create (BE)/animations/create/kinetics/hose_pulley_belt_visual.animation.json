@@ -1,0 +1,1 @@
+{"format_version":"1.8.0","animations":{"animation.create.hose_pulley_belt_visual.facing":{"loop":true,"bones":{"hose_coil":{"rotation":[0,"v.rotation == 'south' ? 180 : v.rotation == 'west' ? 90 : v.rotation == 'east' ? -90 : 0",0]}}}}}

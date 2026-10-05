@@ -1,0 +1,28 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "create:desk_bell_entity",
+      "materials": {
+        "default": "entity_alphatest"
+      },
+      "textures": {
+        "default": "textures/create/common/blocks/desk_bell"
+      },
+      "geometry": {
+        "default": "geometry.desk_bell"
+      },
+      "render_controllers": [
+        "controller.render.create.desk_bell"
+      ],
+      "animations": {
+        "ring": "animation.desk_bell.bell"
+      },
+      "scripts": {
+        "animate": [
+          "ring"
+        ]
+      }
+    }
+  }
+}

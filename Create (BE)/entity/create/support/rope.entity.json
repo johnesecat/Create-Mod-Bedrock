@@ -1,0 +1,12 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "create:rope",
+      "materials": { "default": "create_entity_block" },
+      "textures": { "default": "textures/create/common/blocks/hose" },
+      "geometry": { "default": "geometry.rope" },
+      "render_controllers": ["controller.render.default"]
+    }
+  }
+}

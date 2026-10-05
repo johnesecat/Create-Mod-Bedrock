@@ -1,0 +1,20 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "create:vault_storage_anchor",
+      "materials": {
+        "default": "entity_alphatest"
+      },
+      "textures": {
+        "default": "textures/create/common/blocks/vault"
+      },
+      "geometry": {
+        "default": "geometry.vault_storage_anchor"
+      },
+      "render_controllers": [
+        "controller.render.vault_storage_anchor"
+      ]
+    }
+  }
+}

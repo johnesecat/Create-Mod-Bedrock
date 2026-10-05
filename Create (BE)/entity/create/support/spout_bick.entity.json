@@ -1,0 +1,30 @@
+﻿{
+    "format_version":  "1.10.0",
+    "minecraft:client_entity":  {
+                                    "description":  {
+                                                        "identifier":  "create:spout_bick",
+                                                        "materials":  {
+                                                                          "default":  "create_entity_block"
+                                                                      },
+                                                        "textures":  {
+                                                                         "default":  "textures/create/common/blocks/spout"
+                                                                     },
+                                                        "geometry":  {
+                                                                         "default":  "geometry.spout.entity"
+                                                                     },
+                                                        "render_controllers":  [
+                                                                                   "controller.render.default"
+                                                                               ],
+                                                        "animations":  {
+                                                                           "fluid":  "animation.spout.entity.fluid"
+                                                                       },
+                                                        "scripts":  {
+                                                                        "animate":  [
+                                                                                        {
+                                                                                            "fluid":  "query.property(\u0027create:pouring\u0027)"
+                                                                                        }
+                                                                                    ]
+                                                                    }
+                                                    }
+                                }
+}

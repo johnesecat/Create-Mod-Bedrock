@@ -1,0 +1,35 @@
+{
+	"format_version": "1.12.0",
+	"minecraft:geometry": [
+		{
+			"description": {
+				"identifier": "geometry.fluid.item_drain",
+				"texture_width": 16,
+				"texture_height": 16,
+				"visible_bounds_width": 2,
+				"visible_bounds_height": 2.5,
+				"visible_bounds_offset": [0, 0.75, 0]
+			},
+			"bones": [
+				{
+					"name": "bone",
+					"pivot": [0, 0, 0],
+					"cubes": [
+						{
+							"origin": [-6, 0, -6.1],
+							"size": [12, 11, 12.1],
+							"uv": {
+								"north": {"uv": [0, 5], "uv_size": [16, 11]},
+								"east": {"uv": [0, 5], "uv_size": [16, 11]},
+								"south": {"uv": [0, 5], "uv_size": [16, 11]},
+								"west": {"uv": [0, 5], "uv_size": [16, 11]},
+								"up": {"uv": [16, 16], "uv_size": [-16, -16]},
+								"down": {"uv": [16, 16], "uv_size": [-16, -16]}
+							}
+						}
+					]
+				}
+			]
+		}
+	]
+}

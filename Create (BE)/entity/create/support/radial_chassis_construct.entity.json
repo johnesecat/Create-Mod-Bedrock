@@ -1,0 +1,39 @@
+{
+    "format_version": "1.10.0",
+    "minecraft:client_entity": {
+        "description": {
+            "identifier": "create:radial_chassis_construct",
+            "materials": {
+                "default": "entity_alphatest"
+            },
+            "textures": {
+                "side": "textures/create/common/blocks/radial_chassis_side",
+                "side_sticky": "textures/create/common/blocks/radial_chassis_side_sticky",
+                "end": "textures/create/common/blocks/radial_chassis_end"
+            },
+            "geometry": {
+                "side": "geometry.radial_chassis_construct_side",
+                "end": "geometry.radial_chassis_construct_end"
+            },
+            "animations": {
+                "rotate": "animation.create.radial_chassis_construct.rotate"
+            },
+            "scripts": {
+                "animate": [ "rotate" ],
+                "pre_animation": [
+                    "v.direction = q.property('create:chassis_direction');",
+                    "v.base_x = v.direction == 'north' ? 90 : (v.direction == 'south' ? -90 : (v.direction == 'down' ? 180 : 0));",
+                    "v.base_y = 0;",
+                    "v.base_z = v.direction == 'west' ? -90 : (v.direction == 'east' ? 90 : 0);",
+                    "v.angle_x = q.property('create:rotation_x');",
+                    "v.angle_y = q.property('create:rotation_y');",
+                    "v.angle_z = q.property('create:rotation_z');"
+                ]
+            },
+            "render_controllers": [
+                "controller.render.create.radial_chassis_construct_side",
+                "controller.render.create.radial_chassis_construct_end"
+            ]
+        }
+    }
+}

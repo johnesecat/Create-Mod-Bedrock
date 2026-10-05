@@ -1,0 +1,59 @@
+{
+	"format_version": "1.21.0",
+	"minecraft:geometry": [
+		{
+			"description": {
+				"identifier": "geometry.sequenced_gearshift_entity",
+				"texture_width": 64,
+				"texture_height": 64,
+				"visible_bounds_width": 2,
+				"visible_bounds_height": 2.5,
+				"visible_bounds_offset": [0, 0.75, 0]
+			},
+			"bones": [
+				{
+					"name": "facing_rotation",
+					"pivot": [0, 0, 0]
+				},
+				{
+					"name": "rpm",
+					"parent": "facing_rotation",
+					"pivot": [0, 0, 0],
+					"cubes": [
+						{
+							"origin": [-2, -2, 0],
+							"size": [4, 4, 8],
+							"uv": {
+								"north": {"uv": [0, 45], "uv_size": [4, 4]},
+								"east": {"uv": [0, 45], "uv_size": [4, 8], "uv_rotation": 90},
+								"south": {"uv": [0, 45], "uv_size": [4, 4]},
+								"west": {"uv": [0, 45], "uv_size": [4, 8], "uv_rotation": 270},
+								"up": {"uv": [0, 45], "uv_size": [4, 8]},
+								"down": {"uv": [4, 53], "uv_size": [-4, -8], "uv_rotation": 180}
+							}
+						}
+					]
+				},
+				{
+					"name": "rpm2",
+					"parent": "facing_rotation",
+					"pivot": [0, 0, 0],
+					"cubes": [
+						{
+							"origin": [-2, -2, -8],
+							"size": [4, 4, 8],
+							"uv": {
+								"north": {"uv": [0, 45], "uv_size": [4, 4]},
+								"east": {"uv": [0, 45], "uv_size": [4, 8], "uv_rotation": 90},
+								"south": {"uv": [0, 45], "uv_size": [4, 4]},
+								"west": {"uv": [0, 45], "uv_size": [4, 8], "uv_rotation": 270},
+								"up": {"uv": [0, 45], "uv_size": [4, 8]},
+								"down": {"uv": [4, 53], "uv_size": [-4, -8], "uv_rotation": 180}
+							}
+						}
+					]
+				}
+			]
+		}
+	]
+}

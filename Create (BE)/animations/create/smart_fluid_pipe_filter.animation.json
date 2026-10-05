@@ -1,0 +1,26 @@
+{
+  "format_version": "1.8.0",
+  "animations": {
+    "animation.create.smart_fluid_pipe_filter.constant": {
+      "loop": true,
+      "bones": {
+        "all": {
+          "rotation": [
+            "q.property('create:facing_direction') == 'up' ? -90 : q.property('create:facing_direction') == 'down' ? 90 : 0",
+            "q.property('create:facing_direction') == 'south' ? 180 : q.property('create:facing_direction') == 'west' ? 270 : q.property('create:facing_direction') == 'east' ? 90 : 0",
+            0
+          ],
+          "position": [0, -8, 0]
+        }
+      }
+    },
+    "animation.create.smart_fluid_pipe_filter.item": {
+      "loop": true,
+      "bones": {
+        "bone2": { "scale": 1.5, "position": [0, 0, 0] },
+        "pivot2": { "rotation": [-124, -11.5, 0], "position": [-0.6, 0.3, -3.6] },
+        "rightitem": { "scale": 0.4, "rotation": [0, 0, 0] }
+      }
+    }
+  }
+}

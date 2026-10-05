@@ -1,0 +1,32 @@
+{
+    "format_version": "1.10.0",
+    "minecraft:client_entity": {
+        "description": {
+            "identifier": "create:brass_tunnel_entity_z",
+            "materials": { "default": "zombie" },
+            "textures":  { "default": "textures/create/common/blocks/invisible" },
+            "geometry":  { "default": "geometry.create.brass_tunnel_entity_z" },
+            "animations": {
+                "constant":    "animation.create.brass_tunnel.constant",
+                "left_item":   "animation.create.brass_tunnel.left_item",
+                "left_hand_equipped": "animation.create.brass_tunnel.left_hand_equipped",
+                "left_block":  "animation.create.brass_tunnel.left_block",
+                "right_item":  "animation.create.brass_tunnel.right_item",
+                "right_hand_equipped": "animation.create.brass_tunnel.right_hand_equipped",
+                "right_block": "animation.create.brass_tunnel.right_block"
+            },
+            "scripts": {
+                "animate": [
+                    "constant",
+                    { "right_item":  "q.property('create:type_north') == 'item'"  },
+                    { "right_hand_equipped": "q.property('create:type_north') == 'hand_equipped'" },
+                    { "right_block": "q.property('create:type_north') == 'block'" },
+                    { "left_item":   "q.property('create:type_south') == 'item'"  },
+                    { "left_hand_equipped": "q.property('create:type_south') == 'hand_equipped'" },
+                    { "left_block":  "q.property('create:type_south') == 'block'" }
+                ]
+            },
+            "render_controllers": ["controller.render.default"]
+        }
+    }
+}

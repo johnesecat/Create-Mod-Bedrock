@@ -1,0 +1,17 @@
+{
+  "format_version": "1.8.0",
+  "animations": {
+    "animation.create.blaze_burner_flame.frame": {
+      "loop": true,
+      "bones": {
+        "bb_main": {
+          "scale": [
+            "1.0 + math.sin(v.flame_frame * 18.0) * 0.045",
+            "1.0 + math.sin(v.flame_frame * 22.0) * 0.075",
+            "1.0 + math.cos(v.flame_frame * 17.0) * 0.045"
+          ]
+        }
+      }
+    }
+  }
+}

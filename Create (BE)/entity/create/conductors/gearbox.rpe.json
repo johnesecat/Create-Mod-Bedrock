@@ -1,0 +1,42 @@
+{
+    "format_version": "1.10.0",
+    "minecraft:client_entity": {
+        "description": {
+            "identifier": "create:gearbox_entity",
+            "materials": {
+                "default": "create_entity_block"
+            },
+            "textures": {
+                "default": "textures/create/common/blocks/gearbox"
+            },
+            "geometry": {
+                "default": "geometry.create.gearbox_entity"
+            },
+             "animations": {
+                "offset": "animation.create.rpm.offsets",
+                "gearbox": "animation.create.rpm.gearbox"
+            },
+            "scripts": {
+                "animate": [ "offset", "gearbox" ],
+                "pre_animation": [
+                    "v.rotation = q.property('create:cardinal_rotation');",
+                    "v.offset_sign = 1;",
+
+                    "v.visual_sign = 1;",
+                    "v.rpm = ((q.frame_alpha + q.time_stamp) / 3.33) * -q.property('create:rpm');",
+                    "v.rpm2 = 0;",
+
+                    "v.sourceDir = q.property('create:source_direction');",
+                    "v.sign = (v.sourceDir == 'south' || v.sourceDir == 'west' || ((v.rotation == 'north' || v.rotation == 'south') && v.sourceDir == 'above') || ((v.rotation == 'east' || v.rotation == 'west') && v.sourceDir == 'below')) ? -1 : 1;",
+                    "v.rpm_n = v.rpm * v.sign;",
+                    "v.rpm_s = v.rpm * -v.sign;",
+                    "v.rpm_e = v.rpm * v.sign;",
+                    "v.rpm_w = v.rpm * -v.sign;"
+                ]
+            },
+            "render_controllers": [
+                "controller.render.default"
+            ]
+        }
+    }
+}

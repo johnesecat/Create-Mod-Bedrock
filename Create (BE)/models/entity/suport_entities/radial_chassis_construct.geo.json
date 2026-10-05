@@ -1,0 +1,45 @@
+{
+    "format_version": "1.21.0",
+    "minecraft:geometry": [
+        {
+            "description": {
+                "identifier": "geometry.radial_chassis_construct_side",
+                "texture_width": 16,
+                "texture_height": 16,
+                "visible_bounds_width": 3,
+                "visible_bounds_height": 3,
+                "visible_bounds_offset": [ 0, 0, 0 ]
+            },
+            "bones": [
+                { "name": "rpm", "pivot": [ 0, 0, 0 ] },
+                { "name": "chassis", "parent": "rpm", "pivot": [ 0, 0, 0 ], "cubes": [
+                    { "origin": [ -8, -8, -8 ], "size": [ 16, 16, 16 ], "uv": {
+                        "north": { "uv": [ 0, 0 ], "uv_size": [ 16, 16 ] },
+                        "east": { "uv": [ 0, 0 ], "uv_size": [ 16, 16 ] },
+                        "south": { "uv": [ 0, 0 ], "uv_size": [ 16, 16 ] },
+                        "west": { "uv": [ 0, 0 ], "uv_size": [ 16, 16 ] }
+                    } }
+                ] }
+            ]
+        },
+        {
+            "description": {
+                "identifier": "geometry.radial_chassis_construct_end",
+                "texture_width": 16,
+                "texture_height": 16,
+                "visible_bounds_width": 3,
+                "visible_bounds_height": 3,
+                "visible_bounds_offset": [ 0, 0, 0 ]
+            },
+            "bones": [
+                { "name": "rpm", "pivot": [ 0, 0, 0 ] },
+                { "name": "chassis", "parent": "rpm", "pivot": [ 0, 0, 0 ], "cubes": [
+                    { "origin": [ -8, -8, -8 ], "size": [ 16, 16, 16 ], "uv": {
+                        "up": { "uv": [ 0, 0 ], "uv_size": [ 16, 16 ] },
+                        "down": { "uv": [ 0, 0 ], "uv_size": [ 16, 16 ] }
+                    } }
+                ] }
+            ]
+        }
+    ]
+}

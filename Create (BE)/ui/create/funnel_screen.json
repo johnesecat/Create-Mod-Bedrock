@@ -1,0 +1,142 @@
+{
+    "namespace": "funnel_screen",
+    "funnel_main_panel": {
+        "type": "image",
+        "size": ["100%", "100%"],
+        "texture": "textures/ui/control",
+        "alpha": 0.8,
+        "controls": [
+            {
+                "panel": {
+                    "type": "panel",
+                    "size": [350, 58],
+                    "anchor_from": "center",
+                    "anchor_to": "center",
+                    "controls": [
+                        {
+                            "title": {
+                                "type": "label",
+                                "text": "#text",
+                                "color": [1.0, 1.0, 1.0],
+                                "font_scale_factor": 0.82,
+                                "anchor_from": "top_middle",
+                                "anchor_to": "top_middle",
+                                "offset": [0, -14],
+                                "bindings": [
+                                    {
+                                        "binding_type": "view",
+                                        "source_property_name": "(#title_text - $title_needs_to_contain)",
+                                        "target_property_name": "#text"
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "common_panel@common.common_panel": {
+                                "$dialog_background": "common_create.create_background"
+                            }
+                        },
+                        {
+                            "panel_indent": {
+                                "type": "panel",
+                                "size": ["100% - 10px", "100% - 10px"],
+                                "anchor_from": "center",
+                                "anchor_to": "center",
+                                "controls": [
+                                    { "inside_header_panel@$child_control": {} }
+                                ]
+                            }
+                        }
+                    ]
+                }
+            }
+        ]
+    },
+    "funnel_screen_content": {
+        "type": "stack_panel",
+        "size": ["100% - 8px", "100%c"],
+        "offset": [4, 3],
+        "orientation": "vertical",
+        "anchor_from": "top_left",
+        "anchor_to": "top_left",
+        "controls": [
+            {
+                "content": {
+                    "type": "stack_panel",
+                    "size": ["100%", 25],
+                    "orientation": "horizontal",
+                    "anchor_from": "top_left",
+                    "anchor_to": "top_left",
+                    "factory": {
+                        "name": "buttons",
+                        "control_ids": {
+                            "label": "@server_form.custom_label",
+                            "toggle": "@common_create.funnel_toggle",
+                            "slider": "@common_create.funnel_slider",
+                            "step_slider": "@server_form.custom_step_slider",
+                            "dropdown": "@server_form.custom_dropdown",
+                            "input": "@server_form.custom_input",
+                            "header": "@server_form.custom_header",
+                            "divider": "@settings_common.option_group_section_divider"
+                        }
+                    },
+                    "collection_name": "custom_form",
+                    "bindings": [
+                        {
+                            "binding_name": "#custom_form_length",
+                            "binding_name_override": "#collection_length"
+                        }
+                    ]
+                }
+            },
+            {
+                "submit_button@common_create.create_button": {
+                    "$pressed_button_name": "button.submit_custom_form",
+                    "anchor_from": "top_left",
+                    "anchor_to": "top_left",
+                    "size": ["100%", 16],
+                    "offset": [0, 2],
+                    "$button_text": "#submit_text",
+                    "$button_text_binding_type": "global",
+                    "$button_binding_condition": "once",
+                    "bindings": [
+                        {
+                            "binding_name": "#submit_button_visible",
+                            "binding_name_override": "#visible"
+                        }
+                    ]
+                }
+            }
+        ]
+    },
+    "funnel_screen_panel": {
+        "type": "panel",
+        "size": ["100%", "100%"],
+        "anims": [
+            "@common.screen_entrance_animation_pop_fade",
+            "@common.screen_exit_animation_pop_fade"
+        ],
+        "propagate_alpha": true,
+        "bindings": [
+            {
+                "binding_name": "#title_text"
+            }
+        ],
+        "controls": [
+            {
+                "funnel_screen@funnel_screen.funnel_main_panel": {
+                    "$title_needs_to_contain": "create:funnel.",
+                    "$child_control": "funnel_screen.funnel_screen_content",
+                    "bindings": [
+                        {
+                            "binding_type": "view",
+                            "source_control_name": "funnel_screen",
+                            "source_property_name": "(not ((#title_text - $title_needs_to_contain) = #title_text))",
+                            "target_property_name": "#visible"
+                        }
+                    ]
+                }
+            }
+        ]
+    }
+}

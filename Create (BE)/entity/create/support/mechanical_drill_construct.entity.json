@@ -1,0 +1,37 @@
+﻿{
+    "format_version":  "1.10.0",
+    "minecraft:client_entity":  {
+                                    "description":  {
+                                                        "identifier":  "create:mechanical_drill_construct",
+                                                        "materials":  {
+                                                                          "default":  "create_entity_block"
+                                                                      },
+                                                        "textures":  {
+                                                                         "default":  "textures/create/common/blocks/mechanical_drill"
+                                                                     },
+                                                        "geometry":  {
+                                                                         "default":  "geometry.create.mechanical_drill"
+                                                                     },
+                                                        "animations":  {
+                                                                           "rotation":  "animation.create.mechanical_drill.fure",
+                                                                           "offset":  "animation.create.rpm.offsets"
+                                                                       },
+                                                        "scripts":  {
+                                                                        "animate":  [
+                                                                                        "rotation",
+                                                                                        "offset"
+                                                                                    ],
+                                                                        "pre_animation":  [
+                                                                                              "v.rotation = q.property(\u0027create:cardinal_rotation\u0027);",
+                                                                                              "v.offset_sign = (v.rotation == \u0027down\u0027 || v.rotation == \u0027east\u0027 || v.rotation == \u0027south\u0027) ? -1 : 1;",
+                                                                                              "v.visual_sign = (v.rotation == \u0027down\u0027 || v.rotation == \u0027east\u0027 || v.rotation == \u0027south\u0027) ? -1 : 1;",
+                                                                                              "v.rpm = ((q.frame_alpha + q.time_stamp) / 3.33) * -q.property(\u0027create:rpm\u0027);",
+                                                                                              "v.rpm2 = 0;"
+                                                                                          ]
+                                                                    },
+                                                        "render_controllers":  [
+                                                                                   "controller.render.default"
+                                                                               ]
+                                                    }
+                                }
+}

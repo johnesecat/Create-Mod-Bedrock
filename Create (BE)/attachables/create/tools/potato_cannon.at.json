@@ -1,0 +1,36 @@
+{
+    "format_version": "1.10.0",
+    "minecraft:attachable": {
+        "description": {
+            "identifier": "create:potato_cannon",
+            "materials": {
+                "default": "entity_alphatest"
+            },
+            "textures": {
+                "default": "textures/create/common/items/potato_cannon"
+            },
+            "geometry": {
+                "default": "geometry.potato_cannon"
+            },
+            "animations": {
+                "hold_first_person": "animation.create.potato_cannon.hold_first_person",
+                "hold_third_person": "animation.create.potato_cannon.hold_third_person",
+                "idle": "animation.create.potato_cannon.idle",
+                "fire_first_person": "animation.create.potato_cannon.fire_first_person",
+                "fire_third_person": "animation.create.potato_cannon.fire_third_person",
+                "fire_controller_first_person": "controller.animation.create.potato_cannon.fire_first_person",
+                "fire_controller_third_person": "controller.animation.create.potato_cannon.fire_third_person"
+            },
+            "scripts": {
+                "animate": [
+                    { "hold_first_person": "c.is_first_person" },
+                    { "hold_third_person": "!c.is_first_person" },
+                    "idle",
+                    { "fire_controller_first_person": "c.is_first_person" },
+                    { "fire_controller_third_person": "!c.is_first_person" }
+                ]
+            },
+            "render_controllers": ["controller.render.default"]
+        }
+    }
+}

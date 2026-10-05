@@ -1,0 +1,35 @@
+{
+    "format_version": "1.10.0",
+    "minecraft:client_entity": {
+        "description": {
+            "identifier": "create:clutch_entity",
+            "materials": {
+                "default": "create_entity_block"
+            },
+            "textures": {
+                "default": "textures/create/common/blocks/clutch"
+            },
+            "geometry": {
+                "default": "geometry.create.gearshift_entity"
+            },
+            "animations": {
+                "rotation": "animation.create.gearshift.rotation",
+                "offset": "animation.create.rpm.offsets"
+            },
+            "scripts": {
+                "animate": [ "rotation", "offset" ],
+                "pre_animation": [
+                    "v.rotation = q.property('create:cardinal_rotation');",
+                    "v.offset_sign = (v.rotation == 'down' || v.rotation == 'east' || v.rotation == 'south') ? -1 : 1;",
+                    
+                    "v.visual_sign = (v.rotation == 'down' || v.rotation == 'east' || v.rotation == 'south') ? -1 : 1;",
+                    "v.rpm = ((q.frame_alpha + q.time_stamp) / 3.33) * -q.property('create:rpm');",
+                    "v.rpm2 = ((q.frame_alpha + q.time_stamp) / 3.33) * -q.property('create:rpm2');"
+                ]
+            },
+            "render_controllers": [
+                "controller.render.default"
+            ]
+        }
+    }
+}

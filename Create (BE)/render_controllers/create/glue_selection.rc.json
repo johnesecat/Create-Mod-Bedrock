@@ -1,0 +1,23 @@
+﻿{
+    "format_version":  "1.8.0",
+    "render_controllers":  {
+                               "controller.render.create.glue_selection":  {
+                                                                               "ignore_lighting":  true,
+                                                                               "geometry":  "Geometry.default",
+                                                                               "materials":  [
+                                                                                                 {
+                                                                                                     "*":  "Material.default"
+                                                                                                 }
+                                                                                             ],
+                                                                               "textures":  [
+                                                                                                "Texture.default"
+                                                                                            ],
+                                                                               "color":  {
+                                                                                             "r":  0.25,
+                                                                                             "g":  1,
+                                                                                             "b":  0.35,
+                                                                                             "a":  0.9
+                                                                                         }
+                                                                           }
+                           }
+}

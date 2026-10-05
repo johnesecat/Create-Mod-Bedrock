@@ -1,0 +1,63 @@
+{
+    "format_version": "1.10.0",
+    "minecraft:client_entity": {
+        "description": {
+            "identifier": "create:deployer_entity",
+            "materials": {
+                "default": "create_entity_block"
+            },
+            "textures": {
+                "default": "textures/create/common/blocks/deployer"
+            },
+            "geometry": {
+                "default": "geometry.create.deployer_entity"
+            },
+            "animations": {
+                "rotation":      "animation.create.rpm.rotation",
+                "offset":        "animation.create.rpm.offsets",
+                "constant":      "animation.create.deployer.constant",
+                "move_1":        "animation.create.deployer.move_1",
+                "move_2":        "animation.create.deployer.move_2",
+                "move_4":        "animation.create.deployer.move_4",
+                "move_8":        "animation.create.deployer.move_8",
+                "move_16":       "animation.create.deployer.move_16",
+                "move_32":       "animation.create.deployer.move_32",
+                "move_64":       "animation.create.deployer.move_64",
+                "move_128":      "animation.create.deployer.move_128",
+                "move_256":      "animation.create.deployer.move_256",
+                "right_item":    "animation.create.deployer.right_item",
+                "right_hand_equipped": "animation.create.deployer.right_hand_equipped",
+                "right_block":   "animation.create.deployer.right_block"
+            },
+            "scripts": {
+                "animate": [
+                    "rotation",
+                    "offset",
+                    "constant",
+                    { "move_1": "math.abs(q.property('create:rpm')) > 0.0 && math.abs(q.property('create:rpm')) < 1.5" },
+                    { "move_2": "math.abs(q.property('create:rpm')) >= 1.5 && math.abs(q.property('create:rpm')) < 3.0" },
+                    { "move_4": "math.abs(q.property('create:rpm')) >= 3.0 && math.abs(q.property('create:rpm')) < 6.0" },
+                    { "move_8": "math.abs(q.property('create:rpm')) >= 6.0 && math.abs(q.property('create:rpm')) < 12.0" },
+                    { "move_16": "math.abs(q.property('create:rpm')) >= 12.0 && math.abs(q.property('create:rpm')) < 24.0" },
+                    { "move_32": "math.abs(q.property('create:rpm')) >= 24.0 && math.abs(q.property('create:rpm')) < 48.0" },
+                    { "move_64": "math.abs(q.property('create:rpm')) >= 48.0 && math.abs(q.property('create:rpm')) < 96.0" },
+                    { "move_128": "math.abs(q.property('create:rpm')) >= 96.0 && math.abs(q.property('create:rpm')) < 192.0" },
+                    { "move_256": "math.abs(q.property('create:rpm')) >= 192.0" },
+                    { "right_item":  "q.property('create:item_visual') == 'item'" },
+                    { "right_hand_equipped": "q.property('create:item_visual') == 'hand_equipped'" },
+                    { "right_block": "q.property('create:item_visual') == 'block'" }
+                ],
+                "pre_animation": [
+                    "v.rotation = q.property('create:cardinal_rotation');",
+                    "v.offset_sign = 1;",
+                    "v.visual_sign = 1;",
+                    "v.rpm = ((q.frame_alpha + q.time_stamp) / 3.33) * -q.property('create:rpm');",
+                    "v.rpm2 = 0;"
+                ]
+            },
+            "render_controllers": [
+                "controller.render.create.deployer_entity"
+            ]
+        }
+    }
+}

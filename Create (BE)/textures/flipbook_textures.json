@@ -1,0 +1,80 @@
+[
+    {
+        "flipbook_texture":  "textures/create/common/blocks/mechanical_saw_blade_on",
+        "atlas_tile":  "create:stonecutter_blade_on",
+        "frames":  [
+                       0,
+                       1,
+                       2
+                   ],
+        "ticks_per_frame":  1
+    },
+    {
+        "flipbook_texture":  "textures/create/common/blocks/experience_block",
+        "atlas_tile":  "create:experience_block",
+        "frames":  [
+                       0,
+                       1,
+                       2,
+                       3,
+                       4,
+                       5,
+                       6,
+                       7,
+                       8,
+                       9,
+                       10,
+                       11,
+                       12,
+                       13,
+                       14,
+                       15
+        ],
+        "ticks_per_frame":  2
+    },
+    {
+        "flipbook_texture": "textures/create/common/fluid/honey_flow",
+        "atlas_tile": "create:honey_fluid",
+        "frames": [
+            0, 1, 2, 3, 4, 5, 6, 7,
+            8, 9, 10, 11, 12, 13, 14, 15,
+            16, 17, 18, 19, 20, 21, 22, 23,
+            24, 25, 26, 27, 28, 29, 30, 31,
+            32, 33, 34, 35, 36, 37, 38, 39,
+            40, 41, 42, 43, 44, 45, 46, 47,
+            48, 49, 50, 51, 52, 53, 54, 55,
+            56, 57, 58, 59, 60, 61, 62, 63
+        ],
+        "ticks_per_frame": 2
+    },
+    {
+        "flipbook_texture": "textures/create/common/fluid/chocolate_flow",
+        "atlas_tile": "create:chocolate_fluid",
+        "frames": [
+            0, 1, 2, 3, 4, 5, 6, 7,
+            8, 9, 10, 11, 12, 13, 14, 15,
+            16, 17, 18, 19, 20, 21, 22, 23,
+            24, 25, 26, 27, 28, 29, 30, 31,
+            32, 33, 34, 35, 36, 37, 38, 39,
+            40, 41, 42, 43, 44, 45, 46, 47,
+            48, 49, 50, 51, 52, 53, 54, 55,
+            56, 57, 58, 59, 60, 61, 62, 63
+        ],
+        "ticks_per_frame": 2
+    },
+    {
+        "flipbook_texture": "textures/create/common/fluid/milk_flow",
+        "atlas_tile": "create:milk_fluid",
+        "frames": [
+            0, 1, 2, 3, 4, 5, 6, 7,
+            8, 9, 10, 11, 12, 13, 14, 15,
+            16, 17, 18, 19, 20, 21, 22, 23,
+            24, 25, 26, 27, 28, 29, 30, 31,
+            32, 33, 34, 35, 36, 37, 38, 39,
+            40, 41, 42, 43, 44, 45, 46, 47,
+            48, 49, 50, 51, 52, 53, 54, 55,
+            56, 57, 58, 59, 60, 61, 62, 63
+        ],
+        "ticks_per_frame": 2
+    }
+]

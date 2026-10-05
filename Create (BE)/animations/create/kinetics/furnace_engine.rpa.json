@@ -1,0 +1,53 @@
+{
+	"format_version": "1.8.0",
+	"animations": {
+		"animation.create.furnace_engine": {
+			"loop": true,
+			"bones": {
+				"rotation": {
+					"scale": "q.property('create:has_furnace') ? 1 : 0"
+				},
+				"transmission": {
+					"scale": "q.property('create:has_flywheel') ? 1 : 0"
+				},
+				"right_axis": {
+					"scale": "q.property('create:flywheel_right_conn') ? 1 : 0"
+				},
+				"left_axis": {
+					"scale": "q.property('create:flywheel_right_conn') ? 0 : 1"
+				}
+			}
+		},
+		"animation.create.flywheel": {
+			"loop": true,
+			"bones": {
+				"flywheel": {
+					"rotation": [0, 0, "v.wheel_angle * -v.visual_sign"]
+				}
+			}
+		},
+		"animation.create.furnace_engine.transmission": {
+			"loop": true,
+			"bones": {
+				"main_axis": {
+					"position": ["-(1 - math.sin(v.wheel_angle)) * 3.8", 0, 0]
+				},
+				"main_axis_part2": {
+					"rotation": [0, 0, "(1 + math.cos(v.wheel_angle)) * 24"]
+				},
+				"right_axis": {
+					"position": ["-(1-math.sin(v.wheel_angle)) * -2", 0, 0]
+				},
+				"right_axis2": {
+					"rotation": [0, 0, "(1+math.cos(v.wheel_angle-180)) * 10"]
+				},
+				"left_axis": {
+					"position": ["-(1-math.sin(v.wheel_angle)) * -2", 0, 0]
+				},
+				"left_axis2": {
+					"rotation": [0, 0, "(1+math.cos(v.wheel_angle-180)) * 10"]
+				}
+			}
+		}
+	}
+}

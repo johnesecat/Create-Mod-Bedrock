@@ -1,0 +1,13 @@
+{
+  "format_version": "1.8.0",
+  "animations": {
+    "animation.create.door_construct.open": {
+      "loop": true,
+      "bones": {
+        "door_panel": {
+          "rotation": [0, "v.door_open * 90 * v.door_hinge", 0]
+        }
+      }
+    }
+  }
+}

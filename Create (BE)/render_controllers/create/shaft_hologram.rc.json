@@ -1,0 +1,12 @@
+{
+  "format_version": "1.8.0",
+  "render_controllers": {
+    "controller.render.create.shaft_hologram": {
+      "ignore_lighting": true,
+      "geometry": "Geometry.default",
+      "materials": [{ "*": "Material.hologram" }],
+      "textures": ["Texture.default"],
+      "color": { "r": 0.2, "g": 1.0, "b": 0.55, "a": 1.0 }
+    }
+  }
+}

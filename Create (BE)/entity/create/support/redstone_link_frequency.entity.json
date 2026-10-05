@@ -1,0 +1,40 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "create:redstone_link_frequency",
+      "materials": { "default": "entity" },
+      "textures": { "default": "textures/create/common/blocks/invisible_texture" },
+      "geometry": { "default": "geometry.create.display_item" },
+      "enable_attachables": true,
+      "animations": {
+        "item": "animation.create.conveyor_item.item",
+        "block": "animation.create.conveyor_item.block",
+        "hand_equipped": "animation.create.conveyor_item.hand_equipped"
+      },
+      "scripts": {
+        "animate": [
+          { "item": "q.property('create:item_visual') == 'item'" },
+          { "block": "q.property('create:item_visual') == 'block'" },
+          { "hand_equipped": "q.property('create:item_visual') == 'hand_equipped'" }
+        ],
+        "initialize": [
+          "v.second_item_rot = 0;",
+          "v.second_block_offset_x = 0;",
+          "v.second_block_offset_z = 0;",
+          "v.second_block_rot = 0;"
+        ],
+        "pre_animation": [
+          "v.right_rotation_x = q.property('create:rotation_x');",
+          "v.right_rotation_y = q.property('create:rotation_y');",
+          "v.right_rotation_z = q.property('create:rotation_z');",
+          "v.left_rotation_x = q.property('create:rotation_x');",
+          "v.left_rotation_y = q.property('create:rotation_y');",
+          "v.left_rotation_z = q.property('create:rotation_z');",
+          "v.second_block_rot = q.property('create:rotation_y') - 180;"
+        ]
+      },
+      "render_controllers": ["controller.render.default"]
+    }
+  }
+}

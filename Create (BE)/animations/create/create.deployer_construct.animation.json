@@ -1,0 +1,33 @@
+{
+	"format_version": "1.8.0",
+	"animations": {
+		"animation.create.deployer_construct.play": {
+			"loop": true,
+			"animation_length": 1.2917,
+			"bones": {
+				"arm": {
+					"position": {
+						"0.0": {
+							"post": [0, 0, 0],
+							"lerp_mode": "catmullrom"
+						},
+						"0.625": {
+							"post": [0, 0, -15],
+							"lerp_mode": "catmullrom"
+						},
+						"1.2917": {
+							"post": [0, 0, 0],
+							"lerp_mode": "catmullrom"
+						}
+					}
+				},
+				"rpm": {
+					"rotation": {
+						"0.0": [0, 0, 0],
+						"1.2917": [450, 0, 0]
+					}
+				}
+			}
+		}
+	}
+}

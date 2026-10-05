@@ -1,0 +1,940 @@
+{
+    "resource_pack_name": "create",
+    "texture_name": "atlas.terrain",
+    "padding": 8,
+    "texture_data": {
+      "create:dark_oak_window_connected": {
+        "textures": "textures/create/common/blocks/glass/dark_oak_window_connected"
+      },
+      "create:acacia_window_connected": { "textures": "textures/create/common/blocks/glass/acacia_window_connected" },
+      "create:bamboo_window_connected": { "textures": "textures/create/common/blocks/glass/bamboo_window_connected" },
+      "create:birch_window_connected": { "textures": "textures/create/common/blocks/glass/birch_window_connected" },
+      "create:cherry_window_connected": { "textures": "textures/create/common/blocks/glass/cherry_window_connected" },
+      "create:crimson_window_connected": { "textures": "textures/create/common/blocks/glass/crimson_window_connected" },
+      "create:jungle_window_connected": { "textures": "textures/create/common/blocks/glass/jungle_window_connected" },
+      "create:mangrove_window_connected": { "textures": "textures/create/common/blocks/glass/mangrove_window_connected" },
+      "create:oak_window_connected": { "textures": "textures/create/common/blocks/glass/oak_window_connected" },
+      "create:ornate_iron_window_connected": { "textures": "textures/create/common/blocks/glass/ornate_iron_window_connected" },
+      "create:spruce_window_connected": { "textures": "textures/create/common/blocks/glass/spruce_window_connected" },
+      "create:vertical_framed_glass_connected": { "textures": "textures/create/common/blocks/glass/vertical_framed_glass_connected" },
+      "create:warped_window_connected": { "textures": "textures/create/common/blocks/glass/warped_window_connected" },
+      "create:industrial_iron_window": { "textures": "textures/create/common/blocks/glass/industrial_iron_window" },
+      "create:industrial_iron_window_connected": { "textures": "textures/create/common/blocks/glass/industrial_iron_window_connected" },
+      "create:industrial_iron_window_end": { "textures": "textures/create/common/blocks/glass/industrial_iron_window_end" },
+      "create:weathered_iron_window": { "textures": "textures/create/common/blocks/glass/weathered_iron_window" },
+      "create:weathered_iron_window_connected": { "textures": "textures/create/common/blocks/glass/weathered_iron_window_1_connected" },
+      "create:weathered_iron_window_end": { "textures": "textures/create/common/blocks/glass/weathered_iron_window_1_end" },
+      "create:industrial_iron_block": {
+        "textures": "textures/create/common/blocks/industrial_iron_block"
+      },
+      "create:industrial_iron_block_top": {
+        "textures": "textures/create/common/blocks/industrial_iron_block_top"
+      },
+      "create:weathered_iron_block": {
+        "textures": "textures/create/common/blocks/weathered_iron_block"
+      },
+      "create:weathered_iron_block_top": {
+        "textures": "textures/create/common/blocks/weathered_iron_block_top"
+      },
+      "create:rose_quartz_side": {
+        "textures": "textures/create/common/blocks/rose_tile/rose_quartz_side"
+      },
+      "create:rose_quartz_top": {
+        "textures": "textures/create/common/blocks/rose_tile/rose_quartz_top"
+      },
+      "create:rose_quartz_tiles": {
+        "textures": "textures/create/common/blocks/rose_tile/rose_quartz_tiles"
+      },
+      "create:small_rose_quartz_tiles": {
+        "textures": "textures/create/common/blocks/rose_tile/small_rose_quartz_tiles"
+      },
+      "create:ladder_brass": {
+        "textures": "textures/create/common/blocks/ladder_brass"
+      },
+      "create:ladder_brass_hoop": {
+        "textures": "textures/create/common/blocks/ladder_brass_hoop"
+      },
+      "create:ladder_copper": {
+        "textures": "textures/create/common/blocks/ladder_copper"
+      },
+      "create:ladder_copper_hoop": {
+        "textures": "textures/create/common/blocks/ladder_copper_hoop"
+      },
+      "create:ladder_andesite": {
+        "textures": "textures/create/common/blocks/ladder_andesite"
+      },
+      "create:ladder_andesite_hoop": {
+        "textures": "textures/create/common/blocks/ladder_andesite_hoop"
+      },
+      "create:redstone_link": {
+        "textures": "textures/create/common/blocks/redstone_link"
+      },
+      "create:redstone_link_powered": {
+        "textures": "textures/create/common/blocks/redstone_link_powered"
+      },
+      "create:sequenced_gearshift": {
+        "textures": "textures/create/common/blocks/sequenced_gearshift"
+      },
+      "create:sequenced_gearshift_powered": {
+        "textures": "textures/create/common/blocks/sequenced_gearshift_powered"
+      },
+      "create:whistle_tubo": {
+        "textures": "textures/create/common/blocks/whistle_tubo"
+      },
+      "create:whistle": {
+        "textures": "textures/create/common/blocks/whistle"
+      },
+      "create:whistle_powered": {
+        "textures": "textures/create/common/blocks/whistle_powered"
+      },
+      "create:sticker": {
+        "textures": "textures/create/common/blocks/sticker"
+      },
+      "create:sticker_powered": {
+        "textures": "textures/create/common/blocks/sticker_powered"
+      },
+      "create:andesite_bars": {
+        "textures": "textures/create/common/blocks/bars/andesite_bars"
+      },
+      "create:brass_bars": {
+        "textures": "textures/create/common/blocks/bars/brass_bars"
+      },
+      "create:copper_bars": {
+        "textures": "textures/create/common/blocks/bars/copper_bars"
+      },
+      "create:potato_cannon_model": {
+        "textures": "textures/create/common/items/potato_cannon"
+      },
+      "create:hose_pulley": {
+        "textures": "textures/create/common/blocks/hose_pulley"
+      },
+      "create:weighted_ejector": {
+        "textures": "textures/create/common/blocks/weighted_ejector"
+      },
+      "create:invisible": {
+        "textures": "textures/create/common/blocks/invisible"
+      },
+      "create:creative_motor": {
+        "textures": "textures/create/common/blocks/creative_motor"
+      },
+      "create:shaft": {
+        "textures": "textures/create/common/blocks/shaft"
+      },
+      "create:cogwheel": {
+        "textures": "textures/create/common/blocks/cogwheel"
+      },
+      "create:large_cogwheel": {
+        "textures": "textures/create/common/blocks/large_cogwheel"
+      },
+      "create:clutch": {
+        "textures": "textures/create/common/blocks/clutch"
+      },
+      "create:clutch_activated": {
+        "textures": "textures/create/common/blocks/clutch_activated"
+      },
+      "create:gearbox": {
+        "textures": "textures/create/common/blocks/gearbox"
+      },
+      "create:chute_default": {
+        "textures": "textures/create/common/blocks/chute/chute_default"
+      },
+      "create:chute_box": {
+        "textures": "textures/create/common/blocks/chute/chute_box"
+      },
+      "create:chute_diagonal": {
+        "textures": "textures/create/common/blocks/chute/chute_diagonal"
+      },
+      "create:chute_full": {
+        "textures": "textures/create/common/blocks/chute/chute_full"
+      },
+      "create:chute_smart": {
+        "textures": "textures/create/common/blocks/chute_smart"
+      },
+      "create:chute_smart_powered": {
+        "textures": "textures/create/common/blocks/chute_smart_powered"
+      },
+      "create:gearshift": {
+        "textures": "textures/create/common/blocks/gearshift"
+      },
+      "create:gearshift_activated": {
+        "textures": "textures/create/common/blocks/gearshift_activated"
+      },
+      "create:rotation_speed_controller": {
+        "textures": "textures/create/common/blocks/rotation_speed_controller"
+      },
+      "create:mechanical_arm": {
+        "textures": "textures/create/common/blocks/mechanical_arm"
+      },
+      "create:millstone": {
+        "textures": "textures/create/common/blocks/millstone"
+      },
+      "create:depot": {
+        "textures": "textures/create/common/blocks/depot"
+      },
+      "create:cart_assembler_off": {
+        "textures": "textures/create/common/blocks/cart_assembler_off"
+      },
+      "create:cart_assembler_on": {
+        "textures": "textures/create/common/blocks/cart_assembler_on"
+      },
+      "create:item_drain": {
+        "textures": "textures/create/common/blocks/item_drain"
+      },
+      "create:mechanical_press": {
+        "textures": "textures/create/common/blocks/mechanical_press"
+      },
+      "create:mechanical_bearing": {
+        "textures": "textures/create/common/blocks/mechanical_bearing"
+      },
+      "create:windmill_bearing": {
+        "textures": "textures/create/common/blocks/windmill_bearing"
+      },
+      "create:windmill_sail_frame": {
+        "textures": "textures/create/common/blocks/sail/frame"
+      },
+      "create:windmill_sail_canvas": {
+        "textures": "textures/create/common/blocks/sail/canvas_white"
+      },
+      "create:light_gray_windmill_sail_canvas": {
+        "textures": "textures/create/common/blocks/sail/canvas_light_gray"
+      },
+      "create:gray_windmill_sail_canvas": {
+        "textures": "textures/create/common/blocks/sail/canvas_gray"
+      },
+      "create:black_windmill_sail_canvas": {
+        "textures": "textures/create/common/blocks/sail/canvas_black"
+      },
+      "create:brown_windmill_sail_canvas": {
+        "textures": "textures/create/common/blocks/sail/canvas_brown"
+      },
+      "create:red_windmill_sail_canvas": {
+        "textures": "textures/create/common/blocks/sail/canvas_red"
+      },
+      "create:orange_windmill_sail_canvas": {
+        "textures": "textures/create/common/blocks/sail/canvas_orange"
+      },
+      "create:yellow_windmill_sail_canvas": {
+        "textures": "textures/create/common/blocks/sail/canvas_yellow"
+      },
+      "create:lime_windmill_sail_canvas": {
+        "textures": "textures/create/common/blocks/sail/canvas_lime"
+      },
+      "create:green_windmill_sail_canvas": {
+        "textures": "textures/create/common/blocks/sail/canvas_green"
+      },
+      "create:cyan_windmill_sail_canvas": {
+        "textures": "textures/create/common/blocks/sail/canvas_cyan"
+      },
+      "create:light_blue_windmill_sail_canvas": {
+        "textures": "textures/create/common/blocks/sail/canvas_light_blue"
+      },
+      "create:blue_windmill_sail_canvas": {
+        "textures": "textures/create/common/blocks/sail/canvas_blue"
+      },
+      "create:purple_windmill_sail_canvas": {
+        "textures": "textures/create/common/blocks/sail/canvas_purple"
+      },
+      "create:magenta_windmill_sail_canvas": {
+        "textures": "textures/create/common/blocks/sail/canvas_magenta"
+      },
+      "create:pink_windmill_sail_canvas": {
+        "textures": "textures/create/common/blocks/sail/canvas_pink"
+      },
+      "create:mechanical_pump": {
+        "textures": "textures/create/common/blocks/mechanical_pump"
+      },
+      "vault": {
+        "textures": "textures/create/common/blocks/vault"
+      },
+      "create:hatch_closed": {
+        "textures": "textures/create/common/blocks/hatch_closed"
+      },
+      "create:hatch_open": {
+        "textures": "textures/create/common/blocks/hatch_open"
+      },
+      "create:mechanical_mixer": {
+        "textures": "textures/create/common/blocks/mechanical_mixer"
+      },
+      "create:mechanical_crafter": {
+        "textures": "textures/create/common/blocks/mechanical_crafter"
+      },
+      "create:mechanical_crafter_on": {
+        "textures": "textures/create/common/blocks/mechanical_crafter_on"
+      },
+      "create:basin": {
+        "textures": "textures/create/common/blocks/basin"
+      },
+      "create:basin_canal": {
+        "textures": "textures/create/common/blocks/basin_canal"
+      },
+      "create:blaze_burner": {
+        "textures": "textures/create/common/blocks/blaze_burner"
+      },
+      "create:blaze_active": {
+        "textures": "textures/create/common/blocks/blaze_active"
+      },
+      "create:blaze_inert": {
+        "textures": "textures/create/common/blocks/blaze_inert"
+      },
+      "create:crushing_wheel": {
+        "textures": "textures/create/common/blocks/crushing_wheel"
+      },
+      "create:hand_crank": {
+        "textures": "textures/create/common/blocks/hand_crank"
+      },
+      "create:pipes": {
+        "textures": "textures/create/common/blocks/pipes"
+      },
+      "create:glass_fluid_pipe": {
+        "textures": "textures/create/common/blocks/glass_fluid_pipe"
+      },
+      "create:smart_fluid_pipe": {
+        "textures": "textures/create/common/blocks/smart_fluid_pipe"
+      },
+      "create:water_wheel": {
+        "textures": "textures/create/common/blocks/water_wheel"
+      },
+      "create:large_water_wheel": {
+        "textures": "textures/create/common/blocks/large_water_wheel"
+      },
+      "create:furnace_engine": {
+        "textures": "textures/create/common/blocks/furnace_engine"
+      },
+      "create:steam_engine": {
+        "textures": "textures/create/common/blocks/steam_engine"
+      },
+      "create:flywheel": {
+        "textures": "textures/create/common/blocks/flywheel"
+      },
+      "create:gauge": {
+        "textures": "textures/create/common/blocks/gauge"
+      },
+      "create:mechanical_drill": {
+        "textures": "textures/create/common/blocks/mechanical_drill"
+      },
+      "create:mechanical_harvester": {
+        "textures": "textures/create/common/blocks/mechanical_harvester"
+      },
+      "create:portable_storage_interface": {
+        "textures": "textures/create/common/blocks/portable_storage_interface"
+      },
+      "create:encased_fan": {
+        "textures": "textures/create/common/blocks/encased_fan"
+      },
+      "create:nozzle": {
+        "textures": "textures/create/common/blocks/nozzle"
+      },
+      "create:zinc_ore": {
+        "textures": "textures/create/common/blocks/zinc_ore"
+      },
+      "create:deepslate_zinc_ore": {
+        "textures": "textures/create/common/blocks/deepslate_zinc_ore"
+      },
+        "create:experience_block": {
+        "textures": "textures/create/common/blocks/experience_block"
+      },
+      "create:zinc_block": {
+        "textures": "textures/create/common/blocks/zinc_block"
+      },
+      "create:brass_block": {
+        "textures": "textures/create/common/blocks/brass_block"
+      },
+      "create:mechanical_saw": {
+        "textures": "textures/create/common/blocks/mechanical_saw"
+      },
+      "create:stonecutter_blade_off": {
+        "textures": "textures/create/common/blocks/mechanical_saw_blade_off"
+      },
+      "create:stonecutter_blade_on": {
+        "textures": "textures/create/common/blocks/mechanical_saw_blade_on"
+      },
+      "create:deployer": {
+        "textures": "textures/create/common/blocks/deployer"
+      },
+      "create:mechanical_belt": {
+        "textures": "textures/create/common/blocks/belt"
+      },
+      "create:spout": {
+        "textures": "textures/create/common/blocks/spout"
+      },
+      "create:spout_fluid": {
+        "textures": "textures/create/common/blocks/spout"
+      },
+      "create:honey_fluid": {
+        "textures": "textures/create/common/fluid/honey_flow"
+      },
+      "create:chocolate_fluid": {
+        "textures": "textures/create/common/fluid/chocolate_flow"
+      },
+      "create:milk_fluid": {
+        "textures": "textures/create/common/fluid/milk_flow"
+      },
+
+      "create:brass_funnel": {
+        "textures": "textures/create/common/blocks/brass_funnel"
+      },
+      "create:andesite_funnel": {
+        "textures": "textures/create/common/blocks/andesite_funnel"
+      },
+      "create:brass_funnel_parallel": {
+        "textures": "textures/create/common/blocks/brass_funnel_parallel"
+      },
+      "create:brass_funnel_on": {
+        "textures": "textures/create/common/blocks/brass_funnel_on"
+      },
+      "create:brass_funnel_parallel_on": {
+        "textures": "textures/create/common/blocks/brass_funnel_parallel_on"
+      },
+      "create:brass_tunnel": {
+        "textures": "textures/create/common/blocks/brass_tunnel"
+      },
+      "create:andesite_tunnel": {
+        "textures": "textures/create/common/blocks/andesite_tunnel"
+      },
+      "create:brass_tunnel_multi": {
+        "textures": "textures/create/common/blocks/brass_tunnel_multi"
+      },
+
+      // Seats
+      "create:seat_bottom": {
+        "textures": "textures/create/common/blocks/seat/bottom"
+      },
+      "create:seat_side_white": {
+        "textures": "textures/create/common/blocks/seat/side_white"
+      },
+      "create:seat_side_light_gray": {
+        "textures": "textures/create/common/blocks/seat/side_light_gray"
+      },
+      "create:seat_side_gray": {
+        "textures": "textures/create/common/blocks/seat/side_gray"
+      },
+      "create:seat_side_black": {
+        "textures": "textures/create/common/blocks/seat/side_black"
+      },
+      "create:seat_side_brown": {
+        "textures": "textures/create/common/blocks/seat/side_brown"
+      },
+      "create:seat_side_red": {
+        "textures": "textures/create/common/blocks/seat/side_red"
+      },
+      "create:seat_side_orange": {
+        "textures": "textures/create/common/blocks/seat/side_orange"
+      },
+      "create:seat_side_yellow": {
+        "textures": "textures/create/common/blocks/seat/side_yellow"
+      },
+      "create:seat_side_lime": {
+        "textures": "textures/create/common/blocks/seat/side_lime"
+      },
+      "create:seat_side_green": {
+        "textures": "textures/create/common/blocks/seat/side_green"
+      },
+      "create:seat_side_cyan": {
+        "textures": "textures/create/common/blocks/seat/side_cyan"
+      },
+      "create:seat_side_light_blue": {
+        "textures": "textures/create/common/blocks/seat/side_light_blue"
+      },
+      "create:seat_side_blue": {
+        "textures": "textures/create/common/blocks/seat/side_blue"
+      },
+      "create:seat_side_purple": {
+        "textures": "textures/create/common/blocks/seat/side_purple"
+      },
+      "create:seat_side_magenta": {
+        "textures": "textures/create/common/blocks/seat/side_magenta"
+      },
+      "create:seat_side_pink": {
+        "textures": "textures/create/common/blocks/seat/side_pink"
+      },
+      "create:seat_top_white": {
+        "textures": "textures/create/common/blocks/seat/top_white"
+      },
+      "create:seat_top_light_gray": {
+        "textures": "textures/create/common/blocks/seat/top_light_gray"
+      },
+      "create:seat_top_gray": {
+        "textures": "textures/create/common/blocks/seat/top_gray"
+      },
+      "create:seat_top_black": {
+        "textures": "textures/create/common/blocks/seat/top_black"
+      },
+      "create:seat_top_brown": {
+        "textures": "textures/create/common/blocks/seat/top_brown"
+      },
+      "create:seat_top_red": {
+        "textures": "textures/create/common/blocks/seat/top_red"
+      },
+      "create:seat_top_orange": {
+        "textures": "textures/create/common/blocks/seat/top_orange"
+      },
+      "create:seat_top_yellow": {
+        "textures": "textures/create/common/blocks/seat/top_yellow"
+      },
+      "create:seat_top_lime": {
+        "textures": "textures/create/common/blocks/seat/top_lime"
+      },
+      "create:seat_top_green": {
+        "textures": "textures/create/common/blocks/seat/top_green"
+      },
+      "create:seat_top_cyan": {
+        "textures": "textures/create/common/blocks/seat/top_cyan"
+      },
+      "create:seat_top_light_blue": {
+        "textures": "textures/create/common/blocks/seat/top_light_blue"
+      },
+      "create:seat_top_blue": {
+        "textures": "textures/create/common/blocks/seat/top_blue"
+      },
+      "create:seat_top_purple": {
+        "textures": "textures/create/common/blocks/seat/top_purple"
+      },
+      "create:seat_top_magenta": {
+        "textures": "textures/create/common/blocks/seat/top_magenta"
+      },
+      "create:seat_top_pink": {
+        "textures": "textures/create/common/blocks/seat/top_pink"
+      },
+
+      // Casings
+      "create:creative_casing": {
+        "textures": "textures/create/common/blocks/casing/creative_casing"
+      },
+      "create:andesite_casing": {
+        "textures": "textures/create/common/blocks/casing/andesite_casing"
+      },
+      "create:brass_casing": {
+        "textures": "textures/create/common/blocks/casing/brass_casing"
+      },
+      "create:copper_casing": {
+        "textures": "textures/create/common/blocks/casing/copper_casing"
+      },
+      "create:creative_casing_connected": {
+        "textures": "textures/create/common/blocks/casing/creative_casing_connected"
+      },
+      "create:andesite_casing_connected": {
+        "textures": "textures/create/common/blocks/casing/andesite_casing_connected"
+      },
+      "create:brass_casing_connected": {
+        "textures": "textures/create/common/blocks/casing/brass_casing_connected"
+      },
+      "create:copper_casing_connected": {
+        "textures": "textures/create/common/blocks/casing/copper_casing_connected"
+      },
+      "create:belt": {
+        "textures": "textures/create/common/blocks/belt"
+      },
+      "create:diagonal_belt": {
+        "textures": "textures/create/common/blocks/diagonal_belt"
+      },
+      "create:andesite_belt_casing": {
+        "textures": "textures/create/common/blocks/casing/andesite_belt_casing"
+      },
+      "create:brass_belt_casing": {
+        "textures": "textures/create/common/blocks/casing/brass_belt_casing"
+      },
+
+      // Andesite Blocks
+      "create:cut_andesite": {
+        "textures": "textures/create/common/blocks/andesite/cut_andesite"
+      },
+      "create:polished_cut_andesite": {
+        "textures": "textures/create/common/blocks/andesite/polished_cut_andesite"
+      },
+      "create:cut_andesite_bricks": {
+        "textures": "textures/create/common/blocks/andesite/cut_andesite_bricks"
+      },
+      "create:small_andesite_bricks": {
+        "textures": "textures/create/common/blocks/andesite/small_andesite_bricks"
+      },
+      "create:cut_andesite_pillar": {
+        "textures": "textures/create/common/blocks/andesite/cut_andesite_pillar"
+      },
+      "create:cut_andesite_pillar_connected": {
+        "textures": "textures/create/common/blocks/andesite/cut_andesite_pillar_connected"
+      },
+      "create:cut_andesite_cap_connected": {
+        "textures": "textures/create/common/blocks/andesite/cut_andesite_cap_connected"
+      },
+
+      // Calcite Blocks
+      "create:cut_calcite": {
+        "textures": "textures/create/common/blocks/calcite/cut_calcite"
+      },
+      "create:polished_cut_calcite": {
+        "textures": "textures/create/common/blocks/calcite/polished_cut_calcite"
+      },
+      "create:cut_calcite_bricks": {
+        "textures": "textures/create/common/blocks/calcite/cut_calcite_bricks"
+      },
+      "create:small_calcite_bricks": {
+        "textures": "textures/create/common/blocks/calcite/small_calcite_bricks"
+      },
+      "create:cut_calcite_pillar": {
+        "textures": "textures/create/common/blocks/calcite/cut_calcite_pillar"
+      },
+      "create:cut_calcite_pillar_connected": {
+        "textures": "textures/create/common/blocks/calcite/cut_calcite_pillar_connected"
+      },
+      "create:cut_calcite_cap_connected": {
+        "textures": "textures/create/common/blocks/calcite/cut_calcite_cap_connected"
+      },
+
+      // Deepslate Blocks
+      "create:cut_deepslate": {
+        "textures": "textures/create/common/blocks/deepslate/cut_deepslate"
+      },
+      "create:polished_cut_deepslate": {
+        "textures": "textures/create/common/blocks/deepslate/polished_cut_deepslate"
+      },
+      "create:cut_deepslate_bricks": {
+        "textures": "textures/create/common/blocks/deepslate/cut_deepslate_bricks"
+      },
+      "create:small_deepslate_bricks": {
+        "textures": "textures/create/common/blocks/deepslate/small_deepslate_bricks"
+      },
+      "create:cut_deepslate_pillar": {
+        "textures": "textures/create/common/blocks/deepslate/cut_deepslate_pillar"
+      },
+      "create:cut_deepslate_pillar_connected": {
+        "textures": "textures/create/common/blocks/deepslate/cut_deepslate_pillar_connected"
+      },
+      "create:cut_deepslate_cap_connected": {
+        "textures": "textures/create/common/blocks/deepslate/cut_deepslate_cap_connected"
+      },
+
+      // Diorite Blocks
+      "create:cut_diorite": {
+        "textures": "textures/create/common/blocks/diorite/cut_diorite"
+      },
+      "create:polished_cut_diorite": {
+        "textures": "textures/create/common/blocks/diorite/polished_cut_diorite"
+      },
+      "create:cut_diorite_bricks": {
+        "textures": "textures/create/common/blocks/diorite/cut_diorite_bricks"
+      },
+      "create:small_diorite_bricks": {
+        "textures": "textures/create/common/blocks/diorite/small_diorite_bricks"
+      },
+      "create:cut_diorite_pillar": {
+        "textures": "textures/create/common/blocks/diorite/cut_diorite_pillar"
+      },
+      "create:cut_diorite_pillar_connected": {
+        "textures": "textures/create/common/blocks/diorite/cut_diorite_pillar_connected"
+      },
+      "create:cut_diorite_cap_connected": {
+        "textures": "textures/create/common/blocks/diorite/cut_diorite_cap_connected"
+      },
+
+      // Dripstone Blocks
+      "create:cut_dripstone": {
+        "textures": "textures/create/common/blocks/dripstone/cut_dripstone"
+      },
+      "create:polished_cut_dripstone": {
+        "textures": "textures/create/common/blocks/dripstone/polished_cut_dripstone"
+      },
+      "create:cut_dripstone_bricks": {
+        "textures": "textures/create/common/blocks/dripstone/cut_dripstone_bricks"
+      },
+      "create:small_dripstone_bricks": {
+        "textures": "textures/create/common/blocks/dripstone/small_dripstone_bricks"
+      },
+      "create:cut_dripstone_pillar": {
+        "textures": "textures/create/common/blocks/dripstone/cut_dripstone_pillar"
+      },
+      "create:cut_dripstone_pillar_connected": {
+        "textures": "textures/create/common/blocks/dripstone/cut_dripstone_pillar_connected"
+      },
+      "create:cut_dripstone_cap_connected": {
+        "textures": "textures/create/common/blocks/dripstone/cut_dripstone_cap_connected"
+      },
+
+      // Granite Blocks
+      "create:cut_granite": {
+        "textures": "textures/create/common/blocks/granite/cut_granite"
+      },
+      "create:polished_cut_granite": {
+        "textures": "textures/create/common/blocks/granite/polished_cut_granite"
+      },
+      "create:cut_granite_bricks": {
+        "textures": "textures/create/common/blocks/granite/cut_granite_bricks"
+      },
+      "create:small_granite_bricks": {
+        "textures": "textures/create/common/blocks/granite/small_granite_bricks"
+      },
+      "create:cut_granite_pillar": {
+        "textures": "textures/create/common/blocks/granite/cut_granite_pillar"
+      },
+      "create:cut_granite_pillar_connected": {
+        "textures": "textures/create/common/blocks/granite/cut_granite_pillar_connected"
+      },
+      "create:cut_granite_cap_connected": {
+        "textures": "textures/create/common/blocks/granite/cut_granite_cap_connected"
+      },
+
+      // Tuff Blocks
+      "create:cut_tuff": {
+        "textures": "textures/create/common/blocks/tuff/cut_tuff"
+      },
+      "create:polished_cut_tuff": {
+        "textures": "textures/create/common/blocks/tuff/polished_cut_tuff"
+      },
+      "create:cut_tuff_bricks": {
+        "textures": "textures/create/common/blocks/tuff/cut_tuff_bricks"
+      },
+      "create:small_tuff_bricks": {
+        "textures": "textures/create/common/blocks/tuff/small_tuff_bricks"
+      },
+      "create:cut_tuff_pillar": {
+        "textures": "textures/create/common/blocks/tuff/cut_tuff_pillar"
+      },
+      "create:cut_tuff_pillar_connected": {
+        "textures": "textures/create/common/blocks/tuff/cut_tuff_pillar_connected"
+      },
+      "create:cut_tuff_cap_connected": {
+        "textures": "textures/create/common/blocks/tuff/cut_tuff_cap_connected"
+      },
+      "create:asurine": { "textures": "textures/create/common/blocks/asurine/asurine_0" },
+      "create:cut_asurine": { "textures": "textures/create/common/blocks/asurine/asurine_cut" },
+      "create:cut_asurine_slab": { "textures": "textures/create/common/blocks/asurine/asurine_cut_slab" },
+      "create:polished_cut_asurine": { "textures": "textures/create/common/blocks/asurine/asurine_cut_polished" },
+      "create:cut_asurine_bricks": { "textures": "textures/create/common/blocks/asurine/asurine_cut_brick" },
+      "create:small_asurine_bricks": { "textures": "textures/create/common/blocks/asurine/asurine_cut_small_brick" },
+      "create:cut_asurine_pillar": { "textures": "textures/create/common/blocks/asurine/asurine_cut_pillar" },
+      "create:cut_asurine_pillar_connected": { "textures": "textures/create/common/blocks/asurine/asurine_cut_pillar_connected" },
+      "create:cut_asurine_cap_connected": { "textures": "textures/create/common/blocks/asurine/asurine_cut_cap" },
+      "create:asurine_cut_cap_connected": { "textures": "textures/create/common/blocks/asurine/asurine_cut_cap_connected" },
+      "create:veridium": { "textures": "textures/create/common/blocks/veridium/veridium_0" },
+      "create:cut_veridium": { "textures": "textures/create/common/blocks/veridium/veridium_cut" },
+      "create:cut_veridium_slab": { "textures": "textures/create/common/blocks/veridium/veridium_cut_slab" },
+      "create:polished_cut_veridium": { "textures": "textures/create/common/blocks/veridium/veridium_cut_polished" },
+      "create:cut_veridium_bricks": { "textures": "textures/create/common/blocks/veridium/veridium_cut_brick" },
+      "create:small_veridium_bricks": { "textures": "textures/create/common/blocks/veridium/veridium_cut_small_brick" },
+      "create:cut_veridium_pillar": { "textures": "textures/create/common/blocks/veridium/veridium_cut_pillar" },
+      "create:cut_veridium_pillar_connected": { "textures": "textures/create/common/blocks/veridium/veridium_cut_pillar_connected" },
+      "create:cut_veridium_cap_connected": { "textures": "textures/create/common/blocks/veridium/veridium_cut_cap" },
+      "create:veridium_cut_cap_connected": { "textures": "textures/create/common/blocks/veridium/veridium_cut_cap_connected" },
+      "create:ochrum": { "textures": "textures/create/common/blocks/ochrum/ochrum_0" },
+      "create:cut_ochrum": { "textures": "textures/create/common/blocks/ochrum/ochrum_cut" },
+      "create:cut_ochrum_slab": { "textures": "textures/create/common/blocks/ochrum/ochrum_cut_slab" },
+      "create:polished_cut_ochrum": { "textures": "textures/create/common/blocks/ochrum/ochrum_cut_polished" },
+      "create:cut_ochrum_bricks": { "textures": "textures/create/common/blocks/ochrum/ochrum_cut_brick" },
+      "create:small_ochrum_bricks": { "textures": "textures/create/common/blocks/ochrum/ochrum_cut_small_brick" },
+      "create:cut_ochrum_pillar": { "textures": "textures/create/common/blocks/ochrum/ochrum_cut_pillar" },
+      "create:cut_ochrum_pillar_connected": { "textures": "textures/create/common/blocks/ochrum/ochrum_cut_pillar_connected" },
+      "create:cut_ochrum_cap_connected": { "textures": "textures/create/common/blocks/ochrum/ochrum_cut_cap" },
+      "create:ochrum_cut_cap_connected": { "textures": "textures/create/common/blocks/ochrum/ochrum_cut_cap_connected" },
+      "create:limestone": { "textures": "textures/create/common/blocks/limestone/limestone" },
+      "create:cut_limestone": { "textures": "textures/create/common/blocks/limestone/limestone_cut" },
+      "create:cut_limestone_slab": { "textures": "textures/create/common/blocks/limestone/limestone_cut_slab" },
+      "create:polished_cut_limestone": { "textures": "textures/create/common/blocks/limestone/limestone_cut_polished" },
+      "create:cut_limestone_bricks": { "textures": "textures/create/common/blocks/limestone/limestone_cut_brick" },
+      "create:small_limestone_bricks": { "textures": "textures/create/common/blocks/limestone/limestone_cut_small_brick" },
+      "create:cut_limestone_pillar": { "textures": "textures/create/common/blocks/limestone/limestone_cut_pillar" },
+      "create:cut_limestone_pillar_connected": { "textures": "textures/create/common/blocks/limestone/limestone_cut_pillar_connected" },
+      "create:cut_limestone_cap_connected": { "textures": "textures/create/common/blocks/limestone/limestone_cut_cap" },
+      "create:limestone_cut_cap_connected": { "textures": "textures/create/common/blocks/limestone/limestone_cut_cap_connected" },
+      "create:crimsite": { "textures": "textures/create/common/blocks/crimsite/crimsite_0" },
+      "create:cut_crimsite": { "textures": "textures/create/common/blocks/crimsite/crimsite_cut" },
+      "create:cut_crimsite_slab": { "textures": "textures/create/common/blocks/crimsite/crimsite_cut_slab" },
+      "create:polished_cut_crimsite": { "textures": "textures/create/common/blocks/crimsite/crimsite_cut_polished" },
+      "create:cut_crimsite_bricks": { "textures": "textures/create/common/blocks/crimsite/crimsite_cut_brick" },
+      "create:small_crimsite_bricks": { "textures": "textures/create/common/blocks/crimsite/crimsite_cut_small_brick" },
+      "create:cut_crimsite_pillar": { "textures": "textures/create/common/blocks/crimsite/crimsite_cut_pillar" },
+      "create:cut_crimsite_pillar_connected": { "textures": "textures/create/common/blocks/crimsite/crimsite_cut_pillar_connected" },
+      "create:cut_crimsite_cap_connected": { "textures": "textures/create/common/blocks/crimsite/crimsite_cut_cap" },
+      "create:crimsite_cut_cap_connected": { "textures": "textures/create/common/blocks/crimsite/crimsite_cut_cap_connected" },
+      "create:smart_observer": {
+        "textures": "textures/create/common/blocks/filtered_observer"
+      },
+      "create:smart_observer_on": {
+        "textures": "textures/create/common/blocks/filtered_observer_on"
+      },
+      "create:rose_quartz_lamp": {
+        "textures": "textures/create/common/blocks/rose_quartz_lamp"
+      },
+      "create:rose_quartz_lamp_powered": {
+        "textures": "textures/create/common/blocks/rose_quartz_lamp_powered"
+      },
+      "create:fluid_tank": {
+        "textures": "textures/create/common/blocks/fluid_tank/fluid_tank"
+      },
+      "create:fluid_tank_off": {
+        "textures": "textures/create/common/blocks/fluid_tank/fluid_tank_off"
+      },
+      "create:creative_fluid_tank": {
+        "textures": "textures/create/common/blocks/fluid_tank/creative_fluid_tank"
+      },
+      "create:creative_fluid_tank_off": {
+        "textures": "textures/create/common/blocks/fluid_tank/creative_fluid_tank_off"
+      },
+      "create:fluid_tank_steam": {
+        "textures": "textures/create/common/blocks/fluid_tank/fluid_tank_steam"
+      },
+      "create:desk_bell": {
+        "textures": "textures/create/common/blocks/desk_bell"
+      },
+      "create:andesite_door": {
+        "textures": "textures/create/common/blocks/andesite_door_top"
+      },
+      "create:andesite_door_top": {
+        "textures": "textures/create/common/blocks/andesite_door_top"
+      },
+      "create:andesite_door_bottom": {
+        "textures": "textures/create/common/blocks/andesite_door_bottom"
+      },
+      "create:andesite_door_side": {
+        "textures": "textures/create/common/blocks/andesite_door_side"
+      },
+      "create:copper_door": {
+        "textures": "textures/create/common/blocks/copper_door_top"
+      },
+      "create:copper_door_top": {
+        "textures": "textures/create/common/blocks/copper_door_top"
+      },
+      "create:copper_door_bottom": {
+        "textures": "textures/create/common/blocks/copper_door_bottom"
+      },
+      "create:copper_door_side": {
+        "textures": "textures/create/common/blocks/copper_door_side"
+      },
+      "create:brass_door": {
+        "textures": "textures/create/common/blocks/brass_door_top"
+      },
+      "create:brass_door_top": {
+        "textures": "textures/create/common/blocks/brass_door_top"
+      },
+      "create:brass_door_bottom": {
+        "textures": "textures/create/common/blocks/brass_door_bottom"
+      },
+      "create:brass_door_side": {
+        "textures": "textures/create/common/blocks/brass_door_side"
+      },
+      "create:glass_door": { "textures": "textures/create/common/blocks/glass_door_top" },
+      "create:glass_door_top": { "textures": "textures/create/common/blocks/glass_door_top" },
+      "create:glass_door_bottom": { "textures": "textures/create/common/blocks/glass_door_bottom" },
+      "create:glass_door_side": { "textures": "textures/create/common/blocks/glass_door_side" },
+      "create:crate_creative": {
+        "textures": "textures/create/common/blocks/crate_creative"
+      },
+      "create:copycat_base": {
+        "textures": "textures/create/common/blocks/copycat_base"
+      },
+      "create:metal_girder": {
+        "textures": "textures/create/common/blocks/girder"
+      },
+      "create:girder_pole": {
+        "textures": "textures/create/common/blocks/girder_pole"
+      },
+      "create:radial_chassis_end": {
+        "textures": "textures/create/common/blocks/radial_chassis_end"
+      },
+      "create:radial_chassis_side": {
+        "textures": "textures/create/common/blocks/radial_chassis_side"
+      },
+      "create:radial_chassis_side_sticky": {
+        "textures": "textures/create/common/blocks/radial_chassis_side_sticky"
+      },
+      "create:copycat_stone": { "textures": "textures/blocks/stone" },
+      "create:copycat_dirt": { "textures": "textures/blocks/dirt" },
+      "create:copycat_grass": { "textures": "textures/blocks/grass_side_carried" },
+      "create:copycat_cobblestone": { "textures": "textures/blocks/cobblestone" },
+      "create:copycat_oak_planks": { "textures": "textures/blocks/planks_oak" },
+      "create:copycat_spruce_planks": { "textures": "textures/blocks/planks_spruce" },
+      "create:copycat_birch_planks": { "textures": "textures/blocks/planks_birch" },
+      "create:copycat_jungle_planks": { "textures": "textures/blocks/planks_jungle" },
+      "create:copycat_acacia_planks": { "textures": "textures/blocks/planks_acacia" },
+      "create:copycat_dark_oak_planks": { "textures": "textures/blocks/planks_big_oak" },
+      "create:copycat_mangrove_planks": { "textures": "textures/blocks/mangrove_planks" },
+      "create:copycat_cherry_planks": { "textures": "textures/blocks/cherry_planks" },
+      "create:copycat_sand": { "textures": "textures/blocks/sand" },
+      "create:copycat_red_sand": { "textures": "textures/blocks/red_sand" },
+      "create:copycat_gravel": { "textures": "textures/blocks/gravel" },
+      "create:copycat_granite": { "textures": "textures/blocks/stone_granite" },
+      "create:copycat_polished_granite": { "textures": "textures/blocks/stone_granite_smooth" },
+      "create:copycat_diorite": { "textures": "textures/blocks/stone_diorite" },
+      "create:copycat_polished_diorite": { "textures": "textures/blocks/stone_diorite_smooth" },
+      "create:copycat_andesite": { "textures": "textures/blocks/stone_andesite" },
+      "create:copycat_polished_andesite": { "textures": "textures/blocks/stone_andesite_smooth" },
+      "create:copycat_deepslate": { "textures": "textures/blocks/deepslate" },
+      "create:copycat_cobbled_deepslate": { "textures": "textures/blocks/cobbled_deepslate" },
+      "create:copycat_polished_deepslate": { "textures": "textures/blocks/polished_deepslate" },
+      "create:copycat_deepslate_bricks": { "textures": "textures/blocks/deepslate_bricks" },
+      "create:copycat_deepslate_tiles": { "textures": "textures/blocks/deepslate_tiles" },
+      "create:copycat_calcite": { "textures": "textures/blocks/calcite" },
+      "create:copycat_tuff": { "textures": "textures/blocks/tuff" },
+      "create:copycat_clay": { "textures": "textures/blocks/clay" },
+      "create:copycat_mud": { "textures": "textures/blocks/mud" },
+      "create:copycat_packed_mud": { "textures": "textures/blocks/packed_mud" },
+      "create:copycat_mud_bricks": { "textures": "textures/blocks/mud_bricks" },
+      "create:copycat_snow": { "textures": "textures/blocks/snow" },
+      "create:copycat_ice": { "textures": "textures/blocks/ice" },
+      "create:copycat_packed_ice": { "textures": "textures/blocks/packed_ice" },
+      "create:copycat_blue_ice": { "textures": "textures/blocks/blue_ice" },
+      "create:copycat_coal_block": { "textures": "textures/blocks/coal_block" },
+      "create:copycat_iron_block": { "textures": "textures/blocks/iron_block" },
+      "create:copycat_gold_block": { "textures": "textures/blocks/gold_block" },
+      "create:copycat_diamond_block": { "textures": "textures/blocks/diamond_block" },
+      "create:copycat_emerald_block": { "textures": "textures/blocks/emerald_block" },
+      "create:copycat_lapis_block": { "textures": "textures/blocks/lapis_block" },
+      "create:copycat_redstone_block": { "textures": "textures/blocks/redstone_block" },
+      "create:copycat_raw_iron_block": { "textures": "textures/blocks/raw_iron_block" },
+      "create:copycat_raw_gold_block": { "textures": "textures/blocks/raw_gold_block" },
+      "create:copycat_raw_copper_block": { "textures": "textures/blocks/raw_copper_block" },
+      "create:copycat_copper_block": { "textures": "textures/blocks/copper_block" },
+      "create:copycat_quartz_block": { "textures": "textures/blocks/quartz_block_side" },
+      "create:copycat_smooth_quartz": { "textures": "textures/blocks/quartz_block_bottom" },
+      "create:copycat_quartz_bricks": { "textures": "textures/blocks/quartz_bricks" },
+      "create:copycat_blackstone": { "textures": "textures/blocks/blackstone" },
+      "create:copycat_polished_blackstone": { "textures": "textures/blocks/polished_blackstone" },
+      "create:copycat_polished_blackstone_bricks": { "textures": "textures/blocks/polished_blackstone_bricks" },
+      "create:copycat_nether_brick": { "textures": "textures/blocks/nether_brick" },
+      "create:copycat_red_nether_brick": { "textures": "textures/blocks/red_nether_brick" },
+      "create:copycat_prismarine": { "textures": "textures/blocks/prismarine_rough" },
+      "create:copycat_dark_prismarine": { "textures": "textures/blocks/prismarine_dark" },
+      "create:copycat_sea_lantern": { "textures": "textures/blocks/sea_lantern" },
+      "create:copycat_purpur_block": { "textures": "textures/blocks/purpur_block" },
+      "create:copycat_end_bricks": { "textures": "textures/blocks/end_bricks" },
+      "create:copycat_pale_oak_planks": { "textures": "textures/blocks/pale_oak_planks" },
+      "create:copycat_bamboo_planks": { "textures": "textures/blocks/bamboo_planks" },
+      "create:copycat_crimson_planks": { "textures": "textures/blocks/crimson_planks" },
+      "create:copycat_warped_planks": { "textures": "textures/blocks/warped_planks" },
+      "create:copycat_bricks": { "textures": "textures/blocks/brick" },
+      "create:copycat_stone_bricks": { "textures": "textures/blocks/stonebrick" },
+      "create:copycat_asurine": { "textures": "textures/create/common/blocks/asurine/asurine_0" },
+      "create:copycat_veridium": { "textures": "textures/create/common/blocks/veridium/veridium_0" },
+      "create:copycat_ochrum": { "textures": "textures/create/common/blocks/ochrum/ochrum_0" },
+      "create:copycat_limestone": { "textures": "textures/create/common/blocks/limestone/limestone" },
+      "create:copycat_crimsite": { "textures": "textures/create/common/blocks/crimsite/crimsite_0" },
+      "create:copycat_cut_asurine": { "textures": "textures/create/common/blocks/asurine/asurine_cut" },
+      "create:copycat_polished_cut_asurine": { "textures": "textures/create/common/blocks/asurine/asurine_cut_polished" },
+      "create:copycat_cut_asurine_bricks": { "textures": "textures/create/common/blocks/asurine/asurine_cut_brick" },
+      "create:copycat_small_asurine_bricks": { "textures": "textures/create/common/blocks/asurine/asurine_cut_small_brick" },
+      "create:copycat_cut_veridium": { "textures": "textures/create/common/blocks/veridium/veridium_cut" },
+      "create:copycat_polished_cut_veridium": { "textures": "textures/create/common/blocks/veridium/veridium_cut_polished" },
+      "create:copycat_cut_veridium_bricks": { "textures": "textures/create/common/blocks/veridium/veridium_cut_brick" },
+      "create:copycat_small_veridium_bricks": { "textures": "textures/create/common/blocks/veridium/veridium_cut_small_brick" },
+      "create:copycat_cut_ochrum": { "textures": "textures/create/common/blocks/ochrum/ochrum_cut" },
+      "create:copycat_polished_cut_ochrum": { "textures": "textures/create/common/blocks/ochrum/ochrum_cut_polished" },
+      "create:copycat_cut_ochrum_bricks": { "textures": "textures/create/common/blocks/ochrum/ochrum_cut_brick" },
+      "create:copycat_small_ochrum_bricks": { "textures": "textures/create/common/blocks/ochrum/ochrum_cut_small_brick" },
+      "create:copycat_cut_limestone": { "textures": "textures/create/common/blocks/limestone/limestone_cut" },
+      "create:copycat_polished_cut_limestone": { "textures": "textures/create/common/blocks/limestone/limestone_cut_polished" },
+      "create:copycat_cut_limestone_bricks": { "textures": "textures/create/common/blocks/limestone/limestone_cut_brick" },
+      "create:copycat_small_limestone_bricks": { "textures": "textures/create/common/blocks/limestone/limestone_cut_small_brick" },
+      "create:copycat_cut_crimsite": { "textures": "textures/create/common/blocks/crimsite/crimsite_cut" },
+      "create:copycat_polished_cut_crimsite": { "textures": "textures/create/common/blocks/crimsite/crimsite_cut_polished" },
+      "create:copycat_cut_crimsite_bricks": { "textures": "textures/create/common/blocks/crimsite/crimsite_cut_brick" },
+      "create:copycat_small_crimsite_bricks": { "textures": "textures/create/common/blocks/crimsite/crimsite_cut_small_brick" },
+
+      // Items
+      "create:wrench": {
+        "textures": "textures/create/common/items/wrench"
+      }
+    }
+}
+
+
+
+
+

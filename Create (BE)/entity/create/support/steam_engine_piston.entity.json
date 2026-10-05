@@ -1,0 +1,36 @@
+{
+    "format_version": "1.10.0",
+    "minecraft:client_entity": {
+        "description": {
+            "identifier": "create:steam_engine_piston",
+            "materials": {
+                "default": "entity_alphatest"
+            },
+            "textures": {
+                "default": "textures/create/common/blocks/steam_engine"
+            },
+            "geometry": {
+                "default": "geometry.steam_engine.piston"
+            },
+            "animations": {
+                "facing": "animation.create.steam_engine_piston.facing",
+                "motion": "animation.create.steam_engine_piston.motion"
+            },
+            "scripts": {
+                "pre_animation": [
+                    "v.rotation = q.property('create:cardinal_rotation');",
+                    "v.rpm = ((q.frame_alpha + q.time_stamp) / 3.33) * -q.property('create:rpm');"
+                ],
+                "animate": [
+                    "facing",
+                    {
+                        "motion": "q.property('create:running')"
+                    }
+                ]
+            },
+            "render_controllers": [
+                "controller.render.default"
+            ]
+        }
+    }
+}

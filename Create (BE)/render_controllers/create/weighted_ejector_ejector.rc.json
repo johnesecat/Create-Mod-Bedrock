@@ -1,0 +1,15 @@
+{
+    "format_version": "1.8.0",
+    "render_controllers": {
+        "controller.render.create.weighted_ejector_ejector": {
+            "geometry": "Geometry.default",
+            "materials": [{ "*": "Material.default" }],
+            "textures": ["Texture.default"],
+            "part_visibility": [
+                { "*": false },
+                { "Panel": true },
+                { "rpm2": true }
+            ]
+        }
+    }
+}

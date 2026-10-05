@@ -1,0 +1,24 @@
+{
+    "format_version": "1.10.0",
+    "minecraft:client_entity": {
+        "description": {
+            "identifier": "create:mechanical_harvester_construct",
+            "materials": {
+                "default": "create_entity_block"
+            },
+            "textures": {
+                "default": "textures/create/common/blocks/mechanical_harvester"
+            },
+            "geometry": {
+                "default": "geometry.mechanical_harvester"
+            },
+            "animations": {
+                "rotation": "animation.mechanical_harvester.rotation"
+            },
+            "scripts": {
+                "animate": ["rotation"]
+            },
+            "render_controllers": ["controller.render.default"]
+        }
+    }
+}

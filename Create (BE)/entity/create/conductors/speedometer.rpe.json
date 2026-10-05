@@ -1,0 +1,45 @@
+{
+    "format_version": "1.10.0",
+    "minecraft:client_entity": {
+        "description": {
+            "identifier": "create:speedometer_entity",
+            "materials": {
+                "default": "create_entity_block"
+            },
+            "textures": {
+                "default": "textures/create/common/blocks/gauge"
+            },
+            "geometry": {
+                "default": "geometry.create.speedometer_entity"
+            },
+            "animations": {
+                "rotation": "animation.create.rpm.rotation",
+                "offset": "animation.create.rpm.offsets",
+                "speedometer": "animation.create.gauge.pointer"
+            },
+            "scripts": {
+                "animate": [ "rotation", "offset", "speedometer" ],
+                "initialize": [
+                    "v.abs_speed = math.abs(q.property('create:rpm'));",
+                    "v.dial_state = (v.abs_speed < 1) ? 0 : (v.abs_speed < 30) ? math.lerp(0, 0.45, v.abs_speed / 30) : (v.abs_speed < 100) ? math.lerp(0.45, 0.75, (v.abs_speed - 30) / 70) : math.lerp(0.75, 1.125, (v.abs_speed - 100) / 156);"
+                ],
+                "pre_animation": [
+                    "v.rotation = q.property('create:cardinal_rotation');",
+                    "v.offset_sign = 1;",
+                    "v.visual_sign = 1;",
+                    "v.rpm = ((q.frame_alpha + q.time_stamp) / 3.33) * -q.property('create:rpm');",
+                    "v.rpm2 = 0;",
+                    
+                    // Speedometer dial
+                    "v.abs_speed = math.abs(q.property('create:rpm'));",
+                    "v.dial_target = (v.abs_speed < 1) ? 0 : (v.abs_speed < 30) ? math.lerp(0, 0.45, v.abs_speed / 30) : (v.abs_speed < 100) ? math.lerp(0.45, 0.75, (v.abs_speed - 30) / 70) : math.lerp(0.75, 1.125, (v.abs_speed - 100) / 156);",
+                    "v.dial_state = v.dial_state + (v.dial_target - v.dial_state) * 0.125 * q.delta_time * 20;",
+                    "v.dial_state = (v.dial_state > 1 && math.random(0, 1) < 0.05) ? v.dial_state - (v.dial_state - 1) * math.random(0, 0.5) : v.dial_state;"
+                ]
+            },
+            "render_controllers": [
+                "controller.render.default"
+            ]
+        }
+    }
+}

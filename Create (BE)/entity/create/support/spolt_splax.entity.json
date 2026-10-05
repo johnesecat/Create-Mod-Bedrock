@@ -1,0 +1,32 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "create:spolt_splax",
+      "materials": {
+        "default": "create_entity_block"
+      },
+      "textures": {
+        "lava": "textures/create/common/fluid/lava",
+        "water": "textures/create/common/fluid/water",
+        "honey": "textures/create/common/fluid/honey_spout",
+        "chocolate": "textures/create/common/fluid/chocolate_spout",
+        "milk": "textures/create/common/fluid/milk_spout"
+      },
+      "geometry": {
+        "default": "geometry.spolt_splax"
+      },
+      "render_controllers": [
+        "controller.render.create.spolt_splax"
+      ],
+      "animations": {
+        "fluid": "animation.spolt_splax.fluid"
+      },
+      "scripts": {
+        "animate": [
+          "fluid"
+        ]
+      }
+    }
+  }
+}

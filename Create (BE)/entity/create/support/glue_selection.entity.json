@@ -1,0 +1,29 @@
+﻿{
+    "format_version":  "1.10.0",
+    "minecraft:client_entity":  {
+                                    "description":  {
+                                                        "identifier":  "create:glue_selection",
+                                                        "materials":  {
+                                                                          "default":  "entity_emissive_alpha"
+                                                                      },
+                                                        "textures":  {
+                                                                         "default":  "textures/create/common/entity/glue_squematic"
+                                                                     },
+                                                        "geometry":  {
+                                                                         "default":  "geometry.create.selection_outline"
+                                                                     },
+                                                        "animations":  {
+                                                                           "scale":  "animation.create.glue_selection.scale"
+                                                                       },
+                                                        "scripts":  {
+                                                                        "scale":  "1.005",
+                                                                        "animate":  [
+                                                                                        "scale"
+                                                                                    ]
+                                                                    },
+                                                        "render_controllers":  [
+                                                                                   "controller.render.create.glue_selection"
+                                                                               ]
+                                                    }
+                                }
+}

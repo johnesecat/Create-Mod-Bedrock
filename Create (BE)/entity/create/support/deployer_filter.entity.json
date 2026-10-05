@@ -1,0 +1,27 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "create:deployer_filter",
+      "materials": {
+        "default": "entity"
+      },
+      "textures": {
+        "default": "textures/create/common/blocks/invisible_texture"
+      },
+      "geometry": {
+        "default": "geometry.create.display_item"
+      },
+      "enable_attachables": true,
+      "animations": {
+        "flat_item": "animation.create.deployer_filter.flat_item"
+      },
+      "scripts": {
+        "animate": [
+          "flat_item"
+        ]
+      },
+      "render_controllers": ["controller.render.default"]
+    }
+  }
+}

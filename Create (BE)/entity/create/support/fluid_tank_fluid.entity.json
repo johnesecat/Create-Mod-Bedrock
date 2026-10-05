@@ -1,0 +1,38 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "create:fluid_tank_fluid",
+      "materials": {
+        "default": "create_mechanical_belt"
+      },
+      "textures": {
+        "lava": "textures/create/common/fluid/lava",
+        "water": "textures/create/common/fluid/water",
+        "honey": "textures/create/common/fluid/honey_spout",
+        "chocolate": "textures/create/common/fluid/chocolate_spout",
+        "milk": "textures/create/common/fluid/milk_spout"
+      },
+      "geometry": {
+        "default": "geometry.create.fluid_tank_fluid"
+      },
+      "animations": {
+        "fill": "animation.create.fluid_tank_fluid.fill"
+      },
+      "scripts": {
+        "initialize": [
+          "v.tank_fluid_height = q.property('create:fluid_height');",
+          "v.tank_fluid_initialized = 1;"
+        ],
+        "pre_animation": [
+          "v.tank_fluid_height = v.tank_fluid_initialized ? math.lerp(v.tank_fluid_height, q.property('create:fluid_height'), 0.22) : q.property('create:fluid_height');",
+          "v.tank_fluid_initialized = 1;"
+        ],
+        "animate": ["fill"]
+      },
+      "render_controllers": [
+        "controller.render.create.fluid_tank_fluid"
+      ]
+    }
+  }
+}

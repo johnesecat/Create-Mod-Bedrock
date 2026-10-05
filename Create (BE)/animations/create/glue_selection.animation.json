@@ -1,0 +1,154 @@
+﻿{
+    "format_version":  "1.8.0",
+    "animations":  {
+                       "animation.create.glue_selection.scale":  {
+                                                                     "loop":  true,
+                                                                     "bones":  {
+                                                                                   "NE":  {
+                                                                                              "scale":  [
+                                                                                                            1,
+                                                                                                            "q.property(\u0027create:scale_y\u0027)",
+                                                                                                            1
+                                                                                                        ],
+                                                                                              "position":  [
+                                                                                                               "-8 * (q.property(\u0027create:scale_x\u0027) - 1)",
+                                                                                                               0,
+                                                                                                               "-8 * (q.property(\u0027create:scale_z\u0027) - 1)"
+                                                                                                           ]
+                                                                                          },
+                                                                                   "NW":  {
+                                                                                              "scale":  [
+                                                                                                            1,
+                                                                                                            "q.property(\u0027create:scale_y\u0027)",
+                                                                                                            1
+                                                                                                        ],
+                                                                                              "position":  [
+                                                                                                               "8 * (q.property(\u0027create:scale_x\u0027) - 1)",
+                                                                                                               0,
+                                                                                                               "-8 * (q.property(\u0027create:scale_z\u0027) - 1)"
+                                                                                                           ]
+                                                                                          },
+                                                                                   "SE":  {
+                                                                                              "scale":  [
+                                                                                                            1,
+                                                                                                            "q.property(\u0027create:scale_y\u0027)",
+                                                                                                            1
+                                                                                                        ],
+                                                                                              "position":  [
+                                                                                                               "-8 * (q.property(\u0027create:scale_x\u0027) - 1)",
+                                                                                                               0,
+                                                                                                               "8 * (q.property(\u0027create:scale_z\u0027) - 1)"
+                                                                                                           ]
+                                                                                          },
+                                                                                   "SW":  {
+                                                                                              "scale":  [
+                                                                                                            1,
+                                                                                                            "q.property(\u0027create:scale_y\u0027)",
+                                                                                                            1
+                                                                                                        ],
+                                                                                              "position":  [
+                                                                                                               "8 * (q.property(\u0027create:scale_x\u0027) - 1)",
+                                                                                                               0,
+                                                                                                               "8 * (q.property(\u0027create:scale_z\u0027) - 1)"
+                                                                                                           ]
+                                                                                          },
+                                                                                   "BN":  {
+                                                                                              "scale":  [
+                                                                                                            "q.property(\u0027create:scale_x\u0027)",
+                                                                                                            1,
+                                                                                                            1
+                                                                                                        ],
+                                                                                              "position":  [
+                                                                                                               0,
+                                                                                                               "-8 * (q.property(\u0027create:scale_y\u0027) - 1)",
+                                                                                                               "-8 * (q.property(\u0027create:scale_z\u0027) - 1)"
+                                                                                                           ]
+                                                                                          },
+                                                                                   "BS":  {
+                                                                                              "scale":  [
+                                                                                                            "q.property(\u0027create:scale_x\u0027)",
+                                                                                                            1,
+                                                                                                            1
+                                                                                                        ],
+                                                                                              "position":  [
+                                                                                                               0,
+                                                                                                               "-8 * (q.property(\u0027create:scale_y\u0027) - 1)",
+                                                                                                               "8 * (q.property(\u0027create:scale_z\u0027) - 1)"
+                                                                                                           ]
+                                                                                          },
+                                                                                   "BW":  {
+                                                                                              "scale":  [
+                                                                                                            1,
+                                                                                                            1,
+                                                                                                            "q.property(\u0027create:scale_z\u0027)"
+                                                                                                        ],
+                                                                                              "position":  [
+                                                                                                               "8 * (q.property(\u0027create:scale_x\u0027) - 1)",
+                                                                                                               "-8 * (q.property(\u0027create:scale_y\u0027) - 1)",
+                                                                                                               0
+                                                                                                           ]
+                                                                                          },
+                                                                                   "BE":  {
+                                                                                              "scale":  [
+                                                                                                            1,
+                                                                                                            1,
+                                                                                                            "q.property(\u0027create:scale_z\u0027)"
+                                                                                                        ],
+                                                                                              "position":  [
+                                                                                                               "-8 * (q.property(\u0027create:scale_x\u0027) - 1)",
+                                                                                                               "-8 * (q.property(\u0027create:scale_y\u0027) - 1)",
+                                                                                                               0
+                                                                                                           ]
+                                                                                          },
+                                                                                   "TN":  {
+                                                                                              "scale":  [
+                                                                                                            "q.property(\u0027create:scale_x\u0027)",
+                                                                                                            1,
+                                                                                                            1
+                                                                                                        ],
+                                                                                              "position":  [
+                                                                                                               0,
+                                                                                                               "8 * (q.property(\u0027create:scale_y\u0027) - 1)",
+                                                                                                               "-8 * (q.property(\u0027create:scale_z\u0027) - 1)"
+                                                                                                           ]
+                                                                                          },
+                                                                                   "TS":  {
+                                                                                              "scale":  [
+                                                                                                            "q.property(\u0027create:scale_x\u0027)",
+                                                                                                            1,
+                                                                                                            1
+                                                                                                        ],
+                                                                                              "position":  [
+                                                                                                               0,
+                                                                                                               "8 * (q.property(\u0027create:scale_y\u0027) - 1)",
+                                                                                                               "8 * (q.property(\u0027create:scale_z\u0027) - 1)"
+                                                                                                           ]
+                                                                                          },
+                                                                                   "TW":  {
+                                                                                              "scale":  [
+                                                                                                            1,
+                                                                                                            1,
+                                                                                                            "q.property(\u0027create:scale_z\u0027)"
+                                                                                                        ],
+                                                                                              "position":  [
+                                                                                                               "8 * (q.property(\u0027create:scale_x\u0027) - 1)",
+                                                                                                               "8 * (q.property(\u0027create:scale_y\u0027) - 1)",
+                                                                                                               0
+                                                                                                           ]
+                                                                                          },
+                                                                                   "TE":  {
+                                                                                              "scale":  [
+                                                                                                            1,
+                                                                                                            1,
+                                                                                                            "q.property(\u0027create:scale_z\u0027)"
+                                                                                                        ],
+                                                                                              "position":  [
+                                                                                                               "-8 * (q.property(\u0027create:scale_x\u0027) - 1)",
+                                                                                                               "8 * (q.property(\u0027create:scale_y\u0027) - 1)",
+                                                                                                               0
+                                                                                                           ]
+                                                                                          }
+                                                                               }
+                                                                 }
+                   }
+}

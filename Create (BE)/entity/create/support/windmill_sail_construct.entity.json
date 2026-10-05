@@ -1,0 +1,56 @@
+{
+    "format_version":  "1.10.0",
+    "minecraft:client_entity":  {
+                                    "description":  {
+                                                        "identifier":  "create:windmill_sail_construct",
+                                                        "materials":  {
+                                                                          "default":  "entity_alphatest",
+                                                                          "canvas":  "entity_alphatest"
+                                                                      },
+                                                        "textures":  {
+                                                                         "default":  "textures/create/common/blocks/sail/frame",
+                                                                         "canvas_white":  "textures/create/common/blocks/sail/canvas_white",
+                                                                         "canvas_light_gray":  "textures/create/common/blocks/sail/canvas_light_gray",
+                                                                         "canvas_gray":  "textures/create/common/blocks/sail/canvas_gray",
+                                                                         "canvas_black":  "textures/create/common/blocks/sail/canvas_black",
+                                                                         "canvas_brown":  "textures/create/common/blocks/sail/canvas_brown",
+                                                                         "canvas_red":  "textures/create/common/blocks/sail/canvas_red",
+                                                                         "canvas_orange":  "textures/create/common/blocks/sail/canvas_orange",
+                                                                         "canvas_yellow":  "textures/create/common/blocks/sail/canvas_yellow",
+                                                                         "canvas_lime":  "textures/create/common/blocks/sail/canvas_lime",
+                                                                         "canvas_green":  "textures/create/common/blocks/sail/canvas_green",
+                                                                         "canvas_cyan":  "textures/create/common/blocks/sail/canvas_cyan",
+                                                                         "canvas_light_blue":  "textures/create/common/blocks/sail/canvas_light_blue",
+                                                                         "canvas_blue":  "textures/create/common/blocks/sail/canvas_blue",
+                                                                         "canvas_purple":  "textures/create/common/blocks/sail/canvas_purple",
+                                                                         "canvas_magenta":  "textures/create/common/blocks/sail/canvas_magenta",
+                                                                         "canvas_pink":  "textures/create/common/blocks/sail/canvas_pink"
+                                                                     },
+                                                        "geometry":  {
+                                                                         "frame":  "geometry.windmill_sail_construct_frame",
+                                                                         "canvas":  "geometry.windmill_sail_construct_canvas"
+                                                                     },
+                                                        "animations":  {
+                                                                           "rotate":  "animation.create.windmill_sail_construct.rotate"
+                                                                       },
+                                                        "scripts":  {
+                                                                        "animate":  [
+                                                                                        "rotate"
+                                                                                    ],
+                                                                        "pre_animation":  [
+                                                                                              "v.rotation = q.property(\u0027create:cardinal_rotation\u0027);",
+                                                                                              "v.base_x = 0;",
+                                                                                              "v.base_y = v.rotation == 'north' ? 180 : (v.rotation == 'east' ? -90 : (v.rotation == 'west' ? 90 : 0));",
+                                                                                              "v.base_z = 0;",
+                                                                                              "v.angle_x = q.property(\u0027create:rotation_x\u0027);",
+                                                                                              "v.angle_y = q.property(\u0027create:rotation_y\u0027);",
+                                                                                              "v.angle_z = q.property(\u0027create:rotation_z\u0027);"
+                                                                                          ]
+                                                                    },
+                                                        "render_controllers":  [
+                                                                                   "controller.render.create.windmill_sail_frame",
+                                                                                   "controller.render.create.windmill_sail_canvas"
+                                                                               ]
+                                                    }
+                                }
+}

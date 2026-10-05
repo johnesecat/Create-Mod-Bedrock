@@ -1,0 +1,232 @@
+{
+    "namespace": "common_create",
+
+    /********************************************************
+        CREATE UI ASSETS
+    *********************************************************/
+    "create_background": {
+        "type": "image",
+        "texture": "textures/create/common/ui/create_background",
+        "size": ["100%", "100%"],
+        "layer": 0
+    },
+    "transparent_background": {
+        "type": "panel",
+        "size": ["100%", "100%"]
+    },
+    "toggle_on@settings_common.option_toggle_state_template": {
+        "texture": "textures/create/common/ui/toggle_on"
+    },
+    "toggle_off@settings_common.option_toggle_state_template": {
+        "texture": "textures/create/common/ui/toggle"
+    },
+    "toggle_on_hover@settings_common.option_toggle_state_template": {
+        "texture": "textures/create/common/ui/toggle_on",
+        "color": [1.0, 0.92, 0.7]
+    },
+    "toggle_off_hover@settings_common.option_toggle_state_template": {
+        "texture": "textures/create/common/ui/toggle",
+        "color": [1.0, 0.92, 0.7]
+    },
+    "funnel_more@settings_common.option_toggle_state_template": {
+        "texture": "textures/create/common/ui/more"
+    },
+    "funnel_less@settings_common.option_toggle_state_template": {
+        "texture": "textures/create/common/ui/less"
+    },
+    "funnel_more_hover@settings_common.option_toggle_state_template": {
+        "texture": "textures/create/common/ui/more",
+        "color": [1.0, 0.92, 0.7]
+    },
+    "funnel_less_hover@settings_common.option_toggle_state_template": {
+        "texture": "textures/create/common/ui/less",
+        "color": [1.0, 0.92, 0.7]
+    },
+    "create_slider_background": {
+        "type": "image",
+        "tiled": "x",
+        "texture": "textures/create/common/ui/scroll"
+    },
+    "create_slider_progress": {
+        "type": "image",
+        "tiled": "x",
+        "texture": "textures/create/common/ui/scroll"
+    },
+    "create_slider_button_default@common.slider_button_state": {
+        "texture": "textures/create/common/ui/create_button"
+    },
+    "create_slider_button_hover@common.slider_button_state": {
+        "texture": "textures/create/common/ui/create_button",
+        "color": [1.0, 0.92, 0.7]
+    },
+    "create_slider_button_locked@common.slider_button_state": {
+        "texture": "textures/create/common/ui/create_button",
+        "alpha": 0.65
+    },
+
+    /********************************************************
+        CREATE BUTTON
+    *********************************************************/
+    "create_button_panel@common_buttons.new_ui_button_panel": {
+        "$button_image_size": ["100%", "100%"],
+        "controls": [
+            {
+                "$button_image@$button_image": {
+                    "ignored": "(not $button_image_visible)",
+                    "size": "$button_image_size",
+                    "offset": "$image_offset",
+                    "anchor_from": "$image_anchor",
+                    "anchor_to": "$image_anchor",
+                    "layer": 1,
+                    "fill": "$button_image_fill",
+                    "color": "$button_image_color"
+                }
+            },
+            {
+                "button_content": {
+                    "type": "panel",
+                    "$button_content_size|default": [
+                        "100% - 6px",
+                        "100% - 6px"
+                    ],
+                    "size": "$button_content_size",
+
+                    "controls": [
+                        {
+                            "$button_type_panel@$button_type_panel": {
+                                "layer": 3
+                            }
+                        }
+                    ]
+                }
+            }
+        ]
+    },
+    "create_button@common_buttons.light_text_button": {
+        "$default_button_texture|default": "textures/create/common/ui/create_button_default",
+        "$hover_button_texture|default": "textures/create/common/ui/create_button_hover",
+        "$pressed_button_texture|default": "textures/create/common/ui/create_button_pressed",
+        "$locked_button_texture|default": "textures/create/common/ui/create_button_locked",
+
+        "$button_state_panel": "common_create.create_button_panel"
+    },
+
+    /********************************************************
+        CREATE TOGGLE
+    *********************************************************/
+    "create_toggle_control@settings_common.option_toggle_control": {
+        "$unchecked_control": "common_create.toggle_off",
+        "$checked_control": "common_create.toggle_on",
+        "$unchecked_hover_control": "common_create.toggle_off_hover",
+        "$checked_hover_control": "common_create.toggle_on_hover"
+    },
+    "create_toggle@server_form.custom_toggle": {
+        "$control_name": "common_create.create_toggle_control",
+        "size": [26, 22]
+    },
+    "funnel_toggle_control@settings_common.option_toggle_control": {
+        "$unchecked_control": "common_create.funnel_less",
+        "$checked_control": "common_create.funnel_more",
+        "$unchecked_hover_control": "common_create.funnel_less_hover",
+        "$checked_hover_control": "common_create.funnel_more_hover"
+    },
+    "funnel_toggle@server_form.custom_toggle": {
+        "$control_name": "common_create.funnel_toggle_control",
+        "size": [24, 20]
+    },
+
+    /********************************************************
+        CREATE SLIDER
+    *********************************************************/
+    "create_slider_default": {
+        "type": "panel",
+        "$background_control|default": "common_create.create_slider_background",
+        "$progress_control|default": "common_create.create_slider_progress",
+        "$background_control_name|default": "slider_background",
+        "$progress_control_name|default": "slider_progress",
+        "$progress_clip_direction|default": "left",
+        "controls": [
+            {
+                "sizing_panel": {
+                    "type": "panel",
+                    "size": ["100%", "100%"],
+                    "controls": [
+                        {
+                            "$background_control_name@$background_control": {
+                                "layer": 1
+                            }
+                        },
+                        {
+                            "$progress_control_name@$progress_control": {
+                                "layer": 3,
+                                "clip_direction": "$progress_clip_direction",
+                                "clip_pixelperfect": false
+                            }
+                        }
+                    ]
+                }
+            }
+        ]
+    },
+    "create_slider_hover@common_create.create_slider_default": {
+        "$background_control_name": "slider_background_hover",
+        "$progress_control_name": "slider_progress_hover"
+    },
+    "create_slider_control": {
+        "type": "panel",
+        "size": ["100%", 16],
+        "controls": [
+            {
+                "slider@common.slider": {
+                    "size": ["100%-8px", 10],
+                    "$slider_box_size": [18, 20],
+
+                    "$option_label|default": "",
+
+                    "$slider_tts_header": "$option_label",
+                    "$slider_tts_header_binding_type": "global",
+
+                    "enabled": "$enabled",
+                    "$slider_enabled_binding_name": "$option_enabled_binding_name",
+                    "$slider_enabled_binding_type": "global",
+                    "variables": [
+                        {
+                            "requires": "(not $option_enabled_binding_name or not $enabled)",
+                            "$slider_enabled_binding_name": "#not_data_bound",
+                            "$slider_enabled_binding_type": "none"
+                        }
+                    ],
+
+                    "$slider_box_layout": "common_create.create_slider_button_default",
+                    "$slider_box_hover_layout": "common_create.create_slider_button_hover",
+                    "$slider_box_locked_layout": "common_create.create_slider_button_locked",
+                    "controls": [
+                        {
+                            "slider_box@common.slider_box": {
+                                "$slider_box_layout": "$slider_box_layout",
+                                "$slider_box_size": "$slider_box_size",
+                                "$slider_track_button": "$slider_name"
+                            }
+                        },
+                        {
+                            "slider_bar_default@common_create.create_slider_default": {}
+                        },
+                        {
+                            "slider_bar_hover@common_create.create_slider_hover": {
+                                "visible": false
+                            }
+                        }
+                    ]
+                }
+            }
+        ]
+    },
+    "create_slider@server_form.custom_slider": {
+        "$control_name": "common_create.create_slider_control",
+        "size": [350, 25]
+    },
+    "funnel_slider@server_form.custom_slider": {
+        "$control_name": "common_create.create_slider_control",
+        "size": [300, 25]
+    }
+}

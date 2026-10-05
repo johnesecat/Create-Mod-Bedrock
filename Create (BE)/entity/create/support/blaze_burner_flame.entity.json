@@ -1,0 +1,29 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "create:blaze_burner_flame",
+      "materials": {
+        "default": "create_mechanical_belt"
+      },
+      "textures": {
+        "default": "textures/create/common/blocks/blaze_burner_flame_scroll",
+        "superheated": "textures/create/common/blocks/blaze_burner_flame_superheated_scroll"
+      },
+      "geometry": {
+        "default": "geometry.blaze_burner_flame"
+      },
+      "animations": {
+        "frame": "animation.create.blaze_burner_flame.frame"
+      },
+      "scripts": {
+        "animate": ["frame"],
+        "pre_animation": [
+          "v.flame_frame = q.frame_alpha + q.time_stamp;",
+          "v.flame_scroll = (v.flame_frame / 3.33) * 55.0;"
+        ]
+      },
+      "render_controllers": ["controller.render.create.blaze_burner_flame"]
+    }
+  }
+}

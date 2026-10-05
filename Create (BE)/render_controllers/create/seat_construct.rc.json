@@ -1,0 +1,40 @@
+{
+    "format_version": "1.8.0",
+    "render_controllers": {
+        "controller.render.create.seat_construct_side": {
+            "arrays": {
+                "textures": {
+                    "Array.seat_side": [
+                        "Texture.side_white", "Texture.side_light_gray", "Texture.side_gray", "Texture.side_black",
+                        "Texture.side_brown", "Texture.side_red", "Texture.side_orange", "Texture.side_yellow",
+                        "Texture.side_lime", "Texture.side_green", "Texture.side_cyan", "Texture.side_light_blue",
+                        "Texture.side_blue", "Texture.side_purple", "Texture.side_magenta", "Texture.side_pink"
+                    ]
+                }
+            },
+            "geometry": "Geometry.side",
+            "materials": [{ "*": "Material.default" }],
+            "textures": ["Array.seat_side[q.property('create:seat_color_index')]"]
+        },
+        "controller.render.create.seat_construct_top": {
+            "arrays": {
+                "textures": {
+                    "Array.seat_top": [
+                        "Texture.top_white", "Texture.top_light_gray", "Texture.top_gray", "Texture.top_black",
+                        "Texture.top_brown", "Texture.top_red", "Texture.top_orange", "Texture.top_yellow",
+                        "Texture.top_lime", "Texture.top_green", "Texture.top_cyan", "Texture.top_light_blue",
+                        "Texture.top_blue", "Texture.top_purple", "Texture.top_magenta", "Texture.top_pink"
+                    ]
+                }
+            },
+            "geometry": "Geometry.top",
+            "materials": [{ "*": "Material.default" }],
+            "textures": ["Array.seat_top[q.property('create:seat_color_index')]"]
+        },
+        "controller.render.create.seat_construct_bottom": {
+            "geometry": "Geometry.bottom",
+            "materials": [{ "*": "Material.default" }],
+            "textures": ["Texture.bottom"]
+        }
+    }
+}

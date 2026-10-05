@@ -1,0 +1,356 @@
+{
+    "format_version":  "1.21.110",
+    "minecraft:geometry":  [
+                               {
+                                   "description":  {
+                                                       "identifier":  "geometry.pipe_elbow_up_w",
+                                                       "texture_width":  32,
+                                                       "texture_height":  32,
+                                                       "visible_bounds_width":  3,
+                                                       "visible_bounds_height":  2.5,
+                                                       "visible_bounds_offset":  [
+                                                                                     0,
+                                                                                     0.75,
+                                                                                     0
+                                                                                 ]
+                                                   },
+                                   "bones":  [
+                                                 {
+                                                     "name":  "pipeL",
+                                                     "pivot":  [
+                                                                   0,
+                                                                   8,
+                                                                   0
+                                                               ],
+                                                     "cubes":  [
+                                                                   {
+                                                                       "origin":  [
+                                                                                      -4,
+                                                                                      4,
+                                                                                      -4
+                                                                                  ],
+                                                                       "size":  [
+                                                                                    8,
+                                                                                    12,
+                                                                                    8
+                                                                                ],
+                                                                       "uv":  {
+                                                                                  "north":  {
+                                                                                                "uv":  [
+                                                                                                           0,
+                                                                                                           0
+                                                                                                       ],
+                                                                                                "uv_size":  [
+                                                                                                                8,
+                                                                                                                8
+                                                                                                            ]
+                                                                                            },
+                                                                                  "south":  {
+                                                                                                "uv":  [
+                                                                                                           0,
+                                                                                                           0
+                                                                                                       ],
+                                                                                                "uv_size":  [
+                                                                                                                8,
+                                                                                                                8
+                                                                                                            ]
+                                                                                            },
+                                                                                  "east":  {
+                                                                                               "uv":  [
+                                                                                                          0,
+                                                                                                          0
+                                                                                                      ],
+                                                                                               "uv_size":  [
+                                                                                                               8,
+                                                                                                               8
+                                                                                                           ]
+                                                                                           },
+                                                                                  "west":  {
+                                                                                               "uv":  [
+                                                                                                          0,
+                                                                                                          0
+                                                                                                      ],
+                                                                                               "uv_size":  [
+                                                                                                               8,
+                                                                                                               8
+                                                                                                           ]
+                                                                                           },
+                                                                                  "up":  {
+                                                                                             "uv":  [
+                                                                                                        8,
+                                                                                                        8
+                                                                                                    ],
+                                                                                             "uv_size":  [
+                                                                                                             8,
+                                                                                                             8
+                                                                                                         ]
+                                                                                         },
+                                                                                  "down":  {
+                                                                                               "uv":  [
+                                                                                                          8,
+                                                                                                          8
+                                                                                                      ],
+                                                                                               "uv_size":  [
+                                                                                                               8,
+                                                                                                               8
+                                                                                                           ]
+                                                                                           }
+                                                                              }
+                                                                   },
+                                                                   {
+                                                                       "origin":  [
+                                                                                      -5,
+                                                                                      14,
+                                                                                      -5
+                                                                                  ],
+                                                                       "size":  [
+                                                                                    10,
+                                                                                    2,
+                                                                                    10
+                                                                                ],
+                                                                       "uv":  {
+                                                                                  "north":  {
+                                                                                                "uv":  [
+                                                                                                           0,
+                                                                                                           0
+                                                                                                       ],
+                                                                                                "uv_size":  [
+                                                                                                                8,
+                                                                                                                8
+                                                                                                            ]
+                                                                                            },
+                                                                                  "south":  {
+                                                                                                "uv":  [
+                                                                                                           0,
+                                                                                                           0
+                                                                                                       ],
+                                                                                                "uv_size":  [
+                                                                                                                8,
+                                                                                                                8
+                                                                                                            ]
+                                                                                            },
+                                                                                  "east":  {
+                                                                                               "uv":  [
+                                                                                                          0,
+                                                                                                          0
+                                                                                                      ],
+                                                                                               "uv_size":  [
+                                                                                                               8,
+                                                                                                               8
+                                                                                                           ]
+                                                                                           },
+                                                                                  "west":  {
+                                                                                               "uv":  [
+                                                                                                          0,
+                                                                                                          0
+                                                                                                      ],
+                                                                                               "uv_size":  [
+                                                                                                               8,
+                                                                                                               8
+                                                                                                           ]
+                                                                                           },
+                                                                                  "up":  {
+                                                                                             "uv":  [
+                                                                                                        8,
+                                                                                                        8
+                                                                                                    ],
+                                                                                             "uv_size":  [
+                                                                                                             8,
+                                                                                                             8
+                                                                                                         ]
+                                                                                         },
+                                                                                  "down":  {
+                                                                                               "uv":  [
+                                                                                                          8,
+                                                                                                          8
+                                                                                                      ],
+                                                                                               "uv_size":  [
+                                                                                                               8,
+                                                                                                               8
+                                                                                                           ]
+                                                                                           }
+                                                                              }
+                                                                   },
+                                                                   {
+                                                                       "origin":  [
+                                                                                      -8,
+                                                                                      4,
+                                                                                      -4
+                                                                                  ],
+                                                                       "size":  [
+                                                                                    4,
+                                                                                    8,
+                                                                                    8
+                                                                                ],
+                                                                       "uv":  {
+                                                                                  "north":  {
+                                                                                                "uv":  [
+                                                                                                           0,
+                                                                                                           0
+                                                                                                       ],
+                                                                                                "uv_size":  [
+                                                                                                                8,
+                                                                                                                8
+                                                                                                            ]
+                                                                                            },
+                                                                                  "south":  {
+                                                                                                "uv":  [
+                                                                                                           0,
+                                                                                                           0
+                                                                                                       ],
+                                                                                                "uv_size":  [
+                                                                                                                8,
+                                                                                                                8
+                                                                                                            ]
+                                                                                            },
+                                                                                  "east":  {
+                                                                                               "uv":  [
+                                                                                                          0,
+                                                                                                          0
+                                                                                                      ],
+                                                                                               "uv_size":  [
+                                                                                                               8,
+                                                                                                               8
+                                                                                                           ]
+                                                                                           },
+                                                                                  "west":  {
+                                                                                               "uv":  [
+                                                                                                          0,
+                                                                                                          0
+                                                                                                      ],
+                                                                                               "uv_size":  [
+                                                                                                               8,
+                                                                                                               8
+                                                                                                           ]
+                                                                                           },
+                                                                                  "up":  {
+                                                                                             "uv":  [
+                                                                                                        8,
+                                                                                                        8
+                                                                                                    ],
+                                                                                             "uv_size":  [
+                                                                                                             8,
+                                                                                                             8
+                                                                                                         ]
+                                                                                         },
+                                                                                  "down":  {
+                                                                                               "uv":  [
+                                                                                                          8,
+                                                                                                          8
+                                                                                                      ],
+                                                                                               "uv_size":  [
+                                                                                                               8,
+                                                                                                               8
+                                                                                                           ]
+                                                                                           }
+                                                                              }
+                                                                   },
+                                                                   {
+                                                                       "origin":  [
+                                                                                      -8,
+                                                                                      3,
+                                                                                      -5
+                                                                                  ],
+                                                                       "size":  [
+                                                                                    2,
+                                                                                    10,
+                                                                                    10
+                                                                                ],
+                                                                       "uv":  {
+                                                                                  "north":  {
+                                                                                                "uv":  [
+                                                                                                           0,
+                                                                                                           0
+                                                                                                       ],
+                                                                                                "uv_size":  [
+                                                                                                                8,
+                                                                                                                8
+                                                                                                            ]
+                                                                                            },
+                                                                                  "south":  {
+                                                                                                "uv":  [
+                                                                                                           0,
+                                                                                                           0
+                                                                                                       ],
+                                                                                                "uv_size":  [
+                                                                                                                8,
+                                                                                                                8
+                                                                                                            ]
+                                                                                            },
+                                                                                  "east":  {
+                                                                                               "uv":  [
+                                                                                                          0,
+                                                                                                          0
+                                                                                                      ],
+                                                                                               "uv_size":  [
+                                                                                                               8,
+                                                                                                               8
+                                                                                                           ]
+                                                                                           },
+                                                                                  "west":  {
+                                                                                               "uv":  [
+                                                                                                          0,
+                                                                                                          0
+                                                                                                      ],
+                                                                                               "uv_size":  [
+                                                                                                               8,
+                                                                                                               8
+                                                                                                           ]
+                                                                                           },
+                                                                                  "up":  {
+                                                                                             "uv":  [
+                                                                                                        8,
+                                                                                                        8
+                                                                                                    ],
+                                                                                             "uv_size":  [
+                                                                                                             8,
+                                                                                                             8
+                                                                                                         ]
+                                                                                         },
+                                                                                  "down":  {
+                                                                                               "uv":  [
+                                                                                                          8,
+                                                                                                          8
+                                                                                                      ],
+                                                                                               "uv_size":  [
+                                                                                                               8,
+                                                                                                               8
+                                                                                                           ]
+                                                                                           }
+                                                                              }
+                                                                   }
+                                                               ]
+                                                 }
+                                             ],
+                                   "item_display_transforms":  {
+                                                                   "fixed":  {
+                                                                                 "rotation":  [
+                                                                                                  0,
+                                                                                                  90,
+                                                                                                  0
+                                                                                              ],
+                                                                                 "translation":  [
+                                                                                                     0,
+                                                                                                     0,
+                                                                                                     0
+                                                                                                 ],
+                                                                                 "scale":  [
+                                                                                               0.5,
+                                                                                               0.5,
+                                                                                               0.5
+                                                                                           ],
+                                                                                 "rotation_pivot":  [
+                                                                                                        0,
+                                                                                                        0,
+                                                                                                        0
+                                                                                                    ],
+                                                                                 "scale_pivot":  [
+                                                                                                     0,
+                                                                                                     0,
+                                                                                                     0
+                                                                                                 ]
+                                                                             }
+                                                               }
+                               }
+                           ]
+}

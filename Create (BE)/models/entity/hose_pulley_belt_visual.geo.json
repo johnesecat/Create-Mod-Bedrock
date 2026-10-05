@@ -1,0 +1,73 @@
+{
+	"format_version": "1.12.0",
+	"minecraft:geometry": [
+		{
+			"description": {
+				"identifier": "geometry.create.hose_pulley_belt_visual",
+				"texture_width": 16,
+				"texture_height": 16,
+				"visible_bounds_width": 3,
+				"visible_bounds_height": 2,
+				"visible_bounds_offset": [0, 0, 0]
+			},
+			"bones": [
+				{
+					"name": "hose_coil",
+					"pivot": [0, 0, 0],
+					"cubes": [
+						{
+							"origin": [-5, -6, -6],
+							"size": [10, 12, 2],
+							"uv": {
+								"north": {"uv": [3, 0], "uv_size": [10, 12]},
+								"east": {"uv": [0, 0], "uv_size": [2, 12]},
+								"south": {"uv": [0, 0], "uv_size": [-10, 12]},
+								"west": {"uv": [0, 0], "uv_size": [-2, 12]},
+								"up": {"uv": [3, 0], "uv_size": [10, 2]},
+								"down": {"uv": [3, 12], "uv_size": [10, 2]}
+							}
+						},
+						{
+							"origin": [-5, -6, 4],
+							"size": [10, 12, 2],
+							"pivot": [0, 0, 5],
+							"rotation": [0, 180, 0],
+							"uv": {
+								"north": {"uv": [3, 0], "uv_size": [10, 12]},
+								"east": {"uv": [0, 0], "uv_size": [2, 12]},
+								"south": {"uv": [0, 12], "uv_size": [-10, -12]},
+								"west": {"uv": [0, 0], "uv_size": [-2, 12]},
+								"up": {"uv": [3, 0], "uv_size": [10, 2]},
+								"down": {"uv": [3, 14], "uv_size": [10, -2]}
+							}
+						},
+						{
+							"origin": [-6, -6, -5],
+							"size": [2, 12, 10],
+							"uv": {
+								"north": {"uv": [0, 0], "uv_size": [2, 12]},
+								"east": {"uv": [3, 0], "uv_size": [10, 12]},
+								"south": {"uv": [0, 0], "uv_size": [-2, 12]},
+								"west": {"uv": [3, 0], "uv_size": [-10, 12]},
+								"up": {"uv": [3, 0], "uv_size": [2, 10]},
+								"down": {"uv": [3, 10], "uv_size": [2, -10]}
+							}
+						},
+						{
+							"origin": [4, -6, -5],
+							"size": [2, 12, 10],
+							"uv": {
+								"north": {"uv": [0, 0], "uv_size": [2, 12]},
+								"east": {"uv": [3, 0], "uv_size": [10, 12]},
+								"south": {"uv": [0, 0], "uv_size": [-2, 12]},
+								"west": {"uv": [3, 0], "uv_size": [-10, 12]},
+								"up": {"uv": [3, 0], "uv_size": [2, 10]},
+								"down": {"uv": [3, 10], "uv_size": [2, -10]}
+							}
+						}
+					]
+				}
+			]
+		}
+	]
+}

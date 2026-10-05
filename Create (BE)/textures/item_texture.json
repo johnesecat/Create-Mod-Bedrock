@@ -1,0 +1,174 @@
+{
+    "resource_pack_name":  "create",
+    "texture_name":  "atlas.items",
+    "texture_data":  {
+    "create:ladder_brass": {
+      "textures": "textures/create/common/items/ladder_brass_item"
+    },
+    "create:ladder_copper": {
+      "textures": "textures/create/common/items/ladder_copper_item"
+    },
+    "create:ladder_andesite": {
+      "textures": "textures/create/common/items/ladder_andesite_item"
+    },
+    "create:andesite_bars": {
+      "textures": "textures/create/common/blocks/bars/andesite_bars"
+    },
+    "create:brass_bars": {
+      "textures": "textures/create/common/blocks/bars/brass_bars"
+    },
+    "create:copper_bars": {
+      "textures": "textures/create/common/blocks/bars/copper_bars"
+    },
+    "create:minecart_contraption": {
+      "textures": "textures/create/common/items/minecart_contraption"
+    },
+    "create:potato_cannon": {
+      "textures": "textures/create/common/items/potato_cannon"
+    },
+                         "create:mechanical_belt":  {
+                                                        "textures":  "textures/create/common/items/mechanical_belt"
+                                                    },
+                         "create:raw_zinc":  {
+                                                 "textures":  "textures/create/common/items/raw_zinc"
+                                             },
+                         "create:zinc_ingot":  {
+                                                   "textures":  "textures/create/common/items/zinc_ingot"
+                                               },
+                         "create:zinc_nugget":  {
+                                                    "textures":  "textures/create/common/items/zinc_nugget"
+                                                },
+                         "create:brass_ingot":  {
+                                                    "textures":  "textures/create/common/items/brass_ingot"
+                                                },
+                         "create:brass_nugget":  {
+                                                     "textures":  "textures/create/common/items/brass_nugget"
+                                                 },
+                         "create:brass_sheet":  {
+                                                    "textures":  "textures/create/common/items/brass_sheet"
+                                                },
+                         "create:crushed_raw_zinc":  {
+                                                         "textures":  "textures/create/common/items/crushed_raw_zinc"
+                                                     },
+                         "create:crushed_raw_iron":  {
+                                                         "textures":  "textures/create/common/items/crushed_raw_iron"
+                                                     },
+                         "create:iron_sheet":  {
+                                                   "textures":  "textures/create/common/items/iron_sheet"
+                                               },
+                         "create:crushed_raw_gold":  {
+                                                         "textures":  "textures/create/common/items/crushed_raw_gold"
+                                                     },
+                         "create:golden_sheet":  {
+                                                     "textures":  "textures/create/common/items/golden_sheet"
+                                                 },
+                         "create:crushed_raw_copper":  {
+                                                           "textures":  "textures/create/common/items/crushed_raw_copper"
+                                                       },
+                         "create:copper_sheet":  {
+                                                     "textures":  "textures/create/common/items/copper_sheet"
+                                                 },
+                         "create:andesite_alloy":  {
+                                                       "textures":  "textures/create/common/items/andesite_alloy"
+                                                   },
+                         "create:rose_quartz":  {
+                                                    "textures":  "textures/create/common/items/rose_quartz"
+                                                },
+                         "create:polished_rose_quartz":  {
+                                                             "textures":  "textures/create/common/items/polished_rose_quartz"
+                                                         },
+                         "create:propeller":  {
+                                                  "textures":  "textures/create/common/items/propeller"
+                                              },
+                         "create:electron_tube":  {
+                                                      "textures":  "textures/create/common/items/electron_tube"
+                                                  },
+                         "create:brass_hand":  {
+                                                   "textures":  "textures/create/common/items/brass_hand"
+                                               },
+                         "create:precision_mechanism":  {
+                                                            "textures":  "textures/create/common/items/precision_mechanism"
+                                                        },
+                         "create:incomplete_precision_mechanism":  {
+                                                                       "textures":  "textures/create/common/items/incomplete_precision_mechanism"
+                                                                   },
+                         "create:transmitter":  {
+                                                    "textures":  "textures/create/common/items/transmitter"
+                                                },
+                         "create:whisk":  {
+                                              "textures":  "textures/create/common/items/whisk"
+                                          },
+                         "create:wheat_flour":  {
+                                                    "textures":  "textures/create/common/items/wheat_flour"
+                                                },
+                         "create:dough":  {
+                                              "textures":  "textures/create/common/items/dough"
+                                          },
+                         "create:bar_of_chocolate":  {
+                                                         "textures":  "textures/create/common/items/bar_of_chocolate"
+                                                     },
+                         "create:chocolate_glazed_berries":  {
+                                                                 "textures":  "textures/create/common/items/chocolate_glazed_berries"
+                                                             },
+                         "create:sweet_roll":  {
+                                                   "textures":  "textures/create/common/items/sweet_roll"
+                                               },
+                         "create:honeyed_apple":  {
+                                                     "textures":  "textures/create/common/items/honeyed_apple"
+                                                 },
+                         "create:honey_bucket":  {
+                                                     "textures":  "textures/create/common/items/honey_bucket"
+                                                 },
+                         "create:chocolate_bucket":  {
+                                                         "textures":  "textures/create/common/items/chocolate_bucket"
+                                                     },
+                         "create:experience_nugget":  {
+                                                          "textures":  "textures/create/common/items/experience_nugget"
+                                                      },
+                         "create:sand_paper":  {
+                                                   "textures":  "textures/create/common/items/sand_paper"
+                                               },
+                         "create:super_glue":  {
+                                                   "textures":  "textures/create/common/items/super_glue"
+                                               },
+                         "super_glue":  {
+                                           "textures":  "textures/create/common/items/super_glue"
+                                       },
+                         "create:red_sand_paper":  {
+                                                       "textures":  "textures/create/common/items/red_sand_paper"
+                                                   },
+                         "create:goggles":  {
+                                                "textures":  "textures/create/common/items/goggles"
+                                            },
+                         "sand_paper":  {
+                                            "textures":  "textures/create/common/items/sand_paper"
+                                        },
+                         "red_sand_paper":  {
+                                                "textures":  "textures/create/common/items/red_sand_paper"
+                                            },
+                         "create:andesite_door": {
+                             "textures": "textures/create/common/items/andesite_door"
+                         },
+                         "create:copper_door": {
+                             "textures": "textures/create/common/items/copper_door"
+                         },
+                         "create:brass_door": {
+                             "textures": "textures/create/common/items/brass_door"
+                         },
+                         "create:glass_door": {
+                             "textures": "textures/create/common/items/glass_door"
+                         },
+                         "create:blaze_cake_base": {
+                             "textures": "textures/create/common/items/blaze_cake_base"
+                         },
+                         "create:blaze_cake": {
+                             "textures": "textures/create/common/items/blaze_cake"
+                         },
+                         "create:creative_blaze_cake": {
+                             "textures": "textures/create/common/items/creative_blaze_cake"
+                         },
+                         "create:cinder_flour": {
+                             "textures": "textures/create/common/items/cinder_flour"
+                         }
+                     }
+}

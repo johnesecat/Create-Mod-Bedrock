@@ -1,0 +1,21 @@
+{
+  "format_version": "1.8.0",
+  "render_controllers": {
+    "controller.render.create.blaze_burner_flame": {
+      "arrays": {
+        "textures": {
+          "Array.flame_textures": ["Texture.default", "Texture.superheated"]
+        }
+      },
+      "geometry": "Geometry.default",
+      "materials": [
+        { "*": "Material.default" }
+      ],
+      "textures": ["Array.flame_textures[q.property('create:superheated') ? 1 : 0]"],
+      "uv_anim": {
+        "offset": [0, "(v.flame_scroll / 360) * 2"],
+        "scale": [0.6, 0.6]
+      }
+    }
+  }
+}

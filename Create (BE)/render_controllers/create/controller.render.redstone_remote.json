@@ -1,0 +1,10 @@
+{
+    "format_version": "1.10",
+    "render_controllers": {
+        "controller.render.create.redstone_remote": {
+            "geometry": "Geometry.default",
+            "materials": [ { "*": "material.default" } ],
+            "textures": [ "q.is_using_item ? texture.on : texture.off" ]
+        }
+    }
+}

@@ -1,0 +1,74 @@
+{
+    "format_version": "1.8.0",
+    "animations": {
+        "animation.create.steam_engine_piston.facing": {
+            "loop": true,
+            "bones": {
+                "orientation": {
+                    "rotation": [
+                        "v.rotation == 'north' || v.rotation == 'south' ? -90 : 0",
+                        "v.rotation == 'south' ? 180 : 0",
+                        "v.rotation == 'north' || v.rotation == 'south' ? 90 : v.rotation == 'east' ? 90 : v.rotation == 'west' ? -90 : v.rotation == 'down' ? 180 : 0"
+                    ]
+                }
+            }
+        },
+        "animation.create.steam_engine_piston.motion": {
+            "loop": true,
+            "start_delay": "q.property('create:piston_phase') == 'down' ? 0.54165 : 0",
+            "animation_length": 1.0833,
+            "bones": {
+                "Piston": {
+                    "position": {
+                        "0.0": {
+                            "post": [0, 0, 0],
+                            "lerp_mode": "catmullrom"
+                        },
+                        "0.1667": {
+                            "post": [0, 3.37, 0],
+                            "lerp_mode": "catmullrom"
+                        },
+                        "0.4167": {
+                            "post": [0, 3.43, 0],
+                            "lerp_mode": "catmullrom"
+                        },
+                        "0.6667": {
+                            "post": [0, -7, 0],
+                            "lerp_mode": "catmullrom"
+                        },
+                        "0.875": {
+                            "post": [0, -8.33, 0],
+                            "lerp_mode": "catmullrom"
+                        },
+                        "1.0": {
+                            "post": [0, -4.33, 0],
+                            "lerp_mode": "catmullrom"
+                        },
+                        "1.0833": {
+                            "post": [0, 0, 0],
+                            "lerp_mode": "catmullrom"
+                        }
+                    }
+                },
+                "Linkage": {
+                    "rotation": {
+                        "0.0": [0, 0, 0],
+                        "0.1667": [-16.5, 0, 0],
+                        "0.4167": [-52.5, 0, 0],
+                        "0.6667": [-45, 0, 0],
+                        "0.875": [-23.75, 0, 0],
+                        "1.0": [-7.5, 0, 0],
+                        "1.0833": [0, 0, 0]
+                    }
+                },
+                "Cam": {
+                    "rotation": {
+                        "0.0": [382.5, 0, 0],
+                        "1.0833": [742.5, 0, 0]
+                    },
+                    "position": [0, -2, 0]
+                }
+            }
+        }
+    }
+}

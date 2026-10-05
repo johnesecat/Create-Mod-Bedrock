@@ -1,0 +1,194 @@
+{
+	"format_version": "1.8.0",
+	"animations": {
+		"animation.create.mechanical_crafter_item.block": {
+			"loop": true,
+			"bones": {
+				"right_world_offset": {
+					"position": ["0.0125 * 0.95", "3 * 0.95", "(5 * 0.95)"],
+					"scale": "0.95 * v.item_scale"
+				},
+				"right_entity": {
+					"position": [-0.0125, -3, -5]
+				},
+				"right_world_rot": {
+					"rotation": ["v.right_rotation_x", 0, "v.right_rotation_z"]
+				},
+				"right_y_world": {
+					"rotation": [0, "v.right_rotation_y", 0]
+				},
+				"right_adjust_xz": {
+					"rotation": [-14, 0, 14.5]
+				},
+				"right_adjust_y": {
+					"rotation": [0, 47.5, 0]
+				},
+				"right_pivot_minus": {
+					"position": [0.0125, 3, 5]
+				},
+				"left_world_offset": {
+					"position": ["2.0125 * 0.95 + v.second_block_offset_x", "(3 * 0.95) + 0.3", "(5 * 0.95) + v.second_block_offset_z"],
+					"scale": "0.95 * v.item_scale"
+				},
+				"left_entity": {
+					"position": [-2.0125, -3, -5]
+				},
+				"left_world_rot": {
+					"rotation": ["v.left_rotation_x", 0, "v.left_rotation_z"]
+				},
+				"left_y_world": {
+					"rotation": [0, "v.second_block_rot", 0]
+				},
+				"left_adjust_xz": {
+					"rotation": [-14, 0, 20.5]
+				},
+				"left_adjust_y": {
+					"rotation": [0, 47.5, 0]
+				},
+				"left_pivot_minus": {
+					"position": [2.0125, 3, 5]
+				}
+			}
+		},
+		"animation.create.mechanical_crafter_item.item": {
+			"loop": true,
+			"bones": {
+				"right_world_offset": {
+					"position": ["-2.175 * 1.05", "(-2.575 * 0.15) + 0.75", "(5.6 * 1.05)"],
+					"scale": "1.05 * v.item_scale"
+				},
+				"right_entity": {
+					"position": [2.175, 2.575, -5.6]
+				},
+				"right_world_rot": {
+					"rotation": ["v.right_rotation_x", 0, "v.right_rotation_z"]
+				},
+				"right_y_world": {
+					"rotation": [0, "v.right_rotation_y", 0]
+				},
+				"right_adjust_xz": {
+					"rotation": [12, 0, -15]
+				},
+				"right_adjust_y": {
+					"rotation": [0, 16, 0]
+				},
+				"right_pivot_minus": {
+					"position": [-2.175, -2.575, 5.6]
+				},
+				"left_world_offset": {
+					"position": ["-0.175 * 1.05", "(-2.575 * 1.05) + 0.75", "(5.6 * 1.05)"],
+					"scale": "1.05 * v.item_scale"
+				},
+				"left_entity": {
+					"position": [0.175, 2.575, -5.6]
+				},
+				"left_world_rot": {
+					"rotation": ["v.left_rotation_x", 0, "v.left_rotation_z"]
+				},
+				"left_y_world": {
+					"rotation": [0, "v.left_rotation_y + v.second_item_rot", 0]
+				},
+				"left_adjust_xz": {
+					"rotation": [12, 0, -15]
+				},
+				"left_adjust_y": {
+					"rotation": [0, 16, 0]
+				},
+				"left_pivot_minus": {
+					"position": [-0.175, -2.575, 5.6]
+				}
+			}
+		},
+		"animation.create.mechanical_crafter_item.frame_item": {
+			"loop": true,
+			"bones": {
+				"right_world_offset": {
+					"position": ["0", "(-2.575 * 1.00) + 0.75", "(5.6 * 1.0)"],
+					"scale": "1.0 * v.item_scale"
+				},
+				"right_entity": {
+					"position": [0, 2.575, -5.6]
+				},
+				"right_world_rot": {
+					"rotation": ["v.right_rotation_x", 0, "v.right_rotation_z"]
+				},
+				"right_y_world": {
+					"rotation": [0, "v.right_rotation_y", 0]
+				},
+				"right_adjust_xz": {
+					"rotation": [0, 0, -60]
+				},
+				"right_adjust_y": {
+					"rotation": [0, 0, 0]
+				},
+				"right_pivot_minus": {
+					"position": [0, -2.575, 5.6]
+				},
+				"left_world_offset": {
+					"scale": 0
+				}
+			}
+		},
+		"animation.create.mechanical_crafter_item.frame_item_flat": {
+			"loop": true,
+			"bones": {
+				"right_world_offset": {
+					"position": ["0", "(-2.575 * 1.00) + 0.75", "(5.6 * 1.0)"],
+					"scale": "1.0 * v.item_scale"
+				},
+				"right_entity": {
+					"position": [0, 2.575, -5.6]
+				},
+				"right_world_rot": {
+					"rotation": ["v.right_rotation_x", 0, "v.right_rotation_z"]
+				},
+				"right_y_world": {
+					"rotation": [0, "v.right_rotation_y", 0]
+				},
+				"right_adjust_xz": {
+					"rotation": [0, 0, -60]
+				},
+				"right_adjust_y": {
+					"rotation": [0, 0, 0]
+				},
+				"right_pivot_minus": {
+					"position": [0, -2.575, 5.6]
+				},
+				"left_world_offset": {
+					"scale": 0
+				}
+			}
+		},
+		"animation.create.mechanical_crafter_item.hand_equipped": {
+			"loop": true,
+			"bones": {
+				"right_world_offset": {
+					"rotation": [90, 0, 0],
+					"position": [0, "(-1.9625 * 1.78) + 0.55", "(6.825 * 1.78)"],
+					"scale": 0.78
+				},
+				"right_entity": {
+					"position": [0, 1.9625, -6.825]
+				},
+				"right_world_rot": {
+					"rotation": ["v.right_rotation_x", 0, "v.right_rotation_z"]
+				},
+				"right_y_world": {
+					"rotation": [0, "v.right_rotation_y", 0]
+				},
+				"right_adjust_xz": {
+					"rotation": [0, 0, 45]
+				},
+				"right_adjust_y": {
+					"rotation": [0, 0, 0]
+				},
+				"right_pivot_minus": {
+					"position": [0, -1.9625, 6.825]
+				},
+				"left_world_offset": {
+					"scale": 0
+				}
+			}
+		}
+	}
+}

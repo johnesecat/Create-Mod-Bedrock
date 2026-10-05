@@ -1,0 +1,49 @@
+﻿{
+    "format_version":  "1.8.0",
+    "render_controllers":  {
+                               "controller.render.create.windmill_sail_frame":  {
+                                                                                    "geometry":  "Geometry.frame",
+                                                                                    "materials":  [
+                                                                                                      {
+                                                                                                          "*":  "Material.default"
+                                                                                                      }
+                                                                                                  ],
+                                                                                    "textures":  [
+                                                                                                     "Texture.default"
+                                                                                                 ]
+                                                                                },
+                               "controller.render.create.windmill_sail_canvas":  {
+                                                                                     "arrays":  {
+                                                                                                    "textures":  {
+                                                                                                                     "Array.canvas":  [
+                                                                                                                                          "Texture.canvas_white",
+                                                                                                                                          "Texture.canvas_light_gray",
+                                                                                                                                          "Texture.canvas_gray",
+                                                                                                                                          "Texture.canvas_black",
+                                                                                                                                          "Texture.canvas_brown",
+                                                                                                                                          "Texture.canvas_red",
+                                                                                                                                          "Texture.canvas_orange",
+                                                                                                                                          "Texture.canvas_yellow",
+                                                                                                                                          "Texture.canvas_lime",
+                                                                                                                                          "Texture.canvas_green",
+                                                                                                                                          "Texture.canvas_cyan",
+                                                                                                                                          "Texture.canvas_light_blue",
+                                                                                                                                          "Texture.canvas_blue",
+                                                                                                                                          "Texture.canvas_purple",
+                                                                                                                                          "Texture.canvas_magenta",
+                                                                                                                                          "Texture.canvas_pink"
+                                                                                                                                      ]
+                                                                                                                 }
+                                                                                                },
+                                                                                     "geometry":  "Geometry.canvas",
+                                                                                     "materials":  [
+                                                                                                       {
+                                                                                                           "*":  "Material.canvas"
+                                                                                                       }
+                                                                                                   ],
+                                                                                     "textures":  [
+                                                                                                      "Array.canvas[q.property(\u0027create:sail_color\u0027) == \u0027light_gray\u0027 ? 1 : (q.property(\u0027create:sail_color\u0027) == \u0027gray\u0027 ? 2 : (q.property(\u0027create:sail_color\u0027) == \u0027black\u0027 ? 3 : (q.property(\u0027create:sail_color\u0027) == \u0027brown\u0027 ? 4 : (q.property(\u0027create:sail_color\u0027) == \u0027red\u0027 ? 5 : (q.property(\u0027create:sail_color\u0027) == \u0027orange\u0027 ? 6 : (q.property(\u0027create:sail_color\u0027) == \u0027yellow\u0027 ? 7 : (q.property(\u0027create:sail_color\u0027) == \u0027lime\u0027 ? 8 : (q.property(\u0027create:sail_color\u0027) == \u0027green\u0027 ? 9 : (q.property(\u0027create:sail_color\u0027) == \u0027cyan\u0027 ? 10 : (q.property(\u0027create:sail_color\u0027) == \u0027light_blue\u0027 ? 11 : (q.property(\u0027create:sail_color\u0027) == \u0027blue\u0027 ? 12 : (q.property(\u0027create:sail_color\u0027) == \u0027purple\u0027 ? 13 : (q.property(\u0027create:sail_color\u0027) == \u0027magenta\u0027 ? 14 : (q.property(\u0027create:sail_color\u0027) == \u0027pink\u0027 ? 15 : 0))))))))))))))]"
+                                                                                                  ]
+                                                                                 }
+                           }
+}

@@ -1,0 +1,67 @@
+{
+    "format_version": "1.10.0",
+    "minecraft:client_entity": {
+        "description": {
+            "identifier": "create:seat_construct",
+            "materials": {
+                "default": "entity_alphatest"
+            },
+            "textures": {
+                "bottom": "textures/create/common/blocks/seat/bottom",
+                "side_white": "textures/create/common/blocks/seat/side_white",
+                "side_light_gray": "textures/create/common/blocks/seat/side_light_gray",
+                "side_gray": "textures/create/common/blocks/seat/side_gray",
+                "side_black": "textures/create/common/blocks/seat/side_black",
+                "side_brown": "textures/create/common/blocks/seat/side_brown",
+                "side_red": "textures/create/common/blocks/seat/side_red",
+                "side_orange": "textures/create/common/blocks/seat/side_orange",
+                "side_yellow": "textures/create/common/blocks/seat/side_yellow",
+                "side_lime": "textures/create/common/blocks/seat/side_lime",
+                "side_green": "textures/create/common/blocks/seat/side_green",
+                "side_cyan": "textures/create/common/blocks/seat/side_cyan",
+                "side_light_blue": "textures/create/common/blocks/seat/side_light_blue",
+                "side_blue": "textures/create/common/blocks/seat/side_blue",
+                "side_purple": "textures/create/common/blocks/seat/side_purple",
+                "side_magenta": "textures/create/common/blocks/seat/side_magenta",
+                "side_pink": "textures/create/common/blocks/seat/side_pink",
+                "top_white": "textures/create/common/blocks/seat/top_white",
+                "top_light_gray": "textures/create/common/blocks/seat/top_light_gray",
+                "top_gray": "textures/create/common/blocks/seat/top_gray",
+                "top_black": "textures/create/common/blocks/seat/top_black",
+                "top_brown": "textures/create/common/blocks/seat/top_brown",
+                "top_red": "textures/create/common/blocks/seat/top_red",
+                "top_orange": "textures/create/common/blocks/seat/top_orange",
+                "top_yellow": "textures/create/common/blocks/seat/top_yellow",
+                "top_lime": "textures/create/common/blocks/seat/top_lime",
+                "top_green": "textures/create/common/blocks/seat/top_green",
+                "top_cyan": "textures/create/common/blocks/seat/top_cyan",
+                "top_light_blue": "textures/create/common/blocks/seat/top_light_blue",
+                "top_blue": "textures/create/common/blocks/seat/top_blue",
+                "top_purple": "textures/create/common/blocks/seat/top_purple",
+                "top_magenta": "textures/create/common/blocks/seat/top_magenta",
+                "top_pink": "textures/create/common/blocks/seat/top_pink"
+            },
+            "geometry": {
+                "side": "geometry.create.seat_construct_side",
+                "top": "geometry.create.seat_construct_top",
+                "bottom": "geometry.create.seat_construct_bottom"
+            },
+            "animations": {
+                "rotate": "animation.create.mechanical_bearing_construct.rotate"
+            },
+            "scripts": {
+                "animate": ["rotate"],
+                "pre_animation": [
+                    "v.angle_x = q.property('create:rotation_x');",
+                    "v.angle_y = q.property('create:rotation_y');",
+                    "v.angle_z = q.property('create:rotation_z');"
+                ]
+            },
+            "render_controllers": [
+                "controller.render.create.seat_construct_side",
+                "controller.render.create.seat_construct_top",
+                "controller.render.create.seat_construct_bottom"
+            ]
+        }
+    }
+}

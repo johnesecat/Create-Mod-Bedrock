@@ -1,0 +1,17 @@
+{
+  "format_version": "1.8.0",
+  "render_controllers": {
+    "controller.render.create.fluid_spout": {
+      "arrays": {
+        "textures": {
+          "Array.fluid": ["Texture.lava", "Texture.water", "Texture.honey", "Texture.chocolate", "Texture.milk"]
+        }
+      },
+      "geometry": "Geometry.default",
+      "materials": [
+        { "*": "Material.default" }
+      ],
+      "textures": ["Array.fluid[query.property('create:fluid_type') == 'milk' ? 4 : (query.property('create:fluid_type') == 'chocolate' ? 3 : (query.property('create:fluid_type') == 'honey' ? 2 : (query.property('create:fluid_type') == 'water' ? 1 : 0)))]"]
+    }
+  }
+}

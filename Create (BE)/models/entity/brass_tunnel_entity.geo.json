@@ -1,0 +1,53 @@
+{
+	"format_version": "1.12.0",
+	"minecraft:geometry": [
+		{
+			"description": {
+				"identifier": "geometry.create.brass_tunnel_entity_x",
+				"texture_width": 64,
+				"texture_height": 64,
+				"visible_bounds_width": 4,
+				"visible_bounds_height": 3.5,
+				"visible_bounds_offset": [0, 1.25, 0]
+			},
+			"bones": [
+				{ "name": "funnel",    "pivot": [0, 0, 0] },
+				{ "name": "all",       "parent": "funnel",    "pivot": [0, 4, 0],    "rotation": [0, 90, 0] },
+				{ "name": "root",      "parent": "all",       "pivot": [0, 9, -8.1], "rotation": [0, 180, 0] },
+				{ "name": "bone",      "parent": "root",      "pivot": [0, 9, -8.1] },
+				{ "name": "pivot",     "parent": "bone",      "pivot": [0, 9, -8.1] },
+				{ "name": "leftarm",   "parent": "pivot",     "pivot": [0, 9, -8.1] },
+				{ "name": "leftitem",  "parent": "leftarm",   "pivot": [0, 9, -8.1] },
+				{ "name": "root2",     "parent": "all",       "pivot": [0, 9,  8.1] },
+				{ "name": "bone2",     "parent": "root2",     "pivot": [0, 9,  8.1] },
+				{ "name": "pivot2",    "parent": "bone2",     "pivot": [0, 9,  8.1] },
+				{ "name": "rightarm",  "parent": "pivot2",    "pivot": [0, 9,  8.1] },
+				{ "name": "rightitem", "parent": "rightarm",  "pivot": [0, 9,  8.1] }
+			]
+		},
+		{
+			"description": {
+				"identifier": "geometry.create.brass_tunnel_entity_z",
+				"texture_width": 64,
+				"texture_height": 64,
+				"visible_bounds_width": 4,
+				"visible_bounds_height": 3.5,
+				"visible_bounds_offset": [0, 1.25, 0]
+			},
+			"bones": [
+				{ "name": "funnel",    "pivot": [0, 0, 0],    "rotation": [0, 90, 0] },
+				{ "name": "all",       "parent": "funnel",    "pivot": [0, 4, 0],    "rotation": [0, 90, 0] },
+				{ "name": "root",      "parent": "all",       "pivot": [0, 9, -8.1], "rotation": [0, 180, 0] },
+				{ "name": "bone",      "parent": "root",      "pivot": [0, 9, -8.1] },
+				{ "name": "pivot",     "parent": "bone",      "pivot": [0, 9, -8.1] },
+				{ "name": "leftarm",   "parent": "pivot",     "pivot": [0, 9, -8.1] },
+				{ "name": "leftitem",  "parent": "leftarm",   "pivot": [0, 9, -8.1] },
+				{ "name": "root2",     "parent": "all",       "pivot": [0, 9,  8.1] },
+				{ "name": "bone2",     "parent": "root2",     "pivot": [0, 9,  8.1] },
+				{ "name": "pivot2",    "parent": "bone2",     "pivot": [0, 9,  8.1] },
+				{ "name": "rightarm",  "parent": "pivot2",    "pivot": [0, 9,  8.1] },
+				{ "name": "rightitem", "parent": "rightarm",  "pivot": [0, 9,  8.1] }
+			]
+		}
+	]
+}

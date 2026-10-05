@@ -1,0 +1,77 @@
+{
+	"format_version": "1.12.0",
+	"minecraft:geometry": [
+		{
+			"description": {
+				"identifier": "geometry.whistle_tubo",
+				"texture_width": 64,
+				"texture_height": 64,
+				"visible_bounds_width": 2,
+				"visible_bounds_height": 2.5,
+				"visible_bounds_offset": [0, 0.75, 0]
+			},
+			"bones": [
+				{
+					"name": "Bases",
+					"pivot": [8, 0, -8]
+				},
+				{
+					"name": "Base Flat",
+					"parent": "Bases",
+					"pivot": [8, 0, -8]
+				},
+				{
+					"name": "whistle_tube",
+					"pivot": [0, 8, 0],
+					"cubes": [
+						{
+							"origin": [-4, 4, -4],
+							"size": [8, 12, 8],
+							"uv": {
+								"north": {"uv": [53, 38], "uv_size": [6, 8]},
+								"east": {"uv": [53, 38], "uv_size": [6, 8]},
+								"south": {"uv": [53, 38], "uv_size": [6, 8]},
+								"west": {"uv": [53, 38], "uv_size": [6, 8]},
+								"up": {"uv": [59, 46], "uv_size": [-6, -8]}
+							}
+						},
+						{
+							"origin": [-4, 0, -4],
+							"size": [8, 4, 8],
+							"uv": {
+								"north": {"uv": [53, 38], "uv_size": [6, 4]},
+								"east": {"uv": [53, 38], "uv_size": [6, 4]},
+								"south": {"uv": [53, 38], "uv_size": [6, 4]},
+								"west": {"uv": [53, 38], "uv_size": [6, 4]},
+								"up": {"uv": [59, 42], "uv_size": [-6, -4]}
+							}
+						}
+					]
+				},
+				{
+					"name": "whistle_tube_cap",
+					"pivot": [0, 8, 0],
+					"cubes": [
+						{
+							"origin": [-5, 16, -5],
+							"size": [10, 2, 10],
+							"uv": {
+								"north": {"uv": [52, 35], "uv_size": [8, 2]},
+								"east": {"uv": [52, 35], "uv_size": [8, 2]},
+								"south": {"uv": [52, 35], "uv_size": [8, 2]},
+								"west": {"uv": [52, 35], "uv_size": [8, 2]},
+								"up": {"uv": [44, 60], "uv_size": [-8, -8]},
+								"down": {"uv": [60, 60], "uv_size": [-8, -8]}
+							}
+						}
+					]
+				},
+				{
+					"name": "Extension",
+					"parent": "whistle_tube",
+					"pivot": [0, 8, 0]
+				}
+			]
+		}
+	]
+}

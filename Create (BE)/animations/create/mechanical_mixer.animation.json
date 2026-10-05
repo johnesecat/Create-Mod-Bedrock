@@ -1,0 +1,53 @@
+{
+    "format_version": "1.8.0",
+    "animations": {
+        "animation.create.mechanical_mixer.mixing.transition_in": {
+            "loop": "hold_on_last_frame",
+            "animation_length": 1.0,
+            "bones": {
+                "mixer": {
+                    "position": {
+                        "0.0": [ 0, 0, 0 ],
+                        "1.0": [ 0, -21, 0 ]
+                    }
+                }
+            }
+        },
+        "animation.create.mechanical_mixer.mixing.transition_out": {
+            "animation_length": 1.0,
+            "bones": {
+                "mixer": {
+                    "position": {
+                        "0.0": [ 0, -21, 0 ],
+                        "1.0": [ 0, 0, 0 ]
+                    }
+                }
+            }
+        },
+        "animation.create.mechanical_mixer.mixing.stop": {
+            "animation_length": 0.1,
+            "bones": {
+                "mixer": {
+                    "position": [ 0, 0, 0 ]
+                }
+            }
+        },
+        "animation.create.mechanical_mixer.mixing.hold": {
+            "loop": true,
+            "animation_length": 0.1,
+            "bones": {
+                "mixer": {
+                    "position": [ 0, -21, 0 ]
+                }
+            }
+        },
+        "animation.create.mechanical_mixer.spin": {
+            "loop": true,
+            "bones": {
+                "mixerhead": {
+                    "rotation": [ 0, "v.rpm", 0 ]
+                }
+            }
+        }
+    }
+}

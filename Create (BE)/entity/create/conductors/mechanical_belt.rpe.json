@@ -1,0 +1,78 @@
+{
+    "format_version": "1.10.0",
+    "minecraft:client_entity": {
+        "description": {
+            "identifier": "create:mechanical_belt_entity",
+            "materials": {
+                "conveyor": "create_mechanical_belt",
+                "pulley": "create_entity_block"
+            },
+            "textures": {
+                "pulley": "textures/create/common/blocks/belt_pulley",
+                "belt": "textures/create/common/blocks/belt",
+                "belt_offset": "textures/create/common/blocks/belt_offset",
+                "belt_diagonal": "textures/create/common/blocks/belt_diagonal",
+                "belt_black": "textures/create/common/blocks/belt/black_scroll",
+                "belt_blue": "textures/create/common/blocks/belt/blue_scroll",
+                "belt_brown": "textures/create/common/blocks/belt/brown_scroll",
+                "belt_cyan": "textures/create/common/blocks/belt/cyan_scroll",
+                "belt_gray": "textures/create/common/blocks/belt/gray_scroll",
+                "belt_green": "textures/create/common/blocks/belt/green_scroll",
+                "belt_light_blue": "textures/create/common/blocks/belt/light_blue_scroll",
+                "belt_light_gray": "textures/create/common/blocks/belt/light_gray_scroll",
+                "belt_lime": "textures/create/common/blocks/belt/lime_scroll",
+                "belt_magenta": "textures/create/common/blocks/belt/magenta_scroll",
+                "belt_orange": "textures/create/common/blocks/belt/orange_scroll",
+                "belt_pink": "textures/create/common/blocks/belt/pink_scroll",
+                "belt_purple": "textures/create/common/blocks/belt/purple_scroll",
+                "belt_red": "textures/create/common/blocks/belt/red_scroll",
+                "belt_white": "textures/create/common/blocks/belt/white_scroll",
+                "belt_yellow": "textures/create/common/blocks/belt/yellow_scroll",
+                "diagonal_black": "textures/create/common/blocks/belt/black_diagonal_scroll",
+                "diagonal_blue": "textures/create/common/blocks/belt/blue_diagonal_scroll",
+                "diagonal_brown": "textures/create/common/blocks/belt/brown_diagonal_scroll",
+                "diagonal_cyan": "textures/create/common/blocks/belt/cyan_diagonal_scroll",
+                "diagonal_gray": "textures/create/common/blocks/belt/gray_diagonal_scroll",
+                "diagonal_green": "textures/create/common/blocks/belt/green_diagonal_scroll",
+                "diagonal_light_blue": "textures/create/common/blocks/belt/light_blue_diagonal_scroll",
+                "diagonal_light_gray": "textures/create/common/blocks/belt/light_gray_diagonal_scroll",
+                "diagonal_lime": "textures/create/common/blocks/belt/lime_diagonal_scroll",
+                "diagonal_magenta": "textures/create/common/blocks/belt/magenta_diagonal_scroll",
+                "diagonal_orange": "textures/create/common/blocks/belt/orange_diagonal_scroll",
+                "diagonal_pink": "textures/create/common/blocks/belt/pink_diagonal_scroll",
+                "diagonal_purple": "textures/create/common/blocks/belt/purple_diagonal_scroll",
+                "diagonal_red": "textures/create/common/blocks/belt/red_diagonal_scroll",
+                "diagonal_white": "textures/create/common/blocks/belt/white_diagonal_scroll",
+                "diagonal_yellow": "textures/create/common/blocks/belt/yellow_diagonal_scroll"
+            },
+            "geometry": {
+                "default": "geometry.create.mechanical_belt"
+            },
+            "animations": {
+                "rotation": "animation.create.rpm.rotation",
+                "offset": "animation.create.rpm.offsets",
+                "conveyor": "animation.create.rpm.conveyor"
+            },
+            "scripts": {
+                "animate": [ "rotation", "offset", "conveyor" ],
+                "pre_animation": [
+                    "v.rotation = q.property('create:cardinal_rotation');",
+                    "v.offset_sign = 1;",
+
+                    "v.visual_sign = 1;",
+                    "v.rpm = ((q.frame_alpha + q.time_stamp) / 3.33) * -q.property('create:rpm');",
+                    "v.rpm2 = 0;",
+
+                    "v.conveyor_rpm = v.rpm * (q.property('create:diagonal_flip') ? -1 : 1);",
+                    "v.diagonal_flip = q.property('create:diagonal_flip') ? 180 : 0;"
+                ]
+            }, 
+            "render_controllers": [
+                "controller.render.create.pulley",
+                "controller.render.create.belt",
+                "controller.render.create.belt_offset",
+                "controller.render.create.belt_diagonal"
+            ]
+        }
+    }
+}

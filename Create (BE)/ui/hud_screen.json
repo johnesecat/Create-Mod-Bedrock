@@ -1,0 +1,114 @@
+{
+    "namespace": "hud",
+    "default_message": {
+        "type": "panel",
+        "size": ["100%c", "100%c"],
+        "alpha": "@hud.anim_actionbar_text_background_alpha_out",
+        "controls": [
+            {
+                "message": {
+                    "type": "label",
+                    "anchor_from": "center",
+                    "anchor_to": "center",
+                    "color": "$tool_tip_text",
+                    "enable_profanity_filter": true,
+                    "layer": 31,
+                    "text": "$actionbar_text",
+                    "localize": false,
+                    "alpha": "@hud.anim_actionbar_text_alpha_out"
+                }
+            }
+        ]
+    },
+    "create_message": {
+        "type": "panel",
+        "size": ["100%c", "100%c"],
+        "controls": [
+            {
+                "stack_panel": {
+                    "type": "stack_panel",
+                    "size": ["100%c", "100%c"],
+                    "orientation": "horizontal",
+                    "anchor_from": "center",
+                    "anchor_to": "center",
+                    "controls": [
+                        {
+                            "goggles_icon": {
+                                "type": "panel",
+                                "size": [16, 0],
+                                "controls": [
+                                    {
+                                        "image": {
+                                            "type": "image",
+                                            "size": [16, 16],
+                                            "offset": [0, 5],
+                                            "texture": "textures/create/common/items/goggles",
+                                            "alpha": "@hud.anim_actionbar_text_alpha_out"
+                                        }
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "padding": {
+                                "type": "panel",
+                                "size": [5, 0]
+                            }
+                        },
+                        {
+                            "message": {
+                                "type": "label",
+                                "color": "$tool_tip_text",
+                                "enable_profanity_filter": true,
+                                "shadow": true,
+                                "layer": 31,
+                                "$text": "$actionbar_text",
+                                "$text_to_display": "($text - 'screen.create')",
+                                "text": "$text_to_display",
+                                "localize": false,
+                                "alpha": "@hud.anim_actionbar_text_alpha_out"
+                            }
+                        }
+                    ]
+                }
+            }
+        ]
+    },
+    "hud_actionbar_text": {
+        "type": "image",
+
+        "$text": "$actionbar_text",
+        "$texture|default": "textures/ui/hud_tip_text_background",
+        "$alpha|default": "@hud.anim_actionbar_text_background_alpha_out",
+        "$message_panel|default": "hud.default_message",
+        "$anchor_from|default": "center",
+        "$anchor_to|default": "center",
+        "$offset|default": [0, "50%-68px"],
+        "$size|default": ["100%c + 12px", "100%c + 5px"],
+
+        "variables": [
+            {
+                "requires": "(not (($text - 'screen.create') = $text))",
+                "$texture": "textures/create/common/ui/altPurpleBorder",
+                "$message_panel": "hud.create_message",
+                "$anchor_from": "center",
+                "$anchor_to": "top_left",
+                "$offset": [10, -5],
+                "$size": ["100%c + 12px", "100%c + 10px"],
+                "$alpha": "@hud.anim_actionbar_text_alpha_out"
+            }
+        ],
+
+        "texture": "$texture",
+        "size": "$size",
+        "offset": "$offset",
+        "anchor_from": "$anchor_from",
+        "anchor_to": "$anchor_to",
+        "alpha": "$alpha",
+        "controls": [
+            {
+                "panel@$message_panel": {}
+            }
+        ]
+    }
+}

@@ -1,0 +1,15 @@
+{
+    "format_version": "1.8.0",
+    "render_controllers": {
+        "controller.render.create.windmill_bearing_entity": {
+            "geometry": "Geometry.default",
+            "materials": [{ "*": "Material.default" }],
+            "textures": ["Texture.default"],
+            "part_visibility": [
+                { "windmill_bearing": false },
+                { "bearing_rotation": true },
+                { "rpm": true }
+            ]
+        }
+    }
+}

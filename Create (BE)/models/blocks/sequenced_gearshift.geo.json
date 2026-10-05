@@ -1,0 +1,118 @@
+{
+	"format_version": "1.21.0",
+	"minecraft:geometry": [
+		{
+			"description": {
+				"identifier": "geometry.sequenced_gearshift",
+				"texture_width": 64,
+				"texture_height": 64,
+				"visible_bounds_width": 2,
+				"visible_bounds_height": 2.5,
+				"visible_bounds_offset": [0, 0.75, 0]
+			},
+			"bones": [
+				{
+					"name": "encased_shaft",
+					"pivot": [0, 8, 0]
+				},
+				{
+					"name": "idle",
+					"pivot": [0, 8, 0]
+				},
+				{
+					"name": "block",
+					"parent": "idle",
+					"pivot": [0, 8, 0],
+					"cubes": [
+						{
+							"origin": [-8, 14, -8],
+							"size": [16, 2, 16],
+							"uv": {
+								"north": {"uv": [32, 0], "uv_size": [16, 2]},
+								"east": {"uv": [32, 2], "uv_size": [16, 2]},
+								"south": {"uv": [32, 0], "uv_size": [16, 2]},
+								"west": {"uv": [32, 4], "uv_size": [16, 2]},
+								"up": {"uv": [16, 26], "uv_size": [16, 16], "uv_rotation": 270},
+								"down": {"uv": [0, 32], "uv_size": [16, -16]}
+							}
+						},
+						{
+							"origin": [-7, 2, -7],
+							"size": [14, 12, 14],
+							"uv": {
+								"north": {"uv": [0, 32], "uv_size": [14, 12]},
+								"south": {"uv": [0, 32], "uv_size": [14, 12]}
+							}
+						},
+						{
+							"origin": [-8, 0, -8],
+							"size": [16, 2, 16],
+							"uv": {
+								"north": {"uv": [32, 6], "uv_size": [16, 2]},
+								"east": {"uv": [32, 2], "uv_size": [16, 2]},
+								"south": {"uv": [32, 6], "uv_size": [16, 2]},
+								"west": {"uv": [32, 4], "uv_size": [16, 2]},
+								"up": {"uv": [16, 32], "uv_size": [-16, -16]},
+								"down": {"uv": [32, 26], "uv_size": [-16, 16], "uv_rotation": 270}
+							}
+						},
+						{
+							"origin": [6, 2, -8],
+							"size": [2, 12, 16],
+							"uv": {
+								"north": {"uv": [32, 8], "uv_size": [2, 12]},
+								"east": {"uv": [16, 16], "uv_size": [16, 12]},
+								"south": {"uv": [14, 32], "uv_size": [2, 12]},
+								"west": {"uv": [16, 28], "uv_size": [16, 12]}
+							}
+						},
+						{
+							"origin": [-8, 2, -8],
+							"size": [2, 12, 16],
+							"uv": {
+								"north": {"uv": [32, 8], "uv_size": [2, 12]},
+								"east": {"uv": [16, 40], "uv_size": [16, -12]},
+								"south": {"uv": [14, 32], "uv_size": [2, 12]},
+								"west": {"uv": [16, 28], "uv_size": [16, 12]}
+							}
+						}
+					]
+				},
+				{
+					"name": "shaft_rotation",
+					"pivot": [0, 8, 0]
+				},
+				{
+					"name": "rpm",
+					"parent": "shaft_rotation",
+					"pivot": [0, 8, 0],
+					"cubes": [
+						{
+							"origin": [-2, 0, -2],
+							"size": [4, 16, 4],
+							"pivot": [0, 8, 0],
+							"rotation": [-90, 0, 0],
+							"uv": {
+								"north": {"uv": [0, 45], "uv_size": [4, 16]},
+								"east": {"uv": [0, 45], "uv_size": [4, 16]},
+								"south": {"uv": [0, 45], "uv_size": [4, 16]},
+								"west": {"uv": [0, 45], "uv_size": [4, 16]},
+								"up": {"uv": [8, 49], "uv_size": [-4, -4]},
+								"down": {"uv": [4, 49], "uv_size": [4, -4]}
+							}
+						}
+					]
+				}
+			],
+			"item_display_transforms": {
+				"fixed": {
+					"rotation": [0, 90, 0],
+					"translation": [0, 0, 0],
+					"scale": [0.5, 0.5, 0.5],
+					"rotation_pivot": [0, 0, 0],
+					"scale_pivot": [0, 0, 0]
+				}
+			}
+		}
+	]
+}

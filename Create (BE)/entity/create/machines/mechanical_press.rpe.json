@@ -1,0 +1,38 @@
+{
+    "format_version": "1.10.0",
+    "minecraft:client_entity": {
+        "description": {
+            "identifier": "create:mechanical_press_entity",
+            "materials": {
+                "default": "create_entity_block"
+            },
+            "textures": {
+                "default": "textures/create/common/blocks/mechanical_press"
+            },
+            "geometry": {
+                "default": "geometry.create.mechanical_press_entity"
+            },
+            "animations": {
+                "rotation":      "animation.create.rpm.rotation",
+                "offset":        "animation.create.rpm.offsets",
+                "head_movement": "animation.create.mechanical_press.head_movement"
+            },
+            "scripts": {
+                "initialize": ["v.press_smooth = 0.0;"],
+                "animate": [ "rotation", "offset", "head_movement" ],
+                "pre_animation": [
+                    "v.rotation = q.property('create:cardinal_rotation');",
+                    "v.offset_sign = 1;",
+                    "v.visual_sign = 1;",
+                    "v.rpm = ((q.frame_alpha + q.time_stamp) / 3.33) * -q.property('create:rpm');",
+                    "v.rpm2 = 0;",
+                    "v.press_target = -20.0 * math.sin(q.property('create:press_progress') * 180.0);",
+                    "v.press_smooth = v.press_smooth + (v.press_target - v.press_smooth) * 0.15;"
+                ]
+            },
+            "render_controllers": [
+                "controller.render.default"
+            ]
+        }
+    }
+}

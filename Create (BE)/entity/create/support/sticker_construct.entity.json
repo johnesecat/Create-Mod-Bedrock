@@ -1,0 +1,27 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "create:sticker_construct",
+      "materials": { "default": "entity_alphatest" },
+      "textures": {
+        "default": "textures/create/common/blocks/sticker"
+      },
+      "geometry": { "default": "geometry.sticker_construct" },
+      "animations": { "rotate": "animation.create.sticker_construct.rotate" },
+      "scripts": {
+        "animate": ["rotate"],
+        "pre_animation": [
+          "v.direction = q.property('create:sticker_direction');",
+          "v.base_x = v.direction == 'north' ? 90 : (v.direction == 'south' ? -90 : (v.direction == 'down' ? 180 : 0));",
+          "v.base_y = 0;",
+          "v.base_z = v.direction == 'west' ? 90 : (v.direction == 'east' ? -90 : 0);",
+          "v.angle_x = q.property('create:rotation_x');",
+          "v.angle_y = q.property('create:rotation_y');",
+          "v.angle_z = q.property('create:rotation_z');"
+        ]
+      },
+      "render_controllers": ["controller.render.create.sticker_construct"]
+    }
+  }
+}

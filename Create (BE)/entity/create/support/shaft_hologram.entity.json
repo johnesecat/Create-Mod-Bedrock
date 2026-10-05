@@ -1,0 +1,22 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "create:shaft_hologram",
+      "materials": { "hologram": "entity_alphablend" },
+      "textures": { "default": "textures/create/common/blocks/shaft_hologram" },
+      "geometry": { "default": "geometry.create.shaft" },
+      "animations": { "rotation": "animation.create.rpm.rotation" },
+      "scripts": {
+        "pre_animation": [
+          "v.rotation = q.property('create:cardinal_rotation');",
+          "v.visual_sign = 1;",
+          "v.rpm = 0;",
+          "v.rpm2 = 0;"
+        ],
+        "animate": ["rotation"]
+      },
+      "render_controllers": ["controller.render.create.shaft_hologram"]
+    }
+  }
+}

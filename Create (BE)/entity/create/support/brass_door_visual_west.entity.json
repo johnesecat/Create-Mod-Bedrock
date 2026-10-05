@@ -1,0 +1,22 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "create:brass_door_visual_west",
+      "materials": { "default": "entity_alphatest" },
+      "textures": { "default": "textures/create/common/blocks/brass_door" },
+      "geometry": { "default": "geometry.create.brass_door_entity" },
+      "animations": {
+        "fixed": "animation.model.fixed_west",
+        "open": "animation.model.open2", "close": "animation.model.close2", "open_reverse": "animation.model.open2_reverse", "close_reverse": "animation.model.close2_reverse"
+      },
+      "scripts": {
+        "animate": [
+          "fixed",
+          { "open": "q.property('create:opening') && !q.property('create:hinge')" }, { "close": "!q.property('create:opening') && !q.property('create:hinge')" }, { "open_reverse": "q.property('create:opening') && q.property('create:hinge')" }, { "close_reverse": "!q.property('create:opening') && q.property('create:hinge')" }
+        ]
+      },
+      "render_controllers": [ "controller.render.create.andesite_door_visual" ]
+    }
+  }
+}

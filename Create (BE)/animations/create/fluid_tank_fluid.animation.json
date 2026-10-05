@@ -1,0 +1,22 @@
+{
+  "format_version": "1.8.0",
+  "animations": {
+    "animation.create.fluid_tank_fluid.fill": {
+      "loop": true,
+      "bones": {
+        "fluid": {
+          "position": [
+            0,
+            "(-q.property('create:tank_height') + 0.0625) * 16.0",
+            0
+          ],
+          "scale": [
+            "(q.property('create:tank_width') - 0.25)",
+            "v.tank_fluid_height",
+            "(q.property('create:tank_width') - 0.25)"
+          ]
+        }
+      }
+    }
+  }
+}

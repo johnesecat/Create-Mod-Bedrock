@@ -1,0 +1,57 @@
+{
+    "format_version": "1.8.0",
+    "animations": {
+        "animation.create.brass_tunnel.constant": {
+            "loop": true,
+            "bones": {
+                "funnel": { "position": [0, -4, 0] }
+            }
+        },
+        "animation.create.brass_tunnel.left_item": {
+            "loop": true,
+            "bones": {
+                "bone":     { "scale": 1.5, "position": [0, 0, 0] },
+                "pivot":    { "rotation": [-74, -11.5, -15], "position": [0.3, -2.1, 0.75] },
+                "leftitem": { "scale": 0.4 }
+            }
+        },
+        "animation.create.brass_tunnel.left_hand_equipped": {
+            "loop": true,
+            "bones": {
+                "bone":     { "scale": 1.5, "position": [0, 0, 0] },
+                "pivot":    { "rotation": [0, 0, 0], "position": [0.3, -2.1, 0.75] },
+                "leftitem": { "scale": 0.25, "rotation": [-90, 90, 0] }
+            }
+        },
+        "animation.create.brass_tunnel.left_block": {
+            "loop": true,
+            "bones": {
+                "pivot":    { "rotation": [-20, 225, 0], "position": [-3.3, 0.66, -1.6] },
+                "leftitem": { "scale": 0.6 }
+            }
+        },
+        "animation.create.brass_tunnel.right_item": {
+            "loop": true,
+            "bones": {
+                "bone2":     { "scale": 1.5, "position": [0, 0, 0] },
+                "pivot2":    { "rotation": [-74, -11.5, -15], "position": [-0.45, -2.3, 0.55] },
+                "rightitem": { "scale": 0.4 }
+            }
+        },
+        "animation.create.brass_tunnel.right_hand_equipped": {
+            "loop": true,
+            "bones": {
+                "bone2":     { "scale": 1.5, "position": [0, 0, 0] },
+                "pivot2":    { "rotation": [0, 0, 0], "position": [-0.45, -2.3, 0.55] },
+                "rightitem": { "scale": 0.25, "rotation": [-90, 90, 0] }
+            }
+        },
+        "animation.create.brass_tunnel.right_block": {
+            "loop": true,
+            "bones": {
+                "pivot2":    { "rotation": [-20, 225, 0], "position": [-2.5, 0.66, -2.4] },
+                "rightitem": { "scale": 0.6 }
+            }
+        }
+    }
+}

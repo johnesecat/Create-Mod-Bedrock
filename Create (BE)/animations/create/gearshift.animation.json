@@ -1,0 +1,19 @@
+{
+  "format_version": "1.8.0",
+  "animations": {
+    "animation.create.gearshift.rotation": {
+      "loop": true,
+      "bones": {
+        "facing_rotation": {
+          "rotation": [
+            "v.rotation == 'up' ? -90 : v.rotation == 'down' ? 90 : 0",
+            "v.rotation == 'north' ? 180 : v.rotation == 'west' ? 90 : v.rotation == 'east' ? -90 : 0",
+            0
+          ]
+        },
+        "rpm": { "rotation": [0,0,"v.rpm * v.visual_sign"] },
+        "rpm2": { "rotation": [0,0,"v.rpm2 * v.visual_sign"] }
+      }
+    }
+  }
+}

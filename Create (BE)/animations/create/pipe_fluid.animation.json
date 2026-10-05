@@ -1,0 +1,17 @@
+{
+  "format_version": "1.8.0",
+  "animations": {
+    "animation.create.pipe_fluid.orient": {
+      "loop": true,
+      "bones": {
+        "fluid": {
+          "rotation": [
+            "query.property('create:pipe_axis') == 'y' ? 90 : 0",
+            "query.property('create:pipe_axis') == 'x' ? 90 : 0",
+            0
+          ]
+        }
+      }
+    }
+  }
+}

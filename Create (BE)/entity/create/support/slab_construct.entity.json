@@ -1,0 +1,22 @@
+{
+    "format_version": "1.10.0",
+    "minecraft:client_entity": {
+        "description": {
+            "identifier": "create:slab_construct",
+            "materials": { "default": "entity_alphatest" },
+            "textures": { "default": "textures/create/common/blocks/invisible_texture" },
+            "geometry": { "default": "geometry.create.mechanical_bearing_construct" },
+            "enable_attachables": true,
+            "animations": { "rotate": "animation.create.mechanical_bearing_construct.rotate" },
+            "scripts": {
+                "animate": [ "rotate" ],
+                "pre_animation": [
+                    "v.angle_x = q.property('create:rotation_x');",
+                    "v.angle_y = q.property('create:rotation_y');",
+                    "v.angle_z = q.property('create:rotation_z');"
+                ]
+            },
+            "render_controllers": [ "controller.render.default" ]
+        }
+    }
+}

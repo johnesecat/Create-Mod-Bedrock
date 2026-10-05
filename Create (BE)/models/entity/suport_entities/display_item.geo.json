@@ -1,0 +1,100 @@
+{
+    "format_version": "1.12.0",
+    "minecraft:geometry": [
+        {
+            "description": {
+                "identifier": "geometry.create.display_item",
+                "texture_width": 16,
+                "texture_height": 16,
+                "visible_bounds_width": 3,
+                "visible_bounds_height": 4,
+                "visible_bounds_offset": [0, 1, 0]
+            },
+            "bones": [
+                {
+                    "name": "right_world_offset",
+                    "pivot": [0, 0, 0]
+                },
+                {
+                    "name": "right_entity",
+                    "parent": "right_world_offset",
+                    "pivot": [0, 0, 0]
+                },
+                {
+                    "name": "right_world_rot",
+                    "parent": "right_entity",
+                    "pivot": [0, 0, 0]
+                },
+                {
+                    "name": "right_y_world",
+                    "parent": "right_world_rot",
+                    "pivot": [0, 0, 0]
+                },
+                {
+                    "name": "right_adjust_xz",
+                    "parent": "right_y_world",
+                    "pivot": [0, 0, 0]
+                },
+                {
+                    "name": "right_adjust_y",
+                    "parent": "right_adjust_xz",
+                    "pivot": [0, 0, 0]
+                },
+                {
+                    "name": "right_pivot_minus",
+                    "parent": "right_adjust_y",
+                    "pivot": [0, 0, 0]
+                },
+                {
+                    "name": "rightitem",
+                    "parent": "right_pivot_minus",
+                    "pivot": [0, 3, 0]
+                },
+                {
+                    "name": "left_world_offset",
+                    "pivot": [0, 0, 0]
+                },
+                {
+                    "name": "left_entity",
+                    "parent": "left_world_offset",
+                    "pivot": [0, 0, 0]
+                },
+                {
+                    "name": "left_world_rot",
+                    "parent": "left_entity",
+                    "pivot": [0, 0, 0]
+                },
+                {
+                    "name": "left_y_world",
+                    "parent": "left_world_rot",
+                    "pivot": [0, 0, 0]
+                },
+                {
+                    "name": "left_adjust_xz",
+                    "parent": "left_y_world",
+                    "pivot": [0, 0, 0]
+                },
+                {
+                    "name": "left_adjust_y",
+                    "parent": "left_adjust_xz",
+                    "pivot": [0, 0, 0]
+                },
+                {
+                    "name": "left_pivot_minus",
+                    "parent": "left_adjust_y",
+                    "pivot": [0, 0, 0]
+                },
+                {
+                    "name": "leftArm",
+                    "parent": "left_pivot_minus",
+                    "pivot": [0, 3, 0]
+                },
+                {
+                    "name": "leftItem",
+                    "parent": "leftArm",
+                    "pivot": [0, 3, 0]
+                }
+            ]
+        }
+    ]
+}

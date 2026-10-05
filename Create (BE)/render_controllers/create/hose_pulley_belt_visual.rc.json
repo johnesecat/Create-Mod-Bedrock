@@ -1,0 +1,14 @@
+{
+  "format_version": "1.8.0",
+  "render_controllers": {
+    "controller.render.create.hose_pulley_belt_visual": {
+      "geometry": "Geometry.default",
+      "materials": [{ "*": "Material.default" }],
+      "textures": ["Texture.default"],
+      "uv_anim": {
+        "offset": [0, "v.conveyor_rpm / 360"],
+        "scale": [1, 1]
+      }
+    }
+  }
+}

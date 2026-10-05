@@ -1,0 +1,32 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "create:fluid.item_drain",
+      "materials": {
+        "default": "create_entity_block"
+      },
+      "textures": {
+        "lava": "textures/create/common/fluid/lava",
+        "water": "textures/create/common/fluid/water",
+        "honey": "textures/create/common/fluid/honey_spout",
+        "chocolate": "textures/create/common/fluid/chocolate_spout",
+        "milk": "textures/create/common/fluid/milk_spout"
+      },
+      "geometry": {
+        "default": "geometry.fluid.item_drain"
+      },
+      "render_controllers": [
+        "controller.render.create.fluid_spout"
+      ],
+      "animations": {
+        "flow": "animation.fluid.item_drain.flow"
+      },
+      "scripts": {
+        "animate": [
+          "flow"
+        ]
+      }
+    }
+  }
+}

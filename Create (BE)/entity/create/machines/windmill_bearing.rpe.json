@@ -1,0 +1,34 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "create:windmill_bearing_entity",
+      "materials": {
+        "default": "create_entity_block"
+      },
+      "textures": {
+        "default": "textures/create/common/blocks/windmill_bearing"
+      },
+      "geometry": {
+        "default": "geometry.windmill_bearing_rotation"
+      },
+      "animations": {
+        "rotation": "animation.create.rpm.rotation"
+      },
+      "scripts": {
+        "animate": [
+          "rotation"
+        ],
+        "pre_animation": [
+          "v.rotation = q.property('create:cardinal_rotation');",
+          "v.visual_sign = (v.rotation == 'south' || v.rotation == 'east') ? -1 : 1;",
+          "v.rpm = q.property('create:rotation_y');",
+          "v.rpm2 = 0;"
+        ]
+      },
+      "render_controllers": [
+        "controller.render.default"
+      ]
+    }
+  }
+}

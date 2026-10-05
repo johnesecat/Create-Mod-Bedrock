@@ -1,0 +1,27 @@
+{
+  "format_version": "1.8.0",
+  "animations": {
+    "animation.create.blaze_burner.look": {
+      "loop": true,
+      "bones": {
+        "bone": {
+          "position": [
+            0,
+            "math.sin(q.life_time * (q.property('create:active') ? 210.0 : 95.0)) * (q.property('create:active') ? 0.32 : 0.14)",
+            0
+          ],
+          "rotation": [
+            "math.sin(q.life_time * 72.0) * (q.property('create:active') ? 2.2 : 0.8)",
+            "v.blaze_rotation_y",
+            "math.cos(q.life_time * 64.0) * (q.property('create:active') ? 2.0 : 0.7)"
+          ],
+          "scale": [
+            "1.0 + math.sin(q.life_time * 180.0) * (q.property('create:active') ? 0.018 : 0.006)",
+            "1.0 + math.sin(q.life_time * 180.0) * (q.property('create:active') ? 0.026 : 0.008)",
+            "1.0 + math.sin(q.life_time * 180.0) * (q.property('create:active') ? 0.018 : 0.006)"
+          ]
+        }
+      }
+    }
+  }
+}

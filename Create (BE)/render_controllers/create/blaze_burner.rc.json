@@ -1,0 +1,20 @@
+{
+  "format_version": "1.8.0",
+  "render_controllers": {
+    "controller.render.create.blaze_burner": {
+      "arrays": {
+        "geometries": {
+          "Array.geos": ["Geometry.inert", "Geometry.active", "Geometry.active"]
+        },
+        "textures": {
+          "Array.textures": ["Texture.inert", "Texture.active", "Texture.super"]
+        }
+      },
+      "geometry": "Array.geos[q.property('create:active') ? (q.property('create:superheated') ? 2 : 1) : 0]",
+      "materials": [
+        { "*": "Material.default" }
+      ],
+      "textures": ["Array.textures[q.property('create:active') ? (q.property('create:superheated') ? 2 : 1) : 0]"]
+    }
+  }
+}

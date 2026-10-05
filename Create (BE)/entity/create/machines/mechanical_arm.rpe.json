@@ -1,0 +1,67 @@
+{
+    "format_version": "1.10.0",
+    "minecraft:client_entity": {
+        "description": {
+            "identifier": "create:mechanical_arm_entity",
+            "materials": {
+                "default": "create_entity_block"
+            },
+            "textures": {
+                "default": "textures/create/common/blocks/mechanical_arm"
+            },
+            "geometry": {
+                "default": "geometry.create.mechanical_arm_entity"
+            },
+            "animations": {
+                "rotation": "animation.create.rpm.rotation",
+                "offset":   "animation.create.rpm.offsets",
+                "rot_0":    "animation.create.mechanical_arm.rot_0",
+                "rot_1":    "animation.create.mechanical_arm.rot_1",
+                "arm_mov":  "controller.animation.create.mechanical_arm_mov",
+                "claw_item":    "animation.create.mechanical_arm.claw_item",
+                "claw_hand_equipped": "animation.create.mechanical_arm.claw_hand_equipped",
+                "claw_block":   "animation.create.mechanical_arm.claw_block",
+                "filter_item":  "animation.create.mechanical_arm.filter_item",
+                "filter_block": "animation.create.mechanical_arm.filter_block",
+                "filter_hand_equipped": "animation.create.mechanical_arm.filter_hand_equipped"
+            },
+            "scripts": {
+                "initialize": [
+                    "v.base_init = -q.property('create:arm_1');",
+                    "v.shoulder_init = 90 - q.property('create:arm_2');",
+                    "v.elbow_init = 90 - q.property('create:arm_3');"
+                ],
+                "animate": [
+                    "rotation", "offset", "arm_mov",
+                    { "claw_item":    "q.property('create:type_claw') == 'item'" },
+                    { "claw_hand_equipped": "q.property('create:type_claw') == 'hand_equipped'" },
+                    { "claw_block":   "q.property('create:type_claw') == 'block'" },
+                    { "filter_item":  "q.property('create:type_filter') == 'item'" },
+                    { "filter_block": "q.property('create:type_filter') == 'block'" },
+                    { "filter_hand_equipped": "q.property('create:type_filter') == 'hand_equipped'" }
+                ],
+                "pre_animation": [
+                    // As parada do RPM
+                    "v.rotation = q.property('create:cardinal_rotation');",
+                    "v.offset_sign = 1;",
+
+                    "v.visual_sign = 1;",
+                    "v.rpm = ((q.frame_alpha + q.time_stamp) / 3.33) * -q.property('create:rpm');",
+                    "v.rpm2 = 0;",
+
+                    // As parada q ja tinha
+                    "v.base = -q.property('create:arm_1');",
+                    "v.shoulder = 90 - q.property('create:arm_2');",
+                    "v.elbow = 90 - q.property('create:arm_3');",
+
+                    "v.base_new = -q.property('create:arm_1_new');",
+                    "v.shoulder_new = 90 - q.property('create:arm_2_new');",
+                    "v.elbow_new = 90 - q.property('create:arm_3_new');"
+                ]
+            },
+            "render_controllers": [
+                "controller.render.default"
+            ]
+        }
+    }
+}

@@ -1,0 +1,37 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "create:blaze_inert",
+      "materials": {
+        "default": "entity_alphatest"
+      },
+      "textures": {
+        "inert": "textures/create/common/blocks/blaze_inert",
+        "active": "textures/create/common/blocks/blaze_active",
+        "super": "textures/create/common/blocks/blaze_super"
+      },
+      "geometry": {
+        "inert": "geometry.blaze_inert",
+        "active": "geometry.blaze_active"
+      },
+      "animations": {
+        "look": "animation.create.blaze_burner.look"
+      },
+      "scripts": {
+        "animate": ["look"],
+        "initialize": [
+          "v.blaze_smoothed_y = q.property('create:rotation_y');"
+        ],
+        "pre_animation": [
+          "v.blaze_target_y = q.property('create:rotation_y');",
+          "v.blaze_delta_y = v.blaze_target_y - v.blaze_smoothed_y;",
+          "v.blaze_delta_y = v.blaze_delta_y - 360.0 * math.floor((v.blaze_delta_y + 180.0) / 360.0);",
+          "v.blaze_smoothed_y = v.blaze_smoothed_y + v.blaze_delta_y * 0.10;",
+          "v.blaze_rotation_y = v.blaze_smoothed_y;"
+        ]
+      },
+      "render_controllers": ["controller.render.create.blaze_burner"]
+    }
+  }
+}

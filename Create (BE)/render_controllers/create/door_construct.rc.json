@@ -1,0 +1,17 @@
+{
+  "format_version": "1.8.0",
+  "render_controllers": {
+    "controller.render.create.door_construct": {
+      "arrays": {
+        "textures": {
+          "Array.lower": ["Texture.oak_lower", "Texture.spruce_lower", "Texture.birch_lower", "Texture.jungle_lower", "Texture.acacia_lower", "Texture.dark_oak_lower", "Texture.mangrove_lower", "Texture.cherry_lower", "Texture.bamboo_lower", "Texture.crimson_lower", "Texture.warped_lower", "Texture.iron_lower", "Texture.copper_lower", "Texture.exposed_copper_lower", "Texture.weathered_copper_lower", "Texture.oxidized_copper_lower"],
+          "Array.upper": ["Texture.oak_upper", "Texture.spruce_upper", "Texture.birch_upper", "Texture.jungle_upper", "Texture.acacia_upper", "Texture.dark_oak_upper", "Texture.mangrove_upper", "Texture.cherry_upper", "Texture.bamboo_upper", "Texture.crimson_upper", "Texture.warped_upper", "Texture.iron_upper", "Texture.copper_upper", "Texture.exposed_copper_upper", "Texture.weathered_copper_upper", "Texture.oxidized_copper_upper"]
+        }
+      },
+      "geometry": "q.property('create:door_hinge_right') ? Geometry.right : Geometry.left",
+      "materials": [{ "*": "Material.default" }],
+      "textures": ["q.property('create:door_upper') ? Array.upper[q.property('create:door_type')] : Array.lower[q.property('create:door_type')]"],
+      "part_visibility": [{ "*": "q.property('create:door_ready')" }]
+    }
+  }
+}

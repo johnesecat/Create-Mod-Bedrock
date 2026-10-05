@@ -1,0 +1,123 @@
+{
+	"format_version": "1.8.0",
+	"animations": {
+		"animation.create.rpm.rotation": {
+			"loop": true,
+			"bones": {
+				"rpm": {
+					"rotation": [0, 0, "v.rpm * v.visual_sign"]
+				},
+				"rpm2": {
+					"rotation": [0, 0, "v.rpm2 * v.visual_sign"]
+				},
+				"rpm_horizontal": {
+					"rotation": ["-v.rpm * v.visual_sign", 0, 0]
+				},
+				"rpm_vertical": {
+					"rotation": [0, "v.rpm * v.visual_sign", 0]
+				},
+				"large_cogwheel": {
+					"rotation": [0, 0, "v.rpm * v.visual_sign"]
+				},
+				"shaft_rotation": {
+					"rotation": ["(v.rotation == 'up' || v.rotation == 'down') ? -90 : 0", "(v.rotation == 'east' || v.rotation == 'west') ? 90 : 180", 0],
+					"position": [0, -8.125, 0]
+				},
+				"shaft_horizontal_rotation": {
+					"rotation": [0, "(v.rotation == 'east' || v.rotation == 'west') ? -90 : 180", 0],
+					"position": [0, -8.125, 0]
+				},
+				"shaft_vertical_rotation": {
+					"rotation": [0, 0, 0],
+					"position": [0, -8.125, 0]
+				},
+				"facing_rotation": {
+					"rotation": [
+						"v.rotation == 'up' ? -90 : v.rotation == 'down' ? 90 : 0",
+						"v.rotation == 'north' ? 180 : v.rotation == 'west' ? 90 : v.rotation == 'east' ? -90 : 0",
+						0
+					],
+					"position": [0, -8.125, 0]
+				}
+			}
+		},
+		"animation.create.rpm.offsets": {
+            "loop": true,
+            "bones": {
+                "rpm": {
+        		    "rotation": [0, 0, "(q.property('create:offset') ? 22.5 : 0) * v.offset_sign"]
+        		},
+        		"rpm2": {
+        		    "rotation": [0, 0, "(q.property('create:offset') ? 22.5 : 0) * v.offset_sign"]
+        		},
+        		"large_cogwheel": {
+        		    "rotation": [0, 0, "(q.property('create:offset') ? 11.25 : 0) * v.offset_sign"]
+        		},
+        		"rpm_horizontal": {
+        		    "rotation": ["(q.property('create:offset_horizontal') ? -22.5 : 0) * v.offset_sign", 0, 0]
+        		},
+        		"rpm_vertical": {
+        		    "rotation": [0, "q.property('create:offset_vertical') ? 22.5 : 0", 0]
+        		},
+
+				// Gearbox
+				"gearbox_north": {
+					"rotation": [0, 0, "(q.property('create:offset') ? -22.5 : 0)"]
+				},
+				"gearbox_south": {
+					"rotation": [0, 0, "(q.property('create:offset') ? -22.5 : 0)"]
+				},
+				"gearbox_east": {
+					"rotation": ["q.property('create:offset_horizontal') ? 22.5 : 0", 0, 0]
+				},
+				"gearbox_west": {
+					"rotation": ["q.property('create:offset_horizontal') ? 22.5 : 0", 0, 0]
+				},
+				"gearbox_up": {
+        		    "rotation": [0, "q.property('create:offset_vertical') ? 22.5 : 0", 0]
+        		},
+				"gearbox_down": {
+        		    "rotation": [0, "q.property('create:offset_vertical') ? 22.5 : 0", 0]
+        		}
+            }
+        },
+		"animation.create.rpm.gearbox": {
+			"loop": true,
+			"bones": {
+				"gearbox": {
+					"position": [0, -8.125, 0]
+				},
+				"vertical_gearbox": {
+					"rotation": [ 0, "(v.rotation == 'east' || v.rotation == 'west') ? -90 : 0", 0 ],
+					"position": [0, -8.125, 0]
+				},
+				"gearbox_north": {
+					"rotation": [0, 0, "v.rpm_n"]
+				},
+				"gearbox_south": {
+					"rotation": [0, 0, "v.rpm_s"]
+				},
+				"gearbox_east": {
+					"rotation": ["-v.rpm_e", 0, 0]
+				},
+				"gearbox_west": {
+					"rotation": ["-v.rpm_w", 0, 0]
+				},
+				"gearbox_up": {
+					"rotation": [0, "-v.rpm_e", 0]
+				},
+				"gearbox_down": {
+					"rotation": [0, "-v.rpm_w", 0]
+				}
+			}
+		},
+		"animation.create.rpm.conveyor": {
+			"loop": true,
+			"bones": {
+				"belt_diagonal": {
+					"rotation": [0, "v.diagonal_flip", 0]
+				}
+			}
+		}
+	}
+}

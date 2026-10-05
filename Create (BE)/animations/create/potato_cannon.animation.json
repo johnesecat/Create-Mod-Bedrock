@@ -1,0 +1,105 @@
+{
+	"format_version": "1.8.0",
+	"animations": {
+		"animation.create.potato_cannon.hold_first_person": {
+			"loop": true,
+			"bones": {
+				"rightItem": {
+					"rotation": [87.2, 60.4, -43.5],
+					"position": [-4, 1.5, -1.05],
+					"scale": 1.15
+				}
+			}
+		},
+		"animation.create.potato_cannon.hold_third_person": {
+			"loop": true,
+			"bones": {
+				"rightItem": {
+					"rotation": [90, 0, 5],
+					"position": [0, -1.5, -2],
+					"scale": 1
+				}
+			}
+		},
+		"animation.create.potato_cannon.idle": {
+			"loop": true,
+			"animation_length": 2.0,
+			"bones": {
+				"rightItem": {
+					"rotation": {
+						"0.0": [0, 0, 0],
+						"0.5": [0.6, -0.35, 0.25],
+						"1.0": [1.1, 0, 0.45],
+						"1.5": [0.5, 0.35, 0.2],
+						"2.0": [0, 0, 0]
+					},
+					"position": {
+						"0.0": [0, 0, 0],
+						"1.0": [0, 0.18, 0],
+						"2.0": [0, 0, 0]
+					}
+				}
+			}
+		},
+		"animation.create.potato_cannon.fire_first_person": {
+			"animation_length": 0.4167,
+			"bones": {
+				"rightItem": {
+					"rotation": {
+						"0.0": [0, 0, 0],
+						"0.0417": [-18, 0, 0],
+						"0.125": [5, 0, 0],
+						"0.2083": [0, 0, 0]
+					},
+					"position": {
+						"0.0": [0, 0, 0],
+						"0.0417": [-2.2, 1.1, -0.4],
+						"0.125": [0.5, -0.2, 0.1],
+						"0.2083": [0, 0, 0]
+					}
+				},
+				"accelerator": {
+					"rotation": {
+						"0.0": [0, 0, 0],
+						"0.4167": [0, 0, -360]
+					}
+				}
+			}
+		},
+		"animation.create.potato_cannon.fire_third_person": {
+			"animation_length": 0.4583,
+			"bones": {
+				"rightItem": {
+					"rotation": {
+						"0.0": [0, 0, 0],
+						"0.0417": [-12, 0, 0],
+						"0.2083": [0, 0, 0]
+					},
+					"position": {
+						"0.0": [0, 0, 0],
+						"0.0417": [0, 0.4, 0.2],
+						"0.2083": [0, 0, 0]
+					}
+				},
+				"accelerator": {
+					"rotation": {
+						"0.0": [0, 0, 0],
+						"0.4167": [0, 0, 360]
+					}
+				}
+			}
+		},
+		"animation.create.potato_cannon.idle": {
+			"loop": true,
+			"animation_length": 0.75,
+			"bones": {
+				"accelerator": {
+					"rotation": {
+						"0.0": [0, 0, 0],
+						"0.75": [0, 0, 137.5]
+					}
+				}
+			}
+		}
+	}
+}

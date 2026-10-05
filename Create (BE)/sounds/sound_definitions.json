@@ -1,0 +1,64 @@
+{
+    "format_version": "1.14.0",
+    "sound_definitions": {
+        "create:whistle": {
+            "category": "block",
+            "max_distance": 48.0,
+            "sounds": [
+                { "name": "sounds/whistle", "volume": 1.0 }
+            ]
+        },
+        "create:mechanical_press.impact": {
+            "category": "block",
+            "max_distance": 8.0,
+            "sounds": [
+                { "name": "sounds/create/common/machines/mechanical_press/impact", "volume": 1.0 }
+            ]
+        },
+        "create:mechanical_press.crushing": {
+            "category": "block",
+            "max_distance": 8.0,
+            "sounds": [
+                { "name": "sounds/create/common/machines/mechanical_press/crushing", "volume": 0.6 }
+            ]
+        },
+        "create:fwoomp": {
+            "category": "player",
+            "max_distance": 24.0,
+            "sounds": [
+                { "name": "sounds/fwoomp", "volume": 3.0 }
+            ]
+        },
+        "create:weighted_ejector": {
+            "category": "block",
+            "max_distance": 24.0,
+            "sounds": [
+                { "name": "sounds/weighted_ejector", "volume": 10.0 }
+            ]
+        },
+        "create:steam": {
+            "category": "block",
+            "max_distance": 24.0,
+            "sounds": [
+                { "name": "sounds/steam", "volume": 0.20 }
+            ]
+        },
+        "create:spout": {
+            "category": "block",
+            "max_distance": 16.0,
+            "sounds": [
+                { "name": "sounds/spout", "volume": 1.0 },
+                { "name": "sounds/spout_1", "volume": 1.0 },
+                { "name": "sounds/spout_2", "volume": 1.0 },
+                { "name": "sounds/spout_3", "volume": 1.0 }
+            ]
+        },
+        "create:desk_bell": {
+            "category": "block",
+            "max_distance": 16.0,
+            "sounds": [
+                { "name": "sounds/desk_bell", "volume": 1.0 }
+            ]
+        }
+    }
+}

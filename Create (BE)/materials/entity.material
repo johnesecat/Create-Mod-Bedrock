@@ -1,0 +1,30 @@
+{
+    "materials": {
+        "version": "1.0.0",
+        "create_entity_block:entity_alphatest": {
+            "+defines": [
+                "ATLAS_TEXTURE"
+            ]
+        },
+        "create_mechanical_belt:entity_alphatest": {
+            "+defines": [
+                "USE_UV_ANIM"
+            ],
+            "+samplerStates": [
+                {
+                    "samplerIndex": 0,
+                    "textureWrap": "Repeat"
+                }
+            ]
+        },
+        "create_additive:entity_alphablend": {
+            "-defines": [ "FANCY"],
+            "+defines": ["ALPHA_TEST", "USE_OVERLAY", "USE_UV_ANIM" ],
+            "+states": [ "Blending",  "DisableDepthWrite" ],
+            "blendSrc": "SourceAlpha", "blendDst": "One",
+            "+samplerStates": [
+                { "samplerIndex": 0, "textureWrap": "Repeat" }
+            ]
+        }
+    }
+}

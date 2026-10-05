@@ -1,0 +1,44 @@
+{
+    "format_version": "1.12.0",
+    "minecraft:client_entity": {
+        "description": {
+            "identifier": "create:hand_crank_entity",
+            "materials": {
+                "default": "entity"
+            },
+            "textures": {
+                "default": "textures/create/common/blocks/hand_crank"
+            },
+            "geometry": {
+                "default": "geometry.create.hand_crank"
+            },
+            "animations": {
+                "rotation": "animation.create.rpm.rotation",
+                "offset": "animation.create.rpm.offsets",
+                "hand_crank": "animation.create.hand_crank"
+            },
+            "scripts": {
+                "animate": [ "rotation", "offset", "hand_crank" ],
+                "initialize": [
+                    "v.is_spinning = 0;",
+                    "v.crank_spin = 0;"
+                ],
+                "pre_animation": [
+                    "v.rotation = q.property('create:cardinal_rotation');",
+                    "v.offset_sign = (v.rotation == 'down' || v.rotation == 'east' || v.rotation == 'south') ? -1 : 1;",
+                                
+                    "v.visual_sign = (v.rotation == 'down' || v.rotation == 'east' || v.rotation == 'south') ? -1 : 1;",
+                    "v.rpm = ((q.frame_alpha + q.time_stamp) / 3.33) * -q.property('create:rpm');",
+                    "v.rpm2 = 0;",
+                                
+                    "v.is_spinning = math.clamp(v.is_spinning + ((q.property('create:is_generating') && q.property('create:rpm') != 0) ? 0.025 : -0.025), 0, 1);",
+                    "v.spin_speed = v.is_spinning > 0 ? (v.is_spinning * (q.property('create:is_reverse') ? -32 : 32)) : q.property('create:rpm');",
+                    "v.crank_spin = math.mod(v.crank_spin + (q.delta_time * 7.5 * v.spin_speed * v.visual_sign * -1), 360);"
+                ]
+            },
+            "render_controllers": [
+                "controller.render.default"
+            ]
+        }
+    }
+}

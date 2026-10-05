@@ -1,0 +1,21 @@
+{
+	"format_version": "1.8.0",
+	"animations": {
+		"animation.spolt_splax.fluid": {
+			"loop": "hold_on_last_frame",
+			"animation_length": 0.625,
+			"bones": {
+				"spolt_splax": {
+					"position": [0, 0, 0],
+					"scale": {
+						"0.0": [1, 0, 1],
+						"0.3333": [1, -1.3, 1],
+						"0.4583": [0.775, -1.3, 0.725],
+						"0.5833": [0.1, -1.3, -0.1],
+						"0.625": [0, -1.3, -0.1]
+					}
+				}
+			}
+		}
+	}
+}

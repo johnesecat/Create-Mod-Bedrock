@@ -1,0 +1,13 @@
+{
+    "format_version": "1.8.0",
+    "animations": {
+        "animation.create.mechanical_press.head_movement": {
+            "loop": true,
+            "bones": {
+                "press_head": {
+                    "position": [0, "v.press_smooth", 0]
+                }
+            }
+        }
+    }
+}

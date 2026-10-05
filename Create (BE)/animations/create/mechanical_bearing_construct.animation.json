@@ -1,0 +1,131 @@
+﻿{
+    "format_version":  "1.8.0",
+    "animations":  {
+                       "animation.create.mechanical_bearing_construct.rotate":  {
+                                                                                    "loop":  true,
+                                                                                    "bones":  {
+                                                                                                  "rpm":  {
+                                                                                                              "rotation":  [
+                                                                                                                               "v.angle_x",
+                                                                                                                               "v.angle_y",
+                                                                                                                               "v.angle_z"
+                                                                                                                           ]
+                                                                                                          },
+                                                                                                  "right_world_offset":  {
+                                                                                                                             "position":  [
+                                                                                                                                              11,
+                                                                                                                                              3,
+                                                                                                                                              11
+                                                                                                                                          ],
+                                                                                                                             "scale":  2.66
+                                                                                                                         },
+                                                                                                  "right_entity":  {
+                                                                                                                       "position":  [
+                                                                                                                                        0,
+                                                                                                                                        0,
+                                                                                                                                        0
+                                                                                                                                    ]
+                                                                                                                   },
+                                                                                                  "right_world_rot":  {
+                                                                                                                          "rotation":  [
+                                                                                                                                           0,
+                                                                                                                                           0,
+                                                                                                                                           0
+                                                                                                                                       ]
+                                                                                                                      },
+                                                                                                  "right_y_world":  {
+                                                                                                                        "rotation":  [
+                                                                                                                                         0,
+                                                                                                                                         0,
+                                                                                                                                         0
+                                                                                                                                     ]
+                                                                                                                    },
+                                                                                                  "right_adjust_xz":  {
+                                                                                                                          "rotation":  [
+                                                                                                                                           "-14",
+                                                                                                                                           0,
+                                                                                                                                           "14.5"
+                                                                                                                                       ]
+                                                                                                                      },
+                                                                                                  "right_adjust_y":  {
+                                                                                                                         "rotation":  [
+                                                                                                                                          0,
+                                                                                                                                          "47.5",
+                                                                                                                                          0
+                                                                                                                                      ]
+                                                                                                                     },
+                                                                                                  "right_pivot_minus":  {
+                                                                                                                            "position":  [
+                                                                                                                                             0,
+                                                                                                                                             0,
+                                                                                                                                             0
+                                                                                                                                         ]
+                                                                                                                        }
+                                                                                              }
+                                                                                },
+                       "animation.create.windmill_sail_construct.rotate":  {
+                                                                               "loop":  true,
+                                                                               "bones":  {
+                                                                                             "rpm":  {
+                                                                                                         "rotation":  [
+                                                                                                                          "v.angle_x",
+                                                                                                                          "v.angle_y",
+                                                                                                                          "v.angle_z"
+                                                                                                                      ],
+                                                                                                         "position":  [
+                                                                                                                          0,
+                                                                                                                          -8,
+                                                                                                                          0
+                                                                                                                      ]
+                                                                                                     },
+                                                                                             "windmill_sail":  {
+                                                                                                                   "rotation":  [
+                                                                                                                                    "v.base_x",
+                                                                                                                                    "v.base_y",
+                                                                                                                                    "v.base_z"
+                                                                                                                                ]
+                                                                                                               },
+                                                                                             "canvas_transform":  {
+                                                                                                                      "rotation":  [
+                                                                                                                                       "v.base_x",
+                                                                                                                                       "v.base_y",
+                                                                                                                                       "v.base_z"
+                                                                                                                                   ]
+                                                                                                                  }
+                                                                                         }
+                                                                           }
+                       ,
+                       "animation.create.radial_chassis_construct.rotate": {
+                           "loop": true,
+                           "bones": {
+                               "rpm": {
+                                   "rotation": [ "v.angle_x", "v.angle_y", "v.angle_z" ]
+                               },
+                               "chassis": {
+                                   "rotation": [ "v.base_x", "v.base_y", "v.base_z" ]
+                               }
+                           }
+                       },
+                       "animation.create.sticker_construct.rotate": {
+                           "loop": true,
+                           "bones": {
+                               "rpm": { "rotation": [ "v.angle_x", "v.angle_y", "v.angle_z" ] },
+                               "sticker": { "rotation": [ "v.base_x", "v.base_y", "v.base_z" ] }
+                           }
+                       },
+                       "animation.create.stair_construct.rotate": {
+                           "loop": true,
+                           "bones": {
+                               "rpm": { "rotation": [ "v.angle_x", "v.angle_y", "v.angle_z" ] },
+                               "stair_flip": { "rotation": [ "v.stair_flip", 0, 0 ] },
+                               "right_world_offset": { "position": [ 11, 3, 11 ], "scale": 2.66 },
+                               "right_entity": { "position": [ 0, 0, 0 ] },
+                               "right_world_rot": { "rotation": [ 0, 0, 0 ] },
+                               "right_y_world": { "rotation": [ 0, 0, 0 ] },
+                               "right_adjust_xz": { "rotation": [ -14, 0, 14.5 ] },
+                               "right_adjust_y": { "rotation": [ 0, 47.5, 0 ] },
+                               "right_pivot_minus": { "position": [ 0, 0, 0 ] }
+                           }
+                       }
+                   }
+}

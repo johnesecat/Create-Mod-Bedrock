@@ -1,0 +1,46 @@
+{
+    "format_version": "1.10.0",
+    "minecraft:client_entity": {
+        "description": {
+            "identifier": "create:water_wheel_entity",
+            "materials": {
+                "default": "create_entity_block"
+            },
+            "textures": {
+                "oak": "textures/create/common/blocks/water_wheel",
+                "spruce": "textures/create/common/blocks/water_whel/water_wheel_spruce",
+                "birch": "textures/create/common/blocks/water_whel/water_wheel_birch",
+                "jungle": "textures/create/common/blocks/water_whel/water_wheel_jungle",
+                "acacia": "textures/create/common/blocks/water_whel/water_wheel_acacia",
+                "dark_oak": "textures/create/common/blocks/water_whel/water_wheel_dark_oak",
+                "mangrove": "textures/create/common/blocks/water_whel/water_wheel_mangrove",
+                "cherry": "textures/create/common/blocks/water_whel/water_wheel_cherry",
+                "bamboo": "textures/create/common/blocks/water_whel/water_wheel_bamboo",
+                "crimson": "textures/create/common/blocks/water_whel/water_wheel_crimson",
+                "warped": "textures/create/common/blocks/water_whel/water_wheel_warped",
+                "pale_oak": "textures/create/common/blocks/water_whel/water_wheel_pale_oak"
+            },
+            "geometry": {
+                "default": "geometry.create.water_wheel_entity"
+            },
+            "animations": {
+                "rotation": "animation.create.rpm.rotation",
+                "offset": "animation.create.rpm.offsets"
+            },
+            "scripts": {
+                "animate": [ "rotation", "offset" ],
+                "pre_animation": [
+                    "v.rotation = q.property('create:cardinal_rotation');",
+                    "v.offset_sign = 1;",
+
+                    "v.visual_sign = 1;",
+                    "v.rpm = ((q.frame_alpha + q.time_stamp) / 3.33) * -q.property('create:rpm');",
+                    "v.rpm2 = 0;"
+                ]
+            },
+            "render_controllers": [
+                "controller.render.create.water_wheel_wood"
+            ]
+        }
+    }
+}

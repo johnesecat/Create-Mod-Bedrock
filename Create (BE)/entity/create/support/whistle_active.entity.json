@@ -1,0 +1,24 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "create:whistle_active",
+      "materials": { "default": "entity_alphatest" },
+      "textures": { "default": "textures/create/common/blocks/whistle_powered" },
+      "geometry": { "default": "geometry.whistle" },
+      "animations": {
+        "active": "animation.whistle.steam.sequence",
+        "orient": "animation.whistle.orient"
+      },
+      "scripts": {
+        "animate": ["active", "orient"],
+        "pre_animation": [
+          "v.direction = q.property('create:whistle_direction');",
+          "v.base_y = v.direction == 'south' ? 180 : (v.direction == 'west' ? 90 : (v.direction == 'east' ? -90 : 0));",
+          "v.connected_above = q.property('create:whistle_connected_above');"
+        ]
+      },
+      "render_controllers": ["controller.render.create.whistle_active"]
+    }
+  }
+}

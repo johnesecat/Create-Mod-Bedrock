@@ -1,0 +1,25 @@
+{
+    "format_version": "1.10.0",
+    "minecraft:client_entity": {
+        "description": {
+            "identifier": "create:weighted_ejector_ejector",
+            "materials": { "default": "create_entity_block" },
+            "textures": { "default": "textures/create/common/blocks/weighted_ejector" },
+            "geometry": { "default": "geometry.weighted_ejector.panel" },
+            "animations": {
+                "facing": "animation.weighted_ejector.facing",
+                "rotation": "animation.create.rpm.rotation",
+                "ejector": "animation.weighted_ejector.ejector"
+            },
+            "scripts": {
+                "animate": ["facing", "rotation"],
+                "pre_animation": [
+                    "v.visual_sign = 1;",
+                    "v.rpm = ((q.frame_alpha + q.time_stamp) / 3.33) * -q.property('create:rpm');",
+                    "v.rpm2 = v.rpm;"
+                ]
+            },
+            "render_controllers": ["controller.render.create.weighted_ejector_ejector"]
+        }
+    }
+}

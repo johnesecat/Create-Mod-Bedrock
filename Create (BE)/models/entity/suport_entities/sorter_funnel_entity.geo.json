@@ -1,0 +1,88 @@
+{
+	"format_version": "1.12.0",
+	"minecraft:geometry": [
+		{
+			"description": {
+				"identifier": "geometry.create.sorter_funnel_entity",
+				"texture_width": 64,
+				"texture_height": 64,
+				"visible_bounds_width": 2,
+				"visible_bounds_height": 3.5,
+				"visible_bounds_offset": [0, 1.25, 0]
+			},
+			"bones": [
+				{
+					"name": "root",
+					"pivot": [0, -5, 0]
+				},
+				{
+					"name": "effect",
+					"parent": "root",
+					"pivot": [0, -5, 0],
+					"locators": {
+						"enchant": [0, 5, 0]
+					}
+				},
+				{
+					"name": "body",
+					"parent": "root",
+					"pivot": [0, -5, 0]
+				},
+				{
+					"name": "rightarm",
+					"parent": "body",
+					"pivot": [-10, -5, 0]
+				},
+				{
+					"name": "leftarm",
+					"parent": "body",
+					"pivot": [0, -5, 0]
+				},
+				{
+					"name": "pivot",
+					"pivot": [0, 16, 0]
+				},
+				{
+					"name": "x",
+					"parent": "pivot",
+					"pivot": [0, 0, 0]
+				},
+				{
+					"name": "y",
+					"parent": "x",
+					"pivot": [0, 0, 0]
+				},
+				{
+					"name": "z",
+					"parent": "y",
+					"pivot": [0, 0, 0]
+				},
+				{
+					"name": "leftitem",
+					"parent": "z",
+					"pivot": [0, 0, 0]
+				},
+				{
+					"name": "x2",
+					"parent": "pivot",
+					"pivot": [0, 0, 0]
+				},
+				{
+					"name": "y2",
+					"parent": "x2",
+					"pivot": [0, 0, 0]
+				},
+				{
+					"name": "z2",
+					"parent": "y2",
+					"pivot": [0, 0, 0]
+				},
+				{
+					"name": "rightitem",
+					"parent": "z2",
+					"pivot": [0, 0, 0]
+				}
+			]
+		}
+	]
+}

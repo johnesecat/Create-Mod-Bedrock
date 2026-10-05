@@ -1,0 +1,37 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "create:door_construct",
+      "materials": { "default": "entity_alphatest" },
+      "textures": {
+        "oak_lower": "textures/blocks/door_wood_lower", "oak_upper": "textures/blocks/door_wood_upper",
+        "spruce_lower": "textures/blocks/door_spruce_lower", "spruce_upper": "textures/blocks/door_spruce_upper",
+        "birch_lower": "textures/blocks/door_birch_lower", "birch_upper": "textures/blocks/door_birch_upper",
+        "jungle_lower": "textures/blocks/door_jungle_lower", "jungle_upper": "textures/blocks/door_jungle_upper",
+        "acacia_lower": "textures/blocks/door_acacia_lower", "acacia_upper": "textures/blocks/door_acacia_upper",
+        "dark_oak_lower": "textures/blocks/door_dark_oak_lower", "dark_oak_upper": "textures/blocks/door_dark_oak_upper",
+        "mangrove_lower": "textures/blocks/mangrove_door_bottom", "mangrove_upper": "textures/blocks/mangrove_door_top",
+        "cherry_lower": "textures/blocks/cherry_door_bottom", "cherry_upper": "textures/blocks/cherry_door_top",
+        "bamboo_lower": "textures/blocks/bamboo_door_bottom", "bamboo_upper": "textures/blocks/bamboo_door_top",
+        "crimson_lower": "textures/blocks/crimson_door_bottom", "crimson_upper": "textures/blocks/crimson_door_top",
+        "warped_lower": "textures/blocks/warped_door_bottom", "warped_upper": "textures/blocks/warped_door_top",
+        "iron_lower": "textures/blocks/door_iron_lower", "iron_upper": "textures/blocks/door_iron_upper",
+        "copper_lower": "textures/blocks/copper_door_bottom", "copper_upper": "textures/blocks/copper_door_top",
+        "exposed_copper_lower": "textures/blocks/exposed_copper_door_bottom", "exposed_copper_upper": "textures/blocks/exposed_copper_door_top",
+        "weathered_copper_lower": "textures/blocks/weathered_copper_door_bottom", "weathered_copper_upper": "textures/blocks/weathered_copper_door_top",
+        "oxidized_copper_lower": "textures/blocks/oxidized_copper_door_bottom", "oxidized_copper_upper": "textures/blocks/oxidized_copper_door_top"
+      },
+      "geometry": { "left": "geometry.create.door_construct.left", "right": "geometry.create.door_construct.right" },
+      "animations": { "rotate": "animation.create.mechanical_bearing_construct.rotate", "door": "animation.create.door_construct.open" },
+      "scripts": {
+        "animate": ["rotate", "door"],
+        "pre_animation": [
+          "v.angle_x = q.property('create:rotation_x');", "v.angle_y = q.property('create:rotation_y');", "v.angle_z = q.property('create:rotation_z');",
+          "v.door_open = q.property('create:door_open') ? 1 : 0;", "v.door_hinge = q.property('create:door_hinge_right') ? -1 : 1;", "v.door_direction = q.property('create:door_direction');"
+        ]
+      },
+      "render_controllers": ["controller.render.create.door_construct"]
+    }
+  }
+}

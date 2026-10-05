@@ -1,0 +1,24 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "create:andesite_door_visual_east",
+      "materials": { "default": "entity_alphatest" },
+      "textures": { "default": "textures/create/common/blocks/andesite_door" },
+      "geometry": { "default": "geometry.create.andesite_door_entity" },
+      "animations": {
+        "fixed": "animation.model.fixed_east",
+        "open": "animation.model.open", "close": "animation.model.close",
+        "open_reverse": "animation.model.open_reverse", "close_reverse": "animation.model.close_reverse"
+      },
+      "scripts": {
+        "animate": [
+          "fixed",
+          { "open": "q.property('create:opening') && !q.property('create:hinge')" }, { "close": "!q.property('create:opening') && !q.property('create:hinge')" },
+          { "open_reverse": "q.property('create:opening') && q.property('create:hinge')" }, { "close_reverse": "!q.property('create:opening') && q.property('create:hinge')" }
+        ]
+      },
+      "render_controllers": [ "controller.render.create.andesite_door_visual" ]
+    }
+  }
+}

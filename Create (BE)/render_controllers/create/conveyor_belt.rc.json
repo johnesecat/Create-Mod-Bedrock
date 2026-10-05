@@ -1,0 +1,115 @@
+{
+    "format_version": "1.8.0",
+    "render_controllers": {
+        "controller.render.create.pulley": {
+            "geometry": "Geometry.default",
+            "materials": [{ "*": "Material.pulley" }],
+            "textures": [ "Texture.pulley" ],
+            "part_visibility": [
+                { "*": false },
+                { "pulley": "q.property('create:has_pulley')" }
+            ]
+        },
+
+        "controller.render.create.belt": {
+            "arrays": {
+                "textures": {
+                    "Array.colors": [
+                        "Texture.belt_black", "Texture.belt_blue", "Texture.belt_brown", "Texture.belt_cyan",
+                        "Texture.belt_gray", "Texture.belt_green", "Texture.belt_light_blue", "Texture.belt_light_gray",
+                        "Texture.belt_lime", "Texture.belt_magenta", "Texture.belt_orange", "Texture.belt_pink",
+                        "Texture.belt_purple", "Texture.belt_red", "Texture.belt_white", "Texture.belt_yellow",
+                        "Texture.belt"
+                    ]
+                }
+            },
+            "geometry": "Geometry.default",
+            "materials": [{ "*": "Material.conveyor" }],
+            "textures": [ "Array.colors[q.property('create:belt_color_index')]" ],
+            "part_visibility": [
+                { "*": false },
+
+                { "middle": "q.property('create:slope') == 'horizontal' && q.property('create:part') == 'middle'" },
+                { "start":  "q.property('create:slope') == 'horizontal' && q.property('create:part') == 'start'" },
+                { "end":    "q.property('create:slope') == 'horizontal' && q.property('create:part') == 'end'" },
+
+                { "middle_vertical": "q.property('create:slope') == 'vertical' && q.property('create:part') == 'middle'" },
+                { "start_vertical":  "q.property('create:slope') == 'vertical' && q.property('create:part') == 'start'" },
+                { "end_vertical":    "q.property('create:slope') == 'vertical' && q.property('create:part') == 'end'" }
+            ],
+            "uv_anim": {
+                "offset": [
+                    0,
+                    "(v.conveyor_rpm / 360) * 2"
+                ],
+                "scale": [1, 1]
+            }
+        },
+
+        "controller.render.create.belt_offset": {
+            "arrays": {
+                "textures": {
+                    "Array.colors": [
+                        "Texture.belt_black", "Texture.belt_blue", "Texture.belt_brown", "Texture.belt_cyan",
+                        "Texture.belt_gray", "Texture.belt_green", "Texture.belt_light_blue", "Texture.belt_light_gray",
+                        "Texture.belt_lime", "Texture.belt_magenta", "Texture.belt_orange", "Texture.belt_pink",
+                        "Texture.belt_purple", "Texture.belt_red", "Texture.belt_white", "Texture.belt_yellow",
+                        "Texture.belt_offset"
+                    ]
+                }
+            },
+            "geometry": "Geometry.default",
+            "materials": [{ "*": "Material.conveyor" }],
+            "textures": [ "Array.colors[q.property('create:belt_color_index')]" ],
+            "part_visibility": [
+                { "*": false },
+
+                { "middle_bottom": "q.property('create:slope') == 'horizontal' && q.property('create:part') == 'middle'" },
+                { "start_bottom":  "q.property('create:slope') == 'horizontal' && q.property('create:part') == 'start'" },
+                { "end_bottom":    "q.property('create:slope') == 'horizontal' && q.property('create:part') == 'end'" },
+
+                { "middle_bottom_vertical": "q.property('create:slope') == 'vertical' && q.property('create:part') == 'middle'" },
+                { "start_bottom_vertical":  "q.property('create:slope') == 'vertical' && q.property('create:part') == 'start'" },
+                { "end_bottom_vertical":    "q.property('create:slope') == 'vertical' && q.property('create:part') == 'end'" }
+            ],
+            "uv_anim": {
+                "offset": [
+                    0,
+                    "(v.conveyor_rpm / 360) * 2"
+                ],
+                "scale": [1, 1]
+            }
+        },
+
+        "controller.render.create.belt_diagonal": {
+            "arrays": {
+                "textures": {
+                    "Array.diagonal_colors": [
+                        "Texture.diagonal_black", "Texture.diagonal_blue", "Texture.diagonal_brown", "Texture.diagonal_cyan",
+                        "Texture.diagonal_gray", "Texture.diagonal_green", "Texture.diagonal_light_blue", "Texture.diagonal_light_gray",
+                        "Texture.diagonal_lime", "Texture.diagonal_magenta", "Texture.diagonal_orange", "Texture.diagonal_pink",
+                        "Texture.diagonal_purple", "Texture.diagonal_red", "Texture.diagonal_white", "Texture.diagonal_yellow",
+                        "Texture.belt_diagonal"
+                    ]
+                }
+            },
+            "geometry": "Geometry.default",
+            "materials": [{ "*": "Material.conveyor" }],
+            "textures": [ "Array.diagonal_colors[q.property('create:belt_color_index')]" ],
+            "part_visibility": [
+                { "*": false },
+
+                { "diagonal_start":  "q.property('create:slope') == 'diagonal' && q.property('create:part') == 'start'" },
+                { "diagonal_middle": "q.property('create:slope') == 'diagonal' && q.property('create:part') == 'middle'" },
+                { "diagonal_end":    "q.property('create:slope') == 'diagonal' && q.property('create:part') == 'end'" }
+            ],
+            "uv_anim": {
+                "offset": [
+                    0,
+                    "math.mod(math.mod((-v.conveyor_rpm / 360) * 1.25, 0.375) + 0.375, 0.375)"
+                ],
+                "scale": [1, 1]
+            }
+        }
+    }
+}

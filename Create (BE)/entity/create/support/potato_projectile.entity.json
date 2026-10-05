@@ -1,0 +1,49 @@
+{
+    "format_version": "1.10.0",
+    "minecraft:client_entity": {
+        "description": {
+            "identifier": "create:potato_projectile",
+            "materials": {
+                "default": "entity_alphatest"
+            },
+            "textures": {
+                "potato": "textures/items/potato",
+                "baked_potato": "textures/items/potato_baked",
+                "apple": "textures/items/apple",
+                "golden_apple": "textures/items/apple_golden",
+                "carrot": "textures/items/carrot",
+                "golden_carrot": "textures/items/carrot_golden",
+                "beetroot": "textures/items/beetroot",
+                "sweet_berries": "textures/items/sweet_berries",
+                "glow_berries": "textures/items/glow_berries",
+                "chorus_fruit": "textures/items/chorus_fruit",
+                "melon": "textures/items/melon",
+                "pumpkin_pie": "textures/items/pumpkin_pie",
+                "cake": "textures/items/cake",
+                "cod": "textures/items/fish_raw",
+                "cooked_cod": "textures/items/cooked_fish",
+                "salmon": "textures/items/fish_salmon_raw",
+                "cooked_salmon": "textures/items/fish_salmon_cooked",
+                "tropical_fish": "textures/items/fish_clownfish_raw",
+                "pufferfish": "textures/items/fish_pufferfish_raw",
+                "rotten_flesh": "textures/items/rotten_flesh",
+                "spider_eye": "textures/items/spider_eye",
+                "poisonous_potato": "textures/items/potato_poisonous",
+                "bread": "textures/items/bread",
+                "cookie": "textures/items/cookie"
+            },
+            "geometry": {
+                "default": "geometry.create.potato_projectile"
+            },
+            "animations": {
+                "spin": "animation.create.potato_projectile.spin"
+            },
+            "scripts": {
+                "animate": ["spin"]
+            },
+            "render_controllers": [
+                "controller.render.create.potato_projectile"
+            ]
+        }
+    }
+}

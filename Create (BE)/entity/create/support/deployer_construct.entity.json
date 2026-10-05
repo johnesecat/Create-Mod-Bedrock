@@ -1,0 +1,26 @@
+{
+    "format_version": "1.10.0",
+    "minecraft:client_entity": {
+        "description": {
+            "identifier": "create:deployer_construct",
+            "materials": {
+                "default": "create_entity_block"
+            },
+            "textures": {
+                "default": "textures/create/common/blocks/deployer"
+            },
+            "geometry": {
+                "default": "geometry.create.deployer_construct"
+            },
+            "animations": {
+                "play": "animation.create.deployer_construct.play"
+            },
+            "scripts": {
+                "animate": [
+                    "play"
+                ]
+            },
+            "render_controllers": ["controller.render.default"]
+        }
+    }
+}

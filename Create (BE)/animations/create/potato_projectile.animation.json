@@ -1,0 +1,17 @@
+{
+    "format_version": "1.8.0",
+    "animations": {
+        "animation.create.potato_projectile.spin": {
+            "loop": true,
+            "bones": {
+                "projectile": {
+                    "rotation": [
+                        "q.life_time * 900.0",
+                        "q.life_time * 540.0",
+                        "q.life_time * 1080.0"
+                    ]
+                }
+            }
+        }
+    }
+}

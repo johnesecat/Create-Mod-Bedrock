@@ -1,0 +1,105 @@
+{
+  "format_version": "1.8.0",
+  "animations": {
+    "animation.create.basic_filter.constant": {
+      "loop": true,
+      "bones": {
+        "all": {
+          "rotation": [
+            0,
+            "(q.property('create:cardinal_rotation') == 'south' ? 180 : q.property('create:cardinal_rotation') == 'west' ? 270 : q.property('create:cardinal_rotation') == 'north' ? 00 : q.property('create:cardinal_rotation') == 'east' ? 90 : 0) + 90",
+            0
+          ],
+          "position":[
+            0,
+            -8,
+            0
+          ]
+        },
+        "root2":{
+          "position":[
+            0,
+            0,
+            "query.relative_block_has_any_tag(0, 0, 0, 'create:parallel') ? 3 : 0"
+          ]
+        }
+      }
+    },
+    "animation.create.basic_filter.left_item": {
+      "loop": true,
+      "bones": {
+        "bone": {
+          "scale": 1.5,
+          "position": [0, 0, 0]
+        },
+        "pivot": {
+          "rotation": [-74, -11.5, -15],
+          "position": [0.3, -2.1, 0.75]
+        },
+        "leftitem": {
+          "scale": 0.4
+        }
+      }
+    },
+    "animation.create.basic_filter.left_block": {
+      "loop": true,
+      "bones": {
+        "pivot": {
+          "rotation": [-20, 225, 0],
+          "position": [-3.3, 0.66, -1.6]
+        },
+        "leftitem": {
+          "scale": 0.6
+        }
+      }
+    },
+    "animation.create.basic_filter.left_hand_equipped": {
+      "loop": true,
+      "bones": {
+        "bone": { "scale": 1.5, "position": [0, 0, 0] },
+        "pivot": { "rotation": [0, 0, 0], "position": [0.3, -2.1, 0.75] },
+        "leftitem": { "scale": 0.25, "rotation": [-90, 90, 0] }
+      }
+    },
+
+    "animation.create.basic_filter.right_item": {
+      "loop": true,
+      "bones": {
+        "bone2": {
+          "scale": 1.5,
+          "position": [0, 0, 0]
+        },
+        "pivot2": {
+          "rotation": [-74, -11.5, -15],
+          "position": [-0.45, -2.3, 0.55]
+        },
+        "rightitem": {
+          "scale": 0.4
+        }
+      }
+    },
+    "animation.create.basic_filter.right_hand_equipped": {
+      "loop": true,
+      "bones": {
+        "bone2": { "scale": 1.5, "position": [0, 0, 0] },
+        "pivot2": { "rotation": [0, 0, 0], "position": [-0.45, -2.3, 0.55] },
+        "rightitem": { "scale": 0.25, "rotation": [-90, 90, 0] }
+      }
+    },
+    "animation.create.basic_filter.right_block": {
+      "loop": true,
+      "bones": {
+        "root2": {
+          "rotation": [0, 0, 0]
+        },
+        "pivot2": {
+          "rotation": [-20, 225, 0],
+          "position": [-2.5, 0.66, -2.4]
+        },
+        "rightitem": {
+          "scale": 0.6
+        }
+      }
+    }
+  }
+}

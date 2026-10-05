@@ -1,0 +1,7 @@
+{
+    "ui_defs": [
+        "ui/create/common_create.json",
+        "ui/create/rpm_screen.json",
+        "ui/create/funnel_screen.json"
+    ]
+}
