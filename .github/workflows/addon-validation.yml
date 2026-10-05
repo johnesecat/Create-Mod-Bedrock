@@ -8,6 +8,12 @@ on:
       - "Create (RE)/**/*.json"
       - "Create (RE)/textures/ui/crafters/**"
       - "Create (BE)/texts/*.lang"
+      - "Create (BE)/pack_icon.png"
+      - "Create (RE)/pack_icon.png"
+      - "package.json"
+      - "package-lock.json"
+      - ".gitignore"
+      - "scripts/**/*.mjs"
       - ".github/workflows/addon-validation.yml"
 
 jobs:
@@ -15,6 +21,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Install Node validation tools
+        run: npm ci --ignore-scripts --no-audit --no-fund
+      - name: Validate addon with Minecraft Creator Tools
+        run: npm run validate:bedrock
       - name: Validate strict JSON and saw texture references
         run: |
           python3 - <<'PY'

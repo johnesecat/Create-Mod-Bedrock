@@ -1,0 +1,19 @@
+{
+  "name": "create-bedrock-addon-tools",
+  "private": true,
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "fix:bedrock-icons": "node scripts/resize-pack-icons.mjs",
+    "validate:bedrock": "node scripts/validate-bedrock.mjs"
+  },
+  "devDependencies": {
+    "@minecraft/common": "^1.2.0",
+    "@minecraft/creator-tools": "0.19.0",
+    "@minecraft/server": "2.6.0",
+    "@minecraft/server-ui": "2.0.0",
+    "@minecraft/vanilla-data": ">=1.20.70",
+    "pngjs": "7.0.0"
+  }
+}

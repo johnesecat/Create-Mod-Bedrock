@@ -1,0 +1,6 @@
+node_modules/
+out/
+.mct-debug/
+*.mcaddon
+*.mcpack
+*.mcpacks
