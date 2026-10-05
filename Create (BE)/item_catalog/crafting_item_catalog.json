@@ -135,28 +135,6 @@
                     }
                 ]
             },
-            // {
-            //     "category_name": "items",
-            //     "groups": [
-            //         {
-            //             "group_identifier": {
-            //                 "icon": "create:brass_funnel",
-            //                 "name": "create:itemGroup.name.logistics"
-            //             },
-            //             "items": [
-            //                 "create:chute",
-            //                 "create:depot",
-            //                 "create:andesite_funnel",
-            //                 "create:brass_funnel",
-            //                 "create:andesite_tunnel",
-            //                 "create:brass_tunnel",
-            //                 "create:redstone_link",
-            //                 "create:content_observer",
-            //                 "create:basin"
-            //             ]
-            //         }
-            //     ]
-            // },
             {
                 "category_name": "items",
                 "groups": [

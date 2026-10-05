@@ -120,7 +120,7 @@
                 }
             },
 
-            // ── Direção canônica ────────────────────────────────────────────
+
             {
                 "condition": "q.block_state('minecraft:block_face') == 'north' || q.block_state('minecraft:block_face') == 'south'",
                 "components": {
@@ -140,7 +140,7 @@
                 }
             },
 
-            // ── Diagonal Start (normal) ──
+
             {
                 "condition": "q.block_state('create:slope') == 'diagonal' && q.block_state('create:part') == 'start' && !q.block_state('create:diagonal_flip')",
                 "components": {
@@ -158,7 +158,7 @@
                 }
             },
 
-            // ── Diagonal Start (flip) ──
+
             {
                 "condition": "q.block_state('create:slope') == 'diagonal' && q.block_state('create:part') == 'start' && q.block_state('create:diagonal_flip')",
                 "components": {
@@ -176,7 +176,7 @@
                 }
             },
 
-            // ── Diagonal End (normal) ──
+
             {
                 "condition": "q.block_state('create:slope') == 'diagonal' && q.block_state('create:part') == 'end' && !q.block_state('create:diagonal_flip')",
                 "components": {
@@ -192,7 +192,7 @@
                 }
             },
 
-            // ── Diagonal End (flip) ──
+
             {
                 "condition": "q.block_state('create:slope') == 'diagonal' && q.block_state('create:part') == 'end' && q.block_state('create:diagonal_flip')",
                 "components": {
@@ -208,7 +208,7 @@
                 }
             },
 
-            // ── Diagonal Middle (normal) ──
+
             {
                 "condition": "q.block_state('create:slope') == 'diagonal' && q.block_state('create:part') == 'middle' && !q.block_state('create:diagonal_flip')",
                 "components": {
@@ -229,7 +229,7 @@
                 }
             },
 
-            // ── Diagonal Middle (flip) ──
+
             {
                 "condition": "q.block_state('create:slope') == 'diagonal' && q.block_state('create:part') == 'middle' && q.block_state('create:diagonal_flip')",
                 "components": {

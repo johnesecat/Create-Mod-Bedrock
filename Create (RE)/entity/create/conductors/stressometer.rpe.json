@@ -30,7 +30,6 @@
                     "v.rpm = ((q.frame_alpha + q.time_stamp) / 3.33) * -q.property('create:rpm');",
                     "v.rpm2 = 0;",
 
-                    // stressometer dial
                     "v.stress = q.property('create:stress_impact');",
                     "v.dial_target = v.stress / 100 * 1.125;",
                     "v.dial_state = v.dial_state + (v.dial_target - v.dial_state) * 0.125 * q.delta_time * 20;",

@@ -30,7 +30,6 @@
                     "v.rpm = ((q.frame_alpha + q.time_stamp) / 3.33) * -q.property('create:rpm');",
                     "v.rpm2 = 0;",
                     
-                    // Speedometer dial
                     "v.abs_speed = math.abs(q.property('create:rpm'));",
                     "v.dial_target = (v.abs_speed < 1) ? 0 : (v.abs_speed < 30) ? math.lerp(0, 0.45, v.abs_speed / 30) : (v.abs_speed < 100) ? math.lerp(0.45, 0.75, (v.abs_speed - 30) / 70) : math.lerp(0.75, 1.125, (v.abs_speed - 100) / 156);",
                     "v.dial_state = v.dial_state + (v.dial_target - v.dial_state) * 0.125 * q.delta_time * 20;",

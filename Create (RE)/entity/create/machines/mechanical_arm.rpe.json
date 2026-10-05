@@ -41,7 +41,6 @@
                     { "filter_hand_equipped": "q.property('create:type_filter') == 'hand_equipped'" }
                 ],
                 "pre_animation": [
-                    // As parada do RPM
                     "v.rotation = q.property('create:cardinal_rotation');",
                     "v.offset_sign = 1;",
 
@@ -49,7 +48,6 @@
                     "v.rpm = ((q.frame_alpha + q.time_stamp) / 3.33) * -q.property('create:rpm');",
                     "v.rpm2 = 0;",
 
-                    // As parada q ja tinha
                     "v.base = -q.property('create:arm_1');",
                     "v.shoulder = 90 - q.property('create:arm_2');",
                     "v.elbow = 90 - q.property('create:arm_3');",

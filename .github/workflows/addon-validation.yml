@@ -1,0 +1,52 @@
+name: Add-on JSON and saw asset validation
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - "Create (BE)/**/*.json"
+      - "Create (RE)/**/*.json"
+      - "Create (RE)/textures/ui/crafters/**"
+      - ".github/workflows/addon-validation.yml"
+
+jobs:
+  validate-addon-assets:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Validate strict JSON and saw texture references
+        run: |
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+
+          packs = (Path("Create (BE)"), Path("Create (RE)"))
+          files = [path for pack in packs for path in pack.rglob("*.json")]
+          failures = []
+          for path in files:
+              try:
+                  json.loads(path.read_text(encoding="utf-8-sig"))
+              except (OSError, UnicodeError, json.JSONDecodeError) as error:
+                  failures.append(f"{path}: {error}")
+
+          if failures:
+              raise SystemExit("Invalid JSON:\n" + "\n".join(failures))
+
+          ui_path = Path("Create (RE)/ui/pause_screen.json")
+          ui_text = ui_path.read_text(encoding="utf-8-sig")
+          asset_refs = (
+              "textures/ui/crafters/machines/mechanical_saw",
+              "ui/crafters/misc/mechanical_saw",
+          )
+          for reference in asset_refs:
+              if reference not in ui_text:
+                  raise SystemExit(f"Missing saw UI reference: {reference}")
+              asset = Path("Create (RE)/textures") / (reference.removeprefix("textures/"))
+              if not asset.with_suffix(".png").is_file():
+                  raise SystemExit(f"Missing saw texture asset: {asset.with_suffix('.png')}")
+
+          if "nechanical_saw" in ui_text:
+              raise SystemExit("Misspelled mechanical saw reference remains")
+
+          print(f"Validated {len(files)} strict JSON files and both mechanical saw UI assets.")
+          PY

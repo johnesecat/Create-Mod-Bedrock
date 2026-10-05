@@ -395,7 +395,7 @@
         "textures": "textures/create/common/blocks/brass_tunnel_multi"
       },
 
-      // Seats
+
       "create:seat_bottom": {
         "textures": "textures/create/common/blocks/seat/bottom"
       },
@@ -496,7 +496,7 @@
         "textures": "textures/create/common/blocks/seat/top_pink"
       },
 
-      // Casings
+
       "create:creative_casing": {
         "textures": "textures/create/common/blocks/casing/creative_casing"
       },
@@ -534,7 +534,7 @@
         "textures": "textures/create/common/blocks/casing/brass_belt_casing"
       },
 
-      // Andesite Blocks
+
       "create:cut_andesite": {
         "textures": "textures/create/common/blocks/andesite/cut_andesite"
       },
@@ -557,7 +557,7 @@
         "textures": "textures/create/common/blocks/andesite/cut_andesite_cap_connected"
       },
 
-      // Calcite Blocks
+
       "create:cut_calcite": {
         "textures": "textures/create/common/blocks/calcite/cut_calcite"
       },
@@ -580,7 +580,7 @@
         "textures": "textures/create/common/blocks/calcite/cut_calcite_cap_connected"
       },
 
-      // Deepslate Blocks
+
       "create:cut_deepslate": {
         "textures": "textures/create/common/blocks/deepslate/cut_deepslate"
       },
@@ -603,7 +603,7 @@
         "textures": "textures/create/common/blocks/deepslate/cut_deepslate_cap_connected"
       },
 
-      // Diorite Blocks
+
       "create:cut_diorite": {
         "textures": "textures/create/common/blocks/diorite/cut_diorite"
       },
@@ -626,7 +626,7 @@
         "textures": "textures/create/common/blocks/diorite/cut_diorite_cap_connected"
       },
 
-      // Dripstone Blocks
+
       "create:cut_dripstone": {
         "textures": "textures/create/common/blocks/dripstone/cut_dripstone"
       },
@@ -649,7 +649,7 @@
         "textures": "textures/create/common/blocks/dripstone/cut_dripstone_cap_connected"
       },
 
-      // Granite Blocks
+
       "create:cut_granite": {
         "textures": "textures/create/common/blocks/granite/cut_granite"
       },
@@ -672,7 +672,7 @@
         "textures": "textures/create/common/blocks/granite/cut_granite_cap_connected"
       },
 
-      // Tuff Blocks
+
       "create:cut_tuff": {
         "textures": "textures/create/common/blocks/tuff/cut_tuff"
       },
@@ -927,7 +927,7 @@
       "create:copycat_cut_crimsite_bricks": { "textures": "textures/create/common/blocks/crimsite/crimsite_cut_brick" },
       "create:copycat_small_crimsite_bricks": { "textures": "textures/create/common/blocks/crimsite/crimsite_cut_small_brick" },
 
-      // Items
+
       "create:wrench": {
         "textures": "textures/create/common/items/wrench"
       }
