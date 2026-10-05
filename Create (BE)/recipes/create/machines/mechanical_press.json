@@ -1,0 +1,19 @@
+{
+    "format_version": "1.12",
+    "minecraft:recipe_shaped": {
+        "description": { "identifier": "create:mechanical_press" },
+        "tags": ["crafting_table"],
+        "pattern": [
+            "S",
+            "A",
+            "B"
+        ],
+        "key": {
+            "S": { "item": "create:shaft" },
+            "A": { "item": "create:andesite_casing" },
+            "B": { "item": "minecraft:iron_block" },
+            "I": { "item": "create:iron_sheet" }
+        },
+        "result": { "item": "create:mechanical_press", "count": 1 }
+    }
+}

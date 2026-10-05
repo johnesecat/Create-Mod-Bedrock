@@ -1,0 +1,16 @@
+{
+    "format_version": "1.12",
+    "minecraft:recipe_shaped": {
+        "description": { "identifier": "create:item_drain" },
+        "tags": ["crafting_table"],
+        "pattern": [
+            "I",
+            "C"
+        ],
+        "key": {
+            "I": { "item": "minecraft:iron_bars" },
+            "C": { "item": "create:copper_casing" }
+        },
+        "result": { "item": "create:item_drain", "count": 1 }
+    }
+}

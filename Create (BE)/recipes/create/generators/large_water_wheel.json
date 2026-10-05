@@ -1,0 +1,17 @@
+{
+    "format_version": "1.12",
+    "minecraft:recipe_shaped": {
+        "description": { "identifier": "create:large_water_wheel" },
+        "tags": ["crafting_table"],
+        "pattern": [
+            "AAA",
+            "AWA",
+            "AAA"
+        ],
+        "key": {
+            "A": { "tag": "minecraft:planks" },
+            "W": { "item": "create:water_wheel" }
+        },
+        "result": { "item": "create:large_water_wheel", "count": 1 }
+    }
+}

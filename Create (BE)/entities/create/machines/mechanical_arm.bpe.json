@@ -1,0 +1,177 @@
+{
+    "format_version": "1.21.100",
+    "minecraft:entity": {
+        "description": {
+            "identifier": "create:mechanical_arm_entity",
+            "is_spawnable": false,
+            "is_summonable": true,
+            "is_experimental": false,
+			"properties": {
+                // As parada de RPM
+                "create:rpm": { 
+                    "client_sync": true, 
+                    "type": "float", 
+                    "range": [-256.0, 256.0],
+					"default": "(0.0)"
+                },
+                "create:cardinal_rotation": { 
+                    "client_sync": true,
+                    "type": "enum", 
+                    "values": ["north", "south", "east", "west", "up", "down"], 
+                    "default": "south"
+                },
+                "create:offset": { 
+                    "client_sync": true,
+                    "type": "bool", 
+                    "default": false
+                },
+                "create:offset_horizontal": { 
+                    "client_sync": true,
+                    "type": "bool", 
+                    "default": false
+                },
+                "create:offset_vertical": { 
+                    "client_sync": true,
+                    "type": "bool", 
+                    "default": false
+                },
+                
+                // As parada q tinha antes
+                "create:speed": {
+                    "client_sync": true,
+                    "type": "int",
+                    "range": [0, 8],
+                    "default": 0
+                },
+                "create:point": {
+                    "client_sync": true,
+                    "type": "int",
+                    "range": [0, 1],
+                    "default": 0
+                },
+                "create:type_claw": {
+                    "client_sync": true,
+                    "type": "enum",
+                    "values": ["item", "block", "hand_equipped"],
+                    "default": "item"
+                },
+                "create:type_filter": {
+                    "client_sync": true,
+                    "type": "enum",
+                    "values": ["item", "block", "hand_equipped"],
+                    "default": "item"
+                },
+                "create:arm_1": {
+                    "client_sync": true,
+                    "type": "float",
+                    "range": [-720.0, 720.0],
+                    "default": "(0.0)"
+                },
+                "create:arm_1_new": {
+                    "client_sync": true,
+                    "type": "float",
+                    "range": [-720.0, 720.0],
+                    "default": "(0.0)"
+                },
+                "create:arm_2": {
+                    "client_sync": true,
+                    "type": "float",
+                    "range": [-500.0, 500.0],
+                    "default": "(130.0)"
+                },
+                "create:arm_2_new": {
+                    "client_sync": true,
+                    "type": "float",
+                    "range": [-500.0, 500.0],
+                    "default": "(130.0)"
+                },
+                "create:arm_3": {
+                    "client_sync": true,
+                    "type": "float",
+                    "range": [-500.0, 500.0],
+                    "default": "(42.5)"
+                },
+                "create:arm_3_new": {
+                    "client_sync": true,
+                    "type": "float",
+                    "range": [-500.0, 500.0],
+                    "default": "(42.5)"
+                },
+                "create:arm_4": {
+                    "client_sync": true,
+                    "type": "float",
+                    "range": [-500.0, 500.0],
+                    "default": "(0.0)"
+                },
+                "create:arm_4_new": {
+                    "client_sync": true,
+                    "type": "float",
+                    "range": [-500.0, 500.0],
+                    "default": "(0.0)"
+                }
+            }
+        },
+        "component_groups": {
+            "create:despawn_component": {
+                "minecraft:instant_despawn":{}
+            }
+        },
+        "components": {
+          "minecraft:inventory": {
+            "restrict_to_owner": true,
+            "container_type": "inventory",
+            "inventory_size": 2,
+            "can_be_siphoned_from": false
+          },
+          "minecraft:inside_block_notifier": {
+            "block_list": [
+              {
+                "block": {
+                  "name": "create:mechanical_arm"
+                },
+                "exited_block_event": {
+                  "event": "create:despawn_entity",
+                  "target": "self"
+                }
+              }
+            ]
+          },
+          "minecraft:type_family": {
+            "family": ["create", "immovable", "inanimate"]
+          },
+          "minecraft:collision_box": {
+            "width": 0.0,
+            "height": 0.0
+          },
+          "minecraft:physics": {
+            "has_collision": false,
+            "has_gravity": false
+          },
+          "minecraft:pushable": {
+            "is_pushable": false,
+            "is_pushable_by_piston": false
+          },
+          "minecraft:damage_sensor": {
+            "triggers": {
+              "cause": "all",
+              "deals_damage": "no"
+            }
+          },
+          "minecraft:health": {
+            "value": 1,
+            "max": 1,
+            "min": 1
+          },
+          "minecraft:conditional_bandwidth_optimization": {}
+        },
+        "events": {
+            "create:despawn_entity": {
+                "add":{
+                    "component_groups":[
+                        "create:despawn_component"
+                    ]
+                }
+            }
+        }
+    }
+}

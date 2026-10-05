@@ -1,0 +1,9 @@
+{
+  "format_version": "1.12",
+  "minecraft:recipe_shaped": {
+    "description": { "identifier": "create:weighted_ejector" }, "tags": ["crafting_table"],
+    "pattern": ["G", "D", "C"],
+    "key": { "G": { "item": "create:golden_sheet" }, "D": { "item": "create:depot" }, "C": { "item": "create:cogwheel" } },
+    "result": { "item": "create:weighted_ejector", "count": 1 }
+  }
+}

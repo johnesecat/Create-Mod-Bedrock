@@ -1,0 +1,17 @@
+{
+    "format_version": "1.12",
+    "minecraft:recipe_shaped": {
+        "description": { "identifier": "create:chute" },
+        "tags": ["crafting_table"],
+        "pattern": [
+            "S",
+            "I",
+            "S"
+        ],
+        "key": {
+            "S": { "item": "create:iron_sheet" },
+            "I": { "item": "minecraft:iron_ingot" }
+        },
+        "result": { "item": "create:chute", "count": 4 }
+    }
+}

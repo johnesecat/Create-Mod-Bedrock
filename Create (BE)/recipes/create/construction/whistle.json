@@ -1,0 +1,9 @@
+{
+  "format_version": "1.12",
+  "minecraft:recipe_shaped": {
+    "description": { "identifier": "create:whistle" }, "tags": ["crafting_table"],
+    "pattern": ["G", "C"],
+    "key": { "G": { "item": "create:golden_sheet" }, "C": { "item": "minecraft:copper_ingot" } },
+    "result": { "item": "create:whistle", "count": 1 }
+  }
+}

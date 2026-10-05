@@ -1,0 +1,21 @@
+{
+  "format_version": "1.26.10",
+  "minecraft:block": {
+    "description": {
+      "identifier": "create:industrial_iron_block",
+      "menu_category": { "category": "items" }
+    },
+    "components": {
+      "minecraft:geometry": "minecraft:geometry.full_block",
+      "minecraft:material_instances": {
+        "*": { "texture": "create:industrial_iron_block", "render_method": "opaque" },
+        "up": { "texture": "create:industrial_iron_block_top", "render_method": "opaque" },
+        "down": { "texture": "create:industrial_iron_block_top", "render_method": "opaque" }
+      },
+      "minecraft:redstone_conductivity": { "redstone_conductor": true },
+      "minecraft:destructible_by_mining": { "seconds_to_destroy": 5.0 },
+      "minecraft:map_color": "#696C6D",
+      "tag:minecraft:is_pickaxe_item_destructible": {}
+    }
+  }
+}

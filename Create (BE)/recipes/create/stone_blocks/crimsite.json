@@ -1,0 +1,13 @@
+{
+  "format_version": "1.12",
+  "minecraft:recipe_shapeless": {
+    "description": { "identifier": "create:crimsite" },
+    "tags": ["crafting_table"],
+    "ingredients": [
+      { "item": "minecraft:andesite" }, { "item": "minecraft:andesite" },
+      { "item": "minecraft:andesite" }, { "item": "minecraft:andesite" },
+      { "item": "minecraft:red_dye" }
+    ],
+    "result": { "item": "create:crimsite", "count": 4 }
+  }
+}

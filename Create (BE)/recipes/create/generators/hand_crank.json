@@ -1,0 +1,16 @@
+{
+    "format_version": "1.12",
+    "minecraft:recipe_shaped": {
+        "description": { "identifier": "create:hand_crank" },
+        "tags": ["crafting_table"],
+        "pattern": [
+            "PPP",
+            "  A"
+             ],
+        "key": {
+            "P": { "item": "minecraft:oak_planks" },
+            "A": { "item": "create:andesite_alloy" }
+        },
+        "result": { "item": "create:hand_crank", "count": 1 }
+    }
+}

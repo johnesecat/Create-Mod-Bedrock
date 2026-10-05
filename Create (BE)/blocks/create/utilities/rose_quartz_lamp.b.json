@@ -1,0 +1,51 @@
+{
+  "format_version": "1.26.10",
+  "minecraft:block": {
+    "description": {
+      "identifier": "create:rose_quartz_lamp",
+      "menu_category": {
+        "category": "items"
+      },
+      "states": {
+        "create:powered": [false, true]
+      }
+    },
+    "components": {
+      "create:redstone_update": {},
+      "minecraft:redstone_consumer": {
+        "min_power": 0,
+        "propogates_power": false
+      },
+      "minecraft:geometry": "minecraft:geometry.full_block",
+      "minecraft:material_instances": {
+        "*": {
+          "texture": "create:rose_quartz_lamp",
+          "render_method": "opaque"
+        }
+      },
+      "minecraft:map_color": "#9D5268",
+      "minecraft:light_dampening": 15,
+      "minecraft:destructible_by_mining": {
+        "seconds_to_destroy": 0.3
+      },
+      "minecraft:destructible_by_explosion": {
+        "explosion_resistance": 1.5
+      }
+    },
+    "permutations": [
+      {
+        "condition": "q.block_state('create:powered')",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "create:rose_quartz_lamp_powered",
+              "render_method": "opaque"
+            }
+          },
+          "minecraft:light_emission": 15,
+          "minecraft:map_color": "#FF8CBD"
+        }
+      }
+    ]
+  }
+}

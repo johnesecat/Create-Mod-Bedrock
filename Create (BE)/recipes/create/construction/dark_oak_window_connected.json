@@ -1,0 +1,14 @@
+{
+  "format_version": "1.20.10",
+  "minecraft:recipe_shaped": {
+    "description": { "identifier": "create:dark_oak_window_connected" },
+    "tags": ["crafting_table"],
+    "unlock": [{ "item": "minecraft:dark_oak_planks" }],
+    "pattern": [" W ", "WGW"],
+    "key": {
+      "W": { "item": "minecraft:dark_oak_planks" },
+      "G": { "item": "minecraft:glass" }
+    },
+    "result": { "item": "create:dark_oak_window_connected", "count": 2 }
+  }
+}

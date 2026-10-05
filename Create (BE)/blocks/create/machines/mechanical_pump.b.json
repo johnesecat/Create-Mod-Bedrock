@@ -1,0 +1,116 @@
+{
+    "format_version": "1.26.0",
+    "minecraft:block": {
+        "description": {
+            "identifier": "create:mechanical_pump",
+            "menu_category": { "category": "items" },
+            "states": {
+                "create:is_spinning": [ false, true ],
+                "create:reversed": [ false, true ]
+            },
+            "traits": {
+                "minecraft:placement_direction": {
+                    "enabled_states": [ "minecraft:facing_direction" ]
+                }
+            }
+        },
+        "components": {
+            "create:on_place": {},
+            "create:on_interact": {},
+            "create:rpm_system": {},
+            "minecraft:material_instances": {
+                "*": {
+                    "texture": "create:mechanical_pump",
+                    "render_method": "alpha_test_to_opaque",
+                    "ambient_occlusion": false
+                }
+            },
+            "minecraft:geometry": {
+                "identifier": "geometry.mechanical_pump",
+                "bone_visibility": {
+                    "rpm": false,
+                    "cog": false
+                }
+            },
+            "minecraft:item_visual": {
+                "material_instances": {
+                    "*": {
+                        "texture": "create:mechanical_pump",
+                        "render_method": "alpha_test_to_opaque",
+                        "ambient_occlusion": false
+                    }
+                },
+                "geometry": {
+                    "identifier": "geometry.mechanical_pump"
+                }
+            },
+            "minecraft:collision_box": {
+                "origin": [-8, 2, -8],
+                "size": [16, 14, 16]
+            },
+            "minecraft:selection_box": {
+                "origin": [-8, 2, -8],
+                "size": [16, 14, 16]
+            },
+            "minecraft:destructible_by_mining": {
+                "seconds_to_destroy": 7.5
+            },
+            "minecraft:destruction_particles": {
+                "texture": "create:mechanical_pump"
+            },
+            "minecraft:precipitation_interactions": { "precipitation_behavior": "obstruct_rain" },
+            "minecraft:connection_rule": { "accepts_connections_from": "none" },
+            "minecraft:light_dampening": 0,
+            "minecraft:map_color": "#6F6048",
+            "tag:minecraft:is_pickaxe_item_destructible": {}
+        },
+        "permutations": [
+            {
+                "condition": "q.block_state('create:is_spinning')",
+                "components": {
+                    "create:rpm_system": {},
+                    "create:ticking": {},
+                    "minecraft:tick": {
+                        "interval_range": [6, 10]
+                    }
+                }
+            },
+            {
+                "condition": "q.block_state('minecraft:facing_direction') == 'north'",
+                "components": {
+                    "minecraft:transformation": { "rotation": [0, 180, 0] }
+                }
+            },
+            {
+                "condition": "q.block_state('minecraft:facing_direction') == 'east'",
+                "components": {
+                    "minecraft:transformation": { "rotation": [0, 90, 0] }
+                }
+            },
+            {
+                "condition": "q.block_state('minecraft:facing_direction') == 'south'",
+                "components": {
+                    "minecraft:transformation": { "rotation": [0, 0, 0] }
+                }
+            },
+            {
+                "condition": "q.block_state('minecraft:facing_direction') == 'west'",
+                "components": {
+                    "minecraft:transformation": { "rotation": [0, -90, 0] }
+                }
+            },
+            {
+                "condition": "q.block_state('minecraft:facing_direction') == 'up'",
+                "components": {
+                    "minecraft:transformation": { "rotation": [-90, 0, 0] }
+                }
+            },
+            {
+                "condition": "q.block_state('minecraft:facing_direction') == 'down'",
+                "components": {
+                    "minecraft:transformation": { "rotation": [90, 0, 0] }
+                }
+            }
+        ]
+    }
+}

@@ -1,0 +1,65 @@
+{
+  "format_version": "1.21.100",
+  "minecraft:entity": {
+    "description": {
+      "identifier": "create:fluid_spout",
+      "is_spawnable": false,
+      "is_summonable": true,
+      "is_experimental": false,
+      "properties": {
+        "create:cardinal_rotation": {
+          "client_sync": true,
+          "type": "enum",
+          "values": ["north", "south", "east", "west", "up", "down"],
+          "default": "south"
+        },
+        "create:type": {
+          "client_sync": true,
+          "type": "enum",
+          "values": ["item", "block"],
+          "default": "item"
+        },
+        "create:fluid_type": {
+          "client_sync": true,
+          "type": "enum",
+          "values": ["lava", "water", "honey", "chocolate", "milk"],
+          "default": "lava"
+        }
+      }
+    },
+    "component_groups": {
+      "create:despawn_component": {
+        "minecraft:instant_despawn": {}
+      }
+    },
+    "components": {
+      "minecraft:inside_block_notifier": {
+        "block_list": [
+          {
+            "block": { "name": "create:spout" },
+            "exited_block_event": { "event": "create:despawn_event", "target": "self" }
+          }
+        ]
+      },
+      "minecraft:inventory": {
+        "restrict_to_owner": true,
+        "container_type": "inventory",
+        "inventory_size": 2,
+        "can_be_siphoned_from": false
+      },
+      "minecraft:equippable": {},
+      "minecraft:type_family": { "family": ["chest", "inanimate", "immovable"] },
+      "minecraft:collision_box": { "height": 0, "width": 0 },
+      "minecraft:physics": { "has_collision": false, "has_gravity": false },
+      "minecraft:pushable": { "is_pushable": false, "is_pushable_by_piston": false },
+      "minecraft:damage_sensor": { "triggers": { "cause": "all", "deals_damage": "no" } },
+      "minecraft:health": { "value": 1 },
+      "minecraft:fire_immune": {}
+    },
+    "events": {
+      "create:despawn_event": {
+        "add": { "component_groups": ["create:despawn_component"] }
+      }
+    }
+  }
+}

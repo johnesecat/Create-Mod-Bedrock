@@ -1,0 +1,11 @@
+{
+  "format_version": "1.20.10",
+  "minecraft:recipe_furnace": {
+    "description": {
+      "identifier": "crafting:zinc_ingot_from_smelting"
+    },
+    "tags": ["furnace"],
+    "input": "create:raw_zinc",
+    "output": "create:zinc_ingot"
+  }
+}

@@ -1,0 +1,71 @@
+﻿{
+    "format_version": "1.26.10",
+    "minecraft:block": {
+        "description": {
+            "identifier": "create:cut_veridium",
+            "menu_category": {
+                "category": "items"
+            }
+        },
+        "components": {
+            "minecraft:map_color": [151, 109, 77],
+            "minecraft:geometry": "minecraft:geometry.full_block",
+            "minecraft:material_instances": {
+                "*": {
+                    "texture": "create:cut_veridium",
+                    "render_method": "opaque"
+                }
+            },
+            "minecraft:redstone_conductivity": {
+                "redstone_conductor": true
+            },
+            "minecraft:destructible_by_mining": {
+                "seconds_to_destroy": 7.5,
+                "item_specific_speeds": [
+                    {
+                        "item": {
+                            "tags": "q.all_tags('minecraft:is_pickaxe', 'minecraft:wooden_tier')"
+                        },
+                        "destroy_speed": 1.15
+                    },
+                    {
+                        "item": {
+                            "tags": "q.all_tags('minecraft:is_pickaxe', 'minecraft:stone_tier')"
+                        },
+                        "destroy_speed": 0.6
+                    },
+                    {
+                        "item": {
+                            "tags": "q.all_tags('minecraft:is_pickaxe', 'minecraft:copper_tier')"
+                        },
+                        "destroy_speed": 0.5
+                    },
+                    {
+                        "item": {
+                            "tags": "q.all_tags('minecraft:is_pickaxe', 'minecraft:iron_tier')"
+                        },
+                        "destroy_speed": 0.4
+                    },
+                    {
+                        "item": {
+                            "tags": "q.all_tags('minecraft:is_pickaxe', 'minecraft:golden_tier')"
+                        },
+                        "destroy_speed": 0.2
+                    },
+                    {
+                        "item": {
+                            "tags": "q.all_tags('minecraft:is_pickaxe', 'minecraft:diamond_tier')"
+                        },
+                        "destroy_speed": 0.3
+                    },
+                    {
+                        "item": {
+                            "tags": "q.all_tags('minecraft:is_pickaxe', 'minecraft:netherite_tier')"
+                        },
+                        "destroy_speed": 0.25
+                    }
+                ]
+            }
+        }
+    }
+}

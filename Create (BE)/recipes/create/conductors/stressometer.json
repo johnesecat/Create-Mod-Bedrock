@@ -1,0 +1,11 @@
+{
+    "format_version": "1.12",
+    "minecraft:recipe_shapeless": {
+        "description": { "identifier": "create:stressometer" },
+        "tags": ["crafting_table"],
+        "ingredients": [
+            { "item": "create:speedometer" }
+        ],
+        "result": { "item": "create:stressometer", "count": 1 }
+    }
+}

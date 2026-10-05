@@ -1,0 +1,11 @@
+{
+  "format_version": "1.20.10",
+  "minecraft:recipe_shaped": {
+    "description": { "identifier": "create:ladder_andesite" },
+    "tags": ["crafting_table"],
+    "unlock": [{ "item": "create:andesite_alloy" }],
+    "pattern": ["A A", "AAA", "A A"],
+    "key": { "A": { "item": "create:andesite_alloy" } },
+    "result": { "item": "create:ladder_andesite", "count": 3 }
+  }
+}

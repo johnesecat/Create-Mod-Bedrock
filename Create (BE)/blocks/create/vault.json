@@ -1,0 +1,149 @@
+{
+	"format_version": "1.26.0",
+	"minecraft:block": {
+		"description": {
+			"identifier": "create:vault",
+			"menu_category": {
+				"category": "items"
+			},
+			"traits": {
+				"minecraft:placement_direction": {
+					"enabled_states": [
+						"minecraft:cardinal_direction"
+					],
+					"y_rotation_offset": 180
+				}
+			},
+			"states": {
+				"create:size": [
+					1,
+					2,
+					3
+				],
+				"create:section": [
+					"single",
+					"start",
+					"middle",
+					"end"
+				],
+				"create:pos_h": [
+					0,
+					1,
+					2
+				],
+				"create:pos_v": [
+					0,
+					1,
+					2
+				]
+			}
+		},
+		"components": {
+			"minecraft:destructible_by_explosion": true,
+			"minecraft:redstone_conductivity": {
+				"allows_wire_to_step_down": true,
+				"redstone_conductor": false
+			},
+			"minecraft:destructible_by_mining": {
+				"seconds_to_destroy": 0.2
+			},
+			"minecraft:light_dampening": 15,
+			"minecraft:light_emission": 0,
+			"minecraft:material_instances": {
+				"*": {
+					"texture": "vault",
+					"render_method": "alpha_test_to_opaque",
+					"ambient_occlusion": false
+				}
+			},
+			"minecraft:collision_box": {
+				"origin": [-8, 0, -8],
+				"size": [16, 16, 16]
+			},
+			"minecraft:selection_box": {
+				"origin": [-8, 0, -8],
+				"size": [16, 16, 16]
+			},
+			"minecraft:destruction_particles": {
+				"texture": "vault"
+			},
+			"minecraft:geometry": {
+				"identifier": "geometry.vault_all",
+				"bone_visibility": {
+					"small": "q.block_state('create:size') == 1 && q.block_state('create:section') == 'single'",
+					"small_face": "q.block_state('create:size') == 1 && q.block_state('create:section') == 'start'",
+					"small_middle": "q.block_state('create:size') == 1 && q.block_state('create:section') == 'middle'",
+					"small_back": "q.block_state('create:size') == 1 && q.block_state('create:section') == 'end'",
+					"2_unit": "q.block_state('create:size') == 2 && q.block_state('create:section') == 'single'",
+					"medium_unit_left_up": "q.block_state('create:size') == 2 && q.block_state('create:section') == 'single' && q.block_state('create:pos_h') == 0 && q.block_state('create:pos_v') == 1",
+					"medium_unit_left_bottom": "q.block_state('create:size') == 2 && q.block_state('create:section') == 'single' && q.block_state('create:pos_h') == 0 && q.block_state('create:pos_v') == 0",
+					"medium_unit_right_up": "q.block_state('create:size') == 2 && q.block_state('create:section') == 'single' && q.block_state('create:pos_h') == 1 && q.block_state('create:pos_v') == 1",
+					"medium_unit_right_bottom": "q.block_state('create:size') == 2 && q.block_state('create:section') == 'single' && q.block_state('create:pos_h') == 1 && q.block_state('create:pos_v') == 0",
+					"medium_face_left_up": "q.block_state('create:size') == 2 && q.block_state('create:section') == 'start' && q.block_state('create:pos_h') == 0 && q.block_state('create:pos_v') == 1",
+					"medium_face_left_bottom": "q.block_state('create:size') == 2 && q.block_state('create:section') == 'start' && q.block_state('create:pos_h') == 0 && q.block_state('create:pos_v') == 0",
+					"medium_face_right_up": "q.block_state('create:size') == 2 && q.block_state('create:section') == 'start' && q.block_state('create:pos_h') == 1 && q.block_state('create:pos_v') == 1",
+					"medium_face_right_bottom": "q.block_state('create:size') == 2 && q.block_state('create:section') == 'start' && q.block_state('create:pos_h') == 1 && q.block_state('create:pos_v') == 0",
+					"medium_middle_left_up": "q.block_state('create:size') == 2 && q.block_state('create:section') == 'middle' && q.block_state('create:pos_h') == 0 && q.block_state('create:pos_v') == 1",
+					"medium_middle_left_bottom": "q.block_state('create:size') == 2 && q.block_state('create:section') == 'middle' && q.block_state('create:pos_h') == 0 && q.block_state('create:pos_v') == 0",
+					"medium_middle_right_up": "q.block_state('create:size') == 2 && q.block_state('create:section') == 'middle' && q.block_state('create:pos_h') == 1 && q.block_state('create:pos_v') == 1",
+					"medium_middle_right_bottom": "q.block_state('create:size') == 2 && q.block_state('create:section') == 'middle' && q.block_state('create:pos_h') == 1 && q.block_state('create:pos_v') == 0",
+					"medium_back_left_up": "q.block_state('create:size') == 2 && q.block_state('create:section') == 'end' && q.block_state('create:pos_h') == 0 && q.block_state('create:pos_v') == 1",
+					"medium_back_left_bottom": "q.block_state('create:size') == 2 && q.block_state('create:section') == 'end' && q.block_state('create:pos_h') == 0 && q.block_state('create:pos_v') == 0",
+					"medium_back_right_up": "q.block_state('create:size') == 2 && q.block_state('create:section') == 'end' && q.block_state('create:pos_h') == 1 && q.block_state('create:pos_v') == 1",
+					"medium_back_right_bottom": "q.block_state('create:size') == 2 && q.block_state('create:section') == 'end' && q.block_state('create:pos_h') == 1 && q.block_state('create:pos_v') == 0",
+					"3_unit": "q.block_state('create:size') == 3 && q.block_state('create:section') == 'single'",
+					"large_unit_top_left": "q.block_state('create:size') == 3 && q.block_state('create:section') == 'single' && q.block_state('create:pos_h') == 0 && q.block_state('create:pos_v') == 2",
+					"large_unit_top_center": "q.block_state('create:size') == 3 && q.block_state('create:section') == 'single' && q.block_state('create:pos_h') == 1 && q.block_state('create:pos_v') == 2",
+					"large_unit_top_right": "q.block_state('create:size') == 3 && q.block_state('create:section') == 'single' && q.block_state('create:pos_h') == 2 && q.block_state('create:pos_v') == 2",
+					"large_unit_middle_left": "q.block_state('create:size') == 3 && q.block_state('create:section') == 'single' && q.block_state('create:pos_h') == 0 && q.block_state('create:pos_v') == 1",
+					"large_unit_middle_center": "q.block_state('create:size') == 3 && q.block_state('create:section') == 'single' && q.block_state('create:pos_h') == 1 && q.block_state('create:pos_v') == 1",
+					"large_unit_middle_right": "q.block_state('create:size') == 3 && q.block_state('create:section') == 'single' && q.block_state('create:pos_h') == 2 && q.block_state('create:pos_v') == 1",
+					"large_unit_bottom_left": "q.block_state('create:size') == 3 && q.block_state('create:section') == 'single' && q.block_state('create:pos_h') == 0 && q.block_state('create:pos_v') == 0",
+					"large_unit_bottom_center": "q.block_state('create:size') == 3 && q.block_state('create:section') == 'single' && q.block_state('create:pos_h') == 1 && q.block_state('create:pos_v') == 0",
+					"large_unit_bottom_right": "q.block_state('create:size') == 3 && q.block_state('create:section') == 'single' && q.block_state('create:pos_h') == 2 && q.block_state('create:pos_v') == 0",
+					"large_face_top_left": "q.block_state('create:size') == 3 && q.block_state('create:section') == 'start' && q.block_state('create:pos_h') == 0 && q.block_state('create:pos_v') == 2",
+					"large_face_top_center": "q.block_state('create:size') == 3 && q.block_state('create:section') == 'start' && q.block_state('create:pos_h') == 1 && q.block_state('create:pos_v') == 2",
+					"large_face_top_right": "q.block_state('create:size') == 3 && q.block_state('create:section') == 'start' && q.block_state('create:pos_h') == 2 && q.block_state('create:pos_v') == 2",
+					"large_face_middle_left": "q.block_state('create:size') == 3 && q.block_state('create:section') == 'start' && q.block_state('create:pos_h') == 0 && q.block_state('create:pos_v') == 1",
+					"large_face_middle_center": "q.block_state('create:size') == 3 && q.block_state('create:section') == 'start' && q.block_state('create:pos_h') == 1 && q.block_state('create:pos_v') == 1",
+					"large_face_middle_right": "q.block_state('create:size') == 3 && q.block_state('create:section') == 'start' && q.block_state('create:pos_h') == 2 && q.block_state('create:pos_v') == 1",
+					"large_face_bottom_left": "q.block_state('create:size') == 3 && q.block_state('create:section') == 'start' && q.block_state('create:pos_h') == 0 && q.block_state('create:pos_v') == 0",
+					"large_face_bottom_center": "q.block_state('create:size') == 3 && q.block_state('create:section') == 'start' && q.block_state('create:pos_h') == 1 && q.block_state('create:pos_v') == 0",
+					"large_face_bottom_right": "q.block_state('create:size') == 3 && q.block_state('create:section') == 'start' && q.block_state('create:pos_h') == 2 && q.block_state('create:pos_v') == 0",
+					"large_middle_top_left": "q.block_state('create:size') == 3 && q.block_state('create:section') == 'middle' && q.block_state('create:pos_h') == 0 && q.block_state('create:pos_v') == 2",
+					"large_middle_top_center": "q.block_state('create:size') == 3 && q.block_state('create:section') == 'middle' && q.block_state('create:pos_h') == 1 && q.block_state('create:pos_v') == 2",
+					"large_middle_top_right": "q.block_state('create:size') == 3 && q.block_state('create:section') == 'middle' && q.block_state('create:pos_h') == 2 && q.block_state('create:pos_v') == 2",
+					"large_middle_middle_left": "q.block_state('create:size') == 3 && q.block_state('create:section') == 'middle' && q.block_state('create:pos_h') == 0 && q.block_state('create:pos_v') == 1",
+					"large_middle_middle_center": "q.block_state('create:size') == 3 && q.block_state('create:section') == 'middle' && q.block_state('create:pos_h') == 1 && q.block_state('create:pos_v') == 1",
+					"large_middle_middle_right": "q.block_state('create:size') == 3 && q.block_state('create:section') == 'middle' && q.block_state('create:pos_h') == 2 && q.block_state('create:pos_v') == 1",
+					"large_middle_bottom_left": "q.block_state('create:size') == 3 && q.block_state('create:section') == 'middle' && q.block_state('create:pos_h') == 0 && q.block_state('create:pos_v') == 0",
+					"large_middle_bottom_center": "q.block_state('create:size') == 3 && q.block_state('create:section') == 'middle' && q.block_state('create:pos_h') == 1 && q.block_state('create:pos_v') == 0",
+					"large_middle_bottom_right": "q.block_state('create:size') == 3 && q.block_state('create:section') == 'middle' && q.block_state('create:pos_h') == 2 && q.block_state('create:pos_v') == 0",
+					"large_back_top_left": "q.block_state('create:size') == 3 && q.block_state('create:section') == 'end' && q.block_state('create:pos_h') == 0 && q.block_state('create:pos_v') == 2",
+					"large_back_top_center": "q.block_state('create:size') == 3 && q.block_state('create:section') == 'end' && q.block_state('create:pos_h') == 1 && q.block_state('create:pos_v') == 2",
+					"large_back_top_right": "q.block_state('create:size') == 3 && q.block_state('create:section') == 'end' && q.block_state('create:pos_h') == 2 && q.block_state('create:pos_v') == 2",
+					"large_back_middle_left": "q.block_state('create:size') == 3 && q.block_state('create:section') == 'end' && q.block_state('create:pos_h') == 0 && q.block_state('create:pos_v') == 1",
+					"large_back_middle_center": "q.block_state('create:size') == 3 && q.block_state('create:section') == 'end' && q.block_state('create:pos_h') == 1 && q.block_state('create:pos_v') == 1",
+					"large_back_middle_right": "q.block_state('create:size') == 3 && q.block_state('create:section') == 'end' && q.block_state('create:pos_h') == 2 && q.block_state('create:pos_v') == 1",
+					"large_back_bottom_left": "q.block_state('create:size') == 3 && q.block_state('create:section') == 'end' && q.block_state('create:pos_h') == 0 && q.block_state('create:pos_v') == 0",
+					"large_back_bottom_center": "q.block_state('create:size') == 3 && q.block_state('create:section') == 'end' && q.block_state('create:pos_h') == 1 && q.block_state('create:pos_v') == 0",
+					"large_back_bottom_right": "q.block_state('create:size') == 3 && q.block_state('create:section') == 'end' && q.block_state('create:pos_h') == 2 && q.block_state('create:pos_v') == 0"
+				}
+			}
+		},
+		"permutations": [
+			{
+				"condition": "q.block_state('minecraft:cardinal_direction') == 'east' || q.block_state('minecraft:cardinal_direction') == 'west'",
+				"components": {
+					"minecraft:transformation": {
+						"rotation": [
+							0,
+							90,
+							0
+						]
+					}
+				}
+			}
+		]
+	}
+}

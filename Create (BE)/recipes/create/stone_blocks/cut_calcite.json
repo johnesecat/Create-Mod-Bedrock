@@ -1,0 +1,1 @@
+﻿{"format_version":"1.12","minecraft:recipe_shaped":{"description":{"identifier":"create:cut_calcite"},"tags":["crafting_table"],"pattern":["AA","AA"],"key":{"A":{"item":"minecraft:calcite"}},"result":{"item":"create:cut_calcite","count":4}}}

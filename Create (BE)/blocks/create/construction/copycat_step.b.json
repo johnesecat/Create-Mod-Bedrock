@@ -1,0 +1,1725 @@
+﻿{
+    "format_version":  "1.26.0",
+    "minecraft:block":  {
+                            "description":  {
+                                                "identifier":  "create:copycat_step",
+                                                "menu_category":  {
+                                                                      "category":  "items"
+                                                                  },
+                                                "traits":  {
+                                                               "minecraft:placement_direction":  {
+                                                                                                     "enabled_states":  [
+                                                                                                                            "minecraft:cardinal_direction"
+                                                                                                                        ]
+                                                                                                 }
+                                                           },
+                                                "states":  {
+                                                               "create:copycat_group":  {
+                                                                                            "values":  {
+                                                                                                           "min":  0,
+                                                                                                           "max":  7
+                                                                                                       }
+                                                                                        },
+                                                               "create:copycat_variant":  {
+                                                                                              "values":  {
+                                                                                                             "min":  0,
+                                                                                                             "max":  15
+                                                                                                         }
+                                                                                          }
+                                                           }
+                                            },
+                            "components":  {
+                                               "create:on_interact":  {
+
+                                                                      },
+                                               "minecraft:geometry":  {
+                                                                          "identifier":  "geometry.copycat_step"
+                                                                      },
+                                               "minecraft:material_instances":  {
+                                                                                    "*":  {
+                                                                                              "texture":  "create:copycat_base",
+                                                                                              "render_method":  "blend",
+                                                                                              "ambient_occlusion":  false
+                                                                                          }
+                                                                                },
+                                               "minecraft:item_visual":  {
+                                                                             "geometry":  {
+                                                                                              "identifier":  "geometry.copycat_step"
+                                                                                          },
+                                                                             "material_instances":  {
+                                                                                                        "*":  {
+                                                                                                                  "texture":  "create:copycat_base",
+                                                                                                                  "render_method":  "blend",
+                                                                                                                  "ambient_occlusion":  false
+                                                                                                              }
+                                                                                                    }
+                                                                         },
+                                               "minecraft:collision_box":  {
+                                                                               "origin":  [
+                                                                                              -8,
+                                                                                              0,
+                                                                                              0
+                                                                                          ],
+                                                                               "size":  [
+                                                                                            16,
+                                                                                            8,
+                                                                                            8
+                                                                                        ]
+                                                                           },
+                                               "minecraft:selection_box":  {
+                                                                               "origin":  [
+                                                                                              -8,
+                                                                                              0,
+                                                                                              0
+                                                                                          ],
+                                                                               "size":  [
+                                                                                            16,
+                                                                                            8,
+                                                                                            8
+                                                                                        ]
+                                                                           },
+                                               "minecraft:destructible_by_mining":  {
+                                                                                        "seconds_to_destroy":  1.5
+                                                                                    },
+                                               "minecraft:map_color":  "#8E8170",
+                                               "minecraft:light_dampening":  0,
+                                               "tag:minecraft:is_pickaxe_item_destructible":  {
+
+                                                                                              }
+                                           },
+                            "permutations":  [
+                                                 {
+                                                     "condition":  "q.block_state(\u0027minecraft:cardinal_direction\u0027) == \u0027north\u0027",
+                                                     "components":  {
+                                                                        "minecraft:transformation":  {
+                                                                                                         "rotation":  [
+                                                                                                                          0,
+                                                                                                                          0,
+                                                                                                                          0
+                                                                                                                      ]
+                                                                                                     },
+                                                                        "minecraft:collision_box":  {
+                                                                                                        "origin":  [
+                                                                                                                       -8,
+                                                                                                                       0,
+                                                                                                                       0
+                                                                                                                   ],
+                                                                                                        "size":  [
+                                                                                                                     16,
+                                                                                                                     8,
+                                                                                                                     8
+                                                                                                                 ]
+                                                                                                    },
+                                                                        "minecraft:selection_box":  {
+                                                                                                        "origin":  [
+                                                                                                                       -8,
+                                                                                                                       0,
+                                                                                                                       0
+                                                                                                                   ],
+                                                                                                        "size":  [
+                                                                                                                     16,
+                                                                                                                     8,
+                                                                                                                     8
+                                                                                                                 ]
+                                                                                                    }
+                                                                    }
+                                                 },
+                                                 {
+                                                     "condition":  "q.block_state(\u0027minecraft:cardinal_direction\u0027) == \u0027south\u0027",
+                                                     "components":  {
+                                                                        "minecraft:transformation":  {
+                                                                                                         "rotation":  [
+                                                                                                                          0,
+                                                                                                                          180,
+                                                                                                                          0
+                                                                                                                      ]
+                                                                                                     },
+                                                                        "minecraft:collision_box":  {
+                                                                                                        "origin":  [
+                                                                                                                       -8,
+                                                                                                                       0,
+                                                                                                                       0
+                                                                                                                   ],
+                                                                                                        "size":  [
+                                                                                                                     16,
+                                                                                                                     8,
+                                                                                                                     8
+                                                                                                                 ]
+                                                                                                    },
+                                                                        "minecraft:selection_box":  {
+                                                                                                        "origin":  [
+                                                                                                                       -8,
+                                                                                                                       0,
+                                                                                                                       0
+                                                                                                                   ],
+                                                                                                        "size":  [
+                                                                                                                     16,
+                                                                                                                     8,
+                                                                                                                     8
+                                                                                                                 ]
+                                                                                                    }
+                                                                    }
+                                                 },
+                                                 {
+                                                     "condition":  "q.block_state(\u0027minecraft:cardinal_direction\u0027) == \u0027west\u0027",
+                                                     "components":  {
+                                                                        "minecraft:transformation":  {
+                                                                                                         "rotation":  [
+                                                                                                                          0,
+                                                                                                                          -90,
+                                                                                                                          0
+                                                                                                                      ]
+                                                                                                     },
+                                                                        "minecraft:collision_box":  {
+                                                                                                        "origin":  [
+                                                                                                                       -8,
+                                                                                                                       0,
+                                                                                                                       0
+                                                                                                                   ],
+                                                                                                        "size":  [
+                                                                                                                     16,
+                                                                                                                     8,
+                                                                                                                     8
+                                                                                                                 ]
+                                                                                                    },
+                                                                        "minecraft:selection_box":  {
+                                                                                                        "origin":  [
+                                                                                                                       -8,
+                                                                                                                       0,
+                                                                                                                       0
+                                                                                                                   ],
+                                                                                                        "size":  [
+                                                                                                                     16,
+                                                                                                                     8,
+                                                                                                                     8
+                                                                                                                 ]
+                                                                                                    }
+                                                                    }
+                                                 },
+                                                 {
+                                                     "condition":  "q.block_state(\u0027minecraft:cardinal_direction\u0027) == \u0027east\u0027",
+                                                     "components":  {
+                                                                        "minecraft:transformation":  {
+                                                                                                         "rotation":  [
+                                                                                                                          0,
+                                                                                                                          90,
+                                                                                                                          0
+                                                                                                                      ]
+                                                                                                     },
+                                                                        "minecraft:collision_box":  {
+                                                                                                        "origin":  [
+                                                                                                                       -8,
+                                                                                                                       0,
+                                                                                                                       0
+                                                                                                                   ],
+                                                                                                        "size":  [
+                                                                                                                     16,
+                                                                                                                     8,
+                                                                                                                     8
+                                                                                                                 ]
+                                                                                                    },
+                                                                        "minecraft:selection_box":  {
+                                                                                                        "origin":  [
+                                                                                                                       -8,
+                                                                                                                       0,
+                                                                                                                       0
+                                                                                                                   ],
+                                                                                                        "size":  [
+                                                                                                                     16,
+                                                                                                                     8,
+                                                                                                                     8
+                                                                                                                 ]
+                                                                                                    }
+                                                                    }
+                                                 },
+                                                 {
+                                                     "condition":  "q.block_state(\u0027create:copycat_group\u0027) == 0 \u0026\u0026 q.block_state(\u0027create:copycat_variant\u0027) == 1",
+                                                     "components":  {
+                                                                        "minecraft:material_instances":  {
+                                                                                                             "*":  {
+                                                                                                                       "texture":  "create:copycat_stone",
+                                                                                                                       "render_method":  "blend",
+                                                                                                                       "ambient_occlusion":  false
+                                                                                                                   }
+                                                                                                         }
+                                                                    }
+                                                 },
+                                                 {
+                                                     "condition":  "q.block_state(\u0027create:copycat_group\u0027) == 0 \u0026\u0026 q.block_state(\u0027create:copycat_variant\u0027) == 2",
+                                                     "components":  {
+                                                                        "minecraft:material_instances":  {
+                                                                                                             "*":  {
+                                                                                                                       "texture":  "create:copycat_dirt",
+                                                                                                                       "render_method":  "blend",
+                                                                                                                       "ambient_occlusion":  false
+                                                                                                                   }
+                                                                                                         }
+                                                                    }
+                                                 },
+                                                 {
+                                                     "condition":  "q.block_state(\u0027create:copycat_group\u0027) == 0 \u0026\u0026 q.block_state(\u0027create:copycat_variant\u0027) == 3",
+                                                     "components":  {
+                                                                        "minecraft:material_instances":  {
+                                                                                                             "*":  {
+                                                                                                                       "texture":  "create:copycat_grass",
+                                                                                                                       "render_method":  "blend",
+                                                                                                                       "ambient_occlusion":  false
+                                                                                                                   }
+                                                                                                         }
+                                                                    }
+                                                 },
+                                                 {
+                                                     "condition":  "q.block_state(\u0027create:copycat_group\u0027) == 0 \u0026\u0026 q.block_state(\u0027create:copycat_variant\u0027) == 4",
+                                                     "components":  {
+                                                                        "minecraft:material_instances":  {
+                                                                                                             "*":  {
+                                                                                                                       "texture":  "create:copycat_cobblestone",
+                                                                                                                       "render_method":  "blend",
+                                                                                                                       "ambient_occlusion":  false
+                                                                                                                   }
+                                                                                                         }
+                                                                    }
+                                                 },
+                                                 {
+                                                     "condition":  "q.block_state(\u0027create:copycat_group\u0027) == 0 \u0026\u0026 q.block_state(\u0027create:copycat_variant\u0027) == 5",
+                                                     "components":  {
+                                                                        "minecraft:material_instances":  {
+                                                                                                             "*":  {
+                                                                                                                       "texture":  "create:copycat_oak_planks",
+                                                                                                                       "render_method":  "blend",
+                                                                                                                       "ambient_occlusion":  false
+                                                                                                                   }
+                                                                                                         }
+                                                                    }
+                                                 },
+                                                 {
+                                                     "condition":  "q.block_state(\u0027create:copycat_group\u0027) == 0 \u0026\u0026 q.block_state(\u0027create:copycat_variant\u0027) == 6",
+                                                     "components":  {
+                                                                        "minecraft:material_instances":  {
+                                                                                                             "*":  {
+                                                                                                                       "texture":  "create:copycat_spruce_planks",
+                                                                                                                       "render_method":  "blend",
+                                                                                                                       "ambient_occlusion":  false
+                                                                                                                   }
+                                                                                                         }
+                                                                    }
+                                                 },
+                                                 {
+                                                     "condition":  "q.block_state(\u0027create:copycat_group\u0027) == 0 \u0026\u0026 q.block_state(\u0027create:copycat_variant\u0027) == 7",
+                                                     "components":  {
+                                                                        "minecraft:material_instances":  {
+                                                                                                             "*":  {
+                                                                                                                       "texture":  "create:copycat_birch_planks",
+                                                                                                                       "render_method":  "blend",
+                                                                                                                       "ambient_occlusion":  false
+                                                                                                                   }
+                                                                                                         }
+                                                                    }
+                                                 },
+                                                 {
+                                                     "condition":  "q.block_state(\u0027create:copycat_group\u0027) == 0 \u0026\u0026 q.block_state(\u0027create:copycat_variant\u0027) == 8",
+                                                     "components":  {
+                                                                        "minecraft:material_instances":  {
+                                                                                                             "*":  {
+                                                                                                                       "texture":  "create:copycat_jungle_planks",
+                                                                                                                       "render_method":  "blend",
+                                                                                                                       "ambient_occlusion":  false
+                                                                                                                   }
+                                                                                                         }
+                                                                    }
+                                                 },
+                                                 {
+                                                     "condition":  "q.block_state(\u0027create:copycat_group\u0027) == 0 \u0026\u0026 q.block_state(\u0027create:copycat_variant\u0027) == 9",
+                                                     "components":  {
+                                                                        "minecraft:material_instances":  {
+                                                                                                             "*":  {
+                                                                                                                       "texture":  "create:copycat_acacia_planks",
+                                                                                                                       "render_method":  "blend",
+                                                                                                                       "ambient_occlusion":  false
+                                                                                                                   }
+                                                                                                         }
+                                                                    }
+                                                 },
+                                                 {
+                                                     "condition":  "q.block_state(\u0027create:copycat_group\u0027) == 0 \u0026\u0026 q.block_state(\u0027create:copycat_variant\u0027) == 10",
+                                                     "components":  {
+                                                                        "minecraft:material_instances":  {
+                                                                                                             "*":  {
+                                                                                                                       "texture":  "create:copycat_dark_oak_planks",
+                                                                                                                       "render_method":  "blend",
+                                                                                                                       "ambient_occlusion":  false
+                                                                                                                   }
+                                                                                                         }
+                                                                    }
+                                                 },
+                                                 {
+                                                     "condition":  "q.block_state(\u0027create:copycat_group\u0027) == 0 \u0026\u0026 q.block_state(\u0027create:copycat_variant\u0027) == 11",
+                                                     "components":  {
+                                                                        "minecraft:material_instances":  {
+                                                                                                             "*":  {
+                                                                                                                       "texture":  "create:copycat_mangrove_planks",
+                                                                                                                       "render_method":  "blend",
+                                                                                                                       "ambient_occlusion":  false
+                                                                                                                   }
+                                                                                                         }
+                                                                    }
+                                                 },
+                                                 {
+                                                     "condition":  "q.block_state(\u0027create:copycat_group\u0027) == 0 \u0026\u0026 q.block_state(\u0027create:copycat_variant\u0027) == 12",
+                                                     "components":  {
+                                                                        "minecraft:material_instances":  {
+                                                                                                             "*":  {
+                                                                                                                       "texture":  "create:copycat_cherry_planks",
+                                                                                                                       "render_method":  "blend",
+                                                                                                                       "ambient_occlusion":  false
+                                                                                                                   }
+                                                                                                         }
+                                                                    }
+                                                 },
+                                                 {
+                                                     "condition":  "q.block_state(\u0027create:copycat_group\u0027) == 0 \u0026\u0026 q.block_state(\u0027create:copycat_variant\u0027) == 13",
+                                                     "components":  {
+                                                                        "minecraft:material_instances":  {
+                                                                                                             "*":  {
+                                                                                                                       "texture":  "create:copycat_sand",
+                                                                                                                       "render_method":  "blend",
+                                                                                                                       "ambient_occlusion":  false
+                                                                                                                   }
+                                                                                                         }
+                                                                    }
+                                                 },
+                                                 {
+                                                     "condition":  "q.block_state(\u0027create:copycat_group\u0027) == 0 \u0026\u0026 q.block_state(\u0027create:copycat_variant\u0027) == 14",
+                                                     "components":  {
+                                                                        "minecraft:material_instances":  {
+                                                                                                             "*":  {
+                                                                                                                       "texture":  "create:copycat_red_sand",
+                                                                                                                       "render_method":  "blend",
+                                                                                                                       "ambient_occlusion":  false
+                                                                                                                   }
+                                                                                                         }
+                                                                    }
+                                                 },
+                                                 {
+                                                     "condition":  "q.block_state(\u0027create:copycat_group\u0027) == 0 \u0026\u0026 q.block_state(\u0027create:copycat_variant\u0027) == 15",
+                                                     "components":  {
+                                                                        "minecraft:material_instances":  {
+                                                                                                             "*":  {
+                                                                                                                       "texture":  "create:copycat_gravel",
+                                                                                                                       "render_method":  "blend",
+                                                                                                                       "ambient_occlusion":  false
+                                                                                                                   }
+                                                                                                         }
+                                                                    }
+                                                 },
+                                                 {
+                                                     "condition":  "q.block_state(\u0027create:copycat_group\u0027) == 1 \u0026\u0026 q.block_state(\u0027create:copycat_variant\u0027) == 0",
+                                                     "components":  {
+                                                                        "minecraft:material_instances":  {
+                                                                                                             "*":  {
+                                                                                                                       "texture":  "create:copycat_granite",
+                                                                                                                       "render_method":  "blend",
+                                                                                                                       "ambient_occlusion":  false
+                                                                                                                   }
+                                                                                                         }
+                                                                    }
+                                                 },
+                                                 {
+                                                     "condition":  "q.block_state(\u0027create:copycat_group\u0027) == 1 \u0026\u0026 q.block_state(\u0027create:copycat_variant\u0027) == 1",
+                                                     "components":  {
+                                                                        "minecraft:material_instances":  {
+                                                                                                             "*":  {
+                                                                                                                       "texture":  "create:copycat_polished_granite",
+                                                                                                                       "render_method":  "blend",
+                                                                                                                       "ambient_occlusion":  false
+                                                                                                                   }
+                                                                                                         }
+                                                                    }
+                                                 },
+                                                 {
+                                                     "condition":  "q.block_state(\u0027create:copycat_group\u0027) == 1 \u0026\u0026 q.block_state(\u0027create:copycat_variant\u0027) == 2",
+                                                     "components":  {
+                                                                        "minecraft:material_instances":  {
+                                                                                                             "*":  {
+                                                                                                                       "texture":  "create:copycat_diorite",
+                                                                                                                       "render_method":  "blend",
+                                                                                                                       "ambient_occlusion":  false
+                                                                                                                   }
+                                                                                                         }
+                                                                    }
+                                                 },
+                                                 {
+                                                     "condition":  "q.block_state(\u0027create:copycat_group\u0027) == 1 \u0026\u0026 q.block_state(\u0027create:copycat_variant\u0027) == 3",
+                                                     "components":  {
+                                                                        "minecraft:material_instances":  {
+                                                                                                             "*":  {
+                                                                                                                       "texture":  "create:copycat_polished_diorite",
+                                                                                                                       "render_method":  "blend",
+                                                                                                                       "ambient_occlusion":  false
+                                                                                                                   }
+                                                                                                         }
+                                                                    }
+                                                 },
+                                                 {
+                                                     "condition":  "q.block_state(\u0027create:copycat_group\u0027) == 1 \u0026\u0026 q.block_state(\u0027create:copycat_variant\u0027) == 4",
+                                                     "components":  {
+                                                                        "minecraft:material_instances":  {
+                                                                                                             "*":  {
+                                                                                                                       "texture":  "create:copycat_andesite",
+                                                                                                                       "render_method":  "blend",
+                                                                                                                       "ambient_occlusion":  false
+                                                                                                                   }
+                                                                                                         }
+                                                                    }
+                                                 },
+                                                 {
+                                                     "condition":  "q.block_state(\u0027create:copycat_group\u0027) == 1 \u0026\u0026 q.block_state(\u0027create:copycat_variant\u0027) == 5",
+                                                     "components":  {
+                                                                        "minecraft:material_instances":  {
+                                                                                                             "*":  {
+                                                                                                                       "texture":  "create:copycat_polished_andesite",
+                                                                                                                       "render_method":  "blend",
+                                                                                                                       "ambient_occlusion":  false
+                                                                                                                   }
+                                                                                                         }
+                                                                    }
+                                                 },
+                                                 {
+                                                     "condition":  "q.block_state(\u0027create:copycat_group\u0027) == 1 \u0026\u0026 q.block_state(\u0027create:copycat_variant\u0027) == 6",
+                                                     "components":  {
+                                                                        "minecraft:material_instances":  {
+                                                                                                             "*":  {
+                                                                                                                       "texture":  "create:copycat_deepslate",
+                                                                                                                       "render_method":  "blend",
+                                                                                                                       "ambient_occlusion":  false
+                                                                                                                   }
+                                                                                                         }
+                                                                    }
+                                                 },
+                                                 {
+                                                     "condition":  "q.block_state(\u0027create:copycat_group\u0027) == 1 \u0026\u0026 q.block_state(\u0027create:copycat_variant\u0027) == 7",
+                                                     "components":  {
+                                                                        "minecraft:material_instances":  {
+                                                                                                             "*":  {
+                                                                                                                       "texture":  "create:copycat_cobbled_deepslate",
+                                                                                                                       "render_method":  "blend",
+                                                                                                                       "ambient_occlusion":  false
+                                                                                                                   }
+                                                                                                         }
+                                                                    }
+                                                 },
+                                                 {
+                                                     "condition":  "q.block_state(\u0027create:copycat_group\u0027) == 1 \u0026\u0026 q.block_state(\u0027create:copycat_variant\u0027) == 8",
+                                                     "components":  {
+                                                                        "minecraft:material_instances":  {
+                                                                                                             "*":  {
+                                                                                                                       "texture":  "create:copycat_polished_deepslate",
+                                                                                                                       "render_method":  "blend",
+                                                                                                                       "ambient_occlusion":  false
+                                                                                                                   }
+                                                                                                         }
+                                                                    }
+                                                 },
+                                                 {
+                                                     "condition":  "q.block_state(\u0027create:copycat_group\u0027) == 1 \u0026\u0026 q.block_state(\u0027create:copycat_variant\u0027) == 9",
+                                                     "components":  {
+                                                                        "minecraft:material_instances":  {
+                                                                                                             "*":  {
+                                                                                                                       "texture":  "create:copycat_deepslate_bricks",
+                                                                                                                       "render_method":  "blend",
+                                                                                                                       "ambient_occlusion":  false
+                                                                                                                   }
+                                                                                                         }
+                                                                    }
+                                                 },
+                                                 {
+                                                     "condition":  "q.block_state(\u0027create:copycat_group\u0027) == 1 \u0026\u0026 q.block_state(\u0027create:copycat_variant\u0027) == 10",
+                                                     "components":  {
+                                                                        "minecraft:material_instances":  {
+                                                                                                             "*":  {
+                                                                                                                       "texture":  "create:copycat_deepslate_tiles",
+                                                                                                                       "render_method":  "blend",
+                                                                                                                       "ambient_occlusion":  false
+                                                                                                                   }
+                                                                                                         }
+                                                                    }
+                                                 },
+                                                 {
+                                                     "condition":  "q.block_state(\u0027create:copycat_group\u0027) == 1 \u0026\u0026 q.block_state(\u0027create:copycat_variant\u0027) == 11",
+                                                     "components":  {
+                                                                        "minecraft:material_instances":  {
+                                                                                                             "*":  {
+                                                                                                                       "texture":  "create:copycat_calcite",
+                                                                                                                       "render_method":  "blend",
+                                                                                                                       "ambient_occlusion":  false
+                                                                                                                   }
+                                                                                                         }
+                                                                    }
+                                                 },
+                                                 {
+                                                     "condition":  "q.block_state(\u0027create:copycat_group\u0027) == 1 \u0026\u0026 q.block_state(\u0027create:copycat_variant\u0027) == 12",
+                                                     "components":  {
+                                                                        "minecraft:material_instances":  {
+                                                                                                             "*":  {
+                                                                                                                       "texture":  "create:copycat_tuff",
+                                                                                                                       "render_method":  "blend",
+                                                                                                                       "ambient_occlusion":  false
+                                                                                                                   }
+                                                                                                         }
+                                                                    }
+                                                 },
+                                                 {
+                                                     "condition":  "q.block_state(\u0027create:copycat_group\u0027) == 1 \u0026\u0026 q.block_state(\u0027create:copycat_variant\u0027) == 13",
+                                                     "components":  {
+                                                                        "minecraft:material_instances":  {
+                                                                                                             "*":  {
+                                                                                                                       "texture":  "create:copycat_clay",
+                                                                                                                       "render_method":  "blend",
+                                                                                                                       "ambient_occlusion":  false
+                                                                                                                   }
+                                                                                                         }
+                                                                    }
+                                                 },
+                                                 {
+                                                     "condition":  "q.block_state(\u0027create:copycat_group\u0027) == 1 \u0026\u0026 q.block_state(\u0027create:copycat_variant\u0027) == 14",
+                                                     "components":  {
+                                                                        "minecraft:material_instances":  {
+                                                                                                             "*":  {
+                                                                                                                       "texture":  "create:copycat_mud",
+                                                                                                                       "render_method":  "blend",
+                                                                                                                       "ambient_occlusion":  false
+                                                                                                                   }
+                                                                                                         }
+                                                                    }
+                                                 },
+                                                 {
+                                                     "condition":  "q.block_state(\u0027create:copycat_group\u0027) == 1 \u0026\u0026 q.block_state(\u0027create:copycat_variant\u0027) == 15",
+                                                     "components":  {
+                                                                        "minecraft:material_instances":  {
+                                                                                                             "*":  {
+                                                                                                                       "texture":  "create:copycat_packed_mud",
+                                                                                                                       "render_method":  "blend",
+                                                                                                                       "ambient_occlusion":  false
+                                                                                                                   }
+                                                                                                         }
+                                                                    }
+                                                 },
+                                                 {
+                                                     "condition":  "q.block_state(\u0027create:copycat_group\u0027) == 2 \u0026\u0026 q.block_state(\u0027create:copycat_variant\u0027) == 0",
+                                                     "components":  {
+                                                                        "minecraft:material_instances":  {
+                                                                                                             "*":  {
+                                                                                                                       "texture":  "create:copycat_mud_bricks",
+                                                                                                                       "render_method":  "blend",
+                                                                                                                       "ambient_occlusion":  false
+                                                                                                                   }
+                                                                                                         }
+                                                                    }
+                                                 },
+                                                 {
+                                                     "condition":  "q.block_state(\u0027create:copycat_group\u0027) == 2 \u0026\u0026 q.block_state(\u0027create:copycat_variant\u0027) == 1",
+                                                     "components":  {
+                                                                        "minecraft:material_instances":  {
+                                                                                                             "*":  {
+                                                                                                                       "texture":  "create:copycat_snow",
+                                                                                                                       "render_method":  "blend",
+                                                                                                                       "ambient_occlusion":  false
+                                                                                                                   }
+                                                                                                         }
+                                                                    }
+                                                 },
+                                                 {
+                                                     "condition":  "q.block_state(\u0027create:copycat_group\u0027) == 2 \u0026\u0026 q.block_state(\u0027create:copycat_variant\u0027) == 2",
+                                                     "components":  {
+                                                                        "minecraft:material_instances":  {
+                                                                                                             "*":  {
+                                                                                                                       "texture":  "create:copycat_ice",
+                                                                                                                       "render_method":  "blend",
+                                                                                                                       "ambient_occlusion":  false
+                                                                                                                   }
+                                                                                                         }
+                                                                    }
+                                                 },
+                                                 {
+                                                     "condition":  "q.block_state(\u0027create:copycat_group\u0027) == 2 \u0026\u0026 q.block_state(\u0027create:copycat_variant\u0027) == 3",
+                                                     "components":  {
+                                                                        "minecraft:material_instances":  {
+                                                                                                             "*":  {
+                                                                                                                       "texture":  "create:copycat_packed_ice",
+                                                                                                                       "render_method":  "blend",
+                                                                                                                       "ambient_occlusion":  false
+                                                                                                                   }
+                                                                                                         }
+                                                                    }
+                                                 },
+                                                 {
+                                                     "condition":  "q.block_state(\u0027create:copycat_group\u0027) == 2 \u0026\u0026 q.block_state(\u0027create:copycat_variant\u0027) == 4",
+                                                     "components":  {
+                                                                        "minecraft:material_instances":  {
+                                                                                                             "*":  {
+                                                                                                                       "texture":  "create:copycat_blue_ice",
+                                                                                                                       "render_method":  "blend",
+                                                                                                                       "ambient_occlusion":  false
+                                                                                                                   }
+                                                                                                         }
+                                                                    }
+                                                 },
+                                                 {
+                                                     "condition":  "q.block_state(\u0027create:copycat_group\u0027) == 2 \u0026\u0026 q.block_state(\u0027create:copycat_variant\u0027) == 5",
+                                                     "components":  {
+                                                                        "minecraft:material_instances":  {
+                                                                                                             "*":  {
+                                                                                                                       "texture":  "create:copycat_coal_block",
+                                                                                                                       "render_method":  "blend",
+                                                                                                                       "ambient_occlusion":  false
+                                                                                                                   }
+                                                                                                         }
+                                                                    }
+                                                 },
+                                                 {
+                                                     "condition":  "q.block_state(\u0027create:copycat_group\u0027) == 2 \u0026\u0026 q.block_state(\u0027create:copycat_variant\u0027) == 6",
+                                                     "components":  {
+                                                                        "minecraft:material_instances":  {
+                                                                                                             "*":  {
+                                                                                                                       "texture":  "create:copycat_iron_block",
+                                                                                                                       "render_method":  "blend",
+                                                                                                                       "ambient_occlusion":  false
+                                                                                                                   }
+                                                                                                         }
+                                                                    }
+                                                 },
+                                                 {
+                                                     "condition":  "q.block_state(\u0027create:copycat_group\u0027) == 2 \u0026\u0026 q.block_state(\u0027create:copycat_variant\u0027) == 7",
+                                                     "components":  {
+                                                                        "minecraft:material_instances":  {
+                                                                                                             "*":  {
+                                                                                                                       "texture":  "create:copycat_gold_block",
+                                                                                                                       "render_method":  "blend",
+                                                                                                                       "ambient_occlusion":  false
+                                                                                                                   }
+                                                                                                         }
+                                                                    }
+                                                 },
+                                                 {
+                                                     "condition":  "q.block_state(\u0027create:copycat_group\u0027) == 2 \u0026\u0026 q.block_state(\u0027create:copycat_variant\u0027) == 8",
+                                                     "components":  {
+                                                                        "minecraft:material_instances":  {
+                                                                                                             "*":  {
+                                                                                                                       "texture":  "create:copycat_diamond_block",
+                                                                                                                       "render_method":  "blend",
+                                                                                                                       "ambient_occlusion":  false
+                                                                                                                   }
+                                                                                                         }
+                                                                    }
+                                                 },
+                                                 {
+                                                     "condition":  "q.block_state(\u0027create:copycat_group\u0027) == 2 \u0026\u0026 q.block_state(\u0027create:copycat_variant\u0027) == 9",
+                                                     "components":  {
+                                                                        "minecraft:material_instances":  {
+                                                                                                             "*":  {
+                                                                                                                       "texture":  "create:copycat_emerald_block",
+                                                                                                                       "render_method":  "blend",
+                                                                                                                       "ambient_occlusion":  false
+                                                                                                                   }
+                                                                                                         }
+                                                                    }
+                                                 },
+                                                 {
+                                                     "condition":  "q.block_state(\u0027create:copycat_group\u0027) == 2 \u0026\u0026 q.block_state(\u0027create:copycat_variant\u0027) == 10",
+                                                     "components":  {
+                                                                        "minecraft:material_instances":  {
+                                                                                                             "*":  {
+                                                                                                                       "texture":  "create:copycat_lapis_block",
+                                                                                                                       "render_method":  "blend",
+                                                                                                                       "ambient_occlusion":  false
+                                                                                                                   }
+                                                                                                         }
+                                                                    }
+                                                 },
+                                                 {
+                                                     "condition":  "q.block_state(\u0027create:copycat_group\u0027) == 2 \u0026\u0026 q.block_state(\u0027create:copycat_variant\u0027) == 11",
+                                                     "components":  {
+                                                                        "minecraft:material_instances":  {
+                                                                                                             "*":  {
+                                                                                                                       "texture":  "create:copycat_redstone_block",
+                                                                                                                       "render_method":  "blend",
+                                                                                                                       "ambient_occlusion":  false
+                                                                                                                   }
+                                                                                                         }
+                                                                    }
+                                                 },
+                                                 {
+                                                     "condition":  "q.block_state(\u0027create:copycat_group\u0027) == 2 \u0026\u0026 q.block_state(\u0027create:copycat_variant\u0027) == 12",
+                                                     "components":  {
+                                                                        "minecraft:material_instances":  {
+                                                                                                             "*":  {
+                                                                                                                       "texture":  "create:copycat_raw_iron_block",
+                                                                                                                       "render_method":  "blend",
+                                                                                                                       "ambient_occlusion":  false
+                                                                                                                   }
+                                                                                                         }
+                                                                    }
+                                                 },
+                                                 {
+                                                     "condition":  "q.block_state(\u0027create:copycat_group\u0027) == 2 \u0026\u0026 q.block_state(\u0027create:copycat_variant\u0027) == 13",
+                                                     "components":  {
+                                                                        "minecraft:material_instances":  {
+                                                                                                             "*":  {
+                                                                                                                       "texture":  "create:copycat_raw_gold_block",
+                                                                                                                       "render_method":  "blend",
+                                                                                                                       "ambient_occlusion":  false
+                                                                                                                   }
+                                                                                                         }
+                                                                    }
+                                                 },
+                                                 {
+                                                     "condition":  "q.block_state(\u0027create:copycat_group\u0027) == 2 \u0026\u0026 q.block_state(\u0027create:copycat_variant\u0027) == 14",
+                                                     "components":  {
+                                                                        "minecraft:material_instances":  {
+                                                                                                             "*":  {
+                                                                                                                       "texture":  "create:copycat_raw_copper_block",
+                                                                                                                       "render_method":  "blend",
+                                                                                                                       "ambient_occlusion":  false
+                                                                                                                   }
+                                                                                                         }
+                                                                    }
+                                                 },
+                                                 {
+                                                     "condition":  "q.block_state(\u0027create:copycat_group\u0027) == 2 \u0026\u0026 q.block_state(\u0027create:copycat_variant\u0027) == 15",
+                                                     "components":  {
+                                                                        "minecraft:material_instances":  {
+                                                                                                             "*":  {
+                                                                                                                       "texture":  "create:copycat_copper_block",
+                                                                                                                       "render_method":  "blend",
+                                                                                                                       "ambient_occlusion":  false
+                                                                                                                   }
+                                                                                                         }
+                                                                    }
+                                                 },
+                                                 {
+                                                     "condition":  "q.block_state(\u0027create:copycat_group\u0027) == 3 \u0026\u0026 q.block_state(\u0027create:copycat_variant\u0027) == 0",
+                                                     "components":  {
+                                                                        "minecraft:material_instances":  {
+                                                                                                             "*":  {
+                                                                                                                       "texture":  "create:copycat_quartz_block",
+                                                                                                                       "render_method":  "blend",
+                                                                                                                       "ambient_occlusion":  false
+                                                                                                                   }
+                                                                                                         }
+                                                                    }
+                                                 },
+                                                 {
+                                                     "condition":  "q.block_state(\u0027create:copycat_group\u0027) == 3 \u0026\u0026 q.block_state(\u0027create:copycat_variant\u0027) == 1",
+                                                     "components":  {
+                                                                        "minecraft:material_instances":  {
+                                                                                                             "*":  {
+                                                                                                                       "texture":  "create:copycat_smooth_quartz",
+                                                                                                                       "render_method":  "blend",
+                                                                                                                       "ambient_occlusion":  false
+                                                                                                                   }
+                                                                                                         }
+                                                                    }
+                                                 },
+                                                 {
+                                                     "condition":  "q.block_state(\u0027create:copycat_group\u0027) == 3 \u0026\u0026 q.block_state(\u0027create:copycat_variant\u0027) == 2",
+                                                     "components":  {
+                                                                        "minecraft:material_instances":  {
+                                                                                                             "*":  {
+                                                                                                                       "texture":  "create:copycat_quartz_bricks",
+                                                                                                                       "render_method":  "blend",
+                                                                                                                       "ambient_occlusion":  false
+                                                                                                                   }
+                                                                                                         }
+                                                                    }
+                                                 },
+                                                 {
+                                                     "condition":  "q.block_state(\u0027create:copycat_group\u0027) == 3 \u0026\u0026 q.block_state(\u0027create:copycat_variant\u0027) == 3",
+                                                     "components":  {
+                                                                        "minecraft:material_instances":  {
+                                                                                                             "*":  {
+                                                                                                                       "texture":  "create:copycat_blackstone",
+                                                                                                                       "render_method":  "blend",
+                                                                                                                       "ambient_occlusion":  false
+                                                                                                                   }
+                                                                                                         }
+                                                                    }
+                                                 },
+                                                 {
+                                                     "condition":  "q.block_state(\u0027create:copycat_group\u0027) == 3 \u0026\u0026 q.block_state(\u0027create:copycat_variant\u0027) == 4",
+                                                     "components":  {
+                                                                        "minecraft:material_instances":  {
+                                                                                                             "*":  {
+                                                                                                                       "texture":  "create:copycat_polished_blackstone",
+                                                                                                                       "render_method":  "blend",
+                                                                                                                       "ambient_occlusion":  false
+                                                                                                                   }
+                                                                                                         }
+                                                                    }
+                                                 },
+                                                 {
+                                                     "condition":  "q.block_state(\u0027create:copycat_group\u0027) == 3 \u0026\u0026 q.block_state(\u0027create:copycat_variant\u0027) == 5",
+                                                     "components":  {
+                                                                        "minecraft:material_instances":  {
+                                                                                                             "*":  {
+                                                                                                                       "texture":  "create:copycat_polished_blackstone_bricks",
+                                                                                                                       "render_method":  "blend",
+                                                                                                                       "ambient_occlusion":  false
+                                                                                                                   }
+                                                                                                         }
+                                                                    }
+                                                 },
+                                                 {
+                                                     "condition":  "q.block_state(\u0027create:copycat_group\u0027) == 3 \u0026\u0026 q.block_state(\u0027create:copycat_variant\u0027) == 6",
+                                                     "components":  {
+                                                                        "minecraft:material_instances":  {
+                                                                                                             "*":  {
+                                                                                                                       "texture":  "create:copycat_nether_brick",
+                                                                                                                       "render_method":  "blend",
+                                                                                                                       "ambient_occlusion":  false
+                                                                                                                   }
+                                                                                                         }
+                                                                    }
+                                                 },
+                                                 {
+                                                     "condition":  "q.block_state(\u0027create:copycat_group\u0027) == 3 \u0026\u0026 q.block_state(\u0027create:copycat_variant\u0027) == 7",
+                                                     "components":  {
+                                                                        "minecraft:material_instances":  {
+                                                                                                             "*":  {
+                                                                                                                       "texture":  "create:copycat_red_nether_brick",
+                                                                                                                       "render_method":  "blend",
+                                                                                                                       "ambient_occlusion":  false
+                                                                                                                   }
+                                                                                                         }
+                                                                    }
+                                                 },
+                                                 {
+                                                     "condition":  "q.block_state(\u0027create:copycat_group\u0027) == 3 \u0026\u0026 q.block_state(\u0027create:copycat_variant\u0027) == 8",
+                                                     "components":  {
+                                                                        "minecraft:material_instances":  {
+                                                                                                             "*":  {
+                                                                                                                       "texture":  "create:copycat_prismarine",
+                                                                                                                       "render_method":  "blend",
+                                                                                                                       "ambient_occlusion":  false
+                                                                                                                   }
+                                                                                                         }
+                                                                    }
+                                                 },
+                                                 {
+                                                     "condition":  "q.block_state(\u0027create:copycat_group\u0027) == 3 \u0026\u0026 q.block_state(\u0027create:copycat_variant\u0027) == 9",
+                                                     "components":  {
+                                                                        "minecraft:material_instances":  {
+                                                                                                             "*":  {
+                                                                                                                       "texture":  "create:copycat_dark_prismarine",
+                                                                                                                       "render_method":  "blend",
+                                                                                                                       "ambient_occlusion":  false
+                                                                                                                   }
+                                                                                                         }
+                                                                    }
+                                                 },
+                                                 {
+                                                     "condition":  "q.block_state(\u0027create:copycat_group\u0027) == 3 \u0026\u0026 q.block_state(\u0027create:copycat_variant\u0027) == 10",
+                                                     "components":  {
+                                                                        "minecraft:material_instances":  {
+                                                                                                             "*":  {
+                                                                                                                       "texture":  "create:copycat_sea_lantern",
+                                                                                                                       "render_method":  "blend",
+                                                                                                                       "ambient_occlusion":  false
+                                                                                                                   }
+                                                                                                         }
+                                                                    }
+                                                 },
+                                                 {
+                                                     "condition":  "q.block_state(\u0027create:copycat_group\u0027) == 3 \u0026\u0026 q.block_state(\u0027create:copycat_variant\u0027) == 11",
+                                                     "components":  {
+                                                                        "minecraft:material_instances":  {
+                                                                                                             "*":  {
+                                                                                                                       "texture":  "create:copycat_purpur_block",
+                                                                                                                       "render_method":  "blend",
+                                                                                                                       "ambient_occlusion":  false
+                                                                                                                   }
+                                                                                                         }
+                                                                    }
+                                                 },
+                                                 {
+                                                     "condition":  "q.block_state(\u0027create:copycat_group\u0027) == 3 \u0026\u0026 q.block_state(\u0027create:copycat_variant\u0027) == 12",
+                                                     "components":  {
+                                                                        "minecraft:material_instances":  {
+                                                                                                             "*":  {
+                                                                                                                       "texture":  "create:copycat_end_bricks",
+                                                                                                                       "render_method":  "blend",
+                                                                                                                       "ambient_occlusion":  false
+                                                                                                                   }
+                                                                                                         }
+                                                                    }
+                                                 },
+                                                 {
+                                                     "condition":  "q.block_state(\u0027create:copycat_group\u0027) == 3 \u0026\u0026 q.block_state(\u0027create:copycat_variant\u0027) == 13",
+                                                     "components":  {
+                                                                        "minecraft:material_instances":  {
+                                                                                                             "*":  {
+                                                                                                                       "texture":  "create:copycat_pale_oak_planks",
+                                                                                                                       "render_method":  "blend",
+                                                                                                                       "ambient_occlusion":  false
+                                                                                                                   }
+                                                                                                         }
+                                                                    }
+                                                 },
+                                                 {
+                                                     "condition":  "q.block_state(\u0027create:copycat_group\u0027) == 3 \u0026\u0026 q.block_state(\u0027create:copycat_variant\u0027) == 14",
+                                                     "components":  {
+                                                                        "minecraft:material_instances":  {
+                                                                                                             "*":  {
+                                                                                                                       "texture":  "create:copycat_bamboo_planks",
+                                                                                                                       "render_method":  "blend",
+                                                                                                                       "ambient_occlusion":  false
+                                                                                                                   }
+                                                                                                         }
+                                                                    }
+                                                 },
+                                                 {
+                                                     "condition":  "q.block_state(\u0027create:copycat_group\u0027) == 3 \u0026\u0026 q.block_state(\u0027create:copycat_variant\u0027) == 15",
+                                                     "components":  {
+                                                                        "minecraft:material_instances":  {
+                                                                                                             "*":  {
+                                                                                                                       "texture":  "create:copycat_crimson_planks",
+                                                                                                                       "render_method":  "blend",
+                                                                                                                       "ambient_occlusion":  false
+                                                                                                                   }
+                                                                                                         }
+                                                                    }
+                                                 },
+                                                 {
+                                                     "condition":  "q.block_state(\u0027create:copycat_group\u0027) == 4 \u0026\u0026 q.block_state(\u0027create:copycat_variant\u0027) == 0",
+                                                     "components":  {
+                                                                        "minecraft:material_instances":  {
+                                                                                                             "*":  {
+                                                                                                                       "texture":  "create:copycat_warped_planks",
+                                                                                                                       "render_method":  "blend",
+                                                                                                                       "ambient_occlusion":  false
+                                                                                                                   }
+                                                                                                         }
+                                                                    }
+                                                 },
+                                                 {
+                                                     "condition":  "q.block_state(\u0027create:copycat_group\u0027) == 4 \u0026\u0026 q.block_state(\u0027create:copycat_variant\u0027) == 1",
+                                                     "components":  {
+                                                                        "minecraft:material_instances":  {
+                                                                                                             "*":  {
+                                                                                                                       "texture":  "create:copycat_bricks",
+                                                                                                                       "render_method":  "blend",
+                                                                                                                       "ambient_occlusion":  false
+                                                                                                                   }
+                                                                                                         }
+                                                                    }
+                                                 },
+                                                 {
+                                                     "condition":  "q.block_state(\u0027create:copycat_group\u0027) == 4 \u0026\u0026 q.block_state(\u0027create:copycat_variant\u0027) == 2",
+                                                     "components":  {
+                                                                        "minecraft:material_instances":  {
+                                                                                                             "*":  {
+                                                                                                                       "texture":  "create:copycat_stone_bricks",
+                                                                                                                       "render_method":  "blend",
+                                                                                                                       "ambient_occlusion":  false
+                                                                                                                   }
+                                                                                                         }
+                                                                    }
+                                                 },
+                                                 {
+                                                     "condition":  "q.block_state(\u0027create:copycat_group\u0027) == 4 \u0026\u0026 q.block_state(\u0027create:copycat_variant\u0027) == 3",
+                                                     "components":  {
+                                                                        "minecraft:material_instances":  {
+                                                                                                             "*":  {
+                                                                                                                       "texture":  "create:cut_andesite",
+                                                                                                                       "render_method":  "blend",
+                                                                                                                       "ambient_occlusion":  false
+                                                                                                                   }
+                                                                                                         }
+                                                                    }
+                                                 },
+                                                 {
+                                                     "condition":  "q.block_state(\u0027create:copycat_group\u0027) == 4 \u0026\u0026 q.block_state(\u0027create:copycat_variant\u0027) == 4",
+                                                     "components":  {
+                                                                        "minecraft:material_instances":  {
+                                                                                                             "*":  {
+                                                                                                                       "texture":  "create:polished_cut_andesite",
+                                                                                                                       "render_method":  "blend",
+                                                                                                                       "ambient_occlusion":  false
+                                                                                                                   }
+                                                                                                         }
+                                                                    }
+                                                 },
+                                                 {
+                                                     "condition":  "q.block_state(\u0027create:copycat_group\u0027) == 4 \u0026\u0026 q.block_state(\u0027create:copycat_variant\u0027) == 5",
+                                                     "components":  {
+                                                                        "minecraft:material_instances":  {
+                                                                                                             "*":  {
+                                                                                                                       "texture":  "create:cut_andesite_bricks",
+                                                                                                                       "render_method":  "blend",
+                                                                                                                       "ambient_occlusion":  false
+                                                                                                                   }
+                                                                                                         }
+                                                                    }
+                                                 },
+                                                 {
+                                                     "condition":  "q.block_state(\u0027create:copycat_group\u0027) == 4 \u0026\u0026 q.block_state(\u0027create:copycat_variant\u0027) == 6",
+                                                     "components":  {
+                                                                        "minecraft:material_instances":  {
+                                                                                                             "*":  {
+                                                                                                                       "texture":  "create:small_andesite_bricks",
+                                                                                                                       "render_method":  "blend",
+                                                                                                                       "ambient_occlusion":  false
+                                                                                                                   }
+                                                                                                         }
+                                                                    }
+                                                 },
+                                                 {
+                                                     "condition":  "q.block_state(\u0027create:copycat_group\u0027) == 4 \u0026\u0026 q.block_state(\u0027create:copycat_variant\u0027) == 7",
+                                                     "components":  {
+                                                                        "minecraft:material_instances":  {
+                                                                                                             "*":  {
+                                                                                                                       "texture":  "create:cut_calcite",
+                                                                                                                       "render_method":  "blend",
+                                                                                                                       "ambient_occlusion":  false
+                                                                                                                   }
+                                                                                                         }
+                                                                    }
+                                                 },
+                                                 {
+                                                     "condition":  "q.block_state(\u0027create:copycat_group\u0027) == 4 \u0026\u0026 q.block_state(\u0027create:copycat_variant\u0027) == 8",
+                                                     "components":  {
+                                                                        "minecraft:material_instances":  {
+                                                                                                             "*":  {
+                                                                                                                       "texture":  "create:polished_cut_calcite",
+                                                                                                                       "render_method":  "blend",
+                                                                                                                       "ambient_occlusion":  false
+                                                                                                                   }
+                                                                                                         }
+                                                                    }
+                                                 },
+                                                 {
+                                                     "condition":  "q.block_state(\u0027create:copycat_group\u0027) == 4 \u0026\u0026 q.block_state(\u0027create:copycat_variant\u0027) == 9",
+                                                     "components":  {
+                                                                        "minecraft:material_instances":  {
+                                                                                                             "*":  {
+                                                                                                                       "texture":  "create:cut_calcite_bricks",
+                                                                                                                       "render_method":  "blend",
+                                                                                                                       "ambient_occlusion":  false
+                                                                                                                   }
+                                                                                                         }
+                                                                    }
+                                                 },
+                                                 {
+                                                     "condition":  "q.block_state(\u0027create:copycat_group\u0027) == 4 \u0026\u0026 q.block_state(\u0027create:copycat_variant\u0027) == 10",
+                                                     "components":  {
+                                                                        "minecraft:material_instances":  {
+                                                                                                             "*":  {
+                                                                                                                       "texture":  "create:small_calcite_bricks",
+                                                                                                                       "render_method":  "blend",
+                                                                                                                       "ambient_occlusion":  false
+                                                                                                                   }
+                                                                                                         }
+                                                                    }
+                                                 },
+                                                 {
+                                                     "condition":  "q.block_state(\u0027create:copycat_group\u0027) == 4 \u0026\u0026 q.block_state(\u0027create:copycat_variant\u0027) == 11",
+                                                     "components":  {
+                                                                        "minecraft:material_instances":  {
+                                                                                                             "*":  {
+                                                                                                                       "texture":  "create:cut_deepslate",
+                                                                                                                       "render_method":  "blend",
+                                                                                                                       "ambient_occlusion":  false
+                                                                                                                   }
+                                                                                                         }
+                                                                    }
+                                                 },
+                                                 {
+                                                     "condition":  "q.block_state(\u0027create:copycat_group\u0027) == 4 \u0026\u0026 q.block_state(\u0027create:copycat_variant\u0027) == 12",
+                                                     "components":  {
+                                                                        "minecraft:material_instances":  {
+                                                                                                             "*":  {
+                                                                                                                       "texture":  "create:polished_cut_deepslate",
+                                                                                                                       "render_method":  "blend",
+                                                                                                                       "ambient_occlusion":  false
+                                                                                                                   }
+                                                                                                         }
+                                                                    }
+                                                 },
+                                                 {
+                                                     "condition":  "q.block_state(\u0027create:copycat_group\u0027) == 4 \u0026\u0026 q.block_state(\u0027create:copycat_variant\u0027) == 13",
+                                                     "components":  {
+                                                                        "minecraft:material_instances":  {
+                                                                                                             "*":  {
+                                                                                                                       "texture":  "create:cut_deepslate_bricks",
+                                                                                                                       "render_method":  "blend",
+                                                                                                                       "ambient_occlusion":  false
+                                                                                                                   }
+                                                                                                         }
+                                                                    }
+                                                 },
+                                                 {
+                                                     "condition":  "q.block_state(\u0027create:copycat_group\u0027) == 4 \u0026\u0026 q.block_state(\u0027create:copycat_variant\u0027) == 14",
+                                                     "components":  {
+                                                                        "minecraft:material_instances":  {
+                                                                                                             "*":  {
+                                                                                                                       "texture":  "create:small_deepslate_bricks",
+                                                                                                                       "render_method":  "blend",
+                                                                                                                       "ambient_occlusion":  false
+                                                                                                                   }
+                                                                                                         }
+                                                                    }
+                                                 },
+                                                 {
+                                                     "condition":  "q.block_state(\u0027create:copycat_group\u0027) == 4 \u0026\u0026 q.block_state(\u0027create:copycat_variant\u0027) == 15",
+                                                     "components":  {
+                                                                        "minecraft:material_instances":  {
+                                                                                                             "*":  {
+                                                                                                                       "texture":  "create:cut_diorite",
+                                                                                                                       "render_method":  "blend",
+                                                                                                                       "ambient_occlusion":  false
+                                                                                                                   }
+                                                                                                         }
+                                                                    }
+                                                 },
+                                                 {
+                                                     "condition":  "q.block_state(\u0027create:copycat_group\u0027) == 5 \u0026\u0026 q.block_state(\u0027create:copycat_variant\u0027) == 0",
+                                                     "components":  {
+                                                                        "minecraft:material_instances":  {
+                                                                                                             "*":  {
+                                                                                                                       "texture":  "create:polished_cut_diorite",
+                                                                                                                       "render_method":  "blend",
+                                                                                                                       "ambient_occlusion":  false
+                                                                                                                   }
+                                                                                                         }
+                                                                    }
+                                                 },
+                                                 {
+                                                     "condition":  "q.block_state(\u0027create:copycat_group\u0027) == 5 \u0026\u0026 q.block_state(\u0027create:copycat_variant\u0027) == 1",
+                                                     "components":  {
+                                                                        "minecraft:material_instances":  {
+                                                                                                             "*":  {
+                                                                                                                       "texture":  "create:cut_diorite_bricks",
+                                                                                                                       "render_method":  "blend",
+                                                                                                                       "ambient_occlusion":  false
+                                                                                                                   }
+                                                                                                         }
+                                                                    }
+                                                 },
+                                                 {
+                                                     "condition":  "q.block_state(\u0027create:copycat_group\u0027) == 5 \u0026\u0026 q.block_state(\u0027create:copycat_variant\u0027) == 2",
+                                                     "components":  {
+                                                                        "minecraft:material_instances":  {
+                                                                                                             "*":  {
+                                                                                                                       "texture":  "create:small_diorite_bricks",
+                                                                                                                       "render_method":  "blend",
+                                                                                                                       "ambient_occlusion":  false
+                                                                                                                   }
+                                                                                                         }
+                                                                    }
+                                                 },
+                                                 {
+                                                     "condition":  "q.block_state(\u0027create:copycat_group\u0027) == 5 \u0026\u0026 q.block_state(\u0027create:copycat_variant\u0027) == 3",
+                                                     "components":  {
+                                                                        "minecraft:material_instances":  {
+                                                                                                             "*":  {
+                                                                                                                       "texture":  "create:cut_dripstone",
+                                                                                                                       "render_method":  "blend",
+                                                                                                                       "ambient_occlusion":  false
+                                                                                                                   }
+                                                                                                         }
+                                                                    }
+                                                 },
+                                                 {
+                                                     "condition":  "q.block_state(\u0027create:copycat_group\u0027) == 5 \u0026\u0026 q.block_state(\u0027create:copycat_variant\u0027) == 4",
+                                                     "components":  {
+                                                                        "minecraft:material_instances":  {
+                                                                                                             "*":  {
+                                                                                                                       "texture":  "create:polished_cut_dripstone",
+                                                                                                                       "render_method":  "blend",
+                                                                                                                       "ambient_occlusion":  false
+                                                                                                                   }
+                                                                                                         }
+                                                                    }
+                                                 },
+                                                 {
+                                                     "condition":  "q.block_state(\u0027create:copycat_group\u0027) == 5 \u0026\u0026 q.block_state(\u0027create:copycat_variant\u0027) == 5",
+                                                     "components":  {
+                                                                        "minecraft:material_instances":  {
+                                                                                                             "*":  {
+                                                                                                                       "texture":  "create:cut_dripstone_bricks",
+                                                                                                                       "render_method":  "blend",
+                                                                                                                       "ambient_occlusion":  false
+                                                                                                                   }
+                                                                                                         }
+                                                                    }
+                                                 },
+                                                 {
+                                                     "condition":  "q.block_state(\u0027create:copycat_group\u0027) == 5 \u0026\u0026 q.block_state(\u0027create:copycat_variant\u0027) == 6",
+                                                     "components":  {
+                                                                        "minecraft:material_instances":  {
+                                                                                                             "*":  {
+                                                                                                                       "texture":  "create:small_dripstone_bricks",
+                                                                                                                       "render_method":  "blend",
+                                                                                                                       "ambient_occlusion":  false
+                                                                                                                   }
+                                                                                                         }
+                                                                    }
+                                                 },
+                                                 {
+                                                     "condition":  "q.block_state(\u0027create:copycat_group\u0027) == 5 \u0026\u0026 q.block_state(\u0027create:copycat_variant\u0027) == 7",
+                                                     "components":  {
+                                                                        "minecraft:material_instances":  {
+                                                                                                             "*":  {
+                                                                                                                       "texture":  "create:cut_granite",
+                                                                                                                       "render_method":  "blend",
+                                                                                                                       "ambient_occlusion":  false
+                                                                                                                   }
+                                                                                                         }
+                                                                    }
+                                                 },
+                                                 {
+                                                     "condition":  "q.block_state(\u0027create:copycat_group\u0027) == 5 \u0026\u0026 q.block_state(\u0027create:copycat_variant\u0027) == 8",
+                                                     "components":  {
+                                                                        "minecraft:material_instances":  {
+                                                                                                             "*":  {
+                                                                                                                       "texture":  "create:polished_cut_granite",
+                                                                                                                       "render_method":  "blend",
+                                                                                                                       "ambient_occlusion":  false
+                                                                                                                   }
+                                                                                                         }
+                                                                    }
+                                                 },
+                                                 {
+                                                     "condition":  "q.block_state(\u0027create:copycat_group\u0027) == 5 \u0026\u0026 q.block_state(\u0027create:copycat_variant\u0027) == 9",
+                                                     "components":  {
+                                                                        "minecraft:material_instances":  {
+                                                                                                             "*":  {
+                                                                                                                       "texture":  "create:cut_granite_bricks",
+                                                                                                                       "render_method":  "blend",
+                                                                                                                       "ambient_occlusion":  false
+                                                                                                                   }
+                                                                                                         }
+                                                                    }
+                                                 },
+                                                 {
+                                                     "condition":  "q.block_state(\u0027create:copycat_group\u0027) == 5 \u0026\u0026 q.block_state(\u0027create:copycat_variant\u0027) == 10",
+                                                     "components":  {
+                                                                        "minecraft:material_instances":  {
+                                                                                                             "*":  {
+                                                                                                                       "texture":  "create:small_granite_bricks",
+                                                                                                                       "render_method":  "blend",
+                                                                                                                       "ambient_occlusion":  false
+                                                                                                                   }
+                                                                                                         }
+                                                                    }
+                                                 },
+                                                 {
+                                                     "condition":  "q.block_state(\u0027create:copycat_group\u0027) == 5 \u0026\u0026 q.block_state(\u0027create:copycat_variant\u0027) == 11",
+                                                     "components":  {
+                                                                        "minecraft:material_instances":  {
+                                                                                                             "*":  {
+                                                                                                                       "texture":  "create:cut_tuff",
+                                                                                                                       "render_method":  "blend",
+                                                                                                                       "ambient_occlusion":  false
+                                                                                                                   }
+                                                                                                         }
+                                                                    }
+                                                 },
+                                                 {
+                                                     "condition":  "q.block_state(\u0027create:copycat_group\u0027) == 5 \u0026\u0026 q.block_state(\u0027create:copycat_variant\u0027) == 12",
+                                                     "components":  {
+                                                                        "minecraft:material_instances":  {
+                                                                                                             "*":  {
+                                                                                                                       "texture":  "create:polished_cut_tuff",
+                                                                                                                       "render_method":  "blend",
+                                                                                                                       "ambient_occlusion":  false
+                                                                                                                   }
+                                                                                                         }
+                                                                    }
+                                                 },
+                                                 {
+                                                     "condition":  "q.block_state(\u0027create:copycat_group\u0027) == 5 \u0026\u0026 q.block_state(\u0027create:copycat_variant\u0027) == 13",
+                                                     "components":  {
+                                                                        "minecraft:material_instances":  {
+                                                                                                             "*":  {
+                                                                                                                       "texture":  "create:cut_tuff_bricks",
+                                                                                                                       "render_method":  "blend",
+                                                                                                                       "ambient_occlusion":  false
+                                                                                                                   }
+                                                                                                         }
+                                                                    }
+                                                 },
+                                                 {
+                                                     "condition":  "q.block_state(\u0027create:copycat_group\u0027) == 5 \u0026\u0026 q.block_state(\u0027create:copycat_variant\u0027) == 14",
+                                                     "components":  {
+                                                                        "minecraft:material_instances":  {
+                                                                                                             "*":  {
+                                                                                                                       "texture":  "create:small_tuff_bricks",
+                                                                                                                       "render_method":  "blend",
+                                                                                                                       "ambient_occlusion":  false
+                                                                                                                   }
+                                                                                                         }
+                                                                    }
+                                                 },
+                                                 {
+                                                     "condition":  "q.block_state(\u0027create:copycat_group\u0027) == 5 \u0026\u0026 q.block_state(\u0027create:copycat_variant\u0027) == 15",
+                                                     "components":  {
+                                                                        "minecraft:material_instances":  {
+                                                                                                             "*":  {
+                                                                                                                       "texture":  "create:rose_quartz_side",
+                                                                                                                       "render_method":  "blend",
+                                                                                                                       "ambient_occlusion":  false
+                                                                                                                   }
+                                                                                                         }
+                                                                    }
+                                                 },
+                                                 {
+                                                     "condition":  "q.block_state(\u0027create:copycat_group\u0027) == 6 \u0026\u0026 q.block_state(\u0027create:copycat_variant\u0027) == 0",
+                                                     "components":  {
+                                                                        "minecraft:material_instances":  {
+                                                                                                             "*":  {
+                                                                                                                       "texture":  "create:rose_quartz_tiles",
+                                                                                                                       "render_method":  "blend",
+                                                                                                                       "ambient_occlusion":  false
+                                                                                                                   }
+                                                                                                         }
+                                                                    }
+                                                 },
+                                                 {
+                                                     "condition":  "q.block_state(\u0027create:copycat_group\u0027) == 6 \u0026\u0026 q.block_state(\u0027create:copycat_variant\u0027) == 1",
+                                                     "components":  {
+                                                                        "minecraft:material_instances":  {
+                                                                                                             "*":  {
+                                                                                                                       "texture":  "create:small_rose_quartz_tiles",
+                                                                                                                       "render_method":  "blend",
+                                                                                                                       "ambient_occlusion":  false
+                                                                                                                   }
+                                                                                                         }
+                                                                    }
+                                                 },
+                                                 {
+                                                     "condition":  "q.block_state(\u0027create:copycat_group\u0027) == 6 \u0026\u0026 q.block_state(\u0027create:copycat_variant\u0027) == 2",
+                                                     "components":  {
+                                                                        "minecraft:material_instances":  {
+                                                                                                             "*":  {
+                                                                                                                       "texture":  "create:industrial_iron_block",
+                                                                                                                       "render_method":  "blend",
+                                                                                                                       "ambient_occlusion":  false
+                                                                                                                   }
+                                                                                                         }
+                                                                    }
+                                                 },
+                                                 {
+                                                     "condition":  "q.block_state(\u0027create:copycat_group\u0027) == 6 \u0026\u0026 q.block_state(\u0027create:copycat_variant\u0027) == 3",
+                                                     "components":  {
+                                                                        "minecraft:material_instances":  {
+                                                                                                             "*":  {
+                                                                                                                       "texture":  "create:weathered_iron_block",
+                                                                                                                       "render_method":  "blend",
+                                                                                                                       "ambient_occlusion":  false
+                                                                                                                   }
+                                                                                                         }
+                                                                    }
+                                                 },
+                                                 {
+                                                     "condition":  "q.block_state(\u0027create:copycat_group\u0027) == 6 \u0026\u0026 q.block_state(\u0027create:copycat_variant\u0027) == 4",
+                                                     "components":  {
+                                                                        "minecraft:material_instances":  {
+                                                                                                             "*":  {
+                                                                                                                       "texture":  "create:copycat_asurine",
+                                                                                                                       "render_method":  "blend",
+                                                                                                                       "ambient_occlusion":  false
+                                                                                                                   }
+                                                                                                         }
+                                                                    }
+                                                 },
+                                                 {
+                                                     "condition":  "q.block_state(\u0027create:copycat_group\u0027) == 6 \u0026\u0026 q.block_state(\u0027create:copycat_variant\u0027) == 5",
+                                                     "components":  {
+                                                                        "minecraft:material_instances":  {
+                                                                                                             "*":  {
+                                                                                                                       "texture":  "create:copycat_veridium",
+                                                                                                                       "render_method":  "blend",
+                                                                                                                       "ambient_occlusion":  false
+                                                                                                                   }
+                                                                                                         }
+                                                                    }
+                                                 },
+                                                 {
+                                                     "condition":  "q.block_state(\u0027create:copycat_group\u0027) == 6 \u0026\u0026 q.block_state(\u0027create:copycat_variant\u0027) == 6",
+                                                     "components":  {
+                                                                        "minecraft:material_instances":  {
+                                                                                                             "*":  {
+                                                                                                                       "texture":  "create:copycat_ochrum",
+                                                                                                                       "render_method":  "blend",
+                                                                                                                       "ambient_occlusion":  false
+                                                                                                                   }
+                                                                                                         }
+                                                                    }
+                                                 },
+                                                 {
+                                                     "condition":  "q.block_state(\u0027create:copycat_group\u0027) == 6 \u0026\u0026 q.block_state(\u0027create:copycat_variant\u0027) == 7",
+                                                     "components":  {
+                                                                        "minecraft:material_instances":  {
+                                                                                                             "*":  {
+                                                                                                                       "texture":  "create:copycat_limestone",
+                                                                                                                       "render_method":  "blend",
+                                                                                                                       "ambient_occlusion":  false
+                                                                                                                   }
+                                                                                                         }
+                                                                    }
+                                                 },
+                                                 {
+                                                     "condition":  "q.block_state(\u0027create:copycat_group\u0027) == 6 \u0026\u0026 q.block_state(\u0027create:copycat_variant\u0027) == 8",
+                                                     "components":  {
+                                                                        "minecraft:material_instances":  {
+                                                                                                             "*":  {
+                                                                                                                       "texture":  "create:copycat_crimsite",
+                                                                                                                       "render_method":  "blend",
+                                                                                                                       "ambient_occlusion":  false
+                                                                                                                   }
+                                                                                                         }
+                                                                    }
+                                                 },
+                                                 {
+                                                     "condition":  "q.block_state(\u0027create:copycat_group\u0027) == 6 \u0026\u0026 q.block_state(\u0027create:copycat_variant\u0027) == 9",
+                                                     "components":  {
+                                                                        "minecraft:material_instances":  {
+                                                                                                             "*":  {
+                                                                                                                       "texture":  "create:copycat_cut_asurine",
+                                                                                                                       "render_method":  "blend",
+                                                                                                                       "ambient_occlusion":  false
+                                                                                                                   }
+                                                                                                         }
+                                                                    }
+                                                 },
+                                                 {
+                                                     "condition":  "q.block_state(\u0027create:copycat_group\u0027) == 6 \u0026\u0026 q.block_state(\u0027create:copycat_variant\u0027) == 10",
+                                                     "components":  {
+                                                                        "minecraft:material_instances":  {
+                                                                                                             "*":  {
+                                                                                                                       "texture":  "create:copycat_polished_cut_asurine",
+                                                                                                                       "render_method":  "blend",
+                                                                                                                       "ambient_occlusion":  false
+                                                                                                                   }
+                                                                                                         }
+                                                                    }
+                                                 },
+                                                 {
+                                                     "condition":  "q.block_state(\u0027create:copycat_group\u0027) == 6 \u0026\u0026 q.block_state(\u0027create:copycat_variant\u0027) == 11",
+                                                     "components":  {
+                                                                        "minecraft:material_instances":  {
+                                                                                                             "*":  {
+                                                                                                                       "texture":  "create:copycat_cut_asurine_bricks",
+                                                                                                                       "render_method":  "blend",
+                                                                                                                       "ambient_occlusion":  false
+                                                                                                                   }
+                                                                                                         }
+                                                                    }
+                                                 },
+                                                 {
+                                                     "condition":  "q.block_state(\u0027create:copycat_group\u0027) == 6 \u0026\u0026 q.block_state(\u0027create:copycat_variant\u0027) == 12",
+                                                     "components":  {
+                                                                        "minecraft:material_instances":  {
+                                                                                                             "*":  {
+                                                                                                                       "texture":  "create:copycat_small_asurine_bricks",
+                                                                                                                       "render_method":  "blend",
+                                                                                                                       "ambient_occlusion":  false
+                                                                                                                   }
+                                                                                                         }
+                                                                    }
+                                                 },
+                                                 {
+                                                     "condition":  "q.block_state(\u0027create:copycat_group\u0027) == 6 \u0026\u0026 q.block_state(\u0027create:copycat_variant\u0027) == 13",
+                                                     "components":  {
+                                                                        "minecraft:material_instances":  {
+                                                                                                             "*":  {
+                                                                                                                       "texture":  "create:copycat_cut_veridium",
+                                                                                                                       "render_method":  "blend",
+                                                                                                                       "ambient_occlusion":  false
+                                                                                                                   }
+                                                                                                         }
+                                                                    }
+                                                 },
+                                                 {
+                                                     "condition":  "q.block_state(\u0027create:copycat_group\u0027) == 6 \u0026\u0026 q.block_state(\u0027create:copycat_variant\u0027) == 14",
+                                                     "components":  {
+                                                                        "minecraft:material_instances":  {
+                                                                                                             "*":  {
+                                                                                                                       "texture":  "create:copycat_polished_cut_veridium",
+                                                                                                                       "render_method":  "blend",
+                                                                                                                       "ambient_occlusion":  false
+                                                                                                                   }
+                                                                                                         }
+                                                                    }
+                                                 },
+                                                 {
+                                                     "condition":  "q.block_state(\u0027create:copycat_group\u0027) == 6 \u0026\u0026 q.block_state(\u0027create:copycat_variant\u0027) == 15",
+                                                     "components":  {
+                                                                        "minecraft:material_instances":  {
+                                                                                                             "*":  {
+                                                                                                                       "texture":  "create:copycat_cut_veridium_bricks",
+                                                                                                                       "render_method":  "blend",
+                                                                                                                       "ambient_occlusion":  false
+                                                                                                                   }
+                                                                                                         }
+                                                                    }
+                                                 },
+                                                 {
+                                                     "condition":  "q.block_state(\u0027create:copycat_group\u0027) == 7 \u0026\u0026 q.block_state(\u0027create:copycat_variant\u0027) == 0",
+                                                     "components":  {
+                                                                        "minecraft:material_instances":  {
+                                                                                                             "*":  {
+                                                                                                                       "texture":  "create:copycat_small_veridium_bricks",
+                                                                                                                       "render_method":  "blend",
+                                                                                                                       "ambient_occlusion":  false
+                                                                                                                   }
+                                                                                                         }
+                                                                    }
+                                                 },
+                                                 {
+                                                     "condition":  "q.block_state(\u0027create:copycat_group\u0027) == 7 \u0026\u0026 q.block_state(\u0027create:copycat_variant\u0027) == 1",
+                                                     "components":  {
+                                                                        "minecraft:material_instances":  {
+                                                                                                             "*":  {
+                                                                                                                       "texture":  "create:copycat_cut_ochrum",
+                                                                                                                       "render_method":  "blend",
+                                                                                                                       "ambient_occlusion":  false
+                                                                                                                   }
+                                                                                                         }
+                                                                    }
+                                                 },
+                                                 {
+                                                     "condition":  "q.block_state(\u0027create:copycat_group\u0027) == 7 \u0026\u0026 q.block_state(\u0027create:copycat_variant\u0027) == 2",
+                                                     "components":  {
+                                                                        "minecraft:material_instances":  {
+                                                                                                             "*":  {
+                                                                                                                       "texture":  "create:copycat_polished_cut_ochrum",
+                                                                                                                       "render_method":  "blend",
+                                                                                                                       "ambient_occlusion":  false
+                                                                                                                   }
+                                                                                                         }
+                                                                    }
+                                                 },
+                                                 {
+                                                     "condition":  "q.block_state(\u0027create:copycat_group\u0027) == 7 \u0026\u0026 q.block_state(\u0027create:copycat_variant\u0027) == 3",
+                                                     "components":  {
+                                                                        "minecraft:material_instances":  {
+                                                                                                             "*":  {
+                                                                                                                       "texture":  "create:copycat_cut_ochrum_bricks",
+                                                                                                                       "render_method":  "blend",
+                                                                                                                       "ambient_occlusion":  false
+                                                                                                                   }
+                                                                                                         }
+                                                                    }
+                                                 },
+                                                 {
+                                                     "condition":  "q.block_state(\u0027create:copycat_group\u0027) == 7 \u0026\u0026 q.block_state(\u0027create:copycat_variant\u0027) == 4",
+                                                     "components":  {
+                                                                        "minecraft:material_instances":  {
+                                                                                                             "*":  {
+                                                                                                                       "texture":  "create:copycat_small_ochrum_bricks",
+                                                                                                                       "render_method":  "blend",
+                                                                                                                       "ambient_occlusion":  false
+                                                                                                                   }
+                                                                                                         }
+                                                                    }
+                                                 },
+                                                 {
+                                                     "condition":  "q.block_state(\u0027create:copycat_group\u0027) == 7 \u0026\u0026 q.block_state(\u0027create:copycat_variant\u0027) == 5",
+                                                     "components":  {
+                                                                        "minecraft:material_instances":  {
+                                                                                                             "*":  {
+                                                                                                                       "texture":  "create:copycat_cut_limestone",
+                                                                                                                       "render_method":  "blend",
+                                                                                                                       "ambient_occlusion":  false
+                                                                                                                   }
+                                                                                                         }
+                                                                    }
+                                                 },
+                                                 {
+                                                     "condition":  "q.block_state(\u0027create:copycat_group\u0027) == 7 \u0026\u0026 q.block_state(\u0027create:copycat_variant\u0027) == 6",
+                                                     "components":  {
+                                                                        "minecraft:material_instances":  {
+                                                                                                             "*":  {
+                                                                                                                       "texture":  "create:copycat_polished_cut_limestone",
+                                                                                                                       "render_method":  "blend",
+                                                                                                                       "ambient_occlusion":  false
+                                                                                                                   }
+                                                                                                         }
+                                                                    }
+                                                 },
+                                                 {
+                                                     "condition":  "q.block_state(\u0027create:copycat_group\u0027) == 7 \u0026\u0026 q.block_state(\u0027create:copycat_variant\u0027) == 7",
+                                                     "components":  {
+                                                                        "minecraft:material_instances":  {
+                                                                                                             "*":  {
+                                                                                                                       "texture":  "create:copycat_cut_limestone_bricks",
+                                                                                                                       "render_method":  "blend",
+                                                                                                                       "ambient_occlusion":  false
+                                                                                                                   }
+                                                                                                         }
+                                                                    }
+                                                 },
+                                                 {
+                                                     "condition":  "q.block_state(\u0027create:copycat_group\u0027) == 7 \u0026\u0026 q.block_state(\u0027create:copycat_variant\u0027) == 8",
+                                                     "components":  {
+                                                                        "minecraft:material_instances":  {
+                                                                                                             "*":  {
+                                                                                                                       "texture":  "create:copycat_small_limestone_bricks",
+                                                                                                                       "render_method":  "blend",
+                                                                                                                       "ambient_occlusion":  false
+                                                                                                                   }
+                                                                                                         }
+                                                                    }
+                                                 },
+                                                 {
+                                                     "condition":  "q.block_state(\u0027create:copycat_group\u0027) == 7 \u0026\u0026 q.block_state(\u0027create:copycat_variant\u0027) == 9",
+                                                     "components":  {
+                                                                        "minecraft:material_instances":  {
+                                                                                                             "*":  {
+                                                                                                                       "texture":  "create:copycat_cut_crimsite",
+                                                                                                                       "render_method":  "blend",
+                                                                                                                       "ambient_occlusion":  false
+                                                                                                                   }
+                                                                                                         }
+                                                                    }
+                                                 },
+                                                 {
+                                                     "condition":  "q.block_state(\u0027create:copycat_group\u0027) == 7 \u0026\u0026 q.block_state(\u0027create:copycat_variant\u0027) == 10",
+                                                     "components":  {
+                                                                        "minecraft:material_instances":  {
+                                                                                                             "*":  {
+                                                                                                                       "texture":  "create:copycat_polished_cut_crimsite",
+                                                                                                                       "render_method":  "blend",
+                                                                                                                       "ambient_occlusion":  false
+                                                                                                                   }
+                                                                                                         }
+                                                                    }
+                                                 },
+                                                 {
+                                                     "condition":  "q.block_state(\u0027create:copycat_group\u0027) == 7 \u0026\u0026 q.block_state(\u0027create:copycat_variant\u0027) == 11",
+                                                     "components":  {
+                                                                        "minecraft:material_instances":  {
+                                                                                                             "*":  {
+                                                                                                                       "texture":  "create:copycat_cut_crimsite_bricks",
+                                                                                                                       "render_method":  "blend",
+                                                                                                                       "ambient_occlusion":  false
+                                                                                                                   }
+                                                                                                         }
+                                                                    }
+                                                 },
+                                                 {
+                                                     "condition":  "q.block_state(\u0027create:copycat_group\u0027) == 7 \u0026\u0026 q.block_state(\u0027create:copycat_variant\u0027) == 12",
+                                                     "components":  {
+                                                                        "minecraft:material_instances":  {
+                                                                                                             "*":  {
+                                                                                                                       "texture":  "create:copycat_small_crimsite_bricks",
+                                                                                                                       "render_method":  "blend",
+                                                                                                                       "ambient_occlusion":  false
+                                                                                                                   }
+                                                                                                         }
+                                                                    }
+                                                 }
+                                             ]
+                        }
+}

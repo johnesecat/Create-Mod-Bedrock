@@ -1,0 +1,13 @@
+{
+  "format_version": "1.21.90",
+  "minecraft:item": {
+    "description": {
+      "identifier": "create:creative_blaze_cake",
+      "menu_category": { "category": "items" }
+    },
+    "components": {
+      "minecraft:icon": "create:creative_blaze_cake",
+      "minecraft:max_stack_size": 1
+    }
+  }
+}

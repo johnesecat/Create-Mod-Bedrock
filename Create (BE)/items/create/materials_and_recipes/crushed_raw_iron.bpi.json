@@ -1,0 +1,13 @@
+{
+    "format_version": "1.26.0",
+    "minecraft:item": {
+        "description": {
+            "identifier": "create:crushed_raw_iron",
+            "menu_category": { "category": "items" }
+        },
+        "components": {
+            "minecraft:icon": "create:crushed_raw_iron",
+            "minecraft:max_stack_size": 64
+        }
+    }
+}

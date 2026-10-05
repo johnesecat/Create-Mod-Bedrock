@@ -1,0 +1,16 @@
+{
+    "format_version": "1.12",
+    "minecraft:recipe_shaped": {
+        "description": { "identifier": "create:spout" },
+        "tags": ["crafting_table"],
+        "pattern": [
+            "C",
+            "K"
+           ],
+        "key": {
+            "C": { "item": "create:copper_casing" },
+            "K": { "item": "minecraft:dried_kelp" }
+        },
+        "result": { "item": "create:spout", "count": 1 }
+    }
+}

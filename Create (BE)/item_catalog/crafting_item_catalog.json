@@ -1,0 +1,584 @@
+{
+    "format_version": "1.21.60",
+    "minecraft:crafting_items_catalog": {
+        "categories": [
+            {
+                "category_name": "items",
+                "groups": [
+                    {
+                        "group_identifier": {
+                            "icon": "create:creative_motor",
+                            "name": "create:itemGroup.name.generators"
+                        },
+                        "items": [
+                            "create:creative_motor",
+                            "create:windmill_bearing",
+                            "create:water_wheel",
+                            "create:large_water_wheel",
+                            "create:furnace_engine",
+                            "create:steam_engine",
+                            "create:flywheel",
+                            "create:hand_crank"
+                        ]
+                    }
+                ]
+            },
+            {
+                "category_name": "items",
+                "groups": [
+                    {
+                        "group_identifier": {
+                            "icon": "create:windmill_sail",
+                            "name": "create:itemGroup.name.windmill_sails"
+                        },
+                        "items": [
+                            "create:windmill_sail",
+                            "create:light_gray_windmill_sail",
+                            "create:gray_windmill_sail",
+                            "create:black_windmill_sail",
+                            "create:brown_windmill_sail",
+                            "create:red_windmill_sail",
+                            "create:orange_windmill_sail",
+                            "create:yellow_windmill_sail",
+                            "create:lime_windmill_sail",
+                            "create:green_windmill_sail",
+                            "create:cyan_windmill_sail",
+                            "create:light_blue_windmill_sail",
+                            "create:blue_windmill_sail",
+                            "create:purple_windmill_sail",
+                            "create:magenta_windmill_sail",
+                            "create:pink_windmill_sail"
+                        ]
+                    }
+                ]
+            },            {
+                "category_name": "items",
+                "groups": [
+                    {
+                        "group_identifier": {
+                            "icon": "create:cogwheel",
+                            "name": "create:itemGroup.name.conductors"
+                        },
+                        "items": [
+                            "create:shaft",
+                            "create:cogwheel",
+                            "create:large_cogwheel",
+                            "create:gearbox",
+                            "create:vertical_gearbox",
+                            "create:clutch",
+                            "create:gearshift",
+                            "create:sequenced_gearshift",
+                            "create:speedometer",
+                            "create:stressometer",
+                            "create:rotation_speed_controller",
+                            "create:mechanical_belt"
+                        ]
+                    }
+                ]
+            },
+            {
+                "category_name": "items",
+                "groups": [
+                    {
+                        "group_identifier": {
+                            "icon": "create:mechanical_arm",
+                            "name": "create:itemGroup.name.appliances"
+                        },
+                        "items": [
+                          "create:mechanical_arm",
+                          "create:millstone",
+                          "create:mechanical_press",
+                          "create:mechanical_mixer",
+                          "create:mechanical_pump",
+                          "create:hose_pulley",
+                          "create:fluid_tank",
+                          "create:creative_fluid_tank",
+                          "create:mechanical_bearing",
+                          "create:cart_assembler",
+                          "create:vault",
+                          "create:mechanical_crafter",
+                          "create:empty_blaze_burner",
+                          "create:blaze_burner",
+                          "create:basin",
+                          "create:depot",
+                          "create:crate_creative",
+                          "create:weighted_ejector",
+                          "create:item_drain",
+                          "create:mechanical_drill",
+                          "create:mechanical_saw",
+                          "create:mechanical_harvester",
+                          "create:portable_storage_interface",
+                          "create:encased_fan",
+                          "create:deployer",
+                          "create:spout",
+                          "create:pipe",
+                          "create:smart_fluid_pipe",
+                          "create:hatch",
+                          "create:crushing_wheel",
+                          "create:desk_bell",
+                          "create:nozzle",
+                          "create:rose_quartz_lamp",
+                          "create:chute",
+                          "create:chute_smart",
+                          "create:smart_observer",
+                          "create:andesite_funnel",
+                          "create:brass_funnel",
+                          "create:andesite_tunnel",
+                          "create:brass_tunnel",
+                          "create:redstone_link",
+                          "create:copycat_panel",
+                          "create:copycat_step",
+                          "create:radial_chassis",
+                          "create:sticker",
+                          "create:whistle"
+                        ]
+                    }
+                ]
+            },
+            // {
+            //     "category_name": "items",
+            //     "groups": [
+            //         {
+            //             "group_identifier": {
+            //                 "icon": "create:brass_funnel",
+            //                 "name": "create:itemGroup.name.logistics"
+            //             },
+            //             "items": [
+            //                 "create:chute",
+            //                 "create:depot",
+            //                 "create:andesite_funnel",
+            //                 "create:brass_funnel",
+            //                 "create:andesite_tunnel",
+            //                 "create:brass_tunnel",
+            //                 "create:redstone_link",
+            //                 "create:content_observer",
+            //                 "create:basin"
+            //             ]
+            //         }
+            //     ]
+            // },
+            {
+                "category_name": "items",
+                "groups": [
+                    {
+                        "group_identifier": {
+                            "icon": "create:wrench",
+                            "name": "create:itemGroup.name.tools"
+                        },
+                        "items": [
+                            "create:wrench",
+                            "create:super_glue",
+                            "create:goggles",
+                            "create:sand_paper",
+                            "create:red_sand_paper",
+                            "create:potato_cannon",
+                            "create:minecart_contraption"
+                        ]
+                    }
+                ]
+            },
+            {
+                "category_name": "items",
+                "groups": [
+                    {
+                        "group_identifier": {
+                            "icon": "create:andesite_alloy",
+                            "name": "create:itemGroup.name.materials"
+                        },
+                        "items": [
+                            "create:andesite_alloy",
+                            "create:zinc_ore",
+                            "create:deepslate_zinc_ore",
+                            "create:raw_zinc",
+                            "create:crushed_raw_zinc",
+                            "create:zinc_ingot",
+                            "create:zinc_nugget",
+                            "create:zinc_block",
+                            "create:experience_nugget",
+                            "create:experience_block",
+                            "create:wheat_flour",
+                            "create:dough",
+                            "create:bar_of_chocolate",
+                            "create:chocolate_glazed_berries",
+                            "create:sweet_roll",
+                            "create:honeyed_apple",
+                            "create:honey_bucket",
+                            "create:chocolate_bucket",
+                            "create:brass_ingot",
+                            "create:brass_nugget",
+                            "create:brass_sheet",
+                            "create:brass_block",
+                            "create:crushed_raw_iron",
+                            "create:iron_sheet",
+                            "create:crushed_raw_gold",
+                            "create:golden_sheet",
+                            "create:crushed_raw_copper",
+                            "create:copper_sheet",
+                            "create:rose_quartz",
+                            "create:polished_rose_quartz",
+                            "create:cinder_flour",
+                            "create:blaze_cake_base",
+                            "create:blaze_cake",
+                            "create:creative_blaze_cake",
+                            "create:andesite_bars",
+                            "create:brass_bars",
+                            "create:copper_bars",
+                            "create:industrial_iron_block",
+                            "create:weathered_iron_block",
+                            "create:metal_girder",
+                            "create:rose_quartz_block",
+                            "create:rose_quartz_tiles",
+                            "create:small_rose_quartz_tiles",
+                            "create:ladder_andesite",
+                            "create:ladder_brass",
+                            "create:ladder_copper"
+                        ]
+                    }
+                ]
+            },
+            {
+                "category_name": "items",
+                "groups": [
+                    {
+                        "group_identifier": {
+                            "icon": "create:propeller",
+                            "name": "create:itemGroup.name.components"
+                        },
+                        "items": [
+                            "create:propeller",
+                            "create:whisk",
+                            "create:brass_hand",
+                            "create:electron_tube",
+                            "create:transmitter",
+                            "create:precision_mechanism",
+                            "create:incomplete_precision_mechanism"
+                        ]
+                    }
+                ]
+            },
+            {
+                "category_name": "items",
+                "groups": [
+                    {
+                        "group_identifier": {
+                            "icon": "create:andesite_casing",
+                            "name": "create:itemGroup.name.casings"
+                        },
+                        "items": [
+                            "create:andesite_casing",
+                            "create:brass_casing",
+                            "create:copper_casing",
+                            "create:creative_casing"
+                        ]
+                    }
+                ]
+            },
+            {
+                "category_name": "items",
+                "groups": [
+                    {
+                        "group_identifier": {
+                            "icon": "create:red_seat",
+                            "name": "create:itemGroup.name.seats"
+                        },
+                        "items": [
+                            "create:white_seat",
+                            "create:light_gray_seat",
+                            "create:gray_seat",
+                            "create:black_seat",
+                            "create:brown_seat",
+                            "create:red_seat",
+                            "create:orange_seat",
+                            "create:yellow_seat",
+                            "create:lime_seat",
+                            "create:green_seat",
+                            "create:cyan_seat",
+                            "create:light_blue_seat",
+                            "create:blue_seat",
+                            "create:purple_seat",
+                            "create:magenta_seat",
+                            "create:pink_seat"
+                        ]
+                    }
+                ]
+            },
+            {
+                "category_name": "items",
+                "groups": [
+                    {
+                        "group_identifier": {
+                            "icon": "create:polished_cut_andesite",
+                            "name": "create:itemGroup.name.andesite_blocks"
+                        },
+                        "items": [
+                            "create:cut_andesite",
+                            "create:cut_andesite_slab",
+                            "create:cut_andesite_stairs",
+                            "create:polished_cut_andesite",
+                            "create:polished_cut_andesite_slab",
+                            "create:polished_cut_andesite_stairs",
+                            "create:cut_andesite_bricks",
+                            "create:cut_andesite_bricks_slab",
+                            "create:cut_andesite_bricks_stairs",
+                            "create:small_andesite_bricks",
+                            "create:small_andesite_bricks_slab",
+                            "create:small_andesite_bricks_stairs",
+                            "create:cut_andesite_pillar"
+                        ]
+                    }
+                ]
+            },
+            {
+                "category_name": "items",
+                "groups": [
+                    {
+                        "group_identifier": {
+                            "icon": "create:polished_cut_calcite",
+                            "name": "create:itemGroup.name.calcite_blocks"
+                        },
+                        "items": [
+                            "create:cut_calcite",
+                            "create:cut_calcite_slab",
+                            "create:cut_calcite_stairs",
+                            "create:polished_cut_calcite",
+                            "create:polished_cut_calcite_slab",
+                            "create:polished_cut_calcite_stairs",
+                            "create:cut_calcite_bricks",
+                            "create:cut_calcite_bricks_slab",
+                            "create:cut_calcite_bricks_stairs",
+                            "create:small_calcite_bricks",
+                            "create:small_calcite_bricks_slab",
+                            "create:small_calcite_bricks_stairs",
+                            "create:cut_calcite_pillar"
+                        ]
+                    }
+                ]
+            },
+            {
+                "category_name": "items",
+                "groups": [
+                    {
+                        "group_identifier": {
+                            "icon": "create:polished_cut_deepslate",
+                            "name": "create:itemGroup.name.deepslate_blocks"
+                        },
+                        "items": [
+                            "create:cut_deepslate",
+                            "create:cut_deepslate_slab",
+                            "create:cut_deepslate_stairs",
+                            "create:polished_cut_deepslate",
+                            "create:polished_cut_deepslate_slab",
+                            "create:polished_cut_deepslate_stairs",
+                            "create:cut_deepslate_bricks",
+                            "create:cut_deepslate_bricks_slab",
+                            "create:cut_deepslate_bricks_stairs",
+                            "create:small_deepslate_bricks",
+                            "create:small_deepslate_bricks_slab",
+                            "create:small_deepslate_bricks_stairs",
+                            "create:cut_deepslate_pillar"
+                        ]
+                    }
+                ]
+            },
+            {
+                "category_name": "items",
+                "groups": [
+                    {
+                        "group_identifier": {
+                            "icon": "create:polished_cut_diorite",
+                            "name": "create:itemGroup.name.diorite_blocks"
+                        },
+                        "items": [
+                            "create:cut_diorite",
+                            "create:cut_diorite_slab",
+                            "create:cut_diorite_stairs",
+                            "create:polished_cut_diorite",
+                            "create:polished_cut_diorite_slab",
+                            "create:polished_cut_diorite_stairs",
+                            "create:cut_diorite_bricks",
+                            "create:cut_diorite_bricks_slab",
+                            "create:cut_diorite_bricks_stairs",
+                            "create:small_diorite_bricks",
+                            "create:small_diorite_bricks_slab",
+                            "create:small_diorite_bricks_stairs",
+                            "create:cut_diorite_pillar"
+                        ]
+                    }
+                ]
+            },
+            {
+                "category_name": "items",
+                "groups": [
+                    {
+                        "group_identifier": {
+                            "icon": "create:polished_cut_dripstone",
+                            "name": "create:itemGroup.name.dripstone_blocks"
+                        },
+                        "items": [
+                            "create:cut_dripstone",
+                            "create:cut_dripstone_slab",
+                            "create:cut_dripstone_stairs",
+                            "create:polished_cut_dripstone",
+                            "create:polished_cut_dripstone_slab",
+                            "create:polished_cut_dripstone_stairs",
+                            "create:cut_dripstone_bricks",
+                            "create:cut_dripstone_bricks_slab",
+                            "create:cut_dripstone_bricks_stairs",
+                            "create:small_dripstone_bricks",
+                            "create:small_dripstone_bricks_slab",
+                            "create:small_dripstone_bricks_stairs",
+                            "create:cut_dripstone_pillar"
+                        ]
+                    }
+                ]
+            },
+            {
+                "category_name": "items",
+                "groups": [
+                    {
+                        "group_identifier": {
+                            "icon": "create:polished_cut_granite",
+                            "name": "create:itemGroup.name.granite_blocks"
+                        },
+                        "items": [
+                            "create:cut_granite",
+                            "create:cut_granite_slab",
+                            "create:cut_granite_stairs",
+                            "create:polished_cut_granite",
+                            "create:polished_cut_granite_slab",
+                            "create:polished_cut_granite_stairs",
+                            "create:cut_granite_bricks",
+                            "create:cut_granite_bricks_slab",
+                            "create:cut_granite_bricks_stairs",
+                            "create:small_granite_bricks",
+                            "create:small_granite_bricks_slab",
+                            "create:small_granite_bricks_stairs",
+                            "create:cut_granite_pillar"
+                        ]
+                    }
+                ]
+            },
+            {
+                "category_name": "items",
+                "groups": [
+                    {
+                        "group_identifier": {
+                            "icon": "create:polished_cut_tuff",
+                            "name": "create:itemGroup.name.tuff_blocks"
+                        },
+                        "items": [
+                            "create:cut_tuff",
+                            "create:cut_tuff_slab",
+                            "create:cut_tuff_stairs",
+                            "create:polished_cut_tuff",
+                            "create:polished_cut_tuff_slab",
+                            "create:polished_cut_tuff_stairs",
+                            "create:cut_tuff_bricks",
+                            "create:cut_tuff_bricks_slab",
+                            "create:cut_tuff_bricks_stairs",
+                            "create:small_tuff_bricks",
+                            "create:small_tuff_bricks_slab",
+                            "create:small_tuff_bricks_stairs",
+                            "create:cut_tuff_pillar"
+                        ]
+                    }
+                ]
+            },
+            {
+                "category_name": "items",
+                "groups": [
+                    {
+                        "group_identifier": {
+                            "icon": "create:polished_cut_asurine",
+                            "name": "create:itemGroup.name.asurine_blocks"
+                        },
+                        "items": [
+                            "create:asurine",
+                            "create:cut_asurine",
+                            "create:cut_asurine_slab",
+                            "create:cut_asurine_stairs",
+                            "create:polished_cut_asurine",
+                            "create:polished_cut_asurine_slab",
+                            "create:polished_cut_asurine_stairs",
+                            "create:cut_asurine_bricks",
+                            "create:cut_asurine_bricks_slab",
+                            "create:cut_asurine_bricks_stairs",
+                            "create:small_asurine_bricks",
+                            "create:small_asurine_bricks_slab",
+                            "create:small_asurine_bricks_stairs",
+                            "create:cut_asurine_pillar"
+                        ]
+                    }
+                ]
+            },
+            {
+                "category_name": "items",
+                "groups": [
+                    {
+                        "group_identifier": { "icon": "create:polished_cut_veridium", "name": "create:itemGroup.name.veridium_blocks" },
+                        "items": ["create:veridium", "create:cut_veridium", "create:cut_veridium_slab", "create:cut_veridium_stairs", "create:polished_cut_veridium", "create:polished_cut_veridium_slab", "create:polished_cut_veridium_stairs", "create:cut_veridium_bricks", "create:cut_veridium_bricks_slab", "create:cut_veridium_bricks_stairs", "create:small_veridium_bricks", "create:small_veridium_bricks_slab", "create:small_veridium_bricks_stairs", "create:cut_veridium_pillar"]
+                    }
+                ]
+            },
+            {
+                "category_name": "items",
+                "groups": [
+                    {
+                        "group_identifier": { "icon": "create:polished_cut_ochrum", "name": "create:itemGroup.name.ochrum_blocks" },
+                        "items": ["create:ochrum", "create:cut_ochrum", "create:cut_ochrum_slab", "create:cut_ochrum_stairs", "create:polished_cut_ochrum", "create:polished_cut_ochrum_slab", "create:polished_cut_ochrum_stairs", "create:cut_ochrum_bricks", "create:cut_ochrum_bricks_slab", "create:cut_ochrum_bricks_stairs", "create:small_ochrum_bricks", "create:small_ochrum_bricks_slab", "create:small_ochrum_bricks_stairs", "create:cut_ochrum_pillar"]
+                    }
+                ]
+            },
+            {
+                "category_name": "items",
+                "groups": [
+                    {
+                        "group_identifier": { "icon": "create:polished_cut_limestone", "name": "create:itemGroup.name.limestone_blocks" },
+                        "items": ["create:limestone", "create:cut_limestone", "create:cut_limestone_slab", "create:cut_limestone_stairs", "create:polished_cut_limestone", "create:polished_cut_limestone_slab", "create:polished_cut_limestone_stairs", "create:cut_limestone_bricks", "create:cut_limestone_bricks_slab", "create:cut_limestone_bricks_stairs", "create:small_limestone_bricks", "create:small_limestone_bricks_slab", "create:small_limestone_bricks_stairs", "create:cut_limestone_pillar"]
+                    }
+                ]
+            },
+            {
+                "category_name": "items",
+                "groups": [
+                    {
+                        "group_identifier": { "icon": "create:polished_cut_crimsite", "name": "create:itemGroup.name.crimsite_blocks" },
+                        "items": ["create:crimsite", "create:cut_crimsite", "create:cut_crimsite_slab", "create:cut_crimsite_stairs", "create:polished_cut_crimsite", "create:polished_cut_crimsite_slab", "create:polished_cut_crimsite_stairs", "create:cut_crimsite_bricks", "create:cut_crimsite_bricks_slab", "create:cut_crimsite_bricks_stairs", "create:small_crimsite_bricks", "create:small_crimsite_bricks_slab", "create:small_crimsite_bricks_stairs", "create:cut_crimsite_pillar"]
+                    }
+                ]
+            },
+            {
+                "category_name": "items",
+                "groups": [
+                    {
+                        "group_identifier": {
+                            "icon": "create:vertical_framed_glass_connected",
+                            "name": "create:itemGroup.name.glass"
+                        },
+                        "items": [
+                            "create:vertical_framed_glass_connected",
+                            "create:acacia_window_connected",
+                            "create:bamboo_window_connected",
+                            "create:birch_window_connected",
+                            "create:cherry_window_connected",
+                            "create:crimson_window_connected",
+                            "create:dark_oak_window_connected",
+                            "create:industrial_iron_window",
+                            "create:jungle_window_connected",
+                            "create:mangrove_window_connected",
+                            "create:oak_window_connected",
+                            "create:ornate_iron_window_connected",
+                            "create:spruce_window_connected",
+                            "create:warped_window_connected",
+                            "create:weathered_iron_window",
+                            "create:andesite_door",
+                            "create:copper_door",
+                            "create:brass_door",
+                            "create:glass_door"
+                        ]
+                    }
+                ]
+            }
+        ]
+    }
+}

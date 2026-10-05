@@ -1,0 +1,9 @@
+{
+  "format_version": "1.12",
+  "minecraft:recipe_shaped": {
+    "description": { "identifier": "create:fluid_tank" }, "tags": ["crafting_table"],
+    "pattern": ["P", "B", "P"],
+    "key": { "P": { "item": "create:copper_sheet" }, "B": { "item": "minecraft:barrel" } },
+    "result": { "item": "create:fluid_tank", "count": 1 }
+  }
+}

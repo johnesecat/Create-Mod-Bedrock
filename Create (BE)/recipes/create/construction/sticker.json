@@ -1,0 +1,9 @@
+{
+  "format_version": "1.12",
+  "minecraft:recipe_shaped": {
+    "description": { "identifier": "create:sticker" }, "tags": ["crafting_table"],
+    "pattern": ["ASA", "RCR"],
+    "key": { "A": { "item": "create:andesite_alloy" }, "S": { "item": "minecraft:slime_ball" }, "R": { "item": "minecraft:redstone" }, "C": { "item": "minecraft:cobblestone" } },
+    "result": { "item": "create:sticker", "count": 1 }
+  }
+}

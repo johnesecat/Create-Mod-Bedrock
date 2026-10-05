@@ -1,0 +1,16 @@
+{
+    "format_version": "1.12",
+    "minecraft:recipe_shaped": {
+        "description": { "identifier": "create:electron_tube" },
+        "tags": ["crafting_table"],
+        "pattern": [
+            "A",
+            "B"
+        ],
+        "key": {
+            "A": { "item": "create:polished_rose_quartz" },
+            "B": { "item": "create:iron_sheet" }
+        },
+        "result": { "item": "create:electron_tube", "count": 1 }
+    }
+}

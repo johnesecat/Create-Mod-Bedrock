@@ -10,7 +10,7 @@
         "pack_scope": "world",
         "name": "pack.name",
         "description": "pack.description",
-        "uuid": "ae049fa3-1bcf-4906-afcd-f25c36885bff",
+        "uuid": "12cf12b5-b9b9-4d0e-987a-f22936bd0692",
         "version": [
             1,
             0,
@@ -18,24 +18,43 @@
         ],
         "min_engine_version": [
             1,
-            21,
-            50
+            26,
+            0
         ]
     },
     "modules": [
         {
-            "type": "resources",
-            "uuid": "bd31a9a3-4b2b-418e-8976-3aed0fc25fef",
+            "type": "data",
+            "uuid": "8c38fea2-8600-4317-8776-309d9fd963b2",
             "version": [
                 1,
                 0,
                 1
             ]
+        },
+        {
+            "type": "script",
+            "language": "javascript",
+            "uuid": "fc534814-e7d4-48d9-880b-8280be3d4542",
+            "version": [
+                1,
+                0,
+                0
+            ],
+            "entry": "scripts/create/launcher.js"
         }
     ],
     "dependencies": [
         {
-            "uuid": "12cf12b5-b9b9-4d0e-987a-f22936bd0692",
+            "module_name": "@minecraft/server",
+            "version": "2.6.0"
+        },
+        {
+            "module_name": "@minecraft/server-ui",
+            "version": "2.0.0"
+        },
+        {
+            "uuid": "ae049fa3-1bcf-4906-afcd-f25c36885bff",
             "version": [
                 1,
                 0,

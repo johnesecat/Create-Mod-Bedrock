@@ -1,0 +1,9 @@
+{
+  "format_version": "1.13.0",
+  "minecraft:ore_feature": {
+    "description": { "identifier": "create:ochrum_feature" },
+    "count": 48,
+    "discard_chance_on_air_exposure": 0.0,
+    "replace_rules": [{ "places_block": "create:ochrum", "may_replace": ["minecraft:stone"] }]
+  }
+}

@@ -1,0 +1,58 @@
+{
+    "format_version": "1.21.100",
+    "minecraft:block": {
+        "description": {
+            "identifier": "create:depot",
+            "traits": {
+                "minecraft:placement_direction": {
+                    "enabled_states": ["minecraft:cardinal_direction"]
+                }
+            },
+            "menu_category": {
+                "category": "items"
+            }
+        },
+        "components": {
+            "create:step_on": {},
+            "create:ticking": {},
+            "create:on_interact": {},
+            "create:player_break": {},
+            "create:on_break": {},
+            "minecraft:tick": {
+                "interval_range": [19, 21],
+                "looping": true
+            },
+            "minecraft:material_instances": {
+                "*": {
+                    "texture": "create:depot",
+                    "render_method": "alpha_test",
+                    "ambient_occlusion": false
+                }
+            },
+            "minecraft:collision_box": {
+                "origin": [-8, 0, -8],
+                "size": [16, 13, 16]
+            },
+            "minecraft:selection_box": {
+                "origin": [-8, 0, -8],
+                "size": [16, 13, 16]
+            },
+            "minecraft:geometry": "geometry.create.depot",
+            "tag:minecraft:is_pickaxe_item_destructible": {},
+            "minecraft:destructible_by_mining": {
+                "seconds_to_destroy": 6,
+                "item_specific_speeds": [
+                    {
+                        "item": {
+                            "tags": "q.any_tag('minecraft:is_pickaxe')"
+                        },
+                        "destroy_speed": 1
+                    }
+                ]
+            },
+            "minecraft:light_dampening": 0,
+            "minecraft:map_color": "#3D3D3D"
+        },
+        "permutations": []
+    }
+}

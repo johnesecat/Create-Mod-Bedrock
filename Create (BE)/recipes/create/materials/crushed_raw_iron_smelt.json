@@ -1,0 +1,9 @@
+{
+  "format_version": "1.20.10",
+  "minecraft:recipe_furnace": {
+    "description": { "identifier": "create:iron_ingot_from_crushed_raw_iron" },
+    "tags": ["furnace", "blast_furnace"],
+    "input": "create:crushed_raw_iron",
+    "output": "minecraft:iron_ingot"
+  }
+}

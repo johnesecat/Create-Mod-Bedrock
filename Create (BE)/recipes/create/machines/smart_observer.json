@@ -1,0 +1,18 @@
+{
+    "format_version": "1.12",
+    "minecraft:recipe_shaped": {
+        "description": { "identifier": "create:smart_observer" },
+        "tags": ["crafting_table"],
+        "pattern": [
+            "E",
+            "A",
+            "O"
+        ],
+        "key": {
+            "E": { "item": "create:electron_tube" },
+            "A": { "item": "create:brass_casing" },
+            "O": { "item": "minecraft:observer" }
+        },
+        "result": { "item": "create:smart_observer", "count": 1 }
+    }
+}

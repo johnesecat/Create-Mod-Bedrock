@@ -1,0 +1,30 @@
+﻿{
+    "format_version":  "1.12",
+    "minecraft:recipe_shaped":  {
+                                    "description":  {
+                                                        "identifier":  "create:brown_windmill_sail"
+                                                    },
+                                    "tags":  [
+                                                 "crafting_table"
+                                             ],
+                                    "pattern":  [
+                                                    "WS",
+                                                    "SA"
+                                                ],
+                                    "key":  {
+                                                "A":  {
+                                                          "item":  "create:andesite_alloy"
+                                                      },
+                                                "S":  {
+                                                          "item":  "minecraft:stick"
+                                                      },
+                                                "W":  {
+                                                          "item":  "minecraft:brown_wool"
+                                                      }
+                                            },
+                                    "result":  {
+                                                   "item":  "create:brown_windmill_sail",
+                                                   "count":  2
+                                               }
+                                }
+}

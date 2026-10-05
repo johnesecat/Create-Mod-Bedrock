@@ -1,0 +1,48 @@
+{
+    "format_version": "1.21.100",
+    "minecraft:block": {
+        "description": {
+            "identifier": "create:crate_creative",
+            "traits": {
+                "minecraft:placement_direction": {
+                    "enabled_states": ["minecraft:cardinal_direction"]
+                }
+            },
+            "menu_category": {
+                "category": "items"
+            }
+        },
+        "components": {
+            "create:ticking": {},
+            "create:on_interact": {},
+            "create:player_break": {},
+            "create:on_break": {},
+            "minecraft:tick": {
+                "interval_range": [2, 2],
+                "looping": true
+            },
+            "minecraft:material_instances": {
+                "*": {
+                    "texture": "create:crate_creative",
+                    "render_method": "alpha_test"
+                }
+            },
+            "minecraft:geometry": "geometry.crate_creative",
+            "minecraft:collision_box": {
+                "origin": [-7, 0, -7],
+                "size": [14, 14, 14]
+            },
+            "minecraft:selection_box": {
+                "origin": [-7, 0, -7],
+                "size": [14, 14, 14]
+            },
+            "minecraft:destructible_by_mining": {
+                "seconds_to_destroy": 1.5
+            },
+            "minecraft:destructible_by_explosion": {
+                "explosion_resistance": 6
+            },
+            "minecraft:map_color": "#5d2769"
+        }
+    }
+}

@@ -1,0 +1,9 @@
+{
+  "format_version": "1.12",
+  "minecraft:recipe_shaped": {
+    "description": { "identifier": "create:mechanical_harvester" }, "tags": ["crafting_table"],
+    "pattern": ["AIA", "AIA", " C "],
+    "key": { "I": { "item": "create:iron_sheet" }, "A": { "item": "create:andesite_alloy" }, "C": { "item": "create:andesite_casing" } },
+    "result": { "item": "create:mechanical_harvester", "count": 1 }
+  }
+}

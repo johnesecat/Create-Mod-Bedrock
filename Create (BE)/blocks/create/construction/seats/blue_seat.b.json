@@ -1,0 +1,62 @@
+{
+    "format_version": "1.26.10",
+    "minecraft:block": {
+        "description": {
+            "identifier": "create:blue_seat",
+            "menu_category": {
+                "category": "items"
+            }
+        },
+        "components": {
+            "tag:minecraft:is_axe_item_destructible": {},
+
+            "create:on_break": {},
+            "create:on_interact": {},
+
+            "minecraft:map_color": "#3c44aa",
+            "minecraft:geometry": "geometry.create.seat",
+            "minecraft:material_instances": {
+                "*": {
+                    "texture": "create:seat_bottom",
+                    "render_method": "opaque",
+                    "ambient_occlusion": false
+                },
+                "side": {
+                    "texture": "create:seat_side_blue",
+                    "render_method": "opaque",
+                    "ambient_occlusion": false
+                },
+                "top": {
+                    "texture": "create:seat_top_blue",
+                    "render_method": "opaque",
+                    "ambient_occlusion": false
+                }
+            },
+
+            "minecraft:selection_box": {
+                "origin": [-8, 0, -8],
+                "size": [16, 8, 16]
+            },
+            "minecraft:collision_box": {
+                "origin": [-8, 0, -8],
+                "size": [16, 8, 16]
+            },
+            "minecraft:light_dampening": 0,
+            "minecraft:destructible_by_mining": {
+                "seconds_to_destroy": 2
+            },
+            "minecraft:destructible_by_explosion": true,
+            "minecraft:flammable": true,
+            "minecraft:liquid_detection": {
+                "detection_rules": [
+                    {
+                        "liquid_type": "water",
+                        "stops_liquid_flowing_from_direction": ["down"],
+                        "can_contain_liquid": true,
+                        "on_liquid_touches": "blocking"
+                    }
+                ]
+            }
+        }
+    }
+}

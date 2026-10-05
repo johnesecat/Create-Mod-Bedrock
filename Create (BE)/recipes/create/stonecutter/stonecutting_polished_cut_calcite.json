@@ -1,0 +1,20 @@
+﻿{
+    "format_version":  "1.12",
+    "minecraft:recipe_shapeless":  {
+                                       "description":  {
+                                                           "identifier":  "create:stonecutting_polished_cut_calcite"
+                                                       },
+                                       "tags":  [
+                                                    "stonecutter"
+                                                ],
+                                       "ingredients":  [
+                                                           {
+                                                               "item":  "minecraft:calcite"
+                                                           }
+                                                       ],
+                                       "result":  {
+                                                      "count":  2,
+                                                      "item":  "create:polished_cut_calcite"
+                                                  }
+                                   }
+}

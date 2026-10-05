@@ -1,0 +1,1 @@
+﻿{"format_version":"1.12","minecraft:recipe_shaped":{"description":{"identifier":"create:cut_limestone_stairs"},"tags":["crafting_table"],"pattern":["A  ","AA ","AAA"],"key":{"A":{"item":"create:cut_limestone"}},"result":{"item":"create:cut_limestone_stairs","count":4}}}

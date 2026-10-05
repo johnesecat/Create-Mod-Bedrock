@@ -1,0 +1,55 @@
+{
+  "format_version": "1.21.100",
+  "minecraft:entity": {
+    "description": {
+      "identifier": "create:desk_bell_entity",
+      "is_spawnable": false,
+      "is_summonable": true,
+      "is_experimental": false
+    },
+    "component_groups": {
+      "create:despawn": {
+        "minecraft:instant_despawn": {}
+      }
+    },
+    "components": {
+      "minecraft:type_family": {
+        "family": ["create", "inanimate", "immovable"]
+      },
+      "minecraft:collision_box": {
+        "width": 0,
+        "height": 0
+      },
+      "minecraft:physics": {
+        "has_collision": false,
+        "has_gravity": false
+      },
+      "minecraft:pushable": {
+        "is_pushable": false,
+        "is_pushable_by_piston": false
+      },
+      "minecraft:damage_sensor": {
+        "triggers": {
+          "cause": "all",
+          "deals_damage": "no"
+        }
+      },
+      "minecraft:fire_immune": {},
+      "minecraft:timer": {
+        "looping": false,
+        "time": 0.8,
+        "time_down_event": {
+          "event": "create:despawn_event",
+          "target": "self"
+        }
+      }
+    },
+    "events": {
+      "create:despawn_event": {
+        "add": {
+          "component_groups": ["create:despawn"]
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,164 @@
+{
+    "format_version": "1.26.10",
+    "minecraft:block": {
+        "description": {
+            "identifier": "create:chute",
+            "menu_category": { "category": "items" },
+            "states": {
+                "create:type": ["default", "box", "diagonal", "full"],
+                "create:direction": ["north", "east", "south", "west"]
+            }
+        },
+        "components": {
+            "create:on_interact": {},
+            "create:player_break": {},
+            "minecraft:material_instances": {
+                "*": {
+                    "texture": "create:chute_default",
+                    "render_method": "alpha_test",
+                    "ambient_occlusion": false
+                }
+            },
+            "minecraft:collision_box": {
+              "origin": [-8, 0, -8],
+              "size": [16, 16, 16]
+            },
+            "minecraft:selection_box": {
+                "origin": [-8, 0, -8],
+                "size": [16, 16, 16]
+            },
+            "minecraft:geometry": {
+                "identifier": "geometry.create.chute_default"
+            },
+            "tag:minecraft:is_pickaxe_item_destructible": {},
+            "minecraft:destructible_by_mining": {
+                "seconds_to_destroy": 6,
+                "item_specific_speeds": [
+                    {
+                        "item": {
+                            "tags": "q.any_tag('minecraft:is_pickaxe')"
+                        },
+                        "destroy_speed": 1
+                    }
+                ]
+            },
+            "minecraft:light_dampening": 0,
+            "minecraft:map_color": "#5D2980"
+        },
+        "permutations": [
+            {
+                "condition": "q.block_state('create:type') == 'default'",
+                "components": {
+                  "create:on_interact": {},
+                  "create:player_break": {},
+                  "create:ticking": {},
+                  "minecraft:tick": {
+                    "interval_range": [19, 21],
+                    "looping": true
+                  },
+                  "minecraft:geometry": {
+                    "identifier": "geometry.create.chute_default"
+                  },
+                  "minecraft:material_instances": {
+                    "*": {
+                      "texture": "create:chute_default",
+                      "render_method": "alpha_test",
+                      "ambient_occlusion": false
+                    }
+                  }
+                }
+            },
+            {
+                "condition": "q.block_state('create:type') == 'box'",
+                "components": {
+                  "create:on_interact": {},
+                  "create:player_break": {},
+                  "create:ticking": {},
+                  "minecraft:tick": {
+                    "interval_range": [19, 21],
+                    "looping": true
+                  },
+                  "minecraft:geometry": {
+                    "identifier": "geometry.create.chute_box"
+                  },
+                  "minecraft:material_instances": {
+                    "*": {
+                      "texture": "create:chute_box",
+                      "render_method": "alpha_test",
+                      "ambient_occlusion": false
+                    }
+                  }
+                }
+            },
+            {
+                "condition": "q.block_state('create:type') == 'diagonal'",
+                "components": {
+                    "minecraft:geometry":{
+                        "identifier": "geometry.create.chute_diagonal"
+                    },
+                    "minecraft:material_instances": {
+                      "*": {
+                        "texture": "create:chute_diagonal",
+                        "render_method": "alpha_test",
+                        "ambient_occlusion": false
+                      }
+                    }
+                }
+            },
+            {
+                "condition": "q.block_state('create:type') == 'full'",
+                "components": {
+                  "create:on_interact": {},
+                  "create:player_break": {},
+                  "create:ticking": {},
+                  "minecraft:tick": {
+                    "interval_range": [19, 21],
+                    "looping": true
+                  },
+                  "minecraft:geometry": {
+                    "identifier": "geometry.create.chute_full"
+                  },
+                  "minecraft:material_instances": {
+                    "*": {
+                      "texture": "create:chute_full",
+                      "render_method": "alpha_test",
+                      "ambient_occlusion": false
+                    }
+                  }
+                }
+            },
+            {
+                "condition": "q.block_state('create:direction') == 'north'",
+                "components": {
+                    "minecraft:transformation": {
+                        "rotation": [0, 0, 0]
+                    }
+                }
+            },
+            {
+                "condition": "q.block_state('create:direction') == 'east'",
+                "components": {
+                    "minecraft:transformation": {
+                        "rotation": [0, 270, 0]
+                    }
+                }
+            },
+            {
+                "condition": "q.block_state('create:direction') == 'south'",
+                "components": {
+                    "minecraft:transformation": {
+                        "rotation": [0, 180, 0]
+                    }
+                }
+            },
+            {
+                "condition": "q.block_state('create:direction') == 'west'",
+                "components": {
+                    "minecraft:transformation": {
+                        "rotation": [0, 90, 0]
+                    }
+                }
+            }
+        ]
+    }
+}

@@ -1,0 +1,16 @@
+{
+    "format_version": "1.12",
+    "minecraft:recipe_shaped": {
+        "description": { "identifier": "create:andesite_alloy" },
+        "tags": ["crafting_table"],
+        "pattern": [
+            "AB",
+            "BA"
+        ],
+        "key": {
+            "A": { "item": "minecraft:iron_nugget" },
+            "B": { "item": "minecraft:andesite" }
+        },
+        "result": { "item": "create:andesite_alloy", "count": 2 }
+    }
+}

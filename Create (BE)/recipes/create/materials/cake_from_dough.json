@@ -1,0 +1,19 @@
+{
+    "format_version": "1.12",
+    "minecraft:recipe_shaped": {
+        "description": { "identifier": "create:cake_from_dough" },
+        "tags": ["crafting_table"],
+        "pattern": [
+            " M ",
+            "SFS",
+            " D "
+        ],
+        "key": {
+            "M": { "item": "minecraft:milk_bucket" },
+            "S": { "item": "minecraft:sugar" },
+            "D": { "item": "create:dough" },
+            "F": { "item": "minecraft:egg" }
+        },
+        "result": { "item": "minecraft:cake", "count": 1 }
+    }
+}

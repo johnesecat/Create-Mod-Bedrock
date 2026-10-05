@@ -1,0 +1,11 @@
+{
+  "format_version": "1.20.10",
+  "minecraft:recipe_furnace": {
+    "description": {
+      "identifier": "create:bread_from_dough"
+    },
+    "tags": ["furnace", "smoker", "campfire", "soul_campfire"],
+    "input": "create:dough",
+    "output": "minecraft:bread"
+  }
+}

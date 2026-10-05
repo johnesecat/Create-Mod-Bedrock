@@ -1,0 +1,9 @@
+{
+  "format_version": "1.12",
+  "minecraft:recipe_shaped": {
+    "description": { "identifier": "create:radial_chassis" }, "tags": ["crafting_table"],
+    "pattern": [" L ", "ALA", " L "],
+    "key": { "A": { "item": "create:andesite_alloy" }, "L": { "item": "minecraft:oak_log" } },
+    "result": { "item": "create:radial_chassis", "count": 3 }
+  }
+}

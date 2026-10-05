@@ -1,0 +1,16 @@
+{
+    "format_version": "1.12",
+    "minecraft:recipe_shaped": {
+        "description": { "identifier": "create:rotation_speed_controller" },
+        "tags": ["crafting_table"],
+        "pattern": [
+            "A",
+            "B"
+        ],
+        "key": {
+            "A": { "item": "create:precision_mechanism" },
+            "B": { "item": "create:brass_casing" }
+        },
+        "result": { "item": "create:rotation_speed_controller", "count": 1 }
+    }
+}

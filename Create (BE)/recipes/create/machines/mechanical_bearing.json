@@ -1,0 +1,18 @@
+{
+    "format_version": "1.12",
+    "minecraft:recipe_shaped": {
+        "description": { "identifier": "create:mechanical_bearing" },
+        "tags": ["crafting_table"],
+        "pattern": [
+            "B",
+            "C",
+            "S"
+        ],
+        "key": {
+            "B": { "item": "minecraft:wooden_slab" },
+            "C": { "item": "create:andesite_casing" },
+            "S": { "item": "create:shaft" }
+        },
+        "result": { "item": "create:mechanical_bearing", "count": 1 }
+    }
+}

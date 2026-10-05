@@ -1,0 +1,102 @@
+{
+    "format_version": "1.26.10",
+    "minecraft:block": {
+        "description": {
+            "identifier": "create:shaft.steam_engine",
+            "states": {
+                "create:active_generator": [true, false]
+            },
+            "traits": {
+                "minecraft:placement_position": {
+                    "enabled_states": [
+                        "minecraft:block_face"
+                    ]
+                }
+            }
+        },
+        "components": {
+            "create:rpm_system": {},
+            "minecraft:map_color": "#555555",
+            "minecraft:geometry": "geometry.create.shaft.steam_engine",
+            "minecraft:material_instances": {
+                "*": {
+                    "texture": "create:invisible",
+                    "render_method": "alpha_test",
+                    "ambient_occlusion": false
+                }
+            },
+            "minecraft:item_visual": {
+                "material_instances": {
+                    "*": {
+                        "texture": "create:shaft",
+                        "render_method": "alpha_test",
+                        "ambient_occlusion": false
+                    }
+                },
+                "geometry": {
+                    "identifier": "geometry.create.shaft.steam_engine"
+                }
+            },
+            "minecraft:destruction_particles": {
+                "texture": "create:shaft"
+            },
+            "minecraft:collision_box": {
+                "origin": [-3, 5, -8],
+                "size": [6, 6, 16]
+            },
+            "minecraft:selection_box": {
+                "origin": [-3, 5, -8],
+                "size": [6, 6, 16]
+            },
+            "minecraft:transformation": {
+                "rotation": [90, 0, 0]
+            },
+            "minecraft:destructible_by_mining": {
+                "seconds_to_destroy": 7.5
+            },
+            "minecraft:precipitation_interactions": {
+                "precipitation_behavior": "none"
+            },
+            "minecraft:support": {
+                "shape": "fence"
+            },
+            "minecraft:connection_rule": {
+                "accepts_connections_from": "none"
+            }
+        },
+        "permutations": [
+            {
+                "condition": "q.block_state('minecraft:block_face') == 'north' || q.block_state('minecraft:block_face') == 'south'",
+                "components": {
+                    "minecraft:transformation": {
+                        "rotation": [0, 0, 0]
+                    }
+                }
+            },
+            {
+                "condition": "q.block_state('minecraft:block_face') == 'west' || q.block_state('minecraft:block_face') == 'east'",
+                "components": {
+                    "minecraft:transformation": {
+                        "rotation": [0, 90, 0]
+                    }
+                }
+            },
+            {
+                "condition": "q.block_state('minecraft:block_face') == 'up' || q.block_state('minecraft:block_face') == 'down'",
+                "components": {
+                    "minecraft:transformation": {
+                        "rotation": [90, 0, 0]
+                    },
+                    "minecraft:collision_box": {
+                        "origin": [-3, 0, -3],
+                        "size": [6, 16, 6]
+                    },
+                    "minecraft:selection_box": {
+                        "origin": [-3, 0, -3],
+                        "size": [6, 16, 6]
+                    }
+                }
+            }
+        ]
+    }
+}

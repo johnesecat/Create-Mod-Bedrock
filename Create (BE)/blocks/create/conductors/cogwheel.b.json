@@ -1,0 +1,134 @@
+{
+    "format_version": "1.26.10",
+    "minecraft:block": {
+        "description": {
+            "identifier": "create:cogwheel",
+            "menu_category": { "category": "items" },
+            "traits": {
+                "minecraft:placement_direction": {
+                    "enabled_states": ["minecraft:facing_direction"]
+                }
+            }
+        },
+        "components": {
+            "create:rpm_system": {},
+
+            "minecraft:map_color": "#52320E",
+            "minecraft:geometry": "geometry.create.cogwheel",
+            "minecraft:material_instances": {
+                "*": {
+                    "texture": "create:invisible",
+                    "render_method": "alpha_test",
+                    "ambient_occlusion": false
+                }
+            },
+            "minecraft:item_visual": {
+                "material_instances": {
+                    "*": {
+                        "texture": "create:cogwheel",
+                        "render_method": "alpha_test",
+                        "ambient_occlusion": false
+                    }
+                },
+                "geometry": {
+                    "identifier": "geometry.create.cogwheel"
+                }
+            },
+            "minecraft:destruction_particles": {
+                "texture": "create:cogwheel"
+            },
+
+            "minecraft:collision_box": [
+                {
+                    "origin": [-3, 5, -8],
+                    "size": [6, 6, 16]
+                },
+                {
+                    "origin": [-8, 0, -2],
+                    "size": [16, 16, 4]
+                }
+            ],
+            "minecraft:selection_box": {
+                "origin": [-8, 0, -2],
+                "size": [16, 16, 4]
+            },
+            "minecraft:transformation": {
+                "rotation": [90, 0, 0]
+            },
+            "minecraft:destructible_by_mining": {
+                "seconds_to_destroy": 7.5,
+                "item_specific_speeds": [
+                    {
+                        "item": {
+                            "tags": "(q.all_tags('minecraft:is_axe', 'minecraft:wooden_tier') || q.all_tags('minecraft:is_pickaxe', 'minecraft:wooden_tier'))"
+                        },
+                        "destroy_speed": 1.15
+                    },
+                    {
+                        "item": {
+                            "tags": "(q.all_tags('minecraft:is_axe', 'minecraft:stone_tier') || q.all_tags('minecraft:is_pickaxe', 'minecraft:stone_tier'))"
+                        },
+                        "destroy_speed": 0.6
+                    },
+                    {
+                        "item": {
+                            "tags": "(q.all_tags('minecraft:is_axe', 'minecraft:copper_tier') || q.all_tags('minecraft:is_pickaxe', 'minecraft:copper_tier'))"
+                        },
+                        "destroy_speed": 0.5
+                    },
+                    {
+                        "item": {
+                            "tags": "(q.all_tags('minecraft:is_axe', 'minecraft:iron_tier') || q.all_tags('minecraft:is_pickaxe', 'minecraft:iron_tier'))"
+                        },
+                        "destroy_speed": 0.4
+                    },
+                    {
+                        "item": {
+                            "tags": "(q.all_tags('minecraft:is_axe', 'minecraft:golden_tier') || q.all_tags('minecraft:is_pickaxe', 'minecraft:golden_tier'))"
+                        },
+                        "destroy_speed": 0.2
+                    },
+                    {
+                        "item": {
+                            "tags": "(q.all_tags('minecraft:is_axe', 'minecraft:diamond_tier') || q.all_tags('minecraft:is_pickaxe', 'minecraft:diamond_tier'))"
+                        },
+                        "destroy_speed": 0.3
+                    },
+                    {
+                        "item": {
+                            "tags": "(q.all_tags('minecraft:is_axe', 'minecraft:netherite_tier') || q.all_tags('minecraft:is_pickaxe', 'minecraft:netherite_tier'))"
+                        },
+                        "destroy_speed": 0.25
+                    }
+                ]
+            },
+            "minecraft:precipitation_interactions": {
+                "precipitation_behavior": "none"
+            },
+            "minecraft:support": {
+                "shape": "fence"
+            },
+            "minecraft:connection_rule": {
+                "accepts_connections_from": "none"
+            }
+        },
+        "permutations": [
+            {
+                "condition": "q.block_state('minecraft:facing_direction') == 'north' || q.block_state('minecraft:facing_direction') == 'south'",
+                "components": {
+                    "minecraft:transformation": {
+                        "rotation": [0, 0, 0]
+                    }
+                }
+            },
+            {
+                "condition": "q.block_state('minecraft:facing_direction') == 'west' || q.block_state('minecraft:facing_direction') == 'east'",
+                "components": {
+                    "minecraft:transformation": {
+                        "rotation": [0, 90, 0]
+                    }
+                }
+            }
+        ]
+    }
+}

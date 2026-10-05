@@ -1,0 +1,56 @@
+{
+  "format_version": "1.21.100",
+  "minecraft:entity": {
+    "description": {
+      "identifier": "create:blaze_inert",
+      "is_spawnable": false,
+      "is_summonable": true,
+      "is_experimental": false,
+      "properties": {
+        "create:active": {
+          "client_sync": true,
+          "type": "bool",
+          "default": false
+        },
+        "create:superheated": {
+          "client_sync": true,
+          "type": "bool",
+          "default": false
+        },
+        "create:rotation_y": {
+          "client_sync": true,
+          "type": "float",
+          "range": [-360.0, 360.0],
+          "default": 0.0
+        }
+      }
+    },
+    "component_groups": {
+      "create:despawn_component": {
+        "minecraft:instant_despawn": {}
+      }
+    },
+    "components": {
+      "minecraft:inside_block_notifier": {
+        "block_list": [
+          {
+            "block": { "name": "create:blaze_burner" },
+            "exited_block_event": { "event": "create:despawn", "target": "self" }
+          }
+        ]
+      },
+      "minecraft:type_family": { "family": ["create", "inanimate", "immovable"] },
+      "minecraft:collision_box": { "height": 0.0, "width": 0.0 },
+      "minecraft:physics": { "has_collision": false, "has_gravity": false, "push_towards_closest_space": false },
+      "minecraft:pushable": { "is_pushable": false, "is_pushable_by_piston": false },
+      "minecraft:damage_sensor": { "triggers": { "cause": "all", "deals_damage": "no" } },
+      "minecraft:health": { "value": 1 },
+      "minecraft:fire_immune": {}
+    },
+    "events": {
+      "create:despawn": {
+        "add": { "component_groups": ["create:despawn_component"] }
+      }
+    }
+  }
+}

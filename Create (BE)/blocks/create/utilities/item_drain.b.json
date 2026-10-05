@@ -1,0 +1,67 @@
+{
+  "format_version": "1.21.100",
+  "minecraft:block": {
+    "description": {
+      "identifier": "create:item_drain",
+      "menu_category": {
+        "category": "items"
+      }
+    },
+    "components": {
+      "create:ticking": {},
+      "create:step_on": {},
+      "create:player_break": {},
+      "create:on_break": {},
+      "minecraft:tick": {
+        "interval_range": [8, 12],
+        "looping": true
+      },
+      "minecraft:material_instances": {
+        "*": {
+          "texture": "create:item_drain",
+          "render_method": "alpha_test",
+          "ambient_occlusion": false
+        }
+      },
+      "minecraft:collision_box": {
+        "origin": [-8, 0, -8],
+        "size": [16, 13, 16]
+      },
+      "minecraft:selection_box": {
+        "origin": [-8, 0, -8],
+        "size": [16, 13, 16]
+      },
+      "minecraft:geometry": "geometry.item_drain",
+      "minecraft:item_visual": {
+        "geometry": {
+          "identifier": "geometry.item_drain"
+        },
+        "material_instances": {
+          "*": {
+            "texture": "create:item_drain",
+            "render_method": "alpha_test",
+            "ambient_occlusion": false
+          }
+        }
+      },
+      "minecraft:destruction_particles": {
+        "texture": "create:item_drain"
+      },
+      "tag:minecraft:is_pickaxe_item_destructible": {},
+      "minecraft:destructible_by_mining": {
+        "seconds_to_destroy": 3,
+        "item_specific_speeds": [
+          {
+            "item": {
+              "tags": "q.any_tag('minecraft:is_pickaxe')"
+            },
+            "destroy_speed": 1
+          }
+        ]
+      },
+      "minecraft:light_dampening": 0,
+      "minecraft:map_color": "#60432A"
+    },
+    "permutations": []
+  }
+}

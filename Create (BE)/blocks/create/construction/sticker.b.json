@@ -1,0 +1,69 @@
+{
+  "format_version": "1.26.10",
+  "minecraft:block": {
+    "description": {
+      "identifier": "create:sticker",
+      "menu_category": { "category": "items" },
+      "states": {
+        "create:powered": [false, true]
+      },
+      "traits": {
+        "minecraft:placement_direction": {
+          "enabled_states": ["minecraft:facing_direction"]
+        }
+      }
+    },
+    "components": {
+      "create:redstone_update": {},
+      "minecraft:redstone_consumer": {
+        "min_power": 0,
+        "propogates_power": false
+      },
+      "minecraft:geometry": { "identifier": "geometry.sticker" },
+      "minecraft:material_instances": {
+        "*": { "texture": "create:sticker", "render_method": "alpha_test", "ambient_occlusion": false }
+      },
+      "minecraft:item_visual": {
+        "geometry": { "identifier": "geometry.sticker" },
+        "material_instances": {
+          "*": { "texture": "create:sticker", "render_method": "alpha_test", "ambient_occlusion": false }
+        }
+      },
+      "minecraft:collision_box": true,
+      "minecraft:selection_box": true,
+      "minecraft:destructible_by_mining": { "seconds_to_destroy": 1.5 },
+      "minecraft:map_color": "#777777",
+      "tag:minecraft:is_pickaxe_item_destructible": {}
+    },
+    "permutations": [
+      {
+        "condition": "q.block_state('create:powered') == true",
+        "components": {
+          "minecraft:material_instances": {
+            "*": { "texture": "create:sticker_powered", "render_method": "alpha_test", "ambient_occlusion": false }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('minecraft:facing_direction') == 'north'",
+        "components": { "minecraft:transformation": { "rotation": [90, 0, 0] } }
+      },
+      {
+        "condition": "q.block_state('minecraft:facing_direction') == 'south'",
+        "components": { "minecraft:transformation": { "rotation": [-90, 0, 0] } }
+      },
+      {
+        "condition": "q.block_state('minecraft:facing_direction') == 'west'",
+        "components": { "minecraft:transformation": { "rotation": [0, 0, -90] } }
+      },
+      {
+        "condition": "q.block_state('minecraft:facing_direction') == 'east'",
+        "components": { "minecraft:transformation": { "rotation": [0, 0, 90] } }
+      },
+      {
+        "condition": "q.block_state('minecraft:facing_direction') == 'down'",
+        "components": { "minecraft:transformation": { "rotation": [180, 0, 0] } }
+      }
+    ]
+  }
+}

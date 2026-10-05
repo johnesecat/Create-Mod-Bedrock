@@ -1,0 +1,62 @@
+{
+    "format_version": "1.21.0",
+    "minecraft:entity": {
+        "description": {
+            "identifier": "create:potato_projectile",
+            "is_spawnable": false,
+            "is_summonable": true,
+            "is_experimental": false,
+            "properties": {
+                "create:ammo_type": {
+                    "type": "int",
+                    "range": [0, 31],
+                    "default": 0,
+                    "client_sync": true
+                }
+            }
+        },
+        "components": {
+            "minecraft:collision_box": {
+                "width": 0.05,
+                "height": 0.05
+            },
+            "minecraft:physics": {
+                "has_gravity": true,
+                "has_collision": true
+            },
+            "minecraft:projectile": {
+                "power": 1.7,
+                "gravity": 0.045,
+                "inertia": 0.99,
+                "liquid_inertia": 0.8,
+                "anchor": 1,
+                "offset": [0, 0, 0],
+                "on_hit": {
+                    "impact_damage": {
+                        "damage": 5,
+                        "knockback": true,
+                        "semi_random_diff_damage": false,
+                        "destroy_on_hit": false
+                    }
+                }
+            },
+            "minecraft:pushable": {
+                "is_pushable": false,
+                "is_pushable_by_piston": false
+            },
+            "minecraft:fire_immune": true
+        },
+        "events": {
+            "create:remove": {
+                "add": {
+                    "component_groups": ["create:instant_remove"]
+                }
+            }
+        },
+        "component_groups": {
+            "create:instant_remove": {
+                "minecraft:instant_despawn": {}
+            }
+        }
+    }
+}

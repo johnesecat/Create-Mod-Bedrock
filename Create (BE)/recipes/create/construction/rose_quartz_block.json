@@ -1,0 +1,11 @@
+{
+  "format_version": "1.20.10",
+  "minecraft:recipe_shaped": {
+    "description": { "identifier": "create:rose_quartz_block" },
+    "tags": ["crafting_table"],
+    "unlock": [{ "item": "create:polished_rose_quartz" }],
+    "pattern": ["QQ", "QQ"],
+    "key": { "Q": { "item": "create:polished_rose_quartz" } },
+    "result": { "item": "create:rose_quartz_block", "count": 1 }
+  }
+}

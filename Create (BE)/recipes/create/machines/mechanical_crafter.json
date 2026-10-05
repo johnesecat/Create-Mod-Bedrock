@@ -1,0 +1,18 @@
+{
+    "format_version": "1.12",
+    "minecraft:recipe_shaped": {
+        "description": { "identifier": "create:mechanical_crafter" },
+        "tags": ["crafting_table"],
+        "pattern": [
+            "E",
+            "B",
+            "C"
+        ],
+        "key": {
+            "E": { "item": "create:electron_tube" },
+            "B": { "item": "create:brass_casing" },
+            "C": { "item": "minecraft:crafting_table" }
+        },
+        "result": { "item": "create:mechanical_crafter", "count": 3 }
+    }
+}

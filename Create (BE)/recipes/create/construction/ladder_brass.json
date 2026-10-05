@@ -1,0 +1,13 @@
+{
+  "format_version": "1.20.10",
+  "minecraft:recipe_shaped": {
+    "description": { "identifier": "create:ladder_brass" },
+    "tags": ["crafting_table"],
+    "unlock": [
+      { "item": "create:brass_nugget" }
+    ],
+    "pattern": ["B B", "BBB", "B B"],
+    "key": { "B": { "item": "create:brass_nugget" } },
+    "result": { "item": "create:ladder_brass", "count": 3 }
+  }
+}

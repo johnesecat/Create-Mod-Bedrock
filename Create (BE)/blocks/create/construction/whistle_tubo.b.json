@@ -1,0 +1,47 @@
+{
+  "format_version": "1.26.10",
+  "minecraft:block": {
+    "description": {
+      "identifier": "create:whistle_tubo",
+      "menu_category": { "category": "none" },
+      "states": { "create:connected_above": [false, true] },
+      "traits": {
+        "minecraft:placement_direction": {
+          "enabled_states": ["minecraft:cardinal_direction"]
+        }
+      }
+    },
+    "components": {
+      "create:on_place": {},
+      "create:on_break": {},
+      "minecraft:geometry": {
+        "identifier": "geometry.whistle_tubo",
+        "bone_visibility": {
+          "whistle_tube_cap": "q.block_state('create:connected_above') == false"
+        }
+      },
+      "minecraft:material_instances": {
+        "*": { "texture": "create:whistle_tubo", "render_method": "alpha_test", "ambient_occlusion": false }
+      },
+      "minecraft:collision_box": { "origin": [-5, 0, -5], "size": [10, 16, 10] },
+      "minecraft:selection_box": { "origin": [-5, 0, -5], "size": [10, 16, 10] },
+      "minecraft:destructible_by_mining": { "seconds_to_destroy": 1.5 },
+      "minecraft:map_color": "#B88945",
+      "tag:minecraft:is_pickaxe_item_destructible": {}
+    },
+    "permutations": [
+      {
+        "condition": "q.block_state('minecraft:cardinal_direction') == 'north'",
+        "components": { "minecraft:transformation": { "rotation": [0, 180, 0] } }
+      },
+      {
+        "condition": "q.block_state('minecraft:cardinal_direction') == 'west'",
+        "components": { "minecraft:transformation": { "rotation": [0, 90, 0] } }
+      },
+      {
+        "condition": "q.block_state('minecraft:cardinal_direction') == 'east'",
+        "components": { "minecraft:transformation": { "rotation": [0, -90, 0] } }
+      }
+    ]
+  }
+}

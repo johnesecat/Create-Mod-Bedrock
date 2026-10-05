@@ -1,0 +1,90 @@
+{
+  "format_version": "1.26.10",
+  "minecraft:block": {
+    "description": {
+      "identifier": "create:chute_smart",
+      "menu_category": { "category": "items" },
+      "states": {
+        "create:type": ["default", "box", "diagonal", "full"],
+        "create:direction": ["north", "east", "south", "west"],
+        "create:on": [false, true]
+      }
+    },
+    "components": {
+      "create:chute_smart_logic": {},
+      "minecraft:tick": { "interval_range": [19, 21], "looping": true },
+      "minecraft:redstone_consumer": { "min_power": 0, "propogates_power": false },
+      "minecraft:material_instances": {
+        "*": {
+          "texture": "create:chute_smart",
+          "render_method": "alpha_test",
+          "ambient_occlusion": false
+        }
+      },
+      "minecraft:collision_box": { "origin": [-8, 0, -8], "size": [16, 16, 16] },
+      "minecraft:selection_box": { "origin": [-8, 0, -8], "size": [16, 16, 16] },
+      "minecraft:geometry": { "identifier": "geometry.chute_smart" },
+      "minecraft:item_visual": {
+        "geometry": { "identifier": "geometry.chute_smart" },
+        "material_instances": {
+          "*": {
+            "texture": "create:chute_smart",
+            "render_method": "alpha_test",
+            "ambient_occlusion": false
+          }
+        }
+      },
+      "minecraft:destruction_particles": { "texture": "create:chute_smart" },
+      "tag:minecraft:is_pickaxe_item_destructible": {},
+      "minecraft:destructible_by_mining": {
+        "seconds_to_destroy": 6,
+        "item_specific_speeds": [
+          {
+            "item": {
+              "tags": "q.any_tag('minecraft:is_pickaxe')"
+            },
+            "destroy_speed": 1
+          }
+        ]
+      },
+      "minecraft:light_dampening": 0,
+      "minecraft:map_color": "#B36A50"
+    },
+    "permutations": [
+      {
+        "condition": "q.block_state('create:type') == 'default' || q.block_state('create:type') == 'box' || q.block_state('create:type') == 'full'",
+        "components": {
+          "minecraft:tick": { "interval_range": [19, 21], "looping": true }
+        }
+      },
+      {
+        "condition": "q.block_state('create:on') == true",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "create:chute_smart_powered",
+              "render_method": "alpha_test",
+              "ambient_occlusion": false
+            }
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('create:direction') == 'north'",
+        "components": { "minecraft:transformation": { "rotation": [0, 0, 0] } }
+      },
+      {
+        "condition": "q.block_state('create:direction') == 'east'",
+        "components": { "minecraft:transformation": { "rotation": [0, 270, 0] } }
+      },
+      {
+        "condition": "q.block_state('create:direction') == 'south'",
+        "components": { "minecraft:transformation": { "rotation": [0, 180, 0] } }
+      },
+      {
+        "condition": "q.block_state('create:direction') == 'west'",
+        "components": { "minecraft:transformation": { "rotation": [0, 90, 0] } }
+      }
+    ]
+  }
+}

@@ -1,0 +1,29 @@
+{
+    "format_version": "1.26.10",
+    "minecraft:block": {
+        "description": {
+            "identifier": "create:experience_block",
+            "menu_category": { "category": "items" }
+        },
+        "components": {
+            "minecraft:map_color": "#8DC63F",
+            "minecraft:geometry": "minecraft:geometry.full_block",
+            "minecraft:material_instances": {
+                "*": {
+                    "texture": "create:experience_block",
+                    "render_method": "opaque"
+                }
+            },
+            "minecraft:redstone_conductivity": {
+                "redstone_conductor": true
+            },
+            "minecraft:destruction_particles": {
+                "texture": "create:experience_block"
+            },
+            "minecraft:destructible_by_mining": {
+                "seconds_to_destroy": 1.5
+            },
+            "minecraft:destructible_by_explosion": true
+        }
+    }
+}

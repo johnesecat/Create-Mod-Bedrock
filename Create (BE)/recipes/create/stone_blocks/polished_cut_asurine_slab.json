@@ -1,0 +1,1 @@
+﻿{"format_version":"1.12","minecraft:recipe_shaped":{"description":{"identifier":"create:polished_cut_asurine_slab"},"tags":["crafting_table"],"pattern":["AAA"],"key":{"A":{"item":"create:polished_cut_asurine"}},"result":{"item":"create:polished_cut_asurine_slab","count":6}}}

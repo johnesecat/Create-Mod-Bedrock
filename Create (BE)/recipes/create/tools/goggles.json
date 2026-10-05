@@ -1,0 +1,17 @@
+{
+    "format_version": "1.12",
+    "minecraft:recipe_shaped": {
+        "description": { "identifier": "create:goggles" },
+        "tags": ["crafting_table"],
+        "pattern": [
+            " S ",
+            "DGD"
+        ],
+        "key": {
+            "G": { "item": "create:golden_sheet" },
+            "D": { "item": "minecraft:glass" },
+            "S": { "item": "minecraft:string" }
+        },
+        "result": { "item": "create:goggles", "count": 1 }
+    }
+}

@@ -1,0 +1,9 @@
+{
+  "format_version": "1.12",
+  "minecraft:recipe_shaped": {
+    "description": { "identifier": "create:steam_engine" }, "tags": ["crafting_table"],
+    "pattern": ["G", "A", "C"],
+    "key": { "G": { "item": "create:golden_sheet" }, "A": { "item": "create:andesite_alloy" }, "C": { "item": "minecraft:copper_block" } },
+    "result": { "item": "create:steam_engine", "count": 1 }
+  }
+}

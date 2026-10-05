@@ -1,0 +1,86 @@
+{
+    "format_version": "1.26.0",
+    "minecraft:block": {
+        "description": {
+            "identifier": "create:metal_girder",
+            "menu_category": { "category": "items" },
+            "traits": {
+                "minecraft:placement_direction": {
+                    "enabled_states": [ "minecraft:cardinal_direction" ]
+                }
+            },
+            "states": {
+                "create:is_pole": [ true, false ],
+                "create:connected": [ false, true ]
+            }
+        },
+        "components": {
+            "create:on_place": {},
+            "create:on_break": {},
+            "minecraft:geometry": {
+                "identifier": "geometry.metal_girder",
+                "bone_visibility": {
+                    "brace": "q.block_state('create:connected') == false"
+                }
+            },
+            "minecraft:material_instances": {
+                "*": {
+                    "texture": "create:metal_girder",
+                    "render_method": "opaque",
+                    "ambient_occlusion": false
+                }
+            },
+            "minecraft:item_visual": {
+                "geometry": { "identifier": "geometry.metal_girder" },
+                "material_instances": {
+                    "*": {
+                        "texture": "create:metal_girder",
+                        "render_method": "opaque",
+                        "ambient_occlusion": false
+                    }
+                }
+            },
+            "minecraft:collision_box": { "origin": [ -8, 0, -5 ], "size": [ 16, 16, 10 ] },
+            "minecraft:selection_box": { "origin": [ -8, 0, -5 ], "size": [ 16, 16, 10 ] },
+            "minecraft:destructible_by_mining": { "seconds_to_destroy": 3.0 },
+            "minecraft:map_color": "#45484D",
+            "tag:minecraft:is_pickaxe_item_destructible": {}
+        },
+        "permutations": [
+            {
+                "condition": "q.block_state('create:is_pole')",
+                "components": {
+                    "minecraft:geometry": { "identifier": "geometry.girder_pole" },
+                    "minecraft:material_instances": {
+                        "*": {
+                            "texture": "create:girder_pole",
+                            "render_method": "opaque",
+                            "ambient_occlusion": false
+                        }
+                    },
+                    "minecraft:collision_box": { "origin": [ -4, 0, -4 ], "size": [ 8, 16, 8 ] },
+                    "minecraft:selection_box": { "origin": [ -4, 0, -4 ], "size": [ 8, 16, 8 ] }
+                }
+            },
+            {
+                "condition": "!q.block_state('create:is_pole') && q.block_state('create:connected')",
+                "components": {
+                    "minecraft:collision_box": { "origin": [ -8, 2, -4 ], "size": [ 16, 12, 8 ] },
+                    "minecraft:selection_box": { "origin": [ -8, 2, -4 ], "size": [ 16, 12, 8 ] }
+                }
+            },
+            {
+                "condition": "q.block_state('minecraft:cardinal_direction') == 'south'",
+                "components": { "minecraft:transformation": { "rotation": [ 0, 180, 0 ] } }
+            },
+            {
+                "condition": "q.block_state('minecraft:cardinal_direction') == 'west'",
+                "components": { "minecraft:transformation": { "rotation": [ 0, 90, 0 ] } }
+            },
+            {
+                "condition": "q.block_state('minecraft:cardinal_direction') == 'east'",
+                "components": { "minecraft:transformation": { "rotation": [ 0, 270, 0 ] } }
+            }
+        ]
+    }
+}

@@ -1,0 +1,111 @@
+{
+    "format_version": "1.26.0",
+    "minecraft:block": {
+        "description": {
+            "identifier": "create:radial_chassis",
+            "menu_category": { "category": "items" },
+            "states": {
+                "create:sticky": [ false, true ]
+            },
+            "traits": {
+                "minecraft:placement_direction": {
+                    "enabled_states": [ "minecraft:facing_direction" ]
+                }
+            }
+        },
+        "components": {
+            "minecraft:geometry": {
+                "identifier": "geometry.radial_chassis"
+            },
+            "minecraft:material_instances": {
+                "*": {
+                    "texture": "create:radial_chassis_side",
+                    "render_method": "opaque"
+                },
+                "side": {
+                    "texture": "create:radial_chassis_side",
+                    "render_method": "opaque"
+                },
+                "end": {
+                    "texture": "create:radial_chassis_end",
+                    "render_method": "opaque"
+                }
+            },
+            "minecraft:item_visual": {
+                "geometry": {
+                    "identifier": "geometry.radial_chassis"
+                },
+                "material_instances": {
+                    "*": {
+                        "texture": "create:radial_chassis_side",
+                        "render_method": "opaque"
+                    },
+                    "side": {
+                        "texture": "create:radial_chassis_side",
+                        "render_method": "opaque"
+                    },
+                    "end": {
+                        "texture": "create:radial_chassis_end",
+                        "render_method": "opaque"
+                    }
+                }
+            },
+            "minecraft:collision_box": true,
+            "minecraft:selection_box": true,
+            "minecraft:destructible_by_mining": { "seconds_to_destroy": 2.0 },
+            "minecraft:map_color": "#7B5635",
+            "tag:minecraft:is_axe_item_destructible": {}
+        },
+        "permutations": [
+            {
+                "condition": "q.block_state('create:sticky')",
+                "components": {
+                    "minecraft:material_instances": {
+                        "*": {
+                            "texture": "create:radial_chassis_side_sticky",
+                            "render_method": "opaque"
+                        },
+                        "side": {
+                            "texture": "create:radial_chassis_side_sticky",
+                            "render_method": "opaque"
+                        },
+                        "end": {
+                            "texture": "create:radial_chassis_end",
+                            "render_method": "opaque"
+                        }
+                    }
+                }
+            },
+            {
+                "condition": "q.block_state('minecraft:facing_direction') == 'north'",
+                "components": {
+                    "minecraft:transformation": { "rotation": [ 90, 0, 0 ] }
+                }
+            },
+            {
+                "condition": "q.block_state('minecraft:facing_direction') == 'south'",
+                "components": {
+                    "minecraft:transformation": { "rotation": [ -90, 0, 0 ] }
+                }
+            },
+            {
+                "condition": "q.block_state('minecraft:facing_direction') == 'west'",
+                "components": {
+                    "minecraft:transformation": { "rotation": [ 0, 0, -90 ] }
+                }
+            },
+            {
+                "condition": "q.block_state('minecraft:facing_direction') == 'east'",
+                "components": {
+                    "minecraft:transformation": { "rotation": [ 0, 0, 90 ] }
+                }
+            },
+            {
+                "condition": "q.block_state('minecraft:facing_direction') == 'down'",
+                "components": {
+                    "minecraft:transformation": { "rotation": [ 180, 0, 0 ] }
+                }
+            }
+        ]
+    }
+}

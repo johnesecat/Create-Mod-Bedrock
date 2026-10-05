@@ -1,0 +1,17 @@
+{
+    "format_version": "1.12",
+    "minecraft:recipe_shaped": {
+        "description": { "identifier": "create:brass_hand" },
+        "tags": ["crafting_table"],
+        "pattern": [
+            " B ",
+            "AAA",
+            " A "
+        ],
+        "key": {
+            "A": { "item": "create:brass_sheet" },
+            "B": { "item": "create:andesite_alloy" }
+        },
+        "result": { "item": "create:brass_hand", "count": 1 }
+    }
+}

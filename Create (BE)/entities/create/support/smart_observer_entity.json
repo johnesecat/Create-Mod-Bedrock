@@ -1,0 +1,70 @@
+{
+  "format_version": "1.16.0",
+  "minecraft:entity": {
+    "description": {
+      "identifier": "create:smart_observer_entity",
+      "is_spawnable": false,
+      "is_summonable": true,
+      "is_experimental": false,
+      "properties": {
+        "create:cardinal_rotation": {
+          "client_sync": true,
+          "type": "enum",
+          "values": ["north", "south", "east", "west", "up", "down"],
+          "default": "south"
+        },
+        "create:type": {
+          "client_sync": true,
+          "type": "enum",
+          "default": "item",
+          "values": ["item", "block", "hand_equipped"]
+        }
+      }
+    },
+    "component_groups": {
+      "create:despawn_component": {
+        "minecraft:instant_despawn": {}
+      }
+    },
+    "components": {
+      "minecraft:inside_block_notifier": {
+        "block_list": [
+          {
+            "block": {
+              "name": "create:smart_observer"
+            },
+            "exited_block_event": {
+              "event": "create:despawn_event",
+              "target": "self"
+            }
+          }
+        ]
+      },
+      "minecraft:inventory": {
+        "restrict_to_owner": true,
+        "container_type": "inventory",
+        "inventory_size": 2,
+        "can_be_siphoned_from": false
+      },
+      "minecraft:equippable": {},
+      "minecraft:type_family": {
+        "family": ["chest", "inanimate"]
+      },
+      "minecraft:collision_box": {
+        "height": 0,
+        "width": 0
+      },
+      "minecraft:health": {
+        "value": 1
+      },
+      "minecraft:fire_immune": {}
+    },
+    "events": {
+      "create:despawn_event": {
+        "add": {
+          "component_groups": ["create:despawn_component"]
+        }
+      }
+    }
+  }
+}

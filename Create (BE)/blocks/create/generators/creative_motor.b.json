@@ -1,0 +1,138 @@
+{
+    "format_version": "1.26.10",
+    "minecraft:block": {
+        "description": {
+            "identifier": "create:creative_motor",
+            "menu_category": { "category": "items" },
+            "states": {
+                "create:active_generator": [true, false]
+            },
+            "traits": {
+                "minecraft:placement_direction": {
+                    "enabled_states": ["minecraft:facing_direction"],
+                    "y_rotation_offset": 180
+                }
+            }
+        },
+        "components": {
+            "create:rpm_system": {},
+            "create:on_interact": {},
+            "minecraft:material_instances": {
+                "*": {
+                    "texture": "create:creative_motor",
+                    "render_method": "alpha_test",
+                    "ambient_occlusion": false
+                }
+            },
+            "minecraft:collision_box": {
+                "origin": [-7, 0, -8],
+                "size": [14, 14.5, 16]
+            },
+            "minecraft:selection_box": {
+                "origin": [-7, 0, -8],
+                "size": [14, 14.5, 16]
+            },
+            "minecraft:item_visual": {
+                "geometry": {
+                    "identifier": "geometry.create.creative_motor"
+                },
+                "material_instances": {
+                    "*": {
+                        "texture": "create:creative_motor",
+                        "render_method": "alpha_test",
+                        "ambient_occlusion": false
+                    }
+                }
+            },
+            "minecraft:geometry": {
+                "identifier": "geometry.create.creative_motor",
+                "bone_visibility": {
+                    "rpm": false
+                }
+            },
+            "minecraft:destructible_by_mining": false,
+            "minecraft:light_dampening": 0,
+            "minecraft:map_color": "#5D2980"
+        },
+        "permutations": [
+            {
+                "condition": "q.block_state('minecraft:facing_direction') == 'north'",
+                "components": {
+                    "minecraft:transformation": {
+                        "rotation": [0, 180, 0]
+                    }
+                }
+            },
+            {
+                "condition": "q.block_state('minecraft:facing_direction') == 'south'",
+                "components": {
+                    "minecraft:transformation": {
+                        "rotation": [0, 0, 0]
+                    }
+                }
+            },
+            {
+                "condition": "q.block_state('minecraft:facing_direction') == 'east'",
+                "components": {
+                    "minecraft:transformation": {
+                        "rotation": [0, 90, 0]
+                    }
+                }
+            },
+            {
+                "condition": "q.block_state('minecraft:facing_direction') == 'west'",
+                "components": {
+                    "minecraft:transformation": {
+                        "rotation": [0, -90, 0]
+                    }
+                }
+            },
+            {
+                "condition": "q.block_state('minecraft:facing_direction') == 'up'",
+                "components": {
+                    "minecraft:transformation": {
+                        "rotation": [-90, 0, 0]
+                    },
+                    "minecraft:geometry": {
+                        "identifier": "geometry.create.creative_motor",
+                        "bone_visibility": {
+                            "rpm": false,
+                            "horizontal": false
+                        }
+                    },
+                    "minecraft:collision_box": {
+                        "origin": [-7, 1.5, -8],
+                        "size": [14, 13, 16]
+                    },
+                    "minecraft:selection_box": {
+                        "origin": [-7, 1.5, -8],
+                        "size": [14, 13, 16]
+                    }
+                }
+            },
+            {
+                "condition": "q.block_state('minecraft:facing_direction') == 'down'",
+                "components": {
+                    "minecraft:transformation": {
+                        "rotation": [90, 0, 0]
+                    },
+                    "minecraft:geometry": {
+                        "identifier": "geometry.create.creative_motor",
+                        "bone_visibility": {
+                            "rpm": false,
+                            "horizontal": false
+                        }
+                    },
+                    "minecraft:collision_box": {
+                        "origin": [-7, 1.5, -8],
+                        "size": [14, 13, 16]
+                    },
+                    "minecraft:selection_box": {
+                        "origin": [-7, 1.5, -8],
+                        "size": [14, 13, 16]
+                    }
+                }
+            }
+        ]
+    }
+}

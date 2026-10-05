@@ -1,0 +1,20 @@
+{
+  "format_version": "1.26.10",
+  "minecraft:block": {
+    "description": {
+      "identifier": "create:rose_quartz_block",
+      "menu_category": { "category": "items" }
+    },
+    "components": {
+      "minecraft:geometry": "minecraft:geometry.full_block",
+      "minecraft:material_instances": {
+        "*": { "texture": "create:rose_quartz_side", "render_method": "opaque" },
+        "up": { "texture": "create:rose_quartz_top", "render_method": "opaque" },
+        "down": { "texture": "create:rose_quartz_top", "render_method": "opaque" }
+      },
+      "minecraft:destructible_by_mining": { "seconds_to_destroy": 1.5 },
+      "minecraft:map_color": "#E46A8B",
+      "tag:minecraft:is_pickaxe_item_destructible": {}
+    }
+  }
+}

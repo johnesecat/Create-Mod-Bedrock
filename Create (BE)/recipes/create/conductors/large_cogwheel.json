@@ -1,0 +1,16 @@
+{
+    "format_version": "1.12",
+    "minecraft:recipe_shaped": {
+        "description": { "identifier": "create:large_cogwheel" },
+        "tags": ["crafting_table"],
+        "pattern": [
+            "AB ",
+            "B  "
+        ],
+        "key": {
+            "B": { "tag": "minecraft:planks" },
+            "A": { "item": "create:shaft" }
+        },
+        "result": { "item": "create:large_cogwheel", "count": 2 }
+    }
+}

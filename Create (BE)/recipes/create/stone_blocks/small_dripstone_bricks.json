@@ -1,0 +1,15 @@
+﻿{
+    "format_version": "1.12",
+    "minecraft:recipe_shaped": {
+        "description": { "identifier": "create:small_dripstone_bricks" },
+        "tags": ["crafting_table"],
+        "pattern": [
+            "AA",
+            "AA"
+        ],
+        "key": {
+            "A": { "item": "create:cut_dripstone_bricks" }
+        },
+        "result": { "item": "create:small_dripstone_bricks", "count": 4 }
+    }
+}

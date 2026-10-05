@@ -1,0 +1,37 @@
+{
+  "format_version": "1.21.100",
+  "minecraft:entity": {
+    "description": {
+      "identifier": "create:blaze_burner_flame",
+      "is_spawnable": false,
+      "is_summonable": true,
+      "is_experimental": false,
+      "properties": {
+        "create:superheated": {
+          "client_sync": true,
+          "type": "bool",
+          "default": false
+        }
+      }
+    },
+    "component_groups": {
+      "create:despawn_component": {
+        "minecraft:instant_despawn": {}
+      }
+    },
+    "components": {
+      "minecraft:type_family": { "family": ["create", "inanimate", "immovable"] },
+      "minecraft:collision_box": { "height": 0.0, "width": 0.0 },
+      "minecraft:physics": { "has_collision": false, "has_gravity": false, "push_towards_closest_space": false },
+      "minecraft:pushable": { "is_pushable": false, "is_pushable_by_piston": false },
+      "minecraft:damage_sensor": { "triggers": { "cause": "all", "deals_damage": "no" } },
+      "minecraft:health": { "value": 1 },
+      "minecraft:fire_immune": {}
+    },
+    "events": {
+      "create:despawn": {
+        "add": { "component_groups": ["create:despawn_component"] }
+      }
+    }
+  }
+}

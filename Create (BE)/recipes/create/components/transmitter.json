@@ -1,0 +1,14 @@
+{
+  "format_version": "1.12",
+  "minecraft:recipe_shaped": {
+    "description": { "identifier": "create:transmitter" },
+    "tags": ["crafting_table"],
+    "pattern": [" R ", "CCC", " D "],
+    "key": {
+      "R": { "item": "minecraft:lightning_rod" },
+      "C": { "item": "create:copper_sheet" },
+      "D": { "item": "minecraft:redstone" }
+    },
+    "result": { "item": "create:transmitter", "count": 1 }
+  }
+}

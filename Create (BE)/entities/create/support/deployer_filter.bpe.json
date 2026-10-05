@@ -1,0 +1,43 @@
+{
+  "format_version": "1.16.0",
+  "minecraft:entity": {
+    "description": {
+      "identifier": "create:deployer_filter",
+      "is_spawnable": false,
+      "is_summonable": true,
+      "is_experimental": false,
+      "properties": {
+        "create:item_visual": {
+          "client_sync": true,
+          "type": "enum",
+          "values": ["item", "block", "hand_equipped"],
+          "default": "item"
+        }
+      }
+    },
+    "components": {
+      "minecraft:inventory": {
+        "restrict_to_owner": true,
+        "container_type": "inventory",
+        "inventory_size": 1,
+        "can_be_siphoned_from": false
+      },
+      "minecraft:equippable": {
+        "slots": [
+          { "slot": 0, "accepted_items": [] }
+        ]
+      },
+      "minecraft:type_family": { "family": ["inanimate", "immovable"] },
+      "minecraft:collision_box": { "height": 0, "width": 0 },
+      "minecraft:damage_sensor": {
+        "triggers": [
+          { "cause": "all", "deals_damage": "no" }
+        ]
+      },
+      "minecraft:health": { "value": 999, "max": 999 },
+      "minecraft:persistent": {},
+      "minecraft:pushable": { "is_pushable": false, "is_pushable_by_piston": false },
+      "minecraft:fire_immune": {}
+    }
+  }
+}

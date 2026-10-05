@@ -1,0 +1,18 @@
+{
+  "format_version": "1.26.10",
+  "minecraft:block": {
+    "description": {
+      "identifier": "create:small_rose_quartz_tiles",
+      "menu_category": { "category": "items" }
+    },
+    "components": {
+      "minecraft:geometry": "minecraft:geometry.full_block",
+      "minecraft:material_instances": {
+        "*": { "texture": "create:small_rose_quartz_tiles", "render_method": "opaque" }
+      },
+      "minecraft:destructible_by_mining": { "seconds_to_destroy": 1.5 },
+      "minecraft:map_color": "#CF4E73",
+      "tag:minecraft:is_pickaxe_item_destructible": {}
+    }
+  }
+}

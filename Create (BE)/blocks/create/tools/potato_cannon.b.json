@@ -1,0 +1,56 @@
+{
+    "format_version": "1.21.60",
+    "minecraft:block": {
+        "description": {
+            "identifier": "create:potato_cannon",
+            "menu_category": {
+                "category": "none"
+            }
+        },
+        "components": {
+            "minecraft:display_name": "item.create:potato_cannon",
+            "minecraft:geometry": {
+                "identifier": "geometry.potato_cannon"
+            },
+            "minecraft:material_instances": {
+                "*": {
+                    "texture": "create:potato_cannon_model",
+                    "render_method": "alpha_test",
+                    "ambient_occlusion": false,
+                    "face_dimming": true
+                }
+            },
+            "minecraft:item_visual": {
+                "geometry": {
+                    "identifier": "geometry.potato_cannon"
+                },
+                "material_instances": {
+                    "*": {
+                        "texture": "create:potato_cannon_model",
+                        "render_method": "alpha_test",
+                        "ambient_occlusion": false,
+                        "face_dimming": true
+                    }
+                }
+            },
+            "minecraft:collision_box": false,
+            "minecraft:selection_box": false,
+            "minecraft:placement_filter": {
+                "conditions": [
+                    {
+                        "block_filter": [
+                            {
+                                "tags": "q.any_tag('nothing_xZ')"
+                            }
+                        ]
+                    }
+                ]
+            },
+            "minecraft:destructible_by_mining": false,
+            "minecraft:destructible_by_explosion": {
+                "explosion_resistance": 0
+            },
+            "minecraft:map_color": "#8A633B"
+        }
+    }
+}

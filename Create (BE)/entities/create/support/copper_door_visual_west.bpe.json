@@ -1,0 +1,29 @@
+{
+  "format_version": "1.21.100",
+  "minecraft:entity": {
+    "description": {
+      "identifier": "create:copper_door_visual_west",
+      "is_spawnable": false,
+      "is_summonable": true,
+      "properties": {
+        "create:opening": { "type": "bool", "default": false, "client_sync": true },
+        "create:hinge": { "type": "bool", "default": false, "client_sync": true }
+      }
+    },
+    "component_groups": {
+      "create:despawn": { "minecraft:instant_despawn": {} }
+    },
+    "components": {
+      "minecraft:type_family": { "family": ["create", "inanimate", "immovable"] },
+      "minecraft:collision_box": { "width": 0, "height": 0 },
+      "minecraft:physics": { "has_collision": false, "has_gravity": false },
+      "minecraft:pushable": { "is_pushable": false, "is_pushable_by_piston": false },
+      "minecraft:damage_sensor": { "triggers": { "cause": "all", "deals_damage": "no" } },
+      "minecraft:fire_immune": {}
+    },
+    "events": {
+      "create:despawn_event": { "add": { "component_groups": ["create:despawn"] } }
+    }
+  }
+}
+

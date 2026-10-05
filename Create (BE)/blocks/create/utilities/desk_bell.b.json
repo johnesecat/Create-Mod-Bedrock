@@ -1,0 +1,62 @@
+{
+  "format_version": "1.21.120",
+  "minecraft:block": {
+    "description": {
+      "identifier": "create:desk_bell",
+      "menu_category": {
+        "category": "items"
+      },
+      "states": {
+        "create:pressed": [false, true]
+      }
+    },
+    "components": {
+      "create:on_interact": {},
+      "minecraft:geometry": {
+        "identifier": "geometry.desk_bell",
+        "bone_visibility": {
+          "base": true,
+          "bell": "!query.block_state('create:pressed')",
+          "plunger": "!query.block_state('create:pressed')"
+        }
+      },
+      "minecraft:material_instances": {
+        "*": {
+          "texture": "create:desk_bell",
+          "render_method": "alpha_test"
+        }
+      },
+      "minecraft:collision_box": {
+        "origin": [-5, 0, -5],
+        "size": [10, 10, 10]
+      },
+      "minecraft:selection_box": {
+        "origin": [-5, 0, -5],
+        "size": [10, 11, 10]
+      },
+      "minecraft:redstone_producer": {
+        "connected_faces": ["north", "south", "east", "west", "up", "down"],
+        "strongly_powered_face": "down",
+        "power": 0
+      },
+      "minecraft:destructible_by_mining": {
+        "seconds_to_destroy": 0.5
+      },
+      "minecraft:destructible_by_explosion": {
+        "explosion_resistance": 3
+      }
+    },
+    "permutations": [
+      {
+        "condition": "query.block_state('create:pressed')",
+        "components": {
+          "minecraft:redstone_producer": {
+            "connected_faces": ["north", "south", "east", "west", "up", "down"],
+            "strongly_powered_face": "down",
+            "power": 15
+          }
+        }
+      }
+    ]
+  }
+}

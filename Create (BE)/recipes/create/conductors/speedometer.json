@@ -1,0 +1,15 @@
+{
+    "format_version": "1.12",
+    "minecraft:recipe_shaped": {
+        "description": { "identifier": "create:speedometer" },
+        "tags": ["crafting_table"],
+        "pattern": [
+            "CAA"
+        ],
+        "key": {
+            "C": { "item": "minecraft:compass" },
+            "A": { "item": "create:andesite_casing" }
+        },
+        "result": { "item": "create:speedometer", "count": 2 }
+    }
+}

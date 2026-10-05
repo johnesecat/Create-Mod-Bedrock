@@ -1,0 +1,13 @@
+{
+    "format_version": "1.12",
+    "minecraft:recipe_shaped": {
+        "description": { "identifier": "create:copycat_step" },
+        "tags": [ "crafting_table" ],
+        "pattern": [ "NA" ],
+        "key": {
+            "N": { "item": "minecraft:iron_nugget" },
+            "A": { "item": "create:andesite_alloy" }
+        },
+        "result": { "item": "create:copycat_step", "count": 2 }
+    }
+}

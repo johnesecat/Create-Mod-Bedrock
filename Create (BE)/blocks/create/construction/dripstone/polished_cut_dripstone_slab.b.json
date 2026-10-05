@@ -1,0 +1,114 @@
+{
+    "format_version": "1.26.10",
+    "minecraft:block": {
+        "description": {
+            "identifier": "create:polished_cut_dripstone_slab",
+            "menu_category": {
+                "category": "items"
+            },
+            "traits": {
+                "minecraft:placement_position": {
+                    "enabled_states": ["minecraft:vertical_half"]
+                }
+            },
+            "states": {
+                "create:is_full_block": [false, true]
+            }
+        },
+        "permutations": [
+            {
+                "condition": "q.block_state('minecraft:vertical_half') == 'top'",
+                "components": {
+                    "minecraft:collision_box": {
+                        "origin": [-8, 8, -8],
+                        "size": [16, 8, 16]
+                    },
+                    "minecraft:selection_box": {
+                        "origin": [-8, 8, -8],
+                        "size": [16, 8, 16]
+                    }
+                }
+            },
+            {
+                "condition": "q.block_state('create:is_full_block')",
+                "components": {
+                    "minecraft:collision_box": true,
+                    "minecraft:selection_box": true
+                }
+            }
+        ],
+        "components": {
+            "minecraft:map_color": [151, 109, 77],
+            "minecraft:geometry": {
+                "identifier": "geometry.create.slab",
+                "bone_visibility": {
+                    "top": "q.block_state('minecraft:vertical_half') == 'top' || q.block_state('create:is_full_block')",
+                    "bottom": "q.block_state('minecraft:vertical_half') == 'bottom' || q.block_state('create:is_full_block')"
+                }
+            },
+            "minecraft:material_instances": {
+                "*": {
+                    "texture": "create:polished_cut_dripstone",
+                    "render_method": "opaque"
+                }
+            },
+
+            "minecraft:selection_box": {
+                "origin": [-8, 0, -8],
+                "size": [16, 8, 16]
+            },
+            "minecraft:collision_box": {
+                "origin": [-8, 0, -8],
+                "size": [16, 8, 16]
+            },
+
+            "minecraft:destructible_by_mining": {
+                "seconds_to_destroy": 7.5,
+                "item_specific_speeds": [
+                    {
+                        "item": {
+                            "tags": "q.all_tags('minecraft:is_pickaxe', 'minecraft:wooden_tier')"
+                        },
+                        "destroy_speed": 1.15
+                    },
+                    {
+                        "item": {
+                            "tags": "q.all_tags('minecraft:is_pickaxe', 'minecraft:stone_tier')"
+                        },
+                        "destroy_speed": 0.6
+                    },
+                    {
+                        "item": {
+                            "tags": "q.all_tags('minecraft:is_pickaxe', 'minecraft:copper_tier')"
+                        },
+                        "destroy_speed": 0.5
+                    },
+                    {
+                        "item": {
+                            "tags": "q.all_tags('minecraft:is_pickaxe', 'minecraft:iron_tier')"
+                        },
+                        "destroy_speed": 0.4
+                    },
+                    {
+                        "item": {
+                            "tags": "q.all_tags('minecraft:is_pickaxe', 'minecraft:golden_tier')"
+                        },
+                        "destroy_speed": 0.2
+                    },
+                    {
+                        "item": {
+                            "tags": "q.all_tags('minecraft:is_pickaxe', 'minecraft:diamond_tier')"
+                        },
+                        "destroy_speed": 0.3
+                    },
+                    {
+                        "item": {
+                            "tags": "q.all_tags('minecraft:is_pickaxe', 'minecraft:netherite_tier')"
+                        },
+                        "destroy_speed": 0.25
+                    }
+                ]
+            }
+        }
+    }
+}

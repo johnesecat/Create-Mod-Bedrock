@@ -1,0 +1,13 @@
+﻿{
+    "format_version": "1.12",
+    "minecraft:recipe_shapeless": {
+        "description": { "identifier": "create:black_seat" },
+        "tags": ["crafting_table"],
+        "ingredients": [
+            { "item": "minecraft:black_wool" },
+            { "item": "minecraft:wooden_slab" }
+        ],
+        "result": { "item": "create:black_seat", "count": 1 }
+    }
+}
+

@@ -1,0 +1,18 @@
+{
+    "format_version": "1.12",
+    "minecraft:recipe_shaped": {
+        "description": { "identifier": "create:brass_tunnel" },
+        "tags": ["crafting_table"],
+        "pattern": [
+            "E",
+            "BB",
+            "KK"
+        ],
+        "key": {
+            "E": { "item": "create:electron_tube" },
+            "B": { "item": "create:brass_ingot" },
+            "K": { "item": "minecraft:dried_kelp" }
+        },
+        "result": { "item": "create:brass_tunnel", "count": 2 }
+    }
+}

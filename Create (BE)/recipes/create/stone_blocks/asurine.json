@@ -1,0 +1,13 @@
+{
+  "format_version": "1.12",
+  "minecraft:recipe_shapeless": {
+    "description": { "identifier": "create:asurine" },
+    "tags": ["crafting_table"],
+    "ingredients": [
+      { "item": "minecraft:andesite" }, { "item": "minecraft:andesite" },
+      { "item": "minecraft:andesite" }, { "item": "minecraft:andesite" },
+      { "item": "minecraft:blue_dye" }
+    ],
+    "result": { "item": "create:asurine", "count": 4 }
+  }
+}

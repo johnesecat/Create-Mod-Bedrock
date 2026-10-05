@@ -1,0 +1,97 @@
+{
+  "format_version": "1.26.10",
+  "minecraft:block": {
+    "description": {
+      "identifier": "create:hose_pulley",
+      "menu_category": { "category": "items", "group": "create:itemGroup.name.appliances" },
+      "states": {
+        "create:is_spinning": [false, true],
+        "create:hose_moving": [false, true],
+        "create:hose_animation": ["off", "slow_forward", "medium_forward", "fast_forward", "slow_reverse", "medium_reverse", "fast_reverse"]
+      },
+      "traits": {
+        "minecraft:placement_direction": {
+          "enabled_states": ["minecraft:cardinal_direction"]
+        }
+      }
+    },
+    "components": {
+      "create:rpm_system": {},
+      "minecraft:geometry": {
+        "identifier": "geometry.hose_pulley",
+        "bone_visibility": {
+          "rpm": false,
+          "hose_coil": "!q.block_state('create:hose_moving')"
+        }
+      },
+      "minecraft:material_instances": {
+        "*": {
+          "texture": "create:hose_pulley",
+          "render_method": "alpha_test_to_opaque",
+          "ambient_occlusion": false
+        }
+      },
+      "minecraft:item_visual": {
+        "geometry": { "identifier": "geometry.hose_pulley" },
+        "material_instances": {
+          "*": {
+            "texture": "create:hose_pulley",
+            "render_method": "alpha_test_to_opaque",
+            "ambient_occlusion": false
+          }
+        }
+      },
+      "minecraft:collision_box": true,
+      "minecraft:selection_box": true,
+      "minecraft:destruction_particles": { "texture": "create:hose_pulley" },
+      "minecraft:destructible_by_mining": { "seconds_to_destroy": 2.5 },
+      "minecraft:map_color": "#59605B"
+    },
+    "permutations": [
+      {
+        "condition": "false",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "create:hose_pulley",
+              "render_method": "alpha_test_to_opaque",
+              "ambient_occlusion": false
+            }
+          }
+        }
+      },
+      {
+        "condition": "false",
+        "components": { "minecraft:material_instances": { "*": { "texture": "create:hose_pulley", "render_method": "alpha_test_to_opaque", "ambient_occlusion": false } } }
+      },
+      {
+        "condition": "false",
+        "components": { "minecraft:material_instances": { "*": { "texture": "create:hose_pulley", "render_method": "alpha_test_to_opaque", "ambient_occlusion": false } } }
+      },
+      {
+        "condition": "false",
+        "components": { "minecraft:material_instances": { "*": { "texture": "create:hose_pulley", "render_method": "alpha_test_to_opaque", "ambient_occlusion": false } } }
+      },
+      {
+        "condition": "false",
+        "components": { "minecraft:material_instances": { "*": { "texture": "create:hose_pulley", "render_method": "alpha_test_to_opaque", "ambient_occlusion": false } } }
+      },
+      {
+        "condition": "false",
+        "components": { "minecraft:material_instances": { "*": { "texture": "create:hose_pulley", "render_method": "alpha_test_to_opaque", "ambient_occlusion": false } } }
+      },
+      {
+        "condition": "q.block_state('minecraft:cardinal_direction') == 'south'",
+        "components": { "minecraft:transformation": { "rotation": [0, 180, 0] } }
+      },
+      {
+        "condition": "q.block_state('minecraft:cardinal_direction') == 'west'",
+        "components": { "minecraft:transformation": { "rotation": [0, 90, 0] } }
+      },
+      {
+        "condition": "q.block_state('minecraft:cardinal_direction') == 'east'",
+        "components": { "minecraft:transformation": { "rotation": [0, -90, 0] } }
+      }
+    ]
+  }
+}

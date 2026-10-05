@@ -1,0 +1,17 @@
+{
+    "format_version": "1.12",
+    "minecraft:recipe_shaped": {
+        "description": { "identifier": "create:gearshift" },
+        "tags": ["crafting_table"],
+        "pattern": [
+            "BA ",
+            "R  "
+          ],
+        "key": {
+            "A": { "item": "create:andesite_casing" },
+            "B": { "item": "create:cogwheel" },
+            "R": { "item": "minecraft:redstone" }
+        },
+        "result": { "item": "create:gearshift", "count": 1 }
+    }
+}

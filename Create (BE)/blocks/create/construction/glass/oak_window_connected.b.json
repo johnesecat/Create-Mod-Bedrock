@@ -1,0 +1,57 @@
+{
+  "format_version": "1.26.10",
+  "minecraft:block": {
+    "description": {
+      "identifier": "create:oak_window_connected",
+      "menu_category": { "category": "items", "group": "create:itemGroup.name.glass" },
+      "states": {
+        "create:height": ["single", "bottom", "middle", "top"]
+      }
+    },
+    "components": {
+      "create:on_tick": {},
+      "minecraft:tick": { "looping": true, "interval_range": [4, 8] },
+      "minecraft:geometry": {
+        "identifier": "geometry.glass",
+        "bone_visibility": {
+          "small": "q.block_state('create:height') == 'single'",
+          "small_top": "q.block_state('create:height') == 'top'",
+          "small_middle": "q.block_state('create:height') == 'middle'",
+          "small_bottom": "q.block_state('create:height') == 'bottom'"
+        }
+      },
+      "minecraft:material_instances": {
+        "*": {
+          "texture": "create:oak_window_connected",
+          "render_method": "blend",
+          "ambient_occlusion": false
+        }
+      },
+      "minecraft:item_visual": {
+        "geometry": {
+          "identifier": "geometry.glass",
+          "bone_visibility": {
+            "small": true,
+            "small_top": false,
+            "small_middle": false,
+            "small_bottom": false
+          }
+        },
+        "material_instances": {
+          "*": {
+            "texture": "create:oak_window_connected",
+            "render_method": "blend",
+            "ambient_occlusion": false
+          }
+        }
+      },
+      "minecraft:collision_box": { "origin": [-8, 0, -8], "size": [16, 16, 16] },
+      "minecraft:selection_box": { "origin": [-8, 0, -8], "size": [16, 16, 16] },
+      "minecraft:light_dampening": 0,
+      "minecraft:redstone_conductivity": { "redstone_conductor": false },
+      "minecraft:destructible_by_mining": { "seconds_to_destroy": 0.45 },
+      "minecraft:map_color": "#4A3326",
+      "tag:minecraft:is_pickaxe_item_destructible": {}
+    }
+  }
+}

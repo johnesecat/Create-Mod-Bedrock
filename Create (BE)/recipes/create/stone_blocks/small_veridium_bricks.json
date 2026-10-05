@@ -1,0 +1,15 @@
+﻿{
+    "format_version": "1.12",
+    "minecraft:recipe_shaped": {
+        "description": { "identifier": "create:small_veridium_bricks" },
+        "tags": ["crafting_table"],
+        "pattern": [
+            "AA",
+            "AA"
+        ],
+        "key": {
+            "A": { "item": "create:cut_veridium_bricks" }
+        },
+        "result": { "item": "create:small_veridium_bricks", "count": 4 }
+    }
+}

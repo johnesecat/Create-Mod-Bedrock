@@ -1,0 +1,10 @@
+{
+  "format_version": "1.12",
+  "minecraft:recipe_shapeless": {
+    "description": { "identifier": "create:stonecutter_vertical_framed_glass" },
+    "tags": ["stonecutter"],
+    "priority": 1,
+    "ingredients": [{ "item": "minecraft:glass" }],
+    "result": { "item": "create:vertical_framed_glass_connected", "count": 1 }
+  }
+}

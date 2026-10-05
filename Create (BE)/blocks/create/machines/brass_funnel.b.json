@@ -1,0 +1,98 @@
+{
+    "format_version": "1.26.0",
+    "minecraft:block": {
+        "description": {
+            "identifier": "create:brass_funnel",
+            "menu_category": { "category": "items" },
+            "states": {
+                "create:input":    [false, true],
+                "create:parallel": [false, true],
+                "create:on":       [false, true]
+            },
+            "traits": {
+                "minecraft:placement_direction": {
+                    "enabled_states": ["minecraft:cardinal_direction"],
+                    "y_rotation_offset": 180
+                }
+            }
+        },
+        "components": {
+            "create:on_interact": {},
+            "create:on_place": {},
+            "create:on_break": {},
+            "create:on_tick": {},
+            "create:redstone_update": {},
+            "minecraft:tick": { "interval_range": [20, 20] },
+            "minecraft:redstone_consumer": { "min_power": 0, "propogates_power": false },
+            "minecraft:material_instances": {
+                "*": { "texture": "create:brass_funnel", "render_method": "alpha_test", "ambient_occlusion": false }
+            },
+            "minecraft:geometry": {
+                "identifier": "geometry.create.brass_funnel",
+                "bone_visibility": {
+                    "input":  "q.block_state('create:input') == true",
+                    "output": "q.block_state('create:input') == false"
+                }
+            },
+            "minecraft:item_visual": {
+                "geometry": { "identifier": "geometry.create.brass_funnel" },
+                "material_instances": {
+                    "*": { "texture": "create:brass_funnel", "render_method": "alpha_test", "ambient_occlusion": false }
+                }
+            },
+            "minecraft:destruction_particles": { "texture": "create:brass_funnel" },
+            "minecraft:selection_box": { "origin": [-8, 0, 1], "size": [16, 15, 7] },
+            "minecraft:collision_box": { "origin": [-8, 0, 1], "size": [16, 15, 7] },
+            "minecraft:destructible_by_mining": { "seconds_to_destroy": 3.0 },
+            "minecraft:light_dampening": 0
+        },
+        "permutations": [
+            {
+                "condition": "query.block_state('create:parallel') == true && query.block_state('create:on') == false",
+                "components": {
+                    "minecraft:selection_box": { "origin": [-8, 0, -2], "size": [16, 15, 10] },
+                    "minecraft:collision_box": { "origin": [-8, 0, -2], "size": [16, 15, 10] },
+                    "minecraft:geometry": {
+                        "identifier": "geometry.create.brass_funnel_parallel",
+                        "bone_visibility": {
+                            "input":  "q.block_state('create:input') == true",
+                            "output": "q.block_state('create:input') == false"
+                        }
+                    },
+                    "minecraft:material_instances": {
+                        "*": { "texture": "create:brass_funnel_parallel", "render_method": "alpha_test", "ambient_occlusion": false }
+                    }
+                }
+            },
+            {
+                "condition": "query.block_state('create:parallel') == true && query.block_state('create:on') == true",
+                "components": {
+                    "minecraft:geometry": {
+                        "identifier": "geometry.create.brass_funnel_parallel",
+                        "bone_visibility": {
+                            "input":  "q.block_state('create:input') == true",
+                            "output": "q.block_state('create:input') == false"
+                        }
+                    },
+                    "minecraft:material_instances": {
+                        "*": { "texture": "create:brass_funnel_parallel_on", "render_method": "alpha_test", "ambient_occlusion": false }
+                    }
+                }
+            },
+            {
+                "condition": "query.block_state('create:parallel') == false && query.block_state('create:on') == true",
+                "components": {
+                    "minecraft:material_instances": {
+                        "*": { "texture": "create:brass_funnel_on", "render_method": "alpha_test", "ambient_occlusion": false }
+                    }
+                }
+            },
+            { "condition": "query.block_state('create:input') == true",                                    "components": { "minecraft:tick": { "interval_range": [6, 8] } } },
+            { "condition": "query.block_state('create:input') == false",                                   "components": { "minecraft:tick": { "interval_range": [6, 8] } } },
+            { "condition": "query.block_state('minecraft:cardinal_direction') == 'north'", "components": { "minecraft:transformation": { "rotation": [0,   0, 0] } } },
+            { "condition": "query.block_state('minecraft:cardinal_direction') == 'south'", "components": { "minecraft:transformation": { "rotation": [0, 180, 0] } } },
+            { "condition": "query.block_state('minecraft:cardinal_direction') == 'west'",  "components": { "minecraft:transformation": { "rotation": [0,  90, 0] } } },
+            { "condition": "query.block_state('minecraft:cardinal_direction') == 'east'",  "components": { "minecraft:transformation": { "rotation": [0, 270, 0] } } }
+        ]
+    }
+}

@@ -1,0 +1,9 @@
+{
+  "format_version": "1.12",
+  "minecraft:recipe_shaped": {
+    "description": { "identifier": "create:andesite_funnel" }, "tags": ["crafting_table"],
+    "pattern": ["A", "K"],
+    "key": { "A": { "item": "create:andesite_alloy" }, "K": { "item": "minecraft:dried_kelp" } },
+    "result": { "item": "create:andesite_funnel", "count": 2 }
+  }
+}

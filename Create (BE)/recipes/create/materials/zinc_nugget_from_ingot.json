@@ -1,0 +1,11 @@
+{
+    "format_version": "1.12",
+    "minecraft:recipe_shapeless": {
+        "description": { "identifier": "create:zinc_nugget_from_ingot" },
+        "tags": ["crafting_table"],
+        "ingredients": [
+            { "item": "create:zinc_ingot" }
+        ],
+        "result": { "item": "create:zinc_nugget", "count": 9 }
+    }
+}

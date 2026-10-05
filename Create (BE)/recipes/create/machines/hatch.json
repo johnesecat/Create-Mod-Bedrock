@@ -1,0 +1,16 @@
+{
+    "format_version": "1.12",
+    "minecraft:recipe_shaped": {
+        "description": { "identifier": "create:hatch" },
+        "tags": ["crafting_table"],
+        "pattern": [
+            "A",
+            "T"
+        ],
+        "key": {
+            "A": { "item": "create:andesite_alloy" },
+            "T": { "item": "minecraft:iron_trapdoor" }
+        },
+        "result": { "item": "create:hatch", "count": 1 }
+    }
+}

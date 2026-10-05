@@ -1,0 +1,73 @@
+{
+  "format_version": "1.21.100",
+  "minecraft:entity": {
+    "description": {
+      "identifier": "create:pipe_fluid",
+      "is_spawnable": false,
+      "is_summonable": true,
+      "is_experimental": false,
+      "properties": {
+        "create:fluid_type": {
+          "client_sync": true,
+          "type": "enum",
+          "values": ["lava", "water", "honey", "chocolate", "milk"],
+          "default": "water"
+        },
+        "create:pipe_axis": {
+          "client_sync": true,
+          "type": "enum",
+          "values": ["x", "y", "z"],
+          "default": "z"
+        }
+      }
+    },
+    "components": {
+      "minecraft:type_family": {
+        "family": ["inanimate", "immovable", "create_visual"]
+      },
+      "minecraft:collision_box": {
+        "width": 0,
+        "height": 0
+      },
+      "minecraft:physics": {
+        "has_collision": false,
+        "has_gravity": false
+      },
+      "minecraft:pushable": {
+        "is_pushable": false,
+        "is_pushable_by_piston": false
+      },
+      "minecraft:damage_sensor": {
+        "triggers": {
+          "cause": "all",
+          "deals_damage": "no"
+        }
+      },
+      "minecraft:fire_immune": {},
+      "minecraft:timer": {
+        "time": [5, 5],
+        "looping": false,
+        "time_down_event": {
+          "event": "create:despawn",
+          "target": "self"
+        }
+      },
+      "minecraft:health": {
+        "value": 1,
+        "max": 1
+      }
+    },
+    "component_groups": {
+      "create:despawn": {
+        "minecraft:instant_despawn": {}
+      }
+    },
+    "events": {
+      "create:despawn": {
+        "add": {
+          "component_groups": ["create:despawn"]
+        }
+      }
+    }
+  }
+}

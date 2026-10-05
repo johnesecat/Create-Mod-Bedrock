@@ -1,0 +1,254 @@
+{
+    "format_version": "1.26.0",
+    "minecraft:block": {
+        "description": {
+            "identifier": "create:mechanical_belt",
+            "menu_category": { "category": "none" },
+            "states": {
+                "create:slope": ["horizontal", "diagonal", "vertical"],
+                "create:part": ["start", "middle", "end"],
+                "create:has_pulley": [false, true],
+                "create:diagonal_flip": [false, true]
+            },
+            "traits": {
+                "minecraft:placement_position": {
+                    "enabled_states": ["minecraft:block_face"]
+                }
+            }
+        },
+        "components": {
+            "create:rpm_system": {},
+            "create:ticking": {},
+            "minecraft:tick": {
+                "interval_range": [1, 1],
+                "looping": true
+            },
+            "minecraft:material_instances": {
+                "*": {
+                    "texture": "create:invisible",
+                    "render_method": "alpha_test_to_opaque",
+                    "ambient_occlusion": false
+                }
+            },
+            "minecraft:destruction_particles": { "texture": "create:mechanical_belt" },
+            "minecraft:geometry": {
+                "identifier": "geometry.create.mechanical_belt",
+                "bone_visibility": {
+                    "diagonal_start": false,
+                    "diagonal_end": false,
+                    "middle_vertical": false,
+                    "middle_bottom_vertical": false,
+                    "start_vertical": false,
+                    "start_bottom_vertical": false,
+                    "end_vertical": false,
+                    "end_bottom_vertical": false
+                }
+            },
+            "minecraft:collision_box": {
+            	"origin": [-8, 3, -7],
+            	"size": [16, 10, 14]
+            },
+            "minecraft:selection_box": {
+            	"origin": [-8, 3, -7],
+            	"size": [16, 10, 14]
+            },
+            "minecraft:destructible_by_mining": {
+                "seconds_to_destroy": 7.5,
+                "item_specific_speeds": [
+                    {
+                        "item": {
+                            "tags": "q.all_tags('minecraft:is_pickaxe', 'minecraft:wooden_tier')"
+                        },
+                        "destroy_speed": 1.15
+                    },
+                    {
+                        "item": {
+                            "tags": "q.all_tags('minecraft:is_pickaxe', 'minecraft:stone_tier')"
+                        },
+                        "destroy_speed": 0.6
+                    },
+                    {
+                        "item": {
+                            "tags": "q.all_tags('minecraft:is_pickaxe', 'minecraft:copper_tier')"
+                        },
+                        "destroy_speed": 0.5
+                    },
+                    {
+                        "item": {
+                            "tags": "q.all_tags('minecraft:is_pickaxe', 'minecraft:iron_tier')"
+                        },
+                        "destroy_speed": 0.4
+                    },
+                    {
+                        "item": {
+                            "tags": "q.all_tags('minecraft:is_pickaxe', 'minecraft:golden_tier')"
+                        },
+                        "destroy_speed": 0.2
+                    },
+                    {
+                        "item": {
+                            "tags": "q.all_tags('minecraft:is_pickaxe', 'minecraft:diamond_tier')"
+                        },
+                        "destroy_speed": 0.3
+                    },
+                    {
+                        "item": {
+                            "tags": "q.all_tags('minecraft:is_pickaxe', 'minecraft:netherite_tier')"
+                        },
+                        "destroy_speed": 0.25
+                    }
+                ]
+            },
+            "minecraft:precipitation_interactions": { "precipitation_behavior": "none" },
+            "minecraft:connection_rule": { "accepts_connections_from": "none" },
+            "minecraft:light_dampening": 0,
+            "minecraft:map_color": "#242424"
+        },
+        "permutations": [
+
+            {
+                "condition": "q.block_state('create:slope') == 'vertical'",
+                "components": {
+                    "minecraft:collision_box": {
+                        "origin": [-5, 0, -7],
+                        "size": [10, 16, 14]
+                    },
+                    "minecraft:selection_box": {
+                        "origin": [-5, 0, -7],
+                        "size": [10, 16, 14]
+                    }
+                }
+            },
+
+            // ── Direção canônica ────────────────────────────────────────────
+            {
+                "condition": "q.block_state('minecraft:block_face') == 'north' || q.block_state('minecraft:block_face') == 'south'",
+                "components": {
+                    "minecraft:transformation": { "rotation": [0, 0, 0] }
+                }
+            },
+            {
+                "condition": "q.block_state('minecraft:block_face') == 'east' || q.block_state('minecraft:block_face') == 'west'",
+                "components": {
+                    "minecraft:transformation": { "rotation": [0, 90, 0] }
+                }
+            },
+            {
+                "condition": "q.block_state('minecraft:block_face') == 'up' || q.block_state('minecraft:block_face') == 'down'",
+                "components": {
+                    "minecraft:transformation": { "rotation": [90, 0, 0] }
+                }
+            },
+
+            // ── Diagonal Start (normal) ──
+            {
+                "condition": "q.block_state('create:slope') == 'diagonal' && q.block_state('create:part') == 'start' && !q.block_state('create:diagonal_flip')",
+                "components": {
+                    "minecraft:collision_box": [
+                        { "origin": [-2, 3, -7], "size": [10, 10, 14] },
+                        { "origin": [-3, 4, -7], "size": [5, 10, 14] },
+                        { "origin": [-4, 5, -7], "size": [5, 10, 14] },
+                        { "origin": [-5, 6, -7], "size": [5, 10, 14] },
+                        { "origin": [-6, 7, -7], "size": [5, 10, 14] },
+                        { "origin": [7, 0, -7], "size": [1, 8, 14] },
+                        { "origin": [-7, 8, -7], "size": [5, 10, 14] },
+                        { "origin": [-8, 9, -7], "size": [5, 10, 14] }
+                    ],
+                    "minecraft:selection_box": { "origin": [-8, 3, -7], "size": [16, 13, 14] }
+                }
+            },
+
+            // ── Diagonal Start (flip) ──
+            {
+                "condition": "q.block_state('create:slope') == 'diagonal' && q.block_state('create:part') == 'start' && q.block_state('create:diagonal_flip')",
+                "components": {
+                    "minecraft:collision_box": [
+                        { "origin": [-8, 3, -7], "size": [10, 10, 14] },
+                        { "origin": [-2, 4, -7], "size": [5, 10, 14] },
+                        { "origin": [-1, 5, -7], "size": [5, 10, 14] },
+                        { "origin": [0, 6, -7], "size": [5, 10, 14] },
+                        { "origin": [1, 7, -7], "size": [5, 10, 14] },
+                        { "origin": [-8, 0, -7], "size": [1, 8, 14] },
+                        { "origin": [2, 8, -7], "size": [5, 10, 14] },
+                        { "origin": [3, 9, -7], "size": [5, 10, 14] }
+                    ],
+                    "minecraft:selection_box": { "origin": [-8, 3, -7], "size": [16, 13, 14] }
+                }
+            },
+
+            // ── Diagonal End (normal) ──
+            {
+                "condition": "q.block_state('create:slope') == 'diagonal' && q.block_state('create:part') == 'end' && !q.block_state('create:diagonal_flip')",
+                "components": {
+                    "minecraft:collision_box": [
+                        { "origin": [-8, 3, -7], "size": [11, 10, 14] },
+                        { "origin": [-1, 2, -7], "size": [5, 10, 14] },
+                        { "origin": [0, 1, -7], "size": [5, 10, 14] },
+                        { "origin": [1, 0, -7], "size": [5, 10, 14] },
+                        { "origin": [6, 0, -7], "size": [1, 9, 14] },
+                        { "origin": [7, 0, -7], "size": [1, 8, 14] }
+                    ],
+                    "minecraft:selection_box": { "origin": [-8, 0, -7], "size": [16, 13, 14] }
+                }
+            },
+
+            // ── Diagonal End (flip) ──
+            {
+                "condition": "q.block_state('create:slope') == 'diagonal' && q.block_state('create:part') == 'end' && q.block_state('create:diagonal_flip')",
+                "components": {
+                    "minecraft:collision_box": [
+                        { "origin": [-3, 3, -7], "size": [11, 10, 14] },
+                        { "origin": [-4, 2, -7], "size": [5, 10, 14] },
+                        { "origin": [-5, 1, -7], "size": [5, 10, 14] },
+                        { "origin": [-6, 0, -7], "size": [5, 10, 14] },
+                        { "origin": [-7, 0, -7], "size": [1, 9, 14] },
+                        { "origin": [-8, 0, -7], "size": [1, 8, 14] }
+                    ],
+                    "minecraft:selection_box": { "origin": [-8, 0, -7], "size": [16, 13, 14] }
+                }
+            },
+
+            // ── Diagonal Middle (normal) ──
+            {
+                "condition": "q.block_state('create:slope') == 'diagonal' && q.block_state('create:part') == 'middle' && !q.block_state('create:diagonal_flip')",
+                "components": {
+                    "minecraft:collision_box": [
+                        { "origin": [-3, 3, -7], "size": [6, 10, 14] },
+                        { "origin": [-4, 4, -7], "size": [6, 10, 14] },
+                        { "origin": [-5, 5, -7], "size": [6, 10, 14] },
+                        { "origin": [-6, 6, -7], "size": [6, 10, 14] },
+                        { "origin": [-7, 7, -7], "size": [6, 10, 14] },
+                        { "origin": [-8, 8, -7], "size": [6, 10, 14] },
+                        { "origin": [-2, 2, -7], "size": [6, 10, 14] },
+                        { "origin": [-1, 1, -7], "size": [6, 10, 14] },
+                        { "origin": [0, 0, -7], "size": [6, 10, 14] },
+                        { "origin": [6, 0, -7], "size": [1, 9, 14] },
+                        { "origin": [7, 0, -7], "size": [1, 8, 14] }
+                    ],
+                    "minecraft:selection_box": true
+                }
+            },
+
+            // ── Diagonal Middle (flip) ──
+            {
+                "condition": "q.block_state('create:slope') == 'diagonal' && q.block_state('create:part') == 'middle' && q.block_state('create:diagonal_flip')",
+                "components": {
+                    "minecraft:collision_box": [
+                        { "origin": [-3, 3, -7], "size": [6, 10, 14] },
+                        { "origin": [-2, 4, -7], "size": [6, 10, 14] },
+                        { "origin": [-1, 5, -7], "size": [6, 10, 14] },
+                        { "origin": [0, 6, -7], "size": [6, 10, 14] },
+                        { "origin": [1, 7, -7], "size": [6, 10, 14] },
+                        { "origin": [2, 8, -7], "size": [6, 10, 14] },
+                        { "origin": [-4, 2, -7], "size": [6, 10, 14] },
+                        { "origin": [-5, 1, -7], "size": [6, 10, 14] },
+                        { "origin": [-6, 0, -7], "size": [6, 10, 14] },
+                        { "origin": [-7, 0, -7], "size": [1, 9, 14] },
+                        { "origin": [-8, 0, -7], "size": [1, 8, 14] }
+                    ],
+                    "minecraft:selection_box": true
+                }
+            }
+        ]
+    }
+}

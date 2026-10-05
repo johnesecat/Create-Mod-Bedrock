@@ -1,0 +1,77 @@
+{
+    "format_version": "1.26.0",
+    "minecraft:block": {
+        "description": {
+            "identifier": "create:portable_storage_interface",
+            "menu_category": { "category": "items" },
+            "states": {
+                "create:hidden": [false, true]
+            },
+            "traits": {
+                "minecraft:placement_direction": {
+                    "enabled_states": ["minecraft:cardinal_direction"]
+                }
+            }
+        },
+        "components": {
+            "minecraft:material_instances": {
+                "*": {
+                    "texture": "create:portable_storage_interface",
+                    "render_method": "alpha_test_to_opaque",
+                    "ambient_occlusion": false
+                }
+            },
+            "minecraft:geometry": {
+                "identifier": "geometry.portable_storage_interface"
+            },
+            "minecraft:collision_box": {
+                "origin": [-8, 0, -8],
+                "size": [16, 16, 16]
+            },
+            "minecraft:selection_box": {
+                "origin": [-8, 0, -8],
+                "size": [16, 16, 16]
+            },
+            "minecraft:destructible_by_mining": {
+                "seconds_to_destroy": 3.5
+            },
+            "minecraft:precipitation_interactions": { "precipitation_behavior": "none" },
+            "minecraft:connection_rule": { "accepts_connections_from": "none" },
+            "minecraft:light_dampening": 0,
+            "minecraft:map_color": "#6B4A2B"
+        },
+        "permutations": [
+            {
+                "condition": "q.block_state('create:hidden')",
+                "components": {
+                    "minecraft:material_instances": {
+                        "*": {
+                            "texture": "create:invisible",
+                            "render_method": "alpha_test",
+                            "ambient_occlusion": false
+                        }
+                    },
+                    "minecraft:collision_box": false
+                }
+            },
+            {
+                "condition": "q.block_state('minecraft:cardinal_direction') == 'north'",
+                "components": {
+                    "minecraft:transformation": { "rotation": [0, 180, 0] }
+                }
+            },
+            {
+                "condition": "q.block_state('minecraft:cardinal_direction') == 'east'",
+                "components": {
+                    "minecraft:transformation": { "rotation": [0, 90, 0] }
+                }
+            },
+            {
+                "condition": "q.block_state('minecraft:cardinal_direction') == 'west'",
+                "components": {
+                    "minecraft:transformation": { "rotation": [0, -90, 0] }
+                }
+            }
+        ]
+    }
+}

@@ -1,0 +1,18 @@
+{
+    "format_version": "1.12",
+    "minecraft:recipe_shaped": {
+        "description": { "identifier": "create:furnace_engine" },
+        "tags": ["crafting_table"],
+        "pattern": [
+            "ABA",
+            "BFB",
+            "ABA"
+        ],
+        "key": {
+            "A": { "item": "create:brass_sheet" },
+            "B": { "item": "create:brass_casing" },
+            "F": { "item": "create:flywheel" }
+        },
+        "result": { "item": "create:furnace_engine", "count": 1 }
+    }
+}

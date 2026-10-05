@@ -1,0 +1,213 @@
+{
+    "format_version": "1.21.50",
+    "minecraft:entity": {
+        "description": {
+            "identifier": "create:seat_entity",
+            "is_spawnable": false,
+            "is_summonable": true,
+            "is_experimental": false
+        },
+        "component_groups": {
+            "create:despawn_component": {
+                "minecraft:instant_despawn": {}
+            }
+        },
+        "components": {
+            "minecraft:rideable": {
+                "family_types": ["player"],
+                "interact_text": "action.interact.ride.create:seat_entity",
+                "crouching_skip_interact": true,
+                "pull_in_entities": false,
+                "rider_can_interact": false,
+                "controlling_seat": 0,
+                "seat_count": 1,
+                "seats": [
+                    {
+                        "position": [0.0, -0.2, 0.0],
+                        "min_rider_count": 0,
+                        "max_rider_count": 1
+                    }
+                ]
+            },
+            "minecraft:environment_sensor": {
+                "triggers": [
+                    {
+                        "filters": [
+                            {
+                                "all_of": [
+                                    {
+                                        "test": "rider_count",
+                                        "subject": "self",
+                                        "operator": "==",
+                                        "value": 0
+                                    }
+                                ]
+                            }
+                        ],
+                        "event": "create:despawn_entity",
+                        "target": "self"
+                    }
+                ]
+            },
+            "minecraft:type_family": {
+                "family": [ "immovable", "inanimate" ]
+            },
+            "minecraft:health": {
+                "value": 1,
+                "max": 1,
+                "min": 1
+            },
+            "minecraft:collision_box": {
+                "width": 0.0,
+                "height": 0.0
+            },
+            "minecraft:custom_hit_test": {
+                "hitboxes": [
+                    {
+                        "width": 0,
+                        "height": 0,
+                        "pivot": [0, 0, 0]
+                    }
+                ]
+            },
+            "minecraft:damage_sensor": {
+                "triggers": {
+                    "cause": "all",
+                    "deals_damage": "no"
+                }
+            },
+            "minecraft:inside_block_notifier": {
+                "block_list": [
+                    {
+                        "block": { "name": "create:white_seat" },
+                        "exited_block_event": {
+                            "event": "create:despawn_entity",
+                            "target": "self"
+                        }
+                    },
+                    {
+                        "block": { "name": "create:light_gray_seat" },
+                        "exited_block_event": {
+                            "event": "create:despawn_entity",
+                            "target": "self"
+                        }
+                    },
+                    {
+                        "block": { "name": "create:gray_seat" },
+                        "exited_block_event": {
+                            "event": "create:despawn_entity",
+                            "target": "self"
+                        }
+                    },
+                    {
+                        "block": { "name": "create:black_seat" },
+                        "exited_block_event": {
+                            "event": "create:despawn_entity",
+                            "target": "self"
+                        }
+                    },
+                    {
+                        "block": { "name": "create:brown_seat" },
+                        "exited_block_event": {
+                            "event": "create:despawn_entity",
+                            "target": "self"
+                        }
+                    },
+                    {
+                        "block": { "name": "create:red_seat" },
+                        "exited_block_event": {
+                            "event": "create:despawn_entity",
+                            "target": "self"
+                        }
+                    },
+                    {
+                        "block": { "name": "create:orange_seat" },
+                        "exited_block_event": {
+                            "event": "create:despawn_entity",
+                            "target": "self"
+                        }
+                    },
+                    {
+                        "block": { "name": "create:yellow_seat" },
+                        "exited_block_event": {
+                            "event": "create:despawn_entity",
+                            "target": "self"
+                        }
+                    },
+                    {
+                        "block": { "name": "create:lime_seat" },
+                        "exited_block_event": {
+                            "event": "create:despawn_entity",
+                            "target": "self"
+                        }
+                    },
+                    {
+                        "block": { "name": "create:green_seat" },
+                        "exited_block_event": {
+                            "event": "create:despawn_entity",
+                            "target": "self"
+                        }
+                    },
+                    {
+                        "block": { "name": "create:cyan_seat" },
+                        "exited_block_event": {
+                            "event": "create:despawn_entity",
+                            "target": "self"
+                        }
+                    },
+                    {
+                        "block": { "name": "create:light_blue_seat" },
+                        "exited_block_event": {
+                            "event": "create:despawn_entity",
+                            "target": "self"
+                        }
+                    },
+                    {
+                        "block": { "name": "create:blue_seat" },
+                        "exited_block_event": {
+                            "event": "create:despawn_entity",
+                            "target": "self"
+                        }
+                    },
+                    {
+                        "block": { "name": "create:purple_seat" },
+                        "exited_block_event": {
+                            "event": "create:despawn_entity",
+                            "target": "self"
+                        }
+                    },
+                    {
+                        "block": { "name": "create:magenta_seat" },
+                        "exited_block_event": {
+                            "event": "create:despawn_entity",
+                            "target": "self"
+                        }
+                    },
+                    {
+                        "block": { "name": "create:pink_seat" },
+                        "exited_block_event": {
+                            "event": "create:despawn_entity",
+                            "target": "self"
+                        }
+                    }
+                ]
+            },
+            "minecraft:physics": {
+                "has_collision": false,
+                "has_gravity": false
+            },
+            "minecraft:pushable": {
+                "is_pushable": false,
+                "is_pushable_by_piston": false
+            },
+            "minecraft:conditional_bandwidth_optimization": {}
+        },
+        "events": {
+            "create:despawn_entity": {
+                "add": {
+                    "component_groups": ["create:despawn_component"]
+                }
+            }
+        }
+    }
+}

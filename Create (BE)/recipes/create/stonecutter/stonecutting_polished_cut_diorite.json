@@ -1,0 +1,20 @@
+﻿{
+    "format_version":  "1.12",
+    "minecraft:recipe_shapeless":  {
+                                       "description":  {
+                                                           "identifier":  "create:stonecutting_polished_cut_diorite"
+                                                       },
+                                       "tags":  [
+                                                    "stonecutter"
+                                                ],
+                                       "ingredients":  [
+                                                           {
+                                                               "item":  "minecraft:diorite"
+                                                           }
+                                                       ],
+                                       "result":  {
+                                                      "count":  2,
+                                                      "item":  "create:polished_cut_diorite"
+                                                  }
+                                   }
+}

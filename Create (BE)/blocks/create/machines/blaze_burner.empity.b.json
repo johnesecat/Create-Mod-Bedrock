@@ -1,0 +1,49 @@
+{
+    "format_version": "1.26.0",
+    "minecraft:block": {
+        "description": {
+            "identifier": "create:empty_blaze_burner",
+            "menu_category": { "category": "items" }
+        },
+        "components": {
+            "minecraft:material_instances": {
+                "*": {
+                    "texture": "create:blaze_burner",
+                    "render_method": "alpha_test_to_opaque",
+                    "ambient_occlusion": false
+                }
+            },
+            "minecraft:geometry": {
+                "identifier": "geometry.blaze_burner.empity"
+            },
+            "minecraft:item_visual": {
+                "material_instances": {
+                    "*": {
+                        "texture": "create:blaze_burner",
+                        "render_method": "alpha_test_to_opaque",
+                        "ambient_occlusion": false
+                    }
+                },
+                "geometry": {
+                    "identifier": "geometry.blaze_burner.empity"
+                }
+            },
+            "minecraft:collision_box": {
+                "origin": [-8, 0, -8],
+                "size": [16, 16, 16]
+            },
+            "minecraft:selection_box": {
+                "origin": [-8, 0, -8],
+                "size": [16, 16, 16]
+            },
+            "minecraft:destructible_by_mining": {
+                "seconds_to_destroy": 3.5
+            },
+            "minecraft:precipitation_interactions": { "precipitation_behavior": "obstruct_rain" },
+            "minecraft:connection_rule": { "accepts_connections_from": "none" },
+            "minecraft:light_dampening": 0,
+            "minecraft:map_color": "#3B3023",
+            "tag:minecraft:is_pickaxe_item_destructible": {}
+        }
+    }
+}

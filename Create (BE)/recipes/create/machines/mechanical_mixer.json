@@ -1,0 +1,18 @@
+{
+    "format_version": "1.12",
+    "minecraft:recipe_shaped": {
+        "description": { "identifier": "create:mechanical_mixer" },
+        "tags": ["crafting_table"],
+        "pattern": [
+            "C",
+            "A",
+            "W"
+        ],
+        "key": {
+            "C": { "item": "create:cogwheel" },
+            "A": { "item": "create:andesite_casing" },
+            "W": { "item": "create:whisk" }
+        },
+        "result": { "item": "create:mechanical_mixer", "count": 1 }
+    }
+}

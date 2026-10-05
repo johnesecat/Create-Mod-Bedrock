@@ -1,0 +1,20 @@
+﻿{
+    "format_version":  "1.12",
+    "minecraft:recipe_shapeless":  {
+                                       "description":  {
+                                                           "identifier":  "create:stonecutting_small_limestone_bricks"
+                                                       },
+                                       "tags":  [
+                                                    "stonecutter"
+                                                ],
+                                       "ingredients":  [
+                                                           {
+                                                               "item":  "create:limestone"
+                                                           }
+                                                       ],
+                                       "result":  {
+                                                      "count":  2,
+                                                      "item":  "create:small_limestone_bricks"
+                                                  }
+                                   }
+}

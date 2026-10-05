@@ -1,0 +1,9 @@
+{
+  "format_version": "1.13.0",
+  "minecraft:ore_feature": {
+    "description": { "identifier": "create:crimsite_feature" },
+    "count": 48,
+    "discard_chance_on_air_exposure": 0.0,
+    "replace_rules": [{ "places_block": "create:crimsite", "may_replace": ["minecraft:stone"] }]
+  }
+}

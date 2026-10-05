@@ -1,0 +1,11 @@
+{
+    "format_version": "1.12",
+    "minecraft:recipe_shapeless": {
+        "description": { "identifier": "create:brass_ingot_from_block" },
+        "tags": ["crafting_table"],
+        "ingredients": [
+            { "item": "create:brass_block" }
+        ],
+        "result": { "item": "create:brass_ingot", "count": 9 }
+    }
+}

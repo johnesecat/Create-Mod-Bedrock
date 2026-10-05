@@ -1,0 +1,15 @@
+﻿{
+    "format_version": "1.12",
+    "minecraft:recipe_shaped": {
+        "description": { "identifier": "create:cut_limestone" },
+        "tags": ["crafting_table"],
+        "pattern": [
+            "A",
+            "A"
+        ],
+        "key": {
+            "A": { "item": "create:limestone" }
+        },
+        "result": { "item": "create:cut_limestone", "count": 2 }
+    }
+}

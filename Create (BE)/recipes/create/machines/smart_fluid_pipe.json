@@ -1,0 +1,18 @@
+{
+    "format_version": "1.12",
+    "minecraft:recipe_shaped": {
+        "description": { "identifier": "create:smart_fluid_pipe" },
+        "tags": ["crafting_table"],
+        "pattern": [
+            "B",
+            "P",
+            "E"
+        ],
+        "key": {
+            "B": { "item": "create:brass_sheet" },
+            "P": { "item": "create:pipe" },
+            "E": { "item": "create:electron_tube" }
+        },
+        "result": { "item": "create:smart_fluid_pipe", "count": 1 }
+    }
+}

@@ -1,0 +1,11 @@
+{
+  "format_version": "1.21.90",
+  "minecraft:item": {
+    "description": { "identifier": "create:ladder_andesite", "menu_category": { "category": "items" } },
+    "components": {
+      "minecraft:icon": "create:ladder_andesite",
+      "minecraft:max_stack_size": 64,
+      "minecraft:block_placer": { "block": "create:ladder_andesite", "replace_block_item": true }
+    }
+  }
+}

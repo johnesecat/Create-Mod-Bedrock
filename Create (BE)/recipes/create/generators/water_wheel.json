@@ -1,0 +1,17 @@
+{
+    "format_version": "1.12",
+    "minecraft:recipe_shaped": {
+        "description": { "identifier": "create:water_wheel" },
+        "tags": ["crafting_table"],
+        "pattern": [
+            "AAA",
+            "ABA",
+            "AAA"
+        ],
+        "key": {
+            "A": { "tag": "minecraft:planks" },
+            "B": { "item": "create:shaft" }
+        },
+        "result": { "item": "create:water_wheel", "count": 1 }
+    }
+}

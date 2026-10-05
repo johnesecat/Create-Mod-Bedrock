@@ -1,0 +1,159 @@
+﻿{
+    "format_version": "1.26.10",
+    "minecraft:block": {
+        "description": {
+            "identifier": "create:cut_ochrum_pillar",
+            "menu_category": {
+                "category": "items"
+            },
+            "states": {
+                "create:north": [false, true],
+                "create:south": [false, true],
+                "create:west": [false, true],
+                "create:east": [false, true],
+                "create:up": [false, true],
+                "create:down": [false, true]
+            }
+        },
+        "components": {
+            "create:before_place": {},
+            "create:on_break": {},
+            "minecraft:redstone_conductivity": {
+                "redstone_conductor": true
+            },
+            "minecraft:map_color": [151, 109, 77],
+            "minecraft:geometry": {
+                "identifier": "geometry.create.connected_block",
+                "bone_visibility": {
+                    "default": "!q.block_state('create:north') && !q.block_state('create:south') && !q.block_state('create:west') && !q.block_state('create:east') && !q.block_state('create:up') && !q.block_state('create:down')",
+                    "all_cardinals": "q.block_state('create:north') && q.block_state('create:south') && q.block_state('create:west') && q.block_state('create:east') && !q.block_state('create:up') && !q.block_state('create:down')",
+                    "north": "q.block_state('create:north') && !q.block_state('create:south') && !q.block_state('create:west') && !q.block_state('create:east') && !q.block_state('create:up') && !q.block_state('create:down')",
+                    "south": "q.block_state('create:south') && !q.block_state('create:north') && !q.block_state('create:west') && !q.block_state('create:east') && !q.block_state('create:up') && !q.block_state('create:down')",
+                    "west": "q.block_state('create:west') && !q.block_state('create:north') && !q.block_state('create:south') && !q.block_state('create:east') && !q.block_state('create:up') && !q.block_state('create:down')",
+                    "east": "q.block_state('create:east') && !q.block_state('create:north') && !q.block_state('create:south') && !q.block_state('create:west') && !q.block_state('create:up') && !q.block_state('create:down')",
+                    "up": "q.block_state('create:up') && !q.block_state('create:north') && !q.block_state('create:south') && !q.block_state('create:west') && !q.block_state('create:east') && !q.block_state('create:down')",
+                    "down": "q.block_state('create:down') && !q.block_state('create:north') && !q.block_state('create:south') && !q.block_state('create:west') && !q.block_state('create:east') && !q.block_state('create:up')",
+                    "north_south": "q.block_state('create:north') && q.block_state('create:south') && !q.block_state('create:west') && !q.block_state('create:east') && !q.block_state('create:up') && !q.block_state('create:down')",
+                    "west_east": "q.block_state('create:west') && q.block_state('create:east') && !q.block_state('create:north') && !q.block_state('create:south') && !q.block_state('create:up') && !q.block_state('create:down')",
+                    "up_down": "q.block_state('create:up') && q.block_state('create:down') && !q.block_state('create:north') && !q.block_state('create:south') && !q.block_state('create:west') && !q.block_state('create:east')",
+                    "north_west": "q.block_state('create:north') && q.block_state('create:west') && !q.block_state('create:south') && !q.block_state('create:east') && !q.block_state('create:up') && !q.block_state('create:down')",
+                    "north_east": "q.block_state('create:north') && q.block_state('create:east') && !q.block_state('create:south') && !q.block_state('create:west') && !q.block_state('create:up') && !q.block_state('create:down')",
+                    "south_west": "q.block_state('create:south') && q.block_state('create:west') && !q.block_state('create:north') && !q.block_state('create:east') && !q.block_state('create:up') && !q.block_state('create:down')",
+                    "south_east": "q.block_state('create:south') && q.block_state('create:east') && !q.block_state('create:north') && !q.block_state('create:west') && !q.block_state('create:up') && !q.block_state('create:down')",
+                    "north_west_east": "q.block_state('create:north') && q.block_state('create:west') && q.block_state('create:east') && !q.block_state('create:south') && !q.block_state('create:up') && !q.block_state('create:down')",
+                    "south_west_east": "q.block_state('create:south') && q.block_state('create:west') && q.block_state('create:east') && !q.block_state('create:north') && !q.block_state('create:up') && !q.block_state('create:down')",
+                    "north_south_west": "q.block_state('create:north') && q.block_state('create:south') && q.block_state('create:west') && !q.block_state('create:east') && !q.block_state('create:up') && !q.block_state('create:down')",
+                    "north_south_east": "q.block_state('create:north') && q.block_state('create:south') && q.block_state('create:east') && !q.block_state('create:west') && !q.block_state('create:up') && !q.block_state('create:down')",
+                    "up_west": "q.block_state('create:up') && q.block_state('create:west') && !q.block_state('create:north') && !q.block_state('create:south') && !q.block_state('create:east') && !q.block_state('create:down')",
+                    "up_east": "q.block_state('create:up') && q.block_state('create:east') && !q.block_state('create:north') && !q.block_state('create:south') && !q.block_state('create:west') && !q.block_state('create:down')",
+                    "down_west": "q.block_state('create:down') && q.block_state('create:west') && !q.block_state('create:north') && !q.block_state('create:south') && !q.block_state('create:east') && !q.block_state('create:up')",
+                    "down_east": "q.block_state('create:down') && q.block_state('create:east') && !q.block_state('create:north') && !q.block_state('create:south') && !q.block_state('create:west') && !q.block_state('create:up')",
+                    "up_west_east": "q.block_state('create:up') && q.block_state('create:west') && q.block_state('create:east') && !q.block_state('create:north') && !q.block_state('create:south') && !q.block_state('create:down')",
+                    "down_west_east": "q.block_state('create:down') && q.block_state('create:west') && q.block_state('create:east') && !q.block_state('create:north') && !q.block_state('create:south') && !q.block_state('create:up')",
+                    "up_down_west": "q.block_state('create:up') && q.block_state('create:down') && q.block_state('create:west') && !q.block_state('create:north') && !q.block_state('create:south') && !q.block_state('create:east')",
+                    "up_down_east": "q.block_state('create:up') && q.block_state('create:down') && q.block_state('create:east') && !q.block_state('create:north') && !q.block_state('create:south') && !q.block_state('create:west')",
+                    "up_down_west_east": "q.block_state('create:up') && q.block_state('create:down') && q.block_state('create:west') && q.block_state('create:east') && !q.block_state('create:north') && !q.block_state('create:south')",
+                    "up_north": "q.block_state('create:up') && q.block_state('create:north') && !q.block_state('create:south') && !q.block_state('create:west') && !q.block_state('create:east') && !q.block_state('create:down')",
+                    "up_south": "q.block_state('create:up') && q.block_state('create:south') && !q.block_state('create:north') && !q.block_state('create:west') && !q.block_state('create:east') && !q.block_state('create:down')",
+                    "down_north": "q.block_state('create:down') && q.block_state('create:north') && !q.block_state('create:south') && !q.block_state('create:west') && !q.block_state('create:east') && !q.block_state('create:up')",
+                    "down_south": "q.block_state('create:down') && q.block_state('create:south') && !q.block_state('create:north') && !q.block_state('create:west') && !q.block_state('create:east') && !q.block_state('create:up')",
+                    "up_north_south": "q.block_state('create:up') && q.block_state('create:north') && q.block_state('create:south') && !q.block_state('create:west') && !q.block_state('create:east') && !q.block_state('create:down')",
+                    "down_north_south": "q.block_state('create:down') && q.block_state('create:north') && q.block_state('create:south') && !q.block_state('create:west') && !q.block_state('create:east') && !q.block_state('create:up')",
+                    "up_north_west": "q.block_state('create:up') && q.block_state('create:north') && q.block_state('create:west') && !q.block_state('create:south') && !q.block_state('create:east') && !q.block_state('create:down')",
+                    "up_north_east": "q.block_state('create:up') && q.block_state('create:north') && q.block_state('create:east') && !q.block_state('create:south') && !q.block_state('create:west') && !q.block_state('create:down')",
+                    "up_south_west": "q.block_state('create:up') && q.block_state('create:south') && q.block_state('create:west') && !q.block_state('create:north') && !q.block_state('create:east') && !q.block_state('create:down')",
+                    "up_south_east": "q.block_state('create:up') && q.block_state('create:south') && q.block_state('create:east') && !q.block_state('create:north') && !q.block_state('create:west') && !q.block_state('create:down')",
+                    "up_down_north": "q.block_state('create:up') && q.block_state('create:down') && q.block_state('create:north') && !q.block_state('create:south') && !q.block_state('create:west') && !q.block_state('create:east')",
+                    "up_down_south": "q.block_state('create:up') && q.block_state('create:down') && q.block_state('create:south') && !q.block_state('create:north') && !q.block_state('create:west') && !q.block_state('create:east')",
+                    "up_north_south_west": "q.block_state('create:up') && q.block_state('create:north') && q.block_state('create:south') && q.block_state('create:west') && !q.block_state('create:east') && !q.block_state('create:down')",
+                    "up_north_south_east": "q.block_state('create:up') && q.block_state('create:north') && q.block_state('create:south') && q.block_state('create:east') && !q.block_state('create:west') && !q.block_state('create:down')",
+                    "down_north_south_west": "q.block_state('create:down') && q.block_state('create:north') && q.block_state('create:south') && q.block_state('create:west') && !q.block_state('create:east') && !q.block_state('create:up')",
+                    "down_north_south_east": "q.block_state('create:down') && q.block_state('create:north') && q.block_state('create:south') && q.block_state('create:east') && !q.block_state('create:west') && !q.block_state('create:up')",
+                    "all_except_down": "q.block_state('create:up') && q.block_state('create:north') && q.block_state('create:south') && q.block_state('create:west') && q.block_state('create:east') && !q.block_state('create:down')",
+                    "all_except_up": "q.block_state('create:down') && q.block_state('create:north') && q.block_state('create:south') && q.block_state('create:west') && q.block_state('create:east') && !q.block_state('create:up')",
+                    "all_except_south": "q.block_state('create:up') && q.block_state('create:down') && q.block_state('create:north') && q.block_state('create:west') && q.block_state('create:east') && !q.block_state('create:south')",
+                    "all_except_north": "q.block_state('create:up') && q.block_state('create:down') && q.block_state('create:south') && q.block_state('create:west') && q.block_state('create:east') && !q.block_state('create:north')",
+                    "all_except_east": "q.block_state('create:up') && q.block_state('create:down') && q.block_state('create:north') && q.block_state('create:south') && q.block_state('create:west') && !q.block_state('create:east')",
+                    "all_except_west": "q.block_state('create:up') && q.block_state('create:down') && q.block_state('create:north') && q.block_state('create:south') && q.block_state('create:east') && !q.block_state('create:west')",
+                    "up_north_west_east": "q.block_state('create:up') && q.block_state('create:north') && q.block_state('create:west') && q.block_state('create:east') && !q.block_state('create:south') && !q.block_state('create:down')",
+                    "up_south_west_east": "q.block_state('create:up') && q.block_state('create:south') && q.block_state('create:west') && q.block_state('create:east') && !q.block_state('create:north') && !q.block_state('create:down')",
+                    "down_north_west_east": "q.block_state('create:down') && q.block_state('create:north') && q.block_state('create:west') && q.block_state('create:east') && !q.block_state('create:south') && !q.block_state('create:up')",
+                    "down_south_west_east": "q.block_state('create:down') && q.block_state('create:south') && q.block_state('create:west') && q.block_state('create:east') && !q.block_state('create:north') && !q.block_state('create:up')",
+                    "up_down_north_south": "q.block_state('create:up') && q.block_state('create:down') && q.block_state('create:north') && q.block_state('create:south') && !q.block_state('create:west') && !q.block_state('create:east')",
+                    "up_down_north_west": "q.block_state('create:up') && q.block_state('create:down') && q.block_state('create:north') && q.block_state('create:west') && !q.block_state('create:south') && !q.block_state('create:east')",
+                    "up_down_north_east": "q.block_state('create:up') && q.block_state('create:down') && q.block_state('create:north') && q.block_state('create:east') && !q.block_state('create:south') && !q.block_state('create:west')",
+                    "up_down_south_west": "q.block_state('create:up') && q.block_state('create:down') && q.block_state('create:south') && q.block_state('create:west') && !q.block_state('create:north') && !q.block_state('create:east')",
+                    "up_down_south_east": "q.block_state('create:up') && q.block_state('create:down') && q.block_state('create:south') && q.block_state('create:east') && !q.block_state('create:north') && !q.block_state('create:west')",
+                    "down_north_west": "q.block_state('create:down') && q.block_state('create:north') && q.block_state('create:west') && !q.block_state('create:south') && !q.block_state('create:east') && !q.block_state('create:up')",
+                    "down_north_east": "q.block_state('create:down') && q.block_state('create:north') && q.block_state('create:east') && !q.block_state('create:south') && !q.block_state('create:west') && !q.block_state('create:up')",
+                    "down_south_west": "q.block_state('create:down') && q.block_state('create:south') && q.block_state('create:west') && !q.block_state('create:north') && !q.block_state('create:east') && !q.block_state('create:up')",
+                    "down_south_east": "q.block_state('create:down') && q.block_state('create:south') && q.block_state('create:east') && !q.block_state('create:north') && !q.block_state('create:west') && !q.block_state('create:up')"
+                }
+            },
+            "minecraft:material_instances": {
+                "*": {
+                    "texture": "create:cut_ochrum_pillar_connected",
+                    "render_method": "opaque"
+                },
+                "top": {
+                    "texture": "create:ochrum_cut_cap_connected",
+                    "render_method": "opaque"
+                },
+
+                "up": "top",
+                "down": "top"
+            },
+            "minecraft:destruction_particles": {
+                "texture": "create:cut_ochrum_pillar"
+            },
+
+            "minecraft:destructible_by_mining": {
+                "seconds_to_destroy": 7.5,
+                "item_specific_speeds": [
+                    {
+                        "item": {
+                            "tags": "(q.all_tags('minecraft:is_axe', 'minecraft:wooden_tier') || q.all_tags('minecraft:is_pickaxe', 'minecraft:wooden_tier'))"
+                        },
+                        "destroy_speed": 1.15
+                    },
+                    {
+                        "item": {
+                            "tags": "(q.all_tags('minecraft:is_axe', 'minecraft:stone_tier') || q.all_tags('minecraft:is_pickaxe', 'minecraft:stone_tier'))"
+                        },
+                        "destroy_speed": 0.6
+                    },
+                    {
+                        "item": {
+                            "tags": "(q.all_tags('minecraft:is_axe', 'minecraft:copper_tier') || q.all_tags('minecraft:is_pickaxe', 'minecraft:copper_tier'))"
+                        },
+                        "destroy_speed": 0.5
+                    },
+                    {
+                        "item": {
+                            "tags": "(q.all_tags('minecraft:is_axe', 'minecraft:iron_tier') || q.all_tags('minecraft:is_pickaxe', 'minecraft:iron_tier'))"
+                        },
+                        "destroy_speed": 0.4
+                    },
+                    {
+                        "item": {
+                            "tags": "(q.all_tags('minecraft:is_axe', 'minecraft:golden_tier') || q.all_tags('minecraft:is_pickaxe', 'minecraft:golden_tier'))"
+                        },
+                        "destroy_speed": 0.2
+                    },
+                    {
+                        "item": {
+                            "tags": "(q.all_tags('minecraft:is_axe', 'minecraft:diamond_tier') || q.all_tags('minecraft:is_pickaxe', 'minecraft:diamond_tier'))"
+                        },
+                        "destroy_speed": 0.3
+                    },
+                    {
+                        "item": {
+                            "tags": "(q.all_tags('minecraft:is_axe', 'minecraft:netherite_tier') || q.all_tags('minecraft:is_pickaxe', 'minecraft:netherite_tier'))"
+                        },
+                        "destroy_speed": 0.25
+                    }
+                ]
+            }
+        }
+    }
+}

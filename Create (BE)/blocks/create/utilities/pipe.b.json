@@ -1,0 +1,1311 @@
+﻿{
+    "format_version":  "1.26.0",
+    "minecraft:block":  {
+                            "description":  {
+                                                "identifier":  "create:pipe",
+                                                "menu_category":  {
+                                                                      "category":  "items"
+                                                                  },
+                                                "states":  {
+                                                               "create:shape":  [
+                                                                                    "straight",
+                                                                                    "elbow",
+                                                                                    "vertical",
+                                                                                    "junction"
+                                                                                ],
+                                                               "create:end_type":  [
+                                                                                       "open",
+                                                                                       "front",
+                                                                                       "back",
+                                                                                       "both"
+                                                                                   ],
+                                                               "create:elbow_type":  [
+                                                                                         "up",
+                                                                                         "down",
+                                                                                         "n_e",
+                                                                                         "n_w",
+                                                                                         "s_e",
+                                                                                         "s_w"
+                                                                                     ],
+                                                               "create:junction_base":  [
+                                                                                            "n",
+                                                                                            "s",
+                                                                                            "e",
+                                                                                            "w",
+                                                                                            "ns",
+                                                                                            "ew",
+                                                                                            "n_e",
+                                                                                            "n_w",
+                                                                                            "s_e",
+                                                                                            "s_w",
+                                                                                            "ns_e",
+                                                                                            "ns_w",
+                                                                                            "n_ew",
+                                                                                            "s_ew",
+                                                                                            "ns_ew"
+                                                                                        ],
+                                                               "create:junction_vertical":  [
+                                                                                                "none",
+                                                                                                "u",
+                                                                                                "d",
+                                                                                                "ud"
+                                                                                            ]
+                                                           },
+                                                "traits":  {
+                                                               "minecraft:placement_direction":  {
+                                                                                                     "enabled_states":  [
+                                                                                                                            "minecraft:cardinal_direction"
+                                                                                                                        ]
+                                                                                                 }
+                                                           }
+                                            },
+                            "components":  {
+                                               "create:on_place":  {
+
+                                                                   },
+                                               "create:on_interact":  {
+
+                                                                      },
+                                               "create:on_break":  {
+
+                                                                   },
+                                               "minecraft:geometry":  {
+                                                                          "identifier":  "geometry.pipe_straight_open"
+                                                                      },
+                                               "minecraft:material_instances":  {
+                                                                                    "*":  {
+                                                                                              "texture":  "create:pipes",
+                                                                                              "render_method":  "alpha_test_to_opaque",
+                                                                                              "ambient_occlusion":  false
+                                                                                          }
+                                                                                },
+                                               "minecraft:item_visual":  {
+                                                                             "geometry":  {
+                                                                                              "identifier":  "geometry.pipe_straight_open"
+                                                                                          },
+                                                                             "material_instances":  {
+                                                                                                        "*":  {
+                                                                                                                  "texture":  "create:pipes",
+                                                                                                                  "render_method":  "alpha_test_to_opaque",
+                                                                                                                  "ambient_occlusion":  false
+                                                                                                              }
+                                                                                                    }
+                                                                         },
+                                               "minecraft:destruction_particles":  {
+                                                                                       "texture":  "create:pipes"
+                                                                                   },
+                                               "minecraft:collision_box":  {
+                                                                               "origin":  [
+                                                                                              -5,
+                                                                                              3,
+                                                                                              -8
+                                                                                          ],
+                                                                               "size":  [
+                                                                                            10,
+                                                                                            10,
+                                                                                            16
+                                                                                        ]
+                                                                           },
+                                               "minecraft:selection_box":  {
+                                                                               "origin":  [
+                                                                                              -5,
+                                                                                              3,
+                                                                                              -8
+                                                                                          ],
+                                                                               "size":  [
+                                                                                            10,
+                                                                                            10,
+                                                                                            16
+                                                                                        ]
+                                                                           },
+                                               "minecraft:destructible_by_mining":  {
+                                                                                        "seconds_to_destroy":  1.5
+                                                                                    },
+                                               "minecraft:precipitation_interactions":  {
+                                                                                            "precipitation_behavior":  "none"
+                                                                                        },
+                                               "minecraft:connection_rule":  {
+                                                                                 "accepts_connections_from":  "none"
+                                                                             },
+                                               "minecraft:light_dampening":  0,
+                                               "minecraft:map_color":  "#6F6048",
+                                               "tag:minecraft:is_pickaxe_item_destructible":  {
+
+                                                                                              }
+                                           },
+                            "permutations":  [
+                                                 {
+                                                     "condition":  "q.block_state(\u0027create:shape\u0027) == \u0027junction\u0027 \u0026\u0026 q.block_state(\u0027create:junction_base\u0027) == \u0027ns\u0027 \u0026\u0026 q.block_state(\u0027create:junction_vertical\u0027) == \u0027none\u0027",
+                                                     "components":  {
+                                                                        "minecraft:geometry":  {
+                                                                                                   "identifier":  "geometry.pipe_junction_ns"
+                                                                                               },
+                                                                        "minecraft:transformation":  {
+                                                                                                         "rotation":  [
+                                                                                                                          0,
+                                                                                                                          0,
+                                                                                                                          0
+                                                                                                                      ]
+                                                                                                     }
+                                                                    }
+                                                 },
+                                                 {
+                                                     "condition":  "q.block_state(\u0027create:shape\u0027) == \u0027junction\u0027 \u0026\u0026 q.block_state(\u0027create:junction_base\u0027) == \u0027ns\u0027 \u0026\u0026 q.block_state(\u0027create:junction_vertical\u0027) == \u0027u\u0027",
+                                                     "components":  {
+                                                                        "minecraft:geometry":  {
+                                                                                                   "identifier":  "geometry.pipe_junction_ns_u"
+                                                                                               },
+                                                                        "minecraft:transformation":  {
+                                                                                                         "rotation":  [
+                                                                                                                          0,
+                                                                                                                          0,
+                                                                                                                          0
+                                                                                                                      ]
+                                                                                                     }
+                                                                    }
+                                                 },
+                                                 {
+                                                     "condition":  "q.block_state(\u0027create:shape\u0027) == \u0027junction\u0027 \u0026\u0026 q.block_state(\u0027create:junction_base\u0027) == \u0027ns\u0027 \u0026\u0026 q.block_state(\u0027create:junction_vertical\u0027) == \u0027d\u0027",
+                                                     "components":  {
+                                                                        "minecraft:geometry":  {
+                                                                                                   "identifier":  "geometry.pipe_junction_ns_d"
+                                                                                               },
+                                                                        "minecraft:transformation":  {
+                                                                                                         "rotation":  [
+                                                                                                                          0,
+                                                                                                                          0,
+                                                                                                                          0
+                                                                                                                      ]
+                                                                                                     }
+                                                                    }
+                                                 },
+                                                 {
+                                                     "condition":  "q.block_state(\u0027create:shape\u0027) == \u0027junction\u0027 \u0026\u0026 q.block_state(\u0027create:junction_base\u0027) == \u0027ns\u0027 \u0026\u0026 q.block_state(\u0027create:junction_vertical\u0027) == \u0027ud\u0027",
+                                                     "components":  {
+                                                                        "minecraft:geometry":  {
+                                                                                                   "identifier":  "geometry.pipe_junction_ns_ud"
+                                                                                               },
+                                                                        "minecraft:transformation":  {
+                                                                                                         "rotation":  [
+                                                                                                                          0,
+                                                                                                                          0,
+                                                                                                                          0
+                                                                                                                      ]
+                                                                                                     }
+                                                                    }
+                                                 },
+                                                 {
+                                                     "condition":  "q.block_state(\u0027create:shape\u0027) == \u0027junction\u0027 \u0026\u0026 q.block_state(\u0027create:junction_base\u0027) == \u0027ew\u0027 \u0026\u0026 q.block_state(\u0027create:junction_vertical\u0027) == \u0027none\u0027",
+                                                     "components":  {
+                                                                        "minecraft:geometry":  {
+                                                                                                   "identifier":  "geometry.pipe_junction_ew"
+                                                                                               },
+                                                                        "minecraft:transformation":  {
+                                                                                                         "rotation":  [
+                                                                                                                          0,
+                                                                                                                          0,
+                                                                                                                          0
+                                                                                                                      ]
+                                                                                                     }
+                                                                    }
+                                                 },
+                                                 {
+                                                     "condition":  "q.block_state(\u0027create:shape\u0027) == \u0027junction\u0027 \u0026\u0026 q.block_state(\u0027create:junction_base\u0027) == \u0027ew\u0027 \u0026\u0026 q.block_state(\u0027create:junction_vertical\u0027) == \u0027u\u0027",
+                                                     "components":  {
+                                                                        "minecraft:geometry":  {
+                                                                                                   "identifier":  "geometry.pipe_junction_ew_u"
+                                                                                               },
+                                                                        "minecraft:transformation":  {
+                                                                                                         "rotation":  [
+                                                                                                                          0,
+                                                                                                                          0,
+                                                                                                                          0
+                                                                                                                      ]
+                                                                                                     }
+                                                                    }
+                                                 },
+                                                 {
+                                                     "condition":  "q.block_state(\u0027create:shape\u0027) == \u0027junction\u0027 \u0026\u0026 q.block_state(\u0027create:junction_base\u0027) == \u0027ew\u0027 \u0026\u0026 q.block_state(\u0027create:junction_vertical\u0027) == \u0027d\u0027",
+                                                     "components":  {
+                                                                        "minecraft:geometry":  {
+                                                                                                   "identifier":  "geometry.pipe_junction_ew_d"
+                                                                                               },
+                                                                        "minecraft:transformation":  {
+                                                                                                         "rotation":  [
+                                                                                                                          0,
+                                                                                                                          0,
+                                                                                                                          0
+                                                                                                                      ]
+                                                                                                     }
+                                                                    }
+                                                 },
+                                                 {
+                                                     "condition":  "q.block_state(\u0027create:shape\u0027) == \u0027junction\u0027 \u0026\u0026 q.block_state(\u0027create:junction_base\u0027) == \u0027ew\u0027 \u0026\u0026 q.block_state(\u0027create:junction_vertical\u0027) == \u0027ud\u0027",
+                                                     "components":  {
+                                                                        "minecraft:geometry":  {
+                                                                                                   "identifier":  "geometry.pipe_junction_ew_ud"
+                                                                                               },
+                                                                        "minecraft:transformation":  {
+                                                                                                         "rotation":  [
+                                                                                                                          0,
+                                                                                                                          0,
+                                                                                                                          0
+                                                                                                                      ]
+                                                                                                     }
+                                                                    }
+                                                 },
+                                                 {
+                                                     "condition":  "q.block_state(\u0027create:shape\u0027) == \u0027junction\u0027 \u0026\u0026 q.block_state(\u0027create:junction_base\u0027) == \u0027n\u0027 \u0026\u0026 q.block_state(\u0027create:junction_vertical\u0027) == \u0027none\u0027",
+                                                     "components":  {
+                                                                        "minecraft:geometry":  {
+                                                                                                   "identifier":  "geometry.pipe_junction_n"
+                                                                                               },
+                                                                        "minecraft:transformation":  {
+                                                                                                         "rotation":  [
+                                                                                                                          0,
+                                                                                                                          0,
+                                                                                                                          0
+                                                                                                                      ]
+                                                                                                     }
+                                                                    }
+                                                 },
+                                                 {
+                                                     "condition":  "q.block_state(\u0027create:shape\u0027) == \u0027junction\u0027 \u0026\u0026 q.block_state(\u0027create:junction_base\u0027) == \u0027n\u0027 \u0026\u0026 q.block_state(\u0027create:junction_vertical\u0027) == \u0027u\u0027",
+                                                     "components":  {
+                                                                        "minecraft:geometry":  {
+                                                                                                   "identifier":  "geometry.pipe_junction_n_u"
+                                                                                               },
+                                                                        "minecraft:transformation":  {
+                                                                                                         "rotation":  [
+                                                                                                                          0,
+                                                                                                                          0,
+                                                                                                                          0
+                                                                                                                      ]
+                                                                                                     }
+                                                                    }
+                                                 },
+                                                 {
+                                                     "condition":  "q.block_state(\u0027create:shape\u0027) == \u0027junction\u0027 \u0026\u0026 q.block_state(\u0027create:junction_base\u0027) == \u0027n\u0027 \u0026\u0026 q.block_state(\u0027create:junction_vertical\u0027) == \u0027d\u0027",
+                                                     "components":  {
+                                                                        "minecraft:geometry":  {
+                                                                                                   "identifier":  "geometry.pipe_junction_n_d"
+                                                                                               },
+                                                                        "minecraft:transformation":  {
+                                                                                                         "rotation":  [
+                                                                                                                          0,
+                                                                                                                          0,
+                                                                                                                          0
+                                                                                                                      ]
+                                                                                                     }
+                                                                    }
+                                                 },
+                                                 {
+                                                     "condition":  "q.block_state(\u0027create:shape\u0027) == \u0027junction\u0027 \u0026\u0026 q.block_state(\u0027create:junction_base\u0027) == \u0027n\u0027 \u0026\u0026 q.block_state(\u0027create:junction_vertical\u0027) == \u0027ud\u0027",
+                                                     "components":  {
+                                                                        "minecraft:geometry":  {
+                                                                                                   "identifier":  "geometry.pipe_junction_n_ud"
+                                                                                               },
+                                                                        "minecraft:transformation":  {
+                                                                                                         "rotation":  [
+                                                                                                                          0,
+                                                                                                                          0,
+                                                                                                                          0
+                                                                                                                      ]
+                                                                                                     }
+                                                                    }
+                                                 },
+                                                 {
+                                                     "condition":  "q.block_state(\u0027create:shape\u0027) == \u0027junction\u0027 \u0026\u0026 q.block_state(\u0027create:junction_base\u0027) == \u0027s\u0027 \u0026\u0026 q.block_state(\u0027create:junction_vertical\u0027) == \u0027none\u0027",
+                                                     "components":  {
+                                                                        "minecraft:geometry":  {
+                                                                                                   "identifier":  "geometry.pipe_junction_s"
+                                                                                               },
+                                                                        "minecraft:transformation":  {
+                                                                                                         "rotation":  [
+                                                                                                                          0,
+                                                                                                                          0,
+                                                                                                                          0
+                                                                                                                      ]
+                                                                                                     }
+                                                                    }
+                                                 },
+                                                 {
+                                                     "condition":  "q.block_state(\u0027create:shape\u0027) == \u0027junction\u0027 \u0026\u0026 q.block_state(\u0027create:junction_base\u0027) == \u0027s\u0027 \u0026\u0026 q.block_state(\u0027create:junction_vertical\u0027) == \u0027u\u0027",
+                                                     "components":  {
+                                                                        "minecraft:geometry":  {
+                                                                                                   "identifier":  "geometry.pipe_junction_s_u"
+                                                                                               },
+                                                                        "minecraft:transformation":  {
+                                                                                                         "rotation":  [
+                                                                                                                          0,
+                                                                                                                          0,
+                                                                                                                          0
+                                                                                                                      ]
+                                                                                                     }
+                                                                    }
+                                                 },
+                                                 {
+                                                     "condition":  "q.block_state(\u0027create:shape\u0027) == \u0027junction\u0027 \u0026\u0026 q.block_state(\u0027create:junction_base\u0027) == \u0027s\u0027 \u0026\u0026 q.block_state(\u0027create:junction_vertical\u0027) == \u0027d\u0027",
+                                                     "components":  {
+                                                                        "minecraft:geometry":  {
+                                                                                                   "identifier":  "geometry.pipe_junction_s_d"
+                                                                                               },
+                                                                        "minecraft:transformation":  {
+                                                                                                         "rotation":  [
+                                                                                                                          0,
+                                                                                                                          0,
+                                                                                                                          0
+                                                                                                                      ]
+                                                                                                     }
+                                                                    }
+                                                 },
+                                                 {
+                                                     "condition":  "q.block_state(\u0027create:shape\u0027) == \u0027junction\u0027 \u0026\u0026 q.block_state(\u0027create:junction_base\u0027) == \u0027s\u0027 \u0026\u0026 q.block_state(\u0027create:junction_vertical\u0027) == \u0027ud\u0027",
+                                                     "components":  {
+                                                                        "minecraft:geometry":  {
+                                                                                                   "identifier":  "geometry.pipe_junction_s_ud"
+                                                                                               },
+                                                                        "minecraft:transformation":  {
+                                                                                                         "rotation":  [
+                                                                                                                          0,
+                                                                                                                          0,
+                                                                                                                          0
+                                                                                                                      ]
+                                                                                                     }
+                                                                    }
+                                                 },
+                                                 {
+                                                     "condition":  "q.block_state(\u0027create:shape\u0027) == \u0027junction\u0027 \u0026\u0026 q.block_state(\u0027create:junction_base\u0027) == \u0027e\u0027 \u0026\u0026 q.block_state(\u0027create:junction_vertical\u0027) == \u0027none\u0027",
+                                                     "components":  {
+                                                                        "minecraft:geometry":  {
+                                                                                                   "identifier":  "geometry.pipe_junction_e"
+                                                                                               },
+                                                                        "minecraft:transformation":  {
+                                                                                                         "rotation":  [
+                                                                                                                          0,
+                                                                                                                          0,
+                                                                                                                          0
+                                                                                                                      ]
+                                                                                                     }
+                                                                    }
+                                                 },
+                                                 {
+                                                     "condition":  "q.block_state(\u0027create:shape\u0027) == \u0027junction\u0027 \u0026\u0026 q.block_state(\u0027create:junction_base\u0027) == \u0027e\u0027 \u0026\u0026 q.block_state(\u0027create:junction_vertical\u0027) == \u0027u\u0027",
+                                                     "components":  {
+                                                                        "minecraft:geometry":  {
+                                                                                                   "identifier":  "geometry.pipe_junction_e_u"
+                                                                                               },
+                                                                        "minecraft:transformation":  {
+                                                                                                         "rotation":  [
+                                                                                                                          0,
+                                                                                                                          0,
+                                                                                                                          0
+                                                                                                                      ]
+                                                                                                     }
+                                                                    }
+                                                 },
+                                                 {
+                                                     "condition":  "q.block_state(\u0027create:shape\u0027) == \u0027junction\u0027 \u0026\u0026 q.block_state(\u0027create:junction_base\u0027) == \u0027e\u0027 \u0026\u0026 q.block_state(\u0027create:junction_vertical\u0027) == \u0027d\u0027",
+                                                     "components":  {
+                                                                        "minecraft:geometry":  {
+                                                                                                   "identifier":  "geometry.pipe_junction_e_d"
+                                                                                               },
+                                                                        "minecraft:transformation":  {
+                                                                                                         "rotation":  [
+                                                                                                                          0,
+                                                                                                                          0,
+                                                                                                                          0
+                                                                                                                      ]
+                                                                                                     }
+                                                                    }
+                                                 },
+                                                 {
+                                                     "condition":  "q.block_state(\u0027create:shape\u0027) == \u0027junction\u0027 \u0026\u0026 q.block_state(\u0027create:junction_base\u0027) == \u0027e\u0027 \u0026\u0026 q.block_state(\u0027create:junction_vertical\u0027) == \u0027ud\u0027",
+                                                     "components":  {
+                                                                        "minecraft:geometry":  {
+                                                                                                   "identifier":  "geometry.pipe_junction_e_ud"
+                                                                                               },
+                                                                        "minecraft:transformation":  {
+                                                                                                         "rotation":  [
+                                                                                                                          0,
+                                                                                                                          0,
+                                                                                                                          0
+                                                                                                                      ]
+                                                                                                     }
+                                                                    }
+                                                 },
+                                                 {
+                                                     "condition":  "q.block_state(\u0027create:shape\u0027) == \u0027junction\u0027 \u0026\u0026 q.block_state(\u0027create:junction_base\u0027) == \u0027w\u0027 \u0026\u0026 q.block_state(\u0027create:junction_vertical\u0027) == \u0027none\u0027",
+                                                     "components":  {
+                                                                        "minecraft:geometry":  {
+                                                                                                   "identifier":  "geometry.pipe_junction_w"
+                                                                                               },
+                                                                        "minecraft:transformation":  {
+                                                                                                         "rotation":  [
+                                                                                                                          0,
+                                                                                                                          0,
+                                                                                                                          0
+                                                                                                                      ]
+                                                                                                     }
+                                                                    }
+                                                 },
+                                                 {
+                                                     "condition":  "q.block_state(\u0027create:shape\u0027) == \u0027junction\u0027 \u0026\u0026 q.block_state(\u0027create:junction_base\u0027) == \u0027w\u0027 \u0026\u0026 q.block_state(\u0027create:junction_vertical\u0027) == \u0027u\u0027",
+                                                     "components":  {
+                                                                        "minecraft:geometry":  {
+                                                                                                   "identifier":  "geometry.pipe_junction_w_u"
+                                                                                               },
+                                                                        "minecraft:transformation":  {
+                                                                                                         "rotation":  [
+                                                                                                                          0,
+                                                                                                                          0,
+                                                                                                                          0
+                                                                                                                      ]
+                                                                                                     }
+                                                                    }
+                                                 },
+                                                 {
+                                                     "condition":  "q.block_state(\u0027create:shape\u0027) == \u0027junction\u0027 \u0026\u0026 q.block_state(\u0027create:junction_base\u0027) == \u0027w\u0027 \u0026\u0026 q.block_state(\u0027create:junction_vertical\u0027) == \u0027d\u0027",
+                                                     "components":  {
+                                                                        "minecraft:geometry":  {
+                                                                                                   "identifier":  "geometry.pipe_junction_w_d"
+                                                                                               },
+                                                                        "minecraft:transformation":  {
+                                                                                                         "rotation":  [
+                                                                                                                          0,
+                                                                                                                          0,
+                                                                                                                          0
+                                                                                                                      ]
+                                                                                                     }
+                                                                    }
+                                                 },
+                                                 {
+                                                     "condition":  "q.block_state(\u0027create:shape\u0027) == \u0027junction\u0027 \u0026\u0026 q.block_state(\u0027create:junction_base\u0027) == \u0027w\u0027 \u0026\u0026 q.block_state(\u0027create:junction_vertical\u0027) == \u0027ud\u0027",
+                                                     "components":  {
+                                                                        "minecraft:geometry":  {
+                                                                                                   "identifier":  "geometry.pipe_junction_w_ud"
+                                                                                               },
+                                                                        "minecraft:transformation":  {
+                                                                                                         "rotation":  [
+                                                                                                                          0,
+                                                                                                                          0,
+                                                                                                                          0
+                                                                                                                      ]
+                                                                                                     }
+                                                                    }
+                                                 },
+                                                 {
+                                                     "condition":  "q.block_state(\u0027create:shape\u0027) == \u0027junction\u0027 \u0026\u0026 q.block_state(\u0027create:junction_base\u0027) == \u0027n_e\u0027 \u0026\u0026 q.block_state(\u0027create:junction_vertical\u0027) == \u0027none\u0027",
+                                                     "components":  {
+                                                                        "minecraft:geometry":  {
+                                                                                                   "identifier":  "geometry.pipe_junction_n_e"
+                                                                                               },
+                                                                        "minecraft:transformation":  {
+                                                                                                         "rotation":  [
+                                                                                                                          0,
+                                                                                                                          0,
+                                                                                                                          0
+                                                                                                                      ]
+                                                                                                     }
+                                                                    }
+                                                 },
+                                                 {
+                                                     "condition":  "q.block_state(\u0027create:shape\u0027) == \u0027junction\u0027 \u0026\u0026 q.block_state(\u0027create:junction_base\u0027) == \u0027n_e\u0027 \u0026\u0026 q.block_state(\u0027create:junction_vertical\u0027) == \u0027u\u0027",
+                                                     "components":  {
+                                                                        "minecraft:geometry":  {
+                                                                                                   "identifier":  "geometry.pipe_junction_n_e_u"
+                                                                                               },
+                                                                        "minecraft:transformation":  {
+                                                                                                         "rotation":  [
+                                                                                                                          0,
+                                                                                                                          0,
+                                                                                                                          0
+                                                                                                                      ]
+                                                                                                     }
+                                                                    }
+                                                 },
+                                                 {
+                                                     "condition":  "q.block_state(\u0027create:shape\u0027) == \u0027junction\u0027 \u0026\u0026 q.block_state(\u0027create:junction_base\u0027) == \u0027n_e\u0027 \u0026\u0026 q.block_state(\u0027create:junction_vertical\u0027) == \u0027d\u0027",
+                                                     "components":  {
+                                                                        "minecraft:geometry":  {
+                                                                                                   "identifier":  "geometry.pipe_junction_n_e_d"
+                                                                                               },
+                                                                        "minecraft:transformation":  {
+                                                                                                         "rotation":  [
+                                                                                                                          0,
+                                                                                                                          0,
+                                                                                                                          0
+                                                                                                                      ]
+                                                                                                     }
+                                                                    }
+                                                 },
+                                                 {
+                                                     "condition":  "q.block_state(\u0027create:shape\u0027) == \u0027junction\u0027 \u0026\u0026 q.block_state(\u0027create:junction_base\u0027) == \u0027n_e\u0027 \u0026\u0026 q.block_state(\u0027create:junction_vertical\u0027) == \u0027ud\u0027",
+                                                     "components":  {
+                                                                        "minecraft:geometry":  {
+                                                                                                   "identifier":  "geometry.pipe_junction_n_e_ud"
+                                                                                               },
+                                                                        "minecraft:transformation":  {
+                                                                                                         "rotation":  [
+                                                                                                                          0,
+                                                                                                                          0,
+                                                                                                                          0
+                                                                                                                      ]
+                                                                                                     }
+                                                                    }
+                                                 },
+                                                 {
+                                                     "condition":  "q.block_state(\u0027create:shape\u0027) == \u0027junction\u0027 \u0026\u0026 q.block_state(\u0027create:junction_base\u0027) == \u0027n_w\u0027 \u0026\u0026 q.block_state(\u0027create:junction_vertical\u0027) == \u0027none\u0027",
+                                                     "components":  {
+                                                                        "minecraft:geometry":  {
+                                                                                                   "identifier":  "geometry.pipe_junction_n_w"
+                                                                                               },
+                                                                        "minecraft:transformation":  {
+                                                                                                         "rotation":  [
+                                                                                                                          0,
+                                                                                                                          0,
+                                                                                                                          0
+                                                                                                                      ]
+                                                                                                     }
+                                                                    }
+                                                 },
+                                                 {
+                                                     "condition":  "q.block_state(\u0027create:shape\u0027) == \u0027junction\u0027 \u0026\u0026 q.block_state(\u0027create:junction_base\u0027) == \u0027n_w\u0027 \u0026\u0026 q.block_state(\u0027create:junction_vertical\u0027) == \u0027u\u0027",
+                                                     "components":  {
+                                                                        "minecraft:geometry":  {
+                                                                                                   "identifier":  "geometry.pipe_junction_n_w_u"
+                                                                                               },
+                                                                        "minecraft:transformation":  {
+                                                                                                         "rotation":  [
+                                                                                                                          0,
+                                                                                                                          0,
+                                                                                                                          0
+                                                                                                                      ]
+                                                                                                     }
+                                                                    }
+                                                 },
+                                                 {
+                                                     "condition":  "q.block_state(\u0027create:shape\u0027) == \u0027junction\u0027 \u0026\u0026 q.block_state(\u0027create:junction_base\u0027) == \u0027n_w\u0027 \u0026\u0026 q.block_state(\u0027create:junction_vertical\u0027) == \u0027d\u0027",
+                                                     "components":  {
+                                                                        "minecraft:geometry":  {
+                                                                                                   "identifier":  "geometry.pipe_junction_n_w_d"
+                                                                                               },
+                                                                        "minecraft:transformation":  {
+                                                                                                         "rotation":  [
+                                                                                                                          0,
+                                                                                                                          0,
+                                                                                                                          0
+                                                                                                                      ]
+                                                                                                     }
+                                                                    }
+                                                 },
+                                                 {
+                                                     "condition":  "q.block_state(\u0027create:shape\u0027) == \u0027junction\u0027 \u0026\u0026 q.block_state(\u0027create:junction_base\u0027) == \u0027n_w\u0027 \u0026\u0026 q.block_state(\u0027create:junction_vertical\u0027) == \u0027ud\u0027",
+                                                     "components":  {
+                                                                        "minecraft:geometry":  {
+                                                                                                   "identifier":  "geometry.pipe_junction_n_w_ud"
+                                                                                               },
+                                                                        "minecraft:transformation":  {
+                                                                                                         "rotation":  [
+                                                                                                                          0,
+                                                                                                                          0,
+                                                                                                                          0
+                                                                                                                      ]
+                                                                                                     }
+                                                                    }
+                                                 },
+                                                 {
+                                                     "condition":  "q.block_state(\u0027create:shape\u0027) == \u0027junction\u0027 \u0026\u0026 q.block_state(\u0027create:junction_base\u0027) == \u0027s_e\u0027 \u0026\u0026 q.block_state(\u0027create:junction_vertical\u0027) == \u0027none\u0027",
+                                                     "components":  {
+                                                                        "minecraft:geometry":  {
+                                                                                                   "identifier":  "geometry.pipe_junction_s_e"
+                                                                                               },
+                                                                        "minecraft:transformation":  {
+                                                                                                         "rotation":  [
+                                                                                                                          0,
+                                                                                                                          0,
+                                                                                                                          0
+                                                                                                                      ]
+                                                                                                     }
+                                                                    }
+                                                 },
+                                                 {
+                                                     "condition":  "q.block_state(\u0027create:shape\u0027) == \u0027junction\u0027 \u0026\u0026 q.block_state(\u0027create:junction_base\u0027) == \u0027s_e\u0027 \u0026\u0026 q.block_state(\u0027create:junction_vertical\u0027) == \u0027u\u0027",
+                                                     "components":  {
+                                                                        "minecraft:geometry":  {
+                                                                                                   "identifier":  "geometry.pipe_junction_s_e_u"
+                                                                                               },
+                                                                        "minecraft:transformation":  {
+                                                                                                         "rotation":  [
+                                                                                                                          0,
+                                                                                                                          0,
+                                                                                                                          0
+                                                                                                                      ]
+                                                                                                     }
+                                                                    }
+                                                 },
+                                                 {
+                                                     "condition":  "q.block_state(\u0027create:shape\u0027) == \u0027junction\u0027 \u0026\u0026 q.block_state(\u0027create:junction_base\u0027) == \u0027s_e\u0027 \u0026\u0026 q.block_state(\u0027create:junction_vertical\u0027) == \u0027d\u0027",
+                                                     "components":  {
+                                                                        "minecraft:geometry":  {
+                                                                                                   "identifier":  "geometry.pipe_junction_s_e_d"
+                                                                                               },
+                                                                        "minecraft:transformation":  {
+                                                                                                         "rotation":  [
+                                                                                                                          0,
+                                                                                                                          0,
+                                                                                                                          0
+                                                                                                                      ]
+                                                                                                     }
+                                                                    }
+                                                 },
+                                                 {
+                                                     "condition":  "q.block_state(\u0027create:shape\u0027) == \u0027junction\u0027 \u0026\u0026 q.block_state(\u0027create:junction_base\u0027) == \u0027s_e\u0027 \u0026\u0026 q.block_state(\u0027create:junction_vertical\u0027) == \u0027ud\u0027",
+                                                     "components":  {
+                                                                        "minecraft:geometry":  {
+                                                                                                   "identifier":  "geometry.pipe_junction_s_e_ud"
+                                                                                               },
+                                                                        "minecraft:transformation":  {
+                                                                                                         "rotation":  [
+                                                                                                                          0,
+                                                                                                                          0,
+                                                                                                                          0
+                                                                                                                      ]
+                                                                                                     }
+                                                                    }
+                                                 },
+                                                 {
+                                                     "condition":  "q.block_state(\u0027create:shape\u0027) == \u0027junction\u0027 \u0026\u0026 q.block_state(\u0027create:junction_base\u0027) == \u0027s_w\u0027 \u0026\u0026 q.block_state(\u0027create:junction_vertical\u0027) == \u0027none\u0027",
+                                                     "components":  {
+                                                                        "minecraft:geometry":  {
+                                                                                                   "identifier":  "geometry.pipe_junction_s_w"
+                                                                                               },
+                                                                        "minecraft:transformation":  {
+                                                                                                         "rotation":  [
+                                                                                                                          0,
+                                                                                                                          0,
+                                                                                                                          0
+                                                                                                                      ]
+                                                                                                     }
+                                                                    }
+                                                 },
+                                                 {
+                                                     "condition":  "q.block_state(\u0027create:shape\u0027) == \u0027junction\u0027 \u0026\u0026 q.block_state(\u0027create:junction_base\u0027) == \u0027s_w\u0027 \u0026\u0026 q.block_state(\u0027create:junction_vertical\u0027) == \u0027u\u0027",
+                                                     "components":  {
+                                                                        "minecraft:geometry":  {
+                                                                                                   "identifier":  "geometry.pipe_junction_s_w_u"
+                                                                                               },
+                                                                        "minecraft:transformation":  {
+                                                                                                         "rotation":  [
+                                                                                                                          0,
+                                                                                                                          0,
+                                                                                                                          0
+                                                                                                                      ]
+                                                                                                     }
+                                                                    }
+                                                 },
+                                                 {
+                                                     "condition":  "q.block_state(\u0027create:shape\u0027) == \u0027junction\u0027 \u0026\u0026 q.block_state(\u0027create:junction_base\u0027) == \u0027s_w\u0027 \u0026\u0026 q.block_state(\u0027create:junction_vertical\u0027) == \u0027d\u0027",
+                                                     "components":  {
+                                                                        "minecraft:geometry":  {
+                                                                                                   "identifier":  "geometry.pipe_junction_s_w_d"
+                                                                                               },
+                                                                        "minecraft:transformation":  {
+                                                                                                         "rotation":  [
+                                                                                                                          0,
+                                                                                                                          0,
+                                                                                                                          0
+                                                                                                                      ]
+                                                                                                     }
+                                                                    }
+                                                 },
+                                                 {
+                                                     "condition":  "q.block_state(\u0027create:shape\u0027) == \u0027junction\u0027 \u0026\u0026 q.block_state(\u0027create:junction_base\u0027) == \u0027s_w\u0027 \u0026\u0026 q.block_state(\u0027create:junction_vertical\u0027) == \u0027ud\u0027",
+                                                     "components":  {
+                                                                        "minecraft:geometry":  {
+                                                                                                   "identifier":  "geometry.pipe_junction_s_w_ud"
+                                                                                               },
+                                                                        "minecraft:transformation":  {
+                                                                                                         "rotation":  [
+                                                                                                                          0,
+                                                                                                                          0,
+                                                                                                                          0
+                                                                                                                      ]
+                                                                                                     }
+                                                                    }
+                                                 },
+                                                 {
+                                                     "condition":  "q.block_state(\u0027create:shape\u0027) == \u0027junction\u0027 \u0026\u0026 q.block_state(\u0027create:junction_base\u0027) == \u0027ns_e\u0027 \u0026\u0026 q.block_state(\u0027create:junction_vertical\u0027) == \u0027none\u0027",
+                                                     "components":  {
+                                                                        "minecraft:geometry":  {
+                                                                                                   "identifier":  "geometry.pipe_junction_ns_e"
+                                                                                               },
+                                                                        "minecraft:transformation":  {
+                                                                                                         "rotation":  [
+                                                                                                                          0,
+                                                                                                                          0,
+                                                                                                                          0
+                                                                                                                      ]
+                                                                                                     }
+                                                                    }
+                                                 },
+                                                 {
+                                                     "condition":  "q.block_state(\u0027create:shape\u0027) == \u0027junction\u0027 \u0026\u0026 q.block_state(\u0027create:junction_base\u0027) == \u0027ns_e\u0027 \u0026\u0026 q.block_state(\u0027create:junction_vertical\u0027) == \u0027u\u0027",
+                                                     "components":  {
+                                                                        "minecraft:geometry":  {
+                                                                                                   "identifier":  "geometry.pipe_junction_ns_e_u"
+                                                                                               },
+                                                                        "minecraft:transformation":  {
+                                                                                                         "rotation":  [
+                                                                                                                          0,
+                                                                                                                          0,
+                                                                                                                          0
+                                                                                                                      ]
+                                                                                                     }
+                                                                    }
+                                                 },
+                                                 {
+                                                     "condition":  "q.block_state(\u0027create:shape\u0027) == \u0027junction\u0027 \u0026\u0026 q.block_state(\u0027create:junction_base\u0027) == \u0027ns_e\u0027 \u0026\u0026 q.block_state(\u0027create:junction_vertical\u0027) == \u0027d\u0027",
+                                                     "components":  {
+                                                                        "minecraft:geometry":  {
+                                                                                                   "identifier":  "geometry.pipe_junction_ns_e_d"
+                                                                                               },
+                                                                        "minecraft:transformation":  {
+                                                                                                         "rotation":  [
+                                                                                                                          0,
+                                                                                                                          0,
+                                                                                                                          0
+                                                                                                                      ]
+                                                                                                     }
+                                                                    }
+                                                 },
+                                                 {
+                                                     "condition":  "q.block_state(\u0027create:shape\u0027) == \u0027junction\u0027 \u0026\u0026 q.block_state(\u0027create:junction_base\u0027) == \u0027ns_e\u0027 \u0026\u0026 q.block_state(\u0027create:junction_vertical\u0027) == \u0027ud\u0027",
+                                                     "components":  {
+                                                                        "minecraft:geometry":  {
+                                                                                                   "identifier":  "geometry.pipe_junction_ns_e_ud"
+                                                                                               },
+                                                                        "minecraft:transformation":  {
+                                                                                                         "rotation":  [
+                                                                                                                          0,
+                                                                                                                          0,
+                                                                                                                          0
+                                                                                                                      ]
+                                                                                                     }
+                                                                    }
+                                                 },
+                                                 {
+                                                     "condition":  "q.block_state(\u0027create:shape\u0027) == \u0027junction\u0027 \u0026\u0026 q.block_state(\u0027create:junction_base\u0027) == \u0027ns_w\u0027 \u0026\u0026 q.block_state(\u0027create:junction_vertical\u0027) == \u0027none\u0027",
+                                                     "components":  {
+                                                                        "minecraft:geometry":  {
+                                                                                                   "identifier":  "geometry.pipe_junction_ns_w"
+                                                                                               },
+                                                                        "minecraft:transformation":  {
+                                                                                                         "rotation":  [
+                                                                                                                          0,
+                                                                                                                          0,
+                                                                                                                          0
+                                                                                                                      ]
+                                                                                                     }
+                                                                    }
+                                                 },
+                                                 {
+                                                     "condition":  "q.block_state(\u0027create:shape\u0027) == \u0027junction\u0027 \u0026\u0026 q.block_state(\u0027create:junction_base\u0027) == \u0027ns_w\u0027 \u0026\u0026 q.block_state(\u0027create:junction_vertical\u0027) == \u0027u\u0027",
+                                                     "components":  {
+                                                                        "minecraft:geometry":  {
+                                                                                                   "identifier":  "geometry.pipe_junction_ns_w_u"
+                                                                                               },
+                                                                        "minecraft:transformation":  {
+                                                                                                         "rotation":  [
+                                                                                                                          0,
+                                                                                                                          0,
+                                                                                                                          0
+                                                                                                                      ]
+                                                                                                     }
+                                                                    }
+                                                 },
+                                                 {
+                                                     "condition":  "q.block_state(\u0027create:shape\u0027) == \u0027junction\u0027 \u0026\u0026 q.block_state(\u0027create:junction_base\u0027) == \u0027ns_w\u0027 \u0026\u0026 q.block_state(\u0027create:junction_vertical\u0027) == \u0027d\u0027",
+                                                     "components":  {
+                                                                        "minecraft:geometry":  {
+                                                                                                   "identifier":  "geometry.pipe_junction_ns_w_d"
+                                                                                               },
+                                                                        "minecraft:transformation":  {
+                                                                                                         "rotation":  [
+                                                                                                                          0,
+                                                                                                                          0,
+                                                                                                                          0
+                                                                                                                      ]
+                                                                                                     }
+                                                                    }
+                                                 },
+                                                 {
+                                                     "condition":  "q.block_state(\u0027create:shape\u0027) == \u0027junction\u0027 \u0026\u0026 q.block_state(\u0027create:junction_base\u0027) == \u0027ns_w\u0027 \u0026\u0026 q.block_state(\u0027create:junction_vertical\u0027) == \u0027ud\u0027",
+                                                     "components":  {
+                                                                        "minecraft:geometry":  {
+                                                                                                   "identifier":  "geometry.pipe_junction_ns_w_ud"
+                                                                                               },
+                                                                        "minecraft:transformation":  {
+                                                                                                         "rotation":  [
+                                                                                                                          0,
+                                                                                                                          0,
+                                                                                                                          0
+                                                                                                                      ]
+                                                                                                     }
+                                                                    }
+                                                 },
+                                                 {
+                                                     "condition":  "q.block_state(\u0027create:shape\u0027) == \u0027junction\u0027 \u0026\u0026 q.block_state(\u0027create:junction_base\u0027) == \u0027n_ew\u0027 \u0026\u0026 q.block_state(\u0027create:junction_vertical\u0027) == \u0027none\u0027",
+                                                     "components":  {
+                                                                        "minecraft:geometry":  {
+                                                                                                   "identifier":  "geometry.pipe_junction_n_ew"
+                                                                                               },
+                                                                        "minecraft:transformation":  {
+                                                                                                         "rotation":  [
+                                                                                                                          0,
+                                                                                                                          0,
+                                                                                                                          0
+                                                                                                                      ]
+                                                                                                     }
+                                                                    }
+                                                 },
+                                                 {
+                                                     "condition":  "q.block_state(\u0027create:shape\u0027) == \u0027junction\u0027 \u0026\u0026 q.block_state(\u0027create:junction_base\u0027) == \u0027n_ew\u0027 \u0026\u0026 q.block_state(\u0027create:junction_vertical\u0027) == \u0027u\u0027",
+                                                     "components":  {
+                                                                        "minecraft:geometry":  {
+                                                                                                   "identifier":  "geometry.pipe_junction_n_ew_u"
+                                                                                               },
+                                                                        "minecraft:transformation":  {
+                                                                                                         "rotation":  [
+                                                                                                                          0,
+                                                                                                                          0,
+                                                                                                                          0
+                                                                                                                      ]
+                                                                                                     }
+                                                                    }
+                                                 },
+                                                 {
+                                                     "condition":  "q.block_state(\u0027create:shape\u0027) == \u0027junction\u0027 \u0026\u0026 q.block_state(\u0027create:junction_base\u0027) == \u0027n_ew\u0027 \u0026\u0026 q.block_state(\u0027create:junction_vertical\u0027) == \u0027d\u0027",
+                                                     "components":  {
+                                                                        "minecraft:geometry":  {
+                                                                                                   "identifier":  "geometry.pipe_junction_n_ew_d"
+                                                                                               },
+                                                                        "minecraft:transformation":  {
+                                                                                                         "rotation":  [
+                                                                                                                          0,
+                                                                                                                          0,
+                                                                                                                          0
+                                                                                                                      ]
+                                                                                                     }
+                                                                    }
+                                                 },
+                                                 {
+                                                     "condition":  "q.block_state(\u0027create:shape\u0027) == \u0027junction\u0027 \u0026\u0026 q.block_state(\u0027create:junction_base\u0027) == \u0027n_ew\u0027 \u0026\u0026 q.block_state(\u0027create:junction_vertical\u0027) == \u0027ud\u0027",
+                                                     "components":  {
+                                                                        "minecraft:geometry":  {
+                                                                                                   "identifier":  "geometry.pipe_junction_n_ew_ud"
+                                                                                               },
+                                                                        "minecraft:transformation":  {
+                                                                                                         "rotation":  [
+                                                                                                                          0,
+                                                                                                                          0,
+                                                                                                                          0
+                                                                                                                      ]
+                                                                                                     }
+                                                                    }
+                                                 },
+                                                 {
+                                                     "condition":  "q.block_state(\u0027create:shape\u0027) == \u0027junction\u0027 \u0026\u0026 q.block_state(\u0027create:junction_base\u0027) == \u0027s_ew\u0027 \u0026\u0026 q.block_state(\u0027create:junction_vertical\u0027) == \u0027none\u0027",
+                                                     "components":  {
+                                                                        "minecraft:geometry":  {
+                                                                                                   "identifier":  "geometry.pipe_junction_s_ew"
+                                                                                               },
+                                                                        "minecraft:transformation":  {
+                                                                                                         "rotation":  [
+                                                                                                                          0,
+                                                                                                                          0,
+                                                                                                                          0
+                                                                                                                      ]
+                                                                                                     }
+                                                                    }
+                                                 },
+                                                 {
+                                                     "condition":  "q.block_state(\u0027create:shape\u0027) == \u0027junction\u0027 \u0026\u0026 q.block_state(\u0027create:junction_base\u0027) == \u0027s_ew\u0027 \u0026\u0026 q.block_state(\u0027create:junction_vertical\u0027) == \u0027u\u0027",
+                                                     "components":  {
+                                                                        "minecraft:geometry":  {
+                                                                                                   "identifier":  "geometry.pipe_junction_s_ew_u"
+                                                                                               },
+                                                                        "minecraft:transformation":  {
+                                                                                                         "rotation":  [
+                                                                                                                          0,
+                                                                                                                          0,
+                                                                                                                          0
+                                                                                                                      ]
+                                                                                                     }
+                                                                    }
+                                                 },
+                                                 {
+                                                     "condition":  "q.block_state(\u0027create:shape\u0027) == \u0027junction\u0027 \u0026\u0026 q.block_state(\u0027create:junction_base\u0027) == \u0027s_ew\u0027 \u0026\u0026 q.block_state(\u0027create:junction_vertical\u0027) == \u0027d\u0027",
+                                                     "components":  {
+                                                                        "minecraft:geometry":  {
+                                                                                                   "identifier":  "geometry.pipe_junction_s_ew_d"
+                                                                                               },
+                                                                        "minecraft:transformation":  {
+                                                                                                         "rotation":  [
+                                                                                                                          0,
+                                                                                                                          0,
+                                                                                                                          0
+                                                                                                                      ]
+                                                                                                     }
+                                                                    }
+                                                 },
+                                                 {
+                                                     "condition":  "q.block_state(\u0027create:shape\u0027) == \u0027junction\u0027 \u0026\u0026 q.block_state(\u0027create:junction_base\u0027) == \u0027s_ew\u0027 \u0026\u0026 q.block_state(\u0027create:junction_vertical\u0027) == \u0027ud\u0027",
+                                                     "components":  {
+                                                                        "minecraft:geometry":  {
+                                                                                                   "identifier":  "geometry.pipe_junction_s_ew_ud"
+                                                                                               },
+                                                                        "minecraft:transformation":  {
+                                                                                                         "rotation":  [
+                                                                                                                          0,
+                                                                                                                          0,
+                                                                                                                          0
+                                                                                                                      ]
+                                                                                                     }
+                                                                    }
+                                                 },
+                                                 {
+                                                     "condition":  "q.block_state(\u0027create:shape\u0027) == \u0027junction\u0027 \u0026\u0026 q.block_state(\u0027create:junction_base\u0027) == \u0027ns_ew\u0027 \u0026\u0026 q.block_state(\u0027create:junction_vertical\u0027) == \u0027none\u0027",
+                                                     "components":  {
+                                                                        "minecraft:geometry":  {
+                                                                                                   "identifier":  "geometry.pipe_junction_ns_ew"
+                                                                                               },
+                                                                        "minecraft:transformation":  {
+                                                                                                         "rotation":  [
+                                                                                                                          0,
+                                                                                                                          0,
+                                                                                                                          0
+                                                                                                                      ]
+                                                                                                     }
+                                                                    }
+                                                 },
+                                                 {
+                                                     "condition":  "q.block_state(\u0027create:shape\u0027) == \u0027junction\u0027 \u0026\u0026 q.block_state(\u0027create:junction_base\u0027) == \u0027ns_ew\u0027 \u0026\u0026 q.block_state(\u0027create:junction_vertical\u0027) == \u0027u\u0027",
+                                                     "components":  {
+                                                                        "minecraft:geometry":  {
+                                                                                                   "identifier":  "geometry.pipe_junction_ns_ew_u"
+                                                                                               },
+                                                                        "minecraft:transformation":  {
+                                                                                                         "rotation":  [
+                                                                                                                          0,
+                                                                                                                          0,
+                                                                                                                          0
+                                                                                                                      ]
+                                                                                                     }
+                                                                    }
+                                                 },
+                                                 {
+                                                     "condition":  "q.block_state(\u0027create:shape\u0027) == \u0027junction\u0027 \u0026\u0026 q.block_state(\u0027create:junction_base\u0027) == \u0027ns_ew\u0027 \u0026\u0026 q.block_state(\u0027create:junction_vertical\u0027) == \u0027d\u0027",
+                                                     "components":  {
+                                                                        "minecraft:geometry":  {
+                                                                                                   "identifier":  "geometry.pipe_junction_ns_ew_d"
+                                                                                               },
+                                                                        "minecraft:transformation":  {
+                                                                                                         "rotation":  [
+                                                                                                                          0,
+                                                                                                                          0,
+                                                                                                                          0
+                                                                                                                      ]
+                                                                                                     }
+                                                                    }
+                                                 },
+                                                 {
+                                                     "condition":  "q.block_state(\u0027create:shape\u0027) == \u0027junction\u0027 \u0026\u0026 q.block_state(\u0027create:junction_base\u0027) == \u0027ns_ew\u0027 \u0026\u0026 q.block_state(\u0027create:junction_vertical\u0027) == \u0027ud\u0027",
+                                                     "components":  {
+                                                                        "minecraft:geometry":  {
+                                                                                                   "identifier":  "geometry.pipe_junction_ns_ew_ud"
+                                                                                               },
+                                                                        "minecraft:transformation":  {
+                                                                                                         "rotation":  [
+                                                                                                                          0,
+                                                                                                                          0,
+                                                                                                                          0
+                                                                                                                      ]
+                                                                                                     }
+                                                                    }
+                                                 },
+                                                 {
+                                                     "condition":  "(q.block_state(\u0027create:shape\u0027) == \u0027straight\u0027 || q.block_state(\u0027create:shape\u0027) == \u0027vertical\u0027) \u0026\u0026 q.block_state(\u0027create:end_type\u0027) == \u0027open\u0027",
+                                                     "components":  {
+                                                                        "minecraft:geometry":  {
+                                                                                                   "identifier":  "geometry.pipe_straight_open"
+                                                                                               }
+                                                                    }
+                                                 },
+                                                 {
+                                                     "condition":  "(q.block_state(\u0027create:shape\u0027) == \u0027straight\u0027 || q.block_state(\u0027create:shape\u0027) == \u0027vertical\u0027) \u0026\u0026 q.block_state(\u0027create:end_type\u0027) == \u0027front\u0027",
+                                                     "components":  {
+                                                                        "minecraft:geometry":  {
+                                                                                                   "identifier":  "geometry.pipe_straight_front"
+                                                                                               }
+                                                                    }
+                                                 },
+                                                 {
+                                                     "condition":  "(q.block_state(\u0027create:shape\u0027) == \u0027straight\u0027 || q.block_state(\u0027create:shape\u0027) == \u0027vertical\u0027) \u0026\u0026 q.block_state(\u0027create:end_type\u0027) == \u0027back\u0027",
+                                                     "components":  {
+                                                                        "minecraft:geometry":  {
+                                                                                                   "identifier":  "geometry.pipe_straight_back"
+                                                                                               }
+                                                                    }
+                                                 },
+                                                 {
+                                                     "condition":  "(q.block_state(\u0027create:shape\u0027) == \u0027straight\u0027 || q.block_state(\u0027create:shape\u0027) == \u0027vertical\u0027) \u0026\u0026 q.block_state(\u0027create:end_type\u0027) == \u0027both\u0027",
+                                                     "components":  {
+                                                                        "minecraft:geometry":  {
+                                                                                                   "identifier":  "geometry.pipe_straight_both"
+                                                                                               }
+                                                                    }
+                                                 },
+                                                 {
+                                                     "condition":  "q.block_state(\u0027create:shape\u0027) == \u0027straight\u0027 \u0026\u0026 q.block_state(\u0027minecraft:cardinal_direction\u0027) == \u0027north\u0027",
+                                                     "components":  {
+                                                                        "minecraft:transformation":  {
+                                                                                                         "rotation":  [
+                                                                                                                          0,
+                                                                                                                          0,
+                                                                                                                          0
+                                                                                                                      ]
+                                                                                                     }
+                                                                    }
+                                                 },
+                                                 {
+                                                     "condition":  "q.block_state(\u0027create:shape\u0027) == \u0027straight\u0027 \u0026\u0026 q.block_state(\u0027minecraft:cardinal_direction\u0027) == \u0027south\u0027",
+                                                     "components":  {
+                                                                        "minecraft:transformation":  {
+                                                                                                         "rotation":  [
+                                                                                                                          0,
+                                                                                                                          180,
+                                                                                                                          0
+                                                                                                                      ]
+                                                                                                     }
+                                                                    }
+                                                 },
+                                                 {
+                                                     "condition":  "q.block_state(\u0027create:shape\u0027) == \u0027straight\u0027 \u0026\u0026 q.block_state(\u0027minecraft:cardinal_direction\u0027) == \u0027west\u0027",
+                                                     "components":  {
+                                                                        "minecraft:transformation":  {
+                                                                                                         "rotation":  [
+                                                                                                                          0,
+                                                                                                                          90,
+                                                                                                                          0
+                                                                                                                      ]
+                                                                                                     }
+                                                                    }
+                                                 },
+                                                 {
+                                                     "condition":  "q.block_state(\u0027create:shape\u0027) == \u0027straight\u0027 \u0026\u0026 q.block_state(\u0027minecraft:cardinal_direction\u0027) == \u0027east\u0027",
+                                                     "components":  {
+                                                                        "minecraft:transformation":  {
+                                                                                                         "rotation":  [
+                                                                                                                          0,
+                                                                                                                          270,
+                                                                                                                          0
+                                                                                                                      ]
+                                                                                                     }
+                                                                    }
+                                                 },
+                                                 {
+                                                     "condition":  "q.block_state(\u0027create:shape\u0027) == \u0027elbow\u0027 \u0026\u0026 q.block_state(\u0027create:elbow_type\u0027) == \u0027up\u0027 \u0026\u0026 q.block_state(\u0027minecraft:cardinal_direction\u0027) == \u0027north\u0027",
+                                                     "components":  {
+                                                                        "minecraft:geometry":  {
+                                                                                                   "identifier":  "geometry.pipe_elbow"
+                                                                                               },
+                                                                        "minecraft:transformation":  {
+                                                                                                         "rotation":  [
+                                                                                                                          0,
+                                                                                                                          180,
+                                                                                                                          0
+                                                                                                                      ]
+                                                                                                     }
+                                                                    }
+                                                 },
+                                                 {
+                                                     "condition":  "q.block_state(\u0027create:shape\u0027) == \u0027elbow\u0027 \u0026\u0026 q.block_state(\u0027create:elbow_type\u0027) == \u0027up\u0027 \u0026\u0026 q.block_state(\u0027minecraft:cardinal_direction\u0027) == \u0027south\u0027",
+                                                     "components":  {
+                                                                        "minecraft:geometry":  {
+                                                                                                   "identifier":  "geometry.pipe_elbow"
+                                                                                               },
+                                                                        "minecraft:transformation":  {
+                                                                                                         "rotation":  [
+                                                                                                                          0,
+                                                                                                                          0,
+                                                                                                                          0
+                                                                                                                      ]
+                                                                                                     }
+                                                                    }
+                                                 },
+                                                 {
+                                                     "condition":  "q.block_state(\u0027create:shape\u0027) == \u0027elbow\u0027 \u0026\u0026 q.block_state(\u0027create:elbow_type\u0027) == \u0027up\u0027 \u0026\u0026 q.block_state(\u0027minecraft:cardinal_direction\u0027) == \u0027west\u0027",
+                                                     "components":  {
+                                                                        "minecraft:geometry":  {
+                                                                                                   "identifier":  "geometry.pipe_elbow"
+                                                                                               },
+                                                                        "minecraft:transformation":  {
+                                                                                                         "rotation":  [
+                                                                                                                          0,
+                                                                                                                          270,
+                                                                                                                          0
+                                                                                                                      ]
+                                                                                                     }
+                                                                    }
+                                                 },
+                                                 {
+                                                     "condition":  "q.block_state(\u0027create:shape\u0027) == \u0027elbow\u0027 \u0026\u0026 q.block_state(\u0027create:elbow_type\u0027) == \u0027up\u0027 \u0026\u0026 q.block_state(\u0027minecraft:cardinal_direction\u0027) == \u0027east\u0027",
+                                                     "components":  {
+                                                                        "minecraft:geometry":  {
+                                                                                                   "identifier":  "geometry.pipe_elbow"
+                                                                                               },
+                                                                        "minecraft:transformation":  {
+                                                                                                         "rotation":  [
+                                                                                                                          0,
+                                                                                                                          90,
+                                                                                                                          0
+                                                                                                                      ]
+                                                                                                     }
+                                                                    }
+                                                 },
+                                                 {
+                                                     "condition":  "q.block_state(\u0027create:shape\u0027) == \u0027elbow\u0027 \u0026\u0026 q.block_state(\u0027create:elbow_type\u0027) == \u0027down\u0027 \u0026\u0026 q.block_state(\u0027minecraft:cardinal_direction\u0027) == \u0027north\u0027",
+                                                     "components":  {
+                                                                        "minecraft:geometry":  {
+                                                                                                   "identifier":  "geometry.pipe_elbow"
+                                                                                               },
+                                                                        "minecraft:transformation":  {
+                                                                                                         "rotation":  [
+                                                                                                                          180,
+                                                                                                                          0,
+                                                                                                                          0
+                                                                                                                      ]
+                                                                                                     }
+                                                                    }
+                                                 },
+                                                 {
+                                                     "condition":  "q.block_state(\u0027create:shape\u0027) == \u0027elbow\u0027 \u0026\u0026 q.block_state(\u0027create:elbow_type\u0027) == \u0027down\u0027 \u0026\u0026 q.block_state(\u0027minecraft:cardinal_direction\u0027) == \u0027south\u0027",
+                                                     "components":  {
+                                                                        "minecraft:geometry":  {
+                                                                                                   "identifier":  "geometry.pipe_elbow"
+                                                                                               },
+                                                                        "minecraft:transformation":  {
+                                                                                                         "rotation":  [
+                                                                                                                          180,
+                                                                                                                          180,
+                                                                                                                          0
+                                                                                                                      ]
+                                                                                                     }
+                                                                    }
+                                                 },
+                                                 {
+                                                     "condition":  "q.block_state(\u0027create:shape\u0027) == \u0027elbow\u0027 \u0026\u0026 q.block_state(\u0027create:elbow_type\u0027) == \u0027down\u0027 \u0026\u0026 q.block_state(\u0027minecraft:cardinal_direction\u0027) == \u0027west\u0027",
+                                                     "components":  {
+                                                                        "minecraft:geometry":  {
+                                                                                                   "identifier":  "geometry.pipe_elbow"
+                                                                                               },
+                                                                        "minecraft:transformation":  {
+                                                                                                         "rotation":  [
+                                                                                                                          180,
+                                                                                                                          90,
+                                                                                                                          0
+                                                                                                                      ]
+                                                                                                     }
+                                                                    }
+                                                 },
+                                                 {
+                                                     "condition":  "q.block_state(\u0027create:shape\u0027) == \u0027elbow\u0027 \u0026\u0026 q.block_state(\u0027create:elbow_type\u0027) == \u0027down\u0027 \u0026\u0026 q.block_state(\u0027minecraft:cardinal_direction\u0027) == \u0027east\u0027",
+                                                     "components":  {
+                                                                        "minecraft:geometry":  {
+                                                                                                   "identifier":  "geometry.pipe_elbow"
+                                                                                               },
+                                                                        "minecraft:transformation":  {
+                                                                                                         "rotation":  [
+                                                                                                                          180,
+                                                                                                                          270,
+                                                                                                                          0
+                                                                                                                      ]
+                                                                                                     }
+                                                                    }
+                                                 },
+                                                 {
+                                                     "condition":  "q.block_state(\u0027create:shape\u0027) == \u0027elbow\u0027 \u0026\u0026 q.block_state(\u0027create:elbow_type\u0027) == \u0027s_w\u0027",
+                                                     "components":  {
+                                                                        "minecraft:geometry":  {
+                                                                                                   "identifier":  "geometry.pipe_elbow"
+                                                                                               },
+                                                                        "minecraft:transformation":  {
+                                                                                                         "rotation":  [
+                                                                                                                          0,
+                                                                                                                          0,
+                                                                                                                          90
+                                                                                                                      ]
+                                                                                                     }
+                                                                    }
+                                                 },
+                                                 {
+                                                     "condition":  "q.block_state(\u0027create:shape\u0027) == \u0027elbow\u0027 \u0026\u0026 q.block_state(\u0027create:elbow_type\u0027) == \u0027s_e\u0027",
+                                                     "components":  {
+                                                                        "minecraft:geometry":  {
+                                                                                                   "identifier":  "geometry.pipe_elbow"
+                                                                                               },
+                                                                        "minecraft:transformation":  {
+                                                                                                         "rotation":  [
+                                                                                                                          0,
+                                                                                                                          0,
+                                                                                                                          270
+                                                                                                                      ]
+                                                                                                     }
+                                                                    }
+                                                 },
+                                                 {
+                                                     "condition":  "q.block_state(\u0027create:shape\u0027) == \u0027elbow\u0027 \u0026\u0026 q.block_state(\u0027create:elbow_type\u0027) == \u0027n_w\u0027",
+                                                     "components":  {
+                                                                        "minecraft:geometry":  {
+                                                                                                   "identifier":  "geometry.pipe_elbow"
+                                                                                               },
+                                                                        "minecraft:transformation":  {
+                                                                                                         "rotation":  [
+                                                                                                                          0,
+                                                                                                                          180,
+                                                                                                                          90
+                                                                                                                      ]
+                                                                                                     }
+                                                                    }
+                                                 },
+                                                 {
+                                                     "condition":  "q.block_state(\u0027create:shape\u0027) == \u0027elbow\u0027 \u0026\u0026 q.block_state(\u0027create:elbow_type\u0027) == \u0027n_e\u0027",
+                                                     "components":  {
+                                                                        "minecraft:geometry":  {
+                                                                                                   "identifier":  "geometry.pipe_elbow"
+                                                                                               },
+                                                                        "minecraft:transformation":  {
+                                                                                                         "rotation":  [
+                                                                                                                          0,
+                                                                                                                          180,
+                                                                                                                          270
+                                                                                                                      ]
+                                                                                                     }
+                                                                    }
+                                                 },
+                                                 {
+                                                     "condition":  "q.block_state(\u0027create:shape\u0027) == \u0027vertical\u0027",
+                                                     "components":  {
+                                                                        "minecraft:transformation":  {
+                                                                                                         "rotation":  [
+                                                                                                                          90,
+                                                                                                                          0,
+                                                                                                                          0
+                                                                                                                      ]
+                                                                                                     }
+                                                                    }
+                                                 }
+                                             ]
+                        }
+}

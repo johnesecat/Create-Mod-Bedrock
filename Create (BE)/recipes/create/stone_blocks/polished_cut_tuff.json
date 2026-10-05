@@ -1,0 +1,1 @@
+﻿{"format_version":"1.12","minecraft:recipe_shaped":{"description":{"identifier":"create:polished_cut_tuff"},"tags":["crafting_table"],"pattern":["AA","AA"],"key":{"A":{"item":"create:cut_tuff"}},"result":{"item":"create:polished_cut_tuff","count":4}}}

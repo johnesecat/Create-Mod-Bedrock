@@ -1,0 +1,11 @@
+{
+    "format_version": "1.12.0",
+    "minecraft:recipe_shapeless": {
+        "description": { "identifier": "create:experience_nugget_from_block" },
+        "tags": [ "crafting_table" ],
+        "ingredients": [
+            { "item": "create:experience_block" }
+        ],
+        "result": { "item": "create:experience_nugget", "count": 9 }
+    }
+}

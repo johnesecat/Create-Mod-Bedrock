@@ -1,0 +1,9 @@
+{
+  "format_version": "1.12",
+  "minecraft:recipe_shaped": {
+    "description": { "identifier": "create:cart_assembler" }, "tags": ["crafting_table"],
+    "pattern": ["ARA", "L L"],
+    "key": { "A": { "item": "create:andesite_alloy" }, "R": { "item": "minecraft:redstone" }, "L": { "item": "minecraft:oak_log" } },
+    "result": { "item": "create:cart_assembler", "count": 1 }
+  }
+}

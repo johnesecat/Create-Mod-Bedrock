@@ -1,0 +1,18 @@
+{
+    "format_version": "1.12",
+    "minecraft:recipe_shaped": {
+        "description": { "identifier": "create::chute_smart" },
+        "tags": ["crafting_table"],
+        "pattern": [
+            "S",
+            "I",
+            "E"
+        ],
+        "key": {
+            "S": { "item": "create:brass_sheet" },
+            "E": { "item": "create:electron_tube" },
+            "I": { "item": "create:chute" }
+        },
+        "result": { "item": "create:chute_smart", "count": 1 }
+    }
+}

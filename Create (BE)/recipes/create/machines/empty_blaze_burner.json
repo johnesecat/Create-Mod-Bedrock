@@ -1,0 +1,17 @@
+{
+    "format_version": "1.12",
+    "minecraft:recipe_shaped": {
+        "description": { "identifier": "create:empty_blaze_burner" },
+        "tags": ["crafting_table"],
+        "pattern": [
+            " I ",
+            "INI",
+            " I "
+        ],
+        "key": {
+            "I": { "item": "create:iron_sheet" },
+            "N": { "item": "minecraft:netherrack" }
+        },
+        "result": { "item": "create:empty_blaze_burner", "count": 1 }
+    }
+}

@@ -1,0 +1,69 @@
+{
+    "format_version": "1.21.100",
+    "minecraft:entity": {
+        "description": {
+            "identifier": "create:seat_construct",
+            "is_spawnable": false,
+            "is_summonable": true,
+            "is_experimental": false,
+            "properties": {
+                "create:rpm": { "client_sync": true, "type": "float", "range": [-8192.0, 8192.0], "default": 0.0 },
+                "create:rotation_x": { "client_sync": true, "type": "float", "range": [-360.0, 360.0], "default": 0.0 },
+                "create:rotation_y": { "client_sync": true, "type": "float", "range": [-360.0, 360.0], "default": 0.0 },
+                "create:rotation_z": { "client_sync": true, "type": "float", "range": [-360.0, 360.0], "default": 0.0 },
+                "create:item_visual": {
+                    "client_sync": true,
+                    "type": "enum",
+                    "values": ["item", "hand_equipped", "block"],
+                    "default": "block"
+                },
+                "create:seat_color": {
+                    "client_sync": true,
+                    "type": "enum",
+                    "values": ["white", "light_gray", "gray", "black", "brown", "red", "orange", "yellow", "lime", "green", "cyan", "light_blue", "blue", "purple", "magenta", "pink"],
+                    "default": "white"
+                },
+                "create:seat_color_index": {
+                    "client_sync": true,
+                    "type": "int",
+                    "range": [0, 15],
+                    "default": 0
+                }
+            }
+        },
+        "components": {
+            "minecraft:inventory": {
+                "restrict_to_owner": true,
+                "container_type": "inventory",
+                "inventory_size": 55,
+                "can_be_siphoned_from": false
+            },
+            "minecraft:equippable": {},
+            "minecraft:rideable": {
+                "family_types": ["player", "mob"],
+                "interact_text": "action.interact.ride.create:seat_entity",
+                "crouching_skip_interact": true,
+                "pull_in_entities": false,
+                "rider_can_interact": false,
+                "controlling_seat": 0,
+                "seat_count": 1,
+                "seats": [
+                    { "position": [0.0, -0.2, 0.0], "min_rider_count": 0, "max_rider_count": 1 }
+                ]
+            },
+            "minecraft:type_family": {
+                "family": ["create", "inanimate", "immovable", "create_seat_construct"]
+            },
+            "minecraft:collision_box": { "height": 0.5, "width": 1.0 },
+            "minecraft:physics": { "has_collision": true, "has_gravity": false },
+            "minecraft:pushable": { "is_pushable": false, "is_pushable_by_piston": false },
+            "minecraft:damage_sensor": {
+                "triggers": { "cause": "all", "deals_damage": "no" }
+            },
+            "minecraft:health": { "value": 1, "max": 1 },
+            "minecraft:fire_immune": {},
+            "minecraft:is_collidable": {},
+            "minecraft:renders_when_invisible": {}
+        }
+    }
+}

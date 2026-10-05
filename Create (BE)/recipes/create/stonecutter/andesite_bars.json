@@ -1,0 +1,10 @@
+{
+  "format_version": "1.12",
+  "minecraft:recipe_shapeless": {
+    "description": { "identifier": "create:stonecutter_andesite_bars" },
+    "tags": ["stonecutter"],
+    "priority": 1,
+    "ingredients": [{ "item": "create:andesite_alloy" }],
+    "result": { "item": "create:andesite_bars", "count": 4 }
+  }
+}

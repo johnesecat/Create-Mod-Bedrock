@@ -1,0 +1,97 @@
+{
+    "format_version": "1.21.100",
+    "minecraft:entity": {
+        "description": {
+            "identifier": "create:mechanical_crafter_item",
+            "is_spawnable": false,
+            "is_summonable": true,
+            "is_experimental": false,
+            "properties": {
+                "create:rotation_x": {
+                    "client_sync": true,
+                    "type": "float",
+                    "range": [-360.0, 360.0],
+                    "default": 0.0
+                },
+                "create:rotation_y": {
+                    "client_sync": true,
+                    "type": "float",
+                    "range": [-360.0, 360.0],
+                    "default": 0.0
+                },
+                "create:rotation_z": {
+                    "client_sync": true,
+                    "type": "float",
+                    "range": [-360.0, 360.0],
+                    "default": 0.0
+                },
+                "create:item_scale": {
+                    "client_sync": true,
+                    "type": "float",
+                    "range": [0.0, 3.0],
+                    "default": 1.0
+                },
+                "create:cardinal_rotation": {
+                    "client_sync": true,
+                    "type": "enum",
+                    "values": ["north", "south", "east", "west"],
+                    "default": "north"
+                },
+                "create:item_visual": {
+                    "client_sync": true,
+                    "type": "enum",
+                    "values": ["item", "hand_equipped", "block", "frame_item", "frame_item_flat"],
+                    "default": "item"
+                }
+            }
+        },
+        "component_groups": {
+            "create:despawn_component": {
+                "minecraft:instant_despawn": {}
+            }
+        },
+        "components": {
+            "minecraft:interact": {
+                "interactions": [{ "interact_text": "Claim Item" }]
+            },
+            "minecraft:inventory": {
+                "restrict_to_owner": true,
+                "container_type": "inventory",
+                "inventory_size": 2,
+                "can_be_siphoned_from": false
+            },
+            "minecraft:equippable": {},
+            "minecraft:type_family": {
+                "family": ["create", "inanimate"]
+            },
+            "minecraft:collision_box": {
+                "height": 0.0,
+                "width": 0.0
+            },
+            "minecraft:custom_hit_test": {
+                "hitboxes": [
+                    {
+                        "width": 0.28,
+                        "height": 0.28,
+                        "pivot": [0, 0.14, 0]
+                    }
+                ]
+            },
+            "minecraft:health": {
+                "value": 1
+            },
+            "minecraft:damage_sensor": {
+                "triggers": {
+                    "cause": "all",
+                    "deals_damage": "no"
+                }
+            },
+            "minecraft:fire_immune": {}
+        },
+        "events": {
+            "create:despawn": {
+                "add": { "component_groups": ["create:despawn_component"] }
+            }
+        }
+    }
+}
