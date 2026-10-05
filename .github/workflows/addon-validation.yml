@@ -7,6 +7,7 @@ on:
       - "Create (BE)/**/*.json"
       - "Create (RE)/**/*.json"
       - "Create (RE)/textures/ui/crafters/**"
+      - "Create (BE)/texts/*.lang"
       - ".github/workflows/addon-validation.yml"
 
 jobs:
@@ -49,4 +50,27 @@ jobs:
               raise SystemExit("Misspelled mechanical saw reference remains")
 
           print(f"Validated {len(files)} strict JSON files and both mechanical saw UI assets.")
+
+          locales = [Path("Create (BE)/texts") / name for name in ("en_US.lang", "pt_BR.lang", "zh_CN.lang")]
+          locale_keys = []
+          for locale in locales:
+              keys = []
+              for line_number, line in enumerate(locale.read_text(encoding="utf-8-sig").splitlines(), 1):
+                  if not line or line.lstrip().startswith(("#", "//")):
+                      continue
+                  if "=" not in line:
+                      raise SystemExit(f"Malformed localization entry: {locale}:{line_number}")
+                  key = line.split("=", 1)[0]
+                  if key in keys:
+                      raise SystemExit(f"Duplicate localization key {key}: {locale}:{line_number}")
+                  keys.append(key)
+              locale_keys.append(set(keys))
+
+          reference = locale_keys[0]
+          for locale, keys in zip(locales[1:], locale_keys[1:]):
+              if keys != reference:
+                  missing = sorted(reference - keys)
+                  extra = sorted(keys - reference)
+                  raise SystemExit(f"Localization key mismatch in {locale}: missing={missing}; extra={extra}")
+          print(f"Validated matching localization keys in {len(locales)} locales.")
           PY
