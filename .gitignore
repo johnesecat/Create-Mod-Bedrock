@@ -2,5 +2,6 @@ node_modules/
 out/
 .mct-debug/
 *.mcaddon
+!/Create-Bedrock.mcaddon
 *.mcpack
 *.mcpacks
