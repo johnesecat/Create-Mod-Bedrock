@@ -6,7 +6,8 @@
   },
   "scripts": {
     "fix:bedrock-icons": "node scripts/resize-pack-icons.mjs",
-    "validate:bedrock": "node scripts/validate-bedrock.mjs"
+    "validate:bedrock": "node scripts/validate-bedrock.mjs",
+    "build:bedrock": "node scripts/build-bedrock-addon.mjs"
   },
   "devDependencies": {
     "@minecraft/common": "^1.2.0",
@@ -14,6 +15,7 @@
     "@minecraft/server": "2.6.0",
     "@minecraft/server-ui": "2.0.0",
     "@minecraft/vanilla-data": ">=1.20.70",
+    "jszip": "^3.10.1",
     "pngjs": "7.0.0"
   }
 }

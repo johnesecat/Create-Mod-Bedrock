@@ -26,6 +26,9 @@
     "create:potato_cannon": {
       "textures": "textures/create/common/items/potato_cannon"
     },
+    "create:wrench": {
+      "textures": "textures/create/common/items/wrench"
+    },
                          "create:mechanical_belt":  {
                                                         "textures":  "textures/create/common/items/mechanical_belt"
                                                     },
