@@ -86,4 +86,59 @@ jobs:
                   extra = sorted(keys - reference)
                   raise SystemExit(f"Localization key mismatch in {locale}: missing={missing}; extra={extra}")
           print(f"Validated matching localization keys in {len(locales)} locales.")
+
+          behavior_items = [
+              path for path in Path("Create (BE)/items").rglob("*.json")
+          ]
+          behavior_blocks = [
+              path for path in Path("Create (BE)/blocks").rglob("*.json")
+          ]
+          definitions = []
+          for path in behavior_items + behavior_blocks:
+              try:
+                  definition = json.loads(path.read_text(encoding="utf-8-sig"))
+              except (OSError, UnicodeError, json.JSONDecodeError) as error:
+                  raise SystemExit(f"Invalid definition JSON: {path}: {error}")
+              for kind, component in (("item", "minecraft:item"), ("tile", "minecraft:block")):
+                  target = definition.get(component, {})
+                  identifier = target.get("description", {}).get("identifier")
+                  if identifier:
+                      display_name = target.get("components", {}).get("minecraft:display_name")
+                      display_key = display_name.get("value") if isinstance(display_name, dict) else None
+                      definitions.append((kind, identifier, display_key))
+
+          resource_locales = [Path("Create (RE)/texts") / f"{name}.lang" for name in ("en_US", "pt_BR", "zh_CN")]
+          for locale in resource_locales:
+              values = {}
+              for line_number, line in enumerate(locale.read_text(encoding="utf-8-sig").splitlines(), 1):
+                  if not line or line.lstrip().startswith(("#", "//")):
+                      continue
+                  if "=" not in line:
+                      raise SystemExit(f"Malformed resource localization entry: {locale}:{line_number}")
+                  key, value = line.split("=", 1)
+                  values[key] = value
+              for kind, identifier, display_key in definitions:
+                  key = f"{kind}.{identifier}.name"
+                  if not values.get(key):
+                      raise SystemExit(f"Missing resource localization key {key}: {locale}")
+                  if isinstance(display_key, str) and not values.get(display_key):
+                      raise SystemExit(f"Missing explicit display-name key {display_key}: {locale}")
+          print(f"Validated resource-pack display names for {len(definitions)} item/block definitions in {len(resource_locales)} locales.")
+
+          atlas = json.loads(Path("Create (RE)/textures/item_texture.json").read_text(encoding="utf-8-sig"))["texture_data"]
+          for item in ("wrench", "potato_cannon"):
+              identifier = f"create:{item}"
+              item_file = Path("Create (BE)/items/create/tools") / f"{item}.bpi.json"
+              item_definition = json.loads(item_file.read_text(encoding="utf-8-sig"))["minecraft:item"]
+              if not item_definition.get("components", {}).get("minecraft:icon"):
+                  raise SystemExit(f"Missing item icon component: {item_file}")
+              texture = atlas.get(identifier, {}).get("textures")
+              if isinstance(texture, list):
+                  texture = texture[0] if texture else None
+              if not texture:
+                  raise SystemExit(f"Missing item atlas entry: {identifier}")
+              texture_path = Path("Create (RE)") / f"{texture}.png"
+              if not texture_path.is_file():
+                  raise SystemExit(f"Missing item atlas texture: {texture_path}")
+          print("Validated wrench and potato cannon item-icon components, atlas entries, and PNG files.")
           PY

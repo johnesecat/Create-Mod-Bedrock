@@ -9,8 +9,9 @@
             }
         },
         "components": {
+            "minecraft:icon": "create:potato_cannon",
             "minecraft:display_name": {
-                "value": "item.create:potato_cannon"
+                "value": "item.create:potato_cannon.name"
             },
             "minecraft:max_stack_size": 1,
             "minecraft:use_modifiers": {
