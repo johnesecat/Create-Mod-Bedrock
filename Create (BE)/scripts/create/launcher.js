@@ -1,4 +1,4 @@
-﻿import * as mc from "@minecraft/server";
+import * as mc from "@minecraft/server";
 import * as rc from "./racoScripts/racoTriggers";
 import * as xz from "./andrielScripts/andrielTriggers";
 import { initRpmBlock, onBreakRpmBlock, repairRpmAfterPiston, restoreLoadedSpeedControllers } from "./andrielScripts/rpm/rpmCore.js";
@@ -136,11 +136,6 @@ mc.world.afterEvents.playerPlaceBlock.subscribe(data => {
 mc.world.afterEvents.itemUse.subscribe(data => {
     rc.itemUse(data);
     xz.itemUse(data);
-});
-
-mc.world.afterEvents.itemUseOn?.subscribe?.(data => {
-    rc.itemUseOn(data);
-    xz.itemUseOn(data);
 });
 
 mc.world.afterEvents.itemStartUse.subscribe(data => {

@@ -290,7 +290,7 @@ function showBrassFunnelAmountMenu(block, player) {
     })
     form.submitButton("Confirm")
     form.show(player).then(response => {
-        if (response.canceled) return
+        if (response.canceled || !response.formValues) return
         const currentBlock = dimension.getBlock(blockLocation)
         if (!currentBlock || currentBlock.typeId !== "create:brass_funnel") return
         const currentEntity = getFunnelEntity(currentBlock)

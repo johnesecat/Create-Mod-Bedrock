@@ -363,7 +363,7 @@ export function transferItem(containerA, containerB, i, amountRequested){
        if (containerB.emptySlotsCount > 0) hasSpace = true; else
        for (let o = 0; o < containerB.size; o++){
            const containerItem = containerB.getItem(o)
-           if (containerItem?.isStackableWith(playerItem) && containerItem.amount + amountRequested <= containerItem.maxAmount){
+           if (containerItem?.isStackableWith(itemA) && containerItem.amount + amountRequested <= containerItem.maxAmount){
                hasSpace = true
            }
        }
@@ -725,16 +725,7 @@ export function separeItemStack(itemStack, pileAmount) {
 
 
 export function randomId(length = 10) {
-    // usa Web Crypto quando disponível
-    if (typeof crypto !== 'undefined' && crypto.getRandomValues) {
-        const bytes = new Uint8Array(length);
-        crypto.getRandomValues(bytes);
-        const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-_';
-        let id = '';
-        for (let i = 0; i < length; i++) id += alphabet[bytes[i] & 63];
-        return id;
-    }
-    // fallback para ambientes antigos
+    // Bedrock does not expose Web Crypto; these are non-security identifiers.
     return 'x' + Math.random().toString(36).slice(2) + Date.now().toString(36);
 }
 

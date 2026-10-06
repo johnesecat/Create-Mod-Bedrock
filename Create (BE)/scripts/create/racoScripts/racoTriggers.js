@@ -1,4 +1,4 @@
-﻿import * as mc from "@minecraft/server";
+import * as mc from "@minecraft/server";
 import * as racoAPI from "./raco-API.js";
 
 
@@ -861,7 +861,7 @@ export function beforeBlockInteract(data = mc.PlayerInteractWithBlockBeforeEvent
     // Algumas versões da API não fornecem isFirstEvent. Nesse caso, o
     // primeiro evento recebido já deve contar como clique, sem exigir segurar.
     const isFirstEvent = data.isFirstEvent !== false
-    const interactedFace = racoAPI.blockFaceToTraits(data.blockFace ?? data.face)
+    const interactedFace = racoAPI.blockFaceToTraits(data.blockFace)
     if (isFirstEvent && (block?.typeId === "create:shaft" || block?.typeId === "create:shaft.steam_engine" || block?.typeId === "create:cogwheel" || block?.typeId === "create:large_cogwheel") && ["create:shaft", "create:cogwheel", "create:large_cogwheel"].includes(item?.typeId)) {
         if (tryExtendShaft(player, block, interactedFace)) {
             data.cancel = true
@@ -919,7 +919,7 @@ export function beforeBlockInteract(data = mc.PlayerInteractWithBlockBeforeEvent
         })
         return
     }
-    if (isFirstEvent && placePipeOnPipeFace(player, block, item, data.blockFace ?? data.face)) {
+    if (isFirstEvent && placePipeOnPipeFace(player, block, item, data.blockFace)) {
         data.cancel = true
         return
     }
@@ -936,7 +936,7 @@ export function beforeBlockInteract(data = mc.PlayerInteractWithBlockBeforeEvent
         updatePipeConnectionsAround(block)
         return
     }
-    if (isFirstEvent && rotateCreateBlockWithWrench(player, block, item, data.blockFace ?? data.face)) {
+    if (isFirstEvent && rotateCreateBlockWithWrench(player, block, item, data.blockFace)) {
         data.cancel = true
         return
     }

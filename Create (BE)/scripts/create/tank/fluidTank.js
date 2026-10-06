@@ -605,7 +605,7 @@ export function rebuildLoadedFluidTanks() {
             if (tankType === CREATIVE_TANK_ID && state.fluid) {
                 writeState(blocks, { fluid: state.fluid, amount: blocks.length * CAPACITY_PER_BLOCK });
             } else {
-                updateFluidVisual(blocks, state);
+                syncFluidTankVisual(blocks, state, blocks.length * CAPACITY_PER_BLOCK);
             }
         } catch {}
     }

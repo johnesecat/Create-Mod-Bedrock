@@ -4,9 +4,9 @@
         "description": { "identifier": "create:mechanical_drill" },
         "tags": ["crafting_table"],
         "pattern": [
-            " A",
+            " A ",
             "AIA",
-            " C"
+            " C "
         ],
         "key": {
             "A": { "item": "create:andesite_alloy" },

@@ -141,8 +141,9 @@ export function onInteractCreativeMotor(player, block, dimension) {
     form.slider({ translate: '%creative_motor.speed.text' }, 1, 256, { defaultValue: Math.abs(entity.getProperty('create:rpm')) });
     form.submitButton('Confirm');
     form.show(player).then(resp => {
-        if (resp.canceled) return;
+        if (resp.canceled || !resp.formValues) return;
         const [invert, speed] = resp.formValues;
+        if (typeof invert !== 'boolean' || typeof speed !== 'number' || !Number.isFinite(speed) || speed < 1 || speed > 256) return;
         const rpm = invert ? -speed : speed;
 
         // A tela pode ficar aberta enquanto o bloco/entidade e removido. Localiza tudo

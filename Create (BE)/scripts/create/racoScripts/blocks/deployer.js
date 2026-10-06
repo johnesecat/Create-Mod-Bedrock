@@ -1129,7 +1129,7 @@ const SEQUENCED_RECIPES = [
             { held: "create:large_cogwheel", keepHeld: false },
             { held: "minecraft:iron_nugget", keepHeld: false },
         ],
-        passes: 1, // TESTING: set back to 5 for production
+        passes: 5,
         result: "create:precision_mechanism",
         // Junk table — weights are relative to each other.
         // Success weight = 4× total junk weight ≈ 80% success rate.
@@ -1147,10 +1147,6 @@ const SEQUENCED_RECIPES = [
 
 /** Rolls the final result: ~80% real result, ~20% random junk. */
 function rollSequencedResult(recipe) {
-    // TESTING: junk disabled — always return real result.
-    // To re-enable: remove the line below.
-    return recipe.result;
-
     const junkTotal = recipe.junk.reduce((s, j) => s + j.weight, 0);
     const roll = Math.random() * (junkTotal * 5); // junkTotal = 20%, junkTotal×4 = 80% success
     if (roll >= junkTotal) return recipe.result;

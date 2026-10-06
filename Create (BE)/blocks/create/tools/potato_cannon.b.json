@@ -8,7 +8,7 @@
             }
         },
         "components": {
-            "minecraft:display_name": "item.create:potato_cannon",
+            "minecraft:display_name": "item.create:potato_cannon.name",
             "minecraft:geometry": {
                 "identifier": "geometry.potato_cannon"
             },

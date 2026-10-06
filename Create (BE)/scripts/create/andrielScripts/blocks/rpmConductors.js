@@ -495,8 +495,9 @@ export function speedControllerInteract(player, block, dimension, face, faceLoca
     form.slider({ translate: '%creative_motor.speed.text' }, 1, 256, { defaultValue: Math.abs(currentSpeed) });
     form.submitButton('Confirm');
     form.show(player).then(async resp => {
-        if (resp.canceled) return;
+        if (resp.canceled || !resp.formValues) return;
         const [invert, speed] = resp.formValues;
+        if (typeof invert !== 'boolean' || typeof speed !== 'number' || !Number.isFinite(speed) || speed < 1 || speed > 256) return;
         const rpm = invert ? -speed : speed;
 
         const currentBlock = dimension.getBlock(blockLocation);
@@ -514,5 +515,5 @@ export function speedControllerInteract(player, block, dimension, face, faceLoca
         if (resp.formValues) {
             system.runJob(recalculateNetwork(currentBlock, dimension, { eventType: 'update' }));
         };
-    });
+    }).catch(error => console.warn(`[Create] Speed controller form failed: ${error}`));
 }
