@@ -25,8 +25,9 @@ export function claimConveyorItem(player, entity) {
     if (!itemStack) return entity.remove()
 
     const equippable = player?.getComponent('equippable')
-    if (!equippable.getEquipment('Mainhand')) {
-        equippable.setEquipment('Mainhand', itemStack)
+    if (!equippable) return
+    if (!equippable.getEquipment(mc.EquipmentSlot.Mainhand)) {
+        equippable.setEquipment(mc.EquipmentSlot.Mainhand, itemStack)
         player.playSound('random.pop', { volume: 0.5 })
     } else {
         player.dimension.spawnItem(itemStack, player.location)
@@ -383,7 +384,8 @@ function addStackToDepot(block, itemStack, requestedAmount = itemStack?.amount ?
 export function depotStepOn(block, entity) {
     if (entity?.typeId == 'minecraft:item') {
         const itemStack = entity?.getComponent('minecraft:item')?.itemStack
-        const added = addStackToDepot(block, itemStack, itemStack?.amount ?? 0)
+        if (!itemStack) return
+        const added = addStackToDepot(block, itemStack, itemStack.amount)
         if (added <= 0) return
 
         if (itemStack.amount > added) {
@@ -462,7 +464,13 @@ export function depotTicking(block) {
     for (const thisFace of faces) {
         const faceBlock = block[thisFace]()
         if (faceBlock?.typeId == 'minecraft:hopper') {
-            const facing = racoAPI.blockFaceToDirection(racoAPI.numToDirection(faceBlock.permutation.getState('facing_direction')))
+            const hopperFacing = faceBlock.permutation.getState('facing_direction')
+            if (hopperFacing === undefined) continue
+            const numericFacing = Number(hopperFacing)
+            if (!Number.isFinite(numericFacing)) continue
+            const facingDirection = racoAPI.numToDirection(numericFacing)
+            if (!facingDirection) continue
+            const facing = racoAPI.blockFaceToDirection(facingDirection)
             if (racoAPI.invertFace(facing) == thisFace) {
                 const hopperContainer = faceBlock.getComponent('inventory')?.container
 

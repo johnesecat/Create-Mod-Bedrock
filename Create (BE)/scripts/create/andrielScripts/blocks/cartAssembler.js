@@ -1,4 +1,4 @@
-import { BlockPermutation, system } from "@minecraft/server";
+import { BlockPermutation, EquipmentSlot, system } from "@minecraft/server";
 import { clearMainhand } from "../../racoScripts/raco-API.js";
 import { assembleCartAssemblerContraption, disassembleCartAssemblerContraption, findMinecartOnCartAssembler } from "./mechanicalBearing.js";
 
@@ -11,21 +11,22 @@ const RAILS = new Set([
     "minecraft:activator_rail"
 ]);
 
+/** @param {import('@minecraft/server').Block} rail */
 function cartAssemblerDirectionFromRail(rail) {
     let railDirection = 0;
     try {
-        railDirection = Number(rail.permutation.getState("rail_direction")
-            ?? rail.permutation.getState("minecraft:rail_direction") ?? 0);
+        railDirection = Number(rail.permutation.getState('rail_direction') ?? 0);
     } catch {}
     return railDirection === 1 || railDirection === 2 || railDirection === 3 ? "east" : "north";
 }
 
+/** @param {import('@minecraft/server').PlayerInteractWithBlockBeforeEvent} data */
 export function placeCartAssemblerOnRail(data) {
     const { block, player } = data;
     if (!RAILS.has(block?.typeId) || !player || data.isFirstEvent === false) return false;
 
     let held = data.itemStack;
-    try { held ??= player.getComponent("minecraft:equippable")?.getEquipment("Mainhand"); } catch {}
+    try { held ??= player.getComponent("minecraft:equippable")?.getEquipment(EquipmentSlot.Mainhand); } catch {}
     if (held?.typeId !== CART_ASSEMBLER) return false;
 
     data.cancel = true;
@@ -34,9 +35,9 @@ export function placeCartAssemblerOnRail(data) {
     const direction = cartAssemblerDirectionFromRail(block);
     system.run(() => {
         const target = dimension.getBlock(location);
-        if (!RAILS.has(target?.typeId)) return;
+        if (!target || !RAILS.has(target.typeId) || !player.isValid) return;
         let currentHeld;
-        try { currentHeld = player.getComponent("minecraft:equippable")?.getEquipment("Mainhand"); } catch {}
+        try { currentHeld = player.getComponent("minecraft:equippable")?.getEquipment(EquipmentSlot.Mainhand); } catch {}
         if (currentHeld?.typeId !== CART_ASSEMBLER) return;
         try {
             target.setPermutation(BlockPermutation.resolve(CART_ASSEMBLER, {
@@ -50,26 +51,33 @@ export function placeCartAssemblerOnRail(data) {
     return true;
 }
 
-export function cartAssemblerTick(block, dimension = block?.dimension) {
+/** @param {import('@minecraft/server').Block} block
+ * @param {import('@minecraft/server').Dimension} dimension
+ */
+export function cartAssemblerTick(block, dimension = block.dimension) {
     if (!block?.isValid || block.typeId !== CART_ASSEMBLER) return false;
     const minecart = findMinecartOnCartAssembler(block);
     if (!minecart) return false;
 
     let powered = false;
-    try { powered = block.permutation.getState("create:powered") === true; } catch {}
+    try { powered = block.permutation.getAllStates()['create:powered'] === true; } catch {}
     const changed = powered
         ? assembleCartAssemblerContraption(block, minecart)
         : disassembleCartAssemblerContraption(block, minecart);
     return changed;
 }
 
+/** @param {import('@minecraft/server').Block} block
+ * @param {import('@minecraft/server').Dimension} dimension
+ * @param {number | undefined} powerLevel
+ */
 export function cartAssemblerRedstoneUpdate(block, dimension, powerLevel) {
     if (!block?.isValid || block.typeId !== CART_ASSEMBLER) return false;
     const powered = Number(powerLevel ?? 0) > 0;
     let current = false;
-    try { current = block.permutation.getState("create:powered") === true; } catch {}
+    try { current = block.permutation.getAllStates()['create:powered'] === true; } catch {}
     if (current !== powered) {
-        try { block.setPermutation(block.permutation.withState("create:powered", powered)); } catch { return false; }
+        try { block.setPermutation(BlockPermutation.resolve(block.typeId, { ...block.permutation.getAllStates(), 'create:powered': powered })); } catch { return false; }
     }
     try {
         dimension?.playSound("random.click", block.center(), {

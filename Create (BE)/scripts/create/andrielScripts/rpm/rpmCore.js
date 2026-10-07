@@ -1,4 +1,4 @@
-﻿import { world, system } from '@minecraft/server';
+import { world, system } from '@minecraft/server';
 import { AXIS_SIGN, checkAlignment, getConnectionInfo, rpmConfig } from './rpmConfigs.js';
 import { posToKey, keyToPos, resolveBlockFaces, INVERT_FACE, getAxisFromRotation, shouldOffset, DIRECTION_OFFSETS, perpendicularAxis, CARDAN_SECONDARY_FLIP } from './rpmHelpers.js';
 import { rotationToFace } from '../xZ-Utils.js';
@@ -507,7 +507,7 @@ function getStressCapacity(block, config, entity) {
 }
 
 // Inicializa os blocos cinÃ©ticos, quando colocados no chÃ£o
-export function initRpmBlock({ block, dimension, previousBlock }) {
+export function initRpmBlock({ block, dimension, previousBlock = undefined }) {
     const blockId = block.typeId;
     const config = rpmConfig.get(blockId);
     if (!config) return;

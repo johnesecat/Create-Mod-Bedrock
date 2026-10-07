@@ -1,3 +1,5 @@
+import { BlockPermutation } from '@minecraft/server';
+
 const COPYCAT_MATERIALS = new Map([
     ["minecraft:stone", 1],
     ["minecraft:dirt", 2],
@@ -132,27 +134,27 @@ const COPYCAT_BLOCKS = new Set([
     "create:copycat_step"
 ]);
 
+/** @param {import('@minecraft/server').ItemStack | undefined} itemStack */
 export function isCopycatMaterial(itemStack) {
-    return COPYCAT_MATERIALS.has(itemStack?.typeId);
+    return itemStack !== undefined && COPYCAT_MATERIALS.has(itemStack.typeId);
 }
 
+/** @param {import('@minecraft/server').Block | undefined} block
+ * @param {import('@minecraft/server').ItemStack | undefined} itemStack
+ */
 export function applyCopycatMaterial(block, itemStack) {
-    if (!COPYCAT_BLOCKS.has(block?.typeId)) return false;
-    const material = COPYCAT_MATERIALS.get(itemStack?.typeId);
+    if (!block || !itemStack || !COPYCAT_BLOCKS.has(block.typeId)) return false;
+    const material = COPYCAT_MATERIALS.get(itemStack.typeId);
     if (material === undefined) return false;
     const group = Math.floor(material / 16);
     const variant = material % 16;
 
     try {
-        if (
-            block.permutation.getState("create:copycat_group") === group &&
-            block.permutation.getState("create:copycat_variant") === variant
-        ) return true;
-        block.setPermutation(
-            block.permutation
-                .withState("create:copycat_group", group)
-                .withState("create:copycat_variant", variant)
-        );
+        const states = block.permutation.getAllStates();
+        if (states['create:copycat_group'] === group && states['create:copycat_variant'] === variant) return true;
+        block.setPermutation(BlockPermutation.resolve(block.typeId, {
+            ...states, 'create:copycat_group': group, 'create:copycat_variant': variant
+        }));
         block.dimension.playSound("use.stone", block.center(), { volume: 0.6, pitch: 1.2 });
         return true;
     } catch {

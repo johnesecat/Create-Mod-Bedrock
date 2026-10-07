@@ -18,13 +18,13 @@ The jsonlint CLI accepts one file at a time. A recursive runner is required inst
 
 ## Current checkpoint
 
-The manifest and npm API declarations target `@minecraft/server` 2.10.0 and `@minecraft/server-ui` 2.2.0. The behavior pack minimum engine is `[1,26,50]`; older Preview builds cannot be assumed compatible.
+The manifests and npm API declarations target `@minecraft/server` 2.10.0 and `@minecraft/server-ui` 2.2.0. Both packs declare Minecraft 1.26.50 as the minimum engine; the behavior pack uses script APIs first released in 1.26.10. Older versions cannot be assumed compatible.
 
-The latest local run passed 1,404 JSON syntax checks, 1,031 AJV structural checks, ESLint, four Vitest regressions, and npm audit (zero vulnerabilities).
+Bedrock 1.26.10 removed `minecraft:pushable` and split it into `minecraft:pushable_by_entity` and `minecraft:pushable_by_block`. The addon had 92 legacy declarations, all setting both push flags to false. Those no-op declarations were removed: with neither new component present, entities are not pushable, preserving the authored intent. JSON checks now reject the retired component. `npm run validate:bedrock` on Creator Tools 0.20.0 reports zero errors and 1,335 warnings (resource texture-atlas schema/link warnings, unused audio assets, missing custom-item links, and geometry cube-count advisories); this is not warning-free validation. One format-version warning was corrected, though the full validator remains warning-positive. Some findings are Creator Tools schema/link coverage limitations: Microsoft’s custom-block guide documents atlas `textures` as a string, while this validator requires an array, and its render-controller form marks `uv_anim` optional while its emitted warning treats it as required. The remaining geometry counts are genuine performance advisories and need model-specific optimization; orphaned audio and links need in-game/content review before assets are removed.
 
-**The full npm test suite is NOT green.** TypeScript checking reports 3,781 diagnostics across legacy JavaScript, including missing parameter annotations, custom block-state typing, possible undefined values, and API/type mismatches. No errors are suppressed, no files are excluded, and no assertions are disabled to manufacture a passing result. The archive is a diagnostic checkpoint, not a fully verified release.
+The latest verified run passed `npm test`: 1,404 JSON syntax checks, 1,031 AJV structural checks, TypeScript, ESLint, and all 171 Vitest regressions. The add-on was rebuilt, and `npm run debug:bedrock` verified both embedded packs against their source files, including archive CRCs, manifests, and the behavior script entry.
 
-`validate-bedrock.mjs` was not executed during this pipeline. CI uses `npm test` instead.
+Creator Tools validation was run against staged copies of both packs: zero errors, 1,335 warnings. The diagnostics are summarized above; they are not represented as clean validation, and this check is not a runtime simulation.
 
 ## Required in-game verification
 

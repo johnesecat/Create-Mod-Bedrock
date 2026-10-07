@@ -1,4 +1,4 @@
-﻿import { BlockPermutation, system, world } from "@minecraft/server";
+import { BlockPermutation, system, world } from "@minecraft/server";
 import { DIRECTION_OFFSETS, posToKey } from "../rpm/rpmHelpers";
 
 const GLUE_ITEM = "create:super_glue";
@@ -384,7 +384,7 @@ export function isGlueForbiddenBlock(block) {
   const typeId = typeof block === "string" ? block : block?.typeId;
   if (typeof typeId !== "string") return false;
   if (GLUE_FORBIDDEN_EXACT_BLOCKS.has(typeId)) return true;
-  const name = typeId.includes(":") ? typeId.split(":").pop() : typeId;
+  const name = typeId.includes(":") ? (typeId.split(":").pop() ?? typeId) : typeId;
   if (name === "grass_block") return false;
   return GLUE_FORBIDDEN_BLOCK_PARTS.some(part => name.includes(part));
 }
@@ -398,7 +398,7 @@ function resolvePlacePermutation(itemStack) {
 }
 
 function getGlueUseKey(source, block, face) {
-  return `${source?.id ?? "player"}:${posToKey(block.location)}:${face}`;
+  return `${source?.id ?? "player"}:${posToKey(block.location.x, block.location.y, block.location.z)}:${face}`;
 }
 
 function getSelectionPositions(start, end, face) {
@@ -749,7 +749,7 @@ function getOffhandGlueConnection(block, player) {
   const hit = getBlockHitFromView(player);
   const hitFace = normalizeFace(hit?.face);
   if (hit?.block && hitFace) {
-    if (posToKey(hit.block.location) === posToKey(block.location)) {
+    if (posToKey(hit.block.location.x, hit.block.location.y, hit.block.location.z) === posToKey(block.location.x, block.location.y, block.location.z)) {
       const supportFaceFromPlaced = getOppositeFace(hitFace);
       const supportPos = addPos(block.location, DIRECTION_OFFSETS[supportFaceFromPlaced]);
       const supportBlock = getBlockSafe(block.dimension, supportPos);
@@ -759,7 +759,7 @@ function getOffhandGlueConnection(block, player) {
     }
 
     const placedPos = addPos(hit.block.location, DIRECTION_OFFSETS[hitFace]);
-    if (posToKey(placedPos) === posToKey(block.location) && isSolidSupportBlock(hit.block)) {
+    if (posToKey(placedPos.x, placedPos.y, placedPos.z) === posToKey(block.location.x, block.location.y, block.location.z) && isSolidSupportBlock(hit.block)) {
       return { supportPos: clonePos(hit.block.location), supportFace: hitFace };
     }
   }
@@ -908,11 +908,14 @@ function clearGlueAroundPosition(dimension, pos) {
   }
 }
 
+/** @param {import('@minecraft/server').Block} block
+ * @param {import('@minecraft/server').Player | undefined} [player]
+ */
 export function superGlueBlockPlace(block, player = undefined) {
   if (!isStillValid(block) || isGlueForbiddenBlock(block)) return;
 
   const tick = system.currentTick;
-  const placeKey = `${player?.id ?? "player"}:${block.dimension?.id ?? "minecraft:overworld"}:${posToKey(block.location)}`;
+  const placeKey = `${player?.id ?? "player"}:${block.dimension?.id ?? "minecraft:overworld"}:${posToKey(block.location.x, block.location.y, block.location.z)}`;
   if (recentGlueBlockPlaces.get(placeKey) === tick) return;
   recentGlueBlockPlaces.set(placeKey, tick);
 
@@ -1067,6 +1070,7 @@ export function isGlueConnected(dimension, a, b) {
   const dy = by - ay;
   const dz = bz - az;
 
+  /** @type {"east" | "west" | "south" | "north" | "above" | "below" | null} */
   let face = null;
   if (dx === 1 && dy === 0 && dz === 0) face = "east";
   if (dx === -1 && dy === 0 && dz === 0) face = "west";

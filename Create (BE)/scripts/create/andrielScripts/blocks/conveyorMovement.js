@@ -1,5 +1,12 @@
 import { system, ItemStack, BlockTypes } from "@minecraft/server";
 
+/** @typedef {import('@minecraft/server').Block} Block */
+/** @typedef {import('@minecraft/server').Dimension} Dimension */
+/** @typedef {import('@minecraft/server').Entity} Entity */
+/** @typedef {import('@minecraft/server').Vector3} Vector3 */
+/** @typedef {{rpm: number, speed: number, delta: Vector3, axis: 'X' | 'Z', moveAxis: 'x' | 'y' | 'z', perpAxis: 'x' | 'z', slope: string, part: string, diagonalFlip: boolean, block: Block, moveSign: number}} BeltInfo */
+/** @typedef {{pos: Vector3, hasPulley: boolean, wasBroken: boolean}} BeltItemEntry */
+
 // USE A TAG "create:conveyor_stop" PARA PARAR UM ITEM NA ESTEIRA 
 
 const ITEM_SPACING = 0.45;
@@ -26,6 +33,7 @@ const BELT_EJECT_EDGE_OFFSET = 0.18;
 const beltInfoCache = new Map();
 const playerPushTick = new Map();
 
+/** @param {Block} block @param {Dimension} dimension */
 export function mechanicalBeltTick(block, dimension) {
     if (!shouldProcessBelt(block)) return;
     const info = getBeltInfo(block, dimension);
@@ -42,6 +50,7 @@ export function mechanicalBeltTick(block, dimension) {
     const perpMinIntake = block.location[info.perpAxis] + PERP_MARGIN_INTAKE;
     const perpMaxIntake = block.location[info.perpAxis] + 1 - PERP_MARGIN_INTAKE;
 
+    /** @param {Entity} entity @param {'intake' | 'move'} margin */
     const inMargin = (entity, margin) => {
         const aabb = entity.getAABB();
         if (!aabb) return true;
@@ -99,10 +108,12 @@ export function mechanicalBeltTick(block, dimension) {
     if (info.slope !== 'vertical') pushEntities(block, info, dimension, otherEntities);
 };
 
+/** @param {Block} block */
 function shouldProcessBelt(block) {
     return true;
 }
 
+/** @param {Block} block @param {number} interval */
 function shouldRunBeltInterval(block, interval) {
     if (interval <= BELT_ITEM_TICK_INTERVAL) return true;
     const loc = block.location;
@@ -110,10 +121,12 @@ function shouldRunBeltInterval(block, interval) {
     return ((system.currentTick + stagger) % interval) < BELT_ITEM_TICK_INTERVAL;
 }
 
+/** @param {Block} block @param {Dimension} dimension */
 function beltCacheKey(block, dimension) {
     return `${dimension.id}:${block.x},${block.y},${block.z}`;
 }
 
+/** @param {Block} block @param {Dimension} dimension @returns {BeltInfo | null} */
 function getBeltInfo(block, dimension) {
     const key = beltCacheKey(block, dimension);
     const cached = beltInfoCache.get(key);
@@ -121,24 +134,28 @@ function getBeltInfo(block, dimension) {
 
     const entity = dimension.getEntities({ location: block.center(), maxDistance: 0.25, type: `${block.typeId}_entity` })[0];
 
-    const rpm = entity?.getProperty('create:rpm') ?? 0;
+    const rpmValue = entity?.getProperty('create:rpm') ?? 0;
+    const rpm = typeof rpmValue === 'number' ? rpmValue : 0;
     if (Math.abs(rpm) === 0) {
         beltInfoCache.set(key, { tick: system.currentTick, info: null });
         return null;
     }
 
-    const slope = block.permutation.getState('create:slope');
+    const slope = block.permutation.getAllStates()['create:slope'];
 
     const face = block.permutation.getState('minecraft:block_face');
     if (face === 'up' || face === 'down') return null;
 
+    /** @type {'X' | 'Z'} */
     const axis = (face === 'north' || face === 'south') ? 'Z' : 'X';
-    const part = block.permutation.getState('create:part');
-    const diagonalFlip = block.permutation.getState('create:diagonal_flip') ?? false;
+    const states = block.permutation.getAllStates();
+    const part = states['create:part'];
+    const diagonalFlip = states['create:diagonal_flip'] === true;
 
     // Create: a velocidade linear da belt é RPM / 480 blocos por tick.
     // Multiplicamos pelo intervalo real de atualização para o item visual
     // percorrer exatamente a mesma distância independentemente do tick rate.
+    if (typeof slope !== 'string' || (part !== 'start' && part !== 'middle' && part !== 'end')) return null;
     const speed = (rpm / 480) * BELT_ITEM_TICK_INTERVAL;
     const delta = { x: 0, y: 0, z: 0 };
 
@@ -158,7 +175,9 @@ function getBeltInfo(block, dimension) {
         delta.y = sign * component;
     }
 
+    /** @type {'x' | 'y' | 'z'} */
     const moveAxis = slope === 'vertical' ? 'y' : axis === 'Z' ? 'x' : 'z';
+    /** @type {'x' | 'z'} */
     const perpAxis = axis === 'Z' ? 'z' : 'x';
 
     const moveSign = slope === 'vertical' ? Math.sign(speed) : axis === 'X' ? -Math.sign(speed) : Math.sign(speed);
@@ -170,6 +189,7 @@ function getBeltInfo(block, dimension) {
 
 const EJECT_MARGIN = 0.2; // Margem nas pontas start/end onde não converte
 
+/** @param {Block} block @param {BeltInfo} info @param {Dimension} dimension @param {Entity[]} droppedItems */
 function intakeDroppedItems(block, info, dimension, droppedItems) {
     const center = block.center();
     const sign = info.moveSign;
@@ -243,6 +263,7 @@ function intakeDroppedItems(block, info, dimension, droppedItems) {
 /**
  * Empurra um minecraft:item pra fora da esteira na direção de saída.
  */
+/** @param {Entity} itemEntity @param {BeltInfo} info @param {number} direction */
 function pushItemAway(itemEntity, info, direction) {
     try {
         const pushSpeed = Math.max(Math.abs(info.speed) * 0.3, 0.05);
@@ -252,6 +273,7 @@ function pushItemAway(itemEntity, info, direction) {
     } catch {}
 }
 
+/** @param {Block} block @param {BeltInfo} info @param {number} worldX @param {number} worldZ */
 function getSurfaceY(block, info, worldX, worldZ) {
     if (info.slope === 'horizontal') return block.y + BELT_TOP;
 
@@ -288,6 +310,7 @@ function getSurfaceY(block, info, worldX, worldZ) {
     return block.y + BELT_TOP;
 };
 
+/** @param {BeltInfo} info @param {number} worldX @param {number} worldZ */
 function getItemSlopeRotation(info, worldX, worldZ) {
     if (info.slope === 'horizontal') return { axis: null, angle: 0 };
 
@@ -318,6 +341,7 @@ function getItemSlopeRotation(info, worldX, worldZ) {
     return { axis: rotAxis, angle: 45 * sign };
 };
 
+/** @param {Block} block @param {BeltInfo} info @param {Dimension} dimension @param {Entity[]} conveyorItems */
 function moveConveyorItems(block, info, dimension, conveyorItems) {
     if (conveyorItems.length === 0) return;
 
@@ -414,7 +438,9 @@ function moveConveyorItems(block, info, dimension, conveyorItems) {
             }
 
             if (action === 'stop') {
+    /** @type {Block | null | undefined} */
     let nextBlock = null;
+    /** @type {BeltInfo | null} */
     let nextInfo = null;
 
     if (info.slope === 'diagonal') {
@@ -475,6 +501,7 @@ function moveConveyorItems(block, info, dimension, conveyorItems) {
     }
 }
 
+/** @param {Block} block @param {BeltInfo} info @param {Entity} conveyorItem @param {Vector3} loc @param {Vector3} proposed */
 function getBlockingFunnelStop(block, info, conveyorItem, loc, proposed) {
     if (info.slope === 'vertical') return null;
 
@@ -512,14 +539,16 @@ function getBlockingFunnelStop(block, info, conveyorItem, loc, proposed) {
     return stopPos - (movementSign * BRASS_FUNNEL_STOP_EPSILON);
 }
 
+/** @param {Block} block @param {Entity} conveyorItem */
 function shouldReleaseFunnelStop(block, conveyorItem) {
     if (!conveyorItem.hasTag('create:brass_funnel_stop')) return false;
     const funnelBlock = getBlockAt(block.dimension, block.x, block.y + 1, block.z);
     return funnelBlock?.typeId !== 'create:brass_funnel' || funnelAllowsConveyorItem(funnelBlock, conveyorItem);
 }
 
+/** @param {Block} funnelBlock @param {Entity} conveyorItem */
 function funnelAllowsConveyorItem(funnelBlock, conveyorItem) {
-    if (!funnelBlock.permutation.getState("create:input")) return false;
+    if (!funnelBlock.permutation.getAllStates()["create:input"]) return false;
 
     const item = conveyorItem.getComponent('minecraft:inventory')?.container?.getItem(0);
     if (!item) return true;
@@ -532,7 +561,7 @@ function funnelAllowsConveyorItem(funnelBlock, conveyorItem) {
     const filterItem = funnelEntity?.getComponent("inventory")?.container?.getItem(0) ?? null;
     if (!filterItem) return true;
 
-    const invertFilter = funnelBlock.permutation.getState("create:on") === true;
+    const invertFilter = funnelBlock.permutation.getAllStates()["create:on"] === true;
     const match = item.typeId === filterItem.typeId;
     return invertFilter ? !match : match;
 }
@@ -550,6 +579,7 @@ const PUSH_CONFIG = {
 
 // ==================== DELTA PRA PUSH (FLAT ↔ DIAGONAL) ====================
 
+/** @param {BeltInfo} info @param {number} entityX @param {number} entityZ */
 function getPushDelta(info, entityX, entityZ) {
     if (info.slope === 'horizontal') return info.delta;
 
@@ -579,6 +609,7 @@ function getPushDelta(info, entityX, entityZ) {
     return hDelta;
 }
 
+/** @param {Block} block @param {BeltInfo} info @param {Dimension} dimension @param {Entity[]} otherEntities */
 function pushEntities(block, info, dimension, otherEntities) {
     const center = block.center();
 
@@ -657,6 +688,7 @@ function pushEntities(block, info, dimension, otherEntities) {
  * Chamado quando o item sai dos limites do bloco.
  * Retorna: 'eject' | 'depot' | 'stop'
  */
+/** @param {Block} block @param {BeltInfo} info @param {Dimension} dimension @param {Vector3} proposed */
 function checkExitAction(block, info, dimension, proposed) {
     const part = info.part;
     if (part !== 'start' && part !== 'end') return 'stop';
@@ -666,6 +698,7 @@ function checkExitAction(block, info, dimension, proposed) {
     const exitDir = { x: 0, y: 0, z: 0 };
     exitDir[info.moveAxis] = sign > 0 ? 1 : -1;
 
+    /** @type {Block | null | undefined} */
     let frontBlock = null;
     if (info.slope === 'diagonal') {
         for (const dy of [0, 1, -1]) {
@@ -693,6 +726,7 @@ function checkExitAction(block, info, dimension, proposed) {
     return 'eject';
 }
 
+/** @param {Entity} conveyorItem @param {BeltInfo} info @param {Dimension} dimension */
 function ejectConveyorItem(conveyorItem, info, dimension) {
     const container = conveyorItem.getComponent('minecraft:inventory')?.container;
     const itemStack = container?.getItem(0);
@@ -722,6 +756,7 @@ function ejectConveyorItem(conveyorItem, info, dimension) {
     try { conveyorItem.remove(); } catch {}
 }
 
+/** @param {BeltInfo} info @param {Vector3} pos */
 function getBeltEjectDirection(info, pos) {
     let movement = getPushDelta(info, pos.x, pos.z);
 
@@ -740,6 +775,7 @@ function getBeltEjectDirection(info, pos) {
     };
 }
 
+/** @param {Entity} conveyorItem @param {Block} depotBlock @param {BeltInfo} info @param {Dimension} dimension */
 function pushToDepot(conveyorItem, depotBlock, info, dimension) {
     // Checa se já tem conveyor_item no depot
     const existing = dimension.getEntities({
@@ -758,7 +794,7 @@ function pushToDepot(conveyorItem, depotBlock, info, dimension) {
         const sourceItem = sourceContainer?.getItem(0);
         const targetContainer = occupiedItem.getComponent('minecraft:inventory')?.container;
         const targetItem = targetContainer?.getItem(0);
-        if (!sourceItem || !targetItem) return false;
+        if (!sourceContainer || !targetContainer || !sourceItem || !targetItem) return false;
 
         let canStack = false;
         try { canStack = targetItem.isStackableWith(sourceItem); } catch { canStack = targetItem.typeId === sourceItem.typeId; }
@@ -805,6 +841,7 @@ function pushToDepot(conveyorItem, depotBlock, info, dimension) {
 
 // ==================== DEBUG====================
 
+/** @param {Block} block @param {BeltInfo} info @param {Dimension} dimension */
 function conveyorDebugSurface(block, info, dimension) {
     const center = block.center();
     const steps = 4;
@@ -828,6 +865,7 @@ function conveyorDebugSurface(block, info, dimension) {
 };
 
 
+/** @param {Block} block @param {BeltInfo} info @param {Dimension} dimension */
 function conveyorDebugRotation(block, info, dimension) {
     if (info.slope === 'horizontal') return;
 
@@ -862,6 +900,8 @@ function conveyorDebugRotation(block, info, dimension) {
 /**
  * Mostra com partículas o caminho que itens percorrem na esteira.
  * Chama no blockTick quando quiser debugar.
+ * @param {Block} block
+ * @param {Dimension} dimension
  */
 export function conveyorDebugParticles(block, dimension) {
     const info = getBeltInfo(block, dimension);
@@ -976,12 +1016,14 @@ const NON_BLOCK_ITEMS = new Set([
 
 const HAND_PATTERN = /sword|pickaxe|axe|shovel|hoe|spear|wrench|hammer|drill|saw|knife|dagger|mace|bow|crossbow|trident|rod|staff|cannon/;
 
+/** @param {string} itemId */
 export function getItemVisual(itemId) {
     const hand = HAND_EQUIPPED.has(itemId) || (!itemId.startsWith('minecraft:') && HAND_PATTERN.test(itemId));
     const block = !hand && !!BlockTypes.get(itemId) && !NON_BLOCK_ITEMS.has(itemId);
     return { hand, block };
 };
 
+/** @param {Dimension} dimension @param {number} x @param {number} y @param {number} z */
 function getBlockAt(dimension, x, y, z) {
     try { return dimension.getBlock({ x: Math.floor(x), y: Math.floor(y), z: Math.floor(z) }); }
     catch { return null; }

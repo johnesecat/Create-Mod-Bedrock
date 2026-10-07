@@ -1,5 +1,8 @@
 import * as mc from "@minecraft/server";
 
+/** @typedef {{x:number, y:number, z:number}} Vector3Like */
+
+/** @param {mc.Entity | undefined} thisItemEntity @param {number} amount */
 export function removeEntityItems(thisItemEntity, amount){
     const thisItem = thisItemEntity?.getComponent('item')?.itemStack
     if (thisItem){
@@ -14,15 +17,18 @@ export function removeEntityItems(thisItemEntity, amount){
     }
 }
 
+/** @param {mc.Container} container @param {number} slot @param {number} count */
 export function clearItem(container, slot, count) {
-   let selectedSlot = container.getItem(slot);
+   const selectedSlot = container.getItem(slot);
+   if (!selectedSlot) return;
    if (selectedSlot.amount > count) {
       selectedSlot.amount = selectedSlot.amount - count;
       container.setItem(slot, selectedSlot);
    } else {
-      container.setItem(slot, );
+      container.setItem(slot, undefined);
    }
 }
+/** @param {Vector3Like | undefined} vetorA @param {Vector3Like | undefined} vetorB */
 export function calcularDistancia(vetorA, vetorB) {
     if (!vetorA || !vetorB) return undefined;
     const dx = (vetorA.x || 0) - (vetorB.x || 0);
@@ -30,6 +36,7 @@ export function calcularDistancia(vetorA, vetorB) {
     const dz = (vetorA.z || 0) - (vetorB.z || 0);
     return Math.sqrt(dx * dx + dy * dy + dz * dz);
 };
+/** @param {Vector3Like} start @param {Vector3Like} end */
 export function calculateMovement(start, end) {
     return {
         x: end.x - start.x,
@@ -37,52 +44,65 @@ export function calculateMovement(start, end) {
         z: end.z - start.z
     }
 }
+/** @param {mc.Player | undefined} player @param {number} count @param {boolean} [inCreativeToo] */
 export function clearMainhand(player, count, inCreativeToo = false) {
-    if (!inCreativeToo && player?.getGameMode?.() === 'Creative') return 0
-    const eq = player?.getComponent?.('equippable'), st = eq?.getEquipment?.('Mainhand')
-    if (!st?.amount) return 0
+    if (!inCreativeToo && player?.getGameMode?.() === mc.GameMode.Creative) return 0
+    const eq = player?.getComponent('minecraft:equippable');
+    const st = eq?.getEquipment(mc.EquipmentSlot.Mainhand)
+    if (!eq || !st?.amount) return 0
     const rem = Math.min(st.amount, Math.max(1, Math.floor(Number.isFinite(count) ? count : 1)))
-    rem < st.amount ? (st.amount -= rem, eq.setEquipment('Mainhand', st)) : eq.setEquipment('Mainhand')
+    if (rem < st.amount) {
+        st.amount -= rem;
+        eq.setEquipment(mc.EquipmentSlot.Mainhand, st);
+    } else {
+        eq.setEquipment(mc.EquipmentSlot.Mainhand);
+    }
     return rem
 }
 
+/** @param {mc.Player} player @param {number} count */
 export function clearOffhand(player, count) {
-   let selectedSlot = player.getComponent("equippable").getEquipment("Offhand")
+   const equipment = player.getComponent("minecraft:equippable");
+   const selectedSlot = equipment?.getEquipment(mc.EquipmentSlot.Offhand);
+   if (!equipment || !selectedSlot) return;
    if (selectedSlot.amount > count) {
       selectedSlot.amount = selectedSlot.amount - count;
-      player.getComponent("equippable").setEquipment("Offhand", selectedSlot);
+      equipment.setEquipment(mc.EquipmentSlot.Offhand, selectedSlot);
    } else {
-      let air = new mc.ItemStack("minecraft:air");
-      player.getComponent("equippable").setEquipment("Offhand", air);
+      equipment.setEquipment(mc.EquipmentSlot.Offhand);
    }
 }
+/** @param {mc.Block} block @param {string} stateAdd @param {string | number | boolean} stateValue */
 export function setPermutation(block, stateAdd, stateValue) {
-   const result = block.permutation.getAllStates();
-   result[stateAdd] = stateValue;
-   block.setPermutation(mc.BlockPermutation.resolve(block?.typeId, result));
+   const states = block.permutation.getAllStates();
+   block.setPermutation(mc.BlockPermutation.resolve(block.typeId, { ...states, [stateAdd]: stateValue }));
 }
+/** @param {mc.Block} block @param {string} id */
 export function isBlockId(block, id){
     let cm = block?.dimension?.runCommand(`testforblock ${block?.location.x} ${block?.location.y} ${block?.location.z} ${id}`).successCount
     if (cm > 0) return true; else return false
 }
 
+/** @param {mc.ItemStack | undefined} item @param {number} amount */
 export function applyDurability(item, amount){
    if (item && amount){
       const durability = item.getComponent('minecraft:durability')
+      if (!durability) return item;
       const currentValue = durability.maxDurability - durability.damage
       if (durability.damage+amount >= durability.maxDurability){
          return new mc.ItemStack('minecraft:air')
       } else if (durability.damage+amount < durability.maxDurability){
-         item.getComponent('minecraft:durability').damage = item.getComponent('minecraft:durability').damage+amount
+         durability.damage += amount
          return item
       }
    }
 }
 
 mc.system.afterEvents.scriptEventReceive.subscribe((data) => {
-   if (data.id == 'rc_fb:despawn'){data.sourceEntity.remove()}
+   if (data.id == 'rc_fb:despawn') data.sourceEntity?.remove();
 })
 
+/** @param {string} str */
 export function isJSONParsable(str) {
    try {
        JSON.parse(str);
@@ -92,10 +112,12 @@ export function isJSONParsable(str) {
    }
 }
 
+/** @param {string[]} arr @param {string} str */
 export function removeStringFromArray(arr, str) {
    return arr.filter(item => item !== str);
 }
 
+/** @param {number} n @param {number} r @param {Vector3Like} center */
 export function generateCircleVectors(n, r, center) {
    let vectors = [];
    let angleIncrement = (2 * Math.PI) / n;
@@ -110,6 +132,7 @@ export function generateCircleVectors(n, r, center) {
 
    return vectors;
 }
+/** @param {Vector3Like} vector1 @param {Vector3Like} vector2 */
 export function calculateRelativeVector(vector1, vector2) {
     return {
         x: vector2.x - vector1.x,
@@ -119,6 +142,7 @@ export function calculateRelativeVector(vector1, vector2) {
 }
 
 
+/** @param {string} face */
 export function blockFaceToDirection(face){
    if (face == 'Up') return 'above'; else
    if (face == 'Down') return 'below'; else
@@ -129,6 +153,7 @@ export function blockFaceToDirection(face){
    if (face == 'West') return 'west'; else
    if (face == 'East') return 'east'; else return (face)
 }
+/** @param {string} face */
 export function invertFace(face){
    if (face == 'above') return 'below'
    if (face == 'below') return 'above'
@@ -138,6 +163,7 @@ export function invertFace(face){
    if (face == 'east') return 'west'
        
 }
+/** @param {string} face */
 export function blockFaceToTraits(face){
     if (face == 'above') return 'up'; else
     if (face == 'below') return 'down'; else
@@ -148,9 +174,11 @@ export function blockFaceToTraits(face){
     if (face == 'West') return 'west'; else
     if (face == 'East') return 'east'; else return (face)
 }
+/** @param {string} str @param {string[]} arr */
 export function includesAnyIndex(str, arr) {
    return arr.findIndex(subStr => str.includes(subStr));
  }
+/** @param {number} length */
 export function generateRandomID(length) {
    let characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
    let randomID = '';
@@ -160,13 +188,17 @@ export function generateRandomID(length) {
    return randomID;
 }
 
+/** @param {string} str */
 export const transformKey = str => 
    str.split(':')[1].replace(/_/g, ' ').toLowerCase().replace(/\b\w/g, c => c.toUpperCase())
 
+/** @param {string} str */
 const normalize = str => str.toLowerCase().replace(/[_ :]/g, '')
+/** @param {Record<string, unknown>} obj @param {string} search */
 const filterProperties = (obj, search) => Object.fromEntries(
    Object.entries(obj).filter(([k]) => normalize(k).includes(normalize(search)))
 )
+/** @param {number} number */
 export function numToDirection(number){
     if (number == 0) return "up"
     if (number == 1) return "down"
@@ -175,6 +207,7 @@ export function numToDirection(number){
     if (number == 4) return "west"
     if (number == 5) return "east"
 }
+/** @param {string} face */
 export function invertUpDown(face){
     if (face == 'below') return 'above'; else
     if (face == 'above') return 'below'; else
@@ -182,9 +215,11 @@ export function invertUpDown(face){
     if (face == 'down') return 'up'; else return face
 }
 
+/** @param {string} str @param {string[]} arr */
 export function includesAny(str, arr) {
    return arr.some(subStr => str.includes(subStr));
  }
+/** @param {Vector3Like} viewDirection @param {Vector3Like} playerPosition @param {number} numSegments @param {number} segmentLength @param {number} segmentStart */
 export function createDashedLine(viewDirection, playerPosition, numSegments, segmentLength, segmentStart) {
    const directionMagnitude = Math.sqrt(viewDirection.x * viewDirection.x + viewDirection.y * viewDirection.y + viewDirection.z * viewDirection.z)
    viewDirection.x /= directionMagnitude
@@ -202,12 +237,15 @@ export function createDashedLine(viewDirection, playerPosition, numSegments, seg
    }
    return points
 }
+/** @param {Vector3Like} v1 @param {Vector3Like} v2 */
 export function addVectors(v1, v2) {
    return { x: v1.x + v2.x, y: v1.y + v2.y, z: v1.z + v2.z };
 }
+/** @param {Vector3Like} vector @param {number} times */
 export function divideVectorBy(vector, times) {
    return { x: vector.x / times, y: vector.y / times, z: vector.z / times };
 }
+/** @param {Vector3Like} vector @param {number} times */
 export function rotateVector(vector, times) {
    const rotations = times % 4
    let { x, y, z } = vector
@@ -216,6 +254,7 @@ export function rotateVector(vector, times) {
    }
    return { x, y, z };
 }
+/** @param {Vector3Like} base @param {Vector3Like} relative */
 export function relativeToAbsolute(base, relative) {
    return {
        x: base.x + relative.x,
@@ -224,6 +263,7 @@ export function relativeToAbsolute(base, relative) {
    };
 }
 
+/** @param {Vector3Like} vectorA @param {Vector3Like} vectorB */
 export function getDirection(vectorA, vectorB) {
    const direction = {
        x: vectorB.x - vectorA.x,
@@ -240,20 +280,24 @@ export function getDirection(vectorA, vectorB) {
        z: direction.z / magnitude
    };
 }
+/** @param {mc.Block} block */
 export function blockFloorCenter(block){
     return {x:block.center().x, y:block.location.y, z:block.center().z}
 }
+/** @param {Vector3Like} vector @param {number} x @param {number} y @param {number} z */
 export function operationWithVectorPLUS(vector, x, y, z){
     let newVector = {x:vector.x+x, y:vector.y-0.4, z:vector.z+z}
     if (newVector) return newVector
 }
+/** @param {Vector3Like} vector @param {number} x @param {number} y @param {number} z */
 export function operationWithVectorMINUS(vector, x, y, z){
     let newVector = {x:vector.x-x, y:vector.y-0.4, z:vector.z-z}
     if (newVector) return newVector
 }
+/** @param {mc.Block} block @param {string} face @param {string} [stateId] */
 export function trueFace(block, face, stateId = "minecraft:cardinal_direction"){
     //console.warn(block.typeId, face, block?.permutation?.getState(stateId))
-   const state = block?.permutation?.getState(stateId)
+   const state = block?.permutation?.getAllStates()?.[stateId]
    if (state){
        if (state == 'north'){
            if (face == 'north') return 'north'; else
@@ -282,6 +326,7 @@ export function trueFace(block, face, stateId = "minecraft:cardinal_direction"){
    } else return face
 }
 
+/** @param {string} direction */
 export function convergeDirection(direction){
    if (direction == 'north') return 'north'; else
    if (direction == 'south') return 'north'; else
@@ -293,6 +338,7 @@ export function convergeDirection(direction){
    if (direction == 'below') return 'above'; else direction
 
 }
+/** @param {mc.Block} block @param {mc.ItemStack | undefined} item */
 export function itemIsBlock(block, item) {
     if (
         item?.typeId == 'minecraft:bedrock'
@@ -356,6 +402,7 @@ export function itemIsBlock(block, item) {
        }
    }
 }
+/** @param {mc.Container} containerA @param {mc.Container} containerB @param {number} i @param {number} amountRequested */
 export function transferItem(containerA, containerB, i, amountRequested){
    const itemA = containerA?.getItem(i)
    if (itemA && itemA?.amount >= amountRequested){
@@ -375,15 +422,17 @@ export function transferItem(containerA, containerB, i, amountRequested){
                containerB.addItem(itemA)
            } else
            if (itemA.amount == amountRequested){
-               containerA.setItem(i, )
+               containerA.setItem(i, undefined)
                itemA.amount = amountRequested
                containerB.addItem(itemA)
            }
        }
    }
 }
+/** @param {mc.Entity} entityItem @param {mc.Container} containerB @param {number} amountRequested */
 export function transferEntityItem(entityItem, containerB, amountRequested){
-   const itemA = entityItem.getComponent('minecraft:item').itemStack
+   const itemA = entityItem.getComponent('minecraft:item')?.itemStack
+   if (!itemA) return;
    if (itemA && itemA?.amount >= amountRequested){
        let hasSpace = false
        if (containerB?.emptySlotsCount > 0) hasSpace = true; else
@@ -415,6 +464,7 @@ export function transferEntityItem(entityItem, containerB, amountRequested){
 
 
 
+/** @param {string[]} list */
 export function randomString(list) {
     if (!Array.isArray(list) || list.length === 0) {
         throw new Error('Passe um array com pelo menos 1 string.');
@@ -429,6 +479,7 @@ export function randomString(list) {
 
 
 
+/** @param {string} direction @param {number} [distance] */
 export function directionToVector(direction, distance = 1) {
     switch (direction) {
         case 'south': return { x: 0, y: 0, z: 1 * distance }
@@ -442,11 +493,13 @@ export function directionToVector(direction, distance = 1) {
 }
 
 
+/** @param {Vector3Like} base @param {number} distancia @param {Vector3Like} direcao */
 export function pontoMedio(base, distancia, direcao) {
     const middleDistance = distancia
     const absoluteVector = { x: base.x + (direcao.x * middleDistance), y: base.y + (direcao.y * middleDistance), z: base.z + (direcao.z * middleDistance) }
     return absoluteVector
 }
+/** @param {Vector3Like} a @param {Vector3Like} b */
 export function distanciaEntrePontos(a, b) {
     const dx = b.x - a.x;
     const dy = b.y - a.y;
@@ -467,12 +520,13 @@ export function distanciaEntrePontos(a, b) {
  * @param {mc.ItemStack} item
  * @param {mc.Entity} entity
  * @param {'Mainhand'|'Offhand'} slotName
- * @param {'0'|'1'} slot
- * @param {'rc_fb:filter_type'} propertyName
+ * @param {number | '0' | '1'} slot
+ * @param {string} propertyName
  */
 export function setItemInHand(item, entity, slotName, slot, propertyName) {
     if (!entity?.isValid || !item) return false
 
+    const slotIndex = Number(slot);
     const slotLowCase = slotName.toLowerCase()
     let itemIs = itemStackIs(item)
     const filterEntity = entity?.typeId === "create:chute_smart_filter"
@@ -485,31 +539,33 @@ export function setItemInHand(item, entity, slotName, slot, propertyName) {
         itemIs = "hand_equipped"
     }
     try { entity?.runCommand(`replaceitem entity @s slot.weapon.${slotLowCase} 0 air`) } catch {}
-    try { entity?.getComponent('inventory')?.container?.setItem(slot, undefined) } catch {}
+    try { entity?.getComponent('inventory')?.container?.setItem(slotIndex, undefined) } catch {}
     if (itemIs === "hand_equipped") {
         try { entity.setProperty(propertyName, "hand_equipped") } catch {}
         try { entity.runCommand(`replaceitem entity @s slot.weapon.${slotLowCase} 0 ${item.typeId}`) } catch {}
-        try { entity.getComponent('inventory')?.container?.setItem(slot, item) } catch {}
+        try { entity.getComponent('inventory')?.container?.setItem(slotIndex, item) } catch {}
         return true
     }
     if (itemIs != 'block' && itemIs != 'item'){//se é fake item..
         try { entity.setProperty(propertyName, 'item') } catch {}
         try { entity.runCommand(`replaceitem entity @s slot.weapon.${slotLowCase} 0 ${item.typeId}`) } catch {}
-        try { entity.getComponent('inventory')?.container?.setItem(slot, item) } catch {}
+        try { entity.getComponent('inventory')?.container?.setItem(slotIndex, item) } catch {}
     } else {
         try { entity.setProperty(propertyName, itemIs) } catch {}
         try { entity.runCommand(`replaceitem entity @s slot.weapon.${slotLowCase} 0 ${item.typeId}`) } catch {}
-        try { entity.getComponent('inventory')?.container?.setItem(slot, item) } catch {}
+        try { entity.getComponent('inventory')?.container?.setItem(slotIndex, item) } catch {}
     }
     return true
 }
 
 const FILTER_HAND_EQUIPPED = /sword|pickaxe|axe|shovel|hoe|spear|wrench|hammer|drill|saw|knife|dagger|mace|bow|crossbow|trident|fishing_rod|carrot_on_a_stick|warped_fungus_on_a_stick|stick|staff|cannon/
 
+/** @param {string | undefined} itemId */
 export function isHandEquippedFilterItem(itemId) {
     return typeof itemId === "string" && FILTER_HAND_EQUIPPED.test(itemId)
 }
 
+/** @param {mc.Entity} conveyorItem @param {mc.ItemStack} resultItem @param {Vector3Like | undefined} outputLocation */
 export function processOneConveyorItem(conveyorItem, resultItem, outputLocation) {
     const container = conveyorItem?.getComponent("minecraft:inventory")?.container
     const inputItem = container?.getItem(0)
@@ -542,25 +598,29 @@ export function processOneConveyorItem(conveyorItem, resultItem, outputLocation)
  * @param {mc.Entity} filterEntity
  * @param {'0'|'1'} filterSlot
  */
+/** @param {string} id @param {mc.Entity | undefined} filterEntity @param {'0'|'1'} filterSlot */
 export function idIncludedInFilter(id, filterEntity, filterSlot){
     if (!filterEntity) return true
     const container = filterEntity?.getComponent('inventory')?.container
-    const item = container?.getItem(filterSlot)
+    const item = container?.getItem(Number(filterSlot))
     if (item){
         //console.warn(item?.typeId, id)
         if (item?.typeId == id) return true; else
         if (item?.typeId == 'rc_fb:item_filter'){
-            if (isJSONParsable(item?.getDynamicProperty('rc_fb:filter'))){
-                const filter = JSON.parse(item?.getDynamicProperty('rc_fb:filter'))
-                if (filter?.includes(id)) return true
+            const rawFilter = item.getDynamicProperty('rc_fb:filter');
+            if (typeof rawFilter === 'string' && isJSONParsable(rawFilter)) {
+                const filter = JSON.parse(rawFilter);
+                if (Array.isArray(filter) && filter.includes(id)) return true
             }
         };
         return false
     } else return true
 }
 
+/** @param {mc.ItemStack | undefined} itemStack */
 export function itemStackIs(itemStack) {
     const id = itemStack?.typeId
+    if (!id) return "item";
     if (fakeId[id]) {
         return fakeId[id]
     } else {
@@ -609,6 +669,7 @@ const SUBSTRINGS = [
     "door", "ladder", "iron_bars", "bed", "sea_pickle", "brewing_stand", "frame",
     "amethyst", "poppy", "sapling"
 ]
+/** @type {Record<string, string>} */
 const fakeId = {
     "minecraft:bamboo": "rc_fb:fake_bamboo",
     "minecraft:blaze_rod": "rc_fb:fake_blaze_rod",
@@ -665,14 +726,17 @@ const fakeId = {
     "rc_fb:wrench": "rc_fb:fake_wrench"
 }
 
+/** @param {mc.ItemStack | string | undefined} itemStackOrId */
 export function getFakeItemId(itemStackOrId) {
     const id = typeof itemStackOrId === "string" ? itemStackOrId : itemStackOrId?.typeId
-    return fakeId[id]
+    return id ? fakeId[id] : undefined
 }
 
 
 
+/** @param {number} currentAngle @param {number} targetAngle */
 export function shortestAngle(currentAngle, targetAngle) {
+    /** @param {number} angle */
     const normalizeAngle = (angle) => ((angle + 180) % 360) - 180
     const normalizedCurrent = normalizeAngle(currentAngle)
     const normalizedTarget = normalizeAngle(targetAngle)
@@ -681,6 +745,7 @@ export function shortestAngle(currentAngle, targetAngle) {
     return normalizeAngle(closestAngleToReturn);
 }
 
+/** @param {number} a @param {number} b */
 export function randIntBetween(a, b) {
     const min = Math.ceil(Math.min(a, b));
     const max = Math.floor(Math.max(a, b));
@@ -688,14 +753,18 @@ export function randIntBetween(a, b) {
 }
 
 /**
- * @param {mc.Entity} itemEntity 
-*/
+ * @param {mc.Entity} itemEntity
+ * @param {number} pileAmount
+ * @returns {{firstItem: mc.ItemStack, secondItem: mc.ItemStack | undefined} | false}
+ */
 export function separeItemEntity(itemEntity, pileAmount){
     if (itemEntity?.typeId == 'minecraft:item'){
         const itemStack = itemEntity?.getComponent('minecraft:item')?.itemStack
-        const firstAmount = Math.min(pileAmount, itemStack?.amount)
-        const secondAmount = itemStack?.amount-firstAmount
+        if (!itemStack) return false;
+        const firstAmount = Math.min(pileAmount, itemStack.amount)
+        const secondAmount = itemStack.amount-firstAmount
         let firstItem = itemStack.clone()
+        /** @type {mc.ItemStack | undefined} */
         let secondItem = itemStack.clone()
         firstItem.amount = firstAmount
         if (secondAmount > 0){
@@ -708,12 +777,15 @@ export function separeItemEntity(itemEntity, pileAmount){
 
 
 /**
- * @param {mc.ItemStack} itemStack 
-*/
+ * @param {mc.ItemStack} itemStack
+ * @param {number} pileAmount
+ * @returns {{firstItem: mc.ItemStack, secondItem: mc.ItemStack | undefined}}
+ */
 export function separeItemStack(itemStack, pileAmount) {
     const firstAmount = Math.min(pileAmount, itemStack?.amount)
     const secondAmount = itemStack?.amount - firstAmount
     let firstItem = itemStack.clone()
+    /** @type {mc.ItemStack | undefined} */
     let secondItem = itemStack.clone()
     firstItem.amount = firstAmount
     if (secondAmount > 0) {
@@ -899,6 +971,7 @@ export class Vector {
 
 
 
+/** @param {Vector3Like} vector @param {string} face */
 export function rotateVectorByFace(vector, face) {
     switch (face) {
         case 'north': return { x: vector.x, y: vector.y, z: vector.z }
@@ -912,6 +985,7 @@ export function rotateVectorByFace(vector, face) {
 }
 
 
+/** @param {Vector3Like} vector */
 export function directionToRotation(vector) {
     const { x, y, z } = vector
     const yaw = Math.atan2(-x, -z) * (180 / Math.PI)

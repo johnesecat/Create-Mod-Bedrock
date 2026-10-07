@@ -7,6 +7,8 @@ import { tryInsertItemFromArmIntoFunnel } from "./brassFunnel.js";
 const TIME_CONFIG = { 1:800, 2:400, 4:200, 8:100, 16:50, 32:25, 64:12.5, 128:6.25, 256:3.125 };
 const SPEED_INDEX = { 1:0, 2:1, 4:2, 8:3, 16:4, 32:5, 64:6, 128:7, 256:8 };
 const MAX_REACH = 6; // blocks
+/** @type {(item: import('@minecraft/server').ItemStack) => boolean} */
+const ACCEPT_ANY_ITEM = () => true;
 
 function snapToPowerOf2(rpm) {
     const steps = [1, 2, 4, 8, 16, 32, 64, 128, 256];
@@ -145,7 +147,7 @@ function setArmRest(entity, rpm) {
  * Check if there is at least one grabbable item at location WITHOUT consuming it.
  * Returns true if something is available.
  */
-function hasItemAtSource(dimension, loc, filterItem, itemPredicate = () => true) {
+function hasItemAtSource(dimension, loc, filterItem, itemPredicate = ACCEPT_ANY_ITEM) {
     const block      = dimension.getBlock(loc);
     const center     = block?.center() ?? { x: loc.x + 0.5, y: loc.y + 0.5, z: loc.z + 0.5 };
     const filterType = filterItem?.typeId ?? null;
@@ -187,7 +189,7 @@ function hasItemAtSource(dimension, loc, filterItem, itemPredicate = () => true)
  * Searches: ground items → conveyor_items (depot) → container block.
  * Returns ItemStack or null.
  */
-function grabFromSource(dimension, loc, filterItem, itemPredicate = () => true) {
+function grabFromSource(dimension, loc, filterItem, itemPredicate = ACCEPT_ANY_ITEM) {
     const block      = dimension.getBlock(loc);
     const center     = block?.center() ?? { x: loc.x + 0.5, y: loc.y + 0.5, z: loc.z + 0.5 };
     const filterType = filterItem?.typeId ?? null;

@@ -391,7 +391,9 @@ function buildAirFlow(dimension, fanPos, direction, maxDist, pushing) {
     const start = pushing ? 1 : limit;
     const end = pushing ? limit : 1;
     const step = pushing ? 1 : -1;
+    /** @type {'blasting' | 'haunting' | 'smoking' | 'splashing' | null} */
     let activeType = null;
+    /** @type {'blasting' | 'haunting' | 'smoking' | 'splashing' | null} */
     let currentType = null;
     let segmentStart = start;
 

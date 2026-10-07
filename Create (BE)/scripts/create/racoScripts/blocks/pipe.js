@@ -332,7 +332,7 @@ export function pipeWrenchInteract(block, player, item) {
         if (mc.system.currentTick - lastInteractionTick < 5) return true;
 
         const targetType = block.typeId === GLASS_PIPE_TYPE ? PIPE_TYPE : GLASS_PIPE_TYPE;
-        let target = mc.BlockPermutation.resolve(targetType)
+        let target = /** @type {any} */ (mc.BlockPermutation.resolve(targetType))
             .withState("create:shape", shape)
             .withState("create:end_type", block.permutation.getState("create:end_type") ?? "open")
             .withState("minecraft:cardinal_direction", block.permutation.getState("minecraft:cardinal_direction") ?? "north");

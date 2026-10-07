@@ -1,7 +1,13 @@
+import * as mc from "@minecraft/server";
 import { BlockPermutation, system, world } from "@minecraft/server";
 import { initVaultStorage } from "../storage/storage_events.js";
 import { initVaultRebuild } from "./rebuild.js";
 import { vaultVisualStructure } from "./visual_structure.js";
+
+/** @typedef {import('@minecraft/server').Block} Block */
+/** @typedef {import('@minecraft/server').Player} Player */
+/** @typedef {import('@minecraft/server').Vector3} Position */
+/** @typedef {import('../storage/storage_events.js').VaultStructure} VaultStructure */
 
 const VAULT_ID = "create:vault";
 const VAULT_PLACE_SOUNDS = [
@@ -10,6 +16,7 @@ const VAULT_PLACE_SOUNDS = [
 ];
 let initialized = false;
 
+/** @param {Block} block */
 function playVaultPlaceSound(block) {
   let played = false;
   for (const sound of VAULT_PLACE_SOUNDS) {
@@ -23,6 +30,7 @@ function playVaultPlaceSound(block) {
   }
 }
 
+/** @param {VaultStructure} structure @returns {Position} */
 function axisVector(structure) {
   if (structure.direction === "south") return { x: 0, y: 0, z: 1 };
   if (structure.direction === "west") return { x: -1, y: 0, z: 0 };
@@ -30,6 +38,7 @@ function axisVector(structure) {
   return { x: 0, y: 0, z: -1 };
 }
 
+/** @param {VaultStructure} structure @param {Player | undefined} player */
 function getExtensionSide(structure, player) {
   const vector = axisVector(structure);
   const center = {
@@ -44,6 +53,7 @@ function getExtensionSide(structure, player) {
   return dot >= 0 ? 1 : -1;
 }
 
+/** @param {VaultStructure} structure @param {number} [side] @returns {Position[]} */
 function getNextSlice(structure, side = 1) {
   const vector = axisVector(structure);
   const positions = [];
@@ -68,18 +78,21 @@ function getNextSlice(structure, side = 1) {
   return positions;
 }
 
+/** @param {VaultStructure} structure */
 function maxDepthForStructure(structure) {
   if (structure.width === 3 && structure.height === 3) return 9;
   if (structure.width === 2 && structure.height === 2) return 6;
   return 3;
 }
 
+/** @param {Block | undefined} block */
 function canReplace(block) {
   return block?.typeId === "minecraft:air"
     || block?.typeId === "minecraft:water"
     || block?.typeId === "minecraft:lava";
 }
 
+/** @param {Player} player */
 function countVaultItems(player) {
   if (player?.getGameMode?.() === "Creative") return 999999;
   const container = player?.getComponent("inventory")?.container;
@@ -93,6 +106,7 @@ function countVaultItems(player) {
   return total;
 }
 
+/** @param {Player} player @param {number} amount */
 function consumeVaultItems(player, amount) {
   if (player?.getGameMode?.() === "Creative") return true;
   const container = player?.getComponent("inventory")?.container;
@@ -115,6 +129,7 @@ function consumeVaultItems(player, amount) {
   return remaining === 0;
 }
 
+/** @param {string} direction */
 function vaultPermutation(direction) {
   return BlockPermutation.resolve(VAULT_ID, {
     "create:size": 1,
@@ -125,6 +140,7 @@ function vaultPermutation(direction) {
   });
 }
 
+/** @param {Block | undefined} block @param {Player | undefined} player */
 function getExtensionPlan(block, player) {
   if (!block || block.typeId !== VAULT_ID || !player) return undefined;
 
@@ -145,6 +161,7 @@ function getExtensionPlan(block, player) {
   return { structure, positions };
 }
 
+/** @param {Block} block @param {Player} player */
 function extendVaultStructure(block, player) {
   const plan = getExtensionPlan(block, player);
   if (!plan) return false;
@@ -156,18 +173,24 @@ function extendVaultStructure(block, player) {
   for (const pos of positions) {
     try {
       const target = block.dimension.getBlock(pos);
+      if (!target) continue;
       target.setPermutation(permutation);
       playVaultPlaceSound(target);
     } catch {}
   }
 
-  system.run(() => vaultVisualStructure.expandOrAssemble(block.dimension.getBlock(positions[0])));
+  const firstPosition = positions[0];
+  if (firstPosition) system.run(() => {
+    const firstBlock = block.dimension.getBlock(firstPosition);
+    if (firstBlock) vaultVisualStructure.expandOrAssemble(firstBlock);
+  });
   return true;
 }
 
+/** @param {import('@minecraft/server').PlayerInteractWithBlockBeforeEvent} event */
 function isHoldingVault(event) {
   const item = event.itemStack
-    ?? event.player?.getComponent("equippable")?.getEquipment("Mainhand");
+    ?? event.player?.getComponent("minecraft:equippable")?.getEquipment(mc.EquipmentSlot.Mainhand);
   return item?.typeId === VAULT_ID;
 }
 
@@ -178,14 +201,14 @@ export function initVaultModule() {
   initVaultStorage(vaultVisualStructure);
   initVaultRebuild(vaultVisualStructure);
 
-  world.afterEvents.playerPlaceBlock.subscribe((event) => {
+  world.afterEvents.playerPlaceBlock.subscribe((/** @type {import('@minecraft/server').PlayerPlaceBlockAfterEvent} */ event) => {
     const block = event.block;
     if (block?.typeId !== VAULT_ID) return;
     playVaultPlaceSound(block);
     system.run(() => vaultVisualStructure.expandOrAssemble(block));
   });
 
-  world.beforeEvents.playerInteractWithBlock.subscribe((event) => {
+  world.beforeEvents.playerInteractWithBlock.subscribe((/** @type {import('@minecraft/server').PlayerInteractWithBlockBeforeEvent} */ event) => {
     const block = event.block;
     if (block?.typeId !== VAULT_ID) return;
     if (!isHoldingVault(event)) return;
@@ -194,7 +217,7 @@ export function initVaultModule() {
     system.run(() => extendVaultStructure(block, event.player));
   });
 
-  world.afterEvents.playerBreakBlock.subscribe((event) => {
+  world.afterEvents.playerBreakBlock.subscribe((/** @type {import('@minecraft/server').PlayerBreakBlockAfterEvent} */ event) => {
     if (event.brokenBlockPermutation?.type?.id !== VAULT_ID) return;
 
     const dimension = event.dimension;

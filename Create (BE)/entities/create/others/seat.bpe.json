@@ -196,10 +196,7 @@
                 "has_collision": false,
                 "has_gravity": false
             },
-            "minecraft:pushable": {
-                "is_pushable": false,
-                "is_pushable_by_piston": false
-            },
+
             "minecraft:conditional_bandwidth_optimization": {}
         },
         "events": {

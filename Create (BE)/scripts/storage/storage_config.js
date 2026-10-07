@@ -12,10 +12,12 @@ export const MAX_TRANSFERS_PER_STORAGE_PER_CYCLE = 4;
 export const MAX_GLOBAL_TRANSFERS_PER_CYCLE = 16;
 export const MAX_CONNECTION_CHECKS_PER_CYCLE = 64;
 
+/** @param {string} storageId */
 export function storageTag(storageId) {
   return `${STORAGE_TAG_PREFIX}${storageId}`;
 }
 
+/** @param {{blockCount?: number, blocks?: unknown[], width?: number, height?: number, depth?: number} | undefined} structure */
 export function capacityForVisualStructure(structure) {
   if (!structure) return 0;
 

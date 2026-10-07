@@ -4,11 +4,27 @@ import { addItemLimited } from "../../../storage/storage_inventory.js";
 import { rebuildVaultAt } from "../../../vault/rebuild.js";
 import { vaultVisualStructure } from "../../../vault/visual_structure.js";
 
+/** @typedef {import('@minecraft/server').Block} Block */
+/** @typedef {import('@minecraft/server').Player} Player */
+/** @typedef {import('@minecraft/server').Container} Container */
+/** @typedef {import('@minecraft/server').ItemStack} ItemStack */
+/** @typedef {import('@minecraft/server').Vector3} Vector3 */
+/** @typedef {{type: 'vault', storage: {id: string}} | {type: 'inventory', inventory: Container, key: string}} HatchTarget */
+
 const HATCH_TYPE = "create:hatch";
 const INVENTORY_SLOTS_START = 9;
 const INVENTORY_SLOTS_END = 35;
 const OPEN_TICKS = 10;
 
+/** @param {Block} block @param {boolean} open */
+function setHatchOpenState(block, open) {
+    block.setPermutation(mc.BlockPermutation.resolve(block.typeId, {
+        ...block.permutation.getAllStates(),
+        "create:open": open
+    }));
+}
+
+/** @type {Vector3[]} */
 const OFFSETS = [
     { x: 1, y: 0, z: 0 },
     { x: -1, y: 0, z: 0 },
@@ -18,27 +34,32 @@ const OFFSETS = [
     { x: 0, y: 0, z: -1 }
 ];
 
+/** @param {Vector3} pos @param {Vector3} offset */
 function offsetPos(pos, offset) {
     return { x: pos.x + offset.x, y: pos.y + offset.y, z: pos.z + offset.z };
 }
 
+/** @param {Player | undefined} player */
 function getSelectedSlot(player) {
-    const slot = player?.selectedSlotIndex ?? player?.selectedSlot;
+    const slot = player?.selectedSlotIndex;
     return Number.isInteger(slot) ? slot : undefined;
 }
 
+/** @param {Player | undefined} player @returns {Container | null} */
 function getPlayerInventory(player) {
     return player?.getComponent("minecraft:inventory")?.container
         ?? player?.getComponent("inventory")?.container
         ?? null;
 }
 
+/** @param {Block | undefined} block @returns {Container | null} */
 function getBlockInventory(block) {
     return block?.getComponent?.("minecraft:inventory")?.container
         ?? block?.getComponent?.("inventory")?.container
         ?? null;
 }
 
+/** @param {Block | undefined} block @returns {{id: string} | null} */
 function getVaultStorage(block) {
     if (block?.typeId !== "create:vault") return null;
 
@@ -52,10 +73,12 @@ function getVaultStorage(block) {
     return storage ?? getStorageAt(block.location, vaultVisualStructure, block.dimension) ?? null;
 }
 
+/** @param {Vector3} pos */
 function posKey(pos) {
     return `${pos.x},${pos.y},${pos.z}`;
 }
 
+/** @param {HatchTarget[]} targets @param {Set<string>} seen @param {HatchTarget} target */
 function addTarget(targets, seen, target) {
     const key = target.type === "vault" ? `vault:${target.storage.id}` : `inv:${target.key}`;
     if (seen.has(key)) return;
@@ -63,6 +86,7 @@ function addTarget(targets, seen, target) {
     targets.push(target);
 }
 
+/** @param {Block} startBlock @param {HatchTarget[]} targets @param {Set<string>} seenTargets */
 function addConnectedVaultTargets(startBlock, targets, seenTargets) {
     const queue = [startBlock.location];
     const seenBlocks = new Set();
@@ -86,7 +110,9 @@ function addConnectedVaultTargets(startBlock, targets, seenTargets) {
     }
 }
 
+/** @param {Block} hatchBlock @returns {HatchTarget[]} */
 function findTargetStorages(hatchBlock) {
+    /** @type {HatchTarget[]} */
     const targets = [];
     const seenTargets = new Set();
 
@@ -110,12 +136,14 @@ function findTargetStorages(hatchBlock) {
     return targets;
 }
 
+/** @param {ItemStack} itemStack @param {number} amount */
 function cloneStack(itemStack, amount) {
     const stack = itemStack.clone?.() ?? itemStack;
     stack.amount = amount;
     return stack;
 }
 
+/** @param {HatchTarget} target @param {ItemStack} itemStack @param {number} amount */
 function insertAmountIntoTarget(target, itemStack, amount) {
     if (amount <= 0) return false;
 
@@ -125,6 +153,7 @@ function insertAmountIntoTarget(target, itemStack, amount) {
     return false;
 }
 
+/** @param {HatchTarget[] | undefined} targets @param {ItemStack | undefined} itemStack */
 function insertIntoTargets(targets, itemStack) {
     if (!targets?.length || !itemStack || itemStack.amount <= 0) return 0;
 
@@ -151,16 +180,18 @@ function insertIntoTargets(targets, itemStack) {
     return moved;
 }
 
+/** @param {Block} block */
 function setHatchOpen(block) {
-    try { block.setPermutation(block.permutation.withState("create:open", true)); } catch {}
+    try { setHatchOpenState(block, true); } catch {}
     mc.system.runTimeout(() => {
         try {
             const current = block.dimension.getBlock(block.location);
-            if (current?.typeId === HATCH_TYPE) current.setPermutation(current.permutation.withState("create:open", false));
+            if (current?.typeId === HATCH_TYPE) setHatchOpenState(current, false);
         } catch {}
     }, OPEN_TICKS);
 }
 
+/** @param {Block} block @param {Player | undefined} player @param {HatchTarget[]} targets @param {ItemStack | undefined} item */
 function depositHeldStack(block, player, targets, item) {
     if (!item || item.amount <= 0) return false;
     const moved = insertIntoTargets(targets, item);
@@ -183,6 +214,7 @@ function depositHeldStack(block, player, targets, item) {
     return true;
 }
 
+/** @param {Block} block @param {Player | undefined} player @param {HatchTarget[]} targets */
 function depositInventoryOnly(block, player, targets) {
     const inventory = getPlayerInventory(player);
     if (!inventory) return false;
@@ -208,6 +240,7 @@ function depositInventoryOnly(block, player, targets) {
     return moved > 0;
 }
 
+/** @param {Block | undefined} block @param {Player | undefined} player @param {ItemStack | undefined} item */
 export function hatchInteract(block, player, item) {
     if (block?.typeId !== HATCH_TYPE) return false;
 

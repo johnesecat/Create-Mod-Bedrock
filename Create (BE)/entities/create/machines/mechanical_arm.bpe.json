@@ -34,7 +34,7 @@
                     "type": "bool", 
                     "default": false
                 },
-                
+
                 "create:speed": {
                     "client_sync": true,
                     "type": "int",
@@ -145,10 +145,7 @@
             "has_collision": false,
             "has_gravity": false
           },
-          "minecraft:pushable": {
-            "is_pushable": false,
-            "is_pushable_by_piston": false
-          },
+
           "minecraft:damage_sensor": {
             "triggers": {
               "cause": "all",

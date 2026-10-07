@@ -31,6 +31,13 @@ let structures = 0
 const failures = []
 const manifests = []
 const definitions = new Map()
+function assertNoRemovedEntityComponents(value) {
+  if (!value || typeof value !== 'object') return
+  if (Object.hasOwn(value, 'minecraft:pushable')) {
+    throw new Error('minecraft:pushable was removed in Bedrock 1.26.10; use minecraft:pushable_by_entity and/or minecraft:pushable_by_block')
+  }
+  for (const child of Object.values(value)) assertNoRemovedEntityComponents(child)
+}
 async function walk(folder) {
   for (const entry of await readdir(folder, { withFileTypes: true })) {
     const file = path.join(folder, entry.name)
@@ -40,9 +47,13 @@ async function walk(folder) {
         const text = (await readFile(file, 'utf8')).replace(/^\uFEFF/, '')
         const data = jsonlint.parse(text)
         JSON.parse(text) // Also reject extensions accepted by a permissive parser.
+        assertNoRemovedEntityComponents(data)
         count++
         if (entry.name === 'manifest.json') {
           assert(manifestSchema(data), ajv.errorsText(manifestSchema.errors))
+          if (path.resolve(file) === path.join(root, 'Create (BE)', 'manifest.json') || path.resolve(file) === path.join(root, 'Create (RE)', 'manifest.json')) {
+            assert.deepEqual(data.header.min_engine_version, [1, 26, 50], `${path.relative(root, file)} must declare the supported Minecraft minimum 1.26.50`)
+          }
           manifests.push(data)
           structures++
         }
@@ -94,4 +105,4 @@ console.log(`JSON lint: ${count} files; AJV: ${structures} structural checks (no
 if (failures.length) {
   console.error(failures.join('\n'))
   process.exitCode = 1
-} else console.log('PASS: syntax, content structure, recipe patterns, UUIDs and manifest dependencies')
+} else console.log('PASS: syntax, content structure, recipe patterns, UUIDs, manifest dependencies and retired-component checks')

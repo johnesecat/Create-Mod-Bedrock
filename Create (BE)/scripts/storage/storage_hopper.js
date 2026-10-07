@@ -12,23 +12,38 @@ import { addItemLimited, getInventory, removeMatchingItem } from "./storage_inve
 import { extractItem, getStorageById, insertItem } from "./storage_registry.js";
 
 const HOPPER_ID = "minecraft:hopper";
+/** @typedef {import('@minecraft/server').Block} Block */
+/** @typedef {{x: number, y: number, z: number}} Position
+ * @typedef {{x: number, y: number, z: number}} DirectionVector
+ * @typedef {{key: string, kind: 'input'|'output', storageId: string, dimension: import('@minecraft/server').Dimension, hopperPos: Position, direction?: DirectionVector, allowUnknownFacing?: boolean}} HopperConnection
+ * @typedef {{dimension: import('@minecraft/server').Dimension, inputHoppers: Map<string, HopperConnection>, outputHoppers: Map<string, HopperConnection>, candidateKeys: Set<string>, inputCursor: number, outputCursor: number, nextMode: 'input'|'output'}} HopperCache
+ * @typedef {{id: string, dimension: import('@minecraft/server').Dimension, structure: {blocks: Position[], min?: Position, max?: Position, origin: Position}}} Storage
+ * @typedef {{connectionChecks: number}} CycleState
+ */
+/** @type {Map<string, HopperCache>} */
 const hopperCaches = new Map();
+/** @type {Map<string, Map<string, HopperConnection>>} */
 const candidateConnections = new Map();
+/** @type {Map<string, HopperConnection>} */
 const assignedConnections = new Map();
+/** @type {Set<string>} */
 const activeStorageIds = new Set();
 
 let initialized = false;
 let storageCursor = 0;
 let cycleId = 0;
 
+/** @param {Position} pos */
 function posKey(pos) {
   return `${Math.floor(pos.x)},${Math.floor(pos.y)},${Math.floor(pos.z)}`;
 }
 
+/** @param {import('@minecraft/server').Dimension} dimension @param {Position} pos */
 function hopperKey(dimension, pos) {
   return `${dimension?.id ?? "unknown"}:${posKey(pos)}`;
 }
 
+/** @param {Position} pos @param {number} dx @param {number} dy @param {number} dz @returns {Position} */
 function offset(pos, dx, dy, dz) {
   return {
     x: Math.floor(pos.x) + dx,
@@ -37,6 +52,7 @@ function offset(pos, dx, dy, dz) {
   };
 }
 
+/** @param {import('@minecraft/server').Dimension} dimension @param {Position} pos */
 function safeGetBlock(dimension, pos) {
   try {
     return dimension.getBlock(pos);
@@ -45,10 +61,12 @@ function safeGetBlock(dimension, pos) {
   }
 }
 
+/** @param {import('@minecraft/server').Block | undefined} block */
 function isHopper(block) {
   return block?.typeId === HOPPER_ID;
 }
 
+/** @param {import('@minecraft/server').Block} block @returns {DirectionVector | undefined} */
 function getHopperFacing(block) {
   for (const state of [
     "facing_direction",
@@ -57,7 +75,7 @@ function getHopperFacing(block) {
     "minecraft:cardinal_direction"
   ]) {
     try {
-      const direction = directionValueToVector(block.permutation.getState(state));
+      const direction = directionValueToVector(block.permutation.getAllStates()[state]);
       if (direction) return direction;
     } catch {}
   }
@@ -65,6 +83,7 @@ function getHopperFacing(block) {
   return undefined;
 }
 
+/** @param {string | number | boolean | undefined} value @returns {DirectionVector | undefined} */
 function directionValueToVector(value) {
   if (value === 0 || value === "down") return { x: 0, y: -1, z: 0 };
   if (value === 1 || value === "up") return { x: 0, y: 1, z: 0 };
@@ -75,10 +94,12 @@ function directionValueToVector(value) {
   return undefined;
 }
 
+/** @param {DirectionVector | undefined} a @param {DirectionVector | undefined} b */
 function sameDirection(a, b) {
-  return !!a && a.x === b.x && a.y === b.y && a.z === b.z;
+  return !!a && !!b && a.x === b.x && a.y === b.y && a.z === b.z;
 }
 
+/** @param {import('@minecraft/server').Block} hopperBlock @param {HopperConnection} connection */
 function pointsAtVault(hopperBlock, connection) {
   if (connection.kind === "output") return true;
 
@@ -87,10 +108,12 @@ function pointsAtVault(hopperBlock, connection) {
   return sameDirection(facing, connection.direction);
 }
 
+/** @param {HopperConnection} connection */
 function connectionOwnerKey(connection) {
   return `${connection.storageId}:${connection.kind}`;
 }
 
+/** @param {HopperCache} cache @param {HopperConnection} connection */
 function registerCandidate(cache, connection) {
   const key = connection.key;
   let owners = candidateConnections.get(key);
@@ -103,6 +126,7 @@ function registerCandidate(cache, connection) {
   cache.candidateKeys.add(key);
 }
 
+/** @param {HopperConnection} connection */
 function removeAssignedConnection(connection) {
   const cache = hopperCaches.get(connection.storageId);
   if (!cache) return;
@@ -116,6 +140,7 @@ function removeAssignedConnection(connection) {
   }
 }
 
+/** @param {HopperConnection} connection */
 function addAssignedConnection(connection) {
   const cache = hopperCaches.get(connection.storageId);
   if (!cache) return;
@@ -128,6 +153,7 @@ function addAssignedConnection(connection) {
   activeStorageIds.add(connection.storageId);
 }
 
+/** @param {Block} hopperBlock @param {Map<string, HopperConnection>} owners */
 function chooseConnection(hopperBlock, owners) {
   return Array.from(owners.values())
     .sort((a, b) => {
@@ -137,6 +163,7 @@ function chooseConnection(hopperBlock, owners) {
     .find((connection) => pointsAtVault(hopperBlock, connection));
 }
 
+/** @param {string} key */
 function refreshConnectionKey(key) {
   const previous = assignedConnections.get(key);
   if (previous) {
@@ -148,17 +175,20 @@ function refreshConnectionKey(key) {
   if (!owners || owners.size === 0) return;
 
   const first = owners.values().next().value;
+  if (!first) return;
   const hopperBlock = safeGetBlock(first.dimension, first.hopperPos);
-  if (!isHopper(hopperBlock)) return;
+  if (!hopperBlock || !isHopper(hopperBlock)) return;
 
   const selected = chooseConnection(hopperBlock, owners);
   if (selected) addAssignedConnection(selected);
 }
 
+/** @param {import('@minecraft/server').Dimension} dimension @param {Position} pos */
 function refreshConnectionAt(dimension, pos) {
   refreshConnectionKey(hopperKey(dimension, pos));
 }
 
+/** @param {HopperCache} cache @param {Storage} storage @param {'input'|'output'} kind @param {Position} hopperPos @param {DirectionVector | undefined} direction @param {boolean} allowUnknownFacing */
 function addCandidate(cache, storage, kind, hopperPos, direction, allowUnknownFacing = false) {
   const key = hopperKey(storage.dimension, hopperPos);
   registerCandidate(cache, {
@@ -172,11 +202,13 @@ function addCandidate(cache, storage, kind, hopperPos, direction, allowUnknownFa
   });
 }
 
+/** @param {Storage} storage */
 export function rebuildHopperCache(storage) {
   if (!storage?.structure?.blocks) return;
 
   removeHopperCache(storage.id);
 
+  /** @type {HopperCache} */
   const cache = {
     dimension: storage.dimension,
     inputHoppers: new Map(),
@@ -196,7 +228,7 @@ export function rebuildHopperCache(storage) {
       addCandidate(cache, storage, "input", offset(blockPos, 0, 1, 0), { x: 0, y: -1, z: 0 }, true);
     }
     if (blockPos.y === min.y) {
-      addCandidate(cache, storage, "output", offset(blockPos, 0, -1, 0));
+      addCandidate(cache, storage, "output", offset(blockPos, 0, -1, 0), undefined, false);
     }
     if (blockPos.x === max.x) {
       addCandidate(cache, storage, "input", offset(blockPos, 1, 0, 0), { x: -1, y: 0, z: 0 });
@@ -215,6 +247,7 @@ export function rebuildHopperCache(storage) {
   for (const key of cache.candidateKeys) refreshConnectionKey(key);
 }
 
+/** @param {string} storageId */
 export function removeHopperCache(storageId) {
   const cache = hopperCaches.get(storageId);
   if (!cache) return;
@@ -269,9 +302,11 @@ export function initHopperSync() {
   }, HOPPER_TRANSFER_INTERVAL_TICKS);
 }
 
+/** @returns {void} */
 function syncHoppers() {
   if (activeStorageIds.size === 0) return;
 
+  /** @type {Storage[]} */
   const storages = [];
   for (const storageId of activeStorageIds) {
     const storage = getStorageById(storageId);
@@ -281,6 +316,7 @@ function syncHoppers() {
   if (storages.length === 0) return;
 
   cycleId++;
+  /** @type {CycleState} */
   const cycleState = { connectionChecks: 0 };
   let globalTransfers = 0;
 
@@ -306,20 +342,25 @@ function syncHoppers() {
   }
 }
 
+/** @param {'input'|'output'} mode @returns {'input'|'output'} */
 function otherMode(mode) {
   return mode === "input" ? "output" : "input";
 }
 
+/** @param {Storage} storage @param {HopperCache} cache @param {number} transferLimit @param {CycleState} cycleState */
 function processStorageHoppers(storage, cache, transferLimit, cycleState) {
   let transfers = 0;
   let preferredMode = cache.nextMode;
+/** @type {Map<string, number>} */
   const transferCounts = new Map();
+  /** @type {Set<string>} */
   const failedHoppers = new Set();
 
   while (
     transfers < transferLimit
     && cycleState.connectionChecks < MAX_CONNECTION_CHECKS_PER_CYCLE
   ) {
+    /** @type {HopperConnection | undefined} */
     let successfulConnection;
 
     for (const mode of [preferredMode, otherMode(preferredMode)]) {
@@ -346,6 +387,7 @@ function processStorageHoppers(storage, cache, transferLimit, cycleState) {
   return transfers;
 }
 
+/** @param {Storage} storage @param {HopperCache} cache @param {'input'|'output'} mode @param {Map<string, number>} transferCounts @param {Set<string>} failedHoppers @param {CycleState} cycleState @returns {HopperConnection | undefined} */
 function tryHopperList(storage, cache, mode, transferCounts, failedHoppers, cycleState) {
   const connections = mode === "input" ? cache.inputHoppers : cache.outputHoppers;
   if (connections.size === 0) return undefined;
@@ -359,6 +401,7 @@ function tryHopperList(storage, cache, mode, transferCounts, failedHoppers, cycl
     const index = cache[cursorKey] % entries.length;
     const connection = entries[index];
     cache[cursorKey] = (cache[cursorKey] + 1) % entries.length;
+    if (!connection) continue;
 
     if (failedHoppers.has(connection.key)) continue;
     if ((transferCounts.get(connection.key) ?? 0) >= MAX_TRANSFERS_PER_HOPPER_PER_CYCLE) continue;
@@ -375,9 +418,10 @@ function tryHopperList(storage, cache, mode, transferCounts, failedHoppers, cycl
   return undefined;
 }
 
+/** @param {Storage} storage @param {HopperConnection} connection */
 function tryInput(storage, connection) {
   const hopper = safeGetBlock(connection.dimension, connection.hopperPos);
-  if (!isHopper(hopper) || !pointsAtVault(hopper, connection)) {
+  if (!hopper || !isHopper(hopper) || !pointsAtVault(hopper, connection)) {
     refreshConnectionKey(connection.key);
     return false;
   }
@@ -391,9 +435,10 @@ function tryInput(storage, connection) {
   return false;
 }
 
+/** @param {Storage} storage @param {HopperConnection} connection */
 function tryOutput(storage, connection) {
   const hopper = safeGetBlock(connection.dimension, connection.hopperPos);
-  if (!isHopper(hopper)) {
+  if (!hopper || !isHopper(hopper)) {
     refreshConnectionKey(connection.key);
     return false;
   }

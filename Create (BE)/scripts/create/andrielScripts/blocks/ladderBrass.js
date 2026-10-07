@@ -1,10 +1,11 @@
-import { ItemStack } from "@minecraft/server";
+import { BlockPermutation, ItemStack } from "@minecraft/server";
 
 const LADDER_IDS = new Set([
     "create:ladder_brass",
     "create:ladder_copper",
     "create:ladder_andesite"
 ]);
+/** @type {Readonly<Partial<Record<string, import('@minecraft/server').Vector3>>>} */
 const SUPPORT_OFFSETS = {
     north: { x: 0, y: 0, z: -1 },
     south: { x: 0, y: 0, z: 1 },
@@ -12,6 +13,7 @@ const SUPPORT_OFFSETS = {
     west: { x: -1, y: 0, z: 0 }
 };
 
+/** @param {import('@minecraft/server').Block | undefined} block */
 function isValidSupport(block) {
     return !!block
         && !block.isAir
@@ -19,6 +21,9 @@ function isValidSupport(block) {
         && !LADDER_IDS.has(block.typeId);
 }
 
+/** @param {import('@minecraft/server').Block | undefined} block
+ * @param {import('@minecraft/server').BlockPermutation | undefined} permutation
+ */
 export function ladderBrassHasSupport(block, permutation = block?.permutation) {
     if (!block || !permutation) return false;
     let direction = "south";
@@ -28,6 +33,7 @@ export function ladderBrassHasSupport(block, permutation = block?.permutation) {
     try { return isValidSupport(block.offset(offset)); } catch { return false; }
 }
 
+/** @param {import('@minecraft/server').Block | undefined} block */
 export function ladderBrassTick(block) {
     if (!block?.isValid || !LADDER_IDS.has(block.typeId)) return;
 
@@ -45,19 +51,20 @@ export function ladderBrassTick(block) {
     try {
         const below = block.below();
         const above = block.above();
-        connectedAbove = LADDER_IDS.has(below?.typeId)
-            && !LADDER_IDS.has(above?.typeId);
+        connectedAbove = !!below && LADDER_IDS.has(below.typeId)
+            && (!above || !LADDER_IDS.has(above.typeId));
     } catch {}
 
-    let current = false;
-    try { current = block.permutation.getState("create:connected_above") === true; } catch {}
+    const states = block.permutation.getAllStates();
+    const current = states['create:connected_above'] === true;
     if (current === connectedAbove) return;
 
     try {
-        block.setPermutation(block.permutation.withState("create:connected_above", connectedAbove));
+        block.setPermutation(BlockPermutation.resolve(block.typeId, { ...states, 'create:connected_above': connectedAbove }));
     } catch {}
 }
 
+/** @param {import('@minecraft/server').Player} player */
 function playerTouchesBrassLadder(player) {
     const { x, y, z } = player.location;
     const blockX = Math.floor(x);
@@ -66,7 +73,8 @@ function playerTouchesBrassLadder(player) {
 
     for (const blockY of levels) {
         try {
-            if (LADDER_IDS.has(player.dimension.getBlock({ x: blockX, y: blockY, z: blockZ })?.typeId)) {
+            const block = player.dimension.getBlock({ x: blockX, y: blockY, z: blockZ });
+            if (block && LADDER_IDS.has(block.typeId)) {
                 return true;
             }
         } catch {}
@@ -74,6 +82,7 @@ function playerTouchesBrassLadder(player) {
     return false;
 }
 
+/** @param {import('@minecraft/server').Player} player */
 export function ladderBrassPlayerTick(player) {
     if (!player?.isValid || !playerTouchesBrassLadder(player)) return;
 

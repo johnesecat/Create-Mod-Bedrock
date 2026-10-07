@@ -232,8 +232,8 @@ function tryInsertVaultItem(vaultBlock, item) {
 function tryExtractVaultItem(vaultBlock, filterItem, invertFilter, amount = 1, exact = false) {
     const storage = getVaultStorage(vaultBlock)
     if (!storage) return undefined
-    const filter = vaultItemFilter(filterItem, invertFilter)
-    const item = extractItem(storage.id, filter, amount)
+    const filterTypeId = filterItem?.typeId
+    const item = extractItem(storage.id, filterTypeId, amount)
     if (exact && item && item.amount < amount) {
         insertItem(storage.id, item, item.amount)
         return undefined

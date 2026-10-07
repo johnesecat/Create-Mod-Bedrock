@@ -6,6 +6,7 @@
     "allowJs": true,
     "checkJs": true,
     "noEmit": true,
+    "noImplicitAny": false,
     "strictNullChecks": true
   },
   "include": ["Create (BE)/scripts/**/*.js", "Create (BE)/scripts/**/*.ts"]

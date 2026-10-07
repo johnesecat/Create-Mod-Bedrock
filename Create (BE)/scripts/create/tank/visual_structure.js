@@ -47,6 +47,7 @@ function collectComponent(origin) {
 
   while (queue.length && result.length < MAX_BLOCKS) {
     const pos = queue.shift();
+    if (!pos) continue;
     const posId = key(pos);
     if (visited.has(posId)) continue;
     visited.add(posId);

@@ -10,6 +10,9 @@ import { compatibilityRecipes } from "../../compatibility/registries.js";
 // input:  { "itemId": count } — todos os itens devem estar presentes, sem extras
 // output: { id: "itemId", amount: count }
 // ============================================================
+/** @typedef {{input: Record<string, number>, output?: {id: string, amount: number}, fluidInput?: string, fluidOutput?: string, requiresHeat?: boolean, requiresSuperheat?: boolean, particleColor?: {red: number, green: number, blue: number, alpha: number}}} MixerRecipe */
+/** @typedef {MixerRecipe & Record<string, any>} MixerCompatibleRecipe */
+/** @type {MixerRecipe[]} */
 export const MIXER_RECIPES = [
     // Andesite Alloy — receita principal do Create
     {
@@ -310,7 +313,7 @@ function absorbItems(block) {
         if (!rawStack) continue;
 
         const separated = separeItemEntity(rawItem, rawStack.amount);
-        if (!separated?.firstItem) continue;
+        if (!separated || !separated.firstItem) continue;
 
         const slot = dim.spawnEntity("create:conveyor_item", randomBasinItemPos(block));
         slot.setProperty("create:rotation_y", Math.random() * 360);
@@ -347,10 +350,10 @@ function buildCounts(slots) {
  * Procura receita compatível com os counts.
  * Permite que o output já esteja no basin (acúmulo entre ciclos).
  * @param {Record<string, number>} counts
- * @returns {typeof MIXER_RECIPES[0]|null}
+ * @returns {MixerRecipe | null}
  */
 function findRecipe(counts) {
-    for (const recipe of [...compatibilityRecipes.mixing, ...MIXER_RECIPES]) {
+    for (const recipe of /** @type {MixerCompatibleRecipe[]} */ ([...compatibilityRecipes.mixing, ...MIXER_RECIPES])) {
         if (!Object.entries(recipe.input).every(([id, need]) => (counts[id] ?? 0) >= need)) continue;
         const outputId = recipe.output?.id;
         if (!Object.keys(counts).every(id => recipe.input[id] != null || (outputId && id === outputId))) continue;
@@ -519,7 +522,8 @@ export function basinTick(block) {
         // Re-dispara o hold a cada tick para o whisk ficar embaixo enquanto mistura
         try { mixer?.playAnimation("animation.create.mechanical_mixer.mixing.hold"); } catch { }
 
-        const rpm      = mixer?.isValid ? Math.abs(mixer.getProperty("create:rpm") ?? 0) : 1;
+        const rpmValue = mixer?.isValid ? mixer.getProperty("create:rpm") : 1;
+        const rpm = typeof rpmValue === "number" ? Math.abs(rpmValue) : 1;
         const progress = (basinProgress.get(k) ?? 0) + 1;
 
         if (progress < getMixTime(rpm || 1)) {
@@ -587,7 +591,7 @@ export function basinTick(block) {
 
     // ── IDLE: verifica se há condições para começar ───────────────────────────
     handleHopperIO(block);
-    if (block.permutation.getState("create:canal")) _handleCanalOutput(block);
+    if (block.permutation.getAllStates()["create:canal"]) _handleCanalOutput(block);
     const slots = getBasinSlots(block);
     if (!slots.length) return;
 
@@ -610,17 +614,16 @@ export function basinTick(block) {
  */
 function _wrenchBasinCanal(block, player, face) {
     const perm   = block.permutation;
-    const isOpen = perm.getState("create:canal");
+    const isOpen = perm.getAllStates()["create:canal"];
     if (isOpen) {
-        try { block.setPermutation(perm.withState("create:canal", false)); } catch { }
+        try { block.setPermutation(/** @type {any} */ (perm).withState("create:canal", false)); } catch { }
         player?.onScreenDisplay.setActionBar("§7Canal: Closed");
         return;
-    }
-    const dir = face?.toLowerCase();
-    if (!_DIRS.some(d => d.dir === dir)) return; // ignora Up/Down/undefined
+    }        const dir = face?.toLowerCase();
+    if (!dir || !_DIRS.some(d => d.dir === dir)) return; // ignora Up/Down/undefined
     try {
         block.setPermutation(
-            perm.withState("create:canal", true)
+            /** @type {any} */ (perm).withState("create:canal", true)
                 .withState("minecraft:cardinal_direction", dir)
         );
     } catch { }
@@ -736,6 +739,7 @@ const _TRANS = new Set(["create:belt", "create:depot"]);
 function _updateBasinCanal(basin) {
     const { x, y, z } = basin.location;
     const dim = basin.dimension;
+    /** @type {string | null} */
     let found = null;
     outer: for (const { dir, dx, dz } of _DIRS) {
         for (const dy of [0, -1]) {
@@ -746,8 +750,8 @@ function _updateBasinCanal(basin) {
     try {
         let perm = basin.permutation;
         perm = found
-            ? perm.withState("minecraft:cardinal_direction", found).withState("create:canal", true)
-            : perm.withState("create:canal", false);
+            ? /** @type {any} */ (perm.withState("minecraft:cardinal_direction", found)).withState("create:canal", true)
+            : /** @type {any} */ (perm).withState("create:canal", false);
         basin.setPermutation(perm);
     } catch { }
 }

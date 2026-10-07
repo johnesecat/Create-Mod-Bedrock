@@ -1,4 +1,4 @@
-import { system } from "@minecraft/server";
+import { BlockPermutation, system } from "@minecraft/server";
 
 const GIRDER_ID = "create:metal_girder";
 const X_OFFSETS = [{ x: -1, y: 0, z: 0 }, { x: 1, y: 0, z: 0 }];
@@ -6,6 +6,7 @@ const Z_OFFSETS = [{ x: 0, y: 0, z: -1 }, { x: 0, y: 0, z: 1 }];
 const UP_OFFSET = { x: 0, y: 1, z: 0 };
 const DOWN_OFFSET = { x: 0, y: -1, z: 0 };
 
+/** @param {import('@minecraft/server').Block} block @param {import('@minecraft/server').Vector3} offset */
 function neighborAt(block, offset) {
     return block.dimension.getBlock({
         x: block.x + offset.x,
@@ -14,16 +15,19 @@ function neighborAt(block, offset) {
     });
 }
 
+/** @param {import('@minecraft/server').Block} block @param {import('@minecraft/server').Vector3} offset */
 function hasGirder(block, offset) {
     return neighborAt(block, offset)?.typeId === GIRDER_ID;
 }
 
+/** @param {import('@minecraft/server').Block} block */
 function hasPoleAbove(block) {
     const above = neighborAt(block, UP_OFFSET);
     return above?.typeId === GIRDER_ID
-        && above.permutation.getState("create:is_pole") === true;
+        && above.permutation.getAllStates()['create:is_pole'] === true;
 }
 
+/** @param {import('@minecraft/server').Block | undefined} block */
 function refreshGirder(block) {
     if (block?.typeId !== GIRDER_ID) return;
 
@@ -42,9 +46,9 @@ function refreshGirder(block) {
         && axis.every(offset => hasGirder(block, offset));
 
     try {
-        let permutation = block.permutation
-            .withState("create:is_pole", isPole)
-            .withState("create:connected", connected);
+        let permutation = BlockPermutation.resolve(block.typeId, {
+            ...block.permutation.getAllStates(), 'create:is_pole': isPole, 'create:connected': connected
+        });
 
         if (!isPole) {
             permutation = permutation.withState(
@@ -56,6 +60,7 @@ function refreshGirder(block) {
     } catch {}
 }
 
+/** @param {import('@minecraft/server').Dimension} dimension @param {import('@minecraft/server').Vector3} location */
 function refreshNearby(dimension, location) {
     const offsets = [
         { x: 0, y: 0, z: 0 },
@@ -67,12 +72,13 @@ function refreshNearby(dimension, location) {
     for (const offset of offsets) {
         refreshGirder(dimension.getBlock({
             x: location.x + offset.x,
-            y: location.y,
+            y: location.y + offset.y,
             z: location.z + offset.z
         }));
     }
 }
 
+/** @param {import('@minecraft/server').Block | undefined} block */
 export function metalGirderPlace(block) {
     if (block?.typeId !== GIRDER_ID) return;
     const dimension = block.dimension;
@@ -80,6 +86,7 @@ export function metalGirderPlace(block) {
     system.run(() => refreshNearby(dimension, location));
 }
 
+/** @param {import('@minecraft/server').Block} block @param {import('@minecraft/server').BlockPermutation | undefined} brokenBlockPermutation */
 export function metalGirderBreak(block, brokenBlockPermutation) {
     if (brokenBlockPermutation?.type?.id !== GIRDER_ID) return;
     const dimension = block.dimension;

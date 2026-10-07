@@ -29,6 +29,10 @@ const HOSE_POOL_SEARCH_LIMIT = 384;
 const HOSE_INFINITE_POOL_SIZE = 10000;
 const HOSE_INFINITE_SCAN_INTERVAL = 100;
 const HOSE_INFINITE_ANNOUNCEMENT_VERSION = "translated_v1";
+/** @typedef {{block: mc.Block | undefined, fluidId: string | undefined, infinite?: boolean, pipes: mc.Block[]}} PumpSource */
+/** @typedef {{block: mc.Block, direction: string, direct?: boolean}} PipeLeak */
+/** @typedef {{spouts: mc.Block[], drains: mc.Block[], basins: mc.Block[], hosePulleys: mc.Block[], tanks: mc.Block[], leaks: PipeLeak[], pipes: mc.Block[]}} PipeNetwork */
+/** @typedef {{type: "spout" | "drain" | "basin" | "hose_pulley" | "tank", block: mc.Block} | {type: "leak", block: mc.Block, direction: string, direct?: boolean}} PumpTarget */
 const hoseInfiniteScanTicks = new Map();
 
 const DIRECTIONS = {
@@ -369,22 +373,28 @@ function findHosePulleyPoolSource(hosePulley) {
     return { block: undefined, fluidId: undefined, infinite: false };
 }
 
+/** @param {mc.Block | undefined} block @returns {PumpSource} */
 function resolvePumpSource(block) {
-    if (!block) return { block: undefined, fluidId: undefined };
+    if (!block) return { block: undefined, fluidId: undefined, pipes: [] };
     if (block.typeId === HOSE_PULLEY_TYPE) {
-        return findHosePulleyPoolSource(block);
+        const source = findHosePulleyPoolSource(block);
+        return { ...source, pipes: [] };
     }
-    return { block, fluidId: getSourceFluid(block) };
+    return { block, fluidId: getSourceFluid(block), pipes: [] };
 }
 
+/** @param {mc.Block | undefined} startBlock @returns {PumpSource} */
 function resolvePumpSourceThroughPipes(startBlock) {
     const direct = resolvePumpSource(startBlock);
     if (direct.fluidId || !isPipeNetworkNode(startBlock)) return { ...direct, pipes: [] };
 
-    const queue = [{ block: startBlock, path: [] }];
+    /** @type {Array<{block: mc.Block, path: mc.Block[]}>} */
+    const queue = [{ block: /** @type {mc.Block} */ (startBlock), path: [] }];
     const visited = new Set();
     while (queue.length > 0 && visited.size < MAX_PIPE_SEARCH) {
-        const { block, path } = queue.shift();
+        const current = queue.shift();
+        if (!current) continue;
+        const { block, path } = current;
         if (!block) continue;
         const blockKey = key(block.location);
         if (visited.has(blockKey)) continue;
@@ -776,7 +786,9 @@ function hasFluidTargetConnection(block, connections) {
     );
 }
 
+/** @param {PumpTarget[]} targets @param {{x: number, y: number, z: number}} sourceLocation @returns {PumpTarget | undefined} */
 function closestTarget(targets, sourceLocation) {
+    /** @type {PumpTarget | undefined} */
     let closest = undefined;
     let closestDistance = 999999;
     for (const target of targets) {
@@ -790,7 +802,9 @@ function closestTarget(targets, sourceLocation) {
     return closest;
 }
 
+/** @param {mc.Block | undefined} startBlock @param {string} fluidId @returns {PipeNetwork} */
 function scanPipeNetwork(startBlock, fluidId) {
+    /** @type {PipeNetwork} */
     const result = {
         spouts: [],
         drains: [],
@@ -828,11 +842,14 @@ function scanPipeNetwork(startBlock, fluidId) {
         return result;
     }
 
+    /** @type {Array<{block: mc.Block, from: string | undefined}>} */
     const queue = [{ block: startBlock, from: undefined }];
     const visited = new Set();
 
     while (queue.length > 0 && visited.size < MAX_PIPE_SEARCH) {
-        const { block, from } = queue.shift();
+        const current = queue.shift();
+        if (!current) continue;
+        const { block, from } = current;
         if (!block || visited.has(key(block.location))) continue;
         visited.add(key(block.location));
         if (block.typeId === PIPE_TYPE || block.typeId === GLASS_PIPE_TYPE) result.pipes.push(block);
@@ -884,23 +901,29 @@ function movePumpFluid(block, sourceDirection, outputDirection) {
 
     const network = scanPipeNetwork(outputBlock, fluidId);
     let movedFluid = false;
+    /** @type {PumpTarget[]} */
     const spoutTargets = network.spouts.map((spout) => ({ type: "spout", block: spout }));
+    /** @type {PumpTarget[]} */
     const drainTargets = network.drains.map((drain) => ({ type: "drain", block: drain }));
+    /** @type {PumpTarget[]} */
     const basinTargets = network.basins
         .filter((basin) => !peekItemDrainFluid(basin))
         .map((basin) => ({ type: "basin", block: basin }));
+    /** @type {PumpTarget[]} */
     const hoseTargets = network.hosePulleys
         .filter((hosePulley) => {
             const outlet = getHosePulleyOutlet(hosePulley);
             return outlet && canPlaceFluid(outlet.block);
         })
         .map((hosePulley) => ({ type: "hose_pulley", block: hosePulley }));
+    /** @type {PumpTarget[]} */
     const tankTargets = network.tanks
         .filter((tank) => {
             const stored = peekFluidTankFluid(tank);
             return !stored || stored === fluidId;
         })
         .map((tank) => ({ type: "tank", block: tank }));
+    /** @type {PumpTarget[]} */
     const leakTargets = network.leaks.map((leak) => ({ type: "leak", ...leak }));
     const target = closestTarget(
         [...spoutTargets, ...drainTargets, ...basinTargets, ...hoseTargets, ...tankTargets, ...leakTargets],

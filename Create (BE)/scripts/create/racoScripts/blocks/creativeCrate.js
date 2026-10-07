@@ -1,15 +1,22 @@
 import * as racoAPI from "../raco-API.js"
 import { getItemVisual } from "../../andrielScripts/blocks/conveyorMovement.js"
 
+/** @typedef {import('@minecraft/server').Block} Block */
+/** @typedef {import('@minecraft/server').Entity} Entity */
+/** @typedef {import('@minecraft/server').ItemStack} ItemStack */
+/** @typedef {import('@minecraft/server').Container} Container */
+
 const VISUAL_TYPE = "create:conveyor_item"
 const VISUAL_TAG = "create_creative_crate_item"
 const ITEM_Y = 0.8975
 
+/** @param {Block} block */
 function locationTag(block) {
     const { x, y, z } = block.location
     return `creative_crate_${x}_${y}_${z}`
 }
 
+/** @param {Block} block */
 function visualLocation(block) {
     return {
         x: block.location.x + 0.5,
@@ -18,6 +25,7 @@ function visualLocation(block) {
     }
 }
 
+/** @param {Block} block */
 function visuals(block) {
     const tag = locationTag(block)
     return block.dimension.getEntities({
@@ -28,6 +36,7 @@ function visuals(block) {
     })
 }
 
+/** @param {Block} block */
 function getVisual(block) {
     const found = visuals(block)
     const main = found[0]
@@ -37,10 +46,12 @@ function getVisual(block) {
     return main?.isValid ? main : undefined
 }
 
+/** @param {Entity | undefined} entity */
 function storedItem(entity) {
     try { return entity?.getComponent("inventory")?.container?.getItem(0) } catch {}
 }
 
+/** @param {Entity} entity @param {ItemStack | undefined} item */
 function poseVisual(entity, item) {
     const visual = getItemVisual(item?.typeId ?? "")
     try {
@@ -54,6 +65,7 @@ function poseVisual(entity, item) {
     } catch {}
 }
 
+/** @param {Block} block @param {ItemStack} item */
 function createVisual(block, item) {
     const entity = block.dimension.spawnEntity(VISUAL_TYPE, visualLocation(block))
     try {
@@ -68,12 +80,14 @@ function createVisual(block, item) {
     return entity
 }
 
+/** @param {Block} block @param {ItemStack | undefined} item */
 function setConfiguredItem(block, item) {
     creativeCrateBreak(block)
     if (!item) return
     createVisual(block, item)
 }
 
+/** @param {Block | undefined} block @param {number} [amount] */
 export function getCreativeCrateItem(block, amount = 1) {
     if (block?.typeId !== "create:crate_creative") return undefined
     const configured = storedItem(getVisual(block))
@@ -83,12 +97,14 @@ export function getCreativeCrateItem(block, amount = 1) {
     return result
 }
 
+/** @param {Container | undefined} container @param {ItemStack | undefined} item */
 function insertInto(container, item) {
     if (!container || !item) return false
     const remainder = container.addItem(item)
     return !remainder
 }
 
+/** @param {Block} block */
 function feedHopperBelow(block) {
     const hopper = block.below()
     if (hopper?.typeId !== "minecraft:hopper") return
@@ -98,6 +114,7 @@ function feedHopperBelow(block) {
     insertInto(container, item)
 }
 
+/** @param {Block | undefined} block @param {import('@minecraft/server').Player | undefined} player @param {ItemStack | undefined} heldItem */
 export function creativeCrateInteract(block, player, heldItem) {
     if (!block || !player) return
     if (heldItem?.typeId === "create:wrench") return
@@ -112,6 +129,7 @@ export function creativeCrateInteract(block, player, heldItem) {
     setConfiguredItem(block, configured)
 }
 
+/** @param {Block} block */
 export function creativeCrateTick(block) {
     const entity = getVisual(block)
     if (entity?.isValid) {
@@ -125,6 +143,7 @@ export function creativeCrateTick(block) {
     feedHopperBelow(block)
 }
 
+/** @param {Block | undefined} block */
 export function creativeCrateBreak(block) {
     if (!block?.dimension) return
     for (const entity of visuals(block)) {

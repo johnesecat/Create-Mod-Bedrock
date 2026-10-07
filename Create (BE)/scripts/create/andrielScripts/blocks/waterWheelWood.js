@@ -1,3 +1,5 @@
+import { BlockPermutation, GameMode } from '@minecraft/server';
+
 const WATER_WHEELS = new Set([
     "create:water_wheel",
     "create:large_water_wheel"
@@ -18,17 +20,24 @@ const PLANK_WOOD_TYPES = new Map([
     ["minecraft:pale_oak_planks", 11]
 ]);
 
+/** @param {import('@minecraft/server').Block | undefined} block
+ * @param {import('@minecraft/server').ItemStack | undefined} itemStack
+ */
 export function isWaterWheelWoodInteraction(block, itemStack) {
-    return WATER_WHEELS.has(block?.typeId) && PLANK_WOOD_TYPES.has(itemStack?.typeId);
+    return !!block && !!itemStack && WATER_WHEELS.has(block.typeId) && PLANK_WOOD_TYPES.has(itemStack.typeId);
 }
 
+/** @param {import('@minecraft/server').Player} player
+ * @param {string} expectedTypeId
+ */
 function consumeHeldPlank(player, expectedTypeId) {
     try {
-        if (player.getGameMode() === "Creative") return;
+        if (player.getGameMode() === GameMode.Creative) return;
     } catch {}
 
     try {
         const inventory = player.getComponent("minecraft:inventory")?.container;
+        if (!inventory) return;
         const slot = player.selectedSlotIndex;
         const current = inventory?.getItem(slot);
         if (!current || current.typeId !== expectedTypeId) return;
@@ -40,16 +49,21 @@ function consumeHeldPlank(player, expectedTypeId) {
     } catch {}
 }
 
+/** @param {import('@minecraft/server').Player} player
+ * @param {import('@minecraft/server').Block | undefined} block
+ * @param {import('@minecraft/server').ItemStack | undefined} itemStack
+ */
 export function applyWaterWheelWood(player, block, itemStack) {
-    if (!isWaterWheelWoodInteraction(block, itemStack)) return false;
+    if (!block || !itemStack || !isWaterWheelWoodInteraction(block, itemStack)) return false;
 
     const woodType = PLANK_WOOD_TYPES.get(itemStack.typeId);
-    let oldWoodType;
-    try { oldWoodType = block.permutation.getState("create:wood_type") ?? 0; } catch { return false; }
+    if (woodType === undefined) return false;
+    const states = block.permutation.getAllStates();
+    const oldWoodType = states['create:wood_type'] ?? 0;
     if (oldWoodType === woodType) return true;
 
     try {
-        block.setPermutation(block.permutation.withState("create:wood_type", woodType));
+        block.setPermutation(BlockPermutation.resolve(block.typeId, { ...states, 'create:wood_type': woodType }));
     } catch {
         return false;
     }

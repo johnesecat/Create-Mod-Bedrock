@@ -1,4 +1,4 @@
-import { system } from "@minecraft/server";
+import { BlockPermutation, system } from "@minecraft/server";
 import { INVERT_FACE, posToKey, getAxisFromRotation } from "../rpm/rpmHelpers";
 import { recalculateNetwork } from "../rpm/rpmCore";
 import { WATER_IDS, waterHeight, getFlowAt } from "./waterWheel";
@@ -38,6 +38,7 @@ const RIM_OFFSETS = [
 // ─── Helpers ─────────────────────────────────────────────────────────────────
 
 // Converts a local [a, b] rim offset to a world {x, y, z} offset.
+/** @param {number} a @param {number} b @param {'X' | 'Y' | 'Z'} axis */
 function rimToWorld(a, b, axis) {
     if (axis === 'Z') return { x: a, y: b, z: 0 }; // XY plane
     if (axis === 'X') return { x: 0, y: b, z: a }; // YZ plane  (a→Z, b→Y)
@@ -49,6 +50,7 @@ function rimToWorld(a, b, axis) {
 //   Axis Z CW:  (x,y) → ( y, -x)
 //   Axis X CW:  (y,z) → ( z, -y)
 //   Axis Y CCW: (x,z) → ( z, -x)  ← matches the small wheel's empirical correction
+/** @param {import('@minecraft/server').Vector3} worldOffset @param {'X' | 'Y' | 'Z'} axis */
 function computePositive(worldOffset, axis) {
     const len = Math.sqrt(worldOffset.x ** 2 + worldOffset.y ** 2 + worldOffset.z ** 2);
     if (len < 0.001) return { x: 0, y: 0, z: 0 };
@@ -64,8 +66,11 @@ function computePositive(worldOffset, axis) {
 // Checks the 12 rim positions and returns a score in [-12, +12].
 // Logic is identical to the small wheel but uses dynamic positive directions
 // because rim offsets are not always axis-aligned.
+/** @param {import('@minecraft/server').Block} block @param {import('@minecraft/server').Dimension} dimension */
 function calculateFlowScore(block, dimension) {
-    const axis = getAxisFromRotation(INVERT_FACE[block.permutation.getState('minecraft:facing_direction')]);
+    const rotation = block.permutation.getState('minecraft:facing_direction');
+    if (typeof rotation !== 'string') return 0;
+    const axis = getAxisFromRotation(INVERT_FACE[rotation]);
     let score = 0;
 
     for (const [a, b] of RIM_OFFSETS) {
@@ -97,10 +102,12 @@ function calculateFlowScore(block, dimension) {
 
 // ─── Persistent state ────────────────────────────────────────────────────────
 
+/** @type {Map<string, {lastFlowScore: number | null, lastCheckTick: number}>} */
 const largeWheelData = new Map(); // blockKey → { lastFlowScore, lastCheckTick }
 
 // ─── Tick ─────────────────────────────────────────────────────────────────────
 
+/** @param {import('@minecraft/server').Block} block @param {import('@minecraft/server').Dimension} dimension */
 export function largeWaterWheelTick(block, dimension) {
     const tick     = system.currentTick;
     const blockKey = posToKey(block.x, block.y, block.z);
@@ -129,13 +136,18 @@ export function largeWaterWheelTick(block, dimension) {
     entity.setDynamicProperty('create:generator_rpm', newRpm);
 
     const active = newRpm !== 0;
-    if (block.permutation.getState('create:active_generator') !== active)
-        block.setPermutation(block.permutation.withState('create:active_generator', active));
+    const states = block.permutation.getAllStates();
+    if (states['create:active_generator'] !== active)
+        block.setPermutation(BlockPermutation.resolve(block.typeId, {
+            ...states,
+            'create:active_generator': active
+        }));
 
     system.runJob(recalculateNetwork(block, dimension, { eventType: 'generator' }));
 }
 
 // Clears persistent data when the block is broken
+/** @param {import('@minecraft/server').Block} block */
 export function largeWaterWheelDeleteData(block) {
     largeWheelData.delete(posToKey(block.x, block.y, block.z));
 }

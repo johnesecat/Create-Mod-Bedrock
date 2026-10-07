@@ -77,15 +77,26 @@ const CRUSHING_RECIPES = {
 // Interval: every 10 ticks while spinning.
 const MOB_DAMAGE_AMOUNT = 10; // half hearts × 2
 
+/** @typedef {{item: string, count: number, chance?: number}} CrushingOutput */
+/** @typedef {{duration: number, particleRGB: {red: number, green: number, blue: number, alpha: number}, output: CrushingOutput[]}} CrushingRecipe */
+/** @typedef {import('@minecraft/server').Vector3} Vector3 */
+/** @typedef {import('@minecraft/server').Dimension} Dimension */
+/** @typedef {import('@minecraft/server').Block} Block */
+/** @typedef {import('@minecraft/server').Entity} Entity */
+/** @typedef {{startTick: number}} CrushingProgress */
+/** @type {Readonly<Record<string, CrushingRecipe>>} */
+const crushingRecipesTyped = CRUSHING_RECIPES;
+
 /**
  * Checks if a neighbor block is a valid crushing partner and returns its entity RPM.
  * Returns null if not a valid partner.
  * @param {mc.Block} neighbor
  * @returns {mc.Entity | null}
  */
+/** @param {Block | undefined} neighbor @returns {Entity | null} */
 function getNeighborEntity(neighbor) {
     if (!neighbor || neighbor.typeId !== "create:crushing_wheel") return null;
-    if (!neighbor.permutation.getState("create:is_spinning")) return null;
+    if (neighbor.permutation.getAllStates()["create:is_spinning"] !== true) return null;
     return neighbor.dimension.getEntities({
         type: "create:crushing_wheel_entity",
         location: neighbor.center(),
@@ -101,8 +112,12 @@ function getNeighborEntity(neighbor) {
  * Distance 1 = adjacent blocks (gap center = midpoint between the two block centers).
  * Distance 2 = one air block between them (gap center = center of the middle block).
  */
+/** @param {Block} block @param {Entity} entity */
+/** @typedef {{partner: Block, partnerEntity: Entity, gap: Vector3}} ActiveCrushingPair */
+/** @param {Block} block @param {Entity} entity @returns {ActiveCrushingPair | null} */
 function findActivePair(block, entity) {
-    const myRpm = entity.getProperty("create:rpm") ?? 0;
+    const rawRpm = entity.getProperty("create:rpm");
+    const myRpm = typeof rawRpm === "number" ? rawRpm : 0;
     if (myRpm === 0) return null;
 
     const directions = [
@@ -117,8 +132,9 @@ function findActivePair(block, entity) {
         try {
             const neighbor = dir.d1();
             const neighborEntity = getNeighborEntity(neighbor);
-            if (neighborEntity) {
-                const neighborRpm = neighborEntity.getProperty("create:rpm") ?? 0;
+            if (neighbor && neighborEntity) {
+                const neighborValue = neighborEntity.getProperty("create:rpm");
+                const neighborRpm = typeof neighborValue === "number" ? neighborValue : 0;
                 if (neighborRpm !== 0 && Math.sign(myRpm) !== Math.sign(neighborRpm)) {
                     const a = block.center(), b = neighbor.center();
                     return {
@@ -134,11 +150,14 @@ function findActivePair(block, entity) {
         try {
             const neighbor2 = dir.d2();
             const neighborEntity2 = getNeighborEntity(neighbor2);
-            if (neighborEntity2) {
-                const neighborRpm2 = neighborEntity2.getProperty("create:rpm") ?? 0;
+            if (neighbor2 && neighborEntity2) {
+                const neighborValue = neighborEntity2.getProperty("create:rpm");
+                const neighborRpm2 = typeof neighborValue === "number" ? neighborValue : 0;
                 if (neighborRpm2 !== 0 && Math.sign(myRpm) !== Math.sign(neighborRpm2)) {
                     // Gap is the middle block
-                    const mid = dir.midGap().center();
+                    const middleBlock = dir.midGap();
+                    if (!middleBlock) continue;
+                    const mid = middleBlock.center();
                     return {
                         partner: neighbor2,
                         partnerEntity: neighborEntity2,
@@ -154,6 +173,7 @@ function findActivePair(block, entity) {
 /**
  * Spawn colored crushing particles at the gap.
  */
+/** @param {Dimension} dimension @param {Vector3} pos @param {{red: number, green: number, blue: number, alpha: number}} color @param {number} count */
 function spawnCrushingParticles(dimension, pos, color, count) {
     const molang = new mc.MolangVariableMap();
     molang.setColorRGBA("color", color);
@@ -164,10 +184,12 @@ function spawnCrushingParticles(dimension, pos, color, count) {
     }
 }
 
+/** @param {Dimension} dimension @param {Vector3} pos */
 function spawnCritParticles(dimension, pos) {
     try { dimension.spawnParticle("create:millstone_crit", pos); } catch {}
 }
 
+/** @param {number} rpm @param {number} duration */
 function getProcessingTicks(rpm, duration) {
     let mpf = Math.abs(rpm / 16);
     mpf = Math.max(1, Math.min(512, mpf));
@@ -179,6 +201,7 @@ function getProcessingTicks(rpm, duration) {
  * Only the block with the smaller (x+z) coordinate drives processing (avoids double-processing).
  * @param {mc.Block} block
  */
+/** @param {Block} block */
 export function crushingWheelTick(block) {
     const entity = block?.dimension?.getEntities({
         type: "create:crushing_wheel_entity",
@@ -187,7 +210,8 @@ export function crushingWheelTick(block) {
     })[0];
     if (!entity) return;
 
-    const rpm = entity.getProperty("create:rpm") ?? 0;
+    const rpmValue = entity.getProperty("create:rpm");
+    const rpm = typeof rpmValue === "number" ? rpmValue : 0;
     if (rpm === 0) return;
 
     const result = findActivePair(block, entity);
@@ -260,7 +284,7 @@ export function crushingWheelTick(block) {
         const itemStack = itemEntity.getComponent("minecraft:item")?.itemStack;
         if (!itemStack) continue;
 
-        const recipe = compatibilityRecipes.crushing.get(itemStack.typeId) ?? CRUSHING_RECIPES[itemStack.typeId];
+        const recipe = compatibilityRecipes.crushing.get(itemStack.typeId) ?? crushingRecipesTyped[itemStack.typeId];
         if (!recipe) continue;
 
         // Pin the item in place every tick so gravity can't drop it below the gap
@@ -271,7 +295,8 @@ export function crushingWheelTick(block) {
 
         // Read or start processing timer
         const procRaw = itemEntity.getDynamicProperty("create:crushing_progress");
-        let proc = (procRaw != null) ? JSON.parse(procRaw) : null;
+        /** @type {CrushingProgress | null} */
+        let proc = typeof procRaw === "string" ? JSON.parse(procRaw) : null;
 
         if (!proc) {
             proc = { startTick: now };

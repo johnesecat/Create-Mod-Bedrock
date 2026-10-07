@@ -1,4 +1,4 @@
-import { BlockPermutation, ItemStack, MolangVariableMap, system } from "@minecraft/server";
+import { BlockPermutation, EquipmentSlot, ItemStack, MolangVariableMap, system } from "@minecraft/server";
 import { DIRECTION_OFFSETS, INVERT_FACE, posToKey, resolveBlockFaces } from "../rpm/rpmHelpers";
 import { removeItem, replaceableBlocks, rotationToFace } from "../xZ-Utils";
 import { initRpmBlock, recalculateNetwork } from "../rpm/rpmCore";
@@ -34,12 +34,18 @@ const BELT_DYE_COLORS = new Map([
 const pendingConnections = new Map(); // playerId → { x, y, z }
 const previewTargets = new Map();
 
+/** @param {import('@minecraft/server').ItemStack | undefined} itemStack */
 export function isMechanicalBeltDye(itemStack) {
-    return BELT_DYE_COLORS.has(itemStack?.typeId);
+    return typeof itemStack?.typeId === 'string' && BELT_DYE_COLORS.has(itemStack.typeId);
 }
 
 // ==================== INTERAÇÃO ====================
 
+/** @param {import('@minecraft/server').Player} player
+ * @param {import('@minecraft/server').Block} block
+ * @param {import('@minecraft/server').Dimension} dimension
+ * @param {import('@minecraft/server').ItemStack | undefined} itemStack
+ */
 export function mechanicalBeltInteract(player, block, dimension, itemStack) {
     if (itemStack?.typeId !== 'create:mechanical_belt') return;
     if (tryExtendConveyorForward(player, block, dimension)) return;
@@ -80,12 +86,17 @@ export function mechanicalBeltInteract(player, block, dimension, itemStack) {
     const result = createConveyor(shaft1, shaft2, dimension);
 };
 
+/** @param {string} playerId */
 export function cancelPendingConnection(playerId) {
     pendingConnections.delete(playerId);
 };
 
 // ==================== PREVIEW ====================
 
+/** @param {import('@minecraft/server').Player} player
+ * @param {import('@minecraft/server').Dimension} dimension
+ * @param {number} currentTick
+ */
 export function conveyorPreviewTick(player, dimension, currentTick) {
     const playerId = player.id;
     if (!pendingConnections.has(playerId)) return;
@@ -123,7 +134,8 @@ export function conveyorPreviewTick(player, dimension, currentTick) {
     if (rayResult.block.typeId === 'create:shaft') {
         targetBlock = rayResult.block;
     } else {
-        try { targetBlock = rayResult.block[rotationToFace[rayResult.face.toLowerCase()]](); } catch {}
+        const face = rotationToFace[/** @type {keyof typeof rotationToFace} */ (rayResult.face.toLowerCase())];
+        try { if (face) targetBlock = rayResult.block[/** @type {'north' | 'south' | 'east' | 'west' | 'above' | 'below'} */ (face)](); } catch {}
     }
     if (!targetBlock) { previewTargets.delete(playerId); return; }
 
@@ -180,6 +192,10 @@ export function conveyorPreviewTick(player, dimension, currentTick) {
  * Checa se o caminho entre start e end está livre.
  * Permite: ar e shafts no mesmo eixo.
  */
+/** @param {import('@minecraft/server').Dimension} dimension
+ * @param {import('@minecraft/server').Vector3} location
+ * @param {{red: number, green: number, blue: number, alpha: number}} color
+ */
 function spawnBeltPreviewParticle(dimension, location, color) {
     const particleData = new MolangVariableMap();
     particleData.setFloat('speed', 0);
@@ -197,6 +213,11 @@ function spawnBeltPreviewParticle(dimension, location, color) {
     try { dimension.spawnParticle('create:belt_preview', location, particleData); } catch {}
 }
 
+/** @param {import('@minecraft/server').Dimension} dimension
+ * @param {import('@minecraft/server').Vector3} startPos
+ * @param {import('@minecraft/server').Vector3} endPos
+ * @param {'X' | 'Y' | 'Z'} axis
+ */
 function isPathClear(dimension, startPos, endPos, axis) {
     const dx = endPos.x - startPos.x;
     const dy = endPos.y - startPos.y;
@@ -228,11 +249,16 @@ function isPathClear(dimension, startPos, endPos, axis) {
     return true;
 }
 
+/** @param {import('@minecraft/server').Vector3} shaft1Pos
+ * @param {import('@minecraft/server').Vector3} targetPos
+ * @param {'X' | 'Y' | 'Z'} axis
+ */
 function snapToValidDirection(shaft1Pos, targetPos, axis) {
     const dx = Math.round(targetPos.x - 0.5) - shaft1Pos.x;
     const dy = Math.round(targetPos.y - 0.5) - shaft1Pos.y;
     const dz = Math.round(targetPos.z - 0.5) - shaft1Pos.z;
 
+    /** @type {Array<{x: number, y: number, z: number}>} */
     const candidates = [];
 
     if (axis === 'Z') {
@@ -256,6 +282,7 @@ function snapToValidDirection(shaft1Pos, targetPos, axis) {
 
     if (candidates.length === 0) return null;
 
+    /** @type {{x: number, y: number, z: number} | null} */
     let best = null;
     let bestDist = Infinity;
     for (const c of candidates) {
@@ -263,6 +290,7 @@ function snapToValidDirection(shaft1Pos, targetPos, axis) {
         if (dist < bestDist) { bestDist = dist; best = c; }
     }
 
+    if (!best) return null;
     let length = Math.max(Math.abs(best.x), Math.abs(best.y), Math.abs(best.z));
     if (length > MAX_CONVEYOR_LENGTH - 1) {
         const scale = (MAX_CONVEYOR_LENGTH - 1) / length;
@@ -284,18 +312,20 @@ function snapToValidDirection(shaft1Pos, targetPos, axis) {
 
 // ==================== VALIDAÇÃO ====================
 
+/** @param {import('@minecraft/server').Player} player @param {import('@minecraft/server').Block} block @param {import('@minecraft/server').Dimension} dimension */
 function tryExtendConveyorForward(player, block, dimension) {
     if (player.isSneaking) return false;
     if (block.typeId !== 'create:mechanical_belt') return false;
 
-    const part = block.permutation.getState('create:part');
-    const hasPulley = block.permutation.getState('create:has_pulley') ?? false;
+    const part = block.permutation.getAllStates()['create:part'];
+    const hasPulley = block.permutation.getAllStates()['create:has_pulley'] ?? false;
     if (!hasPulley || (part !== 'start' && part !== 'end')) return false;
 
-    const slope = block.permutation.getState('create:slope');
+    const slope = block.permutation.getAllStates()['create:slope'];
     const blockFace = block.permutation.getState('minecraft:block_face');
-    const diagonalFlip = block.permutation.getState('create:diagonal_flip') ?? false;
+    const diagonalFlip = block.permutation.getAllStates()['create:diagonal_flip'] === true;
     const axis = faceToAxis(blockFace);
+    if (typeof slope !== 'string') return false;
     const step = getStepFromSlope(slope, axis, diagonalFlip);
     if (!step) return false;
 
@@ -310,7 +340,7 @@ function tryExtendConveyorForward(player, block, dimension) {
 
     let newEndBlock;
     try { newEndBlock = dimension.getBlock(newEndPos); } catch { return false; }
-    if (!canUseBlockForBeltExtension(newEndBlock, axis)) return false;
+    if (!newEndBlock || !canUseBlockForBeltExtension(newEndBlock, axis)) return false;
 
     const path = collectExtendedConveyorPath(dimension, block, newEndPos, forward, part, slope, axis, diagonalFlip);
     if (!path || path.length > MAX_CONVEYOR_LENGTH) return false;
@@ -322,6 +352,7 @@ function tryExtendConveyorForward(player, block, dimension) {
     return true;
 }
 
+/** @param {import('@minecraft/server').Dimension} dimension @param {import('@minecraft/server').Block} block @param {import('@minecraft/server').Vector3} step */
 function getBeltEndpointForwardDirection(dimension, block, step) {
     const backward = { x: -step.x, y: -step.y, z: -step.z };
     const behind = getBlockAtOffset(dimension, block, backward);
@@ -333,6 +364,7 @@ function getBeltEndpointForwardDirection(dimension, block, step) {
     return null;
 }
 
+/** @param {import('@minecraft/server').Dimension} dimension @param {import('@minecraft/server').Block} block @param {import('@minecraft/server').Vector3} offset */
 function getBlockAtOffset(dimension, block, offset) {
     try {
         return dimension.getBlock({ x: block.x + offset.x, y: block.y + offset.y, z: block.z + offset.z });
@@ -341,6 +373,7 @@ function getBlockAtOffset(dimension, block, offset) {
     }
 }
 
+/** @param {import('@minecraft/server').Block | undefined} block @param {'X' | 'Y' | 'Z'} axis */
 function canUseBlockForBeltExtension(block, axis) {
     if (!block?.isValid) return false;
     if (block.isAir || block.isLiquid || replaceableBlocks.has(block.typeId)) return true;
@@ -348,6 +381,15 @@ function canUseBlockForBeltExtension(block, axis) {
         && faceToAxis(block.permutation.getState('minecraft:block_face')) === axis;
 }
 
+/** @param {import('@minecraft/server').Dimension} dimension
+ * @param {import('@minecraft/server').Block} clickedEndBlock
+ * @param {import('@minecraft/server').Vector3} newEndPos
+ * @param {import('@minecraft/server').Vector3} forward
+ * @param {string} clickedPart
+ * @param {string} slope
+ * @param {'X' | 'Y' | 'Z'} axis
+ * @param {boolean} diagonalFlip
+ */
 function collectExtendedConveyorPath(dimension, clickedEndBlock, newEndPos, forward, clickedPart, slope, axis, diagonalFlip) {
     const reverse = { x: -forward.x, y: -forward.y, z: -forward.z };
     const clickedPos = { x: clickedEndBlock.x, y: clickedEndBlock.y, z: clickedEndBlock.z };
@@ -366,7 +408,7 @@ function collectExtendedConveyorPath(dimension, clickedEndBlock, newEndPos, forw
         if (!block?.isValid || block.typeId !== 'create:mechanical_belt') break;
 
         positions.push(pos);
-        const part = block.permutation.getState('create:part');
+        const part = block.permutation.getAllStates()['create:part'];
         if (part === 'start' || part === 'end') {
             foundOppositeEnd = true;
             break;
@@ -388,6 +430,10 @@ function collectExtendedConveyorPath(dimension, clickedEndBlock, newEndPos, forw
     }));
 }
 
+/** @param {import('@minecraft/server').Block} shaft1 @param {import('@minecraft/server').Block} shaft2 */
+/** @param {import('@minecraft/server').Block} shaft1 @param {import('@minecraft/server').Block} shaft2
+ * @returns {{valid: false, reason: string} | {valid: true, axis: 'X' | 'Y' | 'Z', slope: string, length: number}}
+ */
 export function validateConveyorPlacement(shaft1, shaft2) {
     if (shaft1.typeId !== 'create:shaft' || shaft2.typeId !== 'create:shaft') {
         return { valid: false, reason: 'both_must_be_shafts' };
@@ -435,6 +481,8 @@ export function validateConveyorPlacement(shaft1, shaft2) {
 
 // ==================== CAMINHO ====================
 
+/** @param {import('@minecraft/server').Block} shaft1 @param {import('@minecraft/server').Block} shaft2 @param {{axis: 'X' | 'Y' | 'Z', slope: string}} validation */
+/** @param {import('@minecraft/server').Block} shaft1 @param {import('@minecraft/server').Block} shaft2 @param {{axis: 'X' | 'Y' | 'Z', slope: string}} validation */
 export function calculatePath(shaft1, shaft2, validation) {
     const { axis, slope } = validation;
     const [start, end] = orderStartEnd(shaft1, shaft2, axis, slope);
@@ -466,7 +514,12 @@ export function calculatePath(shaft1, shaft2, validation) {
 
 // ==================== CONSTRUÇÃO ====================
 
+/** @param {Array<{pos: import('@minecraft/server').Vector3, part: string, slope: string, axis: 'X' | 'Y' | 'Z', diagonalFlip?: boolean}>} path
+ * @param {import('@minecraft/server').Dimension} dimension
+ */
+/** @param {Array<{pos: import('@minecraft/server').Vector3, part: string, slope: string, axis: 'X' | 'Y' | 'Z', diagonalFlip?: boolean}>} path @param {import('@minecraft/server').Dimension} dimension */
 export function buildConveyor(path, dimension) {
+    /** @type {number[]} */
     const shaftsFound = [];
     for (let i = 1; i < path.length - 1; i++) {
         let block;
@@ -474,6 +527,7 @@ export function buildConveyor(path, dimension) {
         if (block?.typeId === 'create:shaft') shaftsFound.push(i);
     }
 
+    /** @type {Record<'X' | 'Y' | 'Z', string>} */
     const blockFaceMap = { 'Z': 'north', 'X': 'east', 'Y': 'up' };
 
     for (let i = 0; i < path.length; i++) {
@@ -502,7 +556,7 @@ export function buildConveyor(path, dimension) {
                 'create:part': part,
                 'create:diagonal_flip': diagonalFlip ?? false,
                 'create:has_pulley': hasPulley,
-                'minecraft:block_face': blockFaceMap[axis],
+                'minecraft:block_face': blockFaceMap[/** @type {'X' | 'Y' | 'Z'} */ (axis)],
             }));
         } catch { continue; }
     }
@@ -536,6 +590,8 @@ export function buildConveyor(path, dimension) {
     return path;
 }
 
+/** @param {import('@minecraft/server').Entity | undefined} entity @param {{diagonalFlip?: boolean, hasPulley: boolean, slope: string, part: string, axis: 'X' | 'Y' | 'Z', blockFaceMap: Record<'X' | 'Y' | 'Z', string>}} data */
+/** @param {import('@minecraft/server').Entity | undefined} entity @param {{diagonalFlip?: boolean, hasPulley: boolean, slope: string, part: string, axis: 'X' | 'Y' | 'Z', blockFaceMap: Record<'X' | 'Y' | 'Z', string>}} data */
 function syncBeltEntity(entity, data) {
     if (!entity?.isValid) return;
     try { entity.setProperty('create:diagonal_flip', data.diagonalFlip ?? false); } catch {}
@@ -551,6 +607,7 @@ function syncBeltEntity(entity, data) {
  * Quebrar qualquer bloco da esteira destrói toda ela.
  * Blocos com pulley voltam a ser shaft (exceto o bloco quebrado, que dropa shaft).
  */
+/** @param {import('@minecraft/server').Block} block @param {import('@minecraft/server').Dimension} dimension @param {import('@minecraft/server').BlockPermutation} brokenBlockPermutation */
 export function onBreakConveyor(block, dimension, brokenBlockPermutation) {
     const brokenPos = { x: block.x, y: block.y, z: block.z };
 
@@ -571,24 +628,28 @@ export function onBreakConveyor(block, dimension, brokenBlockPermutation) {
         try { convItem.remove(); } catch {}
     };
 
-    const slope = brokenBlockPermutation.getState('create:slope');
+    const brokenStates = brokenBlockPermutation.getAllStates();
+    const slope = brokenStates['create:slope'];
     const blockFace = brokenBlockPermutation.getState('minecraft:block_face');
-    const diagonalFlip = brokenBlockPermutation.getState('create:diagonal_flip') ?? false;
-    const hasPulley = brokenBlockPermutation.getState('create:has_pulley') ?? false;
-    const brokenPart = brokenBlockPermutation.getState('create:part');
+    const diagonalFlip = brokenStates['create:diagonal_flip'] === true;
+    const hasPulley = brokenStates['create:has_pulley'] === true;
+    const brokenPart = brokenStates['create:part'];
     const axis = faceToAxis(blockFace);
 
+    if (typeof slope !== 'string') return;
     const step = getOrderedStepFromSlope(slope, axis, diagonalFlip);
     if (!step) return;
 
     // Coleta todos os blocos da esteira (busca nas duas direções)
+    /** @type {Array<{pos: import('@minecraft/server').Vector3, hasPulley: boolean, wasBroken: boolean}>} */
     const beltBlocks = [{ pos: brokenPos, hasPulley, wasBroken: true }];
     const match = { slope, blockFace, diagonalFlip };
     if (brokenPart !== 'end') searchBeltDirection(dimension, brokenPos, step, beltBlocks, match);
     if (brokenPart !== 'start') searchBeltDirection(dimension, brokenPos, { x: -step.x, y: -step.y, z: -step.z }, beltBlocks, match);
 
+    /** @type {Record<'X' | 'Y' | 'Z', string>} */
     const blockFaceMap = { 'Z': 'north', 'X': 'east', 'Y': 'up' };
-    const shaftFace = blockFaceMap[axis];
+    const shaftFace = blockFaceMap[/** @type {'X' | 'Y' | 'Z'} */ (axis)];
 
     if (hasPulley) dimension.spawnItem(new ItemStack('create:shaft', 1), brokenPos);
 
@@ -599,7 +660,7 @@ export function onBreakConveyor(block, dimension, brokenBlockPermutation) {
         try { targetBlock = dimension.getBlock(entry.pos); } catch { continue; }
         if (!targetBlock?.isValid || targetBlock.typeId !== 'create:mechanical_belt') continue;
 
-        const blockHasPulley = targetBlock.permutation.getState('create:has_pulley') ?? false;
+        const blockHasPulley = targetBlock.permutation.getAllStates()['create:has_pulley'] === true;
 
         if (blockHasPulley) {
             try { targetBlock.setPermutation(BlockPermutation.resolve('create:shaft', { 'minecraft:block_face': shaftFace })); } catch {}
@@ -615,23 +676,28 @@ export function onBreakConveyor(block, dimension, brokenBlockPermutation) {
     }, 1);
 };
 
+/** @param {import('@minecraft/server').Player} player @param {import('@minecraft/server').Block} block @param {import('@minecraft/server').Dimension} dimension @param {import('@minecraft/server').ItemStack} itemStack */
 export function dyeMechanicalBelt(player, block, dimension, itemStack) {
-    const colorIndex = BELT_DYE_COLORS.get(itemStack?.typeId);
+    const colorIndex = BELT_DYE_COLORS.get(itemStack.typeId);
     if (colorIndex === undefined || block?.typeId !== 'create:mechanical_belt') return false;
 
-    const slope = block.permutation.getState('create:slope');
+    const blockStates = block.permutation.getAllStates();
+    const slope = blockStates['create:slope'];
     const blockFace = block.permutation.getState('minecraft:block_face');
-    const diagonalFlip = block.permutation.getState('create:diagonal_flip') ?? false;
-    const selectedPart = block.permutation.getState('create:part');
+    const diagonalFlip = blockStates['create:diagonal_flip'] === true;
+    const selectedPart = blockStates['create:part'];
     const axis = faceToAxis(blockFace);
+    if (typeof slope !== 'string') return false;
     const step = getOrderedStepFromSlope(slope, axis, diagonalFlip);
     if (!step) return false;
 
     // Segue somente o eixo desta esteira. A busca antiga passava por todos os
     // vizinhos e acabava pintando linhas paralelas apenas por estarem encostadas.
+    /** @type {Array<{pos: import('@minecraft/server').Vector3, hasPulley: boolean, wasBroken: boolean}>} */
     const beltBlocks = [{
         pos: { x: block.x, y: block.y, z: block.z },
-        hasPulley: block.permutation.getState('create:has_pulley') ?? false
+        hasPulley: blockStates['create:has_pulley'] === true,
+        wasBroken: false
     }];
     const match = { slope, blockFace, diagonalFlip };
     const selectedPos = { x: block.x, y: block.y, z: block.z };
@@ -676,13 +742,13 @@ export function dyeMechanicalBelt(player, block, dimension, itemStack) {
 
     if (player.getGameMode() !== 'Creative') {
         const equippable = player.getComponent('minecraft:equippable');
-        const held = equippable?.getEquipment('Mainhand');
+        const held = equippable?.getEquipment(EquipmentSlot.Mainhand);
         if (held?.typeId === itemStack.typeId) {
             if (held.amount > 1) {
                 held.amount -= 1;
-                try { equippable.setEquipment('Mainhand', held); } catch {}
+                try { equippable?.setEquipment(EquipmentSlot.Mainhand, held); } catch {}
             } else {
-                try { equippable.setEquipment('Mainhand', undefined); } catch {}
+                try { equippable?.setEquipment(EquipmentSlot.Mainhand, undefined); } catch {}
             }
         }
     }
@@ -692,6 +758,8 @@ export function dyeMechanicalBelt(player, block, dimension, itemStack) {
 /**
  * Busca blocos da esteira numa direção, para ao encontrar start/end.
  */
+/** @param {import('@minecraft/server').Dimension} dimension @param {import('@minecraft/server').Vector3} pos */
+/** @param {import('@minecraft/server').Dimension} dimension @param {import('@minecraft/server').Vector3} pos */
 function removeBeltEntityAt(dimension, pos) {
     const entities = dimension.getEntities({
         type: 'create:mechanical_belt_entity',
@@ -704,6 +772,8 @@ function removeBeltEntityAt(dimension, pos) {
     }
 }
 
+/** @param {import('@minecraft/server').Dimension} dimension @param {import('@minecraft/server').Vector3} startPos @param {import('@minecraft/server').Vector3} step @param {Array<{pos: import('@minecraft/server').Vector3, hasPulley: boolean, wasBroken: boolean}>} results @param {{slope: unknown, blockFace: unknown, diagonalFlip: unknown}} match */
+/** @param {import('@minecraft/server').Dimension} dimension @param {import('@minecraft/server').Vector3} startPos @param {import('@minecraft/server').Vector3} step @param {Array<{pos: import('@minecraft/server').Vector3, hasPulley: boolean, wasBroken: boolean}>} results @param {{slope: unknown, blockFace: unknown, diagonalFlip: unknown}} match */
 function searchBeltDirection(dimension, startPos, step, results, match) {
     for (let i = 1; i <= MAX_CONVEYOR_LENGTH; i++) {
         const pos = {
@@ -717,24 +787,28 @@ function searchBeltDirection(dimension, startPos, step, results, match) {
         if (!block?.isValid || block.typeId !== 'create:mechanical_belt') break;
         if (!isSameConveyorLine(block, match)) break;
 
-        const hasPulley = block.permutation.getState('create:has_pulley') ?? false;
-        const part = block.permutation.getState('create:part');
+        const hasPulley = block.permutation.getAllStates()['create:has_pulley'] === true;
+        const part = block.permutation.getAllStates()['create:part'];
         results.push({ pos, hasPulley, wasBroken: false });
 
         if (part === 'start' || part === 'end') break;
     }
 }
 
+/** @param {import('@minecraft/server').Block} block @param {{slope: unknown, blockFace: unknown, diagonalFlip: unknown}} match */
+/** @param {import('@minecraft/server').Block} block @param {{slope: unknown, blockFace: unknown, diagonalFlip: unknown}} match */
 function isSameConveyorLine(block, match) {
     try {
-        return block.permutation.getState('create:slope') === match.slope
+        const states = block.permutation.getAllStates();
+        return states['create:slope'] === match.slope
             && block.permutation.getState('minecraft:block_face') === match.blockFace
-            && (block.permutation.getState('create:diagonal_flip') ?? false) === match.diagonalFlip;
+            && (states['create:diagonal_flip'] ?? false) === match.diagonalFlip;
     } catch {
         return false;
     }
 }
 
+/** @param {unknown} slope @param {'X' | 'Y' | 'Z'} axis @param {boolean} diagonalFlip */
 function getStepFromSlope(slope, axis, diagonalFlip) {
     if (slope === 'horizontal') {
         if (axis === 'Z') return { x: 1, y: 0, z: 0 };
@@ -752,10 +826,10 @@ function getStepFromSlope(slope, axis, diagonalFlip) {
     return null;
 }
 
+/** @param {unknown} slope @param {'X' | 'Y' | 'Z'} axis @param {boolean} diagonalFlip */
 function getOrderedStepFromSlope(slope, axis, diagonalFlip) {
     const step = getStepFromSlope(slope, axis, diagonalFlip);
     if (!step) return null;
-
     if (slope === 'horizontal' && (axis === 'Z' || axis === 'Y')) {
         return { x: -step.x, y: -step.y, z: -step.z };
     }
@@ -769,17 +843,18 @@ function getOrderedStepFromSlope(slope, axis, diagonalFlip) {
  * Adiciona pulley clicando com shaft num bloco middle.
  * Consome 1 shaft do inventário.
  */
+/** @param {import('@minecraft/server').PlayerInteractWithBlockBeforeEvent} data */
 export function addPulley(data) {
     const { block, blockFace, itemStack, player, isFirstEvent } = data;
     
     if (!isFirstEvent || player.isSneaking) return;
     if (block.typeId !== 'create:mechanical_belt') return false;
-    if (block.permutation.getState('create:part') !== 'middle') return false;
-    if (block.permutation.getState('create:has_pulley')) return false;
+    if (block.permutation.getAllStates()['create:part'] !== 'middle') return false;
+    if (block.permutation.getAllStates()['create:has_pulley'] === true) return false;
     
     data.cancel = true;
     system.run(() => {
-        block.setPermutation(block.permutation.withState('create:has_pulley', true));
+        block.setPermutation(BlockPermutation.resolve(block.typeId, { ...block.permutation.getAllStates(), 'create:has_pulley': true }));
         const entity = player.dimension.getEntities({ location: block.center(), type: 'create:mechanical_belt_entity', maxDistance: 0.5 })[0];
         if (entity) entity.setProperty('create:has_pulley', true);
 
@@ -795,13 +870,14 @@ export function addPulley(data) {
  * Remove pulley interagindo com wrench num bloco middle com pulley.
  * Dropa 1 shaft.
  */
+/** @param {import('@minecraft/server').PlayerInteractWithBlockBeforeEvent} data */
 export function removePulley(data) {
     const { player, block, isFirstEvent } = data;
 
     if (!isFirstEvent || player.isSneaking) return;
     if (block.typeId !== 'create:mechanical_belt') return false;
-    if (block.permutation.getState('create:part') !== 'middle') return false;
-    if (!block.permutation.getState('create:has_pulley')) return false;
+    if (block.permutation.getAllStates()['create:part'] !== 'middle') return false;
+    if (block.permutation.getAllStates()['create:has_pulley'] !== true) return false;
 
     system.run(() => {
         // Pega as faces do shaft ANTES de remover o pulley
@@ -810,7 +886,7 @@ export function removePulley(data) {
         const shaftFaces = axis === 'Z' ? ['north', 'south'] : axis === 'X' ? ['east', 'west'] : ['above', 'below'];
 
         // Remove o pulley
-        block.setPermutation(block.permutation.withState('create:has_pulley', false));
+        block.setPermutation(BlockPermutation.resolve(block.typeId, { ...block.permutation.getAllStates(), 'create:has_pulley': false }));
 
         const entity = player.dimension.getEntities({ location: block.center(), type: 'create:mechanical_belt_entity', maxDistance: 0.5 })[0];
         if (entity) entity.setProperty('create:has_pulley', false);
@@ -820,7 +896,7 @@ export function removePulley(data) {
 
         // Recalcula vizinhos nas direções do shaft (que perderam conexão)
         for (const face of shaftFaces) {
-            const offset = DIRECTION_OFFSETS[face];
+            const offset = DIRECTION_OFFSETS[/** @type {keyof typeof DIRECTION_OFFSETS} */ (face)];
             if (!offset) continue;
             const neighbor = block.offset(offset);
             if (neighbor && rpmConfig.has(neighbor.typeId)) {
@@ -832,6 +908,7 @@ export function removePulley(data) {
 
 // ==================== INTEGRAÇÃO ====================
 
+/** @param {import('@minecraft/server').Block} shaft1 @param {import('@minecraft/server').Block} shaft2 @param {import('@minecraft/server').Dimension} dimension */
 export function createConveyor(shaft1, shaft2, dimension) {
     const validation = validateConveyorPlacement(shaft1, shaft2);
     if (!validation.valid) return { success: false, reason: validation.reason };
@@ -843,12 +920,15 @@ export function createConveyor(shaft1, shaft2, dimension) {
 
 // ==================== HELPERS ====================
 
+/** @param {unknown} face */
+/** @param {unknown} face */
 function faceToAxis(face) {
     if (face === 'north' || face === 'south') return 'Z';
     if (face === 'east' || face === 'west') return 'X';
     return 'Y';
 }
 
+/** @param {import('@minecraft/server').Block} shaft1 @param {import('@minecraft/server').Block} shaft2 @param {'X' | 'Y' | 'Z'} axis @param {string} slope */
 function orderStartEnd(shaft1, shaft2, axis, slope) {
     if (axis === 'Y') {
         if (slope === 'horizontal') return shaft1.x > shaft2.x ? [shaft1, shaft2] : [shaft2, shaft1];

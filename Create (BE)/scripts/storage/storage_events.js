@@ -8,8 +8,12 @@ import {
   removeHopperCache
 } from "./storage_hopper.js";
 
+/** @typedef {typeof import('../vault/visual_structure.js').vaultVisualStructure} VaultVisualStructure */
+/** @typedef {NonNullable<ReturnType<VaultVisualStructure['getStructureAt']>>} VaultStructure */
+/** @typedef {{type: 'formed' | 'removed', structure: VaultStructure}} StructureChangeEvent */
 let initialized = false;
 
+/** @param {VaultVisualStructure} vaultVisualStructure */
 export function initVaultStorage(vaultVisualStructure) {
   if (initialized) return;
   initialized = true;

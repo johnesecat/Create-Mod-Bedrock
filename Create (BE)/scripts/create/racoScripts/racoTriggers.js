@@ -415,13 +415,13 @@ function replacePickedSteamEngineShaft(player) {
     let held;
     try {
         equippable = player?.getComponent("equippable");
-        held = equippable?.getEquipment("Mainhand");
+        held = equippable?.getEquipment(mc.EquipmentSlot.Mainhand);
     } catch {}
     if (held?.typeId !== "create:shaft.steam_engine") return;
 
     try {
         const shaft = new mc.ItemStack("create:shaft", held.amount);
-        equippable.setEquipment("Mainhand", shaft);
+        equippable.setEquipment(mc.EquipmentSlot.Mainhand, shaft);
     } catch {}
 }
 
@@ -552,7 +552,7 @@ function mergeMachineDescriptionStacks(inventory) {
 export function beforePlaceBlock(data) {
     const block = data.block
     const player = data.player
-    const item = player?.getComponent('equippable')?.getEquipment("Mainhand");
+    const item = player?.getComponent('equippable')?.getEquipment(mc.EquipmentSlot.Mainhand);
 }
 
 /** @param {mc.BlockComponentOnPlaceEvent} data */
@@ -639,7 +639,8 @@ export function blockTick(data){
 export function blockInteract(data){
     const block = data.block
     const player = data.player
-    const item = player?.getComponent('equippable')?.getEquipment("Mainhand")
+    if (!player) return
+    const item = player?.getComponent('equippable')?.getEquipment(mc.EquipmentSlot.Mainhand)
     const dimension = data.dimension
     const faceLocation = data.faceLocation
     const face = data.face
@@ -680,6 +681,7 @@ export function redstoneUpdate(data) {
 export function onStepOn(data) {
     const block = data.block
     const entity = data.entity
+    if (!entity) return
     if (block?.typeId === "create:depot") depot.depotStepOn(block, entity)
     if (block?.typeId === "create:item_drain") itemDrainStepOn(block, entity)
     if (block?.typeId === "create:weighted_ejector") weightedEjectorStepOn(block, entity)
@@ -723,7 +725,7 @@ export function itemUseOn(data) {
 
 
 /** @param {mc.ItemUseAfterEvent} data */
-export function itemUse(data = mc.ItemUseAfterEvent) {
+export function itemUse(data) {
     const player = data.source
     const item = data.itemStack;
     if (item?.typeId === "create:experience_nugget") useExperienceNugget(player);
@@ -751,14 +753,14 @@ export function itemStartUse(data) {
 };
 
 /** @param {mc.ItemStopUseAfterEvent} data */
-export function itemStopUse(data = mc.ItemStopUseAfterEvent) {
+export function itemStopUse(data) {
     const item = data.itemStack
     const player = data.source
     stopSandPaperUse(player, item);
 }
 
 /** @param {mc.PlayerPlaceBlockAfterEvent} data */
-export function playerBlockPlace(data = mc.PlayerPlaceBlockAfterEvent) {
+export function playerBlockPlace(data) {
     const player = data.player
     const block = data.block;
     mechanicalArmBlockPlaced(data)
@@ -822,12 +824,12 @@ export function beforeBlockBreak(data) {
 }
 
 /** @param {mc.EntitySpawnAfterEvent} data */
-export function entitySpawn(data = mc.EntitySpawnAfterEvent) {
+export function entitySpawn(data) {
     const entity = data.entity;
 }
 
 /** @param {mc.EntityLoadAfterEvent} data */
-export function entityLoad(data = mc.EntityLoadAfterEvent) {
+export function entityLoad(data) {
     const entity = data.entity;
     if (["create:shaft_hologram", "create:cogwheel_hologram", "create:large_cogwheel_hologram"].includes(entity?.typeId)) {
         try { entity.remove(); } catch {}
@@ -853,7 +855,7 @@ export function entityLoad(data = mc.EntityLoadAfterEvent) {
 }
 
 /** @param {mc.PlayerInteractWithBlockBeforeEvent} data */
-export function beforeBlockInteract(data = mc.PlayerInteractWithBlockBeforeEvent) {
+export function beforeBlockInteract(data) {
     const player = data.player
     const block = data.block
     const item = data.itemStack
@@ -862,7 +864,7 @@ export function beforeBlockInteract(data = mc.PlayerInteractWithBlockBeforeEvent
     // primeiro evento recebido já deve contar como clique, sem exigir segurar.
     const isFirstEvent = data.isFirstEvent !== false
     const interactedFace = racoAPI.blockFaceToTraits(data.blockFace)
-    if (isFirstEvent && (block?.typeId === "create:shaft" || block?.typeId === "create:shaft.steam_engine" || block?.typeId === "create:cogwheel" || block?.typeId === "create:large_cogwheel") && ["create:shaft", "create:cogwheel", "create:large_cogwheel"].includes(item?.typeId)) {
+    if (isFirstEvent && (block?.typeId === "create:shaft" || block?.typeId === "create:shaft.steam_engine" || block?.typeId === "create:cogwheel" || block?.typeId === "create:large_cogwheel") && item?.typeId && ["create:shaft", "create:cogwheel", "create:large_cogwheel"].includes(item.typeId)) {
         if (tryExtendShaft(player, block, interactedFace)) {
             data.cancel = true
             return
@@ -1085,7 +1087,7 @@ function useExperienceNugget(player) {
     if (now - lastUse < 2) return;
 
     const equippable = player.getComponent("equippable");
-    const hand = equippable?.getEquipment("Mainhand");
+    const hand = equippable?.getEquipment(mc.EquipmentSlot.Mainhand);
     if (!hand || hand.typeId !== "create:experience_nugget") return;
     try { player.setDynamicProperty("create:experience_nugget_last_use", now); } catch {}
 
@@ -1156,7 +1158,7 @@ function completeSandPaperUse(player) {
     if (mc.system.currentTick - startTick < SAND_PAPER_TICKS) return;
 
     const equippable = getEquippable(player);
-    const mainhand = equippable?.getEquipment("Mainhand");
+    const mainhand = equippable?.getEquipment(mc.EquipmentSlot.Mainhand);
     const offhand = equippable?.getEquipment("Offhand");
     if (!canSandRoseQuartz(player, mainhand) || offhand?.typeId !== "create:rose_quartz") return;
 
@@ -1177,7 +1179,7 @@ function sandPaperTick(player, currentTick) {
     const startTick = player?.getDynamicProperty?.("create:sand_paper_start");
     if (typeof startTick !== "number") return;
 
-    const mainhand = getEquippable(player)?.getEquipment("Mainhand");
+    const mainhand = getEquippable(player)?.getEquipment(mc.EquipmentSlot.Mainhand);
     if (!canSandRoseQuartz(player, mainhand)) {
         clearSandPaperUse(player);
         return;

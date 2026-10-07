@@ -65,7 +65,7 @@
             },
             "minecraft:health": { "value": 999, "max": 999 },
             "minecraft:persistent": {},
-            "minecraft:pushable": { "is_pushable": false, "is_pushable_by_piston": false },
+
             "minecraft:fire_immune": {}
         },
         "events": {

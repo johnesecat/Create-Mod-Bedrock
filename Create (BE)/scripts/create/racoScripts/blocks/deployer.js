@@ -3,7 +3,17 @@ import * as racoAPI from "../raco-API.js";
 import { initRpmBlock } from "../../andrielScripts/rpm/rpmCore.js";
 import { compatibilityRecipes } from "../../compatibility/registries.js";
 
+/** @typedef {import('@minecraft/server').Entity} Entity */
+/** @typedef {import('@minecraft/server').Block} Block */
+/** @typedef {import('@minecraft/server').ItemStack} ItemStack */
+/** @typedef {{x:number, y:number, z:number}} Vector3 */
+/** @typedef {{surface:string, held:string | Set<string>, result:string, keepHeld:boolean, damageHeld?:boolean, sound?:string}} DeployRecipe */
+/** @typedef {{held:string, keepHeld:boolean, operation?:string}} SequencedStep */
+/** @typedef {{id:string, surface:string, inProgress?:string, steps:SequencedStep[], passes:number, result:string, junk:{item:string, weight:number}[]}} SequencedRecipe */
+/** @typedef {SequencedRecipe | import('../../compatibility/registries.js').CompatibilityRecipe} DeployableSequencedRecipe */
+
 // Snaps RPM to nearest power-of-2 for animation selection
+/** @param {number} rpm */
 function snapToPowerOf2(rpm) {
     const steps = [1, 2, 4, 8, 16, 32, 64, 128, 256];
     let nearest = steps[0];
@@ -164,6 +174,7 @@ const ARTHROPOD_MOBS = new Set([
 ]);
 
 // Interact with vanilla blocks (doors, levers, trapdoors, fence gates, buttons)
+/** @param {ItemStack} item @param {Block} block @param {Entity} entity */
 function useOnBlock(item, block, entity) {
     const id = block?.typeId;
     if (!id) return;
@@ -203,6 +214,7 @@ function useOnBlock(item, block, entity) {
 //   result    – typeId the surface item becomes
 //   keepHeld  – if true, deployer's item is not consumed (e.g. tool)
 
+/** @param {Entity} deployerEntity @param {ItemStack | undefined} heldItem @param {number} [amount] */
 function consumeDeployerHeldItem(deployerEntity, heldItem, amount = 1) {
     const container = deployerEntity.getComponent("minecraft:inventory")?.container;
     if (!container || !heldItem) return;
@@ -216,6 +228,7 @@ function consumeDeployerHeldItem(deployerEntity, heldItem, amount = 1) {
     }
 }
 
+/** @param {ItemStack | undefined} heldItem @param {Block | undefined} targetBlock @param {Entity} deployerEntity */
 function tryUseHeldItemOnWorld(heldItem, targetBlock, deployerEntity) {
     if (!heldItem || !targetBlock) return false;
     if (heldItem.typeId === "minecraft:bucket" && tryFillBucketFromBlock(heldItem, targetBlock, deployerEntity)) return true;
@@ -226,6 +239,7 @@ function tryUseHeldItemOnWorld(heldItem, targetBlock, deployerEntity) {
     return false;
 }
 
+/** @param {ItemStack | undefined} heldItem @param {Block | undefined} targetBlock @param {Entity} deployerEntity */
 function tryUseHeldItemOnEntity(heldItem, targetBlock, deployerEntity) {
     if (!heldItem || !targetBlock) return false;
 
@@ -238,6 +252,7 @@ function tryUseHeldItemOnEntity(heldItem, targetBlock, deployerEntity) {
     return false;
 }
 
+/** @param {ItemStack | undefined} item */
 function getHandToolType(item) {
     const id = item?.typeId?.split(":")?.[1] ?? "";
     for (const type of HAND_TOOL_TYPES) {
@@ -246,10 +261,12 @@ function getHandToolType(item) {
     return undefined;
 }
 
+/** @param {ItemStack | undefined} item */
 function isHandModeTool(item) {
     return getHandToolType(item) !== undefined;
 }
 
+/** @param {ItemStack} item @param {Entity} deployerEntity @param {Block} block */
 function setDeployerHeldVisual(item, deployerEntity, block) {
     racoAPI.setItemInHand(item, deployerEntity, "Mainhand", 0, "create:item_visual");
     if (getDeployerHandMode(block) && isHandModeTool(item)) {
@@ -257,9 +274,10 @@ function setDeployerHeldVisual(item, deployerEntity, block) {
     }
 }
 
+/** @param {ItemStack | undefined} heldItem @param {Block | undefined} targetBlock @param {Entity} deployerEntity */
 function tryUseHandTool(heldItem, targetBlock, deployerEntity) {
     const toolType = getHandToolType(heldItem);
-    if (!toolType || !targetBlock) return false;
+    if (!heldItem || !toolType || !targetBlock) return false;
 
     const entityTarget = findEntityTarget(targetBlock, deployerEntity);
     if (entityTarget && toolType === "sword") {
@@ -273,6 +291,7 @@ function tryUseHandTool(heldItem, targetBlock, deployerEntity) {
     return false;
 }
 
+/** @param {ItemStack} heldItem @param {string} toolType @param {Entity} target @param {Entity} deployerEntity */
 function attackEntityWithTool(heldItem, toolType, target, deployerEntity) {
     if (target.typeId === "minecraft:player" || target.typeId?.startsWith("create:")) return false;
     const material = getToolMaterial(heldItem);
@@ -280,7 +299,7 @@ function attackEntityWithTool(heldItem, toolType, target, deployerEntity) {
     const enchantments = getToolEnchantments(heldItem);
     const damage = getEnchantedAttackDamage(base, enchantments, target);
     try {
-        target.applyDamage(damage, { cause: "entityAttack", damagingEntity: deployerEntity });
+        target.applyDamage(damage, { cause: mc.EntityDamageCause.entityAttack, damagingEntity: deployerEntity });
         applyAttackEnchantments(target, deployerEntity, enchantments);
         damageDeployerToolWithEnchantments(deployerEntity, heldItem, 1);
         return true;
@@ -289,6 +308,7 @@ function attackEntityWithTool(heldItem, toolType, target, deployerEntity) {
     }
 }
 
+/** @param {ItemStack} heldItem @param {Block} block @param {Entity} deployerEntity */
 function tryAxeUseOnBlock(heldItem, block, deployerEntity) {
     const stripped = STRIPPED_LOGS.get(block.typeId);
     if (!stripped) return false;
@@ -303,6 +323,7 @@ function tryAxeUseOnBlock(heldItem, block, deployerEntity) {
     return true;
 }
 
+/** @param {ItemStack} heldItem @param {Block} block @param {Entity} deployerEntity */
 function tryShovelUseOnBlock(heldItem, block, deployerEntity) {
     if (!["minecraft:grass_block", "minecraft:dirt", "minecraft:coarse_dirt", "minecraft:podzol", "minecraft:mycelium"].includes(block.typeId)) return false;
     const above = block.above();
@@ -314,6 +335,7 @@ function tryShovelUseOnBlock(heldItem, block, deployerEntity) {
     return true;
 }
 
+/** @param {ItemStack} heldItem @param {Block} block @param {Entity} deployerEntity */
 function tryHoeUseOnBlock(heldItem, block, deployerEntity) {
     const above = block.above();
     if (above && !above.isAir && !above.isLiquid) return false;
@@ -331,6 +353,7 @@ function tryHoeUseOnBlock(heldItem, block, deployerEntity) {
     return true;
 }
 
+/** @param {ItemStack} heldItem @param {string} toolType @param {Block} block @param {Entity} deployerEntity */
 function tryBreakBlockWithTool(heldItem, toolType, block, deployerEntity) {
     if (!isToolEffectiveOnBlock(toolType, block.typeId)) return false;
     const blockId = block.typeId;
@@ -351,15 +374,16 @@ function tryBreakBlockWithTool(heldItem, toolType, block, deployerEntity) {
     }
 }
 
+/** @param {ItemStack | undefined} item @returns {Map<string, number>} */
 function getToolEnchantments(item) {
     const enchantments = new Map();
     if (!item?.getComponent) return enchantments;
 
     try {
         const component = item.getComponent("minecraft:enchantable") ?? item.getComponent("enchantable");
-        const rawEnchantments = component?.getEnchantments?.() ?? component?.enchantments?.getAllEnchantments?.() ?? [];
+        const rawEnchantments = component?.getEnchantments?.() ?? [];
         for (const enchantment of rawEnchantments) {
-            const id = normalizeEnchantmentId(enchantment?.type?.id ?? enchantment?.type ?? enchantment?.id);
+            const id = normalizeEnchantmentId(enchantment?.type?.id ?? enchantment?.type);
             const level = Number(enchantment?.level ?? 1);
             if (id && level > 0) enchantments.set(id, Math.max(enchantments.get(id) ?? 0, level));
         }
@@ -383,21 +407,24 @@ function getToolEnchantments(item) {
     return enchantments;
 }
 
+/** @param {string | {id?:string} | undefined} id */
 function normalizeEnchantmentId(id) {
     if (!id) return undefined;
     return `${id}`.replace("minecraft:", "").replace(/([a-z])([A-Z])/g, "$1_$2").toLowerCase();
 }
 
+/** @param {ItemStack | Map<string, number>} itemOrEnchantments @param {...string} ids */
 function getEnchantLevel(itemOrEnchantments, ...ids) {
     const enchantments = itemOrEnchantments instanceof Map ? itemOrEnchantments : getToolEnchantments(itemOrEnchantments);
     for (const id of ids) {
         const normalized = normalizeEnchantmentId(id);
-        const level = enchantments.get(normalized);
+        const level = normalized ? enchantments.get(normalized) : undefined;
         if (level) return level;
     }
     return 0;
 }
 
+/** @param {number} baseDamage @param {Map<string, number>} enchantments @param {Entity} target */
 function getEnchantedAttackDamage(baseDamage, enchantments, target) {
     let damage = baseDamage;
     const sharpness = getEnchantLevel(enchantments, "sharpness", "damage_all");
@@ -412,6 +439,7 @@ function getEnchantedAttackDamage(baseDamage, enchantments, target) {
     return damage;
 }
 
+/** @param {Entity} target @param {Entity} deployerEntity @param {Map<string, number>} enchantments */
 function applyAttackEnchantments(target, deployerEntity, enchantments) {
     const fireAspect = getEnchantLevel(enchantments, "fire_aspect");
     if (fireAspect > 0) {
@@ -422,6 +450,7 @@ function applyAttackEnchantments(target, deployerEntity, enchantments) {
     if (knockback > 0) applyToolKnockback(target, deployerEntity, knockback);
 }
 
+/** @param {Entity} target @param {Entity} deployerEntity @param {number} level */
 function applyToolKnockback(target, deployerEntity, level) {
     try {
         const dx = target.location.x - deployerEntity.location.x;
@@ -435,6 +464,7 @@ function applyToolKnockback(target, deployerEntity, level) {
     } catch {}
 }
 
+/** @param {Block} block @param {string} blockId @param {Vector3} location */
 function dropSilkTouchBlock(block, blockId, location) {
     let itemStack;
     try { itemStack = new mc.ItemStack(blockId, 1); } catch { return false; }
@@ -448,6 +478,7 @@ function dropSilkTouchBlock(block, blockId, location) {
     }
 }
 
+/** @param {Entity | undefined} deployerEntity */
 function deployerBlockFromEntity(deployerEntity) {
     const loc = deployerEntity?.location;
     if (!loc) return null;
@@ -463,6 +494,7 @@ function deployerBlockFromEntity(deployerEntity) {
     }
 }
 
+/** @param {Block} block @param {{x:number, z:number}} offset */
 function horizontalNeighbor(block, offset) {
     try {
         return block?.dimension?.getBlock({
@@ -475,6 +507,7 @@ function horizontalNeighbor(block, offset) {
     }
 }
 
+/** @param {Block | null | undefined} depotBlock */
 function depotHasSurfaceItem(depotBlock) {
     if (!depotBlock) return true;
     const items = depotBlock.dimension.getEntities({
@@ -488,6 +521,7 @@ function depotHasSurfaceItem(depotBlock) {
     });
 }
 
+/** @param {Entity} deployerEntity */
 function findAdjacentOutputDepot(deployerEntity) {
     const block = deployerBlockFromEntity(deployerEntity);
     if (!block) return null;
@@ -505,6 +539,7 @@ function findAdjacentOutputDepot(deployerEntity) {
     return null;
 }
 
+/** @param {Entity} deployerEntity @param {ItemStack} itemStack */
 function outputItemToAdjacentDepot(deployerEntity, itemStack) {
     if (!itemStack || itemStack.amount <= 0) return false;
     const depot = findAdjacentOutputDepot(deployerEntity);
@@ -525,6 +560,7 @@ function outputItemToAdjacentDepot(deployerEntity, itemStack) {
     }
 }
 
+/** @param {Entity} deployerEntity @param {ItemStack} itemStack @param {Vector3 | undefined} fallbackLocation */
 function outputOrSpawnFromDeployer(deployerEntity, itemStack, fallbackLocation) {
     if (outputItemToAdjacentDepot(deployerEntity, itemStack)) return true;
     try {
@@ -535,6 +571,7 @@ function outputOrSpawnFromDeployer(deployerEntity, itemStack, fallbackLocation) 
     }
 }
 
+/** @param {import('@minecraft/server').Dimension} dimension @param {string} blockId @param {Vector3} location @param {number} fortuneLevel */
 function spawnFortuneBonusDrops(dimension, blockId, location, fortuneLevel) {
     if (fortuneLevel <= 0) return;
     const itemId = FORTUNE_BLOCK_DROPS.get(blockId);
@@ -545,6 +582,7 @@ function spawnFortuneBonusDrops(dimension, blockId, location, fortuneLevel) {
     try { dimension.spawnItem(new mc.ItemStack(itemId, extra), location); } catch {}
 }
 
+/** @param {Entity} deployerEntity @param {ItemStack} heldItem @param {number} [amount] */
 function damageDeployerToolWithEnchantments(deployerEntity, heldItem, amount = 1) {
     const unbreaking = getEnchantLevel(heldItem, "unbreaking", "durability");
     if (unbreaking <= 0) {
@@ -559,6 +597,7 @@ function damageDeployerToolWithEnchantments(deployerEntity, heldItem, amount = 1
     if (damage > 0) damageDeployerTool(deployerEntity, heldItem, damage);
 }
 
+/** @param {string} toolType @param {string | undefined} blockId */
 function isToolEffectiveOnBlock(toolType, blockId) {
     if (!blockId || blockId === "minecraft:air" || blockId === "minecraft:water" || blockId === "minecraft:lava") return false;
     if (toolType === "pickaxe") return includesAny(blockId, ["stone", "ore", "deepslate", "andesite", "diorite", "granite", "tuff", "basalt", "cobble", "brick", "copper", "iron", "gold", "diamond", "emerald", "lapis", "redstone", "coal", "quartz", "obsidian"]);
@@ -568,15 +607,18 @@ function isToolEffectiveOnBlock(toolType, blockId) {
     return false;
 }
 
+/** @param {string} text @param {string[]} parts */
 function includesAny(text, parts) {
     return parts.some(part => text.includes(part));
 }
 
+/** @param {ItemStack | undefined} item */
 function getToolMaterial(item) {
     const id = item?.typeId?.split(":")?.[1] ?? "";
     return id.split("_")[0];
 }
 
+/** @param {Block} block @param {string[]} typeIds */
 function setFirstValidBlockType(block, typeIds) {
     for (const typeId of typeIds) {
         try {
@@ -587,6 +629,7 @@ function setFirstValidBlockType(block, typeIds) {
     return false;
 }
 
+/** @param {Block} targetBlock @param {Entity} deployerEntity */
 function findEntityTarget(targetBlock, deployerEntity) {
     const entities = targetBlock.dimension?.getEntities({
         location: { x: targetBlock.x + 0.5, y: targetBlock.y + 0.75, z: targetBlock.z + 0.5 },
@@ -601,6 +644,7 @@ function findEntityTarget(targetBlock, deployerEntity) {
     }) ?? null;
 }
 
+/** @param {ItemStack} heldItem @param {Entity} target @param {Entity} deployerEntity */
 function tryShearEntity(heldItem, target, deployerEntity) {
     if (target.typeId !== "minecraft:sheep" && target.typeId !== "minecraft:mooshroom") return false;
     if (isBabyEntity(target)) return false;
@@ -621,6 +665,7 @@ function tryShearEntity(heldItem, target, deployerEntity) {
     return true;
 }
 
+/** @param {Entity} entity */
 function isBabyEntity(entity) {
     return getEntityProperty(entity, "minecraft:is_baby") === true
         || getEntityProperty(entity, "is_baby") === true
@@ -629,6 +674,7 @@ function isBabyEntity(entity) {
         || entity?.getComponent?.("is_baby") !== undefined;
 }
 
+/** @param {Entity} sheep */
 function getSheepWoolItem(sheep) {
     const color = `${getEntityProperty(sheep, "minecraft:color") ?? getEntityProperty(sheep, "color") ?? "white"}`;
     const normalized = color.replace("light_blue", "light_blue").replace("silver", "light_gray");
@@ -636,6 +682,7 @@ function getSheepWoolItem(sheep) {
     return `minecraft:${valid.has(normalized) ? normalized : "white"}_wool`;
 }
 
+/** @param {ItemStack} heldItem @param {Entity} target @param {Entity} deployerEntity */
 function tryUseBucketOnEntity(heldItem, target, deployerEntity) {
     const bucketResult = getBucketEntityResult(target);
     if (!bucketResult) return false;
@@ -649,6 +696,7 @@ function tryUseBucketOnEntity(heldItem, target, deployerEntity) {
     return true;
 }
 
+/** @param {Entity} target */
 function getBucketEntityResult(target) {
     if (target.typeId === "minecraft:cow" || target.typeId === "minecraft:goat" || target.typeId === "minecraft:mooshroom") return "minecraft:milk_bucket";
     if (target.typeId === "minecraft:cod") return "minecraft:cod_bucket";
@@ -660,6 +708,7 @@ function getBucketEntityResult(target) {
     return undefined;
 }
 
+/** @param {ItemStack} heldItem @param {Entity} target @param {Entity} deployerEntity */
 function tryFeedBreedableEntity(heldItem, target, deployerEntity) {
     const foods = BREEDING_FOODS.get(target.typeId);
     if (!foods?.has(heldItem.typeId)) return false;
@@ -679,6 +728,7 @@ function tryFeedBreedableEntity(heldItem, target, deployerEntity) {
     return true;
 }
 
+/** @param {Entity} target @param {number} now */
 function findReadyMate(target, now) {
     const nearby = target.dimension.getEntities({
         type: target.typeId,
@@ -693,6 +743,7 @@ function findReadyMate(target, now) {
     }) ?? null;
 }
 
+/** @param {Entity} a @param {Entity} b @param {number} now */
 function breedEntities(a, b, now) {
     const loc = {
         x: (a.location.x + b.location.x) / 2,
@@ -714,6 +765,7 @@ function breedEntities(a, b, now) {
     spawnLoveParticles(b);
 }
 
+/** @param {ItemStack} heldItem @param {Block} targetBlock @param {Entity} deployerEntity */
 function tryPlantHeldItem(heldItem, targetBlock, deployerEntity) {
     if (!targetBlock.isAir && !targetBlock.isLiquid) return false;
 
@@ -731,6 +783,7 @@ function tryPlantHeldItem(heldItem, targetBlock, deployerEntity) {
     }
 }
 
+/** @param {string} itemId @param {Block | undefined} below */
 function getPlantBlockId(itemId, below) {
     if (!below) return undefined;
     if (SAPLING_ITEMS.has(itemId) && SAPLING_SOIL.has(below.typeId)) return itemId;
@@ -741,11 +794,13 @@ function getPlantBlockId(itemId, below) {
     return undefined;
 }
 
+/** @param {Block | undefined} below */
 function canPlaceSugarCane(below) {
     if (!below || !["minecraft:grass_block", "minecraft:dirt", "minecraft:sand", "minecraft:mud"].includes(below.typeId)) return false;
-    return ["north", "south", "east", "west"].some(face => below[face]?.()?.typeId === "minecraft:water");
+    return [below.north(), below.south(), below.east(), below.west()].some(neighbor => neighbor?.typeId === "minecraft:water");
 }
 
+/** @param {Block} block @param {Entity} deployerEntity */
 function tryApplyBoneMeal(block, deployerEntity) {
     if (tryNativeBoneMeal(block) || tryAdvanceGrowthState(block)) {
         const heldItem = deployerEntity.getComponent("minecraft:inventory")?.container?.getItem(0);
@@ -756,14 +811,12 @@ function tryApplyBoneMeal(block, deployerEntity) {
     return false;
 }
 
+/** @param {Block} block */
 function tryNativeBoneMeal(block) {
-    try {
-        const fertilizable = block.getComponent?.("minecraft:fertilizable");
-        if (fertilizable?.fertilize) return fertilizable.fertilize();
-    } catch {}
     return false;
 }
 
+/** @param {Block} block */
 function tryAdvanceGrowthState(block) {
     if (SAPLING_ITEMS.has(block.typeId)) {
         const saplingAge = getBlockState(block, "age_bit");
@@ -775,7 +828,7 @@ function tryAdvanceGrowthState(block) {
     for (const [state, value] of Object.entries(states)) {
         if (state === "age_bit" && value === false) {
             try {
-                block.setPermutation(block.permutation.withState(state, true));
+                block.setPermutation(mc.BlockPermutation.resolve(block.typeId, { ...states, [state]: true }));
                 return true;
             } catch {}
         }
@@ -786,7 +839,7 @@ function tryAdvanceGrowthState(block) {
         const increase = 1 + Math.floor(Math.random() * 3);
         for (let next = Math.min(max, value + increase); next > value; next--) {
             try {
-                block.setPermutation(block.permutation.withState(state, next));
+                block.setPermutation(mc.BlockPermutation.resolve(block.typeId, { ...states, [state]: next }));
                 return true;
             } catch {}
         }
@@ -795,10 +848,12 @@ function tryAdvanceGrowthState(block) {
     return false;
 }
 
+/** @param {Block} block @param {string} state */
 function getBlockState(block, state) {
-    try { return block.permutation.getState(state); } catch { return undefined; }
+    try { return block.permutation.getAllStates()[state]; } catch { return undefined; }
 }
 
+/** @param {Block} saplingBlock */
 function growSimpleTree(saplingBlock) {
     const tree = TREE_BLOCKS.get(saplingBlock.typeId);
     if (!tree) return false;
@@ -836,21 +891,26 @@ function growSimpleTree(saplingBlock) {
     return true;
 }
 
+/** @param {Block} block @param {string} sound */
 function playUseEffects(block, sound) {
     try { block.dimension.playSound(sound, block.center(), { volume: 0.7, pitch: 1.0 }); } catch {}
 }
 
+/** @param {Entity} entity @param {string} sound */
 function playEntityUseEffects(entity, sound) {
     try { entity.dimension.playSound(sound, entity.location, { volume: 0.7, pitch: 1.0 }); } catch {}
 }
 
+/** @param {Entity} entity */
 function spawnLoveParticles(entity) {
 }
 
+/** @param {Entity} entity @param {string} property */
 function getEntityProperty(entity, property) {
     try { return entity.getProperty(property); } catch { return undefined; }
 }
 
+/** @param {Entity} deployerEntity @param {ItemStack} oldItem @param {string} newItemId */
 function replaceDeployerHeldItem(deployerEntity, oldItem, newItemId) {
     const container = deployerEntity.getComponent("minecraft:inventory")?.container;
     if (!container || !oldItem) return;
@@ -878,6 +938,7 @@ function replaceDeployerHeldItem(deployerEntity, oldItem, newItemId) {
     racoAPI.setItemInHand(outputItem, deployerEntity, "Mainhand", 0, "create:item_visual");
 }
 
+/** @param {Entity} deployerEntity @param {ItemStack} heldItem @param {number} [amount] */
 function damageDeployerTool(deployerEntity, heldItem, amount = 1) {
     const damaged = racoAPI.applyDurability(heldItem, amount);
     const container = deployerEntity.getComponent("minecraft:inventory")?.container;
@@ -891,6 +952,7 @@ function damageDeployerTool(deployerEntity, heldItem, amount = 1) {
     }
 }
 
+/** @param {ItemStack} heldItem @param {Block} targetBlock @param {Entity} deployerEntity */
 function tryUseFlintAndSteel(heldItem, targetBlock, deployerEntity) {
     const fireBlock = targetBlock.isAir || targetBlock.isLiquid ? targetBlock : targetBlock.above();
     if (!fireBlock || (!fireBlock.isAir && !fireBlock.isLiquid)) return false;
@@ -907,6 +969,7 @@ function tryUseFlintAndSteel(heldItem, targetBlock, deployerEntity) {
     }
 }
 
+/** @param {ItemStack} heldItem @param {Block} targetBlock @param {Entity} deployerEntity */
 function tryEmptyBucket(heldItem, targetBlock, deployerEntity) {
     const liquidId = heldItem.typeId === "minecraft:water_bucket"
         ? "minecraft:water"
@@ -925,6 +988,7 @@ function tryEmptyBucket(heldItem, targetBlock, deployerEntity) {
     }
 }
 
+/** @param {ItemStack} heldItem @param {Block} targetBlock @param {Entity} deployerEntity */
 function tryFillBucketFromBlock(heldItem, targetBlock, deployerEntity) {
     const result = targetBlock.typeId === "minecraft:water"
         ? "minecraft:water_bucket"
@@ -995,6 +1059,7 @@ function makeCasingDeployRecipes() {
     return recipes;
 }
 
+/** @type {DeployRecipe[]} */
 const DEPLOY_RECIPES = [
     ...makeCasingDeployRecipes(),
     { surface: "create:rose_quartz", held: SAND_PAPERS, result: "create:polished_rose_quartz", keepHeld: true, damageHeld: true, sound: "brush.generic" },
@@ -1058,8 +1123,8 @@ const DEPLOY_RECIPES = [
  * Tries to apply a deployer application recipe on a depot/belt item.
  * Returns true if a recipe was applied (caller should skip normal block interaction).
  * @param {mc.Entity} deployerEntity
- * @param {mc.ItemStack|undefined} heldItem
- * @param {mc.Block} frontBlock
+ * @param {mc.Block | undefined} targetBlock
+ * @param {mc.Vector3 | undefined} location
  */
 function spawnDepotDeployerProcessParticle(deployerEntity, targetBlock, location) {
     if (targetBlock?.typeId !== "create:depot") return;
@@ -1075,11 +1140,13 @@ function spawnDepotDeployerProcessParticle(deployerEntity, targetBlock, location
     } catch {}
 }
 
+/** @param {Entity} deployerEntity @param {ItemStack | undefined} heldItem @param {Entity | null} conveyorEntity @param {Block | undefined} targetBlock */
 function tryApplyDeployerRecipe(deployerEntity, heldItem, conveyorEntity, targetBlock) {
     if (!heldItem || !conveyorEntity) return false;
 
     const conveyorContainer = conveyorEntity.getComponent("minecraft:inventory")?.container;
-    const surfaceItem = conveyorContainer?.getItem(0);
+    if (!conveyorContainer) return false;
+    const surfaceItem = conveyorContainer.getItem(0);
     if (!surfaceItem) return false;
 
     const recipe = DEPLOY_RECIPES.find(r => {
@@ -1100,9 +1167,9 @@ function tryApplyDeployerRecipe(deployerEntity, heldItem, conveyorEntity, target
     } else if (!recipe.keepHeld) {
         if (heldItem.amount > 1) {
             heldItem.amount -= 1;
-            deployerEntity.getComponent("minecraft:inventory").container.setItem(0, heldItem);
+            deployerEntity.getComponent("minecraft:inventory")?.container?.setItem(0, heldItem);
         } else {
-            deployerEntity.getComponent("minecraft:inventory").container.setItem(0, undefined);
+            deployerEntity.getComponent("minecraft:inventory")?.container?.setItem(0, undefined);
             deployerEntity.runCommand("replaceitem entity @s slot.weapon.mainhand 0 minecraft:air");
         }
     }
@@ -1119,6 +1186,7 @@ function tryApplyDeployerRecipe(deployerEntity, heldItem, conveyorEntity, target
 // Each step: { held: typeId, keepHeld: bool }
 // After all passes complete, rolls for result or junk.
 
+/** @type {SequencedRecipe[]} */
 const SEQUENCED_RECIPES = [
     {
         id: "precision_mechanism",
@@ -1146,8 +1214,9 @@ const SEQUENCED_RECIPES = [
 ];
 
 /** Rolls the final result: ~80% real result, ~20% random junk. */
+/** @param {DeployableSequencedRecipe} recipe */
 function rollSequencedResult(recipe) {
-    const junkTotal = recipe.junk.reduce((s, j) => s + j.weight, 0);
+    const junkTotal = recipe.junk.reduce((/** @type {number} */ sum, /** @type {{weight: number}} */ entry) => sum + entry.weight, 0);
     const roll = Math.random() * (junkTotal * 5); // junkTotal = 20%, junkTotal×4 = 80% success
     if (roll >= junkTotal) return recipe.result;
     let r = roll;
@@ -1162,24 +1231,31 @@ function rollSequencedResult(recipe) {
  * Tries to advance a Sequenced Assembly on a depot/belt item.
  * Returns true if a step was applied (caller should skip normal block interaction).
  */
+/** @param {Entity} deployerEntity @param {ItemStack | undefined} heldItem @param {Entity | null} conveyorEntity @param {Block | undefined} targetBlock */
 function tryApplySequencedRecipe(deployerEntity, heldItem, conveyorEntity, targetBlock) {
     if (!heldItem || !conveyorEntity) return false;
     // No tick cooldown here — create:assembly_data state already prevents double-processing,
     // and a cooldown would block the next deployer in a sequence from processing the same item.
 
     const conveyorContainer = conveyorEntity.getComponent("minecraft:inventory")?.container;
-    const surfaceItem = conveyorContainer?.getItem(0);
+    if (!conveyorContainer) return false;
+    const surfaceItem = conveyorContainer.getItem(0);
     if (!surfaceItem) return false;
     if (surfaceItem.amount > 1) return false;
 
-    const assemblyRaw = conveyorEntity.getDynamicProperty("create:assembly_data");
+    const assemblyValue = conveyorEntity.getDynamicProperty("create:assembly_data");
+    const assemblyRaw = typeof assemblyValue === "string" ? assemblyValue : undefined;
     let assemblyData = assemblyRaw ? JSON.parse(assemblyRaw) : null;
+    /** @type {DeployableSequencedRecipe | undefined} */
     let recipe;
+    /** @type {number} */
     let stepIndex;
 
     if (assemblyData) {
         // Item already in assembly — find the recipe and validate the current step
-        recipe = [...SEQUENCED_RECIPES, ...compatibilityRecipes.sequenced].find(r => r.id === assemblyData.id);
+        /** @type {DeployableSequencedRecipe[]} */
+        const recipes = [...SEQUENCED_RECIPES, ...compatibilityRecipes.sequenced];
+        recipe = recipes.find(r => r.id === assemblyData.id);
         if (!recipe) return false;
         stepIndex = assemblyData.step;
         const step = recipe.steps[stepIndex];
@@ -1187,7 +1263,9 @@ function tryApplySequencedRecipe(deployerEntity, heldItem, conveyorEntity, targe
         if (!step || step.held !== heldItem.typeId) return false;
     } else {
         // Try to start a new assembly: surface item must match, held must match step 0
-        recipe = [...SEQUENCED_RECIPES, ...compatibilityRecipes.sequenced].find(r =>
+        /** @type {DeployableSequencedRecipe[]} */
+        const recipes = [...SEQUENCED_RECIPES, ...compatibilityRecipes.sequenced];
+        recipe = recipes.find(r =>
             r.surface === surfaceItem.typeId &&
             (!r.steps[0].operation || r.steps[0].operation === "deploy") &&
             r.steps[0].held === heldItem.typeId
@@ -1203,9 +1281,9 @@ function tryApplySequencedRecipe(deployerEntity, heldItem, conveyorEntity, targe
     if (!step.keepHeld) {
         if (heldItem.amount > 1) {
             heldItem.amount -= 1;
-            deployerEntity.getComponent("minecraft:inventory").container.setItem(0, heldItem);
+            deployerEntity.getComponent("minecraft:inventory")?.container?.setItem(0, heldItem);
         } else {
-            deployerEntity.getComponent("minecraft:inventory").container.setItem(0, undefined);
+            deployerEntity.getComponent("minecraft:inventory")?.container?.setItem(0, undefined);
             deployerEntity.runCommand("replaceitem entity @s slot.weapon.mainhand 0 minecraft:air");
         }
     }
@@ -1241,6 +1319,7 @@ function tryApplySequencedRecipe(deployerEntity, heldItem, conveyorEntity, targe
     return true;
 }
 
+/** @param {Vector3} a @param {Vector3} b */
 function deployerDistanceSquared(a, b) {
     const dx = (a?.x ?? 0) - (b?.x ?? 0);
     const dy = (a?.y ?? 0) - (b?.y ?? 0);
@@ -1248,16 +1327,19 @@ function deployerDistanceSquared(a, b) {
     return dx * dx + dy * dy + dz * dz;
 }
 
+/** @param {Entity} entity @param {Vector3} location @param {number} [maxDistance] */
 function isDeployerEntityAtLocation(entity, location, maxDistance = 0.35) {
     return entity?.isValid && deployerDistanceSquared(entity.location, location) <= maxDistance * maxDistance;
 }
 
+/** @param {Entity} entity @param {Block} block */
 function setDeployerEntityOwner(entity, block) {
     try { entity?.setDynamicProperty("create:deployer_block_x", block.x); } catch {}
     try { entity?.setDynamicProperty("create:deployer_block_y", block.y); } catch {}
     try { entity?.setDynamicProperty("create:deployer_block_z", block.z); } catch {}
 }
 
+/** @param {Entity} entity @param {Block} block */
 function isDeployerEntityOwnedByBlock(entity, block) {
     const x = entity?.getDynamicProperty?.("create:deployer_block_x");
     const y = entity?.getDynamicProperty?.("create:deployer_block_y");
@@ -1267,6 +1349,7 @@ function isDeployerEntityOwnedByBlock(entity, block) {
     return x === block.x && y === block.y && z === block.z;
 }
 
+/** @param {Block} block @param {string} type @param {Vector3 | undefined} [location] @param {number} [maxDistance] */
 function getDeployerEntities(block, type, location = block?.center(), maxDistance = 0.85) {
     if (!block || !location) return [];
     try {
@@ -1279,10 +1362,12 @@ function getDeployerEntities(block, type, location = block?.center(), maxDistanc
     }
 }
 
+/** @param {Entity[]} entities */
 function chooseDeployerEntity(entities) {
     return entities.find(entity => entity.getComponent("minecraft:inventory")?.container?.getItem(0)) ?? entities[0];
 }
 
+/** @param {Entity[]} entities @param {Entity | undefined} keeper */
 function removeDuplicateDeployerEntities(entities, keeper) {
     for (const entity of entities) {
         if (!entity?.isValid || entity === keeper) continue;
@@ -1290,13 +1375,17 @@ function removeDuplicateDeployerEntities(entities, keeper) {
     }
 }
 
+/** @param {Block} block @param {Entity} entity */
 function syncDeployerEntityRotation(block, entity) {
     try {
-        const facing = block.permutation.getState("minecraft:facing_direction");
-        entity?.setProperty("create:cardinal_rotation", INVERT_FACE[facing] ?? facing ?? "south");
+        const facing = block.permutation.getAllStates()["minecraft:facing_direction"];
+        const direction = typeof facing === "string" ? facing : "south";
+        const rotation = INVERT_FACE[/** @type {keyof typeof INVERT_FACE} */ (direction)];
+        entity?.setProperty("create:cardinal_rotation", rotation ?? direction);
     } catch {}
 }
 
+/** @param {Block} block */
 function getOrSpawnEntity(block) {
     if (!block) return undefined;
     const entities = getDeployerEntities(block, "create:deployer_entity", block.center(), 0.45);
@@ -1312,6 +1401,7 @@ function getOrSpawnEntity(block) {
     return entity;
 }
 
+/** @param {Block} block @param {Entity} entity */
 function repairDeployerRpmAfterRespawn(block, entity) {
     if (!block || !entity?.isValid) return;
     let needsRecalc = false;
@@ -1319,9 +1409,10 @@ function repairDeployerRpmAfterRespawn(block, entity) {
     if (!needsRecalc) return;
 
     try { entity.setDynamicProperty(DEPLOYER_NEEDS_RPM_RECALC_PROP, undefined); } catch {}
-    try { initRpmBlock({ block, dimension: block.dimension }); } catch {}
+    try { initRpmBlock({ block, dimension: block.dimension, previousBlock: undefined }); } catch {}
 }
 
+/** @param {Block} block */
 function deployerFilterLocation(block) {
     return {
         x: block.center().x,
@@ -1330,6 +1421,7 @@ function deployerFilterLocation(block) {
     };
 }
 
+/** @param {Block} block */
 function getDeployerFilterEntity(block) {
     if (!block) return undefined;
     const entities = getDeployerEntities(block, DEPLOYER_FILTER_ENTITY, deployerFilterLocation(block), 0.85);
@@ -1338,10 +1430,9 @@ function getDeployerFilterEntity(block) {
     return entity;
 }
 
+/** @param {Block} block @param {Entity | undefined} [entity] */
 function getStoredDeployerFilter(block, entity = getDeployerFilterEntity(block)) {
     try {
-        const blockFilter = block?.getDynamicProperty?.(DEPLOYER_FILTER_ITEM_PROP);
-        if (typeof blockFilter === "string" && blockFilter.length > 0) return blockFilter;
     } catch {}
 
     try {
@@ -1353,16 +1444,18 @@ function getStoredDeployerFilter(block, entity = getDeployerFilterEntity(block))
     return item?.typeId;
 }
 
+/** @param {Block} block @param {Entity | undefined} entity @param {string | undefined} itemId */
 function setStoredDeployerFilter(block, entity, itemId) {
-    try { block?.setDynamicProperty?.(DEPLOYER_FILTER_ITEM_PROP, itemId); } catch {}
     try { entity?.setDynamicProperty?.(DEPLOYER_FILTER_ITEM_PROP, itemId); } catch {}
 }
 
+/** @param {Entity | undefined} entity */
 function clearDeployerFilterVisual(entity) {
     try { entity?.getComponent("minecraft:inventory")?.container?.setItem(0, undefined); } catch {}
     try { entity?.runCommand("replaceitem entity @s slot.weapon.mainhand 0 minecraft:air"); } catch {}
 }
 
+/** @param {Block} block */
 function syncDeployerFilter(block) {
     if (!block || block.typeId !== "create:deployer") return undefined;
     const filterId = getStoredDeployerFilter(block);
@@ -1385,6 +1478,7 @@ function syncDeployerFilter(block) {
     return entity;
 }
 
+/** @param {Block} block @param {ItemStack | undefined} item */
 function setDeployerFilter(block, item) {
     if (!block || !item) return false;
     const entity = getDeployerFilterEntity(block) ?? block.dimension.spawnEntity(DEPLOYER_FILTER_ENTITY, deployerFilterLocation(block));
@@ -1395,6 +1489,7 @@ function setDeployerFilter(block, item) {
     return true;
 }
 
+/** @param {Block} block */
 function clearDeployerFilter(block) {
     const entity = getDeployerFilterEntity(block);
     clearDeployerFilterVisual(entity);
@@ -1403,18 +1498,21 @@ function clearDeployerFilter(block) {
     try { block.dimension.playSound("block.itemframe.remove_item", block.center(), { volume: 0.7, pitch: 1.0 }); } catch {}
 }
 
+/** @param {Block} block @param {ItemStack | undefined} item */
 function deployerAcceptsPlayerItem(block, item) {
     const filterId = getStoredDeployerFilter(block);
     return !filterId || item?.typeId === filterId;
 }
 
+/** @param {Block} block @param {Entity} entity */
 function pullDeployerHopperInput(block, entity) {
     const key = `${block.dimension.id}:${block.x},${block.y},${block.z}`;
     const now = mc.system.currentTick ?? 0;
     if (now < (DEPLOYER_HOPPER_INPUT_TICKS.get(key) ?? 0)) return false;
     DEPLOYER_HOPPER_INPUT_TICKS.set(key, now + DEPLOYER_HOPPER_INPUT_INTERVAL);
 
-    const frontFace = racoAPI.blockFaceToDirection(block?.permutation?.getState?.("minecraft:facing_direction"));
+    const facing = block.permutation.getAllStates()["minecraft:facing_direction"];
+    const frontFace = racoAPI.blockFaceToDirection(typeof facing === "string" ? facing : "south");
     const backFace = racoAPI.invertFace(frontFace);
     const hoppers = getDeployerInputHoppers(block, backFace);
 
@@ -1453,13 +1551,14 @@ function pullDeployerHopperInput(block, entity) {
     return false;
 }
 
+/** @param {Block} block @param {string | undefined} preferredFace */
 function getDeployerInputHoppers(block, preferredFace) {
     const faces = [preferredFace, "north", "south", "west", "east", "above", "below"]
-        .filter((face, index, arr) => face && arr.indexOf(face) === index);
+        .filter((face, index, arr) => typeof face === "string" && arr.indexOf(face) === index);
     const hoppers = [];
 
     for (const face of faces) {
-        const hopper = block?.[face]?.();
+        const hopper = face === "north" ? block.north() : face === "south" ? block.south() : face === "west" ? block.west() : face === "east" ? block.east() : face === "above" ? block.above() : block.below();
         if (hopper?.typeId !== "minecraft:hopper") continue;
         if (hopper.permutation.getState("toggle_bit") === true) continue;
         hoppers.push(hopper);
@@ -1468,15 +1567,18 @@ function getDeployerInputHoppers(block, preferredFace) {
     return hoppers;
 }
 
+/** @param {Block} block */
 function getDeployerHandMode(block) {
-    try { return block.permutation.getState("create:hand_mode") === true; } catch { return false; }
+    try { return block.permutation.getAllStates()["create:hand_mode"] === true; } catch { return false; }
 }
 
+/** @param {Block} block @param {Entity} entity @param {boolean} enabled */
 function setDeployerHandMode(block, entity, enabled) {
-    try { block.setPermutation(block.permutation.withState("create:hand_mode", enabled)); } catch {}
+    try { block.setPermutation(mc.BlockPermutation.resolve(block.typeId, { ...block.permutation.getAllStates(), "create:hand_mode": enabled })); } catch {}
     try { entity?.setProperty("create:hand_mode", enabled); } catch {}
 }
 
+/** @param {Block} block @param {Entity} entity */
 function syncDeployerHandMode(block, entity) {
     try {
         const mode = getDeployerHandMode(block);
@@ -1490,6 +1592,7 @@ function syncDeployerHandMode(block, entity) {
  */
 export function deployerPlace(block) {
     const entity = getOrSpawnEntity(block);
+    if (!entity) return;
     syncDeployerHandMode(block, entity);
     syncDeployerFilter(block);
 }
@@ -1530,8 +1633,9 @@ export function deployerInteract(player, block) {
     syncDeployerHandMode(block, entity);
 
     const container = entity.getComponent("minecraft:inventory")?.container;
-    const heldItem = container?.getItem(0);
-    const playerItem = player.getComponent("equippable")?.getEquipment("Mainhand");
+    if (!container) return;
+    const heldItem = container.getItem(0);
+    const playerItem = player.getComponent("minecraft:equippable")?.getEquipment(mc.EquipmentSlot.Mainhand);
     syncDeployerFilter(block);
 
     if (playerItem?.typeId === "create:wrench") {
@@ -1599,15 +1703,17 @@ export function deployerTick(block) {
     repairDeployerRpmAfterRespawn(block, entity);
     if (mc.system.currentTick % 20 === 0) syncDeployerHandMode(block, entity);
 
-    const rpm = entity.getProperty("create:rpm") ?? 0;
+    const rpmValue = entity.getProperty("create:rpm");
+    const rpm = typeof rpmValue === "number" ? rpmValue : 0;
 
     // Hopper input runs whether spinning or not.
     pullDeployerHopperInput(block, entity);
 
     if (rpm === 0) return;
 
-    const facing = block.permutation.getState("minecraft:facing_direction");
-    const frontBlock = block[racoAPI.blockFaceToDirection(facing)]?.(-2);
+    const facing = block.permutation.getAllStates()["minecraft:facing_direction"];
+    const frontFace = racoAPI.blockFaceToDirection(typeof facing === "string" ? facing : "south");
+    const frontBlock = frontFace === "north" ? block.north(-2) : frontFace === "south" ? block.south(-2) : frontFace === "east" ? block.east(-2) : frontFace === "west" ? block.west(-2) : undefined;
     const bruteSpeed = snapToPowerOf2(Math.abs(rpm));
     const now = mc.system.currentTick;
 
@@ -1633,10 +1739,10 @@ export function deployerTick(block) {
                 Math.floor(item.location.z) !== frontBlock.z) continue;
 
             // Skip only if THIS deployer's frontBlock released this item recently (60 ticks)
-            const releaseRaw = item.getDynamicProperty("create:release_from");
-            if (releaseRaw) {
+            const releaseValue = item.getDynamicProperty("create:release_from");
+            if (typeof releaseValue === "string") {
                 try {
-                    const r = JSON.parse(releaseRaw);
+                    const r = JSON.parse(releaseValue);
                     if (r.x === frontBlock.x && r.y === frontBlock.y && r.z === frontBlock.z
                         && (now - r.tick) < 60) continue;
                 } catch {}
@@ -1647,9 +1753,10 @@ export function deployerTick(block) {
     }
 
     // ── Deploy cycle ───────────────────────────────────────────────────────
-    const movementInfo = entity.getDynamicProperty("create:movement_info");
+    const movementValue = entity.getDynamicProperty("create:movement_info");
+    const movementInfo = typeof movementValue === "string" ? movementValue : undefined;
     if (!movementInfo) {
-        const animTicks = TIME_CONFIG[bruteSpeed];
+        const animTicks = TIME_CONFIG[/** @type {keyof typeof TIME_CONFIG} */ (bruteSpeed)];
         entity.setDynamicProperty("create:movement_info", JSON.stringify({
             startTick: now,
             interactTick: now + Math.ceil(animTicks / 2),
@@ -1676,7 +1783,7 @@ export function deployerTick(block) {
                     location: { x: frontBlock.x + 0.5, y: frontBlock.y + 13 / 16, z: frontBlock.z + 0.5 },
                     maxDistance: 1.2
                 });
-                const conveyorTarget = (targets ?? []).find(t =>
+                const conveyorTarget = (targets ?? []).find(/** @param {Entity} t */ t =>
                     t.hasTag('create:conveyor_stop') &&
                     Math.floor(t.location.x) === frontBlock.x &&
                     Math.floor(t.location.z) === frontBlock.z
@@ -1692,9 +1799,9 @@ export function deployerTick(block) {
                             frontBlock.setType(held.typeId);
                             if (held.amount > 1) {
                                 held.amount -= 1;
-                                entity.getComponent("minecraft:inventory").container.setItem(0, held);
+                                entity.getComponent("minecraft:inventory")?.container?.setItem(0, held);
                             } else {
-                                entity.getComponent("minecraft:inventory").container.setItem(0, undefined);
+                                entity.getComponent("minecraft:inventory")?.container?.setItem(0, undefined);
                                 entity.runCommand("replaceitem entity @s slot.weapon.mainhand 0 minecraft:air");
                             }
                         } else if (held) {

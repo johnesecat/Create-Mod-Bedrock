@@ -7,6 +7,10 @@ const SMART_CHUTE = "create:chute_smart";
 const CHUTE_TYPES = new Set([CHUTE, SMART_CHUTE]);
 const SMART_CHUTE_FILTER_ENTITY = "create:chute_smart_filter";
 const SMART_CHUTE_FILTER_ITEM_PREFIX = "create:chute_smart_filter_item:";
+/** @param {import('@minecraft/server').Block | undefined} block @param {string} state */
+function getCustomState(block, state) {
+    return block?.permutation.getAllStates()[state];
+}
 const SMART_CHUTE_FILTER_FACE_PREFIX = "create:chute_smart_filter_face:";
 const SMART_CHUTE_FILTER_OWNER_PROP = "create:chute_smart_filter_owner";
 
@@ -409,18 +413,18 @@ export function onBreak(block, brokenPermutation, dimension) {
             const b = dim.getBlock({ x: px, y: py, z: pz });
             if (!isChute(b)) return;
             toUpdate.set(key, b);
-            const type = b.permutation.getState("create:type");
+            const type = getCustomState(b, "create:type");
 
             // Edge: directed feeders from diagonal-above (all 4 dirs) that point HERE
-            const diagonalAbove = [
+            const diagonalAbove = /** @type {Array<import('@minecraft/server').Block | undefined>} */ ([
                 dim.getBlock({ x: px,   y: py+1, z: pz-1 }),
                 dim.getBlock({ x: px,   y: py+1, z: pz+1 }),
                 dim.getBlock({ x: px+1, y: py+1, z: pz   }),
                 dim.getBlock({ x: px-1, y: py+1, z: pz   }),
-            ];
+            ]);
             for (const fb of diagonalAbove) {
-                if (!isChute(fb)) continue;
-                const ft = fb.permutation.getState("create:type");
+                if (!isChute(fb) || !fb) continue;
+                const ft = getCustomState(fb, "create:type");
                 if (ft !== "diagonal" && ft !== "full") continue;
                 const faced = getFacedBlock(fb);
                 const fl = faced?.location;

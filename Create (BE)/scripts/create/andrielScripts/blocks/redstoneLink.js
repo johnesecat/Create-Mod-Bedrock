@@ -76,6 +76,7 @@ function refreshReceivers(dimension) {
         if (block.typeId === RECEIVER_ID) setPowered(block, channelIsPowered(block));
     }
 }
+/** @param {import('@minecraft/server').Block} block @param {number} slot @param {string | undefined} [itemId] */
 function visualLocation(block, slot, itemId = undefined) {
     const direction = state(block, "minecraft:cardinal_direction", "south");
     const distance = slot === 0 ? -0.16 : 0.16;
@@ -109,6 +110,7 @@ function findVisual(block, slot) {
         && Number(entity.getDynamicProperty(SLOT_PROP)) === slot
     );
 }
+/** @param {import('@minecraft/server').Block} block @param {number} slot */
 function syncVisual(block, slot) {
     const itemId = getItemId(block, slot);
     let entity = findVisual(block, slot);

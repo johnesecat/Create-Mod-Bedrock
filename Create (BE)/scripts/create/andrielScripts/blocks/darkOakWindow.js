@@ -1,3 +1,5 @@
+import { BlockPermutation } from '@minecraft/server';
+
 const WINDOW_IDS = new Set([
     "create:acacia_window_connected",
     "create:bamboo_window_connected",
@@ -14,12 +16,14 @@ const WINDOW_IDS = new Set([
     "create:warped_window_connected"
 ]);
 
+/** @param {string} typeId */
 export function isConnectedWindowId(typeId) {
     return WINDOW_IDS.has(typeId);
 }
 
+/** @param {import('@minecraft/server').Block | undefined} block */
 export function darkOakWindowTick(block) {
-    if (!WINDOW_IDS.has(block?.typeId)) return;
+    if (!block || !WINDOW_IDS.has(block.typeId)) return;
     const windowId = block.typeId;
 
     let connectedAbove = false;
@@ -31,9 +35,7 @@ export function darkOakWindowTick(block) {
         ? (connectedBelow ? "middle" : "bottom")
         : (connectedBelow ? "top" : "single");
 
-    let current = "single";
-    try { current = block.permutation.getState("create:height") ?? "single"; } catch {}
-    if (current === height) return;
-
-    try { block.setPermutation(block.permutation.withState("create:height", height)); } catch {}
+    const states = block.permutation.getAllStates();
+    if (states['create:height'] === height) return;
+    try { block.setPermutation(BlockPermutation.resolve(block.typeId, { ...states, 'create:height': height })); } catch {}
 }
