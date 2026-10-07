@@ -2,6 +2,7 @@ import * as mc from "@minecraft/server"
 import * as racoAPI from "../raco-API.js"
 
 // Offset from block.center() to the mouth of each side opening
+/** @typedef {{face: keyof typeof SPAWN_POINT, ent: import('@minecraft/server').Entity | undefined, slot: number, hasFilter: boolean, hasBelt: boolean}} OutputDescriptor */
 const SPAWN_POINT = {
     north: { x:    0, y: -0.75, z: -0.7 },
     south: { x:    0, y: -0.75, z:  0.7 },
@@ -69,14 +70,15 @@ export function brassTunnelTick(block) {
     syncTunnelEquipmentVisual(entityX, "east", 1)
 
     // --- Determine input/output faces ---
+    /** @type {Record<keyof typeof SPAWN_POINT, unknown>} */
     const faceDefs = {
         north: entityZ?.getProperty("create:north_port"),
         south: entityZ?.getProperty("create:south_port"),
         east:  entityX?.getProperty("create:east_port"),
         west:  entityX?.getProperty("create:west_port"),
     }
-    const inputFaces  = Object.keys(faceDefs).filter(f => faceDefs[f] === "input")
-    const outputFaces = Object.keys(faceDefs).filter(f => faceDefs[f] === "output")
+    const inputFaces = /** @type {Array<keyof typeof SPAWN_POINT>} */ (Object.keys(faceDefs).filter(f => faceDefs[f] === "input"))
+    const outputFaces = /** @type {Array<keyof typeof SPAWN_POINT>} */ (Object.keys(faceDefs).filter(f => faceDefs[f] === "output"))
     if (inputFaces.length === 0 || outputFaces.length === 0) return
 
     // --- Items on the main belt below ---
@@ -102,6 +104,7 @@ export function brassTunnelTick(block) {
     }
 
     // Pre-calculate output descriptors
+    /** @type {OutputDescriptor[]} */
     const outputDescs = outputFaces.map(outFace => {
         const outEnt  = racoAPI.convergeDirection(outFace) === "west" ? entityX : entityZ
         const outSlot = (outFace === "north" || outFace === "west") ? 1 : 0
@@ -150,7 +153,10 @@ export function brassTunnelTick(block) {
             }
 
             // Specific-filter output has priority over catch-all
-            let chosen = null, fallback = null
+            /** @type {OutputDescriptor | null} */
+            let chosen = null;
+            /** @type {OutputDescriptor | null} */
+            let fallback = null;
             for (const out of outputDescs) {
                 if (!out?.ent || !isIncluded(belowStack.typeId, out.ent, out.slot)) continue
                 if (out.hasFilter) { chosen = out; break }
@@ -190,7 +196,7 @@ export function brassTunnelTick(block) {
 
 export function brassTunnelInteract(block, player, face, item) {
     // invertFace: clicking North face → filter is for items coming FROM north → "north" slot
-    const faceDir = racoAPI.invertFace(racoAPI.blockFaceToDirection(face))
+    const faceDir = /** @type {keyof typeof SPAWN_POINT} */ (racoAPI.invertFace(racoAPI.blockFaceToDirection(face)))
     const dim     = block.dimension
     const center  = block.center()
 
@@ -200,7 +206,7 @@ export function brassTunnelInteract(block, player, face, item) {
     if (!entityZ) entityZ = dim.spawnEntity("create:brass_tunnel_entity_z", center)
 
     const whichEntity  = racoAPI.convergeDirection(faceDir) === "west" ? entityX : entityZ
-    const whichSlotName = (faceDir === "north" || faceDir === "west") ? "mainhand" : "offhand"
+    const whichSlotName = (faceDir === "north" || faceDir === "west") ? "Mainhand" : "Offhand"
     const whichSlot    = (faceDir === "north" || faceDir === "west") ? 0 : 1
 
     if (item && !player?.isSneaking) {

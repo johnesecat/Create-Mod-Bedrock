@@ -34,10 +34,7 @@
           "deals_damage": false
         }
       },
-      "minecraft:pushable": {
-        "is_pushable": false,
-        "is_pushable_by_piston": false
-      },
+
       "minecraft:physics": {
         "has_gravity": false,
         "has_collision": false

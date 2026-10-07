@@ -26,9 +26,11 @@ function getFluidForBucket(bucketId) {
     return FLUIDS_BY_BUCKET[bucketId] ?? compatibilityFluidsByBucket.get(bucketId);
 }
 
+/** @typedef {import('../../compatibility/registries.js').CompatibilityFluid & {sound?: string, fillSound?: string}} CompatibleFluid */
+/** @returns {{bucket: string, empty: string, sound?: string, fillSound?: string} | undefined} */
 function getFluidForBlock(blockId) {
     const builtInBucket = BUCKET_BY_FLUID[blockId];
-    return builtInBucket ? { bucket: builtInBucket, empty: "minecraft:bucket" } : compatibilityFluidsByBlock.get(blockId);
+    return builtInBucket ? { bucket: builtInBucket, empty: "minecraft:bucket" } : /** @type {CompatibleFluid | undefined} */ (compatibilityFluidsByBlock.get(blockId));
 }
 
 function isFakeFluid(block) {

@@ -1,4 +1,4 @@
-import { system, world, ItemStack, BlockTypes, ItemTypes, EquipmentSlot } from "@minecraft/server";
+import { system, world, ItemStack, BlockTypes, ItemTypes, EquipmentSlot, ItemLockMode } from "@minecraft/server";
 
 const debugMode = true;
 
@@ -13,7 +13,7 @@ export function isSolid(block) {
         "rose_bush", "peony", "cornflower", "lily_of_the_valley", "tall_grass", "short_grass", "fern", "large_fern", "deadbush", "seagrass", "air", "waterlily", "vine", "ladder", "rail",
         "golden_rail", "activator_rail", "tripwire_hook", "beacon", "web", "snow_layer", "iron_bars", "chain", "scaffolding", "bamboo", "sea_pickle", "conduit",
         "lightning_rod", "sweet_berry_bush", "small_dripleaf_block", "big_dripleaf", "flower_pot", "amethyst_cluster", "budding_amethyst", "pointed_dripstone", 
-        "glow_lichen",  "spore_blossom", "hanging_roots", "end_rod", "bell", "lantern", "soul_lantern", "chain", "fire", "soul_fire", "bubble_column", "redstone_wire", 
+        "glow_lichen",  "spore_blossom", "hanging_roots", "end_rod", "bell", "lantern", "soul_lantern", "chain", "fire", "soul_fire", "bubble_column", "redstone_wire",
         'rc_fb:vacuum_hopper', 'rc_fb:shaft', 'rc_fb:gear', 'rc_fb:large_gear', 'rc_fb:double_shaft_cardan', 'rc_fb:fan'
     ]);
     const nonSolidGroups = [
@@ -42,15 +42,22 @@ export function getRedstonePower(block) {
     return blockRedstonePower;
 };
 
-export function damageDurability(player, itemStack, damageAmount = 1, slot = 'Mainhand') {
-    const itemDurability = itemStack.getComponent('minecraft:durability'); if (!itemDurability) return;
-    const playerInv = player.getComponent('minecraft:inventory').container;
+/** @param {import('@minecraft/server').Player} player
+ * @param {import('@minecraft/server').ItemStack} itemStack
+ * @param {number} damageAmount
+ * @param {import('@minecraft/server').EquipmentSlot | number} slot
+ * @returns {boolean} Whether the item survives and can continue being used.
+ */
+export function damageDurability(player, itemStack, damageAmount = 1, slot = EquipmentSlot.Mainhand) {
+    const itemDurability = itemStack.getComponent('minecraft:durability'); if (!itemDurability) return true;
+    const playerInv = player.getComponent('minecraft:inventory')?.container;
     const playerEquipment = player.getComponent('minecraft:equippable');
+    if (!playerInv || !playerEquipment) return false;
     let itemSlot;
 
     // Verifica se o item está no slot indicado
-    if (typeof slot !== 'string' && playerInv.getItem(slot)?.typeId === itemStack?.typeId) itemSlot = playerInv.getSlot(slot);
-    else if (typeof slot === 'string' && playerEquipment.getEquipment(slot)?.typeId === itemStack?.typeId) itemSlot = playerEquipment.getEquipmentSlot(slot);
+    if (typeof slot === 'number' && playerInv.getItem(slot)?.typeId === itemStack.typeId) itemSlot = playerInv.getSlot(slot);
+    else if (typeof slot === 'string' && playerEquipment.getEquipment(slot)?.typeId === itemStack.typeId) itemSlot = playerEquipment.getEquipmentSlot(slot);
     else {
         for (let i = 0; i < playerInv.size; i++) {
             const invItem = playerInv.getItem(i);
@@ -60,7 +67,9 @@ export function damageDurability(player, itemStack, damageAmount = 1, slot = 'Ma
             };
         };
     };
-    if (!itemSlot?.isValid || damageAmount <= 0) return true;
+    if (!itemSlot?.isValid) return false;
+    if (damageAmount <= 0) return true;
+    if (!Number.isFinite(damageAmount)) return false;
 
     let effectiveDamage = 0; // Dano efetivo a ser aplicado
 
@@ -90,10 +99,10 @@ export function damageDurability(player, itemStack, damageAmount = 1, slot = 'Ma
     const maxDurability = itemDurability.maxDurability;
     const totalDamage = itemDamage + effectiveDamage;
 
-    if (totalDamage > maxDurability) {
+    if (totalDamage >= maxDurability) {
         itemSlot.setItem(undefined);
-        player?.playSound('random.break');
-        return;
+        player.playSound('random.break');
+        return false;
     };
 
     itemDurability.damage = totalDamage;
@@ -102,16 +111,24 @@ export function damageDurability(player, itemStack, damageAmount = 1, slot = 'Ma
     return true;
 };
 
-export function replaceItem(player, searchId, replaceId, damageAmount = 0, lockMode = 'none', keepOnDeath = false) {
-    const playerInv = player.getComponent('minecraft:inventory').container;
+/** @param {import('@minecraft/server').Player} player
+ * @param {string} searchId
+ * @param {string} replaceId
+ * @param {number} damageAmount
+ * @param {import('@minecraft/server').ItemLockMode} lockMode
+ * @param {boolean} keepOnDeath
+ */
+export function replaceItem(player, searchId, replaceId, damageAmount = 0, lockMode = ItemLockMode.none, keepOnDeath = false) {
+    const playerInv = player.getComponent('minecraft:inventory')?.container;
     const playerEquipment = player.getComponent('minecraft:equippable');
-    const mainhandItem = playerEquipment.getEquipment('Mainhand');
-    const offhandItem = playerEquipment.getEquipment('Offhand');
+    if (!playerInv || !playerEquipment) return false;
+    const mainhandItem = playerEquipment.getEquipment(EquipmentSlot.Mainhand);
+    const offhandItem = playerEquipment.getEquipment(EquipmentSlot.Offhand);
     let searchedItem, replaceSlot;
 
     // Search for the item to be replaced
-    if (mainhandItem?.typeId == searchId) { searchedItem = mainhandItem; replaceSlot = 'Mainhand'; }
-    else if (offhandItem?.typeId == searchId) { searchedItem = offhandItem; replaceSlot = 'Offhand'; }
+    if (mainhandItem?.typeId == searchId) { searchedItem = mainhandItem; replaceSlot = EquipmentSlot.Mainhand; }
+    else if (offhandItem?.typeId == searchId) { searchedItem = offhandItem; replaceSlot = EquipmentSlot.Offhand; }
     else {
         for (let slot = 0; slot < playerInv.size; slot++) {
             const invItem = playerInv.getItem(slot);
@@ -140,10 +157,12 @@ export function replaceItem(player, searchId, replaceId, damageAmount = 0, lockM
     // Creating the replacement item with the preserved properties
     let replacementItem = new ItemStack(replaceId, searchedItemData.amount);
    
-    replacementItem.getComponents().forEach(component => {
-        if (component.typeId === 'minecraft:durability') component.damage = searchedItemData.durability.damage;
-        if (component.typeId === 'minecraft:enchantable') component.addEnchantments(searchedItemData.enchantments);
-    });
+    const replacementDurability = replacementItem.getComponent('minecraft:durability');
+    if (replacementDurability && searchedItemData.durability) {
+        replacementDurability.damage = Math.min(searchedItemData.durability.damage, replacementDurability.maxDurability);
+    }
+    const replacementEnchantable = replacementItem.getComponent('minecraft:enchantable');
+    if (replacementEnchantable) replacementEnchantable.addEnchantments(searchedItemData.enchantments);
     replacementItem.setLore(searchedItemData.lore);
     replacementItem.nameTag = searchedItemData.nameTag || '';
     searchedItemData.dynamicPropertyIds.forEach(propertyId => {
@@ -153,8 +172,9 @@ export function replaceItem(player, searchId, replaceId, damageAmount = 0, lockM
     replacementItem.keepOnDeath = keepOnDeath;
 
     // Replacing the item in the player's inventory or equipment
-    if (replaceSlot === 'Mainhand' || replaceSlot === 'Offhand') {
-        playerEquipment.setEquipment(replaceSlot, replacementItem);
+    if (typeof replaceSlot === 'string') {
+        const equipmentSlot = replaceSlot === 'Mainhand' ? EquipmentSlot.Mainhand : EquipmentSlot.Offhand;
+        playerEquipment.setEquipment(equipmentSlot, replacementItem);
     } else {
         playerInv.setItem(replaceSlot, replacementItem);
     };
@@ -179,8 +199,11 @@ export function searchItem(player, searchId, firstSlot = 'Mainhand', searchEquip
     };
 
     if (typeof firstSlot === 'string') {
-        const searchItemBySlot = playerEquipment.getEquipment(firstSlot);
-        if (checkId(searchItemBySlot?.typeId)) return { item: searchItemBySlot, slot: playerEquipment.getEquipmentSlot(firstSlot) };
+        const equipmentSlot = firstSlot === 'Mainhand' ? EquipmentSlot.Mainhand
+            : firstSlot === 'Offhand' ? EquipmentSlot.Offhand
+            : /** @type {EquipmentSlot} */ (firstSlot);
+        const searchItemBySlot = playerEquipment.getEquipment(equipmentSlot);
+        if (checkId(searchItemBySlot?.typeId)) return { item: searchItemBySlot, slot: playerEquipment.getEquipmentSlot(equipmentSlot) };
     } else {
         const searchItemBySlot = playerInv.getItem(firstSlot);
         if (checkId(searchItemBySlot?.typeId)) return { item: searchItemBySlot, slot: playerInv.getSlot(firstSlot) };

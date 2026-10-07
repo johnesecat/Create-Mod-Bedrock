@@ -1,10 +1,23 @@
 import { BlockPermutation, ItemStack, MolangVariableMap, system } from "@minecraft/server";
 
+/** @typedef {import('@minecraft/server').Block} Block */
+/** @typedef {import('@minecraft/server').Dimension} Dimension */
+/** @typedef {import('@minecraft/server').Vector3} Vector3 */
+
+/** @param {Block} block @param {Record<string, string | number | boolean>} updates */
+function updateWhistleStates(block, updates) {
+    block.setPermutation(BlockPermutation.resolve(block.typeId, {
+        ...block.permutation.getAllStates(),
+        ...updates
+    }));
+}
+
 const WHISTLE_ID = "create:whistle";
 const WHISTLE_TUBE_ID = "create:whistle_tubo";
 const WHISTLE_ENTITY = "create:whistle_active";
 const WHISTLE_SOUND_INTERVAL = 32;
 
+/** @type {Readonly<Record<string, {x: number, z: number} | undefined>>} */
 const PARTICLE_BY_DIRECTION = {
     south: { x: 0, z: -0.62 },
     north: { x: 0, z: 0.62 },
@@ -12,15 +25,21 @@ const PARTICLE_BY_DIRECTION = {
     east: { x: 0.62, z: 0 }
 };
 
+/** @param {Block} block */
 function visualLocation(block) {
     return { x: block.x + 0.5, y: block.y, z: block.z + 0.5 };
 }
 
+/** @param {Block} block */
 function getDirection(block) {
-    try { return block.permutation.getState("minecraft:cardinal_direction") ?? "south"; }
+    try {
+        const direction = block.permutation.getState("minecraft:cardinal_direction");
+        return typeof direction === "string" ? direction : "south";
+    }
     catch { return "south"; }
 }
 
+/** @param {Block} block */
 function getVisual(block) {
     try {
         return block.dimension.getEntities({
@@ -31,7 +50,9 @@ function getVisual(block) {
     } catch { return undefined; }
 }
 
+/** @param {Block} block */
 function removeVisual(block) {
+    /** @type {import('@minecraft/server').Entity[]} */
     let entities = [];
     try {
         entities = block.dimension.getEntities({
@@ -45,6 +66,7 @@ function removeVisual(block) {
     }
 }
 
+/** @param {Dimension | undefined} dimension @param {Vector3 | undefined} location */
 function removeVisualAt(dimension, location) {
     if (!dimension || !location) return;
     const visual = {
@@ -52,6 +74,7 @@ function removeVisualAt(dimension, location) {
         y: location.y,
         z: location.z + 0.5
     };
+    /** @type {import('@minecraft/server').Entity[]} */
     let entities = [];
     try {
         entities = dimension.getEntities({
@@ -65,17 +88,19 @@ function removeVisualAt(dimension, location) {
     }
 }
 
+/** @param {Block} block */
 function stopWhistleSound(block) {
+    /** @type {import('@minecraft/server').Player[]} */
     let players = [];
     try {
         players = block.dimension.getPlayers({ location: block.center(), maxDistance: 64 });
     } catch {}
     for (const player of players) {
-        try { player.stopSound("create:whistle"); } catch {}
         try { player.runCommand("stopsound @s create:whistle"); } catch {}
     }
 }
 
+/** @param {Block} block */
 function ensureVisual(block) {
     let entity = getVisual(block);
     const direction = getDirection(block);
@@ -85,7 +110,7 @@ function ensureVisual(block) {
     }
     try { entity.removeEffect("invisibility"); } catch {}
     try { entity.setProperty("create:whistle_direction", direction); } catch {}
-    try { entity.setProperty("create:whistle_connected_above", block.permutation.getState("create:connected_above") === true); } catch {}
+    try { entity.setProperty("create:whistle_connected_above", block.permutation.getAllStates()["create:connected_above"] === true); } catch {}
     try {
         entity.teleport(location, {
             checkForBlocks: false
@@ -94,9 +119,10 @@ function ensureVisual(block) {
     return entity;
 }
 
+/** @param {Block} block */
 function emitSteam(block) {
     const direction = getDirection(block);
-    const offset = PARTICLE_BY_DIRECTION[direction] ?? PARTICLE_BY_DIRECTION.south;
+    const offset = PARTICLE_BY_DIRECTION[direction] ?? { x: 0, z: -0.62 };
     try {
         const variables = new MolangVariableMap();
         variables.setFloat("variable.direction_x", offset.x);
@@ -110,13 +136,14 @@ function emitSteam(block) {
     } catch {}
 }
 
+/** @param {Block} block @param {Dimension} dimension @param {number} powerLevel */
 export function whistleRedstoneUpdate(block, dimension, powerLevel) {
     if (block?.typeId !== WHISTLE_ID) return;
     const powered = powerLevel > 0;
     let wasPowered = false;
-    try { wasPowered = block.permutation.getState("create:powered") === true; } catch {}
+    try { wasPowered = block.permutation.getAllStates()["create:powered"] === true; } catch {}
     if (wasPowered !== powered) {
-        try { block.setPermutation(block.permutation.withState("create:powered", powered)); } catch {}
+        try { updateWhistleStates(block, { "create:powered": powered }); } catch {}
         if (powered) {
             const entity = ensureVisual(block);
             try { dimension.playSound("create:whistle", block.center(), { volume: 1.2, pitch: 1.0 }); } catch {}
@@ -128,10 +155,11 @@ export function whistleRedstoneUpdate(block, dimension, powerLevel) {
     }
 }
 
+/** @param {Block} block */
 export function whistleTick(block) {
     if (block?.typeId !== WHISTLE_ID) return;
     let powered = false;
-    try { powered = block.permutation.getState("create:powered") === true; } catch {}
+    try { powered = block.permutation.getAllStates()["create:powered"] === true; } catch {}
     if (!powered) {
         removeVisual(block);
         return;
@@ -145,6 +173,7 @@ export function whistleTick(block) {
     emitSteam(block);
 }
 
+/** @param {Block} block @param {import('@minecraft/server').BlockPermutation | undefined} brokenBlockPermutation */
 export function whistleBreak(block, brokenBlockPermutation) {
     const brokenId = brokenBlockPermutation?.type?.id;
     if (brokenId !== WHISTLE_ID && brokenId !== WHISTLE_TUBE_ID) return;
@@ -168,7 +197,7 @@ export function whistleBreak(block, brokenBlockPermutation) {
 
             const below = dimension.getBlock({ x: location.x, y: location.y - 1, z: location.z });
             if (below?.typeId === WHISTLE_ID || below?.typeId === WHISTLE_TUBE_ID) {
-                below.setPermutation(below.permutation.withState("create:connected_above", false));
+                updateWhistleStates(below, { "create:connected_above": false });
             }
         } catch {}
     });
@@ -177,12 +206,14 @@ export function whistleBreak(block, brokenBlockPermutation) {
 // A quebra com Wrench troca o bloco diretamente para ar e não aciona
 // consistentemente o componente on_break. Fazemos a mesma limpeza aqui para
 // não deixar a visual do Whistle, nem a tampa da extensão, travadas.
+/** @param {Dimension | undefined} dimension @param {Vector3 | undefined} location @param {string} brokenId */
 export function whistleWrenchRemoved(dimension, location, brokenId) {
     if (!dimension || !location) return;
     if (brokenId !== WHISTLE_ID && brokenId !== WHISTLE_TUBE_ID) return;
 
     if (brokenId === WHISTLE_ID) {
         removeVisualAt(dimension, location);
+        /** @type {import('@minecraft/server').Player[]} */
         let players = [];
         try {
             players = dimension.getPlayers({
@@ -191,7 +222,7 @@ export function whistleWrenchRemoved(dimension, location, brokenId) {
             });
         } catch {}
         for (const player of players) {
-            try { player.stopSound("create:whistle"); } catch {}
+            try { player.runCommand("stopsound @s create:whistle"); } catch {}
         }
     }
 
@@ -208,11 +239,12 @@ export function whistleWrenchRemoved(dimension, location, brokenId) {
 
         const below = dimension.getBlock({ x: location.x, y: location.y - 1, z: location.z });
         if (below?.typeId === WHISTLE_ID || below?.typeId === WHISTLE_TUBE_ID) {
-            below.setPermutation(below.permutation.withState("create:connected_above", false));
+            updateWhistleStates(below, { "create:connected_above": false });
         }
     } catch {}
 }
 
+/** @param {Block} block */
 export function whistlePlace(block) {
     if (block?.typeId !== WHISTLE_ID) return;
     const dimension = block.dimension;
@@ -224,12 +256,12 @@ export function whistlePlace(block) {
             const below = dimension.getBlock({ x: location.x, y: location.y - 1, z: location.z });
             if (below?.typeId !== WHISTLE_ID && below?.typeId !== WHISTLE_TUBE_ID) return;
 
-            const direction = current.permutation.getState("minecraft:cardinal_direction") ?? "south";
+            const direction = getDirection(current);
             current.setPermutation(BlockPermutation.resolve(WHISTLE_TUBE_ID, {
                 "minecraft:cardinal_direction": direction,
                 "create:connected_above": false
             }));
-            below.setPermutation(below.permutation.withState("create:connected_above", true));
+            updateWhistleStates(below, { "create:connected_above": true });
         } catch {}
     });
 }

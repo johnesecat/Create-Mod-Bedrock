@@ -1,11 +1,17 @@
-import { world, system, Player } from "@minecraft/server";
+/** @typedef {import('@minecraft/server').Player} Player */
+/** @typedef {import('@minecraft/server').Block} Block */
+/** @typedef {import('@minecraft/server').Vector3} Vector3 */
+/** @typedef {{bar: string, label: string, color: string}} MeterLevel */
+/** @typedef {{text: string} | {translate: string}} HudText */
 import { rpmConfig } from "../rpm/rpmConfigs";
 import { getFluidTankInfo } from "../../tank/fluidTank";
 import { getSteamBoilerInfo } from "../../racoScripts/blocks/steamEngine.js";
 import { compatibilityFluids } from "../../compatibility/registries.js";
 
+/** @type {Set<string>} */
 const visibleGogglesPanels = new Set();
 
+/** @param {Player} player @param {number} currentTick */
 export function engineersGoggles(player, currentTick) {
     const viewDir = player.getViewDirection();
     const cameraLoc = player.getHeadLocation();
@@ -71,8 +77,9 @@ export function engineersGoggles(player, currentTick) {
     }
 
     const targetEntity = targetBlock.dimension.getEntities({ location: targetBlock.center(), maxDistance: 0.25, type: `${targetBlock.typeId}_entity`})[0];
-    const rpm = targetEntity?.getProperty('create:rpm') ?? 0;
+    const rpm = finiteNumber(targetEntity?.getProperty('create:rpm'));
 
+    /** @type {{rawtext: HudText[]} | null} */
     let text = null;
 
     if (targetBlock.typeId === 'create:speedometer') {
@@ -92,7 +99,7 @@ export function engineersGoggles(player, currentTick) {
     }
 
     // Gerador (creative motor, hand crank, water wheel...)
-    else if (config.isGenerator && (config.stressCapacity ?? 0) > 0) {
+    else if (config.isGenerator && typeof config.stressCapacity === 'number' && config.stressCapacity > 0) {
         const capacityTotal = config.stressCapacity * Math.abs(rpm);
 
         text = { rawtext: [
@@ -107,7 +114,7 @@ export function engineersGoggles(player, currentTick) {
     }
 
     // Máquina que consome stress (drill, saw, press, mixer...)
-    else if ((config.stressImpact ?? 0) > 0) {
+    else if (typeof config.stressImpact === 'number' && config.stressImpact > 0) {
         const stressTotal = config.stressImpact * Math.abs(rpm);
 
         text = { rawtext: [
@@ -122,8 +129,8 @@ export function engineersGoggles(player, currentTick) {
     }
 
     else if (targetBlock.typeId === 'create:stressometer') {
-        const totalStress = targetEntity?.getDynamicProperty('create:network_stress') ?? 0;
-        const totalCapacity = targetEntity?.getDynamicProperty('create:network_capacity') ?? 0;
+        const totalStress = finiteNumber(targetEntity?.getDynamicProperty('create:network_stress'));
+        const totalCapacity = finiteNumber(targetEntity?.getDynamicProperty('create:network_capacity'));
         const fraction = totalCapacity > 0 ? totalStress / totalCapacity : 0;
         const remaining = Math.max(0, totalCapacity - totalStress);
         const stress = getStressLevel(fraction);
@@ -158,7 +165,7 @@ export function engineersGoggles(player, currentTick) {
             { text: ` (${formatNumber(absRpm)} RPM)` }
         ];
 
-        const powered = targetBlock.permutation.getState('create:powered');
+        const powered = targetBlock.permutation.getAllStates()['create:powered'];
         if (powered !== undefined) {
             parts.push({ text: '\n\n§7' });
             parts.push({ translate: 'create.hud.goggles.redstone_state' });
@@ -177,6 +184,7 @@ export function engineersGoggles(player, currentTick) {
     player.onScreenDisplay.setActionBar(text);
 };
 
+/** @param {Player} player */
 export function clearGogglesPanel(player) {
     if (!visibleGogglesPanels.delete(player.id)) return;
     try {
@@ -184,6 +192,7 @@ export function clearGogglesPanel(player) {
     } catch {}
 }
 
+/** @param {number} rpm @returns {MeterLevel} */
 function getSpeedLevel(rpm) {
     const abs = Math.abs(rpm);
     if (abs >= 100) return { bar: '\u2588\u2588\u2588', label: 'create.hud.goggles.speed.fast', color: '§d' };
@@ -192,6 +201,7 @@ function getSpeedLevel(rpm) {
     return { bar: '\u2592\u2592\u2592', label: 'create.hud.goggles.speed.none', color: '§8' };
 };
 
+/** @param {number} fraction @returns {MeterLevel} */
 function getStressLevel(fraction) {
     if (fraction > 1)    return { bar: '\u2588\u2588\u2588', label: 'create.hud.goggles.stressImpact.overstressed', color: '§c' };
     if (fraction > 0.75) return { bar: '\u2588\u2588\u2592', label: 'create.hud.goggles.stressImpact.high', color: '§6' };
@@ -199,18 +209,27 @@ function getStressLevel(fraction) {
     return { bar: '\u2588\u2592\u2592', label: 'create.hud.goggles.stressImpact.low', color: '§a' };
 };
 
+/** @param {number} n */
+/** @param {unknown} value @param {number} [fallback] @returns {number} */
+function finiteNumber(value, fallback = 0) {
+    return typeof value === 'number' && Number.isFinite(value) ? value : fallback;
+}
+
+/** @param {number} n */
 function formatNumber(n) {
     const parts = n.toString().split('.');
     parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ',');
     return parts.join('.');
 };
 
+/** @param {number} fraction @param {string} color */
 function boilerBar(fraction, color) {
     const total = 8;
     const filled = Math.max(0, Math.min(total, Math.round(fraction * total)));
     return `${color}${"\u2588".repeat(filled)}\u00a78${"\u2588".repeat(total - filled)}`;
 }
 
+/** @param {string} fluidId */
 function fluidTranslationKey(fluidId) {
     switch (fluidId) {
         case "minecraft:water_bucket": return "create.hud.goggles.fluid.water";

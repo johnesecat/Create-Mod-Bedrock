@@ -4,6 +4,13 @@ import {
   registerStorageForStructure
 } from "../storage/storage_registry.js";
 
+/** @typedef {import('@minecraft/server').Block} Block */
+/** @typedef {import('@minecraft/server').Dimension} Dimension */
+/** @typedef {import('@minecraft/server').Player} Player */
+/** @typedef {{x:number, y:number, z:number}} Position */
+/** @typedef {import('../storage/storage_events.js').VaultStructure} VaultStructure */
+/** @typedef {import('../storage/storage_events.js').VaultVisualStructure} VaultVisualStructure */
+
 const VAULT_ID = "create:vault";
 const LOAD_DELAY_TICKS = 20;
 const LOAD_SCAN_RADIUS = 12;
@@ -13,6 +20,7 @@ const LOAD_SCAN_BLOCKS_PER_TICK = 192;
 let initialized = false;
 const scheduledPlayers = new Set();
 
+/** @param {Dimension} dimension @param {Position} location @returns {Block | undefined} */
 function safeGetBlock(dimension, location) {
   try {
     return dimension.getBlock(location);
@@ -21,9 +29,11 @@ function safeGetBlock(dimension, location) {
   }
 }
 
+/** @param {Block | undefined} block @param {VaultVisualStructure} vaultVisualStructure */
 export function rebuildVaultAt(block, vaultVisualStructure) {
   if (!block || block.typeId !== VAULT_ID) return undefined;
 
+  /** @type {VaultStructure | undefined} */
   let structure = vaultVisualStructure.getStructureAt(block.location, block.dimension);
   if (!structure) {
     vaultVisualStructure.expandOrAssemble(block);
@@ -37,8 +47,11 @@ export function rebuildVaultAt(block, vaultVisualStructure) {
   return { structure, storage };
 }
 
+/** @param {Player} player @param {VaultVisualStructure} vaultVisualStructure */
 function scanLoadedArea(player, vaultVisualStructure) {
+  /** @type {Dimension} */
   let dimension;
+  /** @type {Position} */
   let center;
 
   try {
@@ -84,11 +97,12 @@ function scanLoadedArea(player, vaultVisualStructure) {
   processBatch();
 }
 
+/** @param {VaultVisualStructure} vaultVisualStructure */
 export function initVaultRebuild(vaultVisualStructure) {
   if (initialized) return;
   initialized = true;
 
-  world.afterEvents.playerSpawn.subscribe((event) => {
+  world.afterEvents.playerSpawn.subscribe((/** @type {import('@minecraft/server').PlayerSpawnAfterEvent} */ event) => {
     if (!event.initialSpawn) return;
 
     const playerId = event.player?.id;

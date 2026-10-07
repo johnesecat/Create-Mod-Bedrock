@@ -1,3 +1,9 @@
+/** @typedef {'north' | 'south' | 'east' | 'west' | 'up' | 'down'} Rotation
+ * @typedef {'X' | 'Y' | 'Z'} Axis
+ * @typedef {{ type: string, accepts?: string[], sense?: string, alignment?: string, ratios?: Record<string, number>, isRpm2?: boolean }} KineticFace
+ * @typedef {{ faces?: Record<string, KineticFace>, getFaces?: (block: import('@minecraft/server').Block, permutation: import('@minecraft/server').BlockPermutation) => Record<string, KineticFace>, skipFaceMapping?: boolean, rotationState?: keyof import('@minecraft/vanilla-data').BlockStateSuperset | null, effectiveRotation?: Rotation }} FaceConfig
+ */
+/** @type {Readonly<Record<string, string>>} */
 export const INVERT_FACE = {
     'north': 'south', 'south': 'north',
     'east': 'west', 'west': 'east',
@@ -14,6 +20,7 @@ export const INVERT_FACE = {
 };
 
 
+/** @type {Readonly<Record<Rotation, Readonly<Record<string, string>>>>} */
 export const CORRECT_DIRECTIONS = {
     'north': {
         north: 'north', south: 'south', east: 'east', west: 'west', above: 'above', below: 'below',
@@ -76,21 +83,37 @@ export const DIRECTION_OFFSETS = {
     'west.south':  { x: -1, y:  0, z:  1 },
 };
 
+/** @param {number} x
+ * @param {number} y
+ * @param {number} z
+ */
 export function posToKey(x, y, z) { return `${x},${y},${z}`; };
+/** @param {string} key
+ * @returns {import('@minecraft/server').Vector3}
+ */
 export function keyToPos(key) {
-    const [x, y, z] = key.split(',').map(Number);
+    const parts = key.split(',');
+    if (parts.length !== 3 || parts.some(part => !part.trim())) throw new Error(`Invalid block position key: ${key}`);
+    const [x, y, z] = parts.map(Number);
+    if (![x, y, z].every(Number.isFinite)) throw new Error(`Invalid block position key: ${key}`);
     return { x, y, z };
 };
 
 // Retorna o eixo de rotação baseado na rotação cardinal do bloco
 // Se horizontalOrVertical for 'horizontal', troca X por Z (pra maquinas com eixo perpendicular ao norte do bloco)
 // Se horizontalOrVertical for 'vertical', troca X ou Z por Y (pra maquinas com eixo vertical)
+/** @param {string | undefined} rotation
+ * @returns {'X' | 'Y' | 'Z'}
+ */
 export function getAxisFromRotation(rotation) {
     if (rotation === 'east' || rotation === 'west') return 'X';
     if (rotation === 'up' || rotation === 'down') return 'Y';
     return 'Z'; // north/south default
 };
 
+/** @param {'X' | 'Y' | 'Z'} axis
+ * @param {'horizontal' | 'vertical' | undefined} mode
+ */
 export function perpendicularAxis(axis, mode) {
     if (mode === 'horizontal') return axis === 'X' ? 'Z' : 'X'; // X<->Z
     if (mode === 'vertical') return axis === 'Y' ? 'X' : 'Y';   // (exemplo) ajuste como você quer
@@ -98,6 +121,11 @@ export function perpendicularAxis(axis, mode) {
 }
 
 // Retorna se o bloco deve rotaciona o eixo ou não
+/** @param {'X' | 'Y' | 'Z'} axis
+ * @param {number} x
+ * @param {number} y
+ * @param {number} z
+ */
 export function shouldOffset(axis, x, y, z) {
     switch (axis) {
         case 'X': return ((y + z) % 2) === 0;
@@ -108,6 +136,11 @@ export function shouldOffset(axis, x, y, z) {
 };
 
 // Para grandes engrenagens, o offset é diferente pra criar um padrão quadriculado
+/** @param {'X' | 'Y' | 'Z'} axis
+ * @param {number} x
+ * @param {number} y
+ * @param {number} z
+ */
 export function shouldOffsetLarge(axis, x, y, z) {
     switch (axis) {
         case 'X': return (y % 2) === 0;
@@ -119,21 +152,28 @@ export function shouldOffsetLarge(axis, x, y, z) {
 
 
 // Transforma as faces das configs (que são definidas localmente pro bloco) em faces do mundo real, considerando a rotação do bloco
+/** @param {import('@minecraft/server').Block} block
+ * @param {FaceConfig} config
+ * @param {import('@minecraft/server').BlockPermutation} [permutation]
+ * @returns {Record<string, KineticFace>}
+ */
 export function resolveBlockFaces(block, config, permutation) {
     if (!permutation) permutation = block.permutation;
 
     // getFaces pode retornar faces dinâmicas
-    const localFaces = typeof config.getFaces === 'function' ? config.getFaces(block, permutation) : config.faces;
+    const localFaces = typeof config.getFaces === 'function' ? config.getFaces(block, permutation) : config.faces ?? {};
     if (config.skipFaceMapping) return { ...localFaces };
 
     // Converte a rotação definida nas configs para a rotação real do mundo
     const rawRotation = config?.rotationState ? permutation.getState(config?.rotationState) : 'south';
-    const rotation = config?.rotationState === 'minecraft:block_face' ? rawRotation : INVERT_FACE[rawRotation];
-    const effectiveRotation = config?.effectiveRotation || rotation;
+    if (typeof rawRotation !== 'string') return {};
+    const rotation = config.rotationState === 'minecraft:block_face' ? rawRotation : INVERT_FACE[rawRotation];
+    const effectiveRotation = config.effectiveRotation || rotation;
+    if (!isRotation(effectiveRotation)) return {};
     const dirMap = CORRECT_DIRECTIONS[effectiveRotation];
-    if (!dirMap) return {};
 
     // Recria a config de faces com as direções corrigidas pro mundo real 
+    /** @type {Record<string, KineticFace>} */
     const result = {};
     for (const [localFace, faceData] of Object.entries(localFaces)) {
         const worldFace = dirMap[localFace];
@@ -142,6 +182,13 @@ export function resolveBlockFaces(block, config, permutation) {
 
     return result;
 };
+
+/** @param {string | undefined} value
+ * @returns {value is Rotation}
+ */
+function isRotation(value) {
+    return value !== undefined && ['north', 'south', 'east', 'west', 'up', 'down'].includes(value);
+}
 
 export const CARDAN_SECONDARY_FLIP = {
     0: { north: 1, south: 1, east: 1, west: 1, up: 1, down: -1 },

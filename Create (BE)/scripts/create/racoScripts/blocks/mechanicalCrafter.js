@@ -5,6 +5,27 @@ import { ADDON_CRAFTING_RECIPES, ADDON_SHAPELESS_CRAFTING_RECIPES } from "./mech
 import { VANILLA_CRAFTING_RECIPES } from "./mechanicalCrafterVanillaRecipes.js"
 import { compatibilityRecipes } from "../../compatibility/registries.js"
 
+/** @typedef {import('@minecraft/server').Block} Block */
+/** @typedef {import('@minecraft/server').Dimension} Dimension */
+/** @typedef {import('@minecraft/server').Entity} Entity */
+/** @typedef {import('@minecraft/server').ItemStack} ItemStack */
+/** @typedef {import('@minecraft/server').Player} Player */
+/** @typedef {import('@minecraft/server').Vector3} Position */
+/** @typedef {'north'|'south'|'east'|'west'} Face */
+/** @typedef {'right'|'down'|'left'|'up'} GuideDirection */
+/** @typedef {{right?: boolean, down?: boolean, left?: boolean, up?: boolean}} CrafterConnections */
+/** @typedef {{side: number, y: number}} CrafterSlot */
+/** @typedef {{row: number, col: number, rows: number, cols: number}} RecipeSlotPosition */
+/** @typedef {{x: number, y: number, z: number}} Offset */
+/** @typedef {{progress: number, location: Position, final?: boolean}} AssemblyStage */
+/** @typedef {{axis: 'x'|'z', fixedAxis: 'x'|'z', fixed: number}} CrafterPlane */
+/** @typedef {{front: Face, plane: CrafterPlane, blocks: Block[], blockBySlot: Map<string, Block>}} CrafterNetwork */
+/** @typedef {{item?: string, tag?: string, ids?: string[], suffixes?: string[]}|string|string[]} CrafterIngredientRule */
+/** @typedef {{id: string, amount: number}} CrafterRecipeResult */
+/** @typedef {{pattern?: string[], key?: Record<string, CrafterIngredientRule>, keys?: Record<string, CrafterIngredientRule>, shapeless?: boolean, ingredients?: CrafterIngredientRule[], result: CrafterRecipeResult}} CrafterRecipe */
+/** @typedef {{slots: Block[], slotPositions: Map<string, RecipeSlotPosition>}} CrafterMatch */
+/** @typedef {{block: Block, entity: Entity, itemStack: ItemStack, from: Position, path: Position[], offset: Position, outputOffset: Position, assemblyStage: number}} CrafterAnimatedIngredient */
+
 const CRAFTER_ITEM_TAG = "create_mechanical_crafter_item"
 const CRAFTER_MOVING_ITEM_TAG = "create_mechanical_crafter_item_moving"
 const CRAFTER_ITEM_ENTITY = "create:mechanical_crafter_item"
@@ -38,8 +59,12 @@ const CRAFTER_VISUAL_SYNC_TICKS = new Map()
 const CRAFTER_OUTPUT_UPDATE_TICKS = new Map()
 const CRAFTER_RECIPE_SIGNATURES = new Map()
 const CRAFTER_RECIPE_DEBOUNCE_TICKS = new Map()
+/** @type {GuideDirection[]} */
 const GUIDE_DIRECTIONS = ["right", "down", "left", "up"]
 
+// Receitas da addon extraídas dos JSON com a tag crafting_table, além das
+// receitas especiais que usam grupos de itens e padrões maiores que 3 × 3.
+/** @type {CrafterRecipe[]} */
 const EXTRA_CRAFTING_RECIPES = [
     {
         pattern: [
@@ -53,52 +78,28 @@ const EXTRA_CRAFTING_RECIPES = [
             A: "create:andesite_alloy",
             C: {
                 ids: [
-                    "minecraft:oak_planks",
-                    "minecraft:spruce_planks",
-                    "minecraft:birch_planks",
-                    "minecraft:jungle_planks",
-                    "minecraft:acacia_planks",
-                    "minecraft:dark_oak_planks",
-                    "minecraft:mangrove_planks",
-                    "minecraft:cherry_planks",
-                    "minecraft:bamboo_planks",
-                    "minecraft:crimson_planks",
-                    "minecraft:warped_planks"
+                    "minecraft:oak_planks", "minecraft:spruce_planks", "minecraft:birch_planks",
+                    "minecraft:jungle_planks", "minecraft:acacia_planks", "minecraft:dark_oak_planks",
+                    "minecraft:mangrove_planks", "minecraft:cherry_planks", "minecraft:bamboo_planks",
+                    "minecraft:crimson_planks", "minecraft:warped_planks"
                 ],
                 suffixes: ["_planks"]
             },
             B: {
                 ids: [
-                    "minecraft:stone",
-                    "minecraft:smooth_stone",
-                    "minecraft:cobblestone",
-                    "minecraft:mossy_cobblestone",
-                    "minecraft:granite",
-                    "minecraft:polished_granite",
-                    "minecraft:diorite",
-                    "minecraft:polished_diorite",
-                    "minecraft:andesite",
-                    "minecraft:polished_andesite",
-                    "minecraft:deepslate",
-                    "minecraft:cobbled_deepslate",
-                    "minecraft:tuff",
-                    "minecraft:calcite",
-                    "minecraft:dripstone_block",
-                    "minecraft:blackstone",
-                    "minecraft:polished_blackstone",
-                    "minecraft:basalt",
-                    "minecraft:smooth_basalt"
+                    "minecraft:stone", "minecraft:smooth_stone", "minecraft:cobblestone",
+                    "minecraft:mossy_cobblestone", "minecraft:granite", "minecraft:polished_granite",
+                    "minecraft:diorite", "minecraft:polished_diorite", "minecraft:andesite",
+                    "minecraft:polished_andesite", "minecraft:deepslate", "minecraft:cobbled_deepslate",
+                    "minecraft:tuff", "minecraft:calcite", "minecraft:dripstone_block", "minecraft:blackstone",
+                    "minecraft:polished_blackstone", "minecraft:basalt", "minecraft:smooth_basalt"
                 ]
             }
         },
         result: { id: "create:crushing_wheel", amount: 2 }
     },
     {
-        // Receita 5 × 2 original do Potato Cannon.
-        pattern: [
-            "ARPPP",
-            "CC   "
-        ],
+        pattern: ["ARPPP", "CC   "],
         keys: {
             A: "create:andesite_alloy",
             R: "create:precision_mechanism",
@@ -109,12 +110,14 @@ const EXTRA_CRAFTING_RECIPES = [
     }
 ]
 
-// Receitas da addon extraídas dos JSON com a tag crafting_table, além das
-// receitas especiais que usam grupos de itens e padrões maiores que 3 × 3.
+/** @type {CrafterRecipe[]} */
 const CRAFTING_RECIPES = [
     // A Crushing Wheel usa o padrão especial 5 × 5 e precisa ser avaliada
     // antes das receitas comuns para nunca ser substituída.
     ...EXTRA_CRAFTING_RECIPES,
+    ...(/** @type {CrafterRecipe[]} */ (/** @type {unknown} */ (ADDON_CRAFTING_RECIPES))),
+    ...(/** @type {CrafterRecipe[]} */ (/** @type {unknown} */ (ADDON_SHAPELESS_CRAFTING_RECIPES))),
+    ...(/** @type {CrafterRecipe[]} */ (/** @type {unknown} */ (VANILLA_CRAFTING_RECIPES))),
     {
         pattern: ["PPP", "CIC", "CRC"],
         key: {
@@ -135,9 +138,6 @@ const CRAFTING_RECIPES = [
         },
         result: { id: "create:super_glue", amount: 1 }
     },
-    ...ADDON_CRAFTING_RECIPES,
-    ...ADDON_SHAPELESS_CRAFTING_RECIPES,
-    ...VANILLA_CRAFTING_RECIPES
 ]
 
 const FACE_OFFSET = {
@@ -175,6 +175,7 @@ const INVERT_FACE = {
     west: "east"
 }
 
+/** @param {Block | undefined} block @param {Player | undefined} player @param {ItemStack | undefined} item */
 export function mechanicalCrafterInteract(block, player, item) {
     if (!block || !player) return
     if (item?.typeId === "create:wrench") {
@@ -194,21 +195,27 @@ export function mechanicalCrafterInteract(block, player, item) {
     block.dimension.playSound("block.itemframe.add_item", getCrafterItemLocation(block))
 }
 
+/** @param {Block} block */
 function cycleCrafterGuideDirection(block) {
     const current = getCrafterGuideDirection(block)
     const next = GUIDE_DIRECTIONS[(GUIDE_DIRECTIONS.indexOf(current) + 1) % GUIDE_DIRECTIONS.length]
-    try { block.setPermutation(block.permutation.withState("create:guide_direction", next)) } catch {}
+    try {
+        const states = block.permutation.getAllStates();
+        block.setPermutation(mc.BlockPermutation.resolve(block.typeId, { ...states, "create:guide_direction": next }));
+    } catch {}
     try { block.dimension.playSound("random.click", block.center(), { volume: 0.6, pitch: 1.1 + GUIDE_DIRECTIONS.indexOf(next) * 0.1 }) } catch {}
 }
 
+/** @param {Block | undefined} block @returns {GuideDirection} */
 function getCrafterGuideDirection(block) {
     try {
-        const direction = block?.permutation?.getState?.("create:guide_direction")
-        if (GUIDE_DIRECTIONS.includes(direction)) return direction
+        const direction = block?.permutation?.getAllStates()?.["create:guide_direction"]
+        if (typeof direction === "string" && GUIDE_DIRECTIONS.some((entry) => entry === direction)) return /** @type {GuideDirection} */ (direction)
     } catch {}
     return "right"
 }
 
+/** @param {Block | undefined} block @param {Dimension | undefined} [dimension] */
 export function mechanicalCrafterBreak(block, dimension = block?.dimension) {
     if (!block || !dimension) return
     const key = blockKey(block)
@@ -230,11 +237,12 @@ export function mechanicalCrafterBreak(block, dimension = block?.dimension) {
 
 }
 
+/** @param {Block} block */
 export function mechanicalCrafterTick(block) {
     maybePullCrafterHopperInput(block)
 
     // Só existe saída quando as setas da grade apontam para o mesmo crafter.
-    if (block?.permutation?.getState?.("create:is_output") !== true) {
+    if (block?.permutation?.getAllStates()?.["create:is_output"] !== true) {
         const key = blockKey(block)
         const now = mc.system.currentTick ?? 0
         const nextOutputUpdate = CRAFTER_OUTPUT_UPDATE_TICKS.get(key) ?? 0
@@ -244,7 +252,7 @@ export function mechanicalCrafterTick(block) {
         }
     }
 
-    if (block?.permutation?.getState?.("create:is_output") === true) {
+    if (block?.permutation?.getAllStates()?.["create:is_output"] === true) {
         maybeTryCraftFromCrafterNetwork(block)
     }
 
@@ -275,6 +283,7 @@ export function mechanicalCrafterTick(block) {
     syncCrafterItemVisual(block, itemEntity, itemStack)
 }
 
+/** @param {Block} block */
 function maybePullCrafterHopperInput(block) {
     if (!block || block.typeId !== CRAFTER_TYPE) return false
     const key = blockKey(block)
@@ -288,9 +297,19 @@ function maybePullCrafterHopperInput(block) {
     if (hopperBlock?.typeId !== "minecraft:hopper") return false
 
     try {
-        const facing = racoAPI.blockFaceToDirection(racoAPI.numToDirection(hopperBlock.permutation.getState("facing_direction")))
-        if (racoAPI.invertFace(facing) !== backFace) return false
-        if (hopperBlock.permutation.getState("toggle_bit") === true) return false
+        const facingDirection = hopperBlock.permutation.getAllStates()["facing_direction"]
+            ?? hopperBlock.permutation.getAllStates()["minecraft:cardinal_direction"]
+        if (typeof facingDirection === "number") {
+            const facingDirectionName = racoAPI.numToDirection(facingDirection)
+            if (!facingDirectionName) return false
+            const facing = racoAPI.blockFaceToDirection(facingDirectionName)
+            if (racoAPI.invertFace(facing) !== backFace) return false
+        } else if (typeof facingDirection === "string") {
+            if (racoAPI.invertFace(facingDirection) !== backFace) return false
+        } else {
+            return false
+        }
+        if (hopperBlock.permutation.getAllStates()["toggle_bit"] === true) return false
     } catch {
         return false
     }
@@ -313,6 +332,7 @@ function maybePullCrafterHopperInput(block) {
     return false
 }
 
+/** @param {Block} block */
 function maybeTryCraftFromCrafterNetwork(block) {
     const key = blockKey(block)
     const currentTick = mc.system.currentTick ?? 0
@@ -323,6 +343,7 @@ function maybeTryCraftFromCrafterNetwork(block) {
     return tryCraftFromCrafterNetwork(block)
 }
 
+/** @param {Block} block @returns {Block | null} */
 function updateCrafterNetworkOutput(block) {
     if (!block || block.typeId !== CRAFTER_TYPE) return null
     const network = collectCrafterNetwork(block)
@@ -341,6 +362,7 @@ function updateCrafterNetworkOutput(block) {
     return outputBlock
 }
 
+/** @param {CrafterNetwork} network @returns {Block | null} */
 function findUniqueCrafterGuideOutput(network) {
     const terminals = new Set()
     for (const block of network.blocks) {
@@ -354,6 +376,7 @@ function findUniqueCrafterGuideOutput(network) {
     return network.blocks.find(block => blockKey(block) === terminalKey) ?? null
 }
 
+/** @param {Block} block @param {CrafterNetwork} network @returns {Block | null} */
 function getCrafterGuideTerminalBlock(block, network) {
     const seen = new Set()
     let currentBlock = block
@@ -371,13 +394,16 @@ function getCrafterGuideTerminalBlock(block, network) {
     return null
 }
 
+/** @param {Block} block @param {boolean} isOutput */
 function setCrafterOutputState(block, isOutput) {
     try {
-        if (block.permutation.getState("create:is_output") === isOutput) return
-        block.setPermutation(block.permutation.withState("create:is_output", isOutput))
+        const states = block.permutation.getAllStates();
+        if (states["create:is_output"] === isOutput) return
+        block.setPermutation(mc.BlockPermutation.resolve(block.typeId, { ...states, "create:is_output": isOutput }))
     } catch {}
 }
 
+/** @param {CrafterNetwork} network */
 function updateCrafterNetworkConnections(network) {
     const connectionsByBlock = new Map()
     for (const block of network.blocks) {
@@ -403,6 +429,7 @@ function updateCrafterNetworkConnections(network) {
     }
 }
 
+/** @param {Block} fromBlock @param {Block} toBlock @param {CrafterNetwork} network @returns {GuideDirection | null} */
 function getCrafterIncomingConnectionSide(fromBlock, toBlock, network) {
     const fromSlot = getCrafterPlaneSlot(fromBlock, network.plane)
     const toSlot = getCrafterPlaneSlot(toBlock, network.plane)
@@ -417,6 +444,7 @@ function getCrafterIncomingConnectionSide(fromBlock, toBlock, network) {
     return null
 }
 
+/** @param {Block} block @param {CrafterConnections} [connections] */
 function setCrafterConnectionStates(block, connections = {}) {
     try {
         const nextStates = {
@@ -429,8 +457,9 @@ function setCrafterConnectionStates(block, connections = {}) {
         let permutation = block.permutation
         let changed = false
         for (const [state, value] of Object.entries(nextStates)) {
-            if (permutation.getState(state) === value) continue
-            permutation = permutation.withState(state, value)
+            const states = permutation.getAllStates();
+            if (states[state] === value) continue
+            permutation = mc.BlockPermutation.resolve(block.typeId, { ...states, [state]: value })
             changed = true
         }
 
@@ -438,6 +467,7 @@ function setCrafterConnectionStates(block, connections = {}) {
     } catch {}
 }
 
+/** @param {Block} block @param {ItemStack | undefined} itemStack @param {number} [requestedAmount] */
 function addStackToCrafter(block, itemStack, requestedAmount = itemStack?.amount ?? 0) {
     if (!block || !itemStack || requestedAmount <= 0) return 0
     // Ferramentas/equipamentos não podem ocupar os slots do Mechanical Crafter.
@@ -461,9 +491,11 @@ function addStackToCrafter(block, itemStack, requestedAmount = itemStack?.amount
     return amountToAdd
 }
 
+/** @param {Block | undefined} block @returns {Entity | null} */
 function getCrafterItemEntity(block) {
+    if (!block) return null
     const loc = getCrafterItemLocation(block)
-    const entities = block?.dimension?.getEntities({
+    const entities = block.dimension.getEntities({
         type: CRAFTER_ITEM_ENTITY,
         location: loc,
         maxDistance: 0.45
@@ -477,6 +509,7 @@ function getCrafterItemEntity(block) {
     return null
 }
 
+/** @param {Block} block @returns {Entity[]} */
 function getCrafterItemEntities(block) {
     const primary = getCrafterItemEntity(block)
     const result = []
@@ -515,12 +548,14 @@ function getCrafterItemEntities(block) {
     return result
 }
 
+/** @param {Block} block @param {Entity} entity @param {ItemStack} itemStack */
 function setCrafterEntityItem(block, entity, itemStack) {
     try { entity.addTag(CRAFTER_ITEM_TAG) } catch {}
     setCrafterEntityDisplayItem(entity, itemStack)
     syncCrafterItemVisual(block, entity, itemStack)
 }
 
+/** @param {Block} outputBlock */
 function tryCraftFromCrafterNetwork(outputBlock) {
     if (!outputBlock || outputBlock.typeId !== CRAFTER_TYPE) return false
     const outputKey = blockKey(outputBlock)
@@ -538,7 +573,7 @@ function tryCraftFromCrafterNetwork(outputBlock) {
     if (CRAFTER_RECIPE_SIGNATURES.get(outputKey) === signature) return false
     CRAFTER_RECIPE_SIGNATURES.set(outputKey, signature)
 
-    for (const recipe of [...compatibilityRecipes.crafting, ...compatibilityRecipes.crafting_shapeless, ...CRAFTING_RECIPES]) {
+    for (const recipe of /** @type {CrafterRecipe[]} */ ([...compatibilityRecipes.crafting, ...compatibilityRecipes.crafting_shapeless, ...CRAFTING_RECIPES])) {
         const match = recipe.shapeless
             ? findCrafterShapelessRecipeMatch(network, recipe)
             : findCrafterRecipeMatch(network, recipe)
@@ -552,11 +587,13 @@ function tryCraftFromCrafterNetwork(outputBlock) {
     return false
 }
 
+/** @param {Block} block */
 function getCrafterRecipeDebounceKey(block) {
     const plane = getCrafterPlane(block)
     return `${block.dimension.id}:${getCrafterFront(block)}:${plane.fixedAxis}:${plane.fixed}`
 }
 
+/** @param {CrafterNetwork} network */
 function getCrafterRecipeSignature(network) {
     return network.blocks
         .map(block => {
@@ -568,8 +605,10 @@ function getCrafterRecipeSignature(network) {
         .join("|")
 }
 
+/** @param {Block} outputBlock @param {Block[]} slotBlocks @param {CrafterRecipe} recipe @param {number} rpm @param {CrafterNetwork} network @param {CrafterMatch} match */
 function beginCrafterCraftAnimation(outputBlock, slotBlocks, recipe, rpm, network, match) {
     const outputKey = blockKey(outputBlock)
+    /** @type {CrafterAnimatedIngredient[]} */
     const ingredients = []
 
     for (let i = 0; i < slotBlocks.length; i++) {
@@ -586,7 +625,8 @@ function beginCrafterCraftAnimation(outputBlock, slotBlocks, recipe, rpm, networ
             from: { ...entity.location },
             path,
             offset: subtractLocation(entity.location, path?.[0] ?? entity.location),
-            outputOffset
+            outputOffset,
+            assemblyStage: 0
         })
     }
 
@@ -611,19 +651,23 @@ function beginCrafterCraftAnimation(outputBlock, slotBlocks, recipe, rpm, networ
     return true
 }
 
+/** @param {Block[]} blocks @param {boolean} isCrafting */
 function setCrafterBlocksCraftingState(blocks, isCrafting) {
     for (const block of blocks ?? []) {
         try {
             if (block?.typeId !== CRAFTER_TYPE) continue
-            if (block.permutation.getState("create:is_crafting") === isCrafting) continue
-            block.setPermutation(block.permutation.withState("create:is_crafting", isCrafting))
+            const states = block.permutation.getAllStates();
+            if (states["create:is_crafting"] === isCrafting) continue
+            block.setPermutation(mc.BlockPermutation.resolve(block.typeId, { ...states, "create:is_crafting": isCrafting }))
         } catch {}
     }
 }
 
+/** @param {Block} outputBlock @param {CrafterAnimatedIngredient[]} ingredients @param {CrafterRecipe} recipe */
 function beginCrafterOutputProcess(outputBlock, ingredients, recipe) {
     const result = new mc.ItemStack(recipe.result.id, recipe.result.amount)
     const target = getCrafterItemLocation(outputBlock)
+    /** @type {Entity | undefined} */
     let resultEntity
 
     let tick = 0
@@ -690,6 +734,7 @@ function beginCrafterOutputProcess(outputBlock, ingredients, recipe) {
     }, 1)
 }
 
+/** @param {Block} outputBlock @param {ItemStack} itemStack @returns {ItemStack | undefined} */
 function insertCrafterResultIntoOutputInventory(outputBlock, itemStack) {
     if (!outputBlock || !itemStack) return itemStack
 
@@ -701,7 +746,12 @@ function insertCrafterResultIntoOutputInventory(outputBlock, itemStack) {
 
     for (const face of faces) {
         let destinationBlock
-        try { destinationBlock = outputBlock[face]?.() } catch {}
+        try {
+            destinationBlock = face === "north" ? outputBlock.north()
+                : face === "south" ? outputBlock.south()
+                    : face === "east" ? outputBlock.east()
+                        : outputBlock.west();
+        } catch {}
 
         let destination
         try { destination = destinationBlock?.getComponent("minecraft:inventory")?.container } catch {}
@@ -719,6 +769,7 @@ function insertCrafterResultIntoOutputInventory(outputBlock, itemStack) {
     return itemStack
 }
 
+/** @param {CrafterAnimatedIngredient[]} ingredients @param {Position} target @param {number} animationTicks @param {Block} outputBlock */
 function animateCrafterIngredientsToOutput(ingredients, target, animationTicks, outputBlock) {
     for (const ingredient of ingredients) {
         try { ingredient.entity?.addTag(CRAFTER_MOVING_ITEM_TAG) } catch {}
@@ -726,6 +777,7 @@ function animateCrafterIngredientsToOutput(ingredients, target, animationTicks, 
     }
 
     let tick = 0
+    /** @type {Set<string>} */
     const emittedStages = new Set()
     const intervalId = mc.system.runInterval(() => {
         tick++
@@ -750,6 +802,7 @@ function animateCrafterIngredientsToOutput(ingredients, target, animationTicks, 
     }, 1)
 }
 
+/** @param {CrafterAnimatedIngredient} ingredient @param {Position} target @param {number} progress @param {Block} outputBlock @param {Set<string>} emittedStages */
 function updateCrafterAssemblyStage(ingredient, target, progress, outputBlock, emittedStages) {
     const stages = getCrafterAssemblyStages(ingredient.from, target)
     while (ingredient.assemblyStage < stages.length && progress >= stages[ingredient.assemblyStage].progress) {
@@ -763,10 +816,12 @@ function updateCrafterAssemblyStage(ingredient, target, progress, outputBlock, e
     }
 }
 
+/** @param {number} stageIndex @param {Position} location */
 function getCrafterAssemblyStageKey(stageIndex, location) {
     return `${stageIndex}:${Math.round(location.x * 10)},${Math.round(location.y * 10)},${Math.round(location.z * 10)}`
 }
 
+/** @param {Position} from @param {Position} target @returns {AssemblyStage[]} */
 function getCrafterAssemblyStages(from, target) {
     const horizontalDistance = Math.abs(target.x - from.x) + Math.abs(target.z - from.z)
     const verticalDistance = Math.abs(target.y - from.y)
@@ -791,6 +846,7 @@ function getCrafterAssemblyStages(from, target) {
     ]
 }
 
+/** @param {Block} block @param {Position} target @param {number} times */
 function spawnCrafterAssemblyParticles(block, target, times) {
     if (!block || times <= 0) return
     try {
@@ -814,32 +870,39 @@ function spawnCrafterAssemblyParticles(block, target, times) {
     mc.system.runTimeout(() => spawnCrafterAssemblyParticles(block, target, times - 1), 2)
 }
 
+/** @param {number} rpm */
 function getCrafterCraftAnimationTicks(rpm) {
     const absRpm = Math.max(1, Math.abs(rpm))
     const scaledTicks = Math.round(CRAFTER_CRAFT_BASE_ANIMATION_TICKS / Math.sqrt(absRpm / CRAFTER_CRAFT_BASE_ANIMATION_RPM))
     return Math.max(CRAFTER_CRAFT_MIN_ANIMATION_TICKS, Math.min(CRAFTER_CRAFT_MAX_ANIMATION_TICKS, scaledTicks))
 }
 
+/** @param {Block} block */
 function getCrafterRpm(block) {
-    const entity = block?.dimension?.getEntities({
+    if (!block) return 0;
+    const entity = block.dimension.getEntities({
         type: CRAFTER_RPM_ENTITY,
         location: block.center(),
         maxDistance: 0.7,
         closest: 1
     })?.[0]
-    return Math.abs(entity?.getProperty("create:rpm") ?? 0)
+    const rpm = entity?.getProperty("create:rpm")
+    return typeof rpm === "number" ? Math.abs(rpm) : 0
 }
 
+/** @param {Block} fromBlock @param {Block} outputBlock @param {CrafterNetwork} network @returns {Position[]} */
 function getCrafterCraftPath(fromBlock, outputBlock, network) {
     const guidedBlocks = getCrafterGuidedBlockPath(fromBlock, outputBlock, network)
     if (guidedBlocks?.length) return guidedBlocks.map(getCrafterItemLocation)
-    if (!fromBlock || !outputBlock || !network) return [fromBlock, outputBlock].filter(Boolean).map(getCrafterItemLocation)
 
     const startSlot = getCrafterPlaneSlot(fromBlock, network.plane)
     const endSlot = getCrafterPlaneSlot(outputBlock, network.plane)
     const startKey = slotKey(startSlot.side, startSlot.y)
     const endKey = slotKey(endSlot.side, endSlot.y)
+    /** @type {string[]} */
+    /** @type {string[]} */
     const queue = [startKey]
+    /** @type {Map<string, string | null>} */
     const previous = new Map([[startKey, null]])
     const directions = [
         { side: 1, y: 0 },
@@ -850,6 +913,7 @@ function getCrafterCraftPath(fromBlock, outputBlock, network) {
 
     while (queue.length > 0) {
         const currentKey = queue.shift()
+        if (currentKey === undefined || currentKey === null) break
         if (currentKey === endKey) break
 
         const [sideText, yText] = currentKey.split(",")
@@ -865,16 +929,18 @@ function getCrafterCraftPath(fromBlock, outputBlock, network) {
 
     if (!previous.has(endKey)) return [getCrafterItemLocation(fromBlock), getCrafterItemLocation(outputBlock)]
 
+    /** @type {Block[]} */
     const blocks = []
     let currentKey = endKey
     while (currentKey) {
         const block = network.blockBySlot.get(currentKey)
         if (block) blocks.unshift(block)
-        currentKey = previous.get(currentKey)
+        currentKey = previous.get(currentKey) ?? ""
     }
     return blocks.map(getCrafterItemLocation)
 }
 
+/** @param {CrafterNetwork} network @param {CrafterMatch} match @param {Block} outputBlock */
 function doesCrafterRecipeLeadToOutput(network, match, outputBlock) {
     if (!network || !match || !outputBlock) return false
     const terminalKey = blockKey(outputBlock)
@@ -885,6 +951,7 @@ function doesCrafterRecipeLeadToOutput(network, match, outputBlock) {
     return true
 }
 
+/** @param {Block} fromBlock @param {Block} outputBlock @param {CrafterNetwork} network @returns {Block[] | null} */
 function getCrafterGuidedBlockPath(fromBlock, outputBlock, network) {
     if (!fromBlock || !outputBlock || !network) return null
     const outputKey = blockKey(outputBlock)
@@ -907,6 +974,7 @@ function getCrafterGuidedBlockPath(fromBlock, outputBlock, network) {
     return null
 }
 
+/** @param {Block} block @param {CrafterNetwork} network @returns {Block | undefined} */
 function getCrafterGuideNextBlock(block, network) {
     const direction = getCrafterGuideDirection(block)
     const slot = getCrafterPlaneSlot(block, network.plane)
@@ -922,11 +990,13 @@ function getCrafterGuideNextBlock(block, network) {
     return network.blockBySlot.get(slotKey(side, y))
 }
 
+/** @param {Face} front */
 function getCrafterGuideSideSign(front) {
     if (front === "north" || front === "east") return -1
     return 1
 }
 
+/** @param {Position[]} path @param {number} progress @returns {Position | undefined} */
 function getCrafterPathLocation(path, progress) {
     if (!path || path.length <= 1) return path?.[0]
 
@@ -957,6 +1027,7 @@ function getCrafterPathLocation(path, progress) {
     return path[path.length - 1]
 }
 
+/** @param {number} index @param {number} total @param {Face} front @returns {Offset} */
 function getCrafterIngredientOffset(index, total, front) {
     const lane = (index % 5) - 2
     const layer = Math.floor(index / 5) - 2
@@ -971,6 +1042,7 @@ function getCrafterIngredientOffset(index, total, front) {
     }
 }
 
+/** @param {Block} block @param {CrafterMatch} match @param {Face} front @returns {Offset} */
 function getCrafterRecipeOutputOffset(block, match, front) {
     const position = match?.slotPositions?.get(blockKey(block))
     if (!position) return { x: 0, y: 0, z: 0 }
@@ -985,14 +1057,16 @@ function getCrafterRecipeOutputOffset(block, match, front) {
     }
 }
 
+/** @param {Position | undefined} location @param {Offset | undefined} offset @returns {Position} */
 function addLocation(location, offset) {
     return {
-        x: location.x + (offset?.x ?? 0),
-        y: location.y + (offset?.y ?? 0),
-        z: location.z + (offset?.z ?? 0)
+        x: (location?.x ?? 0) + (offset?.x ?? 0),
+        y: (location?.y ?? 0) + (offset?.y ?? 0),
+        z: (location?.z ?? 0) + (offset?.z ?? 0)
     }
 }
 
+/** @param {Position} location @param {Offset | undefined} offset @returns {Offset} */
 function subtractLocation(location, offset) {
     return {
         x: location.x - (offset?.x ?? 0),
@@ -1001,6 +1075,7 @@ function subtractLocation(location, offset) {
     }
 }
 
+/** @param {Offset} from @param {Offset} to @param {number} progress @returns {Offset} */
 function lerpLocation(from, to, progress) {
     return {
         x: lerp(from?.x ?? 0, to?.x ?? 0, progress),
@@ -1009,6 +1084,7 @@ function lerpLocation(from, to, progress) {
     }
 }
 
+/** @param {CrafterAnimatedIngredient} ingredient */
 function finishCrafterIngredientConsume(ingredient) {
     const { block, entity, itemStack } = ingredient
     if (entity?.isValid) {
@@ -1026,18 +1102,22 @@ function finishCrafterIngredientConsume(ingredient) {
     return true
 }
 
+/** @param {Block} startBlock @returns {CrafterNetwork} */
 function collectCrafterNetwork(startBlock) {
     const front = getCrafterFront(startBlock)
     const plane = getCrafterPlane(startBlock)
+    /** @type {Block[]} */
     const queue = [startBlock]
     const seen = new Set([blockKey(startBlock)])
+    /** @type {Block[]} */
     const blocks = []
+    /** @type {Map<string, Block>} */
     const blockBySlot = new Map()
 
     // Rede completa do Mechanical Crafter: até 9 × 9 blocos (81 slots).
     while (queue.length > 0 && blocks.length < 81) {
         const block = queue.shift()
-        if (!isCrafterInPlane(block, front, plane)) continue
+        if (!block || !isCrafterInPlane(block, front, plane)) continue
 
         blocks.push(block)
         const slot = getCrafterPlaneSlot(block, plane)
@@ -1060,6 +1140,7 @@ function collectCrafterNetwork(startBlock) {
     return { front, plane, blocks, blockBySlot }
 }
 
+/** @param {CrafterNetwork} network @param {CrafterRecipe} recipe @returns {CrafterMatch | null} */
 function findCrafterRecipeMatch(network, recipe) {
     const slots = []
     for (const block of network.blocks) {
@@ -1083,7 +1164,9 @@ function findCrafterRecipeMatch(network, recipe) {
     return null
 }
 
+/** @param {CrafterNetwork} network @param {CrafterRecipe} recipe @returns {CrafterMatch | null} */
 function findCrafterShapelessRecipeMatch(network, recipe) {
+    if (!recipe.shapeless || !recipe.ingredients) return null;
     const occupied = []
     for (const block of network.blocks) {
         const itemStack = getCrafterStoredItem(block)
@@ -1106,7 +1189,9 @@ function findCrafterShapelessRecipeMatch(network, recipe) {
     }
 }
 
+/** @param {CrafterNetwork} network @param {CrafterRecipe} recipe @param {number} leftSide @param {number} topY @returns {CrafterMatch | null} */
 function matchCrafterRecipeAt(network, recipe, leftSide, topY) {
+    if (!recipe.pattern) return null;
     const requiredBlocks = []
     const slotPositions = new Map()
 
@@ -1141,6 +1226,7 @@ function matchCrafterRecipeAt(network, recipe, leftSide, topY) {
     return { slots: requiredBlocks, slotPositions }
 }
 
+/** @param {ItemStack | undefined} itemStack @param {CrafterIngredientRule | undefined} expected */
 function isCrafterRecipeIngredient(itemStack, expected) {
     if (!itemStack || !expected) return false
     if (typeof expected === "string") return itemStack.typeId === expected
@@ -1160,6 +1246,7 @@ function isCrafterRecipeIngredient(itemStack, expected) {
     return false
 }
 
+/** @param {string} typeId @param {string} tag */
 function itemMatchesCrafterRecipeTag(typeId, tag) {
     switch (tag) {
         case "minecraft:planks":
@@ -1176,6 +1263,7 @@ function itemMatchesCrafterRecipeTag(typeId, tag) {
     }
 }
 
+/** @param {Block} block */
 function consumeOneCrafterItem(block) {
     const entity = getCrafterItemEntity(block)
     const itemStack = entity?.getComponent("inventory")?.container?.getItem(0)
@@ -1192,10 +1280,12 @@ function consumeOneCrafterItem(block) {
     return true
 }
 
+/** @param {Block} block @returns {ItemStack | undefined} */
 function getCrafterStoredItem(block) {
     return getCrafterItemEntity(block)?.getComponent("inventory")?.container?.getItem(0)
 }
 
+/** @param {Block} block @param {Entity | undefined} entity @param {ItemStack} itemStack @returns {ItemStack} */
 function limitCrafterStoredItemAmount(block, entity, itemStack) {
     if (!block || !entity?.isValid || !itemStack || (itemStack.amount ?? 1) <= CRAFTER_SLOT_MAX_AMOUNT) return itemStack
 
@@ -1209,6 +1299,7 @@ function limitCrafterStoredItemAmount(block, entity, itemStack) {
     return keptItem
 }
 
+/** @param {Block} block @returns {CrafterPlane} */
 function getCrafterPlane(block) {
     const front = getCrafterFront(block)
     if (front === "east" || front === "west") {
@@ -1217,16 +1308,19 @@ function getCrafterPlane(block) {
     return { axis: "x", fixedAxis: "z", fixed: block.location.z }
 }
 
+/** @param {Block} block @param {Face} front @param {CrafterPlane} plane */
 function isCrafterInPlane(block, front, plane) {
     return block?.typeId === CRAFTER_TYPE
         && getCrafterFront(block) === front
         && block.location?.[plane.fixedAxis] === plane.fixed
 }
 
+/** @param {Block} block @param {CrafterPlane} plane @returns {CrafterSlot} */
 function getCrafterPlaneSlot(block, plane) {
     return { side: block.location[plane.axis], y: block.location.y }
 }
 
+/** @param {Dimension} dimension @param {CrafterPlane} plane @param {number} side @param {number} y @returns {Block | undefined} */
 function getCrafterPlaneBlock(dimension, plane, side, y) {
     const location = plane.axis === "x"
         ? { x: side, y, z: plane.fixed }
@@ -1235,30 +1329,37 @@ function getCrafterPlaneBlock(dimension, plane, side, y) {
     return undefined
 }
 
+/** @param {number} side @param {number} y */
 function slotKey(side, y) {
     return `${side},${y}`
 }
 
+/** @param {Block} block */
 function blockKey(block) {
     return `${block.dimension.id}:${block.location.x},${block.location.y},${block.location.z}`
 }
 
+/** @param {number} from @param {number} to @param {number} progress */
 function lerp(from, to, progress) {
     return from + (to - from) * progress
 }
 
+/** @param {number} value @param {number} min @param {number} max */
 function clamp(value, min, max) {
     return Math.max(min, Math.min(max, value))
 }
 
+/** @param {number} progress */
 function easeInOut(progress) {
     return progress * progress * (3 - 2 * progress)
 }
 
+/** @param {number} progress */
 function easeSmooth(progress) {
     return progress * progress * progress * (progress * (progress * 6 - 15) + 10)
 }
 
+/** @param {Block} block @param {Entity | undefined} entity @param {ItemStack | undefined} itemStack */
 function syncCrafterItemVisual(block, entity, itemStack) {
     if (!block || !entity?.isValid || !itemStack) return
 
@@ -1283,15 +1384,18 @@ function syncCrafterItemVisual(block, entity, itemStack) {
     try { entity.setDynamicProperty(CRAFTER_ITEM_SIGNATURE, signature) } catch {}
 }
 
+/** @param {string} visualType @param {Face} [front] */
 function getCrafterVisualType(visualType, front = "north") {
     if (visualType === "fake_item") return front === "north" ? "frame_item_flat" : "frame_item"
     return visualType === "hand_equipped" ? "item" : visualType
 }
 
+/** @param {ItemStack} itemStack */
 function getCrafterStoredVisualType(itemStack) {
     return isCrafterFakeVisual(itemStack) ? "fake_item" : racoAPI.itemStackIs(itemStack)
 }
 
+/** @param {ItemStack} itemStack @returns {ItemStack} */
 function getCrafterDisplayItemStack(itemStack) {
     const fakeItemId = racoAPI.getFakeItemId(itemStack)
     if (!fakeItemId) return itemStack
@@ -1303,15 +1407,18 @@ function getCrafterDisplayItemStack(itemStack) {
     }
 }
 
+/** @param {ItemStack} itemStack */
 function isCrafterFakeVisual(itemStack) {
     return !!racoAPI.getFakeItemId(itemStack)
 }
 
+/** @param {Entity} entity @param {ItemStack} itemStack */
 function setCrafterEntityDisplayItem(entity, itemStack) {
     racoAPI.setItemInHand(getCrafterDisplayItemStack(itemStack), entity, "Mainhand", 0, "create:item_visual")
     try { entity.getComponent("inventory")?.container?.setItem(0, itemStack) } catch {}
 }
 
+/** @param {Block} block @returns {Position} */
 function getCrafterItemLocation(block) {
     const front = getCrafterFront(block)
     const face = FACE_OFFSET[front] ?? FACE_OFFSET.north
@@ -1323,21 +1430,33 @@ function getCrafterItemLocation(block) {
     }
 }
 
+/** @param {Block | undefined} block @returns {Face} */
 function getCrafterFront(block) {
     const rawDirection = block?.permutation?.getState?.("minecraft:cardinal_direction") ?? "south"
-    return INVERT_FACE[rawDirection] ?? "north"
+    if (rawDirection === "north") return "south"
+    if (rawDirection === "south") return "north"
+    if (rawDirection === "east") return "west"
+    if (rawDirection === "west") return "east"
+    return "north"
 }
 
+/** @param {Block} block @returns {Face} */
 function getCrafterBackFace(block) {
-    return racoAPI.invertFace(getCrafterFront(block))
+    const front = getCrafterFront(block)
+    if (front === "north") return "south"
+    if (front === "south") return "north"
+    if (front === "east") return "west"
+    return "east"
 }
 
+/** @param {ItemStack | undefined} a @param {ItemStack | undefined} b */
 function canStackItems(a, b) {
     if (!a || !b) return false
     try { return a.isStackableWith(b) } catch {}
     return a.typeId === b.typeId
 }
 
+/** @param {ItemStack | undefined} item */
 function getItemSpace(item) {
     return Math.max(0, (item?.maxAmount ?? 64) - (item?.amount ?? 0))
 }

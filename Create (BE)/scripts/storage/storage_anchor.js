@@ -6,16 +6,12 @@ import {
 } from "./storage_config.js";
 import { addItemLimited, dropInventory, getInventory } from "./storage_inventory.js";
 
+/** @param {import('@minecraft/server').Entity | undefined} entity */
 function isValidEntity(entity) {
-  try {
-    if (!entity) return false;
-    if (typeof entity.isValid === "function") return entity.isValid();
-    return entity.isValid !== false;
-  } catch {
-    return false;
-  }
+  return entity?.isValid === true;
 }
 
+/** @param {{min?: import('@minecraft/server').Vector3, max?: import('@minecraft/server').Vector3, origin: import('@minecraft/server').Vector3}} structure */
 export function anchorLocation(structure) {
   const min = structure.min ?? structure.origin;
 
@@ -26,6 +22,7 @@ export function anchorLocation(structure) {
   };
 }
 
+/** @param {import('@minecraft/server').Vector3} pos */
 function blockAnchorLocation(pos) {
   return {
     x: pos.x + 0.5,
@@ -34,6 +31,7 @@ function blockAnchorLocation(pos) {
   };
 }
 
+/** @param {{min?: import('@minecraft/server').Vector3, max?: import('@minecraft/server').Vector3, origin: import('@minecraft/server').Vector3}} structure */
 function structureDropLocation(structure) {
   const min = structure.min ?? structure.origin;
   const max = structure.max ?? structure.origin;
@@ -45,6 +43,7 @@ function structureDropLocation(structure) {
   };
 }
 
+/** @param {import('@minecraft/server').Dimension} dimension @param {string} storageId */
 export function findAnchors(dimension, storageId) {
   return dimension.getEntities({
     type: STORAGE_ANCHOR_ID,
@@ -55,10 +54,12 @@ export function findAnchors(dimension, storageId) {
   }).filter(isValidEntity);
 }
 
+/** @param {import('@minecraft/server').Vector3} pos */
 function blockTag(pos) {
   return `storage_block_${Math.floor(pos.x)}_${Math.floor(pos.y)}_${Math.floor(pos.z)}`;
 }
 
+/** @param {import('@minecraft/server').Entity} anchor @param {import('@minecraft/server').Vector3} pos */
 function hasBlockTag(anchor, pos) {
   try {
     return anchor.hasTag(blockTag(pos));
@@ -67,6 +68,7 @@ function hasBlockTag(anchor, pos) {
   }
 }
 
+/** @param {import('@minecraft/server').Entity} anchor */
 function anchorBlockKey(anchor) {
   try {
     for (const tag of anchor.getTags?.() ?? []) {
@@ -77,6 +79,7 @@ function anchorBlockKey(anchor) {
   return undefined;
 }
 
+/** @param {import('@minecraft/server').Entity} anchor @param {string} oldStorageId @param {string} newStorageId */
 export function retagAnchor(anchor, oldStorageId, newStorageId) {
   try {
     anchor.removeTag(storageTag(oldStorageId));
@@ -85,6 +88,7 @@ export function retagAnchor(anchor, oldStorageId, newStorageId) {
   anchor.addTag(storageTag(newStorageId));
 }
 
+/** @param {{dimension: import('@minecraft/server').Dimension, id: string}} storage @param {import('@minecraft/server').Vector3} location @param {import('@minecraft/server').Vector3 | undefined} blockPos */
 function createAnchor(storage, location, blockPos) {
   const anchor = storage.dimension.spawnEntity(STORAGE_ANCHOR_ID, location);
   anchor.addTag(STORAGE_ANCHOR_TAG);
@@ -94,6 +98,7 @@ function createAnchor(storage, location, blockPos) {
   return anchor;
 }
 
+/** @param {import('@minecraft/server').Entity} source @param {import('@minecraft/server').Entity[]} targetAnchors */
 function moveAnchorItemsIntoAnchors(source, targetAnchors) {
   const sourceInventory = getInventory(source);
   if (!sourceInventory) return;
@@ -125,6 +130,7 @@ function moveAnchorItemsIntoAnchors(source, targetAnchors) {
   }
 }
 
+/** @param {{dimension: import('@minecraft/server').Dimension, id: string, structure: {blocks?: import('@minecraft/server').Vector3[], origin: import('@minecraft/server').Vector3, min?: import('@minecraft/server').Vector3, max?: import('@minecraft/server').Vector3}}} storage */
 export function ensureAnchors(storage) {
   const anchors = findAnchors(storage.dimension, storage.id);
   const blocks = storage.structure?.blocks ?? [storage.structure?.origin].filter(Boolean);
@@ -162,10 +168,12 @@ export function ensureAnchors(storage) {
   return result;
 }
 
+/** @param {Parameters<typeof ensureAnchors>[0]} storage */
 export function ensureAnchor(storage) {
   return ensureAnchors(storage)[0];
 }
 
+/** @param {Parameters<typeof ensureAnchors>[0]} storage @param {boolean} shouldDrop */
 export function removeAnchor(storage, shouldDrop = true) {
   const anchors = findAnchors(storage.dimension, storage.id);
   const location = structureDropLocation(storage.structure);
@@ -179,11 +187,13 @@ export function removeAnchor(storage, shouldDrop = true) {
   return dropped;
 }
 
+/** @param {Parameters<typeof ensureAnchors>[0]} storage */
 export function getAnchorInventory(storage) {
   const anchor = ensureAnchor(storage);
   return getInventory(anchor);
 }
 
+/** @param {Parameters<typeof ensureAnchors>[0]} storage */
 export function getAnchorInventories(storage) {
   return ensureAnchors(storage)
     .map((anchor) => getInventory(anchor))

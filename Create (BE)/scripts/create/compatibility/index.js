@@ -22,17 +22,32 @@ const MACHINES = new Set([
 const SEQUENCED_OPERATIONS = new Set(["deploy", "press", "spout", "cut"]);
 const FLUID_VISUAL_TYPES = new Set(["water", "lava", "honey", "chocolate", "milk"]);
 
+/** @typedef {keyof typeof compatibilityRecipes} MachineName */
+/** @typedef {{item: string, count: number, chance: number}} CompatibilityOutput */
+/** @typedef {{duration: number, particleRGB: {red: number, green: number, blue: number, alpha: number}, output: CompatibilityOutput[]}} CrushingRecipe */
+/** @typedef {{input: string, result: string}} PressingRecipe */
+/** @typedef {{fluid: string, input: string, output: string, amount: number}} SpoutingRecipe */
+/** @typedef {Record<string, unknown> & {id: string, steps?: Array<Record<string, unknown>>, junk?: unknown[]}} SequencedRecipe */
+/** @typedef {Record<string, unknown> & {result: {id: string, amount: number}}} CraftingRecipe */
+/** @typedef {Record<string, unknown> & {id: string, bucket: string, visualType: string, fluidType: string, empty: string, block?: string, translationKey?: string}} CompatibilityFluid */
+/** @typedef {import('@minecraft/server').Block} Block */
+/** @typedef {{millstone: Map<string, CrushingRecipe>, crushing: Map<string, CrushingRecipe>, pressing: Map<string, PressingRecipe>, mixing: Array<Record<string, unknown>>, spouting: SpoutingRecipe[], blasting: Map<string, CompatibilityOutput[]>, smoking: Map<string, CompatibilityOutput[]>, splashing: Map<string, CompatibilityOutput[]>, haunting: Map<string, CompatibilityOutput[]>, sequenced: SequencedRecipe[], crafting: CraftingRecipe[], crafting_shapeless: CraftingRecipe[]}} CompatibilityRecipes */
+
+/** @param {unknown} value @param {string} field @returns {string} */
 function id(value, field) {
     if (typeof value !== "string" || !ID.test(value)) throw new Error(`[Create Compat] ${field} must be a namespaced identifier.`);
     return value;
 }
+/** @param {unknown} value @param {string} field @param {number} fallback @returns {number} */
 function positive(value, field, fallback) {
     const number = value === undefined ? fallback : Number(value);
     if (!Number.isFinite(number) || number <= 0) throw new Error(`[Create Compat] ${field} must be greater than zero.`);
     return number;
 }
+/** @template T @param {T} value @returns {T} */
 function clone(value) { return JSON.parse(JSON.stringify(value)); }
 
+/** @param {unknown} outputs @returns {CompatibilityOutput[]} */
 function normalizeOutputs(outputs) {
     if (!Array.isArray(outputs) || outputs.length === 0) throw new Error("[Create Compat] outputs cannot be empty.");
     return outputs.map((entry) => ({
@@ -42,18 +57,19 @@ function normalizeOutputs(outputs) {
     }));
 }
 
+/** @param {string} machine @param {Record<string, any> | undefined} definition */
 export function registerMachineRecipe(machine, definition) {
     if (!MACHINES.has(machine)) throw new Error(`[Create Compat] Unknown machine: ${machine}`);
     const data = clone(definition ?? {});
     if (machine === "millstone" || machine === "crushing") {
         const input = id(data.input, "input");
-        compatibilityRecipes[machine].set(input, {
+        compatibilityRecipes[/** @type {'millstone' | 'crushing'} */ (machine)].set(input, {
             duration: positive(data.duration, "duration", 100),
             particleRGB: data.particleRGB,
             output: normalizeOutputs(data.outputs ?? data.output)
         });
     } else if (FAN_MACHINES.has(machine)) {
-        compatibilityRecipes[machine].set(id(data.input, "input"), normalizeOutputs(data.outputs ?? data.output));
+        compatibilityRecipes[/** @type {'blasting' | 'smoking' | 'splashing' | 'haunting'} */ (machine)].set(id(data.input, "input"), normalizeOutputs(data.outputs ?? data.output));
     } else if (machine === "pressing") {
         compatibilityRecipes.pressing.set(id(data.input, "input"), {
             input: data.input, result: id(data.output ?? data.result, "output")
@@ -61,14 +77,14 @@ export function registerMachineRecipe(machine, definition) {
     } else if (machine === "mixing") {
         if (!data.input || typeof data.input !== "object") throw new Error("[Create Compat] mixing.input must be an object.");
         for (const [itemId, count] of Object.entries(data.input)) {
-            id(itemId, "mixing.input"); positive(count, `amount of ${itemId}`);
+            id(itemId, "mixing.input"); positive(count, `amount of ${itemId}`, 1);
         }
         compatibilityRecipes.mixing.push(data);
     } else if (machine === "spouting") {
-        compatibilityRecipes.spouting.push({
+        compatibilityRecipes.spouting.push(/** @type {SpoutingRecipe} */ ({
             fluid: id(data.fluid, "fluid"), input: id(data.input, "input"),
             output: id(data.output, "output"), amount: positive(data.amount, "amount", 250)
-        });
+        }));
     } else if (machine === "sequenced") {
         data.id = id(data.id, "sequenced.id");
         if (compatibilityRecipes.sequenced.some((recipe) => recipe.id === data.id)) {
@@ -91,7 +107,7 @@ export function registerMachineRecipe(machine, definition) {
             };
         });
         data.junk = Array.isArray(data.junk) ? data.junk : [];
-        compatibilityRecipes.sequenced.push(data);
+        compatibilityRecipes.sequenced.push(/** @type {SequencedRecipe} */ (data));
     } else {
         if (!data.result || typeof data.result !== "object") throw new Error(`[Create Compat] ${machine}.result must be an object.`);
         data.result.id = id(data.result.id, `${machine}.result.id`);
@@ -102,11 +118,13 @@ export function registerMachineRecipe(machine, definition) {
             data.shapeless = true;
             if (!Array.isArray(data.ingredients) || data.ingredients.length === 0) throw new Error("[Create Compat] crafting_shapeless.ingredients cannot be empty.");
         }
-        compatibilityRecipes[machine].push(data);
+        const recipes = compatibilityRecipes[/** @type {'crafting' | 'crafting_shapeless'} */ (machine)];
+        recipes.push(/** @type {CraftingRecipe} */ (data));
     }
     return true;
 }
 
+/** @param {Record<string, any> | undefined} definition */
 export function registerFluid(definition) {
     const data = clone(definition ?? {});
     const fluidId = id(data.id, "fluid.id");
@@ -114,6 +132,7 @@ export function registerFluid(definition) {
     if (!FLUID_VISUAL_TYPES.has(visualType)) {
         throw new Error(`[Create Compat] fluid.visualType must be one of: ${[...FLUID_VISUAL_TYPES].join(", ")}.`);
     }
+    /** @type {CompatibilityFluid} */
     const fluid = {
         id: fluidId,
         bucket: data.bucket ? id(data.bucket, "fluid.bucket") : fluidId,
@@ -142,19 +161,23 @@ export function registerFluid(definition) {
     return true;
 }
 
+/** @param {unknown} blockId @param {import('../andrielScripts/rpm/rpmHelpers.js').FaceConfig & Record<string, unknown>} config */
 export function registerKineticBlock(blockId, config) {
     registerRpmBlock(id(blockId, "blockId"), config);
     return true;
 }
 
+/** @param {Block | undefined} block */
 export function refreshKineticNetwork(block) {
     if (!block?.dimension || !rpmConfig.has(block.typeId)) return false;
     system.runJob(recalculateNetwork(block, block.dimension, { eventType: "compatibility" }));
     return true;
 }
 
+/** @param {Block | undefined} block @param {unknown} rpm */
 export function setGeneratorRpm(block, rpm) {
-    const config = block && rpmConfig.get(block.typeId);
+    if (!block) return false;
+    const config = rpmConfig.get(block.typeId);
     const speed = Number(rpm);
     if (!config?.isGenerator || !config.entityType || !Number.isFinite(speed) || Math.abs(speed) > 256) return false;
     const entity = block.dimension.getEntities({ type: config.entityType, location: block.center(), maxDistance: 0.75, closest: 1 })[0];
@@ -184,6 +207,7 @@ export const CreateCompatibility = Object.freeze({
 
 // Cross-pack bridge: another behavior pack can call
 // system.sendScriptEvent("create_compat:register_recipe", JSON.stringify(data)).
+/** @returns {void} */
 export function initCompatibilityBridge() {
     system.afterEvents.scriptEventReceive.subscribe((event) => {
         if (!event.id.startsWith("create_compat:")) return;

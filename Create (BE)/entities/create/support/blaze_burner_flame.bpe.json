@@ -23,7 +23,7 @@
       "minecraft:type_family": { "family": ["create", "inanimate", "immovable"] },
       "minecraft:collision_box": { "height": 0.0, "width": 0.0 },
       "minecraft:physics": { "has_collision": false, "has_gravity": false, "push_towards_closest_space": false },
-      "minecraft:pushable": { "is_pushable": false, "is_pushable_by_piston": false },
+
       "minecraft:damage_sensor": { "triggers": { "cause": "all", "deals_damage": "no" } },
       "minecraft:health": { "value": 1 },
       "minecraft:fire_immune": {}

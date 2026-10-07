@@ -1,4 +1,4 @@
-import { system } from "@minecraft/server";
+import { BlockPermutation, system } from "@minecraft/server";
 import { INVERT_FACE, posToKey, getAxisFromRotation } from "../rpm/rpmHelpers";
 import { recalculateNetwork } from "../rpm/rpmCore";
 
@@ -72,6 +72,7 @@ const WHEEL_OFFSETS = {
 
 // ─── Persistent state ────────────────────────────────────────────────────────
 
+/** @type {Map<string, {lastFlowScore: number | null, lastCheckTick: number}>} */
 const wheelData = new Map(); // blockKey → { lastFlowScore, lastCheckTick }
 
 // ─── Water flow helpers ──────────────────────────────────────────────────────
@@ -80,6 +81,7 @@ const wheelData = new Map(); // blockKey → { lastFlowScore, lastCheckTick }
 // Bedrock liquid_depth:  0 = source (height 8)
 //                        1–7 = flowing, decreasing (height = 8 - depth)
 //                        8–15 = falling straight down (treated as barrier = height 8)
+/** @param {number} depth */
 export function waterHeight(depth) {
     if (depth === 0 || depth >= 8) return 8;
     return 8 - depth;
@@ -90,6 +92,7 @@ export function waterHeight(depth) {
 //   hx, hz = normalised horizontal flow components (X and Z)
 //   vy     = vertical component: -1 if falling, 0 otherwise
 // Returns null if there is no detectable flow.
+/** @param {import('@minecraft/server').Block} waterBlock @param {import('@minecraft/server').Dimension} dimension */
 export function getFlowAt(waterBlock, dimension) {
     const depth = waterBlock.permutation.getState('liquid_depth') ?? 0;
 
@@ -134,8 +137,11 @@ export function getFlowAt(waterBlock, dimension) {
 // For each water block, the flow vector is projected onto the wheel plane,
 // then dot-producted with the "positive" rotation direction for that position.
 // If |dot| > 0.5 → add +1 or -1 to the score.
+/** @param {import('@minecraft/server').Block} block @param {import('@minecraft/server').Dimension} dimension */
 function calculateFlowScore(block, dimension) {
-    const axis    = getAxisFromRotation(INVERT_FACE[block.permutation.getState('minecraft:facing_direction')]);
+    const rotation = block.permutation.getState('minecraft:facing_direction');
+    if (typeof rotation !== 'string') return 0;
+    const axis    = getAxisFromRotation(INVERT_FACE[rotation]);
     const offsets = WHEEL_OFFSETS[axis];
     if (!offsets) return 0;
 
@@ -169,6 +175,7 @@ function calculateFlowScore(block, dimension) {
 
 // ─── Tick ─────────────────────────────────────────────────────────────────────
 
+/** @param {import('@minecraft/server').Block} block @param {import('@minecraft/server').Dimension} dimension */
 export function waterWheelTick(block, dimension) {
     const tick     = system.currentTick;
     const blockKey = posToKey(block.x, block.y, block.z);
@@ -198,13 +205,18 @@ export function waterWheelTick(block, dimension) {
     entity.setDynamicProperty('create:generator_rpm', newRpm);
 
     const active = newRpm !== 0;
-    if (block.permutation.getState('create:active_generator') !== active)
-        block.setPermutation(block.permutation.withState('create:active_generator', active));
+    const states = block.permutation.getAllStates();
+    if (states['create:active_generator'] !== active)
+        block.setPermutation(BlockPermutation.resolve(block.typeId, {
+            ...states,
+            'create:active_generator': active
+        }));
 
     system.runJob(recalculateNetwork(block, dimension, { eventType: 'generator' }));
 }
 
 // Clears persistent data when the block is broken
+/** @param {import('@minecraft/server').Block} block */
 export function waterWheelDeleteData(block) {
     wheelData.delete(posToKey(block.x, block.y, block.z));
 }

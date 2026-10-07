@@ -2,6 +2,7 @@ import { MolangVariableMap, system } from "@minecraft/server";
 import { ModalFormData } from "@minecraft/server-ui";
 import { recalculateNetwork } from "../rpm/rpmCore";
 
+/** @type {Readonly<Partial<Record<Lowercase<import('@minecraft/server').Direction>, string>>>} */
 const MOTOR_RPM_PARTICLES = {
     north: "create:motor_rpm_north_v2",
     south: "create:motor_rpm_south_v2",
@@ -10,6 +11,7 @@ const MOTOR_RPM_PARTICLES = {
     up: "create:motor_rpm_up_v2"
 };
 
+/** @type {Readonly<Partial<Record<Lowercase<import('@minecraft/server').Direction>, string>>>} */
 const SPEED_CONTROLLER_RPM_PARTICLES = {
     north: "create:speed_controller_rpm_north",
     south: "create:speed_controller_rpm_south",
@@ -17,13 +19,27 @@ const SPEED_CONTROLLER_RPM_PARTICLES = {
     west: "create:speed_controller_rpm_west"
 };
 
+/** @param {import('@minecraft/server').Entity | undefined} value */
 function isValid(value) {
-    if (!value) return false;
-    if (typeof value.isValid === "function") return value.isValid();
-    if (typeof value.isValid === "boolean") return value.isValid;
-    return true;
+    return value?.isValid === true;
 }
 
+/** @param {string} value
+ * @returns {value is Lowercase<import('@minecraft/server').Direction>}
+ */
+function isDirection(value) {
+    return ['north', 'south', 'east', 'west', 'up', 'down'].includes(value);
+}
+
+/** @param {import('@minecraft/server').Entity} entity */
+function getMotorRpm(entity) {
+    const value = entity.getProperty('create:rpm');
+    return typeof value === 'number' && Number.isFinite(value) ? value : 0;
+}
+
+/** @param {import('@minecraft/server').Player} player
+ * @param {number} currentTick
+ */
 export function creativeMotorRpmParticleTick(player, currentTick) {
     if (!isValid(player) || currentTick % 3 !== 0) return;
 
@@ -34,7 +50,8 @@ export function creativeMotorRpmParticleTick(player, currentTick) {
 
     // Mostra o RPM somente na face do motor atingida pela mira.
     // A face inferior (down) nao existe no mapa e, portanto, nao renderiza.
-    const face = `${hit.face ?? ""}`.toLowerCase();
+    const face = `${hit?.face ?? ""}`.toLowerCase();
+    if (!isDirection(face)) return;
     const particleId = MOTOR_RPM_PARTICLES[face];
     if (!particleId) return;
 
@@ -61,10 +78,10 @@ export function creativeMotorRpmParticleTick(player, currentTick) {
             maxDistance: 0.5
         })[0];
     } catch { return; }
-    if (!isValid(entity)) return;
+    if (!entity || !isValid(entity)) return;
 
     let rpm = 0;
-    try { rpm = Number(entity.getProperty("create:rpm") ?? 0); } catch { return; }
+    try { rpm = getMotorRpm(entity); } catch { return; }
     const digits = String(Math.min(256, Math.max(0, Math.round(Math.abs(rpm))))).split("").map(Number);
     const center = block.center();
     const spacing = 0.1;
@@ -78,6 +95,9 @@ export function creativeMotorRpmParticleTick(player, currentTick) {
     }
 }
 
+/** @param {import('@minecraft/server').Player} player
+ * @param {number} currentTick
+ */
 export function speedControllerRpmParticleTick(player, currentTick) {
     if (!isValid(player) || currentTick % 3 !== 0) return;
 
@@ -86,7 +106,8 @@ export function speedControllerRpmParticleTick(player, currentTick) {
     const block = hit?.block;
     if (!block || block.typeId !== "create:rotation_speed_controller") return;
 
-    const face = `${hit.face ?? ""}`.toLowerCase();
+    const face = `${hit?.face ?? ""}`.toLowerCase();
+    if (!isDirection(face)) return;
     const particleId = SPEED_CONTROLLER_RPM_PARTICLES[face];
     if (!particleId) return;
 
@@ -107,11 +128,12 @@ export function speedControllerRpmParticleTick(player, currentTick) {
             maxDistance: 0.5
         })[0];
     } catch { return; }
-    if (!isValid(entity)) return;
+    if (!entity || !isValid(entity)) return;
 
     let rpm = 0;
     try {
-        rpm = Number(entity.getDynamicProperty("create:speed_controller") ?? entity.getProperty("create:rpm") ?? 0);
+        const savedRpm = entity.getDynamicProperty('create:speed_controller');
+        rpm = typeof savedRpm === 'number' && Number.isFinite(savedRpm) ? savedRpm : getMotorRpm(entity);
     } catch { return; }
 
     const digits = String(Math.min(256, Math.max(0, Math.round(Math.abs(rpm))))).split("").map(Number);
@@ -128,6 +150,10 @@ export function speedControllerRpmParticleTick(player, currentTick) {
 }
 
 
+/** @param {import('@minecraft/server').Player} player
+ * @param {import('@minecraft/server').Block} block
+ * @param {import('@minecraft/server').Dimension} dimension
+ */
 export function onInteractCreativeMotor(player, block, dimension) {
     const blockLocation = { x: block.location.x, y: block.location.y, z: block.location.z };
     const blockTypeId = block.typeId;
@@ -137,12 +163,14 @@ export function onInteractCreativeMotor(player, block, dimension) {
     const form = new ModalFormData();
 
     form.title('create:rpm.creative_motor.title')
-    form.toggle({ translate: 'creative_motor.reverse_rotation.text' }, { defaultValue: entity.getProperty('create:rpm') >= 0 ? false : true });
-    form.slider({ translate: '%creative_motor.speed.text' }, 1, 256, { defaultValue: Math.abs(entity.getProperty('create:rpm')) });
+    const currentRpm = getMotorRpm(entity);
+    form.toggle({ translate: 'creative_motor.reverse_rotation.text' }, { defaultValue: currentRpm < 0 });
+    form.slider({ translate: '%creative_motor.speed.text' }, 1, 256, { defaultValue: Math.min(256, Math.max(1, Math.abs(currentRpm))) });
     form.submitButton('Confirm');
     form.show(player).then(resp => {
-        if (resp.canceled) return;
+        if (resp.canceled || !resp.formValues) return;
         const [invert, speed] = resp.formValues;
+        if (typeof invert !== 'boolean' || typeof speed !== 'number' || !Number.isFinite(speed) || speed < 1 || speed > 256) return;
         const rpm = invert ? -speed : speed;
 
         // A tela pode ficar aberta enquanto o bloco/entidade e removido. Localiza tudo
@@ -168,5 +196,5 @@ export function onInteractCreativeMotor(player, block, dimension) {
             player.playSound('beacon.power', { pitch: 8, volume: 0.35, location: currentBlock.center() });
             system.runJob(recalculateNetwork(currentBlock, dimension, { eventType: 'update' }));
         };
-    }).catch(() => {});
+    }).catch(error => console.warn(`[Create] Creative motor form failed: ${error}`));
 };

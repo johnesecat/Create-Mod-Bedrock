@@ -1,11 +1,14 @@
+/** @param {Pick<import('@minecraft/server').Block, 'typeId'>} block @returns {number} */
 export function getBlockHardness(block) {
     return BLOCK_HARDNESS[block.typeId] ?? 3;
 };
 
+/** @param {Pick<import('@minecraft/server').Block, 'typeId'>} block @returns {boolean} */
 export function isUnbreakable(block) {
     return getBlockHardness(block) < 0;
 };
 
+/** @type {Readonly<Record<string, number | undefined>>} */
 const BLOCK_HARDNESS = {
   undefined: 0,
   'minecraft:air': 0,

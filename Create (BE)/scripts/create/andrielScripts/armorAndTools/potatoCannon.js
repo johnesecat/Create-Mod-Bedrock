@@ -21,12 +21,14 @@ const AMMO_INDEX = new Map(AMMUNITION.map((typeId, index) => [typeId, index]));
 const LIGHT_AMMO = new Set([8, 9, 11, 24]);
 const HEAVY_AMMO = new Set([3, 4, 12, 13, 14, 15, 16, 17, 18, 19]);
 
+/** @param {number} ammoIndex */
 function getAmmoMotion(ammoIndex) {
     if (LIGHT_AMMO.has(ammoIndex)) return { speed: 1.9, weight: 0.7 };
     if (HEAVY_AMMO.has(ammoIndex)) return { speed: 1.32, weight: 1.35 };
     return { speed: 1.65, weight: 1.0 };
 }
 
+/** @param {import('@minecraft/server').Entity} projectile @param {number} ammoIndex */
 function playProjectileImpact(projectile, ammoIndex) {
     try {
         const { weight } = getAmmoMotion(ammoIndex);
@@ -37,6 +39,7 @@ function playProjectileImpact(projectile, ammoIndex) {
     } catch {}
 }
 
+/** @param {import('@minecraft/server').Player} player */
 function takeAmmunition(player) {
     let container;
     try { container = player.getComponent("minecraft:inventory")?.container; } catch {}
@@ -44,7 +47,8 @@ function takeAmmunition(player) {
 
     for (let slot = 0; slot < container.size; slot++) {
         const stack = container.getItem(slot);
-        const ammoIndex = AMMO_INDEX.get(stack?.typeId);
+        if (!stack) continue;
+        const ammoIndex = AMMO_INDEX.get(stack.typeId);
         if (ammoIndex === undefined) continue;
         const typeId = stack.typeId;
 
@@ -59,10 +63,14 @@ function takeAmmunition(player) {
     return undefined;
 }
 
+/** @param {import('@minecraft/server').Entity} target @param {string} effect
+ * @param {number} duration @param {number} amplifier
+ */
 function addEffect(target, effect, duration, amplifier = 0) {
     try { target.addEffect(effect, duration, { amplifier, showParticles: true }); } catch {}
 }
 
+/** @param {import('@minecraft/server').Entity | undefined} projectile */
 function despawnPotatoProjectile(projectile) {
     // Instant despawn does not play the generic entity death sound.
     try {
@@ -70,12 +78,16 @@ function despawnPotatoProjectile(projectile) {
     } catch {}
 }
 
+/** @param {import('@minecraft/server').ProjectileHitEntityAfterEvent} data */
 export function potatoProjectileHitEntity(data) {
     const projectile = data?.projectile;
     if (projectile?.typeId !== POTATO_PROJECTILE) return false;
 
     let ammoIndex = 0;
-    try { ammoIndex = projectile.getProperty("create:ammo_type") ?? 0; } catch {}
+    try {
+        const value = projectile.getProperty('create:ammo_type');
+        if (typeof value === 'number') ammoIndex = value;
+    } catch {}
     let target;
     try { target = data.getEntityHit()?.entity; } catch {}
 
@@ -126,16 +138,21 @@ export function potatoProjectileHitEntity(data) {
     return true;
 }
 
+/** @param {import('@minecraft/server').ProjectileHitBlockAfterEvent} data */
 export function potatoProjectileHitBlock(data) {
     const projectile = data?.projectile;
     if (projectile?.typeId !== POTATO_PROJECTILE) return false;
     let ammoIndex = 0;
-    try { ammoIndex = projectile.getProperty("create:ammo_type") ?? 0; } catch {}
+    try {
+        const value = projectile.getProperty('create:ammo_type');
+        if (typeof value === 'number') ammoIndex = value;
+    } catch {}
     playProjectileImpact(projectile, ammoIndex);
     despawnPotatoProjectile(projectile);
     return true;
 }
 
+/** @param {import('@minecraft/server').ItemUseAfterEvent} event */
 export function usePotatoCannon({ source, itemStack }) {
     if (itemStack?.typeId !== POTATO_CANNON || source?.typeId !== "minecraft:player") return false;
 
@@ -169,6 +186,7 @@ export function usePotatoCannon({ source, itemStack }) {
         const isBerryShot = ammunition.index === 8 || ammunition.index === 9;
         const ammoMotion = getAmmoMotion(ammunition.index);
         const pelletCount = isBerryShot ? 3 : 1;
+        /** @param {number} pellet */
         const spawnPellet = (pellet) => {
             // Berry ammunition behaves like Create's shotgun shot. Each berry
             // starts in its own lane so the projectile entities do not overlap.
@@ -181,6 +199,10 @@ export function usePotatoCannon({ source, itemStack }) {
             const projectile = source.dimension.spawnEntity(POTATO_PROJECTILE, projectileSpawn);
             projectile.setProperty("create:ammo_type", ammunition.index);
             const projectileComponent = projectile.getComponent("minecraft:projectile");
+            if (!projectileComponent) {
+                projectile.remove();
+                throw new Error('Potato projectile is missing its projectile component');
+            }
             projectileComponent.owner = source;
 
             const horizontalSpread = isBerryShot ? lane * 0.055 : 0;

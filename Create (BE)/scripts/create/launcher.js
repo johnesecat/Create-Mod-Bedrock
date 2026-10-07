@@ -1,4 +1,4 @@
-﻿import * as mc from "@minecraft/server";
+import * as mc from "@minecraft/server";
 import * as rc from "./racoScripts/racoTriggers";
 import * as xz from "./andrielScripts/andrielTriggers";
 import { initRpmBlock, onBreakRpmBlock, repairRpmAfterPiston, restoreLoadedSpeedControllers } from "./andrielScripts/rpm/rpmCore.js";
@@ -47,6 +47,7 @@ const XZ_TICK_BLOCKS = new Set([
     ,"create:redstone_link_receiver"
 ]);
 
+/** @param {mc.BlockComponentTickEvent} event */
 function runBlockTick(event) {
     if (event.block?.typeId?.endsWith("_window_connected") || XZ_TICK_BLOCKS.has(event.block?.typeId)) xz.blockTick(event);
     else rc.blockTick(event);
@@ -123,7 +124,7 @@ mc.system.beforeEvents.startup.subscribe(data => {
     data.blockComponentRegistry.registerCustomComponent('create:brass_door', brassDoorComponent);
     data.blockComponentRegistry.registerCustomComponent('create:glass_door', glassDoorComponent);
     data.blockComponentRegistry.registerCustomComponent('create:rpm_system', {
-        onPlace: ExZ => { initRpmBlock(ExZ); },
+        onPlace: ExZ => { initRpmBlock({ ...ExZ, previousBlock: undefined }); },
         onBreak: ExZ => { onBreakRpmBlock(ExZ); },
     });
 });
@@ -136,11 +137,6 @@ mc.world.afterEvents.playerPlaceBlock.subscribe(data => {
 mc.world.afterEvents.itemUse.subscribe(data => {
     rc.itemUse(data);
     xz.itemUse(data);
-});
-
-mc.world.afterEvents.itemUseOn?.subscribe?.(data => {
-    rc.itemUseOn(data);
-    xz.itemUseOn(data);
 });
 
 mc.world.afterEvents.itemStartUse.subscribe(data => {
@@ -281,11 +277,12 @@ export let currentTick = mc.system.currentTick;
 mc.system.runInterval(() => {
     currentTick = mc.system.currentTick;
     const allPlayers = mc.world.getAllPlayers();
-    const activeDimensions = new Set();
+    /** @type {mc.Dimension[]} */
+    const activeDimensions = [];
 
     for (const player of allPlayers) {
         if (!player?.isValid) continue;
-        activeDimensions.add(player.dimension);
+        if (!activeDimensions.includes(player.dimension)) activeDimensions.push(player.dimension);
 
         rc.playerTick(player, currentTick);
         xz.playerTick(player, currentTick);

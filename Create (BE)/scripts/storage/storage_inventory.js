@@ -1,19 +1,21 @@
+/** @param {import('@minecraft/server').Entity | import('@minecraft/server').Block | undefined} target */
 export function getInventory(target) {
-  for (const id of ["minecraft:inventory", "inventory"]) {
-    try {
-      const inventory = target?.getComponent(id)?.container;
-      if (inventory) return inventory;
-    } catch {}
+  if (!target) return undefined;
+  try {
+    return target.getComponent('minecraft:inventory')?.container;
+  } catch {
+    return undefined;
   }
-
-  return undefined;
 }
 
+/** @param {import('@minecraft/server').Container | undefined} inventory @param {number | undefined} limitSlots */
 export function limitedSize(inventory, limitSlots = inventory?.size) {
   return Math.max(0, Math.min(inventory?.size ?? 0, limitSlots ?? inventory?.size ?? 0));
 }
 
+/** @param {import('@minecraft/server').Container | undefined} inventory @param {number | undefined} limitSlots */
 export function inventoryStats(inventory, limitSlots = inventory?.size) {
+  if (!inventory) return { occupied: 0, free: 0, size: 0 };
   const size = limitedSize(inventory, limitSlots);
   let occupied = 0;
 
@@ -28,7 +30,9 @@ export function inventoryStats(inventory, limitSlots = inventory?.size) {
   };
 }
 
+/** @param {import('@minecraft/server').Container | undefined} inventory @param {number | undefined} limitSlots */
 export function listItems(inventory, limitSlots = inventory?.size) {
+  if (!inventory) return [];
   const size = limitedSize(inventory, limitSlots);
   const items = [];
 
@@ -47,6 +51,7 @@ export function listItems(inventory, limitSlots = inventory?.size) {
   return items;
 }
 
+/** @param {import('@minecraft/server').ItemStack | undefined} current @param {import('@minecraft/server').ItemStack | undefined} incoming */
 export function canStackItems(current, incoming) {
   if (!current || !incoming) return false;
   if (typeof current.isStackableWith === "function") {
@@ -60,6 +65,7 @@ export function canStackItems(current, incoming) {
   return current.typeId === incoming.typeId;
 }
 
+/** @param {import('@minecraft/server').Container | undefined} inventory @param {import('@minecraft/server').ItemStack | undefined} itemStack @param {number | undefined} limitSlots */
 function availableSpaceForItem(inventory, itemStack, limitSlots = inventory?.size) {
   if (!inventory || !itemStack) return 0;
 
@@ -81,11 +87,14 @@ function availableSpaceForItem(inventory, itemStack, limitSlots = inventory?.siz
   return available;
 }
 
+/** @param {import('@minecraft/server').Container | undefined} inventory @param {import('@minecraft/server').ItemStack | undefined} itemStack @param {number | undefined} amount @param {number | undefined} limitSlots */
 export function addItemLimited(inventory, itemStack, amount = itemStack?.amount, limitSlots = inventory?.size) {
-  if (!inventory || !itemStack || amount <= 0) return false;
+  if (!inventory || !itemStack) return false;
+  const requestedAmount = amount ?? itemStack.amount;
+  if (!Number.isFinite(requestedAmount) || requestedAmount <= 0) return false;
 
   const size = limitedSize(inventory, limitSlots);
-  let remaining = Math.min(amount, itemStack.amount);
+  let remaining = Math.min(requestedAmount, itemStack.amount);
   if (availableSpaceForItem(inventory, itemStack, size) < remaining) return false;
 
   for (let slot = 0; slot < size && remaining > 0; slot++) {
@@ -113,6 +122,7 @@ export function addItemLimited(inventory, itemStack, amount = itemStack?.amount,
   return remaining === 0;
 }
 
+/** @param {import('@minecraft/server').Container | undefined} inventory @param {number} amount @param {number | undefined} limitSlots */
 export function removeFirstItem(inventory, amount = 1, limitSlots = inventory?.size) {
   if (!inventory || amount <= 0) return undefined;
 
@@ -137,6 +147,7 @@ export function removeFirstItem(inventory, amount = 1, limitSlots = inventory?.s
   return undefined;
 }
 
+/** @param {import('@minecraft/server').ItemStack} item @param {string | {typeId?: string} | ((item: import('@minecraft/server').ItemStack) => boolean) | undefined} filter */
 function matchesFilter(item, filter) {
   if (!filter) return true;
   if (typeof filter === "function") return filter(item);
@@ -145,6 +156,7 @@ function matchesFilter(item, filter) {
   return true;
 }
 
+/** @param {import('@minecraft/server').Container | undefined} inventory @param {string | {typeId?: string} | ((item: import('@minecraft/server').ItemStack) => boolean) | undefined} filter @param {number} amount @param {number | undefined} limitSlots */
 export function removeMatchingItem(inventory, filter, amount = 1, limitSlots = inventory?.size) {
   if (!inventory || amount <= 0) return undefined;
 
@@ -169,6 +181,7 @@ export function removeMatchingItem(inventory, filter, amount = 1, limitSlots = i
   return undefined;
 }
 
+/** @param {import('@minecraft/server').Entity} entity @param {import('@minecraft/server').Dimension} dimension @param {import('@minecraft/server').Vector3} location */
 export function dropInventory(entity, dimension, location) {
   const inventory = getInventory(entity);
   if (!inventory) return 0;

@@ -1,6 +1,21 @@
 import { rotationToFace } from "../xZ-Utils";
 import { CORRECT_DIRECTIONS, INVERT_FACE } from "./rpmHelpers";
 
+/** @typedef {import('./rpmHelpers.js').KineticFace} KineticFace
+ * @typedef {import('./rpmHelpers.js').FaceConfig & {
+ * isGenerator?: boolean, stressCapacity?: number, stressImpact?: number,
+ * entityType?: string, entityOffset?: import('@minecraft/server').Vector3,
+ * auxiliaryEntity?: {type: string, offset: import('@minecraft/server').Vector3},
+ * noEntity?: boolean, horizontalShaft?: boolean, verticalShaft?: boolean,
+ * hasRpm2?: boolean, transformRpm2Always?: boolean, hasSpinningState?: boolean,
+ * perpendicularEntityRotation?: boolean, shaftOffsetUsesVisualRotation?: boolean,
+ * disableShaftOffset?: boolean, soundType?: string,
+ * getRpm2?: (rpm: number, powered: boolean, block: import('@minecraft/server').Block) => number,
+ * getTransferRatio?: (sourceDir: string, outputDir: string) => number,
+ * onRpmUpdate?: (block: import('@minecraft/server').Block, entity: import('@minecraft/server').Entity, rpm: number, previousRpm: number) => void
+ * }} RpmConfig
+ */
+/** @type {Map<string, RpmConfig>} */
 export const rpmConfig = new Map();
 
 // ================= GERADORES =================
@@ -115,9 +130,6 @@ registerRpmBlock('create:sequenced_gearshift', {
         if (!powered) return 0;
         let facing = 'south';
         try { facing = block?.permutation?.getState('minecraft:facing_direction') ?? facing; } catch {}
-        if (typeof facing === 'number') {
-            facing = ({ 0: 'down', 1: 'up', 2: 'north', 3: 'south', 4: 'west', 5: 'east' })[facing] ?? 'south';
-        }
         return ['north', 'west', 'up'].includes(facing) ? -rpm : rpm;
     },
     faces: {
@@ -219,6 +231,7 @@ registerRpmBlock('create:mechanical_pump', {
     hasSpinningState: true,
     horizontalShaft: true,
     stressImpact: 4,
+    /** @returns {Record<string, KineticFace>} */
     getFaces(block, permutation) {
         const facing = (permutation ?? block.permutation).getState('minecraft:facing_direction');
         // A orientacao vertical nao armazena um yaw. Nesse caso, aceite RPM
@@ -385,12 +398,14 @@ registerRpmBlock('create:mechanical_belt', {
     getFaces(block, permutation) {
     const perm = permutation ?? block.permutation;
     const face = perm.getState('minecraft:block_face');
-    const part = perm.getState('create:part');
-    const slope = perm.getState('create:slope');
+    const states = perm.getAllStates();
+    const part = states['create:part'];
+    const slope = states['create:slope'];
 
     const axis = (face === 'north' || face === 'south') ? 'Z' : (face === 'east' || face === 'west') ? 'X' : 'Y';
-    const hasPulley = part === 'start' || part === 'end' || perm.getState('create:has_pulley');
-    const diagonalFlip = perm.getState('create:diagonal_flip') ?? false;
+    const hasPulley = part === 'start' || part === 'end' || states['create:has_pulley'];
+    const diagonalFlip = states['create:diagonal_flip'] ?? false;
+    /** @type {Record<string, KineticFace>} */
     const faces = {};
 
     if (slope === 'horizontal') {
@@ -448,6 +463,9 @@ registerRpmBlock('create:mechanical_belt', {
 }
 });
 
+/** @param {string} blockId
+ * @param {RpmConfig} config
+ */
 export function registerRpmBlock(blockId, config) {
     if (!config.faces && !config.getFaces) {
         throw new Error(`[${blockId}] precisa de 'faces' ou 'getActiveFaces'`);
@@ -466,14 +484,22 @@ export const KINETIC_TYPES = {
     large_cogwheel: { sense: 'invert', alignment: 'sameAxis', ratios: { 'cogwheel': 2 } },
 };
 
+/** @param {Partial<KineticFace>} opts @returns {KineticFace} */
 function shaft(opts = {}) { return { type: 'shaft', ...opts }; };
+/** @param {Partial<KineticFace>} opts @returns {KineticFace} */
 function cogwheel(opts = {}) { return { type: 'cogwheel', sense: 'invert', alignment: 'sameAxis', ratios: { large_cogwheel: 0.5 }, ...opts }; }
+/** @param {Partial<KineticFace>} opts @returns {KineticFace} */
 function largeCogwheel(opts = {}) { return { type: 'large_cogwheel', sense: 'invert', alignment: 'sameAxis', ratios: { cogwheel: 2, large_cogwheel: 1}, ...opts }; }
+/** @param {Partial<KineticFace>} opts @returns {KineticFace} */
 function boiler_chamber(opts = {}) { return { type: 'boiler_chamber', ...opts }; };
+/** @param {Partial<KineticFace>} opts @returns {KineticFace} */
 function conveyor(opts = {}) { return { type: 'conveyor', ...opts }; };
+/** @param {Partial<KineticFace>} opts @returns {KineticFace} */
 function speedController(opts = {}) { return { type: 'speed_controller', alignment: 'perpendicular', ...opts }; };
+/** @param {Partial<KineticFace>} opts @returns {KineticFace} */
 function furnaceEngine(opts = {}) { return { type: 'furnace_engine', alignment: 'equal', ...opts }; };
 
+/** @param {KineticFace} senderFace @param {KineticFace} receiverFace */
 export function getConnectionInfo(senderFace, receiverFace) {
     const senderType = senderFace.type;
     const receiverType = receiverFace.type;
@@ -491,6 +517,9 @@ export function getConnectionInfo(senderFace, receiverFace) {
 };
 
 // Verifica se as rotações dos 2 blocos são compatíveis
+/** @param {KineticFace} faceData @param {KineticFace} neighborFaceData
+ * @param {string | undefined} rotationA @param {string | undefined} rotationB
+ */
 export function checkAlignment(faceData, neighborFaceData, rotationA, rotationB) {
     // Per-face alignment tem prioridade
     const alignment = faceData.alignment ?? neighborFaceData.alignment;
@@ -507,6 +536,7 @@ export function checkAlignment(faceData, neighborFaceData, rotationA, rotationB)
     return true;
 };
 
+/** @param {string | undefined} rotation @returns {'X' | 'Y' | 'Z'} */
 export function rotationToAxis(rotation) {
     switch (rotation) {
         case 'north': case 'south': return 'Z';
@@ -517,6 +547,7 @@ export function rotationToAxis(rotation) {
     return 'Z';
 };
 
+/** @type {Readonly<Record<string, number>>} */
 export const AXIS_SIGN = {
     'north': -1, 'south': 1,
     'east': 1, 'west': -1,

@@ -27,14 +27,14 @@ async function removeJsonBoms(folder) {
 
 async function addDirectory(zip, directory, archivePrefix = '') {
   const entries = await readdir(directory, { withFileTypes: true })
-  entries.sort((left, right) => left.name.localeCompare(right.name))
+  entries.sort((left, right) => left.name < right.name ? -1 : left.name > right.name ? 1 : 0)
   for (const entry of entries) {
     const fullPath = path.join(directory, entry.name)
     const archivePath = archivePrefix ? `${archivePrefix}/${entry.name}` : entry.name
     if (entry.isDirectory()) {
       await addDirectory(zip, fullPath, archivePath)
     } else if (entry.isFile() && entry.name.toLowerCase() !== 'desktop.ini') {
-      zip.file(archivePath, await readFile(fullPath), { date: new Date('2000-01-01T00:00:00.000Z') })
+      zip.file(archivePath, await readFile(fullPath), { date: new Date('2000-01-01T00:00:00.000Z'), createFolders: false })
     }
   }
 }
@@ -74,8 +74,8 @@ try {
     makePack(path.join(root, 'Create (RE)'), resourcePack, ''),
   ])
   const addon = new JSZip()
-  addon.file('Create-Behavior.mcpack', behaviorBytes, { date: new Date('2000-01-01T00:00:00.000Z') })
-  addon.file('Create-Resources.mcpack', resourceBytes, { date: new Date('2000-01-01T00:00:00.000Z') })
+  addon.file('Create-Behavior.mcpack', behaviorBytes, { date: new Date('2000-01-01T00:00:00.000Z'), createFolders: false })
+  addon.file('Create-Resources.mcpack', resourceBytes, { date: new Date('2000-01-01T00:00:00.000Z'), createFolders: false })
   const bytes = await addon.generateAsync({
     type: 'nodebuffer',
     compression: 'STORE',

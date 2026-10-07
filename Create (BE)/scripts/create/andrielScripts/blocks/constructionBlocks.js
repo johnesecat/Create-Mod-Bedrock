@@ -1,37 +1,46 @@
-import { system } from "@minecraft/server";
+import { BlockPermutation, Direction, system } from "@minecraft/server";
 import { removeItem } from "../xZ-Utils";
 
+/** @param {import('@minecraft/server').Player} player
+ * @param {import('@minecraft/server').Block} block
+ * @param {import('@minecraft/server').Dimension} dimension
+ */
 export function seatInteract(player, block, dimension) {
     const seatEntity = dimension.getEntities({location: block.center(), maxDistance: 0.25, type: `create:seat_entity`})[0] ?? dimension.spawnEntity("create:seat_entity", block.center());
     const rideable = seatEntity.getComponent("rideable");
 
+    if (!rideable) return;
     if (rideable.getRiders().length == 0) rideable.addRider(player);
     else player.sendMessage({ translate: "create.text.seat_occupied" });
 };
 
 
+/** @param {import('@minecraft/server').Block} block
+ * @param {import('@minecraft/server').Dimension} dimension
+ */
 export function seatBreak(block, dimension) {
     const seatEntity = dimension.getEntities({location: block.center(), maxDistance: 0.25, type: `create:seat_entity`})[0];
     if (seatEntity) seatEntity.remove();
 };
 
 
+/** @param {import('@minecraft/server').PlayerInteractWithBlockBeforeEvent} data */
 export function slabPlacement(data) {    
     const { block, blockFace, itemStack, player, faceLocation } = data;
-    if (!data.isFirstEvent) return;
+    if (!data.isFirstEvent || !itemStack) return;
 
     let targetBlock;
     let clickingOnSlab = false;
 
     // Caso 1: clicando diretamente numa slab do mesmo tipo
-    if (itemStack?.typeId === block.typeId && !block.permutation.getState("create:is_full_block")) {
+    if (itemStack?.typeId === block.typeId && !block.permutation.getAllStates()['create:is_full_block']) {
         targetBlock = block;
         clickingOnSlab = true;
     }
     // Caso 2: clicando num bloco adjacente (a slab está acima ou abaixo)
-    else if (blockFace === "Up" || blockFace === "Down") {
-        const adjacent = blockFace === "Up" ? block.above() : block.below();
-        if (adjacent?.typeId === itemStack?.typeId && !adjacent.permutation.getState("create:is_full_block")) {
+    else if (blockFace === Direction.Up || blockFace === Direction.Down) {
+        const adjacent = blockFace === Direction.Up ? block.above() : block.below();
+        if (adjacent && adjacent.typeId === itemStack.typeId && !adjacent.permutation.getAllStates()['create:is_full_block']) {
             targetBlock = adjacent;
         }
     }
@@ -43,16 +52,17 @@ export function slabPlacement(data) {
     // Clicando direto na slab: só completa se o clique vem do lado "vazio"
     if (clickingOnSlab) {
         const shouldComplete =
-            (verticalHalf === "bottom" && (blockFace === "Up" || (blockFace !== "Down" && faceLocation.y > 0.5))) ||
-            (verticalHalf === "top" && (blockFace === "Down" || (blockFace !== "Up" && faceLocation.y <= 0.5)));
+            (verticalHalf === "bottom" && (blockFace === Direction.Up || (blockFace !== Direction.Down && faceLocation.y > 0.5))) ||
+            (verticalHalf === "top" && (blockFace === Direction.Down || (blockFace !== Direction.Up && faceLocation.y <= 0.5)));
         if (!shouldComplete) return;
     }
 
     data.cancel = true;
     system.run(() => {
+        if (!player.isValid || !targetBlock.isValid || targetBlock.typeId !== itemStack.typeId) return;
         removeItem(player, itemStack.typeId, 1);
-        player.dimension.playSound("dig.stone", player.location);
-        targetBlock.setPermutation(targetBlock.permutation.withState("create:is_full_block", true));
+        player.dimension.playSound('dig.stone', player.location);
+        targetBlock.setPermutation(BlockPermutation.resolve(targetBlock.typeId, { ...targetBlock.permutation.getAllStates(), 'create:is_full_block': true }));
     });
 };
 
@@ -87,6 +97,7 @@ const directions = {
     west: { x: -1, y: 0, z: 0, opposite: "east" }
 };
 
+/** @param {import('@minecraft/server').BlockComponentPlayerPlaceBeforeEvent} data */
 export function connectableBlockPlace(data) {
     const { block, permutationToPlace } = data;
     const typeId = permutationToPlace.type.id;
@@ -96,13 +107,16 @@ export function connectableBlockPlace(data) {
         const neighbor = block.dimension.getBlock({ x: block.x + data.x, y: block.y + data.y, z: block.z + data.z });
 
         const connected = neighbor?.typeId === typeId;
-        permutation = permutation.withState(`create:${dir}`, connected);
+        permutation = BlockPermutation.resolve(typeId, { ...permutation.getAllStates(), [`create:${dir}`]: connected });
     };
 
     data.permutationToPlace = permutation;
     updateConnections(block, typeId);
 };
 
+/** @param {import('@minecraft/server').Block} block
+ * @param {import('@minecraft/server').BlockPermutation} brokenBlockPermutation
+ */
 export function connectableBlockBreak(block, brokenBlockPermutation) {
     const typeId = brokenBlockPermutation.type.id;
 
@@ -110,11 +124,12 @@ export function connectableBlockBreak(block, brokenBlockPermutation) {
         for (const [dir, data] of Object.entries(directions)) {
             const neighbor = block.dimension.getBlock({ x: block.x + data.x, y: block.y + data.y, z: block.z + data.z });
 
-            if (neighbor?.typeId === typeId) neighbor.setPermutation(neighbor.permutation.withState(`create:${data.opposite}`, false));
+            if (neighbor?.typeId === typeId) neighbor.setPermutation(BlockPermutation.resolve(neighbor.typeId, { ...neighbor.permutation.getAllStates(), [`create:${data.opposite}`]: false }));
         };
     });
 };
 
+/** @param {import('@minecraft/server').Block} block @param {string} typeId */
 function updateConnections(block, typeId) {
     system.run(() => {
         const placed = block.dimension.getBlock(block.location);
@@ -129,7 +144,7 @@ function updateConnections(block, typeId) {
 
             if (neighbor?.typeId === typeId) {
                 neighbor.setPermutation(
-                    neighbor.permutation.withState(`create:${data.opposite}`, true)
+                    BlockPermutation.resolve(neighbor.typeId, { ...neighbor.permutation.getAllStates(), [`create:${data.opposite}`]: true })
                 );
             };
         };

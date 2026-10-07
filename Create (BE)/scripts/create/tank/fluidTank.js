@@ -348,6 +348,7 @@ function removeFluidVisualContainingBlock(dimension, location) {
 function syncFluidTankVisual(blocks, state, capacity) {
     if (!blocks?.length) return;
     const bounds = tankBounds(blocks);
+    if (!bounds) return;
     const dimension = blocks[0].dimension;
     let visuals = tankFluidVisuals(dimension, bounds);
     if (!visuals.length) visuals = overlappingTankFluidVisuals(dimension, bounds);
@@ -605,7 +606,7 @@ export function rebuildLoadedFluidTanks() {
             if (tankType === CREATIVE_TANK_ID && state.fluid) {
                 writeState(blocks, { fluid: state.fluid, amount: blocks.length * CAPACITY_PER_BLOCK });
             } else {
-                updateFluidVisual(blocks, state);
+                syncFluidTankVisual(blocks, state, blocks.length * CAPACITY_PER_BLOCK);
             }
         } catch {}
     }

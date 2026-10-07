@@ -16,18 +16,26 @@ import {
 } from "./storage_inventory.js";
 import { VAULT_SLOTS_PER_BLOCK } from "./storage_config.js";
 
+/** @typedef {import('./storage_events.js').VaultStructure} VaultStructure
+ * @typedef {{id: string, dimension: import('@minecraft/server').Dimension, dimensionId: string, structure: VaultStructure, capacity: number, createdTick: number, updatedTick: number}} VaultStorage
+ */
+/** @type {Map<string, VaultStorage>} */
 const activeStorages = new Map();
+/** @type {Map<string, VaultStorage>} */
 const pendingRemovals = new Map();
 
+/** @param {import('@minecraft/server').Vector3} pos */
 function posKey(pos) {
   return `${Math.floor(pos.x)},${Math.floor(pos.y)},${Math.floor(pos.z)}`;
 }
 
+/** @param {VaultStructure} a @param {VaultStructure} b */
 function structuresOverlap(a, b) {
   const blocks = new Set(a.blocks.map(posKey));
   return b.blocks.some((pos) => blocks.has(posKey(pos)));
 }
 
+/** @param {VaultStructure} structure @returns {VaultStorage} */
 function createStorageFromStructure(structure) {
   return {
     id: structure.id,
@@ -40,6 +48,7 @@ function createStorageFromStructure(structure) {
   };
 }
 
+/** @param {VaultStructure} structure @returns {[string, VaultStorage] | undefined} */
 function findPendingOverlap(structure) {
   for (const [id, storage] of pendingRemovals) {
     if (storage.dimension !== structure.dimension) continue;
@@ -49,6 +58,7 @@ function findPendingOverlap(structure) {
   return undefined;
 }
 
+/** @param {string} storageId */
 function finalizePendingRemoval(storageId) {
   const storage = pendingRemovals.get(storageId);
   if (!storage) return;
@@ -57,6 +67,7 @@ function finalizePendingRemoval(storageId) {
   removeAnchor(storage, true);
 }
 
+/** @param {VaultStructure} structure @returns {VaultStorage} */
 export function registerStorageForStructure(structure) {
   const overlap = findPendingOverlap(structure);
   const storage = createStorageFromStructure(structure);
@@ -77,6 +88,7 @@ export function registerStorageForStructure(structure) {
   return storage;
 }
 
+/** @param {VaultStructure} structure */
 export function markStorageRemoved(structure) {
   const storage = activeStorages.get(structure.id);
   if (!storage) return;
@@ -86,10 +98,12 @@ export function markStorageRemoved(structure) {
   system.run(() => finalizePendingRemoval(storage.id));
 }
 
+/** @param {string} storageId @returns {VaultStorage | undefined} */
 export function getStorageById(storageId) {
   return activeStorages.get(storageId);
 }
 
+/** @param {import('@minecraft/server').Vector3} position @param {{getStructureAt(position: import('@minecraft/server').Vector3, dimension: import('@minecraft/server').Dimension): VaultStructure | undefined}} visualApi @param {import('@minecraft/server').Dimension} dimension */
 export function getStorageAt(position, visualApi, dimension) {
   const structure = visualApi.getStructureAt(position, dimension);
   if (!structure) return undefined;
@@ -100,6 +114,7 @@ export function getStorages() {
   return Array.from(activeStorages.values());
 }
 
+/** @param {string} storageId */
 export function listItems(storageId) {
   const storage = getStorageById(storageId);
   if (!storage) return [];
@@ -119,6 +134,7 @@ export function listItems(storageId) {
   return items;
 }
 
+/** @param {string} storageId */
 export function getStorageSummary(storageId) {
   const storage = getStorageById(storageId);
   if (!storage) return undefined;
@@ -129,8 +145,7 @@ export function getStorageSummary(storageId) {
     total.occupied += stats.occupied;
     total.free += stats.free;
     total.size += stats.size;
-    return total;
-  }, { occupied: 0, free: 0, size: 0 });
+    return total;    }, /** @type {{occupied: number, free: number, size: number}} */ ({ occupied: 0, free: 0, size: 0 }));
 
   return {
     storageId: storage.id,
@@ -140,12 +155,14 @@ export function getStorageSummary(storageId) {
   };
 }
 
+/** @param {import('@minecraft/server').ItemStack} itemStack @param {number} amount */
 function cloneStack(itemStack, amount) {
   const stack = itemStack.clone?.() ?? itemStack;
   stack.amount = amount;
   return stack;
 }
 
+/** @param {import('@minecraft/server').Container | undefined} inventory @param {import('@minecraft/server').ItemStack} itemStack */
 function availableSpaceForInventory(inventory, itemStack) {
   if (!inventory || !itemStack) return 0;
 
@@ -166,6 +183,7 @@ function availableSpaceForInventory(inventory, itemStack) {
   return available;
 }
 
+/** @param {import('@minecraft/server').Container[]} inventories @param {import('@minecraft/server').ItemStack} itemStack @param {number} amount */
 function addItemAcrossInventories(inventories, itemStack, amount) {
   let remaining = Math.min(amount, itemStack?.amount ?? 0);
   if (remaining <= 0) return false;
@@ -192,13 +210,15 @@ function addItemAcrossInventories(inventories, itemStack, amount) {
   return false;
 }
 
-export function insertItem(storageId, itemStack, amount = itemStack?.amount) {
+/** @param {string} storageId @param {import('@minecraft/server').ItemStack} itemStack @param {number} amount */
+export function insertItem(storageId, itemStack, amount = itemStack.amount) {
   const storage = getStorageById(storageId);
   if (!storage) return false;
 
-  return addItemAcrossInventories(getAnchorInventories(storage), itemStack, amount);
+  return addItemAcrossInventories(getAnchorInventories(storage).filter((inventory) => inventory !== undefined), itemStack, amount);
 }
 
+/** @param {string} storageId @param {string | undefined} filter @param {number} amount */
 export function extractItem(storageId, filter, amount = 1) {
   const storage = getStorageById(storageId);
   if (!storage) return undefined;

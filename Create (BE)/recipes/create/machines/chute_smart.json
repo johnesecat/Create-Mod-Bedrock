@@ -1,7 +1,7 @@
 {
     "format_version": "1.12",
     "minecraft:recipe_shaped": {
-        "description": { "identifier": "create::chute_smart" },
+        "description": { "identifier": "create:chute_smart" },
         "tags": ["crafting_table"],
         "pattern": [
             "S",

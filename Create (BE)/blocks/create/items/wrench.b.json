@@ -6,7 +6,7 @@
             "menu_category": { "category": "none" }
         },
         "components": {
-            "minecraft:display_name": "item.create:wrench",
+            "minecraft:display_name": "item.create:wrench.name",
             "minecraft:material_instances": {
                 "*": {
                     "texture": "create:wrench",

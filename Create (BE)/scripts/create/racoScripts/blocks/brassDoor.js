@@ -1,19 +1,30 @@
-import { system } from "@minecraft/server";
+import * as mc from "@minecraft/server";
+const { system } = mc;
+
+/** @typedef {import('@minecraft/server').Block} Block */
+/** @typedef {import('@minecraft/server').Entity} Entity */
+/** @typedef {import('@minecraft/server').Dimension} Dimension */
+/** @typedef {'north' | 'south' | 'east' | 'west'} HorizontalDirection */
+/** @typedef {{block: Block, cancel: boolean}} BeforePlaceEvent */
+/** @typedef {{block: Block}} BlockEvent */
 
 const ID = "create:brass_door";
 
+/** @param {Block} block */
 function states(block) {
     return block.permutation.getAllStates();
 }
 
+/** @param {Block} block @returns {Block | undefined} */
 function otherHalf(block) {
     const upper = states(block)["create:upper"] === true;
     return block.dimension.getBlock({ x: block.x, y: block.y + (upper ? -1 : 1), z: block.z });
 }
 
+/** @param {Block | undefined} block @param {string} name @param {string | number | boolean} value */
 function setState(block, name, value) {
     if (!block || block.typeId !== ID) return;
-    block.setPermutation(block.permutation.withState(name, value));
+    block.setPermutation(mc.BlockPermutation.resolve(block.typeId, { ...states(block), [name]: value }));
 }
 
 const VISUAL_TYPES = {
@@ -31,15 +42,25 @@ const HINGED_VISUAL_TYPES = {
 
 const ALL_VISUAL_TYPES = Object.values(VISUAL_TYPES);
 
+/** @param {Entity | undefined} entity */
 function removeVisual(entity) {
     try { entity?.remove(); } catch {}
 }
 
+/** @param {Block} block */
 function visualType(block) {
     const direction = states(block)["minecraft:cardinal_direction"];
-    return VISUAL_TYPES[direction] ?? VISUAL_TYPES.north;
+    return typeof direction === "string" && isHorizontalDirection(direction)
+        ? VISUAL_TYPES[direction]
+        : VISUAL_TYPES.north;
 }
 
+/** @param {unknown} value @returns {value is HorizontalDirection} */
+function isHorizontalDirection(value) {
+    return value === "north" || value === "south" || value === "west" || value === "east";
+}
+
+/** @param {Block} block @param {boolean} upper @returns {Entity | undefined} */
 function visualAt(block, upper) {
     try {
         for (const type of ALL_VISUAL_TYPES) {
@@ -55,6 +76,7 @@ function visualAt(block, upper) {
     }
 }
 
+/** @param {Block} block @param {boolean} upper */
 function removeVisualAt(block, upper) {
     try {
         for (const type of ALL_VISUAL_TYPES) {
@@ -68,6 +90,7 @@ function removeVisualAt(block, upper) {
     } catch {}
 }
 
+/** @param {Block} block @param {boolean} upper @param {boolean} opening @returns {Entity} */
 function spawnVisual(block, upper, opening) {
     removeVisualAt(block, false);
     const location = { x: block.x + 0.5, y: block.y, z: block.z + 0.5 };
@@ -81,6 +104,7 @@ function spawnVisual(block, upper, opening) {
     return entity;
 }
 
+/** @param {Block} block @param {boolean} upper @param {boolean} opening @returns {Entity} */
 function getOrSpawnVisual(block, upper, opening) {
     const existing = visualAt(block, upper);
     if (existing) {
@@ -93,6 +117,7 @@ function getOrSpawnVisual(block, upper, opening) {
     return spawnVisual(block, upper, opening);
 }
 
+/** @param {Block} block @returns {Block | undefined} */
 function pairedDoor(block) {
     const direction = states(block)["minecraft:cardinal_direction"];
     const offsets = direction === "north" || direction === "south"
@@ -105,6 +130,7 @@ function pairedDoor(block) {
     }
 }
 
+/** @param {Block} block */
 function isMirroredHinge(block) {
     const pair = pairedDoor(block);
     if (!pair) return states(block)["create:hinge"] === true;
@@ -115,6 +141,7 @@ function isMirroredHinge(block) {
     return block.z > pair.z;
 }
 
+/** @param {Block} block @param {boolean | undefined} [forcedOpen] @param {boolean} [syncPair] */
 function toggle(block, forcedOpen, syncPair = true) {
     const lower = states(block)["create:upper"] === true ? otherHalf(block) : block;
     if (!lower || lower.typeId !== ID) return;
@@ -154,10 +181,12 @@ function toggle(block, forcedOpen, syncPair = true) {
     }, 15);
 }
 
+/** @param {Block} block */
 function power(block) {
     return block.getRedstonePower?.() ?? 0;
 }
 
+/** @param {Block} block @param {boolean} powered */
 function updateRedstonePower(block, powered) {
     const lower = states(block)["create:upper"] === true ? otherHalf(block) : block;
     if (!lower || lower.typeId !== ID) return;
@@ -170,6 +199,7 @@ function updateRedstonePower(block, powered) {
     toggle(lower, powered);
 }
 
+/** @type {{beforeOnPlayerPlace: (event: BeforePlaceEvent) => void, onPlace: (event: BlockEvent) => void, onPlayerInteract: (event: BlockEvent) => void, onTick: (event: BlockEvent) => void, onPlayerBreak: (event: BlockEvent) => void}} */
 export const brassDoorComponent = {
     beforeOnPlayerPlace(event) {
         const block = event.block;
@@ -191,11 +221,13 @@ export const brassDoorComponent = {
             setState(block, "create:hinge", isMirroredHinge(block));
             const placed = dimension.getBlock(location);
             if (!placed || placed.typeId !== ID) return;
-            const upperPermutation = placed.permutation
-                .withState("create:upper", true)
-                .withState("create:open", false)
-                .withState("create:animating", false)
-                .withState("create:powered", false);
+            const upperPermutation = mc.BlockPermutation.resolve(ID, {
+                ...states(placed),
+                "create:upper": true,
+                "create:open": false,
+                "create:animating": false,
+                "create:powered": false
+            });
             above.setPermutation(upperPermutation);
         });
     },

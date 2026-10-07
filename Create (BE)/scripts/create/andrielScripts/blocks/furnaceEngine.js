@@ -1,8 +1,26 @@
-import { system } from "@minecraft/server";
+import { BlockPermutation, system } from "@minecraft/server";
 import { recalculateNetwork } from "../rpm/rpmCore";
-import { DIRECTION_OFFSETS, INVERT_FACE } from "../rpm/rpmHelpers";
+import { INVERT_FACE } from "../rpm/rpmHelpers";
+
+/** @typedef {import('@minecraft/server').Block} Block */
+/** @typedef {import('@minecraft/server').Dimension} Dimension */
+/** @typedef {'north' | 'south' | 'east' | 'west'} HorizontalDirection */
+
+/** @param {unknown} value @returns {value is HorizontalDirection} */
+function isHorizontalDirection(value) {
+    return value === 'north' || value === 'south' || value === 'east' || value === 'west';
+}
+
+/** @param {Block} block @param {boolean} active */
+function setFlywheelActive(block, active) {
+    block.setPermutation(BlockPermutation.resolve(block.typeId, {
+        ...block.permutation.getAllStates(),
+        'create:active_generator': active
+    }));
+}
 
 // Blocos que alimentam o furnace engine
+/** @type {Readonly<Record<string, number | undefined>>} */
 export const heatSources = {
     'minecraft:lit_furnace': 16,
     'minecraft:lit_blast_furnace': 32,
@@ -27,19 +45,22 @@ const flywheelRightConn = {
  * Chamado no tick do bloco furnace_engine.
  * Checa se a fornalha atrás está acesa e gera RPM.
  */
+/** @param {Block} block @param {Dimension} dimension */
 export function furnaceEngineTick(block, dimension) {
     const entity = dimension.getEntities({ location: block.center(), maxDistance: 0.25, type: `${block.typeId}_entity` })[0];
     if (!entity) return;
 
     const rotation = block.permutation.getState('minecraft:cardinal_direction');
+    if (!isHorizontalDirection(rotation)) return;
 
     // Checa fornalha atrás
     let furnaceBlock;
     try { furnaceBlock = block[rotation](); } catch { return; }
-    entity.setProperty('create:has_furnace', furnaceBlocks.has(furnaceBlock?.typeId));
+    entity.setProperty('create:has_furnace', furnaceBlock !== undefined && furnaceBlocks.has(furnaceBlock.typeId));
 
     // Checa flywheel 2 blocos na frente
     const targetFace = INVERT_FACE[rotation];
+    if (!isHorizontalDirection(targetFace)) return;
     let flywheelBlock;
     try { flywheelBlock = block[targetFace](2); } catch { return; }
 
@@ -55,6 +76,10 @@ export function furnaceEngineTick(block, dimension) {
 
     // Flywheel precisa ser perpendicular ao engine
     const flywheelRotation = flywheelBlock.permutation.getState('minecraft:cardinal_direction');
+    if (!isHorizontalDirection(flywheelRotation)) {
+        entity.setProperty('create:has_flywheel', false);
+        return;
+    }
     const engineAxis = (rotation === 'north' || rotation === 'south') ? 'Z' : 'X';
     const flywheelAxis = (flywheelRotation === 'north' || flywheelRotation === 'south') ? 'Z' : 'X';
     if (engineAxis === flywheelAxis) { entity.setProperty('create:has_flywheel', false); return; };
@@ -74,22 +99,24 @@ export function furnaceEngineTick(block, dimension) {
     entity.setProperty('create:flywheel_right_conn', flywheelRightConn[rotation] === flywheelRotation);
 
     // RPM baseado na fornalha
-    const rpm = heatSources[furnaceBlock?.typeId] ?? 0;
+    const rpm = furnaceBlock ? (heatSources[furnaceBlock.typeId] ?? 0) : 0;
     const currentRpm = flywheelEntity.getDynamicProperty('create:generator_rpm') ?? 0;
     if (currentRpm === rpm) return;
 
     entity.setProperty('create:rpm', rpm);
     flywheelEntity.setDynamicProperty('create:generator_rpm', rpm);
 
-    if (rpm !== 0) flywheelBlock.setPermutation(flywheelBlock.permutation.withState('create:active_generator', true));
-    else flywheelBlock.setPermutation(flywheelBlock.permutation.withState('create:active_generator', false));
+    setFlywheelActive(flywheelBlock, rpm !== 0);
 
     system.runJob(recalculateNetwork(flywheelBlock, dimension, { eventType: 'generator' }));
 };
 
+/** @param {Block} block @param {Dimension} dimension @param {import('@minecraft/server').BlockPermutation} brokenBlockPermutation */
 export function onBreakFurnaceEngine(block, dimension, brokenBlockPermutation) {
     const rotation = brokenBlockPermutation.getState('minecraft:cardinal_direction');
+    if (!isHorizontalDirection(rotation)) return;
     const targetFace = INVERT_FACE[rotation];
+    if (!isHorizontalDirection(targetFace)) return;
 
     let flywheelBlock;
     try { flywheelBlock = block[targetFace](2); } catch { return; }
@@ -104,12 +131,14 @@ export function onBreakFurnaceEngine(block, dimension, brokenBlockPermutation) {
     // Libera e desliga
     flywheelEntity.setDynamicProperty('create:engine_source', '');
     flywheelEntity.setDynamicProperty('create:generator_rpm', 0);
-    flywheelBlock.setPermutation(flywheelBlock.permutation.withState('create:active_generator', false));
+    setFlywheelActive(flywheelBlock, false);
     system.runJob(recalculateNetwork(flywheelBlock, dimension, { eventType: 'generator' }));
 };
 
+/** @param {Block} block @param {Dimension} dimension */
 export function furnaceEngineFrame(block, dimension) {
     const rotation = block.permutation.getState('minecraft:cardinal_direction');
+    if (!isHorizontalDirection(rotation)) return;
 
     let entity;
     entity = dimension.getEntities({ location: block.center(), maxDistance: 0.25, type: `${block.typeId}_entity` })[0];
@@ -117,7 +146,7 @@ export function furnaceEngineFrame(block, dimension) {
     entity.setProperty('create:cardinal_rotation', INVERT_FACE[rotation]);
 
     const behindFace = block[rotation]();
-    const hasFurnace = furnaceBlocks.has(behindFace.typeId);
+    const hasFurnace = behindFace !== undefined && furnaceBlocks.has(behindFace.typeId);
 
     entity.setProperty('create:has_furnace', hasFurnace);
 };

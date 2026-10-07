@@ -1,4 +1,4 @@
-import { system } from "@minecraft/server";
+import { BlockPermutation, system } from "@minecraft/server";
 
 const BAR_IDS = new Set([
     "create:andesite_bars",
@@ -6,6 +6,7 @@ const BAR_IDS = new Set([
     "create:copper_bars"
 ]);
 
+/** @type {ReadonlyArray<readonly [string, number, number, number]>} */
 const SIDES = [
     ["create:north", 0, 0, -1],
     ["create:south", 0, 0, 1],
@@ -13,6 +14,9 @@ const SIDES = [
     ["create:east", 1, 0, 0]
 ];
 
+/** @param {import('@minecraft/server').Dimension} dimension @param {import('@minecraft/server').Vector3} location
+ * @param {number} dx @param {number} dy @param {number} dz
+ */
 function getBlock(dimension, location, dx, dy, dz) {
     try {
         return dimension.getBlock({ x: location.x + dx, y: location.y + dy, z: location.z + dz });
@@ -21,6 +25,7 @@ function getBlock(dimension, location, dx, dy, dz) {
     }
 }
 
+/** @param {import('@minecraft/server').Block | undefined} block */
 function canConnectTo(block) {
     if (!block) return false;
     if (BAR_IDS.has(block.typeId)) return true;
@@ -33,21 +38,24 @@ function canConnectTo(block) {
     return true;
 }
 
+/** @param {import('@minecraft/server').Block | undefined} block */
 function refreshBar(block) {
     if (!block || !BAR_IDS.has(block.typeId)) return;
-    let permutation = block.permutation;
+    const states = block.permutation.getAllStates();
     for (const [state, dx, dy, dz] of SIDES) {
         const neighbor = getBlock(block.dimension, block.location, dx, dy, dz);
-        permutation = permutation.withState(state, canConnectTo(neighbor));
+        states[state] = canConnectTo(neighbor);
     }
-    try { block.setPermutation(permutation); } catch {}
+    try { block.setPermutation(BlockPermutation.resolve(block.typeId, states)); } catch {}
 }
 
+/** @param {import('@minecraft/server').Dimension} dimension @param {import('@minecraft/server').Vector3} location */
 function refreshAround(dimension, location) {
     refreshBar(getBlock(dimension, location, 0, 0, 0));
     for (const [, dx, dy, dz] of SIDES) refreshBar(getBlock(dimension, location, dx, dy, dz));
 }
 
+/** @param {import('@minecraft/server').Block | undefined} block */
 export function connectedBarsPlace(block) {
     if (!block) return;
     const dimension = block.dimension;
@@ -55,6 +63,7 @@ export function connectedBarsPlace(block) {
     system.run(() => refreshAround(dimension, location));
 }
 
+/** @param {import('@minecraft/server').Block | undefined} block @param {import('@minecraft/server').BlockPermutation} brokenBlockPermutation */
 export function connectedBarsBreak(block, brokenBlockPermutation) {
     if (!block) return;
     const dimension = block.dimension;
@@ -62,6 +71,7 @@ export function connectedBarsBreak(block, brokenBlockPermutation) {
     system.run(() => refreshAround(dimension, location));
 }
 
+/** @param {import('@minecraft/server').Block | undefined} block */
 export function connectedBarsTick(block) {
     refreshBar(block);
 }

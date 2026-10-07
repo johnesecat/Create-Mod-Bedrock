@@ -1,9 +1,25 @@
 import * as mc from "@minecraft/server"
 
+const MAINHAND = mc.EquipmentSlot.Mainhand
+
+/** @typedef {import('@minecraft/server').Player} Player */
+/** @typedef {import('@minecraft/server').Block} Block */
+/** @typedef {import('@minecraft/server').Entity} Entity */
+/** @typedef {import('@minecraft/server').Vector3} Vector3 */
+/** @typedef {'north' | 'south' | 'east' | 'west' | 'up' | 'down'} Direction */
+
 const SHAFT_ITEMS = new Set(["create:shaft", "create:cogwheel", "create:large_cogwheel"])
 const SHAFT_BLOCKS = new Set(["create:shaft", "create:shaft.steam_engine", "create:cogwheel", "create:large_cogwheel"])
+/** @type {Map<string, {entity: Entity | undefined, type: string, locationKey: string, direction: Direction}>} */
 const previews = new Map()
+/** @type {Map<string, Array<Entity | undefined>>} */
 const largeCogwheelDiagonalPreviews = new Map()
+
+/** @type {Readonly<Record<Direction, Vector3>>} */
+/** @param {unknown} value @returns {value is Direction} */
+function isDirection(value) {
+    return value === "north" || value === "south" || value === "east" || value === "west" || value === "up" || value === "down"
+}
 
 const FACE_OFFSETS = {
     north: { x: 0, y: 0, z: -1 },
@@ -14,15 +30,17 @@ const FACE_OFFSETS = {
     down: { x: 0, y: -1, z: 0 }
 }
 
+/** @param {Player} player @param {number} currentTick */
 export function shaftPreviewTick(player, currentTick) {
     if (!player?.isValid) return
     // A prévia não precisa ser recalculada em todo tick; isso reduz bastante o
     // custo quando há vários jogadores segurando engrenagens.
     if (currentTick % 6 !== 0) return
 
+    /** @type {import('@minecraft/server').ItemStack | undefined} */
     let held
-    try { held = player.getComponent("equippable")?.getEquipment("Mainhand") } catch {}
-    if (!SHAFT_ITEMS.has(held?.typeId)) {
+    try { held = player.getComponent("equippable")?.getEquipment(MAINHAND) } catch {}
+    if (!held || !SHAFT_ITEMS.has(held.typeId)) {
         removePreview(player.id)
         removeLargeCogwheelDiagonalPreviews(player.id)
         return
@@ -31,7 +49,7 @@ export function shaftPreviewTick(player, currentTick) {
     let hit
     try { hit = player.getBlockFromViewDirection({ maxDistance: 7 }) } catch {}
     const shaft = hit?.block
-    if (!SHAFT_BLOCKS.has(shaft?.typeId)) {
+    if (!shaft || !SHAFT_BLOCKS.has(shaft.typeId)) {
         removePreview(player.id)
         removeLargeCogwheelDiagonalPreviews(player.id)
         return
@@ -51,6 +69,7 @@ export function shaftPreviewTick(player, currentTick) {
     const direction = placingLargeInFrontOfCogwheel || placingShaftInFrontOfGear
         ? getPreviewDirection(shaft, hit?.face, player)
         : getCogwheelSideDirection(shaft, hit?.face) ?? getPreviewDirection(shaft, hit?.face, player)
+    if (!isDirection(direction)) return removePreview(player.id)
     const offset = FACE_OFFSETS[direction]
     if (!offset) return removePreview(player.id)
 
@@ -59,13 +78,14 @@ export function shaftPreviewTick(player, currentTick) {
         y: shaft.location.y + offset.y,
         z: shaft.location.z + offset.z
     }
-    let targetBlock
+    let targetBlock;
     try { targetBlock = shaft.dimension.getBlock(targetLocation) } catch {}
     if (!targetBlock || (targetBlock.typeId !== "minecraft:air" && !targetBlock.isLiquid)) return removePreview(player.id)
 
     const previewType = getPreviewEntityType(held.typeId)
     const locationKey = `${targetLocation.x},${targetLocation.y},${targetLocation.z}`
     const stored = previews.get(player.id)
+    /** @type {Entity | undefined} */
     let preview = stored?.entity
     // Nunca mova a entidade entre blocos: removemos a prévia antiga e criamos
     // outra no novo alvo, impedindo o efeito de ela "correr" pelo mundo.
@@ -80,22 +100,26 @@ export function shaftPreviewTick(player, currentTick) {
                 y: targetLocation.y + 0.5,
                 z: targetLocation.z + 0.5
             })
+            if (!preview) return
             preview.addTag(`create_shaft_preview:${player.id}`)
             previews.set(player.id, { entity: preview, type: previewType, locationKey, direction })
         } catch { return }
     }
 
+    if (!preview) return
     if (stored?.type === previewType && stored.locationKey === locationKey && stored.direction === direction) return
     try { preview.setProperty("create:cardinal_rotation", direction) } catch {}
     previews.set(player.id, { entity: preview, type: previewType, locationKey, direction })
 }
 
+/** @param {Player} player @param {Block | undefined} shaft @param {unknown} hitFace */
 export function tryExtendShaft(player, shaft, hitFace) {
-    if (!player || !SHAFT_BLOCKS.has(shaft?.typeId)) return false
+    if (!player || !shaft || !SHAFT_BLOCKS.has(shaft.typeId)) return false
 
+    /** @type {import('@minecraft/server').ItemStack | undefined} */
     let held
-    try { held = player.getComponent("equippable")?.getEquipment("Mainhand") } catch {}
-    if (!SHAFT_ITEMS.has(held?.typeId)) return false
+    try { held = player.getComponent("equippable")?.getEquipment(MAINHAND) } catch {}
+    if (!held || !SHAFT_ITEMS.has(held.typeId)) return false
     const sourceIsShaft = shaft.typeId === "create:shaft" || shaft.typeId === "create:shaft.steam_engine"
     const canPlaceShaftInFrontOfGear = held.typeId === "create:shaft" && (shaft.typeId === "create:cogwheel" || shaft.typeId === "create:large_cogwheel")
     if (held.typeId === "create:shaft" && !sourceIsShaft && !canPlaceShaftInFrontOfGear) return false
@@ -108,7 +132,8 @@ export function tryExtendShaft(player, shaft, hitFace) {
     const diagonalOffset = held.typeId === "create:cogwheel" && shaft.typeId === "create:large_cogwheel"
         ? getCogwheelDiagonalPlacementOffset(shaft, hitFace, player)
         : undefined
-    const offset = diagonalOffset ?? FACE_OFFSETS[direction]
+    if (!diagonalOffset && !isDirection(direction)) return false
+    const offset = diagonalOffset ?? FACE_OFFSETS[/** @type {Direction} */ (direction)]
     if (!offset) return false
 
     const sourceLocation = { ...shaft.location }
@@ -122,29 +147,34 @@ export function tryExtendShaft(player, shaft, hitFace) {
     if (!target || (target.typeId !== "minecraft:air" && !target.isLiquid)) return false
 
     mc.system.run(() => {
+        /** @type {Block | undefined} */
         let source
+        /** @type {Block | undefined} */
         let destination
         try {
             source = shaft.dimension.getBlock(sourceLocation)
             destination = shaft.dimension.getBlock(targetLocation)
         } catch { return }
-        if (!SHAFT_BLOCKS.has(source?.typeId) || !destination || (destination.typeId !== "minecraft:air" && !destination.isLiquid)) return
+        if (!source || !SHAFT_BLOCKS.has(source.typeId) || !destination || (destination.typeId !== "minecraft:air" && !destination.isLiquid)) return
 
         const sourceDirectionState = source.typeId === "create:shaft" || source.typeId === "create:shaft.steam_engine"
             ? "minecraft:block_face"
             : "minecraft:facing_direction"
         const destinationDirectionState = held.typeId === "create:shaft" ? "minecraft:block_face" : "minecraft:facing_direction"
+        /** @type {unknown} */
         let axis
-        try { axis = source.permutation.getState(sourceDirectionState) } catch {}
+        try { axis = source.permutation.getAllStates()[sourceDirectionState] } catch {}
+        if (typeof axis !== "string") return
         try {
             destination.setType(held.typeId)
-            if (axis) destination.setPermutation(destination.permutation.withState(destinationDirectionState, axis))
+            destination.setPermutation(destination.permutation.withState(destinationDirectionState, axis))
         } catch { return }
         consumeHeldShaft(player)
     })
     return true
 }
 
+/** @param {Block} shaft @param {unknown} hitFace @param {Player} player @returns {Direction} */
 function getPreviewDirection(shaft, hitFace, player) {
     const face = String(hitFace ?? "").toLowerCase()
     const directionState = shaft.typeId === "create:shaft" || shaft.typeId === "create:shaft.steam_engine"
@@ -153,13 +183,12 @@ function getPreviewDirection(shaft, hitFace, player) {
     let blockFace
     try { blockFace = String(shaft.permutation.getState(directionState) ?? "north").toLowerCase() } catch {}
 
-    const axisFaces = blockFace === "east" || blockFace === "west"
+    const axisFaces = /** @type {Direction[]} */ (blockFace === "east" || blockFace === "west"
         ? ["east", "west"]
         : blockFace === "up" || blockFace === "down"
             ? ["up", "down"]
-            : ["north", "south"]
-    if (axisFaces.includes(face)) return face
-
+            : ["north", "south"])
+    if (isDirection(face) && axisFaces.includes(face)) return face    /** @type {Vector3 | undefined} */
     let view
     try { view = player.getViewDirection() } catch {}
     if (axisFaces[0] === "east") return (view?.x ?? 0) >= 0 ? "east" : "west"
@@ -167,18 +196,21 @@ function getPreviewDirection(shaft, hitFace, player) {
     return (view?.z ?? 0) >= 0 ? "south" : "north"
 }
 
+/** @param {Block} block @param {unknown} hitFace @returns {Direction | undefined} */
 function getCogwheelSideDirection(block, hitFace) {
-    if (block?.typeId !== "create:cogwheel") return undefined
+    if (block.typeId !== "create:cogwheel") return undefined
     const face = String(hitFace ?? "").toLowerCase()
-    return FACE_OFFSETS[face] ? face : undefined
+    return isDirection(face) && FACE_OFFSETS[face] ? face : undefined
 }
 
+/** @param {string} playerId */
 function removePreview(playerId) {
     const preview = previews.get(playerId)?.entity
     previews.delete(playerId)
     try { if (preview?.isValid) preview.remove() } catch {}
 }
 
+/** @param {Player} player @param {Block} largeCogwheel */
 function updateLargeCogwheelDiagonalPreviews(player, largeCogwheel) {
     const offsets = getLargeCogwheelDiagonalOffsets(largeCogwheel)
     const existing = largeCogwheelDiagonalPreviews.get(player.id) ?? []
@@ -194,7 +226,8 @@ function updateLargeCogwheelDiagonalPreviews(player, largeCogwheel) {
         let target
         try { target = largeCogwheel.dimension.getBlock(location) } catch {}
         if (!target || (target.typeId !== "minecraft:air" && !target.isLiquid)) {
-            try { if (existing[index]?.isValid) existing[index].remove() } catch {}
+            const previous = existing[index]
+            try { if (previous?.isValid) previous.remove() } catch {}
             continue
         }
 
@@ -212,18 +245,20 @@ function updateLargeCogwheelDiagonalPreviews(player, largeCogwheel) {
             } catch { continue }
         }
         // Hologramas diagonais são estáticos: configure somente quando nascerem.
-        if (created) {
+        if (created && hologram) {
             try { hologram.setProperty("create:cardinal_rotation", getLargeCogwheelFacing(largeCogwheel)) } catch {}
         }
         next[index] = hologram
     }
 
     for (let index = offsets.length; index < existing.length; index++) {
-        try { if (existing[index]?.isValid) existing[index].remove() } catch {}
+        const preview = existing[index]
+        try { if (preview?.isValid) preview.remove() } catch {}
     }
     largeCogwheelDiagonalPreviews.set(player.id, next)
 }
 
+/** @param {Block} cogwheel @param {unknown} hitFace @param {Player} player @returns {Vector3 | undefined} */
 function getCogwheelDiagonalPlacementOffset(cogwheel, hitFace, player) {
     const face = String(hitFace ?? "").toLowerCase()
     const facing = getLargeCogwheelFacing(cogwheel)
@@ -243,6 +278,7 @@ function getCogwheelDiagonalPlacementOffset(cogwheel, hitFace, player) {
     return undefined
 }
 
+/** @param {Block} block @returns {Vector3[]} */
 function getLargeCogwheelDiagonalOffsets(block) {
     const facing = getLargeCogwheelFacing(block)
     if (facing === "east" || facing === "west") {
@@ -254,11 +290,13 @@ function getLargeCogwheelDiagonalOffsets(block) {
     return [{ x: 1, y: 1 }, { x: 1, y: -1 }, { x: -1, y: 1 }, { x: -1, y: -1 }].map(offset => ({ ...offset, z: 0 }))
 }
 
+/** @param {Block} block */
 function getLargeCogwheelFacing(block) {
     try { return String(block.permutation.getState("minecraft:facing_direction") ?? "north").toLowerCase() } catch {}
     return "north"
 }
 
+/** @param {string} playerId */
 function removeLargeCogwheelDiagonalPreviews(playerId) {
     const previews = largeCogwheelDiagonalPreviews.get(playerId) ?? []
     largeCogwheelDiagonalPreviews.delete(playerId)
@@ -267,23 +305,26 @@ function removeLargeCogwheelDiagonalPreviews(playerId) {
     }
 }
 
+/** @param {Player} player */
 function consumeHeldShaft(player) {
     try {
         if (player.getGameMode?.() === "Creative") return true
         const equippable = player.getComponent("equippable")
-        const held = equippable?.getEquipment("Mainhand")
-        if (!SHAFT_ITEMS.has(held?.typeId)) return false
-        if ((held.amount ?? 1) <= 1) equippable.setEquipment("Mainhand", undefined)
+        if (!equippable) return false
+        const held = equippable.getEquipment(MAINHAND)
+        if (!held || !SHAFT_ITEMS.has(held.typeId)) return false
+        if ((held.amount ?? 1) <= 1) equippable.setEquipment(MAINHAND, undefined)
         else {
             const next = held.clone()
             next.amount--
-            equippable.setEquipment("Mainhand", next)
+            equippable.setEquipment(MAINHAND, next)
         }
         return true
     } catch {}
     return false
 }
 
+/** @param {string} itemId */
 function getPreviewEntityType(itemId) {
     if (itemId === "create:cogwheel") return "create:cogwheel_hologram"
     if (itemId === "create:large_cogwheel") return "create:large_cogwheel_hologram"

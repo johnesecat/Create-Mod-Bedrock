@@ -34,6 +34,8 @@ const BASIN_ANDESITE_INPUT = {
 // ── Press recipes ────────────────────────────────────────────────────────────
 // { input: typeId, result: typeId }
 // The press processes items on a belt/depot 1 block below it.
+/** @typedef {{input: string, result: string}} PressRecipe */
+/** @type {PressRecipe[]} */
 const PRESS_RECIPES = [
     // Sheets (ingot → sheet)
     { input: "minecraft:iron_ingot",   result: "create:iron_sheet"   },
@@ -61,7 +63,8 @@ export function pressTick(block) {
     })[0];
     if (!entity) return;
 
-    const rpm = entity.getProperty("create:rpm") ?? 0;
+    const rpmValue = entity.getProperty("create:rpm");
+    const rpm = typeof rpmValue === "number" ? rpmValue : 0;
     if (rpm === 0) return;
 
     // The press acts on the block directly below it.
@@ -104,7 +107,7 @@ export function pressTick(block) {
 
         startPressCycle(entity, bruteSpeed, now, target);
     } else {
-        const data = JSON.parse(movementInfo);
+        const data = JSON.parse(/** @type {string} */ (movementInfo));
 
         const elapsed = now - data.startTick;
         const total   = data.endTick - data.startTick;
@@ -347,8 +350,9 @@ function getPressCycleTicks(bruteSpeed) {
     return Math.max(Math.ceil(TIME_CONFIG[bruteSpeed] ?? MIN_PRESS_CYCLE_TICKS), MIN_PRESS_CYCLE_TICKS);
 }
 
+/** @param {string | number | boolean | import('@minecraft/server').Vector3 | undefined} movementInfo */
 function getMovementTargetId(movementInfo) {
-    if (!movementInfo) return undefined;
+    if (typeof movementInfo !== "string") return undefined;
     try {
         return JSON.parse(movementInfo).targetId;
     } catch {
@@ -385,6 +389,7 @@ function releasePressTarget(target, belowBlock, now) {
     try { target.removeTag('create:conveyor_stop'); } catch {}
 }
 
+/** @param {string | undefined} targetId @param {mc.Block} belowBlock @param {boolean} requireStopped @returns {mc.Entity | null} */
 function getPressTargetById(targetId, belowBlock, requireStopped) {
     if (!targetId) return null;
     let target;
@@ -395,6 +400,7 @@ function getPressTargetById(targetId, belowBlock, requireStopped) {
     return getPressRecipeForConveyorItem(target) ? target : null;
 }
 
+/** @param {mc.Block} belowBlock @param {boolean} requireStopped @param {number | undefined} [now] @param {boolean} [skipRecentlyReleased] @returns {mc.Entity | null} */
 function getPressableConveyorTarget(belowBlock, requireStopped, now = undefined, skipRecentlyReleased = false) {
     const targets = belowBlock.dimension?.getEntities({
         type: "create:conveyor_item",
@@ -430,13 +436,17 @@ function wasRecentlyReleasedFromPress(target, belowBlock, now) {
     }
 }
 
+/** @param {mc.Entity} conveyorItem @returns {PressRecipe | null} */
 function getPressRecipeForConveyorItem(conveyorItem) {
     const container = conveyorItem.getComponent("minecraft:inventory")?.container;
     const surfaceItem = container?.getItem(0);
     if (!surfaceItem) return null;
-    return compatibilityRecipes.pressing.get(surfaceItem.typeId) ?? PRESS_RECIPES.find(r => r.input === surfaceItem.typeId) ?? null;
+    return /** @type {PressRecipe | undefined} */ (compatibilityRecipes.pressing.get(surfaceItem.typeId))
+        ?? PRESS_RECIPES.find(r => r.input === surfaceItem.typeId)
+        ?? null;
 }
 
+/** @param {mc.Entity} conveyorItem @returns {number} */
 function getPressTargetItemAmount(conveyorItem) {
     const container = conveyorItem.getComponent("minecraft:inventory")?.container;
     return container?.getItem(0)?.amount ?? 0;

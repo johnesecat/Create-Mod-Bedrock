@@ -2,7 +2,7 @@
   "format_version": "1.12",
   "minecraft:recipe_shaped": {
     "description": { "identifier": "create:andesite_tunnel" }, "tags": ["crafting_table"],
-    "pattern": ["A", "AA", "KK"],
+    "pattern": ["A ", "AA", "KK"],
     "key": { "A": { "item": "create:andesite_alloy" }, "K": { "item": "minecraft:dried_kelp" } },
     "result": { "item": "create:andesite_tunnel", "count": 2 }
   }

@@ -1,6 +1,9 @@
 // Receitas essenciais da mesa de trabalho vanilla, usadas pelo Mechanical Crafter.
+/** @param {string} id */
 const item = id => ({ item: id })
+/** @param {string} name */
 const tag = name => ({ tag: name })
+/** @param {string[]} pattern @param {Record<string, {item?: string, tag?: string, ids?: string[]}>} key @param {string} id @param {number} [amount] */
 const recipe = (pattern, key, id, amount = 1) => ({ pattern, key, result: { id, amount } })
 
 const recipes = [

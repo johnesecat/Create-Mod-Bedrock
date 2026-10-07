@@ -27,6 +27,7 @@ const STRIPPED_WOOD_BLOCKS = new Set([
     "minecraft:stripped_bamboo_block"
 ])
 
+/** @type {Readonly<Partial<Record<string, string>>>} */
 const CASING_BY_ITEM = {
     "create:andesite_alloy": "create:andesite_casing",
     "create:brass_ingot": "create:brass_casing",
@@ -42,9 +43,11 @@ const CONNECT_DIRECTIONS = {
     west: { x: -1, y: 0, z: 0, opposite: "east" }
 }
 
+/** @param {mc.Player | undefined} player @param {mc.Block | undefined} block @param {mc.ItemStack | undefined} item */
 export function beforeCasingCraftInteract(player, block, item) {
-    const casingId = CASING_BY_ITEM[item?.typeId]
-    if (!player || !block || !casingId) return false
+    if (!player || !block || !item) return false
+    const casingId = CASING_BY_ITEM[item.typeId]
+    if (!casingId) return false
     if (!STRIPPED_WOOD_BLOCKS.has(block.typeId)) return false
 
     const location = { ...block.location }
@@ -52,7 +55,9 @@ export function beforeCasingCraftInteract(player, block, item) {
 
     mc.system.run(() => {
         const targetBlock = dimension.getBlock(location)
-        if (!targetBlock || !STRIPPED_WOOD_BLOCKS.has(targetBlock.typeId)) return
+        if (!player.isValid || !targetBlock || !STRIPPED_WOOD_BLOCKS.has(targetBlock.typeId)) return
+        const held = player.getComponent('minecraft:equippable')?.getEquipment(mc.EquipmentSlot.Mainhand)
+        if (held?.typeId !== item.typeId) return
 
         try { targetBlock.setType(casingId) } catch { return }
         updateCasingConnections(targetBlock, casingId)
@@ -63,6 +68,7 @@ export function beforeCasingCraftInteract(player, block, item) {
     return true
 }
 
+/** @param {mc.Block} block @param {string} casingId */
 function updateCasingConnections(block, casingId) {
     try {
         let permutation = block.permutation
@@ -72,7 +78,7 @@ function updateCasingConnections(block, casingId) {
                 y: block.location.y + offset.y,
                 z: block.location.z + offset.z
             })
-            permutation = permutation.withState(`create:${direction}`, neighbor?.typeId === casingId)
+            permutation = mc.BlockPermutation.resolve(block.typeId, { ...permutation.getAllStates(), [`create:${direction}`]: neighbor?.typeId === casingId })
         }
         block.setPermutation(permutation)
     } catch {}
@@ -85,7 +91,7 @@ function updateCasingConnections(block, casingId) {
                 z: block.location.z + offset.z
             })
             if (neighbor?.typeId !== casingId) continue
-            neighbor.setPermutation(neighbor.permutation.withState(`create:${offset.opposite}`, true))
+            neighbor.setPermutation(mc.BlockPermutation.resolve(neighbor.typeId, { ...neighbor.permutation.getAllStates(), [`create:${offset.opposite}`]: true }))
         } catch {}
     }
 }

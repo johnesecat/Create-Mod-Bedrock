@@ -45,10 +45,7 @@
         "width": 0.0,
         "height": 0.0
       },
-      "minecraft:pushable": {
-        "is_pushable": false,
-        "is_pushable_by_piston": false
-      },
+
       "minecraft:damage_sensor": {
         "triggers": {
           "cause": "all",

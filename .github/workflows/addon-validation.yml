@@ -4,16 +4,15 @@ on:
   pull_request:
     branches: [main]
     paths:
-      - "Create (BE)/**/*.json"
-      - "Create (RE)/**/*.json"
-      - "Create (RE)/textures/ui/crafters/**"
-      - "Create (BE)/texts/*.lang"
-      - "Create (BE)/pack_icon.png"
-      - "Create (RE)/pack_icon.png"
+      - "Create (BE)/**"
+      - "Create (RE)/**"
+      - "Create-Bedrock.mcaddon"
       - "package.json"
       - "package-lock.json"
       - ".gitignore"
       - "scripts/**/*.mjs"
+      - "tsconfig.json"
+      - "eslint.config.mjs"
       - ".github/workflows/addon-validation.yml"
 
 jobs:
@@ -26,8 +25,10 @@ jobs:
           node-version: 22
       - name: Install Node validation tools
         run: npm ci --ignore-scripts --no-audit --no-fund
-      - name: Validate addon with Minecraft Creator Tools
-        run: npm run validate:bedrock
+      - name: Test JSON, Script API types, lint and regressions
+        run: npm test
+      - name: Debug scripts, names, icons and packaged addon
+        run: npm run debug:bedrock
       - name: Validate strict JSON and saw texture references
         run: |
           python3 - <<'PY'
