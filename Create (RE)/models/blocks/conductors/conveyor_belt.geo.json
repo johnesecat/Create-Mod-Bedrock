@@ -3,7 +3,7 @@
 	"minecraft:geometry": [
 		{
 			"description": {
-				"identifier": "geometry.create.mechanical_belt",
+				"identifier": "geometry.create_bedrock.create.mechanical_belt",
 				"texture_width": 16,
 				"texture_height": 16,
 				"visible_bounds_width": 3,

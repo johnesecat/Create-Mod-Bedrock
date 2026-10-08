@@ -3,7 +3,7 @@
 	"minecraft:geometry": [
 		{
 			"description": {
-				"identifier": "geometry.glass",
+				"identifier": "geometry.create_bedrock.glass",
 				"texture_width": 128,
 				"texture_height": 128,
 				"visible_bounds_width": 16,

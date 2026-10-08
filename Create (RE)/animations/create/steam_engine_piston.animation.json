@@ -1,7 +1,7 @@
 {
-    "format_version": "1.8.0",
+    "format_version": "1.10.0",
     "animations": {
-        "animation.create.steam_engine_piston.facing": {
+        "animation.create_bedrock.create.steam_engine_piston.facing": {
             "loop": true,
             "bones": {
                 "orientation": {
@@ -13,7 +13,7 @@
                 }
             }
         },
-        "animation.create.steam_engine_piston.motion": {
+        "animation.create_bedrock.create.steam_engine_piston.motion": {
             "loop": true,
             "start_delay": "q.property('create:piston_phase') == 'down' ? 0.54165 : 0",
             "animation_length": 1.0833,

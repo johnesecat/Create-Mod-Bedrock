@@ -1,7 +1,7 @@
 {
-	"format_version": "1.8.0",
+	"format_version": "1.10.0",
 	"animations": {
-		"animation.create.potato_cannon.hold_first_person": {
+		"animation.create_bedrock.create.potato_cannon.hold_first_person": {
 			"loop": true,
 			"bones": {
 				"rightItem": {
@@ -11,7 +11,7 @@
 				}
 			}
 		},
-		"animation.create.potato_cannon.hold_third_person": {
+		"animation.create_bedrock.create.potato_cannon.hold_third_person": {
 			"loop": true,
 			"bones": {
 				"rightItem": {
@@ -21,7 +21,7 @@
 				}
 			}
 		},
-		"animation.create.potato_cannon.idle": {
+		"animation.create_bedrock.create.potato_cannon.idle": {
 			"loop": true,
 			"animation_length": 2.0,
 			"bones": {
@@ -41,7 +41,7 @@
 				}
 			}
 		},
-		"animation.create.potato_cannon.fire_first_person": {
+		"animation.create_bedrock.create.potato_cannon.fire_first_person": {
 			"animation_length": 0.4167,
 			"bones": {
 				"rightItem": {
@@ -66,7 +66,7 @@
 				}
 			}
 		},
-		"animation.create.potato_cannon.fire_third_person": {
+		"animation.create_bedrock.create.potato_cannon.fire_third_person": {
 			"animation_length": 0.4583,
 			"bones": {
 				"rightItem": {
@@ -89,7 +89,7 @@
 				}
 			}
 		},
-		"animation.create.potato_cannon.idle": {
+		"animation.create_bedrock.create.potato_cannon.idle": {
 			"loop": true,
 			"animation_length": 0.75,
 			"bones": {

@@ -246,7 +246,7 @@ function getMixerEntity(basinBlock) {
 function stopMixerHard(mixerEntity, k) {
     if (mixerEntity?.isValid) {
         mixerEntity.setProperty("create:is_mixing", false);
-        try { mixerEntity.playAnimation("animation.create.mechanical_mixer.mixing.stop"); } catch { }
+        try { mixerEntity.playAnimation("animation.create_bedrock.create.mechanical_mixer.mixing.stop"); } catch { }
     }
     basinProgress.delete(k);
     basinTransitionEnd.delete(k);
@@ -504,7 +504,7 @@ export function basinTick(block) {
         if (mixer?.isValid) {
             mixer.setProperty("create:is_mixing", true);
             // Inicia animação de hold para manter o whisk embaixo indefinidamente
-            try { mixer.playAnimation("animation.create.mechanical_mixer.mixing.hold"); } catch { }
+            try { mixer.playAnimation("animation.create_bedrock.create.mechanical_mixer.mixing.hold"); } catch { }
         }
         basinState.set(k, "mixing");
         return;
@@ -520,7 +520,7 @@ export function basinTick(block) {
 
         mixer?.setProperty("create:is_mixing", true);
         // Re-dispara o hold a cada tick para o whisk ficar embaixo enquanto mistura
-        try { mixer?.playAnimation("animation.create.mechanical_mixer.mixing.hold"); } catch { }
+        try { mixer?.playAnimation("animation.create_bedrock.create.mechanical_mixer.mixing.hold"); } catch { }
 
         const rpmValue = mixer?.isValid ? mixer.getProperty("create:rpm") : 1;
         const rpm = typeof rpmValue === "number" ? Math.abs(rpmValue) : 1;
@@ -583,7 +583,7 @@ export function basinTick(block) {
         } // end if matchedRecipe
 
         mixer?.setProperty("create:is_mixing", false);
-        try { mixer?.playAnimation("animation.create.mechanical_mixer.mixing.transition_out"); } catch { }
+        try { mixer?.playAnimation("animation.create_bedrock.create.mechanical_mixer.mixing.transition_out"); } catch { }
         basinState.set(k, "stopping");
         basinStopEnd.set(k, mc.system.currentTick + 20);
         return;
@@ -601,7 +601,7 @@ export function basinTick(block) {
     const recipe = findRecipeForBasin(block, buildCounts(slots));
     if (!recipe) return;
 
-    try { mixer?.playAnimation("animation.create.mechanical_mixer.mixing.transition_in"); } catch { }
+    try { mixer?.playAnimation("animation.create_bedrock.create.mechanical_mixer.mixing.transition_in"); } catch { }
     basinState.set(k, "transitioning");
     basinTransitionEnd.set(k, mc.system.currentTick + 20);
 }

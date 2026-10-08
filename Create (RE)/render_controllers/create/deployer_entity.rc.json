@@ -1,7 +1,7 @@
 {
     "format_version": "1.8.0",
     "render_controllers": {
-        "controller.render.create.deployer_entity": {
+        "controller.render.create_bedrock.create.deployer_entity": {
             "geometry": "Geometry.default",
             "materials": [{ "*": "Material.default" }],
             "textures": ["Texture.default"],

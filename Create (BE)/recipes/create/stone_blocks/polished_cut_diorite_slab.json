@@ -1,1 +1,1 @@
-﻿{"format_version":"1.12","minecraft:recipe_shaped":{"description":{"identifier":"create:polished_cut_diorite_slab"},"tags":["crafting_table"],"pattern":["AAA"],"key":{"A":{"item":"create:polished_cut_diorite"}},"result":{"item":"create:polished_cut_diorite_slab","count":6}}}
+﻿{"format_version":"1.26.50","minecraft:recipe_shaped":{"description":{"identifier":"create:polished_cut_diorite_slab"},"tags":["crafting_table"],"pattern":["AAA"],"key":{"A":{"item":"create:polished_cut_diorite"}},"result":{"item":"create:polished_cut_diorite_slab","count":6}}}

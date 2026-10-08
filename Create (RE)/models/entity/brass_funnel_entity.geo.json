@@ -3,7 +3,7 @@
 	"minecraft:geometry": [
 		{
 			"description": {
-				"identifier": "geometry.create.brass_funnel_entity",
+				"identifier": "geometry.create_bedrock.create.brass_funnel_entity",
 				"texture_width": 1,
 				"texture_height": 1,
 				"visible_bounds_width": 4,

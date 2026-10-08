@@ -1,7 +1,7 @@
 {
-  "format_version": "1.8.0",
+  "format_version": "1.10.0",
   "animations": {
-    "animation.create.fluid_tank_fluid.fill": {
+    "animation.create_bedrock.create.fluid_tank_fluid.fill": {
       "loop": true,
       "bones": {
         "fluid": {

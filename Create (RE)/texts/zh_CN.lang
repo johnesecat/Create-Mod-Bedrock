@@ -2,6 +2,10 @@ pack.name=基岩版机械动力
 pack.description=作者:§6Vatonage§r
 
 ## 表单
+creative_motor.confirm.text=确认
+create.ui.funnel.title=黄铜漏斗提取设置
+create.ui.funnel.exact=精确提取（关闭时为最多）
+create.ui.funnel.amount=每次提取数量
 creative_motor.title=创造马达配置
 creative_motor.speed.text=选择速度(转速)§9
 creative_motor.reverse_rotation.text=反转旋转方向

@@ -1,5 +1,5 @@
 {
-  "format_version": "1.10.0",
+  "format_version": "1.26.50",
   "minecraft:client_entity": {
     "description": {
       "identifier": "create:fluid_spout",
@@ -14,13 +14,13 @@
         "milk": "textures/create/common/fluid/milk_spout"
       },
       "geometry": {
-        "default": "geometry.fluid"
+        "default": "geometry.create_bedrock.fluid"
       },
       "render_controllers": [
-        "controller.render.create.fluid_spout"
+        "controller.render.create_bedrock.create.fluid_spout"
       ],
       "animations": {
-        "spout": "animation.fluid.spout"
+        "spout": "animation.create_bedrock.fluid.spout"
       },
       "scripts": {
         "animate": [

@@ -1,5 +1,5 @@
 {
-    "format_version": "1.10.0",
+    "format_version": "1.26.50",
     "minecraft:client_entity": {
         "description": {
             "identifier": "create:large_cogwheel_entity",
@@ -10,7 +10,7 @@
                 "default": "textures/create/common/blocks/large_cogwheel"
             },
             "geometry": {
-                "default": "geometry.create.large_cogwheel"
+                "default": "geometry.create_bedrock.create.large_cogwheel"
             },
             "animations": {
                 "rotation": "animation.create.rpm.rotation",

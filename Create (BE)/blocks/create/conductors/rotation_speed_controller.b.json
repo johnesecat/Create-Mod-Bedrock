@@ -34,7 +34,7 @@
                     }
                 },
                 "geometry": {
-                    "identifier": "geometry.create.rotation_speed_controller",
+                    "identifier": "geometry.create_bedrock.create.rotation_speed_controller",
                     "bone_visibility": {
                         "bracket": false
                     }
@@ -48,7 +48,7 @@
                 }
             },
             "minecraft:geometry": {
-                "identifier": "geometry.create.rotation_speed_controller",
+                "identifier": "geometry.create_bedrock.create.rotation_speed_controller",
                 "bone_visibility": {
                     "rpm": false,
                     "bracket": "q.block_state('create:bracket')"

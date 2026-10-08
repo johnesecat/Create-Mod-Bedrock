@@ -1,5 +1,5 @@
 {
-  "format_version": "1.10.0",
+  "format_version": "1.26.50",
   "minecraft:client_entity": {
     "description": {
       "identifier": "create:spolt_splax",
@@ -17,7 +17,7 @@
         "default": "geometry.spolt_splax"
       },
       "render_controllers": [
-        "controller.render.create.spolt_splax"
+        "controller.render.create_bedrock.create.spolt_splax"
       ],
       "animations": {
         "fluid": "animation.spolt_splax.fluid"

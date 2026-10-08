@@ -28,14 +28,14 @@
                 "*": { "texture": "create:brass_funnel", "render_method": "alpha_test", "ambient_occlusion": false }
             },
             "minecraft:geometry": {
-                "identifier": "geometry.create.brass_funnel",
+                "identifier": "geometry.create_bedrock.create.brass_funnel",
                 "bone_visibility": {
                     "input":  "q.block_state('create:input') == true",
                     "output": "q.block_state('create:input') == false"
                 }
             },
             "minecraft:item_visual": {
-                "geometry": { "identifier": "geometry.create.brass_funnel" },
+                "geometry": { "identifier": "geometry.create_bedrock.create.brass_funnel" },
                 "material_instances": {
                     "*": { "texture": "create:brass_funnel", "render_method": "alpha_test", "ambient_occlusion": false }
                 }
@@ -53,7 +53,7 @@
                     "minecraft:selection_box": { "origin": [-8, 0, -2], "size": [16, 15, 10] },
                     "minecraft:collision_box": { "origin": [-8, 0, -2], "size": [16, 15, 10] },
                     "minecraft:geometry": {
-                        "identifier": "geometry.create.brass_funnel_parallel",
+                        "identifier": "geometry.create_bedrock.create.brass_funnel_parallel",
                         "bone_visibility": {
                             "input":  "q.block_state('create:input') == true",
                             "output": "q.block_state('create:input') == false"
@@ -68,7 +68,7 @@
                 "condition": "query.block_state('create:parallel') == true && query.block_state('create:on') == true",
                 "components": {
                     "minecraft:geometry": {
-                        "identifier": "geometry.create.brass_funnel_parallel",
+                        "identifier": "geometry.create_bedrock.create.brass_funnel_parallel",
                         "bone_visibility": {
                             "input":  "q.block_state('create:input') == true",
                             "output": "q.block_state('create:input') == false"

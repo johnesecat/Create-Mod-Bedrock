@@ -12,7 +12,7 @@
       "create:on_tick": {},
       "minecraft:tick": { "looping": true, "interval_range": [4, 8] },
       "minecraft:geometry": {
-        "identifier": "geometry.glass",
+        "identifier": "geometry.create_bedrock.glass",
         "bone_visibility": {
           "small": "q.block_state('create:height') == 'single'",
           "small_top": "q.block_state('create:height') == 'top'",
@@ -29,7 +29,7 @@
       },
       "minecraft:item_visual": {
         "geometry": {
-          "identifier": "geometry.glass",
+          "identifier": "geometry.create_bedrock.glass",
           "bone_visibility": {
             "small": true,
             "small_top": false,

@@ -28,7 +28,7 @@
                 "size": [16, 16, 16]
             },
             "minecraft:geometry": {
-                "identifier": "geometry.create.chute_default"
+                "identifier": "geometry.create_bedrock.create.chute_default"
             },
             "tag:minecraft:is_pickaxe_item_destructible": {},
             "minecraft:destructible_by_mining": {
@@ -57,7 +57,7 @@
                     "looping": true
                   },
                   "minecraft:geometry": {
-                    "identifier": "geometry.create.chute_default"
+                    "identifier": "geometry.create_bedrock.create.chute_default"
                   },
                   "minecraft:material_instances": {
                     "*": {
@@ -79,7 +79,7 @@
                     "looping": true
                   },
                   "minecraft:geometry": {
-                    "identifier": "geometry.create.chute_box"
+                    "identifier": "geometry.create_bedrock.create.chute_box"
                   },
                   "minecraft:material_instances": {
                     "*": {
@@ -94,7 +94,7 @@
                 "condition": "q.block_state('create:type') == 'diagonal'",
                 "components": {
                     "minecraft:geometry":{
-                        "identifier": "geometry.create.chute_diagonal"
+                        "identifier": "geometry.create_bedrock.create.chute_diagonal"
                     },
                     "minecraft:material_instances": {
                       "*": {
@@ -116,7 +116,7 @@
                     "looping": true
                   },
                   "minecraft:geometry": {
-                    "identifier": "geometry.create.chute_full"
+                    "identifier": "geometry.create_bedrock.create.chute_full"
                   },
                   "minecraft:material_instances": {
                     "*": {

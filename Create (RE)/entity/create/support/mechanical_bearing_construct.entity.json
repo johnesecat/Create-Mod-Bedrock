@@ -1,5 +1,5 @@
 {
-    "format_version": "1.10.0",
+    "format_version": "1.26.50",
     "minecraft:client_entity": {
         "description": {
             "identifier": "create:mechanical_bearing_construct",
@@ -10,11 +10,11 @@
                 "default": "textures/create/common/blocks/invisible_texture"
             },
             "geometry": {
-                "default": "geometry.create.mechanical_bearing_construct"
+                "default": "geometry.create_bedrock.create.mechanical_bearing_construct"
             },
             "enable_attachables": true,
             "animations": {
-                "rotate": "animation.create.mechanical_bearing_construct.rotate"
+                "rotate": "animation.create_bedrock.create.mechanical_bearing_construct.rotate"
             },
             "scripts": {
                 "animate": ["rotate"],

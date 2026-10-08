@@ -1,5 +1,5 @@
 {
-  "format_version": "1.10.0",
+  "format_version": "1.26.50",
   "minecraft:client_entity": {
     "description": {
       "identifier": "create:door_construct",
@@ -22,8 +22,8 @@
         "weathered_copper_lower": "textures/blocks/weathered_copper_door_bottom", "weathered_copper_upper": "textures/blocks/weathered_copper_door_top",
         "oxidized_copper_lower": "textures/blocks/oxidized_copper_door_bottom", "oxidized_copper_upper": "textures/blocks/oxidized_copper_door_top"
       },
-      "geometry": { "left": "geometry.create.door_construct.left", "right": "geometry.create.door_construct.right" },
-      "animations": { "rotate": "animation.create.mechanical_bearing_construct.rotate", "door": "animation.create.door_construct.open" },
+      "geometry": { "left": "geometry.create_bedrock.create.door_construct.left", "right": "geometry.create_bedrock.create.door_construct.right" },
+      "animations": { "rotate": "animation.create_bedrock.create.mechanical_bearing_construct.rotate", "door": "animation.create_bedrock.create.door_construct.open" },
       "scripts": {
         "animate": ["rotate", "door"],
         "pre_animation": [
@@ -31,7 +31,7 @@
           "v.door_open = q.property('create:door_open') ? 1 : 0;", "v.door_hinge = q.property('create:door_hinge_right') ? -1 : 1;", "v.door_direction = q.property('create:door_direction');"
         ]
       },
-      "render_controllers": ["controller.render.create.door_construct"]
+      "render_controllers": ["controller.render.create_bedrock.create.door_construct"]
     }
   }
 }

@@ -1,7 +1,7 @@
 {
     "format_version": "1.8.0",
     "render_controllers": {
-        "controller.render.create.pulley": {
+        "controller.render.create_bedrock.create.pulley": {
             "geometry": "Geometry.default",
             "materials": [{ "*": "Material.pulley" }],
             "textures": [ "Texture.pulley" ],
@@ -11,7 +11,7 @@
             ]
         },
 
-        "controller.render.create.belt": {
+        "controller.render.create_bedrock.create.belt": {
             "arrays": {
                 "textures": {
                     "Array.colors": [
@@ -46,7 +46,7 @@
             }
         },
 
-        "controller.render.create.belt_offset": {
+        "controller.render.create_bedrock.create.belt_offset": {
             "arrays": {
                 "textures": {
                     "Array.colors": [
@@ -81,7 +81,7 @@
             }
         },
 
-        "controller.render.create.belt_diagonal": {
+        "controller.render.create_bedrock.create.belt_diagonal": {
             "arrays": {
                 "textures": {
                     "Array.diagonal_colors": [

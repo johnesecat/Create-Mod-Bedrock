@@ -1,5 +1,5 @@
 {
-    "format_version": "1.10.0",
+    "format_version": "1.26.50",
     "minecraft:client_entity": {
         "description": {
             "identifier": "create:water_wheel_entity",
@@ -21,7 +21,7 @@
                 "pale_oak": "textures/create/common/blocks/water_whel/water_wheel_pale_oak"
             },
             "geometry": {
-                "default": "geometry.create.water_wheel_entity"
+                "default": "geometry.create_bedrock.create.water_wheel_entity"
             },
             "animations": {
                 "rotation": "animation.create.rpm.rotation",
@@ -39,7 +39,7 @@
                 ]
             },
             "render_controllers": [
-                "controller.render.create.water_wheel_wood"
+                "controller.render.create_bedrock.create.water_wheel_wood"
             ]
         }
     }

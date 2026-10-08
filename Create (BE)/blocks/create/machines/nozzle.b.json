@@ -12,7 +12,7 @@
         },
         "components": {
             "create:before_place": {},
-            "minecraft:geometry": "geometry.nozzle",
+            "minecraft:geometry": "geometry.create_bedrock.nozzle",
             "minecraft:material_instances": {
                 "*": {
                     "texture": "create:nozzle",

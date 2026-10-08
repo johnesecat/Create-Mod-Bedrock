@@ -1,5 +1,5 @@
 {
-    "format_version": "1.10.0",
+    "format_version": "1.26.50",
     "minecraft:client_entity": {
         "description": {
             "identifier": "create:mechanical_mixer_entity",
@@ -10,12 +10,12 @@
                 "default": "textures/create/common/blocks/mechanical_mixer"
             },
             "geometry": {
-                "default": "geometry.create.mechanical_mixer_entity"
+                "default": "geometry.create_bedrock.create.mechanical_mixer_entity"
             },
             "animations": {
                 "rotation":             "animation.create.rpm.rotation",
                 "offset":              "animation.create.rpm.offsets",
-                "spin":                 "animation.create.mechanical_mixer.spin"
+                "spin":                 "animation.create_bedrock.create.mechanical_mixer.spin"
             },
             "scripts": {
                 "animate": [

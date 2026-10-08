@@ -1,7 +1,7 @@
 {
-	"format_version": "1.8.0",
+	"format_version": "1.10.0",
 	"animations": {
-		"animation.create.hand_crank": {
+		"animation.create_bedrock.create.hand_crank": {
 			"loop": true,
 			"bones": {
 				"crank": {

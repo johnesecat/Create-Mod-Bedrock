@@ -37,7 +37,7 @@
                 "origin": [-8, 0, -8],
                 "size": [16, 13, 16]
             },
-            "minecraft:geometry": "geometry.create.depot",
+            "minecraft:geometry": "geometry.create_bedrock.create.depot",
             "tag:minecraft:is_pickaxe_item_destructible": {},
             "minecraft:destructible_by_mining": {
                 "seconds_to_destroy": 6,

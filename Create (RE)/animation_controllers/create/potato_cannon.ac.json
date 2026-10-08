@@ -1,7 +1,7 @@
 {
     "format_version": "1.10.0",
     "animation_controllers": {
-        "controller.animation.create.potato_cannon.fire_first_person": {
+        "controller.animation.create_bedrock.create.potato_cannon.fire_first_person": {
             "initial_state": "default",
             "states": {
                 "default": {
@@ -17,7 +17,7 @@
                 }
             }
         },
-        "controller.animation.create.potato_cannon.fire_third_person": {
+        "controller.animation.create_bedrock.create.potato_cannon.fire_third_person": {
             "initial_state": "default",
             "states": {
                 "default": {

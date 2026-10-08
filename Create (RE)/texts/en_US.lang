@@ -6,6 +6,9 @@ item.create:redstone_link.name=Redstone Link
 pack.description=By: Â§6VatonageÂ§r
 
 ## Forms
+create.ui.funnel.title=Brass Funnel Extraction
+create.ui.funnel.exact=Extract exactly (off = up to)
+create.ui.funnel.amount=Items per extraction
 creative_motor.title=Creative Motor Configuration
 creative_motor.speed.text=Select speed (RPM)
 creative_motor.reverse_rotation.text=Reverse direction of rotation

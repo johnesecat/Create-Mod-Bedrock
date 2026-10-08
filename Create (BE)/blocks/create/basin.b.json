@@ -23,7 +23,7 @@
             },
             "minecraft:map_color": "#52320E",
             "minecraft:geometry": {
-                "identifier": "geometry.create.basin",
+                "identifier": "geometry.create_bedrock.create.basin",
                 "bone_visibility": {
                     "canal": "q.block_state('create:canal')"
                 }
@@ -36,7 +36,7 @@
                 "material_instances": {
                     "*": { "texture": "create:basin", "render_method": "alpha_test_to_opaque", "ambient_occlusion": false }
                 },
-                "geometry": { "identifier": "geometry.create.basin" }
+                "geometry": { "identifier": "geometry.create_bedrock.create.basin" }
             },
             "minecraft:destruction_particles": { "texture": "create:basin" },
             "minecraft:collision_box": {

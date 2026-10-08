@@ -1,7 +1,7 @@
 {
-    "format_version": "1.8.0",
+    "format_version": "1.10.0",
     "animations": {
-        "animation.create.deployer.constant": {
+        "animation.create_bedrock.create.deployer.constant": {
             "loop": true,
             "bones": {
                 "all": {
@@ -10,7 +10,7 @@
                 }
             }
         },
-        "animation.create.deployer.hand_movement": {
+        "animation.create_bedrock.create.deployer.hand_movement": {
             "loop": true,
             "bones": {
                 "hand": {
@@ -18,7 +18,7 @@
                 }
             }
         },
-        "animation.create.deployer.right_item": {
+        "animation.create_bedrock.create.deployer.right_item": {
             "loop": true,
             "bones": {
                 "bone2":  { "scale": 2.5, "position": [0, 0, 0] },
@@ -26,7 +26,7 @@
                 "rightitem": { "scale": 0.4 }
             }
         },
-        "animation.create.deployer.right_hand_equipped": {
+        "animation.create_bedrock.create.deployer.right_hand_equipped": {
             "loop": true,
             "bones": {
                 "bone2":  { "scale": 2.15, "position": [0, 0, 0] },
@@ -34,7 +34,7 @@
                 "rightitem": { "scale": 0.5 }
             }
         },
-        "animation.create.deployer.right_block": {
+        "animation.create_bedrock.create.deployer.right_block": {
             "loop": true,
             "bones": {
                 "bone2":  { "scale": 1.8, "position": [0, 0, 0] },
@@ -43,7 +43,7 @@
                 "rightitem": { "scale": 0.6 }
             }
         },
-        "animation.create.deployer.move_1": {
+        "animation.create_bedrock.create.deployer.move_1": {
             "loop": true,
             "animation_length": 40.0,
             "bones": {
@@ -56,7 +56,7 @@
                 }
             }
         },
-        "animation.create.deployer.move_2": {
+        "animation.create_bedrock.create.deployer.move_2": {
             "loop": true,
             "animation_length": 20.0,
             "bones": {
@@ -69,7 +69,7 @@
                 }
             }
         },
-        "animation.create.deployer.move_4": {
+        "animation.create_bedrock.create.deployer.move_4": {
             "loop": true,
             "animation_length": 10.0,
             "bones": {
@@ -82,7 +82,7 @@
                 }
             }
         },
-        "animation.create.deployer.move_8": {
+        "animation.create_bedrock.create.deployer.move_8": {
             "loop": true,
             "animation_length": 5.0,
             "bones": {
@@ -95,7 +95,7 @@
                 }
             }
         },
-        "animation.create.deployer.move_16": {
+        "animation.create_bedrock.create.deployer.move_16": {
             "loop": true,
             "animation_length": 2.5,
             "bones": {
@@ -108,7 +108,7 @@
                 }
             }
         },
-        "animation.create.deployer.move_32": {
+        "animation.create_bedrock.create.deployer.move_32": {
             "loop": true,
             "animation_length": 1.25,
             "bones": {
@@ -121,7 +121,7 @@
                 }
             }
         },
-        "animation.create.deployer.move_64": {
+        "animation.create_bedrock.create.deployer.move_64": {
             "loop": true,
             "animation_length": 0.625,
             "bones": {
@@ -134,7 +134,7 @@
                 }
             }
         },
-        "animation.create.deployer.move_128": {
+        "animation.create_bedrock.create.deployer.move_128": {
             "loop": true,
             "animation_length": 0.3125,
             "bones": {
@@ -147,7 +147,7 @@
                 }
             }
         },
-        "animation.create.deployer.move_256": {
+        "animation.create_bedrock.create.deployer.move_256": {
             "loop": true,
             "animation_length": 0.1563,
             "bones": {
@@ -160,7 +160,7 @@
                 }
             }
         },
-        "animation.create.deployer.construct_rotation": {
+        "animation.create_bedrock.create.deployer.construct_rotation": {
             "loop": true,
             "bones": {
                 "facing_rotation": {

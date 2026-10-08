@@ -1,7 +1,7 @@
 {
   "format_version": "1.8.0",
   "render_controllers": {
-    "controller.render.create.blaze_burner_flame": {
+    "controller.render.create_bedrock.create.blaze_burner_flame": {
       "arrays": {
         "textures": {
           "Array.flame_textures": ["Texture.default", "Texture.superheated"]

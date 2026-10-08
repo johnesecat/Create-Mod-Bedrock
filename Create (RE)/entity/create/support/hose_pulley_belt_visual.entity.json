@@ -1,12 +1,12 @@
 {
-  "format_version": "1.10.0",
+  "format_version": "1.26.50",
   "minecraft:client_entity": {
     "description": {
       "identifier": "create:hose_pulley_belt_visual",
       "materials": { "default": "create_mechanical_belt" },
       "textures": { "default": "textures/create/common/blocks/hose_pulley_coil" },
-      "geometry": { "default": "geometry.create.hose_pulley_belt_visual" },
-      "animations": { "facing": "animation.create.hose_pulley_belt_visual.facing" },
+      "geometry": { "default": "geometry.create_bedrock.create.hose_pulley_belt_visual" },
+      "animations": { "facing": "animation.create_bedrock.create.hose_pulley_belt_visual.facing" },
       "scripts": {
         "animate": ["facing"],
         "pre_animation": [
@@ -14,7 +14,7 @@
           "v.conveyor_rpm = ((q.frame_alpha + q.time_stamp) / 3.33) * -q.property('create:rpm');"
         ]
       },
-      "render_controllers": ["controller.render.create.hose_pulley_belt_visual"]
+      "render_controllers": ["controller.render.create_bedrock.create.hose_pulley_belt_visual"]
     }
   }
 }

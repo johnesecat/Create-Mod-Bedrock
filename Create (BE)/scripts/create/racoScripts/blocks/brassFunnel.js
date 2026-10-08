@@ -283,12 +283,12 @@ function showBrassFunnelAmountMenu(block, player) {
     const dimension = block.dimension
     const form = new ModalFormData()
 
-    form.title("create:funnel.Quantidade extraída")
-    form.toggle("Exatamente (desligado = até)", { defaultValue: initial.exact })
-    form.slider("Quantidade extraída", 1, 64, {
+    form.title({ rawtext: [{ text: "create:funnel." }, { translate: "create.ui.funnel.title" }] })
+    form.toggle({ translate: "create.ui.funnel.exact" }, { defaultValue: initial.exact })
+    form.slider({ translate: "create.ui.funnel.amount" }, 1, 64, {
         defaultValue: initial.amount
     })
-    form.submitButton("Confirm")
+    form.submitButton({ translate: "creative_motor.confirm.text" })
     form.show(player).then(response => {
         if (response.canceled || !response.formValues) return
         const currentBlock = dimension.getBlock(blockLocation)
@@ -297,6 +297,7 @@ function showBrassFunnelAmountMenu(block, player) {
         if (!currentEntity?.isValid) return
 
         const [exact, amount] = response.formValues
+        if (typeof exact !== "boolean" || typeof amount !== "number" || !Number.isFinite(amount) || amount < 1 || amount > 64) return
         try {
             currentEntity.setDynamicProperty("create:brass_funnel_extract_exact", exact === true)
             currentEntity.setDynamicProperty(
@@ -313,7 +314,7 @@ function showBrassFunnelAmountMenu(block, player) {
                 location: currentBlock.center()
             })
         } catch {}
-    }).catch(() => {})
+    }).catch(error => console.warn(`[Create] Brass funnel form failed: ${error}`))
 }
 
 function shouldProcessFunnel(block) {

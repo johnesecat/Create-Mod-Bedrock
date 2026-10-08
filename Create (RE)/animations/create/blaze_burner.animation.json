@@ -1,7 +1,7 @@
 {
-  "format_version": "1.8.0",
+  "format_version": "1.10.0",
   "animations": {
-    "animation.create.blaze_burner.look": {
+    "animation.create_bedrock.create.blaze_burner.look": {
       "loop": true,
       "bones": {
         "bone": {

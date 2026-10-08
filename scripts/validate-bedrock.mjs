@@ -4,22 +4,36 @@ import path from 'node:path'
 import os from 'node:os'
 import { spawnSync } from 'node:child_process'
 import { fileURLToPath } from 'node:url'
+import JSZip from 'jszip'
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..')
 const reportsRoot = path.join(root, '.mct-debug')
 await mkdir(reportsRoot, { recursive: true })
+const mctCli = path.join(root, 'node_modules', '@minecraft', 'creator-tools', 'cli', 'index.mjs')
+const options = process.argv.slice(2)
+const verbose = options.includes('--verbose')
+const offline = options.includes('--offline')
+const archive = options.includes('--archive')
+const suite = options.find((arg) => arg.startsWith('--suite='))?.slice(8) ?? 'all'
+
+// Creator Tools 0.20.0 maps its "all" CLI argument to main and omits add-on checks.
+// Run each supported suite explicitly instead of relying on that misleading alias.
+if (suite === 'all') {
+  let failed = false
+  for (const name of ['main', 'addon', 'currentplatform']) {
+    const result = spawnSync(process.execPath, [fileURLToPath(import.meta.url), ...options.filter((arg) => !arg.startsWith('--suite=')), `--suite=${name}`], { cwd: root, stdio: 'inherit' })
+    if (result.error) throw result.error
+    if (result.status !== 0) failed = true
+  }
+  process.exit(failed ? 1 : 0)
+}
 const stage = await mkdtemp(path.join(os.tmpdir(), 'create-bedrock-validation-'))
 const reportsDir = await mkdtemp(path.join(reportsRoot, 'run-'))
 const behaviorPack = path.join(stage, 'behavior_packs', 'Create')
 const resourcePack = path.join(stage, 'resource_packs', 'Create')
-const mctCli = path.join(root, 'node_modules', '@minecraft', 'creator-tools', 'cli', 'index.mjs')
-const verbose = process.argv.slice(2).includes('--verbose')
 
 async function copyPack(source, destination) {
-  await cp(source, destination, {
-    recursive: true,
-    filter: (file) => file !== path.join(root, 'Create (BE)', 'scripts', 'create', 'compatibility', 'README.md'),
-  })
+  await cp(source, destination, { recursive: true })
 }
 
 async function removeJsonBoms(folder) {
@@ -99,11 +113,28 @@ function printIssues(title, issues, report, limit = 2) {
 }
 
 try {
-  const unexpectedArgs = process.argv.slice(2).filter((arg) => arg !== '--verbose')
-  if (unexpectedArgs.length) throw new Error('Usage: npm run validate:bedrock [-- --verbose]')
+  const unexpectedArgs = options.filter((arg) => !['--verbose', '--offline', '--archive', `--suite=${suite}`].includes(arg))
+  if (unexpectedArgs.length || !['all', 'main', 'addon', 'currentplatform'].includes(suite)) {
+    throw new Error('Usage: npm run validate:bedrock [-- --verbose --offline --archive --suite=all|main|addon|currentplatform]')
+  }
 
   await mkdir(path.dirname(behaviorPack), { recursive: true })
   await validateManifestLinks()
+  if (archive) {
+    const addon = await JSZip.loadAsync(await readFile(path.join(root, 'Create-Bedrock.mcaddon')), { checkCRC32: true })
+    const entries = Object.values(addon.files).filter((entry) => !entry.dir)
+    if (entries.length !== 2) throw new Error('Expected exactly two embedded packs')
+    for (const [packFile, source] of [['Create-Behavior.mcpack', 'Create (BE)'], ['Create-Resources.mcpack', 'Create (RE)']]) {
+      const embedded = addon.file(packFile)
+      if (!embedded) throw new Error(`Missing ${packFile}`)
+      const pack = await JSZip.loadAsync(await embedded.async('nodebuffer'), { checkCRC32: true })
+      const manifestFile = pack.file('manifest.json')
+      if (!manifestFile) throw new Error(`Missing manifest in ${packFile}`)
+      const manifest = JSON.parse(await manifestFile.async('string'))
+      const expected = JSON.parse((await readFile(path.join(root, source, 'manifest.json'), 'utf8')).replace(/^\uFEFF/, ''))
+      if (JSON.stringify(manifest) !== JSON.stringify(expected)) throw new Error(`Archive manifest does not match ${source}`)
+    }
+  }
   const iconDimensions = await Promise.all([
     path.join(root, 'Create (BE)', 'pack_icon.png'),
     path.join(root, 'Create (RE)', 'pack_icon.png'),
@@ -122,10 +153,9 @@ try {
   const args = [
     mctCli,
     'validate',
-    '-i', stage,
-    'main',
-    'CADDONIREQ,FORBFILE',
-    '--offline',
+    ...(archive ? ['--input-file', path.join(root, 'Create-Bedrock.mcaddon')] : ['-i', stage]),
+    suite,
+    ...(offline ? ['--offline'] : []),
     '--quiet',
     '--json',
     '-o', reportsDir,
@@ -133,7 +163,8 @@ try {
   const result = spawnSync(process.execPath, args, {
     cwd: root,
     encoding: 'utf8',
-    maxBuffer: 8 * 1024 * 1024,
+    maxBuffer: 16 * 1024 * 1024,
+    timeout: 120_000,
   })
   if (result.error) throw result.error
 
@@ -148,22 +179,27 @@ try {
   if (report.generatorName !== 'Minecraft Creator Tools' || !Array.isArray(report.items) || !report.info) {
     throw new Error('Creator Tools report has an unexpected schema; validation status cannot be trusted')
   }
-  if (report.info.behaviorPackManifestCount !== 1 || report.info.resourcePackManifestCount !== 1) {
+  // Only main populates summary manifest counters in Creator Tools 0.20.0.
+  // Other suites leave them at zero even when they inspect both packs; preflight above
+  // verifies the actual source/archive manifests instead of trusting absent counters.
+  if (suite === 'main' && (report.info.behaviorPackManifestCount !== 1 || report.info.resourcePackManifestCount !== 1)) {
     throw new Error('Creator Tools did not load exactly one behavior pack and one resource pack')
   }
   const issues = report.items
   const errors = issues.filter((issue) => issue.iTp === 3 || issue.iTp === 5)
   const warnings = issues.filter((issue) => issue.iTp === 4)
   const failures = issues.filter((issue) => issue.iTp === 0)
-  console.log(`Creator Tools ${report.generatorVersion ?? ''} main validation`)
-  console.log(`Packs: ${report.info?.behaviorPackManifestCount ?? 0} behavior, ${report.info?.resourcePackManifestCount ?? 0} resource`)
+  console.log(`Creator Tools ${report.generatorVersion ?? ''} ${suite} validation (${archive ? 'shipped archive' : 'source packs'})`)
+  console.log(suite === 'main' ? `Packs: ${report.info.behaviorPackManifestCount} behavior, ${report.info.resourcePackManifestCount} resource` : 'Packs: both manifests verified in preflight; this suite does not populate manifest counters.')
   console.log(`Findings: ${errors.length} errors, ${warnings.length} warnings, ${failures.length} failed check summaries`)
-  console.log('Excluded checks: CADDONIREQ (cooperative-authoring structure) and FORBFILE (the source compatibility README).')
+  console.log('Excluded checks: none. Errors retain their original severity; warnings are not a clean pass.')
+  console.log(offline ? 'Offline mode explicitly requested: vanilla-resource and network coverage is limited.' : 'Online mode: vanilla resources are enabled.')
   console.log('Creator Tools CPACKICON rule is enabled; it requires pack icons <=256px.')
   printIssues('Errors', errors, report, verbose ? Number.POSITIVE_INFINITY : 2)
+  printIssues('Failed check summaries', failures, report, verbose ? Number.POSITIVE_INFINITY : 2)
   printIssues('Warnings', warnings, report, verbose ? Number.POSITIVE_INFINITY : 2)
   console.log(`Detailed JSON/HTML/CSV reports: ${reportsDir}`)
-  console.log('Note: validation runs on staged copies; BOMs are stripped there and compatibility README files are omitted, not changed in the source packs.')
+  console.log('Note: source validation stages every source file, including documentation; only JSON BOMs are normalized to match packaging.')
 
   if (result.status !== 0 || errors.length > 0 || failures.length > 0) {
     process.exitCode = 1

@@ -1,7 +1,7 @@
 {
-	"format_version": "1.8.0",
+	"format_version": "1.10.0",
 	"animations": {
-		"animation.model.fixed_north": {
+		"animation.create_bedrock.model.fixed_north": {
 			"loop": true,
 			"bones": {
 				"root": {
@@ -9,7 +9,7 @@
 				}
 			}
 		},
-		"animation.model.fixed_south": {
+		"animation.create_bedrock.model.fixed_south": {
 			"loop": true,
 			"bones": {
 				"root": {
@@ -17,7 +17,7 @@
 				}
 			}
 		},
-		"animation.model.fixed_west": {
+		"animation.create_bedrock.model.fixed_west": {
 			"loop": true,
 			"bones": {
 				"root": {
@@ -25,7 +25,7 @@
 				}
 			}
 		},
-		"animation.model.fixed_east": {
+		"animation.create_bedrock.model.fixed_east": {
 			"loop": true,
 			"bones": {
 				"root": {
@@ -33,7 +33,7 @@
 				}
 			}
 		},
-		"animation.model.open": {
+		"animation.create_bedrock.model.open": {
 			"loop": "hold_on_last_frame",
 			"animation_length": 0.7083,
 			"bones": {
@@ -57,7 +57,7 @@
 				}
 			}
 		},
-		"animation.model.close": {
+		"animation.create_bedrock.model.close": {
 			"loop": "hold_on_last_frame",
 			"animation_length": 0.7083,
 			"bones": {
@@ -81,7 +81,7 @@
 				}
 			}
 		},
-		"animation.model.open_reverse": {
+		"animation.create_bedrock.model.open_reverse": {
 			"loop": "hold_on_last_frame",
 			"animation_length": 0.7083,
 			"bones": {
@@ -108,7 +108,7 @@
 				}
 			}
 		},
-		"animation.model.close_reverse": {
+		"animation.create_bedrock.model.close_reverse": {
 			"loop": "hold_on_last_frame",
 			"animation_length": 0.7083,
 			"bones": {
@@ -135,7 +135,7 @@
 				}
 			}
 		},
-		"animation.model.open2": {
+		"animation.create_bedrock.model.open2": {
 			"loop": "hold_on_last_frame",
 			"animation_length": 0.7083,
 			"bones": {
@@ -154,7 +154,7 @@
 				}
 			}
 		},
-		"animation.model.close2": {
+		"animation.create_bedrock.model.close2": {
 			"loop": "hold_on_last_frame",
 			"animation_length": 0.7083,
 			"bones": {
@@ -170,7 +170,7 @@
 				}
 			}
 		},
-		"animation.model.open2_reverse": {
+		"animation.create_bedrock.model.open2_reverse": {
 			"loop": "hold_on_last_frame",
 			"animation_length": 0.7083,
 			"bones": {
@@ -189,7 +189,7 @@
 				}
 			}
 		},
-		"animation.model.close2_reverse": {
+		"animation.create_bedrock.model.close2_reverse": {
 			"loop": "hold_on_last_frame",
 			"animation_length": 0.7083,
 			"bones": {

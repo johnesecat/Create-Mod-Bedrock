@@ -1,7 +1,7 @@
 {
   "format_version": "1.8.0",
   "render_controllers": {
-    "controller.render.create.blaze_burner": {
+    "controller.render.create_bedrock.create.blaze_burner": {
       "arrays": {
         "geometries": {
           "Array.geos": ["Geometry.inert", "Geometry.active", "Geometry.active"]

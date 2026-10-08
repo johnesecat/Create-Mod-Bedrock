@@ -24,7 +24,7 @@
                 }
             },
             "minecraft:geometry": {
-                "identifier": "geometry.hatch"
+                "identifier": "geometry.create_bedrock.hatch"
             },
             "minecraft:collision_box": {
                 "origin": [ -8, 0, -8 ],

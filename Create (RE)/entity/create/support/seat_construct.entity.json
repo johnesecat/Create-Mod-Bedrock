@@ -1,5 +1,5 @@
 {
-    "format_version": "1.10.0",
+    "format_version": "1.26.50",
     "minecraft:client_entity": {
         "description": {
             "identifier": "create:seat_construct",
@@ -42,12 +42,12 @@
                 "top_pink": "textures/create/common/blocks/seat/top_pink"
             },
             "geometry": {
-                "side": "geometry.create.seat_construct_side",
-                "top": "geometry.create.seat_construct_top",
-                "bottom": "geometry.create.seat_construct_bottom"
+                "side": "geometry.create_bedrock.create.seat_construct_side",
+                "top": "geometry.create_bedrock.create.seat_construct_top",
+                "bottom": "geometry.create_bedrock.create.seat_construct_bottom"
             },
             "animations": {
-                "rotate": "animation.create.mechanical_bearing_construct.rotate"
+                "rotate": "animation.create_bedrock.create.mechanical_bearing_construct.rotate"
             },
             "scripts": {
                 "animate": ["rotate"],
@@ -58,9 +58,9 @@
                 ]
             },
             "render_controllers": [
-                "controller.render.create.seat_construct_side",
-                "controller.render.create.seat_construct_top",
-                "controller.render.create.seat_construct_bottom"
+                "controller.render.create_bedrock.create.seat_construct_side",
+                "controller.render.create_bedrock.create.seat_construct_top",
+                "controller.render.create_bedrock.create.seat_construct_bottom"
             ]
         }
     }

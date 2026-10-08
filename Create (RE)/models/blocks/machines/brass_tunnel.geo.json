@@ -3,7 +3,7 @@
 	"minecraft:geometry": [
 		{
 			"description": {
-				"identifier": "geometry.create.brass_tunnel",
+				"identifier": "geometry.create_bedrock.create.brass_tunnel",
 				"texture_width": 64,
 				"texture_height": 64,
 				"visible_bounds_width": 4,
@@ -194,7 +194,7 @@
 		},
 		{
 			"description": {
-				"identifier": "geometry.create.brass_tunnel_multi",
+				"identifier": "geometry.create_bedrock.create.brass_tunnel_multi",
 				"texture_width": 64,
 				"texture_height": 64,
 				"visible_bounds_width": 3,

@@ -28,7 +28,7 @@
           }
         },
         "geometry": {
-          "identifier": "geometry.create.steam_engine"
+          "identifier": "geometry.create_bedrock.create.steam_engine"
         }
       },
       "minecraft:material_instances": {
@@ -39,7 +39,7 @@
         }
       },
       "minecraft:geometry": {
-        "identifier": "geometry.create.steam_engine",
+        "identifier": "geometry.create_bedrock.create.steam_engine",
         "bone_visibility": {
           "piston": false,
           "linkage": false
@@ -94,7 +94,7 @@
         "condition": "q.block_state('minecraft:facing_direction') == 'up'",
         "components": {
           "minecraft:geometry": {
-            "identifier": "geometry.create.steam_engine",
+            "identifier": "geometry.create_bedrock.create.steam_engine",
             "bone_visibility": {
               "piston": false,
               "linkage": false
@@ -109,7 +109,7 @@
         "condition": "q.block_state('minecraft:facing_direction') == 'down'",
         "components": {
           "minecraft:geometry": {
-            "identifier": "geometry.create.steam_engine",
+            "identifier": "geometry.create_bedrock.create.steam_engine",
             "bone_visibility": {
               "piston": false,
               "linkage": false

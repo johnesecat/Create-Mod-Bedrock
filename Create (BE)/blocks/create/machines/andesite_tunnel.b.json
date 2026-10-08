@@ -5,8 +5,8 @@
     "components": {
       "create:on_tick": {}, "create:on_place": {}, "minecraft:tick": { "interval_range": [6, 8] },
       "minecraft:material_instances": { "*": { "texture": "create:andesite_tunnel", "render_method": "alpha_test", "ambient_occlusion": false } },
-      "minecraft:geometry": { "identifier": "geometry.create.brass_tunnel_multi" },
-      "minecraft:item_visual": { "geometry": { "identifier": "geometry.create.brass_tunnel_multi" }, "material_instances": { "*": { "texture": "create:andesite_tunnel", "render_method": "alpha_test", "ambient_occlusion": false } } },
+      "minecraft:geometry": { "identifier": "geometry.create_bedrock.create.brass_tunnel_multi" },
+      "minecraft:item_visual": { "geometry": { "identifier": "geometry.create_bedrock.create.brass_tunnel_multi" }, "material_instances": { "*": { "texture": "create:andesite_tunnel", "render_method": "alpha_test", "ambient_occlusion": false } } },
       "minecraft:destruction_particles": { "texture": "create:andesite_tunnel" },
       "minecraft:selection_box": { "origin": [-8, 0, -8], "size": [16, 16, 16] }, "minecraft:collision_box": { "origin": [-8, 0, -8], "size": [16, 16, 16] },
       "minecraft:destructible_by_mining": { "seconds_to_destroy": 3.0 }

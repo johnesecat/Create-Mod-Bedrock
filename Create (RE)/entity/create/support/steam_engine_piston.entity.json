@@ -1,5 +1,5 @@
 {
-    "format_version": "1.10.0",
+    "format_version": "1.26.50",
     "minecraft:client_entity": {
         "description": {
             "identifier": "create:steam_engine_piston",
@@ -13,8 +13,8 @@
                 "default": "geometry.steam_engine.piston"
             },
             "animations": {
-                "facing": "animation.create.steam_engine_piston.facing",
-                "motion": "animation.create.steam_engine_piston.motion"
+                "facing": "animation.create_bedrock.create.steam_engine_piston.facing",
+                "motion": "animation.create_bedrock.create.steam_engine_piston.motion"
             },
             "scripts": {
                 "pre_animation": [

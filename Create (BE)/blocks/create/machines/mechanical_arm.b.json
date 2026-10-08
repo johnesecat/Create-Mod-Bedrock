@@ -42,7 +42,7 @@
             	"size": [16, 16, 16]
             },
             "minecraft:geometry": {
-                "identifier": "geometry.create.mechanical_arm",
+                "identifier": "geometry.create_bedrock.create.mechanical_arm",
                 "bone_visibility": {
                     "rpm": false,
                     "arm": false,
@@ -60,7 +60,7 @@
                     }
                 },
                 "geometry": {
-                    "identifier": "geometry.create.mechanical_arm"
+                    "identifier": "geometry.create_bedrock.create.mechanical_arm"
                 }
             },
             "minecraft:destructible_by_mining": {

@@ -1,5 +1,5 @@
 {
-    "format_version": "1.10.0",
+    "format_version": "1.26.50",
     "minecraft:client_entity": {
         "description": {
             "identifier": "create:stressometer_entity",
@@ -10,12 +10,12 @@
                 "default": "textures/create/common/blocks/gauge"
             },
             "geometry": {
-                "default": "geometry.create.stressometer_entity"
+                "default": "geometry.create_bedrock.create.stressometer_entity"
             },
             "animations": {
                 "rotation": "animation.create.rpm.rotation",
                 "offset": "animation.create.rpm.offsets",
-                "stressometer": "animation.create.gauge.pointer"
+                "stressometer": "animation.create_bedrock.create.gauge.pointer"
             },
             "scripts": {
                 "animate": [ "rotation", "offset", "stressometer" ],

@@ -14,7 +14,7 @@
             "create:rpm_system": {},
 
             "minecraft:map_color": "#52320E",
-            "minecraft:geometry": "geometry.create.large_cogwheel",
+            "minecraft:geometry": "geometry.create_bedrock.create.large_cogwheel",
             "minecraft:material_instances": {
                 "*": {
                     "texture": "create:invisible",
@@ -31,7 +31,7 @@
                     }
                 },
                 "geometry": {
-                    "identifier": "geometry.create.large_cogwheel"
+                    "identifier": "geometry.create_bedrock.create.large_cogwheel"
                 }
             },
             "minecraft:destruction_particles": {

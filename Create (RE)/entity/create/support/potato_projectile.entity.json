@@ -1,5 +1,5 @@
 {
-    "format_version": "1.10.0",
+    "format_version": "1.26.50",
     "minecraft:client_entity": {
         "description": {
             "identifier": "create:potato_projectile",
@@ -33,16 +33,16 @@
                 "cookie": "textures/items/cookie"
             },
             "geometry": {
-                "default": "geometry.create.potato_projectile"
+                "default": "geometry.create_bedrock.create.potato_projectile"
             },
             "animations": {
-                "spin": "animation.create.potato_projectile.spin"
+                "spin": "animation.create_bedrock.create.potato_projectile.spin"
             },
             "scripts": {
                 "animate": ["spin"]
             },
             "render_controllers": [
-                "controller.render.create.potato_projectile"
+                "controller.render.create_bedrock.create.potato_projectile"
             ]
         }
     }

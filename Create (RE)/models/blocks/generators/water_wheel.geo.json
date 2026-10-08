@@ -3,7 +3,7 @@
 	"minecraft:geometry": [
 		{
 			"description": {
-				"identifier": "geometry.create.water_wheel_block",
+				"identifier": "geometry.create_bedrock.create.water_wheel_block",
 				"texture_width": 64,
 				"texture_height": 64,
 				"visible_bounds_width": 3,
@@ -137,7 +137,7 @@
 		},
 		{
 			"description": {
-				"identifier": "geometry.create.water_wheel_item",
+				"identifier": "geometry.create_bedrock.create.water_wheel_item",
 				"texture_width": 64,
 				"texture_height": 64,
 				"visible_bounds_width": 3,
@@ -6868,7 +6868,7 @@
 		},
 		{
 			"description": {
-				"identifier": "geometry.create.water_wheel_entity",
+				"identifier": "geometry.create_bedrock.create.water_wheel_entity",
 				"texture_width": 64,
 				"texture_height": 64,
 				"visible_bounds_width": 3,

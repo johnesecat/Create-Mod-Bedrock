@@ -1,5 +1,5 @@
 {
-  "format_version": "1.10.0",
+  "format_version": "1.26.50",
   "minecraft:client_entity": {
     "description": {
       "identifier": "create:sequenced_gearshift_entity",
@@ -9,7 +9,7 @@
         "powered": "textures/create/common/blocks/sequenced_gearshift_powered"
       },
       "geometry": { "default": "geometry.sequenced_gearshift_entity" },
-      "animations": { "rotation": "animation.create.sequenced_gearshift.rotation" },
+      "animations": { "rotation": "animation.create_bedrock.create.sequenced_gearshift.rotation" },
       "scripts": {
         "animate": ["rotation"],
         "pre_animation": [
@@ -20,7 +20,7 @@
           "v.rpm2 = ((q.frame_alpha + q.time_stamp) / 3.33) * -q.property('create:rpm2');"
         ]
       },
-      "render_controllers": ["controller.render.create.sequenced_gearshift"]
+      "render_controllers": ["controller.render.create_bedrock.create.sequenced_gearshift"]
     }
   }
 }

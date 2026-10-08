@@ -1,5 +1,5 @@
 {
-  "format_version": "1.10.0",
+  "format_version": "1.26.50",
   "minecraft:client_entity": {
     "description": {
       "identifier": "create:pipe_fluid",
@@ -14,10 +14,10 @@
         "milk": "textures/create/common/fluid/milk_spout"
       },
       "geometry": {
-        "default": "geometry.create.pipe_fluid"
+        "default": "geometry.create_bedrock.create.pipe_fluid"
       },
       "animations": {
-        "orient": "animation.create.pipe_fluid.orient"
+        "orient": "animation.create_bedrock.create.pipe_fluid.orient"
       },
       "scripts": {
         "animate": [
@@ -25,7 +25,7 @@
         ]
       },
       "render_controllers": [
-        "controller.render.create.pipe_fluid"
+        "controller.render.create_bedrock.create.pipe_fluid"
       ]
     }
   }

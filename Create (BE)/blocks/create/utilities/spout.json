@@ -34,11 +34,11 @@
         "size": [16, 16, 16]
       },
       "minecraft:geometry": {
-        "identifier": "geometry.spout"
+        "identifier": "geometry.create_bedrock.spout"
       },
       "minecraft:item_visual": {
         "geometry": {
-          "identifier": "geometry.spout"
+          "identifier": "geometry.create_bedrock.spout"
         },
         "material_instances": {
           "*": {

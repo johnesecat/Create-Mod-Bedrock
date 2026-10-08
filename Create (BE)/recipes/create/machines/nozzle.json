@@ -1,5 +1,5 @@
 {
-  "format_version": "1.12",
+  "format_version": "1.26.50",
   "minecraft:recipe_shaped": {
     "description": { "identifier": "create:nozzle" }, "tags": ["crafting_table"],
     "pattern": [" A ", " W ", "AAA"],

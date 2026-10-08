@@ -1,5 +1,5 @@
 ﻿{
-    "format_version":  "1.10.0",
+    "format_version":  "1.26.50",
     "minecraft:client_entity":  {
                                     "description":  {
                                                         "identifier":  "create:mechanical_drill_construct",
@@ -10,10 +10,10 @@
                                                                          "default":  "textures/create/common/blocks/mechanical_drill"
                                                                      },
                                                         "geometry":  {
-                                                                         "default":  "geometry.create.mechanical_drill"
+                                                                         "default":  "geometry.create_bedrock.create.mechanical_drill"
                                                                      },
                                                         "animations":  {
-                                                                           "rotation":  "animation.create.mechanical_drill.fure",
+                                                                           "rotation":  "animation.create_bedrock.create.mechanical_drill.fure",
                                                                            "offset":  "animation.create.rpm.offsets"
                                                                        },
                                                         "scripts":  {

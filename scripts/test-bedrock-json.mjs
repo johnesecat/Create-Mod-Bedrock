@@ -2,6 +2,7 @@ import { readFile, readdir } from 'node:fs/promises'
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
 import assert from 'node:assert/strict'
+import { createHash } from 'node:crypto'
 import jsonlint from 'jsonlint'
 import Ajv from 'ajv'
 
@@ -82,6 +83,54 @@ async function walk(folder) {
 }
 await walk(path.join(root, 'Create (BE)'))
 await walk(path.join(root, 'Create (RE)'))
+try {
+  const audit = JSON.parse(await readFile(path.join(root, 'scripts/bedrock-resource-migration.json'), 'utf8'))
+  assert.equal(Object.keys(audit.renames).length, 269)
+  assert.equal(new Set(Object.values(audit.renames)).size, 269)
+  const reverse = new Map(Object.entries(audit.renames).map(([old, next]) => [next, old]))
+  const escape = text => text.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
+  const tokens = new RegExp(`(?<![a-zA-Z0-9_.])(?:${[...reverse.keys()].sort((a, b) => b.length - a.length).map(escape).join('|')})(?![a-zA-Z0-9_.])`, 'g')
+  for (const record of audit.files) {
+    assert(record.file.startsWith('Create (') && !record.file.split('/').includes('..'))
+    const text = await readFile(path.join(root, record.file), 'utf8')
+    const hash = content => createHash('sha256').update(content).digest('hex')
+    assert.equal(hash(text), record.afterSha256, `Resource migration changed: ${record.file}`)
+    assert.equal(hash(text.replace(tokens, name => reverse.get(name))), record.beforeSha256, `Non-rename resource change: ${record.file}`)
+  }
+  const resources = new Set()
+  for (const record of audit.files.filter(record => record.file.startsWith('Create (RE)/') && /\.(json|material)$/.test(record.file))) {
+    const data = JSON.parse((await readFile(path.join(root, record.file), 'utf8')).replace(/^\uFEFF/, ''))
+    for (const key of ['animations', 'animation_controllers', 'render_controllers']) for (const name of Object.keys(data[key] ?? {})) resources.add(name)
+    for (const geometry of data['minecraft:geometry'] ?? []) resources.add(geometry.description.identifier)
+    for (const key of Object.keys(data)) if (key.startsWith('geometry.')) resources.add(key)
+    for (const name of Object.keys(data.materials ?? {})) resources.add(name.split(':')[0])
+  }
+  for (const next of Object.values(audit.renames)) assert(resources.has(next), `Renamed resource definition missing: ${next}`)
+  console.log(`PASS: 269 collision-free resource names and ${audit.files.length} exact reversible file edits`)
+} catch (error) { failures.push(error.message) }
+try {
+  // Guard this report-driven migration against content loss and stale versions.
+  // Only the version token is excluded from the baseline byte hash.
+  const audit = JSON.parse(await readFile(path.join(root, 'scripts/bedrock-format-migration.json'), 'utf8'))
+  assert.equal(audit.files.length, 613)
+  const seen = new Set()
+  for (const record of audit.files) {
+    assert(!seen.has(record.file), `Duplicate migration audit path: ${record.file}`)
+    seen.add(record.file)
+    assert(/^(Create \(BE\)\/recipes\/|Create \(RE\)\/(animations|entity)\/)/.test(record.file) && !record.file.split('/').includes('..'), 'Invalid migration audit path')
+    const text = await readFile(path.join(root, record.file), 'utf8')
+    const data = JSON.parse(text.replace(/^\uFEFF/, ''))
+    assert.equal(data.format_version, record.to, `Migrated format version regressed: ${record.file}`)
+    const tokens = /("format_version"\s*:\s*")[^"]+(")/g
+    assert.equal([...text.matchAll(tokens)].length, 1)
+    const digest = createHash('sha256').update(text.replace(tokens, '$1<VERSION>$2')).digest('hex')
+    assert.equal(digest, record.contentSha256, `Migrated payload changed: ${record.file}; review and refresh its audit after intentional content edits`)
+  }
+  for (const [rule, expected] of [['FORMATVER[156]', 474], ['FORMATVER[216]', 43], ['FORMATVER[296]', 96]]) {
+    assert.equal(audit.files.filter(record => record.rule === rule).length, expected)
+  }
+  console.log('PASS: all 613 migrated versions and non-version byte hashes')
+} catch (error) { failures.push(error.message) }
 try {
   assert.equal(manifests.length, 2)
   const uuids = new Set()

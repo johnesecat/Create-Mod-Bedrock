@@ -1,5 +1,5 @@
 ﻿{
-    "format_version":  "1.12",
+    "format_version":  "1.26.50",
     "minecraft:recipe_shapeless":  {
                                        "description":  {
                                                            "identifier":  "create:stonecutting_polished_cut_limestone_slab"

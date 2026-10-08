@@ -31,7 +31,7 @@
             	"size": [16, 14, 16]
             },
             "minecraft:geometry": {
-                "identifier": "geometry.create.mechanical_press",
+                "identifier": "geometry.create_bedrock.create.mechanical_press",
                 "bone_visibility": {
                     "rpm": false,
                     "head": false
@@ -46,7 +46,7 @@
                     }
                 },
                 "geometry": {
-                    "identifier": "geometry.create.mechanical_press"
+                    "identifier": "geometry.create_bedrock.create.mechanical_press"
                 }
             },
             "minecraft:destructible_by_mining": {

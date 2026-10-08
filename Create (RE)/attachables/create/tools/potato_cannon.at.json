@@ -13,13 +13,13 @@
                 "default": "geometry.potato_cannon"
             },
             "animations": {
-                "hold_first_person": "animation.create.potato_cannon.hold_first_person",
-                "hold_third_person": "animation.create.potato_cannon.hold_third_person",
-                "idle": "animation.create.potato_cannon.idle",
-                "fire_first_person": "animation.create.potato_cannon.fire_first_person",
-                "fire_third_person": "animation.create.potato_cannon.fire_third_person",
-                "fire_controller_first_person": "controller.animation.create.potato_cannon.fire_first_person",
-                "fire_controller_third_person": "controller.animation.create.potato_cannon.fire_third_person"
+                "hold_first_person": "animation.create_bedrock.create.potato_cannon.hold_first_person",
+                "hold_third_person": "animation.create_bedrock.create.potato_cannon.hold_third_person",
+                "idle": "animation.create_bedrock.create.potato_cannon.idle",
+                "fire_first_person": "animation.create_bedrock.create.potato_cannon.fire_first_person",
+                "fire_third_person": "animation.create_bedrock.create.potato_cannon.fire_third_person",
+                "fire_controller_first_person": "controller.animation.create_bedrock.create.potato_cannon.fire_first_person",
+                "fire_controller_third_person": "controller.animation.create_bedrock.create.potato_cannon.fire_third_person"
             },
             "scripts": {
                 "animate": [

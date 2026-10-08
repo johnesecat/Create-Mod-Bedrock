@@ -1,1 +1,1 @@
-﻿{"format_version":"1.12","minecraft:recipe_shaped":{"description":{"identifier":"create:cut_asurine_bricks_stairs"},"tags":["crafting_table"],"pattern":["A  ","AA ","AAA"],"key":{"A":{"item":"create:cut_asurine_bricks"}},"result":{"item":"create:cut_asurine_bricks_stairs","count":4}}}
+﻿{"format_version":"1.26.50","minecraft:recipe_shaped":{"description":{"identifier":"create:cut_asurine_bricks_stairs"},"tags":["crafting_table"],"pattern":["A  ","AA ","AAA"],"key":{"A":{"item":"create:cut_asurine_bricks"}},"result":{"item":"create:cut_asurine_bricks_stairs","count":4}}}

@@ -3,7 +3,7 @@
 	"minecraft:geometry": [
 		{
 			"description": {
-				"identifier": "geometry.create.mechanical_drill",
+				"identifier": "geometry.create_bedrock.create.mechanical_drill",
 				"texture_width": 64,
 				"texture_height": 64,
 				"visible_bounds_width": 3,
@@ -245,7 +245,7 @@
 		},
 		{
 			"description": {
-				"identifier": "geometry.create.mechanical_drill_entity",
+				"identifier": "geometry.create_bedrock.create.mechanical_drill_entity",
 				"texture_width": 64,
 				"texture_height": 64,
 				"visible_bounds_width": 3,

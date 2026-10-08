@@ -1,14 +1,14 @@
 {
-  "format_version": "1.10.0",
+  "format_version": "1.26.50",
   "minecraft:client_entity": {
     "description": {
       "identifier": "create:smart_fluid_pipe_filter",
       "materials": { "default": "zombie" },
       "textures": { "default": "textures/create/common/blocks/invisible" },
-      "geometry": { "default": "geometry.create.brass_funnel_entity" },
+      "geometry": { "default": "geometry.create_bedrock.create.brass_funnel_entity" },
       "animations": {
-        "constant": "animation.create.smart_fluid_pipe_filter.constant",
-        "filter_item": "animation.create.smart_fluid_pipe_filter.item"
+        "constant": "animation.create_bedrock.create.smart_fluid_pipe_filter.constant",
+        "filter_item": "animation.create_bedrock.create.smart_fluid_pipe_filter.item"
       },
       "scripts": {
         "animate": [

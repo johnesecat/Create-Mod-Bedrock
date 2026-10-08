@@ -1,5 +1,5 @@
 {
-    "format_version": "1.10.0",
+    "format_version": "1.26.50",
     "minecraft:client_entity": {
         "description": {
             "identifier": "create:mechanical_belt_entity",
@@ -46,12 +46,12 @@
                 "diagonal_yellow": "textures/create/common/blocks/belt/yellow_diagonal_scroll"
             },
             "geometry": {
-                "default": "geometry.create.mechanical_belt"
+                "default": "geometry.create_bedrock.create.mechanical_belt"
             },
             "animations": {
                 "rotation": "animation.create.rpm.rotation",
                 "offset": "animation.create.rpm.offsets",
-                "conveyor": "animation.create.rpm.conveyor"
+                "conveyor": "animation.create_bedrock.create.rpm.conveyor"
             },
             "scripts": {
                 "animate": [ "rotation", "offset", "conveyor" ],
@@ -68,10 +68,10 @@
                 ]
             }, 
             "render_controllers": [
-                "controller.render.create.pulley",
-                "controller.render.create.belt",
-                "controller.render.create.belt_offset",
-                "controller.render.create.belt_diagonal"
+                "controller.render.create_bedrock.create.pulley",
+                "controller.render.create_bedrock.create.belt",
+                "controller.render.create_bedrock.create.belt_offset",
+                "controller.render.create_bedrock.create.belt_diagonal"
             ]
         }
     }

@@ -1,5 +1,5 @@
 {
-  "format_version": "1.10.0",
+  "format_version": "1.26.50",
   "minecraft:client_entity": {
     "description": {
       "identifier": "create:glass_door_visual_lower",
@@ -10,14 +10,14 @@
         "default": "textures/create/common/blocks/glass_door"
       },
       "geometry": {
-        "default": "geometry.create.glass_door_entity"
+        "default": "geometry.create_bedrock.create.glass_door_entity"
       },
       "animations": {
-        "fixed": "animation.model.fixed_north",
-        "open": "animation.model.open2",
-        "close": "animation.model.close2",
-        "open_reverse": "animation.model.open2_reverse",
-        "close_reverse": "animation.model.close2_reverse"
+        "fixed": "animation.create_bedrock.model.fixed_north",
+        "open": "animation.create_bedrock.model.open2",
+        "close": "animation.create_bedrock.model.close2",
+        "open_reverse": "animation.create_bedrock.model.open2_reverse",
+        "close_reverse": "animation.create_bedrock.model.close2_reverse"
       },
       "scripts": {
         "animate": [
@@ -29,7 +29,7 @@
         ]
       },
       "render_controllers": [
-        "controller.render.create.andesite_door_visual"
+        "controller.render.create_bedrock.create.andesite_door_visual"
       ]
     }
   }

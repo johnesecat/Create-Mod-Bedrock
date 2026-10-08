@@ -1,5 +1,5 @@
 {
-  "format_version": "1.10.0",
+  "format_version": "1.26.50",
   "minecraft:client_entity": {
     "description": {
       "identifier": "create:blaze_inert",
@@ -16,7 +16,7 @@
         "active": "geometry.blaze_active"
       },
       "animations": {
-        "look": "animation.create.blaze_burner.look"
+        "look": "animation.create_bedrock.create.blaze_burner.look"
       },
       "scripts": {
         "animate": ["look"],
@@ -31,7 +31,7 @@
           "v.blaze_rotation_y = v.blaze_smoothed_y;"
         ]
       },
-      "render_controllers": ["controller.render.create.blaze_burner"]
+      "render_controllers": ["controller.render.create_bedrock.create.blaze_burner"]
     }
   }
 }

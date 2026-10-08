@@ -32,7 +32,7 @@
             },
             "minecraft:destruction_particles": { "texture": "create:mechanical_belt" },
             "minecraft:geometry": {
-                "identifier": "geometry.create.mechanical_belt",
+                "identifier": "geometry.create_bedrock.create.mechanical_belt",
                 "bone_visibility": {
                     "diagonal_start": false,
                     "diagonal_end": false,

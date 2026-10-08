@@ -33,7 +33,7 @@
                     }
                 },
                 "geometry": {
-                    "identifier": "geometry.create.deployer"
+                    "identifier": "geometry.create_bedrock.create.deployer"
                 }
             },
             "minecraft:material_instances": {
@@ -44,7 +44,7 @@
                 }
             },
             "minecraft:geometry": {
-                "identifier": "geometry.create.deployer",
+                "identifier": "geometry.create_bedrock.create.deployer",
                 "bone_visibility": {
                     "rpm": false,
                     "pole": false,

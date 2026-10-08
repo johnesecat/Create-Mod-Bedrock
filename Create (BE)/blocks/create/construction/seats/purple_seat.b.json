@@ -14,7 +14,7 @@
             "create:on_interact": {},
 
             "minecraft:map_color": "#8932b8",
-            "minecraft:geometry": "geometry.create.seat",
+            "minecraft:geometry": "geometry.create_bedrock.create.seat",
             "minecraft:material_instances": {
                 "*": {
                     "texture": "create:seat_bottom",

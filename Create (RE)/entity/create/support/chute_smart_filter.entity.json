@@ -1,5 +1,5 @@
 {
-  "format_version": "1.10.0",
+  "format_version": "1.26.50",
   "minecraft:client_entity": {
     "description": {
       "identifier": "create:chute_smart_filter",
@@ -10,13 +10,13 @@
         "default": "textures/create/common/blocks/invisible"
       },
       "geometry": {
-        "default": "geometry.create.brass_funnel_entity"
+        "default": "geometry.create_bedrock.create.brass_funnel_entity"
       },
       "animations": {
-        "constant": "animation.create.chute_smart_filter.constant",
-        "filter_item": "animation.create.chute_smart_filter.filter_item",
-        "filter_block": "animation.create.chute_smart_filter.filter_block",
-        "filter_hand_equipped": "animation.create.chute_smart_filter.filter_hand_equipped"
+        "constant": "animation.create_bedrock.create.chute_smart_filter.constant",
+        "filter_item": "animation.create_bedrock.create.chute_smart_filter.filter_item",
+        "filter_block": "animation.create_bedrock.create.chute_smart_filter.filter_block",
+        "filter_hand_equipped": "animation.create_bedrock.create.chute_smart_filter.filter_hand_equipped"
       },
       "scripts": {
         "animate": [

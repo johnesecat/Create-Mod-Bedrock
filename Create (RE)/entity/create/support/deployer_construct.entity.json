@@ -1,5 +1,5 @@
 {
-    "format_version": "1.10.0",
+    "format_version": "1.26.50",
     "minecraft:client_entity": {
         "description": {
             "identifier": "create:deployer_construct",
@@ -10,10 +10,10 @@
                 "default": "textures/create/common/blocks/deployer"
             },
             "geometry": {
-                "default": "geometry.create.deployer_construct"
+                "default": "geometry.create_bedrock.create.deployer_construct"
             },
             "animations": {
-                "play": "animation.create.deployer_construct.play"
+                "play": "animation.create_bedrock.create.deployer_construct.play"
             },
             "scripts": {
                 "animate": [

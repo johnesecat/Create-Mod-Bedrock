@@ -1,16 +1,16 @@
 {
-  "format_version": "1.10.0",
+  "format_version": "1.26.50",
   "minecraft:client_entity": {
     "description": {
       "identifier": "create:redstone_link_frequency",
       "materials": { "default": "entity" },
       "textures": { "default": "textures/create/common/blocks/invisible_texture" },
-      "geometry": { "default": "geometry.create.display_item" },
+      "geometry": { "default": "geometry.create_bedrock.create.display_item" },
       "enable_attachables": true,
       "animations": {
-        "item": "animation.create.conveyor_item.item",
-        "block": "animation.create.conveyor_item.block",
-        "hand_equipped": "animation.create.conveyor_item.hand_equipped"
+        "item": "animation.create_bedrock.create.conveyor_item.item",
+        "block": "animation.create_bedrock.create.conveyor_item.block",
+        "hand_equipped": "animation.create_bedrock.create.conveyor_item.hand_equipped"
       },
       "scripts": {
         "animate": [

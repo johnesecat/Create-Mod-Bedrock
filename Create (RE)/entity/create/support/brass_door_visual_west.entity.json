@@ -1,14 +1,14 @@
 {
-  "format_version": "1.10.0",
+  "format_version": "1.26.50",
   "minecraft:client_entity": {
     "description": {
       "identifier": "create:brass_door_visual_west",
       "materials": { "default": "entity_alphatest" },
       "textures": { "default": "textures/create/common/blocks/brass_door" },
-      "geometry": { "default": "geometry.create.brass_door_entity" },
+      "geometry": { "default": "geometry.create_bedrock.create.brass_door_entity" },
       "animations": {
-        "fixed": "animation.model.fixed_west",
-        "open": "animation.model.open2", "close": "animation.model.close2", "open_reverse": "animation.model.open2_reverse", "close_reverse": "animation.model.close2_reverse"
+        "fixed": "animation.create_bedrock.model.fixed_west",
+        "open": "animation.create_bedrock.model.open2", "close": "animation.create_bedrock.model.close2", "open_reverse": "animation.create_bedrock.model.open2_reverse", "close_reverse": "animation.create_bedrock.model.close2_reverse"
       },
       "scripts": {
         "animate": [
@@ -16,7 +16,7 @@
           { "open": "q.property('create:opening') && !q.property('create:hinge')" }, { "close": "!q.property('create:opening') && !q.property('create:hinge')" }, { "open_reverse": "q.property('create:opening') && q.property('create:hinge')" }, { "close_reverse": "!q.property('create:opening') && q.property('create:hinge')" }
         ]
       },
-      "render_controllers": [ "controller.render.create.andesite_door_visual" ]
+      "render_controllers": [ "controller.render.create_bedrock.create.andesite_door_visual" ]
     }
   }
 }

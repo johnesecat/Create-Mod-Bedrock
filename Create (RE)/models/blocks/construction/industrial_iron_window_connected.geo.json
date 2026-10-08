@@ -3,7 +3,7 @@
 	"minecraft:geometry": [
 		{
 			"description": {
-				"identifier": "geometry.create.industrial_iron_window_connected",
+				"identifier": "geometry.create_bedrock.create.industrial_iron_window_connected",
 				"texture_width": 16,
 				"texture_height": 16,
 				"visible_bounds_width": 6,

@@ -1,7 +1,7 @@
 ﻿{
     "format_version":  "1.8.0",
     "render_controllers":  {
-                               "controller.render.create.windmill_sail_frame":  {
+                               "controller.render.create_bedrock.create.windmill_sail_frame":  {
                                                                                     "geometry":  "Geometry.frame",
                                                                                     "materials":  [
                                                                                                       {
@@ -12,7 +12,7 @@
                                                                                                      "Texture.default"
                                                                                                  ]
                                                                                 },
-                               "controller.render.create.windmill_sail_canvas":  {
+                               "controller.render.create_bedrock.create.windmill_sail_canvas":  {
                                                                                      "arrays":  {
                                                                                                     "textures":  {
                                                                                                                      "Array.canvas":  [
