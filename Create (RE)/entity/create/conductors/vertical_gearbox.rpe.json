@@ -1,5 +1,5 @@
 {
-    "format_version": "1.10.0",
+    "format_version": "1.26.50",
     "minecraft:client_entity": {
         "description": {
             "identifier": "create:vertical_gearbox_entity",
@@ -10,11 +10,11 @@
                 "default": "textures/create/common/blocks/gearbox"
             },
             "geometry": {
-                "default": "geometry.create.vertical_gearbox_entity"
+                "default": "geometry.create_bedrock.create.vertical_gearbox_entity"
             },
              "animations": {
                 "offset": "animation.create.rpm.offsets",
-                "gearbox": "animation.create.rpm.gearbox"
+                "gearbox": "animation.create_bedrock.create.rpm.gearbox"
             },
             "scripts": {
                 "animate": [ "offset", "gearbox" ],

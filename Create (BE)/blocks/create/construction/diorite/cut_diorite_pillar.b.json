@@ -23,7 +23,7 @@
             },
             "minecraft:map_color": [151, 109, 77],
             "minecraft:geometry": {
-                "identifier": "geometry.create.connected_block",
+                "identifier": "geometry.create_bedrock.create.connected_block",
                 "bone_visibility": {
                     "default": "!q.block_state('create:north') && !q.block_state('create:south') && !q.block_state('create:west') && !q.block_state('create:east') && !q.block_state('create:up') && !q.block_state('create:down')",
                     "all_cardinals": "q.block_state('create:north') && q.block_state('create:south') && q.block_state('create:west') && q.block_state('create:east') && !q.block_state('create:up') && !q.block_state('create:down')",

@@ -1,5 +1,5 @@
 ﻿{
-    "format_version":  "1.10.0",
+    "format_version":  "1.26.50",
     "minecraft:client_entity":  {
                                     "description":  {
                                                         "identifier":  "create:spout_bick",
@@ -10,13 +10,13 @@
                                                                          "default":  "textures/create/common/blocks/spout"
                                                                      },
                                                         "geometry":  {
-                                                                         "default":  "geometry.spout.entity"
+                                                                         "default":  "geometry.create_bedrock.spout.entity"
                                                                      },
                                                         "render_controllers":  [
                                                                                    "controller.render.default"
                                                                                ],
                                                         "animations":  {
-                                                                           "fluid":  "animation.spout.entity.fluid"
+                                                                           "fluid":  "animation.create_bedrock.spout.entity.fluid"
                                                                        },
                                                         "scripts":  {
                                                                         "animate":  [

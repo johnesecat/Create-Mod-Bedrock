@@ -16,7 +16,7 @@
       "create:on_tick": {},
       "minecraft:tick": { "looping": true, "interval_range": [5, 10] },
       "minecraft:geometry": {
-        "identifier": "geometry.bars",
+        "identifier": "geometry.create_bedrock.bars",
         "bone_visibility": {
           "bord": "q.block_state('create:north') == true",
           "bord2": "q.block_state('create:south') == true",
@@ -28,7 +28,7 @@
         "*": { "texture": "create:andesite_bars", "render_method": "alpha_test", "ambient_occlusion": false }
       },
       "minecraft:item_visual": {
-        "geometry": { "identifier": "geometry.bars" },
+        "geometry": { "identifier": "geometry.create_bedrock.bars" },
         "material_instances": {
           "*": { "texture": "create:andesite_bars", "render_method": "alpha_test", "ambient_occlusion": false }
         }

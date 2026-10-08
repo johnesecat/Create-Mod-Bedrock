@@ -30,7 +30,7 @@
                 }
             },
             "minecraft:geometry": {
-                "identifier": "geometry.create.large_water_wheel_block"
+                "identifier": "geometry.create_bedrock.create.large_water_wheel_block"
             },
             "minecraft:destruction_particles": { "texture": "create:cogwheel" },
             "minecraft:item_visual": {
@@ -42,7 +42,7 @@
                     }
                 },
                 "geometry": {
-                    "identifier": "geometry.create.large_water_wheel_item"
+                    "identifier": "geometry.create_bedrock.create.large_water_wheel_item"
                 }
             },
             "minecraft:collision_box": true,

@@ -3,7 +3,7 @@
     "minecraft:geometry": [
         {
             "description": {
-                "identifier": "geometry.create.inverted_stairs",
+                "identifier": "geometry.create_bedrock.create.inverted_stairs",
                 "texture_width": 16,
                 "texture_height": 16,
                 "visible_bounds_width": 4,

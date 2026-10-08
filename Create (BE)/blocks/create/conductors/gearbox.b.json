@@ -21,7 +21,7 @@
                     }
                 },
                 "geometry": {
-                    "identifier": "geometry.create.gearbox"
+                    "identifier": "geometry.create_bedrock.create.gearbox"
                 }
             },
             "minecraft:material_instances": {
@@ -32,7 +32,7 @@
                 }
             },
             "minecraft:geometry": {
-                "identifier": "geometry.create.gearbox",
+                "identifier": "geometry.create_bedrock.create.gearbox",
                 "bone_visibility": {
                     "rpm": false
                 }

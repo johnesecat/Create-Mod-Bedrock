@@ -3,7 +3,7 @@
     "minecraft:geometry": [
         {
             "description": {
-                "identifier": "geometry.create.deployer_entity_old",
+                "identifier": "geometry.create_bedrock.create.deployer_entity_old",
                 "texture_width": 128,
                 "texture_height": 128,
                 "visible_bounds_width": 6,

@@ -2,7 +2,7 @@
   "format_version": "1.12.0",
   "minecraft:geometry": [
     {
-      "description": { "identifier": "geometry.create.door_construct.left", "texture_width": 16, "texture_height": 16, "visible_bounds_width": 3, "visible_bounds_height": 3, "visible_bounds_offset": [0, 0, 0] },
+      "description": { "identifier": "geometry.create_bedrock.create.door_construct.left", "texture_width": 16, "texture_height": 16, "visible_bounds_width": 3, "visible_bounds_height": 3, "visible_bounds_offset": [0, 0, 0] },
       "bones": [
         { "name": "rpm", "pivot": [0, 0, 0] },
         { "name": "door_panel", "parent": "rpm", "pivot": [-8, 0, 0], "cubes": [
@@ -11,7 +11,7 @@
       ]
     },
     {
-      "description": { "identifier": "geometry.create.door_construct.right", "texture_width": 16, "texture_height": 16, "visible_bounds_width": 3, "visible_bounds_height": 3, "visible_bounds_offset": [0, 0, 0] },
+      "description": { "identifier": "geometry.create_bedrock.create.door_construct.right", "texture_width": 16, "texture_height": 16, "visible_bounds_width": 3, "visible_bounds_height": 3, "visible_bounds_offset": [0, 0, 0] },
       "bones": [
         { "name": "rpm", "pivot": [0, 0, 0] },
         { "name": "door_panel", "parent": "rpm", "pivot": [8, 0, 0], "cubes": [

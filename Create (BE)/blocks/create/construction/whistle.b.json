@@ -26,7 +26,7 @@
         "propogates_power": false
       },
       "minecraft:geometry": {
-        "identifier": "geometry.whistle",
+        "identifier": "geometry.create_bedrock.whistle",
         "bone_visibility": {
           "whistle_medium_cap": "q.block_state('create:connected_above') == false"
         }
@@ -35,7 +35,7 @@
         "*": { "texture": "create:whistle", "render_method": "alpha_test", "ambient_occlusion": false }
       },
       "minecraft:item_visual": {
-        "geometry": { "identifier": "geometry.whistle" },
+        "geometry": { "identifier": "geometry.create_bedrock.whistle" },
         "material_instances": {
           "*": { "texture": "create:whistle", "render_method": "alpha_test", "ambient_occlusion": false }
         }

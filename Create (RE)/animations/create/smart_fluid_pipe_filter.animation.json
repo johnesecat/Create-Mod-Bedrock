@@ -1,7 +1,7 @@
 {
-  "format_version": "1.8.0",
+  "format_version": "1.10.0",
   "animations": {
-    "animation.create.smart_fluid_pipe_filter.constant": {
+    "animation.create_bedrock.create.smart_fluid_pipe_filter.constant": {
       "loop": true,
       "bones": {
         "all": {
@@ -14,7 +14,7 @@
         }
       }
     },
-    "animation.create.smart_fluid_pipe_filter.item": {
+    "animation.create_bedrock.create.smart_fluid_pipe_filter.item": {
       "loop": true,
       "bones": {
         "bone2": { "scale": 1.5, "position": [0, 0, 0] },

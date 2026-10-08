@@ -1,5 +1,5 @@
 {
-  "format_version": "1.10.0",
+  "format_version": "1.26.50",
   "minecraft:client_entity": {
     "description": {
       "identifier": "create:blaze_burner_flame",
@@ -14,7 +14,7 @@
         "default": "geometry.blaze_burner_flame"
       },
       "animations": {
-        "frame": "animation.create.blaze_burner_flame.frame"
+        "frame": "animation.create_bedrock.create.blaze_burner_flame.frame"
       },
       "scripts": {
         "animate": ["frame"],
@@ -23,7 +23,7 @@
           "v.flame_scroll = (v.flame_frame / 3.33) * 55.0;"
         ]
       },
-      "render_controllers": ["controller.render.create.blaze_burner_flame"]
+      "render_controllers": ["controller.render.create_bedrock.create.blaze_burner_flame"]
     }
   }
 }

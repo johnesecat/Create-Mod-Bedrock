@@ -16,7 +16,7 @@
       "create:before_place": {},
       "create:on_tick": {},
       "minecraft:tick": { "looping": true, "interval_range": [4, 8] },
-      "minecraft:geometry": { "identifier": "geometry.ladder" },
+      "minecraft:geometry": { "identifier": "geometry.create_bedrock.ladder" },
       "minecraft:material_instances": {
         "*": { "texture": "create:ladder_brass", "render_method": "alpha_test", "ambient_occlusion": false }
       },

@@ -25,7 +25,7 @@
                     }
                 },
                 "geometry": {
-                    "identifier": "geometry.create.mechanical_drill"
+                    "identifier": "geometry.create_bedrock.create.mechanical_drill"
                 }
             },
             "minecraft:material_instances": {
@@ -36,7 +36,7 @@
                 }
             },
             "minecraft:geometry": {
-                "identifier": "geometry.create.mechanical_drill",
+                "identifier": "geometry.create_bedrock.create.mechanical_drill",
                 "bone_visibility": {
                     "facing_rotation": false
                 }

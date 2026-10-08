@@ -1,13 +1,13 @@
 {
-    "format_version": "1.10.0",
+    "format_version": "1.26.50",
     "minecraft:client_entity": {
         "description": {
             "identifier": "create:stair_construct",
             "materials": { "default": "entity_alphatest" },
             "textures": { "default": "textures/create/common/blocks/invisible_texture" },
-            "geometry": { "default": "geometry.create.stair_construct" },
+            "geometry": { "default": "geometry.create_bedrock.create.stair_construct" },
             "enable_attachables": true,
-            "animations": { "rotate": "animation.create.stair_construct.rotate" },
+            "animations": { "rotate": "animation.create_bedrock.create.stair_construct.rotate" },
             "scripts": {
                 "animate": [ "rotate" ],
                 "pre_animation": [

@@ -1,5 +1,5 @@
 {
-    "format_version": "1.12.0",
+    "format_version": "1.26.50",
     "minecraft:client_entity": {
         "description": {
             "identifier": "create:hand_crank_entity",
@@ -10,12 +10,12 @@
                 "default": "textures/create/common/blocks/hand_crank"
             },
             "geometry": {
-                "default": "geometry.create.hand_crank"
+                "default": "geometry.create_bedrock.create.hand_crank"
             },
             "animations": {
                 "rotation": "animation.create.rpm.rotation",
                 "offset": "animation.create.rpm.offsets",
-                "hand_crank": "animation.create.hand_crank"
+                "hand_crank": "animation.create_bedrock.create.hand_crank"
             },
             "scripts": {
                 "animate": [ "rotation", "offset", "hand_crank" ],

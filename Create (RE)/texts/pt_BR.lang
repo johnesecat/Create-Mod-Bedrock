@@ -1,5 +1,10 @@
 create.text.mechanical_pump.infinite_fluid_source=§6§lConquista desbloqueada!§r §eFonte infinita de fluido encontrada.
 
+speed_controller.title=Controlador de Velocidade de Rotação
+create.ui.funnel.title=Extração do Funil de Latão
+create.ui.funnel.exact=Extrair exatamente (desligado = até)
+create.ui.funnel.amount=Itens por extração
+
 ## Machine Guide UI
 create.ui.machine_guide.title=Guia de Maquinas
 create.hud.goggles.fluid_container_info=Informacoes do Reservatorio:
@@ -323,7 +328,7 @@ item.create:ladder_copper=Escada de Cobre
 creative_motor.title=Velocidade gerada em RPM
 creative_motor.speed.text=Velocidade gerada em RPM
 creative_motor.reverse_rotation.text=↻
-creative_motor.confirm.text=Confirm
+creative_motor.confirm.text=Confirmar
 creative_motor.gamemode=Você precisa estar no modo Criativo para configurar o Motor Criativo
 tile.create:fluid_tank.name=Tanque de Fluidos
 tile.create:rose_quartz_lamp.name=Lâmpada de Quartzo Rosa

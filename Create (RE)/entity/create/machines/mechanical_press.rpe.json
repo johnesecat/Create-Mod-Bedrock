@@ -1,5 +1,5 @@
 {
-    "format_version": "1.10.0",
+    "format_version": "1.26.50",
     "minecraft:client_entity": {
         "description": {
             "identifier": "create:mechanical_press_entity",
@@ -10,12 +10,12 @@
                 "default": "textures/create/common/blocks/mechanical_press"
             },
             "geometry": {
-                "default": "geometry.create.mechanical_press_entity"
+                "default": "geometry.create_bedrock.create.mechanical_press_entity"
             },
             "animations": {
                 "rotation":      "animation.create.rpm.rotation",
                 "offset":        "animation.create.rpm.offsets",
-                "head_movement": "animation.create.mechanical_press.head_movement"
+                "head_movement": "animation.create_bedrock.create.mechanical_press.head_movement"
             },
             "scripts": {
                 "initialize": ["v.press_smooth = 0.0;"],

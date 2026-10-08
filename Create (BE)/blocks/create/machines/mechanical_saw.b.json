@@ -28,7 +28,7 @@
                 }
             },
             "minecraft:geometry": {
-                "identifier": "geometry.create.mechanical_saw",
+                "identifier": "geometry.create_bedrock.create.mechanical_saw",
                 "bone_visibility": {
                     "rpm": false
                 }

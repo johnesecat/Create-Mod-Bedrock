@@ -25,7 +25,7 @@
             "minecraft:light_dampening": 0,
             "minecraft:map_color": [74, 79, 79],
             "minecraft:geometry": {
-                "identifier": "geometry.create.industrial_iron_window_connected",
+                "identifier": "geometry.create_bedrock.create.industrial_iron_window_connected",
                 "culling": "create:industrial_iron_window",
                 "bone_visibility": {
                     "default": "!q.block_state('create:north') && !q.block_state('create:south') && !q.block_state('create:west') && !q.block_state('create:east') && !q.block_state('create:up') && !q.block_state('create:down')",

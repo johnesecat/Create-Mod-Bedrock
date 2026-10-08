@@ -40,7 +40,7 @@
         "components": {
             "minecraft:map_color": [151, 109, 77],
             "minecraft:geometry": {
-                "identifier": "geometry.create.slab",
+                "identifier": "geometry.create_bedrock.create.slab",
                 "bone_visibility": {
                     "top": "q.block_state('minecraft:vertical_half') == 'top' || q.block_state('create:is_full_block')",
                     "bottom": "q.block_state('minecraft:vertical_half') == 'bottom' || q.block_state('create:is_full_block')"

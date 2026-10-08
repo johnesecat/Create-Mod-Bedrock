@@ -9,7 +9,8 @@
             {
                 "panel": {
                     "type": "panel",
-                    "size": [350, 58],
+                    "size": ["90%", "100%c + 36px"],
+                    "max_size": [400, "90%"],
                     "anchor_from": "center",
                     "anchor_to": "center",
                     "controls": [
@@ -18,10 +19,10 @@
                                 "type": "label",
                                 "text": "#text",
                                 "color": [1.0, 1.0, 1.0],
-                                "font_scale_factor": 0.82,
+                                "font_scale_factor": 1.0,
                                 "anchor_from": "top_middle",
                                 "anchor_to": "top_middle",
-                                "offset": [0, -14],
+                                "offset": [0, 8],
                                 "bindings": [
                                     {
                                         "binding_type": "view",
@@ -39,9 +40,10 @@
                         {
                             "panel_indent": {
                                 "type": "panel",
-                                "size": ["100% - 10px", "100% - 10px"],
-                                "anchor_from": "center",
-                                "anchor_to": "center",
+                                "size": ["100% - 20px", "100%c"],
+                                "anchor_from": "top_middle",
+                                "anchor_to": "top_middle",
+                                "offset": [0, 26],
                                 "controls": [
                                     { "inside_header_panel@$child_control": {} }
                                 ]
@@ -54,8 +56,8 @@
     },
     "funnel_screen_content": {
         "type": "stack_panel",
-        "size": ["100% - 8px", "100%c"],
-        "offset": [4, 3],
+        "size": ["100%", "100%c"],
+        "offset": [0, 0],
         "orientation": "vertical",
         "anchor_from": "top_left",
         "anchor_to": "top_left",
@@ -63,16 +65,16 @@
             {
                 "content": {
                     "type": "stack_panel",
-                    "size": ["100%", 25],
-                    "orientation": "horizontal",
+                    "size": ["100%", "100%c"],
+                    "orientation": "vertical",
                     "anchor_from": "top_left",
                     "anchor_to": "top_left",
                     "factory": {
                         "name": "buttons",
                         "control_ids": {
                             "label": "@server_form.custom_label",
-                            "toggle": "@common_create.funnel_toggle",
-                            "slider": "@common_create.funnel_slider",
+                            "toggle": "@server_form.custom_toggle",
+                            "slider": "@server_form.custom_slider",
                             "step_slider": "@server_form.custom_step_slider",
                             "dropdown": "@server_form.custom_dropdown",
                             "input": "@server_form.custom_input",
@@ -94,8 +96,8 @@
                     "$pressed_button_name": "button.submit_custom_form",
                     "anchor_from": "top_left",
                     "anchor_to": "top_left",
-                    "size": ["100%", 16],
-                    "offset": [0, 2],
+                    "size": ["100%", 28],
+                    "offset": [0, 6],
                     "$button_text": "#submit_text",
                     "$button_text_binding_type": "global",
                     "$button_binding_condition": "once",
@@ -128,9 +130,9 @@
                     "$title_needs_to_contain": "create:funnel.",
                     "$child_control": "funnel_screen.funnel_screen_content",
                     "bindings": [
+                        { "binding_name": "#title_text" },
                         {
                             "binding_type": "view",
-                            "source_control_name": "funnel_screen",
                             "source_property_name": "(not ((#title_text - $title_needs_to_contain) = #title_text))",
                             "target_property_name": "#visible"
                         }

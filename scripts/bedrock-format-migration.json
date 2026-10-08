@@ -1,0 +1,4296 @@
+{
+  "baseline": ".mct-debug/run-8IwvDR/create-bedrock.mcr.json",
+  "files": [
+    {
+      "file": "Create (BE)/recipes/create/components/brass_hand.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "f748c75fd1cd97e29f7fe3868d07ed6c977bbd3d79f4c93e033b7068ef560fc7"
+    },
+    {
+      "file": "Create (BE)/recipes/create/components/electron_tube.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "85bf1eedce54037ee81b7d40a4e624288bc76826c00de384b36d57602d6181ac"
+    },
+    {
+      "file": "Create (BE)/recipes/create/components/propeller.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "f2a8ede82a8e34e7542bec3be4f46f582a2836943d054e7c215136804b03938f"
+    },
+    {
+      "file": "Create (BE)/recipes/create/components/redstone_link.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "27b476a7cf5a76ee4c5ef169838c4ff8cc2844ccb87437d89edb059304c4cce0"
+    },
+    {
+      "file": "Create (BE)/recipes/create/components/transmitter.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "dc693e86cad91e0eaa55e0739b32c30c36b5ec0a1ede570be8d8258506638504"
+    },
+    {
+      "file": "Create (BE)/recipes/create/components/whisk.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "8a903d7fe65233c11ea424174b30b263b674eefe9a13017cb4df5910211727c3"
+    },
+    {
+      "file": "Create (BE)/recipes/create/conductors/clutch.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "a32fdae6c80d8e3f44dbaf00c600c8e8b7e43cd739a02c47bf8dee06333472a7"
+    },
+    {
+      "file": "Create (BE)/recipes/create/conductors/cogwheel.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "617c3641006e278c37df5bb16699aa40b3f8f556fd095c32a6a709f395b9479a"
+    },
+    {
+      "file": "Create (BE)/recipes/create/conductors/gearbox.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "f4fa8758627d01a0db9a3fff3d25268e1a4501a953d7ee1475a2bff8c28060dd"
+    },
+    {
+      "file": "Create (BE)/recipes/create/conductors/gearshift.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "d8fe06858b18b5f11b4d2a20e90811cf51338e20dc70087b0d47adf24c1afb13"
+    },
+    {
+      "file": "Create (BE)/recipes/create/conductors/hose_pulley.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "d8c590460f90e262e77953131299ef33753d1ab31ccf4aaedf2f273d4acdc701"
+    },
+    {
+      "file": "Create (BE)/recipes/create/conductors/large_cogwheel.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "928f3cd1a6bc1d44c2707a12eab03e1d320fab4ef8be675e2543622eda4c5af3"
+    },
+    {
+      "file": "Create (BE)/recipes/create/conductors/mechanical_belt.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "df57b9000c780b201d0cf0c4c4b5cee9d15af6bccf34ab813db68843b7b431be"
+    },
+    {
+      "file": "Create (BE)/recipes/create/conductors/rotation_speed_controller.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "4c1521f9423424ac00b9f2c0c7f48b273199fbbd211b08b38c63b7b451e3d697"
+    },
+    {
+      "file": "Create (BE)/recipes/create/conductors/sequenced_gearshift.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "5ac08764c29a0d0c4e707cd4b5cd56324bd092076a21108fb0220672b9b6feee"
+    },
+    {
+      "file": "Create (BE)/recipes/create/conductors/shaft.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "2857dd0b6b437391f4f0fb97e7f6e0b0df46a07d60121a44da41bfc103879dd6"
+    },
+    {
+      "file": "Create (BE)/recipes/create/conductors/speedometer.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "a98828793b9141c2460ccad9564c4e955cc38d3474bbf7b7a74c2d9b4cd7c6bd"
+    },
+    {
+      "file": "Create (BE)/recipes/create/conductors/stressometer.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "1ae61b416495b85039a0f36ce417578a5b0452233555a14629fc01bbef86deff"
+    },
+    {
+      "file": "Create (BE)/recipes/create/conductors/vertical_gearbox.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "9a8e2ce332619d5a6b5a699dddda6175cc911556d75eb1520f8f7ec886e0d04d"
+    },
+    {
+      "file": "Create (BE)/recipes/create/construction/acacia_window_connected.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "61c639a4bbf81bd37b56606181deda534b50759444db5543665fe53bab272906"
+    },
+    {
+      "file": "Create (BE)/recipes/create/construction/bamboo_window_connected.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "14e84797575ea36ef36b1e001e54b4c14d909bdb0e9d971d2fd097657996db35"
+    },
+    {
+      "file": "Create (BE)/recipes/create/construction/birch_window_connected.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "b2d092a615bd23b25fac258c61ebbb6929980c7bc179e7a38a4909d3eca20c6b"
+    },
+    {
+      "file": "Create (BE)/recipes/create/construction/cherry_window_connected.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "2b3601edfad74432d2dbff9a52337662e0e5e4ffe5aec8f6f5497a45c7aef3e8"
+    },
+    {
+      "file": "Create (BE)/recipes/create/construction/crimson_window_connected.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "2c14a2db295619613acd1451c896acaff6bf86a4c01f423294c4038c777bb096"
+    },
+    {
+      "file": "Create (BE)/recipes/create/construction/dark_oak_window_connected.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.20.10",
+      "to": "1.26.50",
+      "contentSha256": "8ccc37431b1da822ad6e18201ee8370248e878e70803d33ca354853d64454eb6"
+    },
+    {
+      "file": "Create (BE)/recipes/create/construction/industrial_iron_window.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "4d1c3771da5caa0bbc1946bab8575faedc56b98919cb5fadb5938d14b20c880b"
+    },
+    {
+      "file": "Create (BE)/recipes/create/construction/jungle_window_connected.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "473b8e5b478077872c1576fddb26a4069c585b8fd931b8174b42ecb4f54ba3f9"
+    },
+    {
+      "file": "Create (BE)/recipes/create/construction/ladder_andesite.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.20.10",
+      "to": "1.26.50",
+      "contentSha256": "da1c35cd8d99cefee56f834511a078f804ef8a5d2d0720564c7ea6cc28236c50"
+    },
+    {
+      "file": "Create (BE)/recipes/create/construction/ladder_brass.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.20.10",
+      "to": "1.26.50",
+      "contentSha256": "e590f3414ecd1f33cecd704b0491d887d55a619161644f3c64ba99acf8027b9f"
+    },
+    {
+      "file": "Create (BE)/recipes/create/construction/ladder_copper.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.20.10",
+      "to": "1.26.50",
+      "contentSha256": "360cddf99bfc460c998788b9e5be9f4a2dba29465e45ceb2a48337b8d63299db"
+    },
+    {
+      "file": "Create (BE)/recipes/create/construction/mangrove_window_connected.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "38b3f3e22780910e50f43c53bd67db1e6103ae287efd150ba6cfd004a0782233"
+    },
+    {
+      "file": "Create (BE)/recipes/create/construction/oak_window_connected.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "4b3dbb917b8e0bf1d479c35edf33b5c657fd28185c80bf1a10ec8d4fee0add8f"
+    },
+    {
+      "file": "Create (BE)/recipes/create/construction/ornate_iron_window.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "4a5e1e323d2a320e0547ec6152c2552a245b3d605940f84a04e13e0b8acdb29a"
+    },
+    {
+      "file": "Create (BE)/recipes/create/construction/radial_chassis.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "c6ef598dbf24d4f88002e8527e067350a8e9aba297f3bd1a3bfcaa1e84a5ed7e"
+    },
+    {
+      "file": "Create (BE)/recipes/create/construction/rose_quartz_block.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.20.10",
+      "to": "1.26.50",
+      "contentSha256": "dd340f41e01da43208e85fdffa0e0fcc363de6130631468fbca92d20978a8861"
+    },
+    {
+      "file": "Create (BE)/recipes/create/construction/rose_quartz_tiles.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.20.10",
+      "to": "1.26.50",
+      "contentSha256": "043f3d0c05a9a3228cdca67e0d42d850ce7c8b5f003b02c5fb646892305f2206"
+    },
+    {
+      "file": "Create (BE)/recipes/create/construction/small_rose_quartz_tiles.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.20.10",
+      "to": "1.26.50",
+      "contentSha256": "b5ac1609fa7f1a798f2979b8a1b8c49dfe7be4a798be866dfb98de1e69601f4a"
+    },
+    {
+      "file": "Create (BE)/recipes/create/construction/spruce_window_connected.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "2b22e1dce1ae24aab59ffd7d6383735faea89e40ba603d058e65b75ea21f5096"
+    },
+    {
+      "file": "Create (BE)/recipes/create/construction/sticker.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "8645f0a0a7e93c54c49edf8b7bbb15f071e95ee5ec0231eb3d7df1e563ede345"
+    },
+    {
+      "file": "Create (BE)/recipes/create/construction/warped_window_connected.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "dcea8e68b41ea9675cb874d6671132071eb5e0bbafd25af635529b836023131c"
+    },
+    {
+      "file": "Create (BE)/recipes/create/construction/weathered_iron_window.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "0c99536b743796d53669edb6c3ecd02035966aa7140b4fc956bce50b3c55a6f5"
+    },
+    {
+      "file": "Create (BE)/recipes/create/construction/whistle.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "aaa450612b8e922b29efe83701b0364860ed00165815658dd58f89701ba8ca88"
+    },
+    {
+      "file": "Create (BE)/recipes/create/copycat_panel.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "4acf554126ae0de371b7cac31f1e9d9d5318ff76f0acef7bd7201b837d256316"
+    },
+    {
+      "file": "Create (BE)/recipes/create/copycat_step.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "21c0a070915ba4fb426e14793aa2f7589189e369683843f8b420eafb019e0f10"
+    },
+    {
+      "file": "Create (BE)/recipes/create/generators/flywheel.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "96b65acd46a6d3506bf4695d1cc4336adf6f54bf6d5a086219bb7f523dfcdcdd"
+    },
+    {
+      "file": "Create (BE)/recipes/create/generators/furnace_engine.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "e790705b955efe74075386efbfdb668165dab29c8aab845705e95b7cbe84d62b"
+    },
+    {
+      "file": "Create (BE)/recipes/create/generators/hand_crank.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "b881fcce35a81cca8329573fef6d6e65f48223fdf4f5df964023233e122da83e"
+    },
+    {
+      "file": "Create (BE)/recipes/create/generators/large_water_wheel.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "6d99c681f4b9ea112fd12c180855242f21160220fec7e08dc43ae785c1a496b4"
+    },
+    {
+      "file": "Create (BE)/recipes/create/generators/steam_engine.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "a28f77be597ec3d8d5753d78fdde683dd04f499220743d8b0d4eb31e8b50004e"
+    },
+    {
+      "file": "Create (BE)/recipes/create/generators/water_wheel.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "562021b9481585cc7213c3e7ac552b508a3c8d1a87429e2327f58612a15435ac"
+    },
+    {
+      "file": "Create (BE)/recipes/create/machines/andesite_funnel.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "00bf57df4151b4771193769afc4f489ffde9818b12fa575af55daf478c510c5f"
+    },
+    {
+      "file": "Create (BE)/recipes/create/machines/andesite_tunnel.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "a1c8b3c14cd9aee331d387ff98f3c24279dc7fbdfc7f565ada41569329a91343"
+    },
+    {
+      "file": "Create (BE)/recipes/create/machines/basin.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "38db62920b86619a2e5564de85bc5319b2cce8f57aa4160744fb601f805082eb"
+    },
+    {
+      "file": "Create (BE)/recipes/create/machines/black_windmill_sail.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "e2c3433e5c2a9f6b77523b9f0a71daef1bad3470b9fa83893193c7f124b330ea"
+    },
+    {
+      "file": "Create (BE)/recipes/create/machines/blue_windmill_sail.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "ecbb5b0883f8ed0272ff7aa096f1e3a6337da71f04cb44b772cbacbfe00529c3"
+    },
+    {
+      "file": "Create (BE)/recipes/create/machines/brass_funnel.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "b1c2b45e8b6fc2721aa1f427616ece84bfb4b84f856e1693d5ce7e736e80a1bc"
+    },
+    {
+      "file": "Create (BE)/recipes/create/machines/brass_tunnel.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "271c55f3a0a20c55aecddb85fa9794b5f9c970c407398072257e60184ec660cd"
+    },
+    {
+      "file": "Create (BE)/recipes/create/machines/brown_windmill_sail.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "2dab4767adfade6f861acc89e7a541a08537828a9084482ede9b9f8b5431725a"
+    },
+    {
+      "file": "Create (BE)/recipes/create/machines/cart_assembler.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "aae9e2cba7d47768db6ad074815c09f815a1908c8c0fde87aa6de88e37d9d1cf"
+    },
+    {
+      "file": "Create (BE)/recipes/create/machines/chute.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "a9d5f8e1a7e36f70c6e7f42c752117b6f0dba2747a3e32020ad167fbe25ce443"
+    },
+    {
+      "file": "Create (BE)/recipes/create/machines/chute_smart.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "2a79ee471c8300dfae5b277db56d70c092bcfaaa898226452d84f39573111ec0"
+    },
+    {
+      "file": "Create (BE)/recipes/create/machines/cyan_windmill_sail.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "d25dcc1f93e91e4a02137f466aefa6c083469cdf4fb1b8b730a4a6e996dd0083"
+    },
+    {
+      "file": "Create (BE)/recipes/create/machines/deployer.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "c1ee2b3c100c1687c507f52becc23eb88d14686aaf56a018c6eebb4e499abef2"
+    },
+    {
+      "file": "Create (BE)/recipes/create/machines/depot.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "5e9db709ed1ec7ab79af92a0964b28b25826efc1f8b7b4924392795980e40204"
+    },
+    {
+      "file": "Create (BE)/recipes/create/machines/empty_blaze_burner.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "0789fcb9e102e80a929ad1ccb1cf4ef5ce2540acc02675dd997d4c0060c75ae2"
+    },
+    {
+      "file": "Create (BE)/recipes/create/machines/encased_fan.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "8ef26cd6f04a0f0140fac080236e0f86dcc6063b21c1cbae426562bf6beaa010"
+    },
+    {
+      "file": "Create (BE)/recipes/create/machines/gray_windmill_sail.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "9acfb25e31f82ac2ffea28eebeb2c0db3e86d4e200905ba667c3302ce48b00fa"
+    },
+    {
+      "file": "Create (BE)/recipes/create/machines/green_windmill_sail.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "bd0b1b9d25cc636bfe39c05bebccce5dc15840f33adfcc7a731457a436163897"
+    },
+    {
+      "file": "Create (BE)/recipes/create/machines/hatch.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "16929edb0ba8a16e2767a46a6313b578e4e16c6091403dc3bab3817c1f38d307"
+    },
+    {
+      "file": "Create (BE)/recipes/create/machines/item_drain.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "fe14a39a7ae492042c775875f3e82c265ba2d3edbb4d2bdadae26175186261e0"
+    },
+    {
+      "file": "Create (BE)/recipes/create/machines/light_blue_windmill_sail.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "43405eb5a798f0c82cb5e3099dd4095a6d405fdb8ee447421eb14fae8c7d8dde"
+    },
+    {
+      "file": "Create (BE)/recipes/create/machines/light_gray_windmill_sail.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "75025bcf7cc7f159c7c7d4eee160216f990a126874bcc7b20dc15eee247ab38c"
+    },
+    {
+      "file": "Create (BE)/recipes/create/machines/lime_windmill_sail.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "d147b8e258c80312c47670136dfb985ae98000a6e54f5f7a0c6d524890317cbd"
+    },
+    {
+      "file": "Create (BE)/recipes/create/machines/magenta_windmill_sail.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "b5f0a33708a71115821da2efe534fc7b89f50ac01beff8ce1edbfedb74f7c98b"
+    },
+    {
+      "file": "Create (BE)/recipes/create/machines/mechanical_arm.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "ba298fb7750721488d1d4f7383a72299e0ddb0b4a65150b0dd3ef918ef1e67ca"
+    },
+    {
+      "file": "Create (BE)/recipes/create/machines/mechanical_bearing.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "5a39bfa5117d2dd53e5a8517c72f2561c323476e920a1ce281cb2f30cfce6901"
+    },
+    {
+      "file": "Create (BE)/recipes/create/machines/mechanical_crafter.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "fef62db7a30b9fb3142bdbd23a17d1ed05c575f69ad6ad760adf59de9bc0213a"
+    },
+    {
+      "file": "Create (BE)/recipes/create/machines/mechanical_drill.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "a78518c6566703c6352a101c6c48e1a09622d89357bfd15792a99e89b8ee0ad0"
+    },
+    {
+      "file": "Create (BE)/recipes/create/machines/mechanical_harvester.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "b92488f6d82553c7f6fe69265ec3b7e59c494abb1ec14f449bbafb3fdde27a36"
+    },
+    {
+      "file": "Create (BE)/recipes/create/machines/mechanical_mixer.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "9c087ddb79024c01ad37c6ed2cd0f1c704c8ca1e5b0c4155c752509a0355fae1"
+    },
+    {
+      "file": "Create (BE)/recipes/create/machines/mechanical_press.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "493f73be25f3ea608a3f88ccc39163fdb835654f8e6442a398f7512fd545b7c3"
+    },
+    {
+      "file": "Create (BE)/recipes/create/machines/mechanical_pump.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "aca88a7f8108c4a353dab1aaa9f10921b85a7bb8d0720e3585149193e99fa8e0"
+    },
+    {
+      "file": "Create (BE)/recipes/create/machines/mechanical_saw.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "af72d0a74002d0a501d8bea7ff75881ae731b4f72bb2e07ef3cbc8fef70a907b"
+    },
+    {
+      "file": "Create (BE)/recipes/create/machines/millstone.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "d9771bb94e280abaedc5817011e92c835bffc0f437e1776c48c94c1b38f77f80"
+    },
+    {
+      "file": "Create (BE)/recipes/create/machines/nozzle.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "52ff54da4183d19a789bc8f511950352051cc695f320f5ccc637b6abc84519c7"
+    },
+    {
+      "file": "Create (BE)/recipes/create/machines/orange_windmill_sail.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "d4a0f20ae48412af0c5b5ae050839f7265e8bd837ae780808b2203bd33f0e97e"
+    },
+    {
+      "file": "Create (BE)/recipes/create/machines/pink_windmill_sail.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "38581a89c2ee68e66c6d021282742b65aff914e566c8efb6ea67c1398f074ed9"
+    },
+    {
+      "file": "Create (BE)/recipes/create/machines/pipe.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "5cb1febacca7ecdbb86c1ab9136c7587447f914e08977a8d7e15b161f9bd40c9"
+    },
+    {
+      "file": "Create (BE)/recipes/create/machines/portable_storage_interface.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "16038a1a10d93387e4ba88e7f990e1f845f37d2125b7d0ed9003be874fff6174"
+    },
+    {
+      "file": "Create (BE)/recipes/create/machines/purple_windmill_sail.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "62287e3a5ffd4f09be88a99b281d645df6acf8748f45a609aeaed5557fab4b05"
+    },
+    {
+      "file": "Create (BE)/recipes/create/machines/red_windmill_sail.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "4c7c6e94923d6567184e41fe1b80dbcbfeb7efd566f6e1722ee38a10722713ee"
+    },
+    {
+      "file": "Create (BE)/recipes/create/machines/smart_fluid_pipe.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "4e065ed4c93069abab80d3f96c731277bba9de4c782721f36e7704fbd5e72627"
+    },
+    {
+      "file": "Create (BE)/recipes/create/machines/smart_observer.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "3708aa77c91fc5bb17da6a2885ec3526328c5cd721a350f064bbfa45c636fc53"
+    },
+    {
+      "file": "Create (BE)/recipes/create/machines/spout.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "9f438cd6136a79a10f7fe88c16aeaaf420919b0dbf1f3a5efe42e8f417a2164c"
+    },
+    {
+      "file": "Create (BE)/recipes/create/machines/vault.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "4efccc4ea1c5ff2b285cf8883a7626ed600f5336b7b8a93f644b7c8cadbc5c30"
+    },
+    {
+      "file": "Create (BE)/recipes/create/machines/weighted_ejector.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "fd08b4869a2e61aed272f54b9fdd8d5e13d9dd6d7b71b1087d418f14f9e56726"
+    },
+    {
+      "file": "Create (BE)/recipes/create/machines/windmill_bearing.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "bf3365458b8185ba45488245158e0165197031a8a342e3554a88c91a00d2ffc4"
+    },
+    {
+      "file": "Create (BE)/recipes/create/machines/windmill_sail.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "80da52ab0365dcbb518bb613c58f7cddfdf5de3f50cd7d26f84f970ee575c91b"
+    },
+    {
+      "file": "Create (BE)/recipes/create/machines/yellow_windmill_sail.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "909dd99080943052a568fb33a589bc10c1ff35856a76b0698a05a14d4663af0a"
+    },
+    {
+      "file": "Create (BE)/recipes/create/materials/andesite_alloy.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "dcafdfa4d9aaa55360de04097b08775f7b1dbe4202430d9f9938c6ace5cc65a4"
+    },
+    {
+      "file": "Create (BE)/recipes/create/materials/andesite_alloy_zinc.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "be29a8b3f23f5091cfb6e1d262538504881d8d6c4eafee2ef733951c5467b43b"
+    },
+    {
+      "file": "Create (BE)/recipes/create/materials/brass_block.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "26c7edac373e7311992857b568157367a5533c07c9e91aa0fc6ece3f74db50f6"
+    },
+    {
+      "file": "Create (BE)/recipes/create/materials/brass_ingot_from_block.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "eab7503bb4a217c0aeb93fd5784ed363da334de52a16a48f6c78debb811b5d2c"
+    },
+    {
+      "file": "Create (BE)/recipes/create/materials/brass_ingot_from_nuggets.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "54d4441a91356edf23181fc702725f023986be0a5b37abf814ab8dcb5d390697"
+    },
+    {
+      "file": "Create (BE)/recipes/create/materials/brass_nugget_from_ingot.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "0b61982563a641c941c357660adedc90d87ba17b2c3cd412d0a5edf84637d75a"
+    },
+    {
+      "file": "Create (BE)/recipes/create/materials/bread_from_dough.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.20.10",
+      "to": "1.26.50",
+      "contentSha256": "f43f1a206d8852d39359144c5ce5ffa19b64c6e8ad69786f18698a1adcf3578d"
+    },
+    {
+      "file": "Create (BE)/recipes/create/materials/cake_from_dough.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "23f37f4166799bc583575144d4527a8e699e729d3eca8bf89e4f231dacbec43d"
+    },
+    {
+      "file": "Create (BE)/recipes/create/materials/crushed_raw_copper_smelt.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.20.10",
+      "to": "1.26.50",
+      "contentSha256": "ec6f4b16027334c96dd762c192ebf2dd94729ce173259cdc3f3aa119668857ba"
+    },
+    {
+      "file": "Create (BE)/recipes/create/materials/crushed_raw_gold_smelt.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.20.10",
+      "to": "1.26.50",
+      "contentSha256": "e4a99b23516a26ba9c03515f539eff53119997dd79c37a877e43aabd09d18b6c"
+    },
+    {
+      "file": "Create (BE)/recipes/create/materials/crushed_raw_iron_smelt.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.20.10",
+      "to": "1.26.50",
+      "contentSha256": "eb1df10a60df3c0b831d33f19ee90b3b18890892c6332d383742f98500dbff69"
+    },
+    {
+      "file": "Create (BE)/recipes/create/materials/crushed_raw_zinc_smelt.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.20.10",
+      "to": "1.26.50",
+      "contentSha256": "6e392bbb701eb5651e688e091b4cd450a12191abf098f263a48a7477bb5b2876"
+    },
+    {
+      "file": "Create (BE)/recipes/create/materials/experience_block.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12.0",
+      "to": "1.26.50",
+      "contentSha256": "f425b028d184e4475dcc8f2a3094ccb6887c9cc0e9e03283cc9a1de13d61178f"
+    },
+    {
+      "file": "Create (BE)/recipes/create/materials/experience_nugget_from_block.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12.0",
+      "to": "1.26.50",
+      "contentSha256": "eb382c69eaaf4a067847c4a49cdba2dbc6f79a960e246944bdda727a618ed94f"
+    },
+    {
+      "file": "Create (BE)/recipes/create/materials/raw_zinc_smelt.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.20.10",
+      "to": "1.26.50",
+      "contentSha256": "86319d82d2146ec1b0ac52688d57a26bf62c5f4cac2536460685104fecb67ecc"
+    },
+    {
+      "file": "Create (BE)/recipes/create/materials/rose_quartz.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "b5ca438eeeda9045b9780c6f55d02f67b1d040823f8e0ba33ea2510e9d2468bd"
+    },
+    {
+      "file": "Create (BE)/recipes/create/materials/slime_ball_from_dough.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "570ffcba8137f19967e6bdfb1bbe58970c20c10b524d377f42ca755bede9b462"
+    },
+    {
+      "file": "Create (BE)/recipes/create/materials/zinc_block.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "ea74669f97bf3d836bfd6b392112e9eccd100120b8f6330bea948fd16ad53ff1"
+    },
+    {
+      "file": "Create (BE)/recipes/create/materials/zinc_ingot_from_block.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "9d4d820f34818ed3c7e2f6bf8d053c91ec0f2d2f24b3b7873aa4a6e8ce63721b"
+    },
+    {
+      "file": "Create (BE)/recipes/create/materials/zinc_ingot_from_nuggets.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "c337a748a5f5a9351129d0c9e362a630898292831a98af5c63b0bc8b291d4367"
+    },
+    {
+      "file": "Create (BE)/recipes/create/materials/zinc_nugget_from_ingot.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "50ac65b690ba8253893cfa02630ac70333224de2bcc24b3e4def53ec9d2a8aa6"
+    },
+    {
+      "file": "Create (BE)/recipes/create/metal_girder.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "6682e20a1378732d6f9f5a6c2c67af796b6091cd22573ee9c8c23373b99b1d91"
+    },
+    {
+      "file": "Create (BE)/recipes/create/raw_zinc_smelt.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.20.10",
+      "to": "1.26.50",
+      "contentSha256": "c1ddfd5b5f3e753829f7ceae6ce49f8d047963d672697a87b8bd78e332da8701"
+    },
+    {
+      "file": "Create (BE)/recipes/create/seats/black_seat.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "9e7fae7b29e4cb7eb12bf947a6b65bd5d258602c777b4d7dadd279ea894bfd7f"
+    },
+    {
+      "file": "Create (BE)/recipes/create/seats/blue_seat.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "427becff80bd162c573ed292714a5dcd766ac40bf4d5b5948295134518e21fc0"
+    },
+    {
+      "file": "Create (BE)/recipes/create/seats/brown_seat.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "015db58681780a1be6af5402434b0fcffdbcc3dc210419c8c3f681528c73def7"
+    },
+    {
+      "file": "Create (BE)/recipes/create/seats/cyan_seat.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "f5e2335fbe66bd085dde02a987ad6c805b7dc5bc6db32148f3238784c22ca38b"
+    },
+    {
+      "file": "Create (BE)/recipes/create/seats/gray_seat.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "55800a2808d320190e73e7e568cd5be550dae77855af3fcbef9104007450f084"
+    },
+    {
+      "file": "Create (BE)/recipes/create/seats/green_seat.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "cc7f6c0b378b1ca6820049ec4c60f089162821dbf6bf5a6cd36d88ee59e96406"
+    },
+    {
+      "file": "Create (BE)/recipes/create/seats/light_blue_seat.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "9a7ca65adaffb853f55350bbd37e7a45ab679e440e9462bb5709db5c5bcb8999"
+    },
+    {
+      "file": "Create (BE)/recipes/create/seats/light_gray_seat.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "fe00de7b54d0f08bbd32bc3bc2dd095262b697acec312e880d2344cfaa4e8a71"
+    },
+    {
+      "file": "Create (BE)/recipes/create/seats/lime_seat.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "14afb4b857e8a19a383c28e0734062e96c3413cd49487db8ce1be42c3108cf9d"
+    },
+    {
+      "file": "Create (BE)/recipes/create/seats/magenta_seat.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "e9320fd0de6d847c36b6bf1a2c7240ecadd48ff31ca3098d5aca925fe4393093"
+    },
+    {
+      "file": "Create (BE)/recipes/create/seats/orange_seat.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "cd7bc0e29ff02555a3f45188e597034bfa4d163ccec23a05c87ef7daadf6d009"
+    },
+    {
+      "file": "Create (BE)/recipes/create/seats/pink_seat.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "b5316addf446ad6948824c58dff195a3e24fbd0db99d42d288926b595929c38d"
+    },
+    {
+      "file": "Create (BE)/recipes/create/seats/purple_seat.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "0d1ee82c062f00e0043350000b30449c4c1e4a645904f7ca27bdded45bfd962f"
+    },
+    {
+      "file": "Create (BE)/recipes/create/seats/red_seat.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "316ed2ee34b81193443e3fe508b8ae5101ea17bd072cfca87ed815f6fc1584e9"
+    },
+    {
+      "file": "Create (BE)/recipes/create/seats/white_seat.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "b7bde04b4f721ae6db61d02170e55c22befe3c0b48a8b9dbeeba2e8edb199020"
+    },
+    {
+      "file": "Create (BE)/recipes/create/seats/yellow_seat.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "59f02de031c69dded9c26f9696eebc376035c60db9174ba971cc918944289f09"
+    },
+    {
+      "file": "Create (BE)/recipes/create/stone_blocks/asurine.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "f6a537650d8a76460673e5bc35552d9dbcba23947517f64c06af8be9294c47b1"
+    },
+    {
+      "file": "Create (BE)/recipes/create/stone_blocks/crimsite.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "924a9af22610ac0eac076a6ef8a47a9d0e412e55707da6d55dbed4f2fbeefdff"
+    },
+    {
+      "file": "Create (BE)/recipes/create/stone_blocks/cut_andesite.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "9c01bc8165a7c09632e84829b01bcaed521922718f35005f5dd7028d42e9c1ae"
+    },
+    {
+      "file": "Create (BE)/recipes/create/stone_blocks/cut_andesite_bricks.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "77cd4658cb3d387a0085a1a848e6cf48908f4d57bf03c8504f3b7e31661bdc8d"
+    },
+    {
+      "file": "Create (BE)/recipes/create/stone_blocks/cut_andesite_bricks_slab.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "77ceef78c8e59ab439fa8348fc190165d1d3d7119728f1f66bdd290b1c783920"
+    },
+    {
+      "file": "Create (BE)/recipes/create/stone_blocks/cut_andesite_bricks_stairs.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "c750b049b8c8dc4ef1a26ae4a6e7b72702a163cc3e17c30989906ba0af5ac57b"
+    },
+    {
+      "file": "Create (BE)/recipes/create/stone_blocks/cut_andesite_pillar.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "0e9c15db672c5d17076c7cd240935ca5e5f950a3607342e812d5558446de4bc7"
+    },
+    {
+      "file": "Create (BE)/recipes/create/stone_blocks/cut_andesite_slab.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "e6a7f28c3dc195de6bcca4e428935024ca003365d42e5d70cd3df4182e1e2126"
+    },
+    {
+      "file": "Create (BE)/recipes/create/stone_blocks/cut_andesite_stairs.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "b05ef598656262d9dc6952bedc88cb67ee154bb28d4bcf24b2045a7371cc2f91"
+    },
+    {
+      "file": "Create (BE)/recipes/create/stone_blocks/cut_asurine.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "06449254a22cf53457c560d6a89dc3a0ad33228dcf8e3a9176bd8e415afb87cb"
+    },
+    {
+      "file": "Create (BE)/recipes/create/stone_blocks/cut_asurine_bricks.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "919e374f237e017b5d6e0838801251652a9a2a0cd00e91c70f6cd2f7b4a51815"
+    },
+    {
+      "file": "Create (BE)/recipes/create/stone_blocks/cut_asurine_bricks_slab.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "3ae938c8883414391c9e1ca44434e173cd2492ed62a2f555e342ad12417f70bd"
+    },
+    {
+      "file": "Create (BE)/recipes/create/stone_blocks/cut_asurine_bricks_stairs.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "db7a8dd50e8e9eb47e4a9aca544a978d3cd52e3d4cd4d13306105ae35e4a3bf7"
+    },
+    {
+      "file": "Create (BE)/recipes/create/stone_blocks/cut_asurine_pillar.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "a11259865e254386cd7786ddb544105feab6fe99ae9ae44f4be00972700fcfe0"
+    },
+    {
+      "file": "Create (BE)/recipes/create/stone_blocks/cut_asurine_slab.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "1e39c5a0e687732a32754ff7c251d6dca78a0edabb2f7ff1be68ed213450b0d4"
+    },
+    {
+      "file": "Create (BE)/recipes/create/stone_blocks/cut_asurine_stairs.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "0154d458b063e709946243e0b638d66b3c47bcaf1c66c433f16773e69e4e2692"
+    },
+    {
+      "file": "Create (BE)/recipes/create/stone_blocks/cut_calcite.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "398d7825062cf7323fc4a37d223bdaa7f3d6f2412f03559f723e7abce1fceb0c"
+    },
+    {
+      "file": "Create (BE)/recipes/create/stone_blocks/cut_calcite_bricks.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "766ac4fa17c987daf7e84d0fda5def324a46d590695588857e1b8ef636c27111"
+    },
+    {
+      "file": "Create (BE)/recipes/create/stone_blocks/cut_calcite_bricks_slab.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "28243ec940bb7fa3be51ecaf7b30d791b452c630028d7f0aef971d194e2a25b9"
+    },
+    {
+      "file": "Create (BE)/recipes/create/stone_blocks/cut_calcite_bricks_stairs.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "5010e8125543bbb2e1a5b53c0720cae6324ae705b76876405b6d56b85e8d0d36"
+    },
+    {
+      "file": "Create (BE)/recipes/create/stone_blocks/cut_calcite_pillar.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "5e92bb30afef330059b17c66db5396b57db1169c159659117bcfc520aa6a35d9"
+    },
+    {
+      "file": "Create (BE)/recipes/create/stone_blocks/cut_calcite_slab.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "1eb0f9361ebde5b9b4c804d970a8f91fcf67b3cc172c6e0c973e597c4ec8fb1c"
+    },
+    {
+      "file": "Create (BE)/recipes/create/stone_blocks/cut_calcite_stairs.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "3d0492cf9ac113e9511c3d181220f6c3d6389be91187e1268588b8d9490db9a6"
+    },
+    {
+      "file": "Create (BE)/recipes/create/stone_blocks/cut_crimsite.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "4b94fb8ec69858608684749c12b9db39361c61e704bd10e52e4d50b961ba7904"
+    },
+    {
+      "file": "Create (BE)/recipes/create/stone_blocks/cut_crimsite_bricks.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "c3c3f6dd9e81e66f4a21f1bde2a41b941f16c846f370e0102e38227fb72f1b97"
+    },
+    {
+      "file": "Create (BE)/recipes/create/stone_blocks/cut_crimsite_bricks_slab.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "9f48f059b2758cf5015237b209914d1336e622670ebe846b448fa3c24ce728e9"
+    },
+    {
+      "file": "Create (BE)/recipes/create/stone_blocks/cut_crimsite_bricks_stairs.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "b0060d9c50345c82d7a4d77603f8785b348d719e2a39747cf21d1b19f9f978de"
+    },
+    {
+      "file": "Create (BE)/recipes/create/stone_blocks/cut_crimsite_pillar.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "c65b6ae7f1b85e99a461703700b5d80915ca51013cb5f62eb66b395e8001caf9"
+    },
+    {
+      "file": "Create (BE)/recipes/create/stone_blocks/cut_crimsite_slab.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "64ac178155942593b91f425fe0a149549ab0a5be906cc34d80ff01e0fa4cbfcf"
+    },
+    {
+      "file": "Create (BE)/recipes/create/stone_blocks/cut_crimsite_stairs.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "53818d71dedbf70efd646f9f4e4a15cb116b9400112672f3a2e1ef5ea784ca1d"
+    },
+    {
+      "file": "Create (BE)/recipes/create/stone_blocks/cut_deepslate.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "1ae3204f0d83b36851dd8354a9bb672014df86ac1492ce7e81691676450e24dd"
+    },
+    {
+      "file": "Create (BE)/recipes/create/stone_blocks/cut_deepslate_bricks.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "3ef68597f239f4c204a9b008d7faeee4e71cc521f1df54ca1fbb987ff470aedc"
+    },
+    {
+      "file": "Create (BE)/recipes/create/stone_blocks/cut_deepslate_bricks_slab.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "590d91d911444b28a7e5f2ee95506e1a9e8751686ccd92315f817a7ca4f1beda"
+    },
+    {
+      "file": "Create (BE)/recipes/create/stone_blocks/cut_deepslate_bricks_stairs.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "0336555a68651ac6f4f70049e70491103f74f91340158af562dab24024d2ec87"
+    },
+    {
+      "file": "Create (BE)/recipes/create/stone_blocks/cut_deepslate_pillar.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "77ee02865ec72119a30a7308292bba6f75ae5e912b860925d8b0eef6cffebce9"
+    },
+    {
+      "file": "Create (BE)/recipes/create/stone_blocks/cut_deepslate_slab.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "5cfe8aa80e528e28e57200aa3f849ed2c96a1c2ebbfe2e4c74721f0da7947db2"
+    },
+    {
+      "file": "Create (BE)/recipes/create/stone_blocks/cut_deepslate_stairs.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "9ecaae33a92672d022f300b6dffd0dc95055138200c4a568ba727c3c5e94bbe7"
+    },
+    {
+      "file": "Create (BE)/recipes/create/stone_blocks/cut_diorite.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "d4c8bbebadda3c85b2ae3aae6fdaf675053bab3a50475895da52f69b1a30d1e0"
+    },
+    {
+      "file": "Create (BE)/recipes/create/stone_blocks/cut_diorite_bricks.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "ebc9dfe1c9ef738194989500f1fce67b6674034018329c4006f69b4087e9ee7c"
+    },
+    {
+      "file": "Create (BE)/recipes/create/stone_blocks/cut_diorite_bricks_slab.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "e5894ac528e977ba0c03898269993c3cbdaf73e196d4a74f8368335321bcbe39"
+    },
+    {
+      "file": "Create (BE)/recipes/create/stone_blocks/cut_diorite_bricks_stairs.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "ebac11790fd0e32e1d18b6cea91adfc937b71b61e40aa08b057d22dc70597a97"
+    },
+    {
+      "file": "Create (BE)/recipes/create/stone_blocks/cut_diorite_pillar.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "0139526d300b2c75e492c8db7d5d7a8f1536d4c4555db9d07940c4f3ef1df9d8"
+    },
+    {
+      "file": "Create (BE)/recipes/create/stone_blocks/cut_diorite_slab.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "72d1192c3f49a36371d9bae3e5b9c0c8702d0eeb283d7a254a4dffac66693ada"
+    },
+    {
+      "file": "Create (BE)/recipes/create/stone_blocks/cut_diorite_stairs.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "1c83431ed3423e194e3680fb33239191dc19af186c437b65b44f86c52ee0c35f"
+    },
+    {
+      "file": "Create (BE)/recipes/create/stone_blocks/cut_dripstone.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "6f392d0c64a66eb1ac5d8a10fcbef812943391ebbf13662f5155c092486fcbde"
+    },
+    {
+      "file": "Create (BE)/recipes/create/stone_blocks/cut_dripstone_bricks.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "840e6c000dd035071cd9e1a819309f3f1de3287d92d31a328a3b826d77967d10"
+    },
+    {
+      "file": "Create (BE)/recipes/create/stone_blocks/cut_dripstone_bricks_slab.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "1019c2fd831055b128a957be92b6d9d097f7c3a0a716e7a671121cf86d671ff0"
+    },
+    {
+      "file": "Create (BE)/recipes/create/stone_blocks/cut_dripstone_bricks_stairs.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "7c8639bd86e6b5d52be1312b3055dcd040a8d75903ffc6198778fa16ec6339d0"
+    },
+    {
+      "file": "Create (BE)/recipes/create/stone_blocks/cut_dripstone_pillar.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "a2958fb69799b0127899b55e8ec33c4cea1604e8570490f6564bbaec0623ab70"
+    },
+    {
+      "file": "Create (BE)/recipes/create/stone_blocks/cut_dripstone_slab.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "c817877ba1284822028ea6061805327b908faf06c623ea233c4fc5d548794f9b"
+    },
+    {
+      "file": "Create (BE)/recipes/create/stone_blocks/cut_dripstone_stairs.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "b840e3298cdcedb98c3cd8fd1d30e1d29524519aa6eb129f8b51a54640d9a278"
+    },
+    {
+      "file": "Create (BE)/recipes/create/stone_blocks/cut_granite.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "988ca0a8b0d527c279483177f94f0dcef1018b93bb1b645cafee0c13b32686d3"
+    },
+    {
+      "file": "Create (BE)/recipes/create/stone_blocks/cut_granite_bricks.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "d154df48055e4d963e6143935e4d54bee6cfc076593ee1961c05cbbd57aeb421"
+    },
+    {
+      "file": "Create (BE)/recipes/create/stone_blocks/cut_granite_bricks_slab.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "184ae482904b7fcc4a333fbbdf7b2fd09ed0a56d486eb8560d3c46b6834b58dd"
+    },
+    {
+      "file": "Create (BE)/recipes/create/stone_blocks/cut_granite_bricks_stairs.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "d1aa1f1bb44902e0af5b72f5a8f554b83466dd1bd8a24f0ce75623ddb798581b"
+    },
+    {
+      "file": "Create (BE)/recipes/create/stone_blocks/cut_granite_pillar.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "17316c8bc0f476d0d2ce8cf2655e57ab97ba2d8f62c1a56836b3dc1443b2b127"
+    },
+    {
+      "file": "Create (BE)/recipes/create/stone_blocks/cut_granite_slab.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "07d24f756b0a43fc997bf4092c78ae3af0a8160cac4a7113b8fcfe826900645e"
+    },
+    {
+      "file": "Create (BE)/recipes/create/stone_blocks/cut_granite_stairs.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "f7f277886654593ff6f4ae71727ea052b1410cec3a018394e1cd6a5944c04201"
+    },
+    {
+      "file": "Create (BE)/recipes/create/stone_blocks/cut_limestone.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "bf220e5d6e5cff083b5cf248dabeba3d3f4eb7318255102fe67809f905b0c363"
+    },
+    {
+      "file": "Create (BE)/recipes/create/stone_blocks/cut_limestone_bricks.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "a62da713bd1679e0afeaa1e608bdcb460e8f789a291c38900b13a670077e4fb2"
+    },
+    {
+      "file": "Create (BE)/recipes/create/stone_blocks/cut_limestone_bricks_slab.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "498e59a497ac2894b19ba5a6839ba7de4cfaba5592e4de9a9411f5672988a7a5"
+    },
+    {
+      "file": "Create (BE)/recipes/create/stone_blocks/cut_limestone_bricks_stairs.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "950d7657e9706ce62986abca5a30da9743f07e69080be06f12c2e83253191384"
+    },
+    {
+      "file": "Create (BE)/recipes/create/stone_blocks/cut_limestone_pillar.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "76d0abfb65a92ae9819cecd71061ab33d72b40135b75f5f2ad9fc8b9c9c4eb41"
+    },
+    {
+      "file": "Create (BE)/recipes/create/stone_blocks/cut_limestone_slab.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "795a17126d21886fc20fe7a47a94f8beee3bf37f9081e032a4c956d065526bfb"
+    },
+    {
+      "file": "Create (BE)/recipes/create/stone_blocks/cut_limestone_stairs.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "33b14ab6047ea3e6b55fac5fd8465c26c38830634dfa0a3697e5649296eefb32"
+    },
+    {
+      "file": "Create (BE)/recipes/create/stone_blocks/cut_ochrum.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "0b4a76948a8000931bdf42e53d9c9fdf9f4b18bf7fc3f548ad0b011b1294c0dd"
+    },
+    {
+      "file": "Create (BE)/recipes/create/stone_blocks/cut_ochrum_bricks.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "34492e08fe794ff923b644b306024e25951c7a0c6bead55dec8e48853a1325bb"
+    },
+    {
+      "file": "Create (BE)/recipes/create/stone_blocks/cut_ochrum_bricks_slab.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "24d02151635f94c649ba41b9ae33cfd11c650a6876a81419115fe386f24a9dfe"
+    },
+    {
+      "file": "Create (BE)/recipes/create/stone_blocks/cut_ochrum_bricks_stairs.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "1459a75ef10a78b20f32a1162afb779aedc5c4232b21dd4b58f04410703767c8"
+    },
+    {
+      "file": "Create (BE)/recipes/create/stone_blocks/cut_ochrum_pillar.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "ed6bd4c8c6fdef3451fda860ec3960a1ae96b5823e5f8d3f8773a1710b0d88ff"
+    },
+    {
+      "file": "Create (BE)/recipes/create/stone_blocks/cut_ochrum_slab.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "b17b4066b2b64bf6d0390930d3c6cc2a543c6039c3496e32c9740c2d955f0c2b"
+    },
+    {
+      "file": "Create (BE)/recipes/create/stone_blocks/cut_ochrum_stairs.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "493d45e1477cafce2374640fda68308f83562d4e6987c1da36b2d057fbcb8975"
+    },
+    {
+      "file": "Create (BE)/recipes/create/stone_blocks/cut_tuff.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "f82e3153a90a5804aa82723072a337fa0ab6451b7fdaeb35448e178f17b5fdc9"
+    },
+    {
+      "file": "Create (BE)/recipes/create/stone_blocks/cut_tuff_bricks.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "b58b6a276653ad19755964dfa0bcd73551885f3ad89957f401cddd467105acfe"
+    },
+    {
+      "file": "Create (BE)/recipes/create/stone_blocks/cut_tuff_bricks_slab.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "caac9ebeab021052b1c50ef38d2c311819e38d98b6cf378fc03626eea4efcabe"
+    },
+    {
+      "file": "Create (BE)/recipes/create/stone_blocks/cut_tuff_bricks_stairs.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "06633ffe24d198566e080b17569e3ed7df19a24b83b3262e28a24a9460a6b855"
+    },
+    {
+      "file": "Create (BE)/recipes/create/stone_blocks/cut_tuff_pillar.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "18a17e9fe6fb109c8a828f9d7425f69b50890f5349933dbbce66b2d81fbbc958"
+    },
+    {
+      "file": "Create (BE)/recipes/create/stone_blocks/cut_tuff_slab.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "6a8a126fa56a2246ba567b40671a00094469e536f78c5d616f86240fa70b2195"
+    },
+    {
+      "file": "Create (BE)/recipes/create/stone_blocks/cut_tuff_stairs.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "78f302356f8c24d8f6ff759a70278d3e3703853c68c805aca843445a9c418300"
+    },
+    {
+      "file": "Create (BE)/recipes/create/stone_blocks/cut_veridium.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "8fa852450542793062c2685440284589c04a304a045dc24408b7fa38e1a40217"
+    },
+    {
+      "file": "Create (BE)/recipes/create/stone_blocks/cut_veridium_bricks.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "e7800359a81088f2b8e0df6d502029476383a7c4c338e024ea688d5eb3e228ea"
+    },
+    {
+      "file": "Create (BE)/recipes/create/stone_blocks/cut_veridium_bricks_slab.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "f663bd5c866f86ae5a461b106d72aa4f1c30e2c9944881e736b52f9123e740df"
+    },
+    {
+      "file": "Create (BE)/recipes/create/stone_blocks/cut_veridium_bricks_stairs.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "10f3727de04d401127d49a3ae1378eda9bd9c1d379b4d462771798dbde6660f5"
+    },
+    {
+      "file": "Create (BE)/recipes/create/stone_blocks/cut_veridium_pillar.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "ce94a192cc452ab4c918e187e6d69d8aa4a2de382aafd3ff2042ab591719e328"
+    },
+    {
+      "file": "Create (BE)/recipes/create/stone_blocks/cut_veridium_slab.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "e707944ac67d56d90f2bd4621bdc32d59c3a71504af3e95097f48365179ebb2c"
+    },
+    {
+      "file": "Create (BE)/recipes/create/stone_blocks/cut_veridium_stairs.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "df26129eedb58612b8c0efd18e04f7060e4ec845ca2d4de8e6f2e92a8510bf97"
+    },
+    {
+      "file": "Create (BE)/recipes/create/stone_blocks/limestone.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "c5766f745795f410ffbbf09706a05220d7abec83f2d5160fea43e0bf5f3049e6"
+    },
+    {
+      "file": "Create (BE)/recipes/create/stone_blocks/ochrum.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "5b5876843620caa43c40bea8038fd0c31e58ddeb769c2729e94551eb303ac32b"
+    },
+    {
+      "file": "Create (BE)/recipes/create/stone_blocks/polished_cut_andesite.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "d186718c7248613e2c2f7ddf2d672c1d6a0d3e386b61715cbe87d6c6de297691"
+    },
+    {
+      "file": "Create (BE)/recipes/create/stone_blocks/polished_cut_andesite_slab.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "5a21f39a26ac91b463675d3ae190876e8bd39a1fca9c5b6194ea139256916eb4"
+    },
+    {
+      "file": "Create (BE)/recipes/create/stone_blocks/polished_cut_andesite_stairs.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "34435f80e4b10e63d10769a228c42f9bd969fe5fd02bf29a7998d81f14902a2b"
+    },
+    {
+      "file": "Create (BE)/recipes/create/stone_blocks/polished_cut_asurine.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "9c25ae26786e83e42ca90225e76fefaa746bee503ed8a4b9f47808625bd364fe"
+    },
+    {
+      "file": "Create (BE)/recipes/create/stone_blocks/polished_cut_asurine_slab.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "8bdfac70d53f7c982da9dc72258d50f73273cdb37a14c3f4b80a88c70b397649"
+    },
+    {
+      "file": "Create (BE)/recipes/create/stone_blocks/polished_cut_asurine_stairs.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "910b41fda3a0b32e0c20d3fcecf8b9a943b1ff51a7d28c9dab89c4e65c66e84e"
+    },
+    {
+      "file": "Create (BE)/recipes/create/stone_blocks/polished_cut_calcite.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "95d88f04a043052634ce47fbf57bfa1302568d4b4c330e51205d934ef596e9ee"
+    },
+    {
+      "file": "Create (BE)/recipes/create/stone_blocks/polished_cut_calcite_slab.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "41d6c6965aefc59300b23b82a235a2b8160fd8343181e2f5313de597462aaa51"
+    },
+    {
+      "file": "Create (BE)/recipes/create/stone_blocks/polished_cut_calcite_stairs.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "80399bd9cba4cd8e38c15e5f3305da76bacba9cad9108751a897c232d102de1e"
+    },
+    {
+      "file": "Create (BE)/recipes/create/stone_blocks/polished_cut_crimsite.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "e22f7276ad7ff541fd6061a2cc11b114279ef4ecea4a45bcaab294628ac59984"
+    },
+    {
+      "file": "Create (BE)/recipes/create/stone_blocks/polished_cut_crimsite_slab.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "ae1119248410e4836aa98a45c1d9f0f8e239fd27fe6548fc52a372c6383374da"
+    },
+    {
+      "file": "Create (BE)/recipes/create/stone_blocks/polished_cut_crimsite_stairs.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "db790bce07541af0cb05b7ba66f9f21d811d516f63e131d5dca9c579259e0597"
+    },
+    {
+      "file": "Create (BE)/recipes/create/stone_blocks/polished_cut_deepslate.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "48879199ded9a4a6fd74e53a388e7a2ad28e386824abced5fe46a17234929482"
+    },
+    {
+      "file": "Create (BE)/recipes/create/stone_blocks/polished_cut_deepslate_slab.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "505aa0d6ca36b179657011042b37e805e9e25ba79c5fe756482a3fd33dde3f34"
+    },
+    {
+      "file": "Create (BE)/recipes/create/stone_blocks/polished_cut_deepslate_stairs.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "2a13ba7ccb5fac6b58f159689e7c6281f36d6ce9ccffd887629282fb47bee119"
+    },
+    {
+      "file": "Create (BE)/recipes/create/stone_blocks/polished_cut_diorite.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "d475b828f7a9068431a5e213350ee6f3d1a80c7c5cda4772650c2b13fb29fd80"
+    },
+    {
+      "file": "Create (BE)/recipes/create/stone_blocks/polished_cut_diorite_slab.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "5af5e99378e3e072a55e5ab8e79305e3854880a3cfc0c0536fe33afd8d5a0411"
+    },
+    {
+      "file": "Create (BE)/recipes/create/stone_blocks/polished_cut_diorite_stairs.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "3f0ab1e911ad77e6402556af83f1ce31383383be875b844daca4c67c30094eb4"
+    },
+    {
+      "file": "Create (BE)/recipes/create/stone_blocks/polished_cut_dripstone.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "cff26c48d176aed85b15f6f83ec0002b3a10fc4657727810fdf87e30216f85a5"
+    },
+    {
+      "file": "Create (BE)/recipes/create/stone_blocks/polished_cut_dripstone_slab.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "977902e35b86600e2fc1399b09fa0da5181618542864abb1c5d982b1a961fdf1"
+    },
+    {
+      "file": "Create (BE)/recipes/create/stone_blocks/polished_cut_dripstone_stairs.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "7a8249b3d9b38b9563146dd8c09b1db0cba87747b2a0505d7db4fe882af22ae9"
+    },
+    {
+      "file": "Create (BE)/recipes/create/stone_blocks/polished_cut_granite.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "a5e2b91004821b5127655d536358d95ebf59ca3aa744b636eca31ae07c586037"
+    },
+    {
+      "file": "Create (BE)/recipes/create/stone_blocks/polished_cut_granite_slab.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "40830c6d33330e8abe41daaa0f596071a195a384d3760f4039d697b54ffad7b5"
+    },
+    {
+      "file": "Create (BE)/recipes/create/stone_blocks/polished_cut_granite_stairs.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "9615ac69e9f601854522609d68a7ecd1eb3e312b2bf70053294446345e4ba125"
+    },
+    {
+      "file": "Create (BE)/recipes/create/stone_blocks/polished_cut_limestone.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "74c894fb8a4f65961b24d5ba25b257c40c5e7cad8cbf9b096ed0f98be892c133"
+    },
+    {
+      "file": "Create (BE)/recipes/create/stone_blocks/polished_cut_limestone_slab.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "d38eab73c4739387a6855a69a3b250728f8f0dab5cbee3791561dbd4e8e73792"
+    },
+    {
+      "file": "Create (BE)/recipes/create/stone_blocks/polished_cut_limestone_stairs.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "93c16cdccd3a88a537df080d095bebaec75839e1b65f6c86c6631c9dfd00fac7"
+    },
+    {
+      "file": "Create (BE)/recipes/create/stone_blocks/polished_cut_ochrum.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "d40b8417bcbde1ec030c17b2fba22423c35246fb25b5cb70b2a30a9c819b4eb1"
+    },
+    {
+      "file": "Create (BE)/recipes/create/stone_blocks/polished_cut_ochrum_slab.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "8492732407da2a744e2fa15ac80659e3cdf68bd745e02ac5507357c05ad3bfe8"
+    },
+    {
+      "file": "Create (BE)/recipes/create/stone_blocks/polished_cut_ochrum_stairs.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "e1602c97f778c7c116a94b44a1b937fa4f612e26455b885e416ef878ee3b5149"
+    },
+    {
+      "file": "Create (BE)/recipes/create/stone_blocks/polished_cut_tuff.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "5bdb2221105909d4f1875edc30db6268d758448107ff5a794d07fe7e19bfe358"
+    },
+    {
+      "file": "Create (BE)/recipes/create/stone_blocks/polished_cut_tuff_slab.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "8f960cea13c07142c12713e11f8cb811276695d59845772884fea95500259b09"
+    },
+    {
+      "file": "Create (BE)/recipes/create/stone_blocks/polished_cut_tuff_stairs.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "f52c88871ee74907ff5dffe658ba74bce8f60d219bba206f509344112268f2e0"
+    },
+    {
+      "file": "Create (BE)/recipes/create/stone_blocks/polished_cut_veridium.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "6d1f95638be31ae00df2794ba65271bdaefb939cb8709a5cf15278137ed74bf5"
+    },
+    {
+      "file": "Create (BE)/recipes/create/stone_blocks/polished_cut_veridium_slab.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "3cc7d159aa1f34a4f498396666a0f0588fe9869973708471a29651c9995f1388"
+    },
+    {
+      "file": "Create (BE)/recipes/create/stone_blocks/polished_cut_veridium_stairs.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "6a6f736bd89726a02b1665de8a468f0d4786fe356e573fc729070011d5e07ab2"
+    },
+    {
+      "file": "Create (BE)/recipes/create/stone_blocks/small_andesite_bricks.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "bd5956441d8fc26ba4f8465dc0c1f5070258e6dac74dbde02d2bc1f107c2c6e0"
+    },
+    {
+      "file": "Create (BE)/recipes/create/stone_blocks/small_andesite_bricks_slab.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "b32ec66832eb1b71b02407dcf27845e0852f7c15919028f5938817c98e7f4036"
+    },
+    {
+      "file": "Create (BE)/recipes/create/stone_blocks/small_andesite_bricks_stairs.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "c64080d18d09afd5df77612285472f516db1506dd28545cb3e4a4387f9e85cc8"
+    },
+    {
+      "file": "Create (BE)/recipes/create/stone_blocks/small_asurine_bricks.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "09c17796c7bc5968622e875dcfccb7e259f85c43220f2ae6160e0a8f3626f2c4"
+    },
+    {
+      "file": "Create (BE)/recipes/create/stone_blocks/small_asurine_bricks_slab.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "2ae32232fee6955f16e84b353d5d311e74d5b35696e3387c7001f2c94b5826b2"
+    },
+    {
+      "file": "Create (BE)/recipes/create/stone_blocks/small_asurine_bricks_stairs.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "16f3625d2d6b7a750c37d7d244fc43a037c0a715e4a736080e8e52e202e32637"
+    },
+    {
+      "file": "Create (BE)/recipes/create/stone_blocks/small_calcite_bricks.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "b75afd6bdac64635a66f4151fa148076137112cd3801b0c21c03dd9d7aa84c60"
+    },
+    {
+      "file": "Create (BE)/recipes/create/stone_blocks/small_calcite_bricks_slab.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "5115dd30be26e595464fb653d2a67da0bfb114356b715856fc9b51f42bd15682"
+    },
+    {
+      "file": "Create (BE)/recipes/create/stone_blocks/small_calcite_bricks_stairs.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "9f556c5b93369e6a872aee5735a05e694ed4719db12adea9204bc30627588ed7"
+    },
+    {
+      "file": "Create (BE)/recipes/create/stone_blocks/small_crimsite_bricks.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "7bafb0b21e711fe54946ea38e5db8ccd0f4a3e82d35d70aa2535a90fb3b9e68f"
+    },
+    {
+      "file": "Create (BE)/recipes/create/stone_blocks/small_crimsite_bricks_slab.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "ab80b50685f2453c7c4fa2abd94890f86f1155b790b49405c0189e4084f3299c"
+    },
+    {
+      "file": "Create (BE)/recipes/create/stone_blocks/small_crimsite_bricks_stairs.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "5f06e191ca5bd76316da56b170b8232ef5c9514ce7079e7bb8fb216aeb0bdb55"
+    },
+    {
+      "file": "Create (BE)/recipes/create/stone_blocks/small_deepslate_bricks.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "224d4cf2f1f18291eb0a3e85007e55e300fd0f31038a4b292bc0b12a603e286d"
+    },
+    {
+      "file": "Create (BE)/recipes/create/stone_blocks/small_deepslate_bricks_slab.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "72a436bfd5b158bc31e933846ca528b9434d0ef42e5ace4d46b22ceefe92c5e0"
+    },
+    {
+      "file": "Create (BE)/recipes/create/stone_blocks/small_deepslate_bricks_stairs.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "1be7977e21c71e8e6a1ef63d8e4c7364254cd425d28de836fa524276e3dedbe8"
+    },
+    {
+      "file": "Create (BE)/recipes/create/stone_blocks/small_diorite_bricks.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "e6722a0596f11efb02fa0d69e657a34f7fdfd21712d6bcb507b9a3e84284307c"
+    },
+    {
+      "file": "Create (BE)/recipes/create/stone_blocks/small_diorite_bricks_slab.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "382d79f7c90df52f0dc0011d7472bf5d0c975047d2329de2e59d4a790214ca07"
+    },
+    {
+      "file": "Create (BE)/recipes/create/stone_blocks/small_diorite_bricks_stairs.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "761ec6b8a38ead239e93d891527d6d80c0837b21be7afbcf80a97c58271cc5d9"
+    },
+    {
+      "file": "Create (BE)/recipes/create/stone_blocks/small_dripstone_bricks.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "8a74591610990806f3f9fccebb236f644194a2d047b3a95a9a8bf1c5630450e7"
+    },
+    {
+      "file": "Create (BE)/recipes/create/stone_blocks/small_dripstone_bricks_slab.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "dd8045f4467fb926a9d6b17cfc8cde7bd90a86e076148be469b642a62bf81b4d"
+    },
+    {
+      "file": "Create (BE)/recipes/create/stone_blocks/small_dripstone_bricks_stairs.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "c8656db0031aabd44823f7882104518df19657305f1b905d97d71d6e9a5dda18"
+    },
+    {
+      "file": "Create (BE)/recipes/create/stone_blocks/small_granite_bricks.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "31473eb657ea37bec40ddbd39ba23303f0c709218d7cf6dcd9c3d3b4e9b872ac"
+    },
+    {
+      "file": "Create (BE)/recipes/create/stone_blocks/small_granite_bricks_slab.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "a2be31a731612beb611f70375f00057f15849b89015498916cc26ff197c8e0bc"
+    },
+    {
+      "file": "Create (BE)/recipes/create/stone_blocks/small_granite_bricks_stairs.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "d64e4639d0ecdd738ef27a0e22fbfaeceba6f1164d0b1a17637d1934e07056d0"
+    },
+    {
+      "file": "Create (BE)/recipes/create/stone_blocks/small_limestone_bricks.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "c62b6d8e1f3ded143e0ca4e1fbb71bcf400e2e35bfde2805d11edeb514e05024"
+    },
+    {
+      "file": "Create (BE)/recipes/create/stone_blocks/small_limestone_bricks_slab.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "423a0a4a0ce75b3a7ca68b45ead9971fc5d398cd2c473279bb30544db8ab00c9"
+    },
+    {
+      "file": "Create (BE)/recipes/create/stone_blocks/small_limestone_bricks_stairs.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "ed67770ea62179dba665fb5fd3ff5a14aed3c3074213d2e568c272476d57b673"
+    },
+    {
+      "file": "Create (BE)/recipes/create/stone_blocks/small_ochrum_bricks.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "a3fd5910fd2b0f3a22048fe908b1d01751cc04d65b35d610887460cd0f85c599"
+    },
+    {
+      "file": "Create (BE)/recipes/create/stone_blocks/small_ochrum_bricks_slab.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "13beb9c0955713ad5684897b6b3da30491d559bf58a1dc96fae3f452ff19871f"
+    },
+    {
+      "file": "Create (BE)/recipes/create/stone_blocks/small_ochrum_bricks_stairs.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "0feac4f6a95f456d8c7fe2df18af049e0c01bd3e0a2890bff1038c09803beca7"
+    },
+    {
+      "file": "Create (BE)/recipes/create/stone_blocks/small_tuff_bricks.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "da6380f6345d47ca8e5dbd9382ffe4eb76439b4608fa5481d98296fe669d117f"
+    },
+    {
+      "file": "Create (BE)/recipes/create/stone_blocks/small_tuff_bricks_slab.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "886995fecd0ac0b67f2af4ad932d143ed4261935a0bd57289dea8773cdc9cbfb"
+    },
+    {
+      "file": "Create (BE)/recipes/create/stone_blocks/small_tuff_bricks_stairs.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "973489615705d485ac262cc20070aae3fe4df3ac09343e16be36ac6e65b13c6c"
+    },
+    {
+      "file": "Create (BE)/recipes/create/stone_blocks/small_veridium_bricks.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "87c4140377af9123974bf62b8e35a388b34269bdd7217c94e8732f391079f151"
+    },
+    {
+      "file": "Create (BE)/recipes/create/stone_blocks/small_veridium_bricks_slab.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "6f617ce6de0506360d101060fb67152b00f68e591035984114204ac71738e128"
+    },
+    {
+      "file": "Create (BE)/recipes/create/stone_blocks/small_veridium_bricks_stairs.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "0143c686f76f2b4a09de429a1f0a7d3e382349b2311c0b387f4c78291cc6121c"
+    },
+    {
+      "file": "Create (BE)/recipes/create/stone_blocks/veridium.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "24545e6a7191e147a8ce43723a01c0645b5e34fc17a5c244efd8f1e275a9be70"
+    },
+    {
+      "file": "Create (BE)/recipes/create/stonecutter/andesite_bars.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "aed01ffd44639feb4fd420610f520cf85a16cf622aacec3fb0ccc8fa27429a13"
+    },
+    {
+      "file": "Create (BE)/recipes/create/stonecutter/brass_bars.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "c97814fc9b0ac6493ac7ebfb5e80653a4ee6df045bb9a92f8ed18664f572a52d"
+    },
+    {
+      "file": "Create (BE)/recipes/create/stonecutter/copper_bars.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "918c0ec454bf1c51ed7f63f854ecf8388645ddf93071e6c8b24127ac691028b8"
+    },
+    {
+      "file": "Create (BE)/recipes/create/stonecutter/industrial_iron_block.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "00e92fd6413ecd996f3ef8a0e7ea6bdf53cb0a51948ec76f9089afd243bb2428"
+    },
+    {
+      "file": "Create (BE)/recipes/create/stonecutter/stonecutting_cut_andesite.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "57328f884c608d36c14bf6d92f598cf34d5cb7d9c031689aa5009ea09726ce07"
+    },
+    {
+      "file": "Create (BE)/recipes/create/stonecutter/stonecutting_cut_andesite_bricks.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "e42e3fc0fab8f9f0f5a299e8d5c42bca8dde96699647716b661fe16efccc7929"
+    },
+    {
+      "file": "Create (BE)/recipes/create/stonecutter/stonecutting_cut_andesite_bricks_slab.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "cbd30beefa2392e55762d042b1d7954956a5f35753df178d572619bba8088c30"
+    },
+    {
+      "file": "Create (BE)/recipes/create/stonecutter/stonecutting_cut_andesite_bricks_stairs.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "f6c17f04bfefa205730310e8f0a0cd05bce5b8d398fcd91da7f8d5722b25ed55"
+    },
+    {
+      "file": "Create (BE)/recipes/create/stonecutter/stonecutting_cut_andesite_pillar.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "0a299ad377712887787bc487af09f08da1ed1ec77dea3f3f6eea5f67cbd44369"
+    },
+    {
+      "file": "Create (BE)/recipes/create/stonecutter/stonecutting_cut_andesite_slab.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "fbc2b9c79704e8c8e285368c411868f343389fad07f22e06fafa24068f96b490"
+    },
+    {
+      "file": "Create (BE)/recipes/create/stonecutter/stonecutting_cut_andesite_stairs.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "a88da91818c3beff4f3528ae1bce9f535669dd91a6ce8598afa39949b6c33815"
+    },
+    {
+      "file": "Create (BE)/recipes/create/stonecutter/stonecutting_cut_asurine.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "e8f5d895125a6cd003d4dcc98a8a4b0b3014a8cf09b6f7f90f0462e1e6b8cb2c"
+    },
+    {
+      "file": "Create (BE)/recipes/create/stonecutter/stonecutting_cut_asurine_bricks.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "a4b382513d500006d65097ef50f0ee6792fd2155622331324462b56712d17df0"
+    },
+    {
+      "file": "Create (BE)/recipes/create/stonecutter/stonecutting_cut_asurine_bricks_slab.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "97ffb2f5c22468d4fd015397fd5452318560bd40a056469e1df85894e9ad4e68"
+    },
+    {
+      "file": "Create (BE)/recipes/create/stonecutter/stonecutting_cut_asurine_bricks_stairs.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "f37b4ac8a601551bda8478770bd7e8a4787a99842ddae251c17ef1a0891a0d50"
+    },
+    {
+      "file": "Create (BE)/recipes/create/stonecutter/stonecutting_cut_asurine_pillar.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "c0961aafbac280bfe0b1e963f2cefafe80682f3c2b5e9c7d981cd53792bda594"
+    },
+    {
+      "file": "Create (BE)/recipes/create/stonecutter/stonecutting_cut_asurine_slab.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "a03b217de4b5b0a14f513558c4a1656481bba283dae04e18bbda87a39fde3bfc"
+    },
+    {
+      "file": "Create (BE)/recipes/create/stonecutter/stonecutting_cut_asurine_stairs.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "a4d4f8cd662f2c923f93b80082c129e96f060779701ec7dee34e5e393ad96b5e"
+    },
+    {
+      "file": "Create (BE)/recipes/create/stonecutter/stonecutting_cut_calcite.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "e94f67e52a23b64f8a54426ec046ba451d50780d87edb5a4b204d06f345e0b9f"
+    },
+    {
+      "file": "Create (BE)/recipes/create/stonecutter/stonecutting_cut_calcite_bricks.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "5fb4e8948f18d298aaab5f7d26089ba26235462682a897cf52a349f0b8fcc1bd"
+    },
+    {
+      "file": "Create (BE)/recipes/create/stonecutter/stonecutting_cut_calcite_bricks_slab.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "ab2b91ff98b77114382cbc97c0082589afe99fb9c9d8c4b2b0d66163d4178bf0"
+    },
+    {
+      "file": "Create (BE)/recipes/create/stonecutter/stonecutting_cut_calcite_bricks_stairs.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "4f90bcf14420d58bc8f922abd7c9cab00fe9cfd6632dff79d679fa05aa9d2ef7"
+    },
+    {
+      "file": "Create (BE)/recipes/create/stonecutter/stonecutting_cut_calcite_pillar.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "9ff01222a570f02b9b1d016c1a22e51c28a85469c5766828b9aaf9c2bed81cc0"
+    },
+    {
+      "file": "Create (BE)/recipes/create/stonecutter/stonecutting_cut_calcite_slab.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "fb505a5a000c4cc927954400bbb94fdee617cdb34421f9fb296d669e110a42eb"
+    },
+    {
+      "file": "Create (BE)/recipes/create/stonecutter/stonecutting_cut_calcite_stairs.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "a41fb70fba5ebf28a71b4b5f39ec6a13eb4bee13e7d6e826a9120da737853579"
+    },
+    {
+      "file": "Create (BE)/recipes/create/stonecutter/stonecutting_cut_crimsite.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "a5ff1c79ed83b5314347aa3bbd44940b04f0f974f3f2dfafde6e36cecd797fc7"
+    },
+    {
+      "file": "Create (BE)/recipes/create/stonecutter/stonecutting_cut_crimsite_bricks.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "513bbdd9883e23db05b442dcba95f5347efc0374a72ecc29b401350d50be24c2"
+    },
+    {
+      "file": "Create (BE)/recipes/create/stonecutter/stonecutting_cut_crimsite_bricks_slab.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "0f1c84a3f5822f4b75fba418d267df0b218a52d1612ae61a5bab7f83a1e58cc4"
+    },
+    {
+      "file": "Create (BE)/recipes/create/stonecutter/stonecutting_cut_crimsite_bricks_stairs.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "23a7c250283099cadbecf82afe17bcb7fe079e7d23035b312a8aee6b60a55779"
+    },
+    {
+      "file": "Create (BE)/recipes/create/stonecutter/stonecutting_cut_crimsite_pillar.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "b5da97b10f4f9e54d2b3a5f3e0f5530d23741ad2bc736a35034408b2b6d3cdf1"
+    },
+    {
+      "file": "Create (BE)/recipes/create/stonecutter/stonecutting_cut_crimsite_slab.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "a82cb947c529027407e0c41e690ee448a60a5ca4717d5be7cb240eca5b1c0616"
+    },
+    {
+      "file": "Create (BE)/recipes/create/stonecutter/stonecutting_cut_crimsite_stairs.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "321e7a97f3204956a941c766567323e78ae4bcc7df28c7223643d348f16e1dc7"
+    },
+    {
+      "file": "Create (BE)/recipes/create/stonecutter/stonecutting_cut_deepslate.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "7d205d4cc122dcd27b54caf48b26ad11833f75d5ea1b26ec2f891081c1549e66"
+    },
+    {
+      "file": "Create (BE)/recipes/create/stonecutter/stonecutting_cut_deepslate_bricks.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "de70b7861f2ed1c63ba91e447f97c22094912fc2146096bb8fd1c7ee809c26d4"
+    },
+    {
+      "file": "Create (BE)/recipes/create/stonecutter/stonecutting_cut_deepslate_bricks_slab.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "aa385cd59d2b74c379f2ccd9a60d6a0ca945590a9678c6bb569626425a723b16"
+    },
+    {
+      "file": "Create (BE)/recipes/create/stonecutter/stonecutting_cut_deepslate_bricks_stairs.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "5c50e77a5ab51d7c389a6f5e87a347a05bd20994fe03a3eef949ce1b6c50747b"
+    },
+    {
+      "file": "Create (BE)/recipes/create/stonecutter/stonecutting_cut_deepslate_pillar.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "d3bdf033e08362483142fa79f25ad23d1ec72fb04893e829ce3d6505e8784199"
+    },
+    {
+      "file": "Create (BE)/recipes/create/stonecutter/stonecutting_cut_deepslate_slab.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "ade7960045827983f6103f6d8c5e90f76fa17bf92816e645c5209f48285f6e16"
+    },
+    {
+      "file": "Create (BE)/recipes/create/stonecutter/stonecutting_cut_deepslate_stairs.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "cbedf4e6677ec585b161201584bae0e7fde9e74a4cc40ce846699e0b6e444b4c"
+    },
+    {
+      "file": "Create (BE)/recipes/create/stonecutter/stonecutting_cut_diorite.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "1b7f23a20c2755b0d29ae14c94a688032318ade9d77474db69ea67708412f8da"
+    },
+    {
+      "file": "Create (BE)/recipes/create/stonecutter/stonecutting_cut_diorite_bricks.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "8e92bc84bd2e581402239be9165f5ec4ea1ed7dece927f42219e313e86376f44"
+    },
+    {
+      "file": "Create (BE)/recipes/create/stonecutter/stonecutting_cut_diorite_bricks_slab.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "8f43a65f4dc1d8dbee8be5c1b44dd5a64e29faf83dcec4e2a29c92361bb534c6"
+    },
+    {
+      "file": "Create (BE)/recipes/create/stonecutter/stonecutting_cut_diorite_bricks_stairs.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "cbb3cc0b2d0a22560f60e659c82b09d7a618eb8b574216b816d576aeab3f6c4f"
+    },
+    {
+      "file": "Create (BE)/recipes/create/stonecutter/stonecutting_cut_diorite_pillar.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "25f6c9163089e73f97a38bcb68068252a3c997da9830ef4627ddff431b09ce07"
+    },
+    {
+      "file": "Create (BE)/recipes/create/stonecutter/stonecutting_cut_diorite_slab.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "2bcd05a9156565edf4dd77840a9def31097f9f4f505ef9b419dda2b86c526fe8"
+    },
+    {
+      "file": "Create (BE)/recipes/create/stonecutter/stonecutting_cut_diorite_stairs.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "ab7c249c3b441ea10b5d6ab8f2388ff6db74ceca72958a7f902f964a33e0e979"
+    },
+    {
+      "file": "Create (BE)/recipes/create/stonecutter/stonecutting_cut_dripstone.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "85599384645b63d5b6ab70c3cff9b0197c43814308b7936568ba53c9b811a6ab"
+    },
+    {
+      "file": "Create (BE)/recipes/create/stonecutter/stonecutting_cut_dripstone_bricks.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "ba9e9c98ceefc1cfda4560af3387d1275fb85142c15971c912bee4122a28c5c8"
+    },
+    {
+      "file": "Create (BE)/recipes/create/stonecutter/stonecutting_cut_dripstone_bricks_slab.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "951e074656d369aa4c120527464ee39a6ff4cbe8b51f12a9f7134bbf952a3a2b"
+    },
+    {
+      "file": "Create (BE)/recipes/create/stonecutter/stonecutting_cut_dripstone_bricks_stairs.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "99f5a4101dd6ad89c4eb8792dbbe1302086ba5b3853a3061da70528a150d0c0d"
+    },
+    {
+      "file": "Create (BE)/recipes/create/stonecutter/stonecutting_cut_dripstone_pillar.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "b64f0ab00e196c6a0df6f8ee39c3ae822129c81657006ef3fbe8e7a79270d63a"
+    },
+    {
+      "file": "Create (BE)/recipes/create/stonecutter/stonecutting_cut_dripstone_slab.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "a645e7be797f23220a8acf334e9ad6c93821f1a5203ad17c420da2056c498bb0"
+    },
+    {
+      "file": "Create (BE)/recipes/create/stonecutter/stonecutting_cut_dripstone_stairs.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "c1148b541a8f0bbcd90aa85a7bfefd7aafca10b2ee99e875309abf2d23fa8677"
+    },
+    {
+      "file": "Create (BE)/recipes/create/stonecutter/stonecutting_cut_granite.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "c84371ca5feae369f99f5d93845b2823fca1c3fa1d6e81710f3a497d8d42441d"
+    },
+    {
+      "file": "Create (BE)/recipes/create/stonecutter/stonecutting_cut_granite_bricks.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "992e5b2c5fd7d80a98a717edba8721b8c36ae1ac94053e55b1b306ac8d1e25d4"
+    },
+    {
+      "file": "Create (BE)/recipes/create/stonecutter/stonecutting_cut_granite_bricks_slab.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "7d4ff866e1554e5b8503103d1203cc5a7fb4b6581304157cc325fcc992461883"
+    },
+    {
+      "file": "Create (BE)/recipes/create/stonecutter/stonecutting_cut_granite_bricks_stairs.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "224ad5a9f025db0d27461854268a8a90e5c5b09af038b9f3d532849657d01980"
+    },
+    {
+      "file": "Create (BE)/recipes/create/stonecutter/stonecutting_cut_granite_pillar.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "c1f69a794d696223b4ab9ebe674de4da4a3b21293552039c67175c3a826d0478"
+    },
+    {
+      "file": "Create (BE)/recipes/create/stonecutter/stonecutting_cut_granite_slab.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "6c11432aa24b22bf73bd936fc2dcb4436a722509f21c76e4d63c8a0d3d284665"
+    },
+    {
+      "file": "Create (BE)/recipes/create/stonecutter/stonecutting_cut_granite_stairs.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "0b7f6112fb46b361c3d378dfd0cf3f945be3df99d90d5e22de2689978d18d892"
+    },
+    {
+      "file": "Create (BE)/recipes/create/stonecutter/stonecutting_cut_limestone.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "16809e42725554420234c1bfeca7f985a49bd21fa2116e9ecc8f038a1895c184"
+    },
+    {
+      "file": "Create (BE)/recipes/create/stonecutter/stonecutting_cut_limestone_bricks.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "a75eff9013dc02ab49f0d5cbabed9f22fbc679469413df44c0760f9c7cadbd3f"
+    },
+    {
+      "file": "Create (BE)/recipes/create/stonecutter/stonecutting_cut_limestone_bricks_slab.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "815d1e361f63ebd769070f843b48828d3d04f3530bd352c2c00a7b054f320cb2"
+    },
+    {
+      "file": "Create (BE)/recipes/create/stonecutter/stonecutting_cut_limestone_bricks_stairs.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "6e6e8a02b2f4ca2bf4da11dc99a0c53f2c668283751067d6fcfa28fb41921531"
+    },
+    {
+      "file": "Create (BE)/recipes/create/stonecutter/stonecutting_cut_limestone_pillar.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "7975d212407cdaabf4c9b8b87879f62b875b9344cef84a5fc38d47f382006eed"
+    },
+    {
+      "file": "Create (BE)/recipes/create/stonecutter/stonecutting_cut_limestone_slab.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "f9078819ad62f5bdcef536eceb513b1a374875ebd28442aecbc081e86c6c71af"
+    },
+    {
+      "file": "Create (BE)/recipes/create/stonecutter/stonecutting_cut_limestone_stairs.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "451913f17782cbc05fb7debc46ed414e4cecfd71bf2e72ffbd7ae54a92471b8c"
+    },
+    {
+      "file": "Create (BE)/recipes/create/stonecutter/stonecutting_cut_ochrum.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "e7bf7bd5836da7d92c4996cbe6b4ff1247a2812904193aa61e63fa3a73bd5c79"
+    },
+    {
+      "file": "Create (BE)/recipes/create/stonecutter/stonecutting_cut_ochrum_bricks.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "5adcf5fa6107d8768f91fe8f5c5e01a9402d4a02c5f64494c273727186934a80"
+    },
+    {
+      "file": "Create (BE)/recipes/create/stonecutter/stonecutting_cut_ochrum_bricks_slab.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "a9ec2e0efe49210e5548e639b605a309e999db0f8b810bc6aaa1d262b0b0c044"
+    },
+    {
+      "file": "Create (BE)/recipes/create/stonecutter/stonecutting_cut_ochrum_bricks_stairs.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "caa2857f0b2de3b2f867089e933a232239c025fc2d41c0157d78ad765161a4ec"
+    },
+    {
+      "file": "Create (BE)/recipes/create/stonecutter/stonecutting_cut_ochrum_pillar.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "43d4a21129dd40854ac5e625f04816e5ec0f5ce5a1a8a5c84f2740dd36a41f79"
+    },
+    {
+      "file": "Create (BE)/recipes/create/stonecutter/stonecutting_cut_ochrum_slab.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "5d210e714d32c9331b316c802390749ba50a734bfc8651ca354a4948fd7fb3ad"
+    },
+    {
+      "file": "Create (BE)/recipes/create/stonecutter/stonecutting_cut_ochrum_stairs.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "e0fd758d934a4bfe5610d8147d9af62d49a054c7c6bce625803a2b79b3c5f29b"
+    },
+    {
+      "file": "Create (BE)/recipes/create/stonecutter/stonecutting_cut_tuff.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "f65322a0633c45ff3350af1cb17b09503ad85e2edbff84f2b3cde8a0739facd9"
+    },
+    {
+      "file": "Create (BE)/recipes/create/stonecutter/stonecutting_cut_tuff_bricks.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "4bbc9c736b6423ffad7490aaaaf62f77a3935a092893a44ec228a45d0a8254e0"
+    },
+    {
+      "file": "Create (BE)/recipes/create/stonecutter/stonecutting_cut_tuff_bricks_slab.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "5aabf58fabe2a3bbc2456c7c817f7895e2010596aaa6fce822e5b42da10dc17a"
+    },
+    {
+      "file": "Create (BE)/recipes/create/stonecutter/stonecutting_cut_tuff_bricks_stairs.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "7ef62771af56efa6c4c73d6e3ba725a2bd5c06c44e9bb9868134fe7e1f44fbf4"
+    },
+    {
+      "file": "Create (BE)/recipes/create/stonecutter/stonecutting_cut_tuff_pillar.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "ebd97e4059aafbc81ee1483708ef8e0c642ce5c37ed17dd9bf04d4e8b50e463d"
+    },
+    {
+      "file": "Create (BE)/recipes/create/stonecutter/stonecutting_cut_tuff_slab.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "903b29e3edb72202be80e306535e584fa5faff2b850ed3a74d2f2de23eec2e2b"
+    },
+    {
+      "file": "Create (BE)/recipes/create/stonecutter/stonecutting_cut_tuff_stairs.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "5ef699484b3c40ba78a0bc415d560e33ed547c9252307068577da65626d3e33b"
+    },
+    {
+      "file": "Create (BE)/recipes/create/stonecutter/stonecutting_cut_veridium.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "986cd586ee93d3fe44dcc57fe806e0cbff7bb7084c872961f2c807ab5b544bab"
+    },
+    {
+      "file": "Create (BE)/recipes/create/stonecutter/stonecutting_cut_veridium_bricks.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "92003e4e7304a271a30de0e068f63728671c6b115df22f952da8405abcdfe4d6"
+    },
+    {
+      "file": "Create (BE)/recipes/create/stonecutter/stonecutting_cut_veridium_bricks_slab.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "7d49c7d4903a13c66955123c1f1e2591f6a803cd33711514b222eeca9571ba60"
+    },
+    {
+      "file": "Create (BE)/recipes/create/stonecutter/stonecutting_cut_veridium_bricks_stairs.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "15ca7bcb469e11725f8039847abfaa891cb4469908d7a90330b0b5e0a4c4cfcd"
+    },
+    {
+      "file": "Create (BE)/recipes/create/stonecutter/stonecutting_cut_veridium_pillar.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "27fd107f33f99d5fafd5882bc7212cc550749b797e47be6fd30070b79faf78eb"
+    },
+    {
+      "file": "Create (BE)/recipes/create/stonecutter/stonecutting_cut_veridium_slab.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "d7c5fc848f5a13d560dce6885a527bb5782f26f8918c92daa41c5583babdab4e"
+    },
+    {
+      "file": "Create (BE)/recipes/create/stonecutter/stonecutting_cut_veridium_stairs.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "b7645e36e2ee8dd3684cfc36e0dc9dcff019eba538130e141bdf53a41d3c68fc"
+    },
+    {
+      "file": "Create (BE)/recipes/create/stonecutter/stonecutting_polished_cut_andesite.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "612a4604095b5be57665198a14ffbe9cd0f0db15c2173db831743bd7d7915e99"
+    },
+    {
+      "file": "Create (BE)/recipes/create/stonecutter/stonecutting_polished_cut_andesite_slab.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "19f52b71dac3e62b1e9051ccaa011e158080947b7b5c8851d370d922ea4afd55"
+    },
+    {
+      "file": "Create (BE)/recipes/create/stonecutter/stonecutting_polished_cut_andesite_stairs.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "9fe4cca28df9a6386864742f6befde45555ddae8501ed980577b7eb4ec7550a9"
+    },
+    {
+      "file": "Create (BE)/recipes/create/stonecutter/stonecutting_polished_cut_asurine.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "875d6332de84cca9578d3eb24e3a59cfe792e001ad5fa8d32d6e774fa8c2b70e"
+    },
+    {
+      "file": "Create (BE)/recipes/create/stonecutter/stonecutting_polished_cut_asurine_slab.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "a98b05b0b24b81f7dff2b01dc242d84a1df52aa66f39e683d06e941f63e98928"
+    },
+    {
+      "file": "Create (BE)/recipes/create/stonecutter/stonecutting_polished_cut_asurine_stairs.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "c43562b9bfff7fe1ac0c87a02a8b47a25995de64f5be1d3ad69511ee9d167fd5"
+    },
+    {
+      "file": "Create (BE)/recipes/create/stonecutter/stonecutting_polished_cut_calcite.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "15a15ad19faec4f0715b0fe2dec2cb90f3eaa26bf506f6eaeffc1c74d2e60dcd"
+    },
+    {
+      "file": "Create (BE)/recipes/create/stonecutter/stonecutting_polished_cut_calcite_slab.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "22b4dd5c68625ab34c079f0735eae407fbd18c0fd8dfbab7f8a834eb2869c05e"
+    },
+    {
+      "file": "Create (BE)/recipes/create/stonecutter/stonecutting_polished_cut_calcite_stairs.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "61a63fc0208e9f7be60d416513b9ff106cee689d529cf3e70d40d56e76d2c92b"
+    },
+    {
+      "file": "Create (BE)/recipes/create/stonecutter/stonecutting_polished_cut_crimsite.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "02b05662e8f068dd58fdd34c5ba066cdf6ef8c85f81ac43d2082a4a3e808ef47"
+    },
+    {
+      "file": "Create (BE)/recipes/create/stonecutter/stonecutting_polished_cut_crimsite_slab.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "33af0e185a9a14aa1902a8683398bf9d947592e406d57b42d6c04a31ef5ce6d2"
+    },
+    {
+      "file": "Create (BE)/recipes/create/stonecutter/stonecutting_polished_cut_crimsite_stairs.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "6d8893bb0cb98184a5d6af87b6a9c079f3f4344b3b3c5d5efad8c80f8bf6b299"
+    },
+    {
+      "file": "Create (BE)/recipes/create/stonecutter/stonecutting_polished_cut_deepslate.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "e08095d8e497260fdee4d12a56dffa50bc3596b19b055d0104de61b9e5dc6bd6"
+    },
+    {
+      "file": "Create (BE)/recipes/create/stonecutter/stonecutting_polished_cut_deepslate_slab.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "9c785eeb8e7be2c2b01bd61a8d580a1737199443f3065c70a29e90ed5c52fe28"
+    },
+    {
+      "file": "Create (BE)/recipes/create/stonecutter/stonecutting_polished_cut_deepslate_stairs.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "e5a2a2b8d25583704c7e17bfc548996b61988e7c91ff2938803e736dd7b2dc89"
+    },
+    {
+      "file": "Create (BE)/recipes/create/stonecutter/stonecutting_polished_cut_diorite.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "f94840d6b65b0c6a69f894ba30f151d633eeb1c37a6ac87c52450efea8a081b9"
+    },
+    {
+      "file": "Create (BE)/recipes/create/stonecutter/stonecutting_polished_cut_diorite_slab.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "e55fad48066d92993fef80638d06c539a3db6fe5b2c745e5793fd172c5fd4248"
+    },
+    {
+      "file": "Create (BE)/recipes/create/stonecutter/stonecutting_polished_cut_diorite_stairs.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "32f22b55637ec14e1bc08bf9c052443a91672f9414d8d36ee831e4b49b84e07e"
+    },
+    {
+      "file": "Create (BE)/recipes/create/stonecutter/stonecutting_polished_cut_dripstone.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "60e9e2a9f91c889674dd02228bc6420307cdecad1613a7068ab77405b2597052"
+    },
+    {
+      "file": "Create (BE)/recipes/create/stonecutter/stonecutting_polished_cut_dripstone_slab.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "c5fad5a70b81a3d6602b3b5e2c3a272bb80bbd120065a415373f0273898f237f"
+    },
+    {
+      "file": "Create (BE)/recipes/create/stonecutter/stonecutting_polished_cut_dripstone_stairs.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "26c299d076f16074ef06d1d8b7f32b655087092c3f14b8d0969b125fde82afac"
+    },
+    {
+      "file": "Create (BE)/recipes/create/stonecutter/stonecutting_polished_cut_granite.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "682f4ac8d89d4f50c5e20bcbcce0723810754e463cba8b0644988634ca24c70b"
+    },
+    {
+      "file": "Create (BE)/recipes/create/stonecutter/stonecutting_polished_cut_granite_slab.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "f6e05b76e0da4aeeea2cb0405b0948c9883bddd1f2ed008a2599610dccafe0e4"
+    },
+    {
+      "file": "Create (BE)/recipes/create/stonecutter/stonecutting_polished_cut_granite_stairs.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "6aa4cbbaaa0715b99115e42652eac8a3ee5da1cc2983aa3a9dcaf6490a4651c1"
+    },
+    {
+      "file": "Create (BE)/recipes/create/stonecutter/stonecutting_polished_cut_limestone.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "d4b5aa140eaf7bc376c9afcea3c76c6b32e8255e37aae1886a4190f5ff093f59"
+    },
+    {
+      "file": "Create (BE)/recipes/create/stonecutter/stonecutting_polished_cut_limestone_slab.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "942e3eddacfa03714878d831adc7d8be6bd370a8087e06597acc34898d94b076"
+    },
+    {
+      "file": "Create (BE)/recipes/create/stonecutter/stonecutting_polished_cut_limestone_stairs.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "1a70e1aff30a645699438ea90701ee2e25053ceaedda8a9d90a296a90a4b7305"
+    },
+    {
+      "file": "Create (BE)/recipes/create/stonecutter/stonecutting_polished_cut_ochrum.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "53fb4224dc79b948df7480afc0a31d933aa8156e689d0e00ee6a298412a1d292"
+    },
+    {
+      "file": "Create (BE)/recipes/create/stonecutter/stonecutting_polished_cut_ochrum_slab.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "506439db0a0b30c068dc936ba73fd12e261c763a4e156018019a5345bbf24804"
+    },
+    {
+      "file": "Create (BE)/recipes/create/stonecutter/stonecutting_polished_cut_ochrum_stairs.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "3513967cf151b1ee351514b2b3087fb9fa0d03064407148f6f24f6fea109a9e8"
+    },
+    {
+      "file": "Create (BE)/recipes/create/stonecutter/stonecutting_polished_cut_tuff.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "fe384f33cde0061ef6240a7a597e1f3aee1aaae5c33e8fc89d2e805d7444b941"
+    },
+    {
+      "file": "Create (BE)/recipes/create/stonecutter/stonecutting_polished_cut_tuff_slab.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "e1d7084539514ced0c3c5da82e9be11b24afbf2af1ff8d1d2c6d6e88210ab3ae"
+    },
+    {
+      "file": "Create (BE)/recipes/create/stonecutter/stonecutting_polished_cut_tuff_stairs.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "7003c2d3eaeb7f19a2cf1375d3ef03930ac64ce7e2a2cd52d6002960cdc43b40"
+    },
+    {
+      "file": "Create (BE)/recipes/create/stonecutter/stonecutting_polished_cut_veridium.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "394ead7a2d7f7cebc16f590870361e6f8fa699a2f9502bcbbc96b30236c9c9f7"
+    },
+    {
+      "file": "Create (BE)/recipes/create/stonecutter/stonecutting_polished_cut_veridium_slab.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "704ab25254a2bae06b01a25ba324d57f1fb9aa006c596beda589451ca83946e1"
+    },
+    {
+      "file": "Create (BE)/recipes/create/stonecutter/stonecutting_polished_cut_veridium_stairs.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "15b1710196a2411aef0f3a100b51f56b551796c984fee7956248c0c82da0f81c"
+    },
+    {
+      "file": "Create (BE)/recipes/create/stonecutter/stonecutting_small_andesite_bricks.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "2ed794d01abab6a750d1e9935ded307452f0dd8df83c8208e2279158d4d4ad4f"
+    },
+    {
+      "file": "Create (BE)/recipes/create/stonecutter/stonecutting_small_andesite_bricks_slab.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "e83ae5405a226d68a72d3cdddd4e5825d5d5c4505120e7461b33858be586ac58"
+    },
+    {
+      "file": "Create (BE)/recipes/create/stonecutter/stonecutting_small_andesite_bricks_stairs.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "816ce86449728925d6e4ad6d632233f1aad8068b8633a3e2bbed9b66b2e8188a"
+    },
+    {
+      "file": "Create (BE)/recipes/create/stonecutter/stonecutting_small_asurine_bricks.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "29c62ec94680b46ed962f61e8ed96cafe97b88d36e6e28b991cbd47e3452165c"
+    },
+    {
+      "file": "Create (BE)/recipes/create/stonecutter/stonecutting_small_asurine_bricks_slab.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "c290d700d1a7ca98feefd849378bd8297cdae9697f1473184c732b29daa99b79"
+    },
+    {
+      "file": "Create (BE)/recipes/create/stonecutter/stonecutting_small_asurine_bricks_stairs.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "c4fc4436cd40e986e49e43c2b524c330a605e4599f77e02a50df67a3de20b6df"
+    },
+    {
+      "file": "Create (BE)/recipes/create/stonecutter/stonecutting_small_calcite_bricks.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "7559cce48906fa6f3175315e933c6f0b75027c2515163b3a686b95d2672a713c"
+    },
+    {
+      "file": "Create (BE)/recipes/create/stonecutter/stonecutting_small_calcite_bricks_slab.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "5dc5c536862f24af81d228e7aeef853767325f885c5b32f55135476a26fc6c5b"
+    },
+    {
+      "file": "Create (BE)/recipes/create/stonecutter/stonecutting_small_calcite_bricks_stairs.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "8f9092c489e15679e3c23a92b858f4aa987eb54a1701781c53de76a448f2e1c0"
+    },
+    {
+      "file": "Create (BE)/recipes/create/stonecutter/stonecutting_small_crimsite_bricks.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "5f791898c0741dc60f589d77effb8160f809fb905b8ef5d737593332570de17d"
+    },
+    {
+      "file": "Create (BE)/recipes/create/stonecutter/stonecutting_small_crimsite_bricks_slab.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "d2c49c4bddb41258fc78017bae2b41089755d4f3c9f081ed9a46b14e0b193fab"
+    },
+    {
+      "file": "Create (BE)/recipes/create/stonecutter/stonecutting_small_crimsite_bricks_stairs.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "370df5c6ec110e38176be784c17abe28bccc84bb3a60ce9d8d46ea9762a6f512"
+    },
+    {
+      "file": "Create (BE)/recipes/create/stonecutter/stonecutting_small_deepslate_bricks.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "8fa7775c52ad750f69ed55dbe36d133f7052332054130574fb50bc3e45255560"
+    },
+    {
+      "file": "Create (BE)/recipes/create/stonecutter/stonecutting_small_deepslate_bricks_slab.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "2eb81946927876105fde34744a13e8a421a22cc6dc71a03ebe19378c5c4ca025"
+    },
+    {
+      "file": "Create (BE)/recipes/create/stonecutter/stonecutting_small_deepslate_bricks_stairs.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "f6a63ec63c845a825e51cb98e89f1d20fdcf0b9f287e5faf5d83a810aa32d153"
+    },
+    {
+      "file": "Create (BE)/recipes/create/stonecutter/stonecutting_small_diorite_bricks.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "7f77aa366f01c793d8e8105104d5418d648b51130a61ef47143051295329cfea"
+    },
+    {
+      "file": "Create (BE)/recipes/create/stonecutter/stonecutting_small_diorite_bricks_slab.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "6269e6fdea325703e544593c073e73648fc5a435a274592bc1c8ae773e4bed66"
+    },
+    {
+      "file": "Create (BE)/recipes/create/stonecutter/stonecutting_small_diorite_bricks_stairs.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "1d0a7193a0b84b23373433f5c0249d25dc1269206c76ae7d8e102e7e0f0dac8f"
+    },
+    {
+      "file": "Create (BE)/recipes/create/stonecutter/stonecutting_small_dripstone_bricks.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "1f392f7a3473ffbd9e6ab89b252a201d2599cac27bc4a94ed8548131e8ab2ee7"
+    },
+    {
+      "file": "Create (BE)/recipes/create/stonecutter/stonecutting_small_dripstone_bricks_slab.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "44cbd71d3e8bd54e3b522397ab7a30f565f5d9c0cd94770005e979c5db8eaa2d"
+    },
+    {
+      "file": "Create (BE)/recipes/create/stonecutter/stonecutting_small_dripstone_bricks_stairs.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "8bfaa8523cfa5aa4bf22cd52b7b02ef52cc6e186a942eee71f8eec6cb5f9702d"
+    },
+    {
+      "file": "Create (BE)/recipes/create/stonecutter/stonecutting_small_granite_bricks.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "371bba7ee8f58fe7e6d014d5dd96f70bde12fffd9e46a7c46a4cabbd24e244af"
+    },
+    {
+      "file": "Create (BE)/recipes/create/stonecutter/stonecutting_small_granite_bricks_slab.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "73d6b07d7c35637c8d67779b486922432660dd30f6b6167e96b3714234fb9862"
+    },
+    {
+      "file": "Create (BE)/recipes/create/stonecutter/stonecutting_small_granite_bricks_stairs.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "ce9cbf7986e1970666ec01509731ca0de62f61ff893ebfc3234ae580e2c36983"
+    },
+    {
+      "file": "Create (BE)/recipes/create/stonecutter/stonecutting_small_limestone_bricks.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "f29f2cb7a9c731170480967b5e2a6f622987a9652f2efb86df48239b40710d9b"
+    },
+    {
+      "file": "Create (BE)/recipes/create/stonecutter/stonecutting_small_limestone_bricks_slab.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "80f94cbc9f8d521b0228fac81f4e878bd86d9d4806fd0994f95092e68c8d5966"
+    },
+    {
+      "file": "Create (BE)/recipes/create/stonecutter/stonecutting_small_limestone_bricks_stairs.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "c7648042e73b896b5c6576c57b8b9edf6c39a9062b9f809b6995ddb6c4e24e83"
+    },
+    {
+      "file": "Create (BE)/recipes/create/stonecutter/stonecutting_small_ochrum_bricks.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "22012580c8481c73bf322149db325ce781daa4757c10510c87578a6417ac1af2"
+    },
+    {
+      "file": "Create (BE)/recipes/create/stonecutter/stonecutting_small_ochrum_bricks_slab.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "fd61877f36d76b3446a402a108a0b6dd3bd6d3fcaf899216054402217b6d2210"
+    },
+    {
+      "file": "Create (BE)/recipes/create/stonecutter/stonecutting_small_ochrum_bricks_stairs.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "a19885d8f50b27f3303f5a3864ff383bebc2501b09a1e1d23477f7a9ae38f954"
+    },
+    {
+      "file": "Create (BE)/recipes/create/stonecutter/stonecutting_small_tuff_bricks.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "6c3ea63b3f7380d89ac7c47ee4388b5b58bc271a438d690638abc4f4abfc0d8e"
+    },
+    {
+      "file": "Create (BE)/recipes/create/stonecutter/stonecutting_small_tuff_bricks_slab.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "7945fb714deb424f85946371c0a58fcaa54ef573a606d3642e4862bbd8773686"
+    },
+    {
+      "file": "Create (BE)/recipes/create/stonecutter/stonecutting_small_tuff_bricks_stairs.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "98b820636e6f107a855ee3257f87a1a541b424f9f9c2c6f643bd19d0f6d9b932"
+    },
+    {
+      "file": "Create (BE)/recipes/create/stonecutter/stonecutting_small_veridium_bricks.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "72ff6c6315f4c87946f3984c73ec76fa92abe073174079dfaeebd7ce25894fb2"
+    },
+    {
+      "file": "Create (BE)/recipes/create/stonecutter/stonecutting_small_veridium_bricks_slab.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "1bd1057f8b15c0f27f3418fd90d2815fd70df803707f19d0911d7827ddf2f35f"
+    },
+    {
+      "file": "Create (BE)/recipes/create/stonecutter/stonecutting_small_veridium_bricks_stairs.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "59c8c672a4bc8ae17a8caf30c8a94f65b0601de92a7b15d375581fa3da617bb2"
+    },
+    {
+      "file": "Create (BE)/recipes/create/stonecutter/vertical_framed_glass.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "578f0383791b50de45674445a066611ac30e198c96d96f54fa5b3dac1e127682"
+    },
+    {
+      "file": "Create (BE)/recipes/create/stonecutter/weathered_iron_block.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "2b572e95dda930e024f30cae6cff9c3a0ce467cdd557650d4cad16ac97af805c"
+    },
+    {
+      "file": "Create (BE)/recipes/create/tools/goggles.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "f9a86e1be717f1100314f36115d50c75efbe7935872a1af7bb9ba8af9291ad9f"
+    },
+    {
+      "file": "Create (BE)/recipes/create/tools/red_sand_paper.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "8a8260df16f291437bbfa49e846c56a61c007163a18b9ad2964b0ae48d93328d"
+    },
+    {
+      "file": "Create (BE)/recipes/create/tools/sand_paper.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "ff377434cb8588df13993061cb4e8aacd7c8865ab851f7664411aa326cf13615"
+    },
+    {
+      "file": "Create (BE)/recipes/create/tools/super_glue.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "bbf58ac84fbf315527abaccb035308e1f3400eecca348dbedeac10652ed4021b"
+    },
+    {
+      "file": "Create (BE)/recipes/create/tools/wrench.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "d69e0064e4245272f176ceed4a768dda0551e2f8eef5b94c19ee60eac44c3417"
+    },
+    {
+      "file": "Create (BE)/recipes/create/utilities/andesite_door.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "ed641ae14f3c447eb8bd8450b39acf43a6882c2d06a8ca45b65fc0a86b730374"
+    },
+    {
+      "file": "Create (BE)/recipes/create/utilities/brass_door.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "3d85d01c8e0bada5b4b2576210e3b3a1e14882e6cb0b96f9daf54823e047ded1"
+    },
+    {
+      "file": "Create (BE)/recipes/create/utilities/copper_door.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "87628d09fda3c39537374cc6e440a43a4b82c938e56eb940ca59e328505a308d"
+    },
+    {
+      "file": "Create (BE)/recipes/create/utilities/desk_bell.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "4343eb5c1c8d710122e5848187057a20f5b4e46b0ef9ad8c178517954699943e"
+    },
+    {
+      "file": "Create (BE)/recipes/create/utilities/fluid_tank.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "0f88eef836787bad65ff93a4fdd5ae94bbafd299c8d11c4855708be2ef3daa09"
+    },
+    {
+      "file": "Create (BE)/recipes/create/utilities/glass_door.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "90b6073050e773d3fed1fcad674eeee7cd57c7efe8418a1bac90c3ecf28689f9"
+    },
+    {
+      "file": "Create (BE)/recipes/create/utilities/redstone_link_receiver.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "b6ac5c77474e35f65a03aa3a228b0c36a0004a8c18dd01f45b38fc3c5ca3cf69"
+    },
+    {
+      "file": "Create (BE)/recipes/create/utilities/rose_quartz_lamp.json",
+      "rule": "FORMATVER[156]",
+      "from": "1.12",
+      "to": "1.26.50",
+      "contentSha256": "e40d035bb6373b606d38e81dc872d6755efa3552263627bb61ab25d7afedc294"
+    },
+    {
+      "file": "Create (RE)/animations/create/andesite_door.animation.json",
+      "rule": "FORMATVER[216]",
+      "from": "1.8.0",
+      "to": "1.10.0",
+      "contentSha256": "878fb12ac1c54712b6ee14671742ff91bed71b9f153bf4721662f240f626366b"
+    },
+    {
+      "file": "Create (RE)/animations/create/blaze_burner.animation.json",
+      "rule": "FORMATVER[216]",
+      "from": "1.8.0",
+      "to": "1.10.0",
+      "contentSha256": "f1e354247b96975af1d69b4421f6e24a1624c5a786f67faff44c5f64e1e8f9de"
+    },
+    {
+      "file": "Create (RE)/animations/create/blaze_burner_flame.animation.json",
+      "rule": "FORMATVER[216]",
+      "from": "1.8.0",
+      "to": "1.10.0",
+      "contentSha256": "bbb768a6ddebef2ae68256aa7b12a72b3d74b18560ab141902f5aebac7c466c4"
+    },
+    {
+      "file": "Create (RE)/animations/create/brass_funnel.animation.json",
+      "rule": "FORMATVER[216]",
+      "from": "1.8.0",
+      "to": "1.10.0",
+      "contentSha256": "291c441a617b5ec1d8f6a0fec2d5c4b72ee487a28a675af93dc48ad9c3ef5776"
+    },
+    {
+      "file": "Create (RE)/animations/create/brass_tunnel.animation.json",
+      "rule": "FORMATVER[216]",
+      "from": "1.8.0",
+      "to": "1.10.0",
+      "contentSha256": "66303725cbe123b9afc75dbc239f45f030b822cb6827e34e6e8c3d2671e08924"
+    },
+    {
+      "file": "Create (RE)/animations/create/chute_smart_filter.animation.json",
+      "rule": "FORMATVER[216]",
+      "from": "1.8.0",
+      "to": "1.10.0",
+      "contentSha256": "0dc8d6843488b6ab085a5e5793bf664dd3d46e0917f4f139fed3613b84b79e31"
+    },
+    {
+      "file": "Create (RE)/animations/create/conveyor_item.animation.json",
+      "rule": "FORMATVER[216]",
+      "from": "1.8.0",
+      "to": "1.10.0",
+      "contentSha256": "8bf485328c374ec42ac75005f2f90768e9916bd678338e545349a8acd5668c32"
+    },
+    {
+      "file": "Create (RE)/animations/create/create.deployer_construct.animation.json",
+      "rule": "FORMATVER[216]",
+      "from": "1.8.0",
+      "to": "1.10.0",
+      "contentSha256": "b4f24a3ec27e6bb640438ab4f230a8a607ef595aff6f0512ceb0a45a6ec06ce0"
+    },
+    {
+      "file": "Create (RE)/animations/create/create.mechanical_drill.animation.json",
+      "rule": "FORMATVER[216]",
+      "from": "1.8.0",
+      "to": "1.10.0",
+      "contentSha256": "e205ad3b2743a4cd07fd99fa64f6bc6b0db6571bc4484aed4b51e06886f5e462"
+    },
+    {
+      "file": "Create (RE)/animations/create/deployer.animation.json",
+      "rule": "FORMATVER[216]",
+      "from": "1.8.0",
+      "to": "1.10.0",
+      "contentSha256": "5b31d919f7ee76e31f9939da76904418297615464d645b309ff7b029737ccd6c"
+    },
+    {
+      "file": "Create (RE)/animations/create/deployer_filter.animation.json",
+      "rule": "FORMATVER[216]",
+      "from": "1.8.0",
+      "to": "1.10.0",
+      "contentSha256": "eb9a4de1dea48f90e227ec38953f8ecdde34e335eb393e18a1ff1a8ef073b7b1"
+    },
+    {
+      "file": "Create (RE)/animations/create/desk_bell.animation.json",
+      "rule": "FORMATVER[216]",
+      "from": "1.8.0",
+      "to": "1.10.0",
+      "contentSha256": "2c3f0a36b2cea7d1b14719680a08a19d456f7ab7a7b4124eb6dfd69728dcc9ca"
+    },
+    {
+      "file": "Create (RE)/animations/create/door_construct.animation.json",
+      "rule": "FORMATVER[216]",
+      "from": "1.8.0",
+      "to": "1.10.0",
+      "contentSha256": "3efbd710236e0a06ab2b9e69b9fd621a23e39103b66082453b3aa7e72d0df031"
+    },
+    {
+      "file": "Create (RE)/animations/create/fluid.animation.json",
+      "rule": "FORMATVER[216]",
+      "from": "1.8.0",
+      "to": "1.10.0",
+      "contentSha256": "e3aaada75b02c6d5484541d64276640d7b03df7e74c99aa2ba913cf59ab41ba5"
+    },
+    {
+      "file": "Create (RE)/animations/create/fluid.item_drain.animation.json",
+      "rule": "FORMATVER[216]",
+      "from": "1.8.0",
+      "to": "1.10.0",
+      "contentSha256": "0d199921d400e2d4cd6864ef6f2720e75ce5624b793700325dea67b91686cd7a"
+    },
+    {
+      "file": "Create (RE)/animations/create/fluid_tank_fluid.animation.json",
+      "rule": "FORMATVER[216]",
+      "from": "1.8.0",
+      "to": "1.10.0",
+      "contentSha256": "0ae582ea7673eeb0e0b1a61829dfb9c7ae32e7f3402b2ecf57a6e557d3b7f3f1"
+    },
+    {
+      "file": "Create (RE)/animations/create/gearshift.animation.json",
+      "rule": "FORMATVER[216]",
+      "from": "1.8.0",
+      "to": "1.10.0",
+      "contentSha256": "4b91bdf8a4a1250addb3e24d60cd93f26cf5f21c663def608de8f36a6cb9c645"
+    },
+    {
+      "file": "Create (RE)/animations/create/glue_selection.animation.json",
+      "rule": "FORMATVER[216]",
+      "from": "1.8.0",
+      "to": "1.10.0",
+      "contentSha256": "c24ffe4eb6b1eb7cc9005c838a931178e1b5ee3a39314fd3cc642184ebd565e3"
+    },
+    {
+      "file": "Create (RE)/animations/create/kinetics/furnace_engine.rpa.json",
+      "rule": "FORMATVER[216]",
+      "from": "1.8.0",
+      "to": "1.10.0",
+      "contentSha256": "5a11ee9dce2384c6c50cdcaa7ceafce79f1f160b2ac9c202415505a0e9bdf941"
+    },
+    {
+      "file": "Create (RE)/animations/create/kinetics/gauge.rpa.json",
+      "rule": "FORMATVER[216]",
+      "from": "1.8.0",
+      "to": "1.10.0",
+      "contentSha256": "37dd5029420f36258063e94776b55774c39d590aac3ffd8474bc9137b38b7b85"
+    },
+    {
+      "file": "Create (RE)/animations/create/kinetics/hand_crank.rpa.json",
+      "rule": "FORMATVER[216]",
+      "from": "1.8.0",
+      "to": "1.10.0",
+      "contentSha256": "2eda8373b41cbd66446ca20f67d99407def7a6a149ab68274f2fad1b0d5a1117"
+    },
+    {
+      "file": "Create (RE)/animations/create/kinetics/hose_pulley_belt_visual.animation.json",
+      "rule": "FORMATVER[216]",
+      "from": "1.8.0",
+      "to": "1.10.0",
+      "contentSha256": "b4efec2dba6328d34250a3a2d51a55986fef05db7729fa8ab26d9584acfafe33"
+    },
+    {
+      "file": "Create (RE)/animations/create/kinetics/rpm.rpa.json",
+      "rule": "FORMATVER[216]",
+      "from": "1.8.0",
+      "to": "1.10.0",
+      "contentSha256": "4ec21e7e02a6b876b992d01b43883df56e0d8cbd33136aa158a6db07f9e34d65"
+    },
+    {
+      "file": "Create (RE)/animations/create/ladder_construct.animation.json",
+      "rule": "FORMATVER[216]",
+      "from": "1.8.0",
+      "to": "1.10.0",
+      "contentSha256": "0f167677b4dcefaf73315d2b0dc14cd87a4ca4e1b863bf9739de52478f17e8ca"
+    },
+    {
+      "file": "Create (RE)/animations/create/mechanical_arm.animation.json",
+      "rule": "FORMATVER[216]",
+      "from": "1.8.0",
+      "to": "1.10.0",
+      "contentSha256": "269344f1e23d06b701535f7d9913277745905533ffd0459b94fcd64e2eefabaa"
+    },
+    {
+      "file": "Create (RE)/animations/create/mechanical_bearing_construct.animation.json",
+      "rule": "FORMATVER[216]",
+      "from": "1.8.0",
+      "to": "1.10.0",
+      "contentSha256": "57ec95909076d2a96d60b4e5d27c06bca931d571358b244785e1481dfa312844"
+    },
+    {
+      "file": "Create (RE)/animations/create/mechanical_crafter_item.animation.json",
+      "rule": "FORMATVER[216]",
+      "from": "1.8.0",
+      "to": "1.10.0",
+      "contentSha256": "4b0fa272bfb2681e05c36f469e93c29aaa88b9dbe5b77438353c0007a6e32c54"
+    },
+    {
+      "file": "Create (RE)/animations/create/mechanical_harvester.animation.json",
+      "rule": "FORMATVER[216]",
+      "from": "1.8.0",
+      "to": "1.10.0",
+      "contentSha256": "298933da64a63bceca762956b18244ac46635c65ab41d50b6de395518e004000"
+    },
+    {
+      "file": "Create (RE)/animations/create/mechanical_mixer.animation.json",
+      "rule": "FORMATVER[216]",
+      "from": "1.8.0",
+      "to": "1.10.0",
+      "contentSha256": "dbc14c27c0ac6ca76b063e1eb7d8b8d7c149d9493d485fe6074dce8d6200efe0"
+    },
+    {
+      "file": "Create (RE)/animations/create/mechanical_press.animation.json",
+      "rule": "FORMATVER[216]",
+      "from": "1.8.0",
+      "to": "1.10.0",
+      "contentSha256": "7c421e0f5966a4b8980b06dfefd0b44c3e0109cf2686be8ec468e6ae82c01686"
+    },
+    {
+      "file": "Create (RE)/animations/create/mechanical_saw_construct.animation.json",
+      "rule": "FORMATVER[216]",
+      "from": "1.8.0",
+      "to": "1.10.0",
+      "contentSha256": "53b5fe6246eed2580a3f18bdbbef4e08561d84e413c09b7a40d6829158fca070"
+    },
+    {
+      "file": "Create (RE)/animations/create/pipe_fluid.animation.json",
+      "rule": "FORMATVER[216]",
+      "from": "1.8.0",
+      "to": "1.10.0",
+      "contentSha256": "c4ea8bfce72016a4971f1c7c88e79a99ef494cc3c70848448371f23c6958ad23"
+    },
+    {
+      "file": "Create (RE)/animations/create/portable_storage_interface.animation.json",
+      "rule": "FORMATVER[216]",
+      "from": "1.8.0",
+      "to": "1.10.0",
+      "contentSha256": "bbfb7d6e71719e4d920395a4f482109c65b7ef0c9838ede52abdde0013ea6672"
+    },
+    {
+      "file": "Create (RE)/animations/create/potato_cannon.animation.json",
+      "rule": "FORMATVER[216]",
+      "from": "1.8.0",
+      "to": "1.10.0",
+      "contentSha256": "7edc33af8f9f21b6df75fb16c6c7a76ab47d1937a755cde1221adac3553d76e0"
+    },
+    {
+      "file": "Create (RE)/animations/create/potato_projectile.animation.json",
+      "rule": "FORMATVER[216]",
+      "from": "1.8.0",
+      "to": "1.10.0",
+      "contentSha256": "77ab58edff1bb3edfabf34c9f3139926273eb9cc1999069923d2e1ef2caa52a9"
+    },
+    {
+      "file": "Create (RE)/animations/create/sequenced_gearshift.animation.json",
+      "rule": "FORMATVER[216]",
+      "from": "1.8.0",
+      "to": "1.10.0",
+      "contentSha256": "d8aa966788b4f7718df9f0a814a6beaceec4175507adbf7826ecffb44f078b98"
+    },
+    {
+      "file": "Create (RE)/animations/create/smart_fluid_pipe_filter.animation.json",
+      "rule": "FORMATVER[216]",
+      "from": "1.8.0",
+      "to": "1.10.0",
+      "contentSha256": "d2bc2056ff0a3dd4b9639f54ecd308506b69a63e47d4835fafce8931314fcca6"
+    },
+    {
+      "file": "Create (RE)/animations/create/smart_hopper.animation.json",
+      "rule": "FORMATVER[216]",
+      "from": "1.8.0",
+      "to": "1.10.0",
+      "contentSha256": "31748e684f51787efae7d17e59e28d659047a38dec325a5fa551f49baecfbb3b"
+    },
+    {
+      "file": "Create (RE)/animations/create/spolt_splax.animation.json",
+      "rule": "FORMATVER[216]",
+      "from": "1.8.0",
+      "to": "1.10.0",
+      "contentSha256": "e21b6ea42276bb31fd9a1aa2c59688f236ca90cbabde23dfaf0a34d434d613c7"
+    },
+    {
+      "file": "Create (RE)/animations/create/spout.entity.animation.json",
+      "rule": "FORMATVER[216]",
+      "from": "1.8.0",
+      "to": "1.10.0",
+      "contentSha256": "1e9d41827ed57d36f2d6b6c3e6f41ca4f6768481b3685b4e12335dfb45bb15b9"
+    },
+    {
+      "file": "Create (RE)/animations/create/steam_engine_piston.animation.json",
+      "rule": "FORMATVER[216]",
+      "from": "1.8.0",
+      "to": "1.10.0",
+      "contentSha256": "c064c06fe1fe1decf35693c7847e0b32368271004b3f0eda4359a5aedf3159e7"
+    },
+    {
+      "file": "Create (RE)/animations/create/weighted_ejector.animation.json",
+      "rule": "FORMATVER[216]",
+      "from": "1.8.0",
+      "to": "1.10.0",
+      "contentSha256": "6d1f6fd518e1825a4a126f2577b841e4111aea2cfba88eb51205c1b946842489"
+    },
+    {
+      "file": "Create (RE)/animations/create/whistle.animation.json",
+      "rule": "FORMATVER[216]",
+      "from": "1.8.0",
+      "to": "1.10.0",
+      "contentSha256": "63dbd818491200583d1565e935e455015ea7f8115329baa02c4bdbf3567a9294"
+    },
+    {
+      "file": "Create (RE)/entity/create/conductors/clutch.rpe.json",
+      "rule": "FORMATVER[296]",
+      "from": "1.10.0",
+      "to": "1.26.50",
+      "contentSha256": "cb3db545d9200c035f910c8031d00ba6f6a545336ea3722efef13154754e89fb"
+    },
+    {
+      "file": "Create (RE)/entity/create/conductors/cogwheel.rpe.json",
+      "rule": "FORMATVER[296]",
+      "from": "1.10.0",
+      "to": "1.26.50",
+      "contentSha256": "edb5c802b6d90024734a9bd32480003c72ef4e3ed9d8301ee23bb7eb7c638d74"
+    },
+    {
+      "file": "Create (RE)/entity/create/conductors/gearbox.rpe.json",
+      "rule": "FORMATVER[296]",
+      "from": "1.10.0",
+      "to": "1.26.50",
+      "contentSha256": "109369add2af78a3b3ae08e3dd73db72e57d00a04f2a941731e9adb5d5e6d631"
+    },
+    {
+      "file": "Create (RE)/entity/create/conductors/gearshift.rpe.json",
+      "rule": "FORMATVER[296]",
+      "from": "1.10.0",
+      "to": "1.26.50",
+      "contentSha256": "03a94b940f7ee854bcfa5d9a85bba82285b1a46ce13fe0c2af23695a75a4ed7a"
+    },
+    {
+      "file": "Create (RE)/entity/create/conductors/large_cogwheel.rpe.json",
+      "rule": "FORMATVER[296]",
+      "from": "1.10.0",
+      "to": "1.26.50",
+      "contentSha256": "a08794e9d928deb41f7ee2ab8d80c81a9f7891a14f22276eb22ac5e66ca78fb4"
+    },
+    {
+      "file": "Create (RE)/entity/create/conductors/mechanical_belt.rpe.json",
+      "rule": "FORMATVER[296]",
+      "from": "1.10.0",
+      "to": "1.26.50",
+      "contentSha256": "310be443410ff5f50bec09e96d02d5d1531044147aaaf45971901e96a1fd006e"
+    },
+    {
+      "file": "Create (RE)/entity/create/conductors/rotation_speed_controller.rpe.json",
+      "rule": "FORMATVER[296]",
+      "from": "1.10.0",
+      "to": "1.26.50",
+      "contentSha256": "a59fe1198c8a94d0064823cabf63e8df490baf6d4733f41d7902fc2b00fa7cad"
+    },
+    {
+      "file": "Create (RE)/entity/create/conductors/sequenced_gearshift.rpe.json",
+      "rule": "FORMATVER[296]",
+      "from": "1.10.0",
+      "to": "1.26.50",
+      "contentSha256": "8e608fbd7041daddfc45c6db155ab36283cefc23389d55b961b6ee2c28cb557b"
+    },
+    {
+      "file": "Create (RE)/entity/create/conductors/shaft.rpe.json",
+      "rule": "FORMATVER[296]",
+      "from": "1.10.0",
+      "to": "1.26.50",
+      "contentSha256": "e2e62351d64d0b7006c8df38c978534b29da251b943267ead315886fa19b7580"
+    },
+    {
+      "file": "Create (RE)/entity/create/conductors/shaft.steam_engine.rpe.json",
+      "rule": "FORMATVER[296]",
+      "from": "1.10.0",
+      "to": "1.26.50",
+      "contentSha256": "d8f433f5c5b6c6d45b03e8e4daaa3de3145894c4c3aebd4330f54e310222d998"
+    },
+    {
+      "file": "Create (RE)/entity/create/conductors/speedometer.rpe.json",
+      "rule": "FORMATVER[296]",
+      "from": "1.10.0",
+      "to": "1.26.50",
+      "contentSha256": "7098c87b6e7214161eaa1215fb6763b3e67175919f1891b7c42f7c083d7e4fde"
+    },
+    {
+      "file": "Create (RE)/entity/create/conductors/stressometer.rpe.json",
+      "rule": "FORMATVER[296]",
+      "from": "1.10.0",
+      "to": "1.26.50",
+      "contentSha256": "e921952aafc45dbee5f6de572ee1de79e81705644b29e605d03e864886591c01"
+    },
+    {
+      "file": "Create (RE)/entity/create/conductors/vertical_gearbox.rpe.json",
+      "rule": "FORMATVER[296]",
+      "from": "1.10.0",
+      "to": "1.26.50",
+      "contentSha256": "c65733476fccbe062621547183ef77d7c1bf4014cd045a2d92ab0a9ea0ea760a"
+    },
+    {
+      "file": "Create (RE)/entity/create/generators/creative_motor.rpe.json",
+      "rule": "FORMATVER[296]",
+      "from": "1.10.0",
+      "to": "1.26.50",
+      "contentSha256": "0c072855851c3c64ca2f1744a2735998ec3fb7a4865bac747fe1d44ff3dcf698"
+    },
+    {
+      "file": "Create (RE)/entity/create/generators/flywheel.rpe.json",
+      "rule": "FORMATVER[296]",
+      "from": "1.10.0",
+      "to": "1.26.50",
+      "contentSha256": "1c5a09cecb8f8fd96642de78b3b52f78416ccee86f1ed8a7be94157a4b2f75cc"
+    },
+    {
+      "file": "Create (RE)/entity/create/generators/furnace_engine.rpe.json",
+      "rule": "FORMATVER[296]",
+      "from": "1.10.0",
+      "to": "1.26.50",
+      "contentSha256": "6e605802ba84541cfd932125d28c34347d79210a7f18a82041fcbab6f2fcd46e"
+    },
+    {
+      "file": "Create (RE)/entity/create/generators/hand_crank.rpe.json",
+      "rule": "FORMATVER[296]",
+      "from": "1.12.0",
+      "to": "1.26.50",
+      "contentSha256": "e43802115f8cd0c323b9e0dcfe2e24c837d4dc3c46b5e1714c3d9e1ed3bc4636"
+    },
+    {
+      "file": "Create (RE)/entity/create/generators/large_water_wheel.rpe.json",
+      "rule": "FORMATVER[296]",
+      "from": "1.10.0",
+      "to": "1.26.50",
+      "contentSha256": "6656f52c9e76055f191406fe39f213665cc83c99b3ef638f033623fb93e991a1"
+    },
+    {
+      "file": "Create (RE)/entity/create/generators/water_wheel.rpe.json",
+      "rule": "FORMATVER[296]",
+      "from": "1.10.0",
+      "to": "1.26.50",
+      "contentSha256": "95a354865bfc7f2a5e8d9c1a224fa994ec025306034e088e0252ee9e59f69a8e"
+    },
+    {
+      "file": "Create (RE)/entity/create/machines/brass_funnel.rpe.json",
+      "rule": "FORMATVER[296]",
+      "from": "1.10.0",
+      "to": "1.26.50",
+      "contentSha256": "b54cb524be1bf58aebefef8072fa777c2ee61e9e2e773798000f4c23eff90b8a"
+    },
+    {
+      "file": "Create (RE)/entity/create/machines/brass_tunnel.rpe.json",
+      "rule": "FORMATVER[296]",
+      "from": "1.10.0",
+      "to": "1.26.50",
+      "contentSha256": "60dbd636c953b57b1be52eac2ec99ef369e501c40e5cb5e5992d7c3981300cec"
+    },
+    {
+      "file": "Create (RE)/entity/create/machines/brass_tunnel_entity_x.rpe.json",
+      "rule": "FORMATVER[296]",
+      "from": "1.10.0",
+      "to": "1.26.50",
+      "contentSha256": "7fd6b87bafe74ab7e868644afc1b9bd49358d2dd9072d4a6a93dd3502820fe55"
+    },
+    {
+      "file": "Create (RE)/entity/create/machines/crushing_wheel.rpe.json",
+      "rule": "FORMATVER[296]",
+      "from": "1.10.0",
+      "to": "1.26.50",
+      "contentSha256": "9db75f26e07ce1d2e2f738b5294947613d7ccd68923e40cac5d127697e4e3b6d"
+    },
+    {
+      "file": "Create (RE)/entity/create/machines/deployer.rpe.json",
+      "rule": "FORMATVER[296]",
+      "from": "1.10.0",
+      "to": "1.26.50",
+      "contentSha256": "bce70d9d097afdb374365aaa7a5012e94038978ac9d42140826e306c58f3174c"
+    },
+    {
+      "file": "Create (RE)/entity/create/machines/encased_fan.rpe.json",
+      "rule": "FORMATVER[296]",
+      "from": "1.10.0",
+      "to": "1.26.50",
+      "contentSha256": "658db99c12d6572e42f158a679f956a97409038921d3e5bb8896fb5797fec318"
+    },
+    {
+      "file": "Create (RE)/entity/create/machines/mechanical_arm.rpe.json",
+      "rule": "FORMATVER[296]",
+      "from": "1.10.0",
+      "to": "1.26.50",
+      "contentSha256": "93d2d14811111691a1f4656cbce976979bfd163c3e9b55e1322e31bf1ce574f8"
+    },
+    {
+      "file": "Create (RE)/entity/create/machines/mechanical_bearing.rpe.json",
+      "rule": "FORMATVER[296]",
+      "from": "1.10.0",
+      "to": "1.26.50",
+      "contentSha256": "956178d23e0d9019989f8d533085e5e9ff3dd4206554a8bbf1dfcd89d67fe5f1"
+    },
+    {
+      "file": "Create (RE)/entity/create/machines/mechanical_crafter.rpe.json",
+      "rule": "FORMATVER[296]",
+      "from": "1.10.0",
+      "to": "1.26.50",
+      "contentSha256": "2e63995411c1db216a995a7b484a92fc1a1677363c854ad0cd47534767138855"
+    },
+    {
+      "file": "Create (RE)/entity/create/machines/mechanical_drill.rpe.json",
+      "rule": "FORMATVER[296]",
+      "from": "1.10.0",
+      "to": "1.26.50",
+      "contentSha256": "e7ec8e8fbb35b98e0788b7e766bc7eecec9043d40574936d4b7c0c1d9fd44861"
+    },
+    {
+      "file": "Create (RE)/entity/create/machines/mechanical_mixer.rpe.json",
+      "rule": "FORMATVER[296]",
+      "from": "1.10.0",
+      "to": "1.26.50",
+      "contentSha256": "a4a91a2be14bd77eb5a73a2b2f53114c7bc740f09a8be0df3f047197490f9d60"
+    },
+    {
+      "file": "Create (RE)/entity/create/machines/mechanical_press.rpe.json",
+      "rule": "FORMATVER[296]",
+      "from": "1.10.0",
+      "to": "1.26.50",
+      "contentSha256": "5434c067242d716526bbffa3ab4262227b5967838a5c3871cc98d56f94806fb2"
+    },
+    {
+      "file": "Create (RE)/entity/create/machines/mechanical_saw.rpe.json",
+      "rule": "FORMATVER[296]",
+      "from": "1.10.0",
+      "to": "1.26.50",
+      "contentSha256": "2cd7fd0285d0008c817ad534eb3f6e9cc06891609f6a69d8e622adac00c4bad5"
+    },
+    {
+      "file": "Create (RE)/entity/create/machines/millstone.rpe.json",
+      "rule": "FORMATVER[296]",
+      "from": "1.10.0",
+      "to": "1.26.50",
+      "contentSha256": "6ab977b6861f954eab7bcea4c64fa04649980c30dd2275cd4734d8b7cefd5cfc"
+    },
+    {
+      "file": "Create (RE)/entity/create/machines/pump_cog.rpe.json",
+      "rule": "FORMATVER[296]",
+      "from": "1.10.0",
+      "to": "1.26.50",
+      "contentSha256": "a34a6ae7446e84ed78db1b5f0dc4790cbf53e37726f1ec259e67e78fac6d57b4"
+    },
+    {
+      "file": "Create (RE)/entity/create/machines/weighted_ejector_ejector.rpe.json",
+      "rule": "FORMATVER[296]",
+      "from": "1.10.0",
+      "to": "1.26.50",
+      "contentSha256": "364806f45f50a3b79645d75b8f99fe8d05258a37671831b36047aee8ad9ce42b"
+    },
+    {
+      "file": "Create (RE)/entity/create/machines/windmill_bearing.rpe.json",
+      "rule": "FORMATVER[296]",
+      "from": "1.10.0",
+      "to": "1.26.50",
+      "contentSha256": "c05f4213b2928314fb969a8fc2674224121638ec60e6ee7f3a9e6c250abaf085"
+    },
+    {
+      "file": "Create (RE)/entity/create/support/andesite_door_visual_east.entity.json",
+      "rule": "FORMATVER[296]",
+      "from": "1.10.0",
+      "to": "1.26.50",
+      "contentSha256": "914f2ad4d152a4c068bc650beeb28ce80d138abd178bea6ee7eed00a8aef3ca7"
+    },
+    {
+      "file": "Create (RE)/entity/create/support/andesite_door_visual_lower.entity.json",
+      "rule": "FORMATVER[296]",
+      "from": "1.10.0",
+      "to": "1.26.50",
+      "contentSha256": "6c8912b02b2bde0d56edd987b2489f81b4849e82beb39e54a5442c2291217455"
+    },
+    {
+      "file": "Create (RE)/entity/create/support/andesite_door_visual_south.entity.json",
+      "rule": "FORMATVER[296]",
+      "from": "1.10.0",
+      "to": "1.26.50",
+      "contentSha256": "689599e963e258c423d9f1b01a10fecb35d2311f569ea044abdd73417a3e7e85"
+    },
+    {
+      "file": "Create (RE)/entity/create/support/andesite_door_visual_upper.entity.json",
+      "rule": "FORMATVER[296]",
+      "from": "1.10.0",
+      "to": "1.26.50",
+      "contentSha256": "e8715012994e6f78136bd87f27035a93d850a2c3eb94ddae424548f5052eecd1"
+    },
+    {
+      "file": "Create (RE)/entity/create/support/andesite_door_visual_west.entity.json",
+      "rule": "FORMATVER[296]",
+      "from": "1.10.0",
+      "to": "1.26.50",
+      "contentSha256": "941fa440196e03de3842ca001f2e3c8e73cc3278de2e4fdf48ae4f2a4d3b6ebe"
+    },
+    {
+      "file": "Create (RE)/entity/create/support/blaze_burner_flame.entity.json",
+      "rule": "FORMATVER[296]",
+      "from": "1.10.0",
+      "to": "1.26.50",
+      "contentSha256": "821c2d31f070f2db17ef0ff3dcc7246e4432fc237a04c9f08bcd1516fcd74386"
+    },
+    {
+      "file": "Create (RE)/entity/create/support/blaze_inert.entity.json",
+      "rule": "FORMATVER[296]",
+      "from": "1.10.0",
+      "to": "1.26.50",
+      "contentSha256": "9194e195227fb92c1e0f7c2a853589285d509e75f1f6d6c19e7d17b340035ea0"
+    },
+    {
+      "file": "Create (RE)/entity/create/support/brass_door_visual_east.entity.json",
+      "rule": "FORMATVER[296]",
+      "from": "1.10.0",
+      "to": "1.26.50",
+      "contentSha256": "f870734d48461efbc5696f862b68e03d2811051512ed47a8155eedde5297b4cf"
+    },
+    {
+      "file": "Create (RE)/entity/create/support/brass_door_visual_lower.entity.json",
+      "rule": "FORMATVER[296]",
+      "from": "1.10.0",
+      "to": "1.26.50",
+      "contentSha256": "2fdfaec7790120aa72bff8a57f4d93b2387a0ef48ca368029d9dfa5961a256bf"
+    },
+    {
+      "file": "Create (RE)/entity/create/support/brass_door_visual_south.entity.json",
+      "rule": "FORMATVER[296]",
+      "from": "1.10.0",
+      "to": "1.26.50",
+      "contentSha256": "a6415d0ffefe827f81ab324f0a4858bd33b9bf4129ddbbfaa821e77e3928ad66"
+    },
+    {
+      "file": "Create (RE)/entity/create/support/brass_door_visual_west.entity.json",
+      "rule": "FORMATVER[296]",
+      "from": "1.10.0",
+      "to": "1.26.50",
+      "contentSha256": "e50198de407803d4a26af61572e3ea9f23927d0bb7161d53188ea722cedf8773"
+    },
+    {
+      "file": "Create (RE)/entity/create/support/carpet_construct.entity.json",
+      "rule": "FORMATVER[296]",
+      "from": "1.10.0",
+      "to": "1.26.50",
+      "contentSha256": "c4381ef55d0d724799bfbe3f493dcdf0d15bff1c5c9deef781bdea4ec77c1e15"
+    },
+    {
+      "file": "Create (RE)/entity/create/support/chute_smart_filter.entity.json",
+      "rule": "FORMATVER[296]",
+      "from": "1.10.0",
+      "to": "1.26.50",
+      "contentSha256": "65e22a96eedadb6b28ce965965b853daf3eeb82205af6b1fdf17e6eb3f9881fe"
+    },
+    {
+      "file": "Create (RE)/entity/create/support/cogwheel_hologram.entity.json",
+      "rule": "FORMATVER[296]",
+      "from": "1.10.0",
+      "to": "1.26.50",
+      "contentSha256": "0e193927defc4c6d388942c705c4f25cb3a7b6988a9e79c21c5ffdd0fbdac1c2"
+    },
+    {
+      "file": "Create (RE)/entity/create/support/conveyor_item.entity.json",
+      "rule": "FORMATVER[296]",
+      "from": "1.10.0",
+      "to": "1.26.50",
+      "contentSha256": "8ef38d61c11fd98ed3b0b9fa4c32cd5fc99bc30dad1e92eb719578dbd291a609"
+    },
+    {
+      "file": "Create (RE)/entity/create/support/copper_door_visual_east.entity.json",
+      "rule": "FORMATVER[296]",
+      "from": "1.10.0",
+      "to": "1.26.50",
+      "contentSha256": "b0d15fb0bd7201c7ed3b26b582ea6c83c62d8cf9ce7223f5137d2e52ea8638b4"
+    },
+    {
+      "file": "Create (RE)/entity/create/support/copper_door_visual_lower.entity.json",
+      "rule": "FORMATVER[296]",
+      "from": "1.10.0",
+      "to": "1.26.50",
+      "contentSha256": "d4e7217a73a86407cd56b782dbab91bd5cc98892c156c7c079afba279e4edb85"
+    },
+    {
+      "file": "Create (RE)/entity/create/support/copper_door_visual_south.entity.json",
+      "rule": "FORMATVER[296]",
+      "from": "1.10.0",
+      "to": "1.26.50",
+      "contentSha256": "a4334dc7c8248f8d61f06a651cb3129b5a51888238dc35228ee3813b145c498c"
+    },
+    {
+      "file": "Create (RE)/entity/create/support/copper_door_visual_west.entity.json",
+      "rule": "FORMATVER[296]",
+      "from": "1.10.0",
+      "to": "1.26.50",
+      "contentSha256": "949fb6dc0158b53fe23a7c133ad4297566f4c08a53778463032908649e12bb37"
+    },
+    {
+      "file": "Create (RE)/entity/create/support/deployer_construct.entity.json",
+      "rule": "FORMATVER[296]",
+      "from": "1.10.0",
+      "to": "1.26.50",
+      "contentSha256": "7ea89968244fd8b08d2bd9541f7905b42cf19f9291a275e2a6c346019ce60d01"
+    },
+    {
+      "file": "Create (RE)/entity/create/support/deployer_filter.entity.json",
+      "rule": "FORMATVER[296]",
+      "from": "1.10.0",
+      "to": "1.26.50",
+      "contentSha256": "8b97bd8bac406e16946d2abf28df1c7d7471fce0ab05dde55298ea4246ef97fd"
+    },
+    {
+      "file": "Create (RE)/entity/create/support/desk_bell.entity.json",
+      "rule": "FORMATVER[296]",
+      "from": "1.10.0",
+      "to": "1.26.50",
+      "contentSha256": "0655dcab3b748cfdb42345f254d4fda423da5528f477159f2f0c153836cfc3c6"
+    },
+    {
+      "file": "Create (RE)/entity/create/support/door_construct.entity.json",
+      "rule": "FORMATVER[296]",
+      "from": "1.10.0",
+      "to": "1.26.50",
+      "contentSha256": "77b03ddd28d8fffbffe1b3627abd4b3a796f8c032f4abaf4e188e9bd27e1504f"
+    },
+    {
+      "file": "Create (RE)/entity/create/support/fluid.item_drain.entity.json",
+      "rule": "FORMATVER[296]",
+      "from": "1.10.0",
+      "to": "1.26.50",
+      "contentSha256": "ba9a76fe1c2abd0b9d2a5651f7ec0d2cce0390c57cb09a4b123ec93e1048d642"
+    },
+    {
+      "file": "Create (RE)/entity/create/support/fluid_spout.entity.json",
+      "rule": "FORMATVER[296]",
+      "from": "1.10.0",
+      "to": "1.26.50",
+      "contentSha256": "51c126952201413f6ca795a85451ca5856d852fa6ac884ec528bc18edec74c56"
+    },
+    {
+      "file": "Create (RE)/entity/create/support/fluid_tank_fluid.entity.json",
+      "rule": "FORMATVER[296]",
+      "from": "1.10.0",
+      "to": "1.26.50",
+      "contentSha256": "4fc5304bd05d1441cf5ee77a3058b54454fcd032a82163a67e5f6deaf9253713"
+    },
+    {
+      "file": "Create (RE)/entity/create/support/glass_door_visual_east.entity.json",
+      "rule": "FORMATVER[296]",
+      "from": "1.10.0",
+      "to": "1.26.50",
+      "contentSha256": "568a52c263eb5c2db812cd9357b41cda69ae2ecc9d498b7f3e0debced8353c3f"
+    },
+    {
+      "file": "Create (RE)/entity/create/support/glass_door_visual_lower.entity.json",
+      "rule": "FORMATVER[296]",
+      "from": "1.10.0",
+      "to": "1.26.50",
+      "contentSha256": "7e3bb76606912a883795f4f0aaddf0d377424edb2845c3e8e33334103e5017b9"
+    },
+    {
+      "file": "Create (RE)/entity/create/support/glass_door_visual_south.entity.json",
+      "rule": "FORMATVER[296]",
+      "from": "1.10.0",
+      "to": "1.26.50",
+      "contentSha256": "e5fe5941446c5cf6c84cb8762f8938243836c52715190a4d5178be69ce26ec1d"
+    },
+    {
+      "file": "Create (RE)/entity/create/support/glass_door_visual_west.entity.json",
+      "rule": "FORMATVER[296]",
+      "from": "1.10.0",
+      "to": "1.26.50",
+      "contentSha256": "90e6004cf6e1230188968dec8dda98bccb20d29c71244f0882bf7f7bddd5f655"
+    },
+    {
+      "file": "Create (RE)/entity/create/support/glue_selection.entity.json",
+      "rule": "FORMATVER[296]",
+      "from": "1.10.0",
+      "to": "1.26.50",
+      "contentSha256": "91a3fbf517bce9350e64886a3f9e99c9bbc8a8a33d7d37f98d45da40756acb09"
+    },
+    {
+      "file": "Create (RE)/entity/create/support/hose_pulley_belt_visual.entity.json",
+      "rule": "FORMATVER[296]",
+      "from": "1.10.0",
+      "to": "1.26.50",
+      "contentSha256": "6ef3ecc393198d20817af726ce7c2194ffd82a894aa7b15cbf72bcccf7d6e231"
+    },
+    {
+      "file": "Create (RE)/entity/create/support/ladder_construct.entity.json",
+      "rule": "FORMATVER[296]",
+      "from": "1.10.0",
+      "to": "1.26.50",
+      "contentSha256": "8e89e5a416f21e1b78d702bd68d8c223d31949c7f3644621263783dcb903b053"
+    },
+    {
+      "file": "Create (RE)/entity/create/support/large_cogwheel_hologram.entity.json",
+      "rule": "FORMATVER[296]",
+      "from": "1.10.0",
+      "to": "1.26.50",
+      "contentSha256": "9ebb7ec1ead20090b9ad364074f6898cc5e66b3eee4ef8fa5b0af1eeebc84248"
+    },
+    {
+      "file": "Create (RE)/entity/create/support/mechanical_bearing_construct.entity.json",
+      "rule": "FORMATVER[296]",
+      "from": "1.10.0",
+      "to": "1.26.50",
+      "contentSha256": "ebda8c018e2c0ebded4839f774d8ad2fbfbdfd76232afe520554b901a6da158b"
+    },
+    {
+      "file": "Create (RE)/entity/create/support/mechanical_crafter_item.entity.json",
+      "rule": "FORMATVER[296]",
+      "from": "1.10.0",
+      "to": "1.26.50",
+      "contentSha256": "6fa4124ffc6be961888033785b8b98fec2364b948e04964e36d0e4040805b003"
+    },
+    {
+      "file": "Create (RE)/entity/create/support/mechanical_drill_construct.entity.json",
+      "rule": "FORMATVER[296]",
+      "from": "1.10.0",
+      "to": "1.26.50",
+      "contentSha256": "7920a649b2cc44863771ccd2a6f81df56cb23d27cac88d37de70a05c1b365e39"
+    },
+    {
+      "file": "Create (RE)/entity/create/support/mechanical_harvester_construct.entity.json",
+      "rule": "FORMATVER[296]",
+      "from": "1.10.0",
+      "to": "1.26.50",
+      "contentSha256": "730c1d2635d336f0e3ad7e8b957b53bedc0d71d5a7d4092dff6d3192866bc426"
+    },
+    {
+      "file": "Create (RE)/entity/create/support/mechanical_saw_construct.entity.json",
+      "rule": "FORMATVER[296]",
+      "from": "1.10.0",
+      "to": "1.26.50",
+      "contentSha256": "45a4c28483a5a6369a046b9025fe288026a4d81686a022438cd159eb2e996d3a"
+    },
+    {
+      "file": "Create (RE)/entity/create/support/pipe_fluid.entity.json",
+      "rule": "FORMATVER[296]",
+      "from": "1.10.0",
+      "to": "1.26.50",
+      "contentSha256": "06928095ad934e48f877a0dcf4204b274d9cbddd53cacbc63a90fcf228dac6be"
+    },
+    {
+      "file": "Create (RE)/entity/create/support/portable_storage_interface_construct.entity.json",
+      "rule": "FORMATVER[296]",
+      "from": "1.10.0",
+      "to": "1.26.50",
+      "contentSha256": "916a00dd6d140eac3737c5ecc6ebc0b2d531822fe10751e8db04f797a0648ea3"
+    },
+    {
+      "file": "Create (RE)/entity/create/support/portable_storage_interface_static.entity.json",
+      "rule": "FORMATVER[296]",
+      "from": "1.10.0",
+      "to": "1.26.50",
+      "contentSha256": "33c81d8d72b79f347a557dc14a244e957fab43d476c4a70db6bcd2f51de09d7d"
+    },
+    {
+      "file": "Create (RE)/entity/create/support/potato_projectile.entity.json",
+      "rule": "FORMATVER[296]",
+      "from": "1.10.0",
+      "to": "1.26.50",
+      "contentSha256": "098b08b79256ddd9026f7d3b13871d11bd5cac303cb7cc9949a79b6ea3c5ca94"
+    },
+    {
+      "file": "Create (RE)/entity/create/support/radial_chassis_construct.entity.json",
+      "rule": "FORMATVER[296]",
+      "from": "1.10.0",
+      "to": "1.26.50",
+      "contentSha256": "9853e6e15c11413ef4f01f604427bcf1fce8e26184abaa5fc88890e313df2980"
+    },
+    {
+      "file": "Create (RE)/entity/create/support/redstone_link_frequency.entity.json",
+      "rule": "FORMATVER[296]",
+      "from": "1.10.0",
+      "to": "1.26.50",
+      "contentSha256": "d8e82783c0053424c47082c34b6001a00975360c5835b3f4ad5548cff371be9e"
+    },
+    {
+      "file": "Create (RE)/entity/create/support/rope.entity.json",
+      "rule": "FORMATVER[296]",
+      "from": "1.10.0",
+      "to": "1.26.50",
+      "contentSha256": "16fc0c93dd14d9034a2c252dda73620aa90609b796e4d395bd4a6a7120069865"
+    },
+    {
+      "file": "Create (RE)/entity/create/support/rope_half.entity.json",
+      "rule": "FORMATVER[296]",
+      "from": "1.10.0",
+      "to": "1.26.50",
+      "contentSha256": "ae2d2d7a92f66b4bf81b208340584c6fa2d8922de4cbd1850d7ad36faff05272"
+    },
+    {
+      "file": "Create (RE)/entity/create/support/seat_construct.entity.json",
+      "rule": "FORMATVER[296]",
+      "from": "1.10.0",
+      "to": "1.26.50",
+      "contentSha256": "0037914b17b4049a1f1fa86c24db9edc6fb637c4ef71c3ce45e32ebb530de005"
+    },
+    {
+      "file": "Create (RE)/entity/create/support/shaft_hologram.entity.json",
+      "rule": "FORMATVER[296]",
+      "from": "1.10.0",
+      "to": "1.26.50",
+      "contentSha256": "3b129c7e92937831af2eabe927c2e1153b19ca879e2e05b7dd37f01fb6af131f"
+    },
+    {
+      "file": "Create (RE)/entity/create/support/slab_construct.entity.json",
+      "rule": "FORMATVER[296]",
+      "from": "1.10.0",
+      "to": "1.26.50",
+      "contentSha256": "05dd991eee6a23d50194bb7c7a609e11fdd7cc9691d43b0bdc0cefbe7544e9f9"
+    },
+    {
+      "file": "Create (RE)/entity/create/support/smart_fluid_pipe_filter.entity.json",
+      "rule": "FORMATVER[296]",
+      "from": "1.10.0",
+      "to": "1.26.50",
+      "contentSha256": "2f58e29a143c623c13679da441f8b5d6b36066cf91c35b98f4a0448b9836bc90"
+    },
+    {
+      "file": "Create (RE)/entity/create/support/smart_observer.entity.json",
+      "rule": "FORMATVER[296]",
+      "from": "1.10.0",
+      "to": "1.26.50",
+      "contentSha256": "08e3fb8b532e5f9bbabe0c3846895ef451ae3c7a5d27722e7dd1a618dec646ed"
+    },
+    {
+      "file": "Create (RE)/entity/create/support/spolt_splax.entity.json",
+      "rule": "FORMATVER[296]",
+      "from": "1.10.0",
+      "to": "1.26.50",
+      "contentSha256": "e5565afff914941acdec00cd74c690626604e30c73d3bfcae54b962c4649a5bc"
+    },
+    {
+      "file": "Create (RE)/entity/create/support/spout_bick.entity.json",
+      "rule": "FORMATVER[296]",
+      "from": "1.10.0",
+      "to": "1.26.50",
+      "contentSha256": "b578835eabaf09291aa9efea3538a6448357d5745ba25b684b9efa219c883cc9"
+    },
+    {
+      "file": "Create (RE)/entity/create/support/stair_construct.entity.json",
+      "rule": "FORMATVER[296]",
+      "from": "1.10.0",
+      "to": "1.26.50",
+      "contentSha256": "0ec4d28aaec6e0282446aa65b2e7a5db274c1cd59b799728c94832cd1bb3572d"
+    },
+    {
+      "file": "Create (RE)/entity/create/support/steam_engine_piston.entity.json",
+      "rule": "FORMATVER[296]",
+      "from": "1.10.0",
+      "to": "1.26.50",
+      "contentSha256": "d563ee930f4cd38eb6870ad529da444b6f3742e2f6357b7c56721a22c9fb5edf"
+    },
+    {
+      "file": "Create (RE)/entity/create/support/sticker_construct.entity.json",
+      "rule": "FORMATVER[296]",
+      "from": "1.10.0",
+      "to": "1.26.50",
+      "contentSha256": "61f77964694fcf8c16a59d640e5477004050fcf4ec0703b25bedb4f4591e16ab"
+    },
+    {
+      "file": "Create (RE)/entity/create/support/vault_storage.entity.json",
+      "rule": "FORMATVER[296]",
+      "from": "1.10.0",
+      "to": "1.26.50",
+      "contentSha256": "375c7acc8ed65462f5f5151b442725c263a034b410c80110104046684493bd87"
+    },
+    {
+      "file": "Create (RE)/entity/create/support/whistle_active.entity.json",
+      "rule": "FORMATVER[296]",
+      "from": "1.10.0",
+      "to": "1.26.50",
+      "contentSha256": "18303979066c8711ad1eda287c6979ef648cd3e008e37d1c8e7daca4cbfadfeb"
+    },
+    {
+      "file": "Create (RE)/entity/create/support/windmill_sail_construct.entity.json",
+      "rule": "FORMATVER[296]",
+      "from": "1.10.0",
+      "to": "1.26.50",
+      "contentSha256": "88662bb393ce8433256d3e53a9c072123e5e65eefd06bc49680799012b334574"
+    }
+  ]
+}

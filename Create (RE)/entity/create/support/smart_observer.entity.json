@@ -1,5 +1,5 @@
 {
-  "format_version": "1.10.0",
+  "format_version": "1.26.50",
   "minecraft:client_entity": {
     "description": {
       "identifier": "create:smart_observer_entity",
@@ -10,16 +10,16 @@
         "default": "textures/create/common/blocks/invisible_texture"
       },
       "geometry": {
-        "default": "geometry.create.smart_hopper_entity"
+        "default": "geometry.create_bedrock.create.smart_hopper_entity"
       },
       "animations": {
-        "constant": "animation.create.basic_filter.constant",
-        "right_block": "animation.create.basic_filter.right_block",
-        "right_item": "animation.create.basic_filter.right_item",
-        "right_hand_equipped": "animation.create.basic_filter.right_hand_equipped",
-        "left_block": "animation.create.basic_filter.left_block",
-        "left_item": "animation.create.basic_filter.left_item"
-        ,"left_hand_equipped": "animation.create.basic_filter.left_hand_equipped"
+        "constant": "animation.create_bedrock.create.basic_filter.constant",
+        "right_block": "animation.create_bedrock.create.basic_filter.right_block",
+        "right_item": "animation.create_bedrock.create.basic_filter.right_item",
+        "right_hand_equipped": "animation.create_bedrock.create.basic_filter.right_hand_equipped",
+        "left_block": "animation.create_bedrock.create.basic_filter.left_block",
+        "left_item": "animation.create_bedrock.create.basic_filter.left_item"
+        ,"left_hand_equipped": "animation.create_bedrock.create.basic_filter.left_hand_equipped"
       },
       "scripts": {
         "animate": [

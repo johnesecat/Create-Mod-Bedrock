@@ -32,7 +32,7 @@
             	"size": [16, 16, 16]
             },
             "minecraft:geometry": {
-                "identifier": "geometry.create.millstone",
+                "identifier": "geometry.create_bedrock.create.millstone",
                 "bone_visibility": {
                     "rpm": false
                 }
@@ -46,7 +46,7 @@
                     }
                 },
                 "geometry": {
-                    "identifier": "geometry.create.millstone"
+                    "identifier": "geometry.create_bedrock.create.millstone"
                 }
             },
             "minecraft:destructible_by_mining": {

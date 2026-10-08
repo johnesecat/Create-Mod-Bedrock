@@ -31,7 +31,7 @@
                     }
                 },
                 "geometry": {
-                    "identifier": "geometry.create.clutch"
+                    "identifier": "geometry.create_bedrock.create.clutch"
                 }
             },
             "minecraft:material_instances": {
@@ -42,7 +42,7 @@
                 }
             },
             "minecraft:geometry": {
-                "identifier": "geometry.create.clutch",
+                "identifier": "geometry.create_bedrock.create.clutch",
                 "bone_visibility": {
                     "rpm": false
                 }

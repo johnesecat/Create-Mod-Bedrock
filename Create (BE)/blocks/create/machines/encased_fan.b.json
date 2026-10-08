@@ -25,7 +25,7 @@
                     }
                 },
                 "geometry": {
-                    "identifier": "geometry.create.encased_fan"
+                    "identifier": "geometry.create_bedrock.create.encased_fan"
                 }
             },
             "minecraft:material_instances": {
@@ -36,7 +36,7 @@
                 }
             },
             "minecraft:geometry": {
-                "identifier": "geometry.create.encased_fan",
+                "identifier": "geometry.create_bedrock.create.encased_fan",
                 "bone_visibility": {
                     "rpm": false
                 }

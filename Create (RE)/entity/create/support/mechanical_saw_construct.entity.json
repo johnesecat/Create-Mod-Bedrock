@@ -1,5 +1,5 @@
 ﻿{
-    "format_version":  "1.10.0",
+    "format_version":  "1.26.50",
     "minecraft:client_entity":  {
                                     "description":  {
                                                         "identifier":  "create:mechanical_saw_construct",
@@ -10,7 +10,7 @@
                                                                          "default":  "textures/create/common/blocks/mechanical_saw_misc"
                                                                      },
                                                         "geometry":  {
-                                                                         "default":  "geometry.create.mechanical_saw"
+                                                                         "default":  "geometry.create_bedrock.create.mechanical_saw"
                                                                      },
                                                         "scripts":  {
                                                                         "pre_animation":  [

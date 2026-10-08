@@ -162,11 +162,11 @@ export function onInteractCreativeMotor(player, block, dimension) {
     if (!entity?.isValid) return;
     const form = new ModalFormData();
 
-    form.title('create:rpm.creative_motor.title')
+    form.title({ rawtext: [{ text: 'create:rpm.' }, { translate: 'creative_motor.title' }] })
     const currentRpm = getMotorRpm(entity);
     form.toggle({ translate: 'creative_motor.reverse_rotation.text' }, { defaultValue: currentRpm < 0 });
-    form.slider({ translate: '%creative_motor.speed.text' }, 1, 256, { defaultValue: Math.min(256, Math.max(1, Math.abs(currentRpm))) });
-    form.submitButton('Confirm');
+    form.slider({ translate: 'creative_motor.speed.text' }, 1, 256, { defaultValue: Math.min(256, Math.max(1, Math.abs(currentRpm))) });
+    form.submitButton({ translate: 'creative_motor.confirm.text' });
     form.show(player).then(resp => {
         if (resp.canceled || !resp.formValues) return;
         const [invert, speed] = resp.formValues;

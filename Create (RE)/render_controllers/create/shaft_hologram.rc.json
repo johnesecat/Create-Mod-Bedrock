@@ -1,7 +1,7 @@
 {
   "format_version": "1.8.0",
   "render_controllers": {
-    "controller.render.create.shaft_hologram": {
+    "controller.render.create_bedrock.create.shaft_hologram": {
       "ignore_lighting": true,
       "geometry": "Geometry.default",
       "materials": [{ "*": "Material.hologram" }],

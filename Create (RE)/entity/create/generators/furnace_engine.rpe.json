@@ -1,5 +1,5 @@
 {
-    "format_version": "1.10.0",
+    "format_version": "1.26.50",
     "minecraft:client_entity": {
         "description": {
             "identifier": "create:furnace_engine_entity",
@@ -10,12 +10,12 @@
                 "default": "textures/create/common/blocks/flywheel"
             },
             "geometry": {
-                "default": "geometry.create.furnace_engine_frame"
+                "default": "geometry.create_bedrock.create.furnace_engine_frame"
             },
             "animations": {
                 "rotation": "animation.create.rpm.rotation",
-                "furnace_engine": "animation.create.furnace_engine",
-                "transmission": "animation.create.furnace_engine.transmission"
+                "furnace_engine": "animation.create_bedrock.create.furnace_engine",
+                "transmission": "animation.create_bedrock.create.furnace_engine.transmission"
             },
             "scripts": {
                 "animate": [ "rotation", "furnace_engine", "transmission" ],

@@ -1,5 +1,5 @@
 {
-    "format_version": "1.10.0",
+    "format_version": "1.26.50",
     "minecraft:client_entity": {
         "description": {
             "identifier": "create:mechanical_crafter_item",
@@ -10,15 +10,15 @@
                 "default": "textures/create/common/blocks/invisible_texture"
             },
             "geometry": {
-                "default": "geometry.create.display_item"
+                "default": "geometry.create_bedrock.create.display_item"
             },
             "enable_attachables": true,
             "animations": {
-                "item": "animation.create.mechanical_crafter_item.item",
-                "frame_item": "animation.create.mechanical_crafter_item.frame_item",
-                "frame_item_flat": "animation.create.mechanical_crafter_item.frame_item_flat",
-                "block": "animation.create.mechanical_crafter_item.block",
-                "hand_equipped": "animation.create.mechanical_crafter_item.hand_equipped"
+                "item": "animation.create_bedrock.create.mechanical_crafter_item.item",
+                "frame_item": "animation.create_bedrock.create.mechanical_crafter_item.frame_item",
+                "frame_item_flat": "animation.create_bedrock.create.mechanical_crafter_item.frame_item_flat",
+                "block": "animation.create_bedrock.create.mechanical_crafter_item.block",
+                "hand_equipped": "animation.create_bedrock.create.mechanical_crafter_item.hand_equipped"
             },
             "scripts": {
                 "animate": [

@@ -3,7 +3,7 @@
 	"minecraft:geometry": [
 		{
 			"description": {
-				"identifier": "geometry.create.steam_engine",
+				"identifier": "geometry.create_bedrock.create.steam_engine",
 				"texture_width": 64,
 				"texture_height": 64,
 				"visible_bounds_width": 3,

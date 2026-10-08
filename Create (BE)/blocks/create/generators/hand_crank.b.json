@@ -34,7 +34,7 @@
                     }
                 },
                 "geometry": {
-                    "identifier": "geometry.create.hand_crank"
+                    "identifier": "geometry.create_bedrock.create.hand_crank"
                 }
             },
             "minecraft:collision_box": [
@@ -52,7 +52,7 @@
             	"size": [16, 16, 6]
             },
             "minecraft:geometry": {
-                "identifier": "geometry.create.hand_crank"
+                "identifier": "geometry.create_bedrock.create.hand_crank"
             },
             "minecraft:destructible_by_mining": {
                 "seconds_to_destroy": 7.5,

@@ -3,7 +3,7 @@
 	"minecraft:geometry": [
 		{
 			"description": {
-				"identifier": "geometry.create.encased_fan",
+				"identifier": "geometry.create_bedrock.create.encased_fan",
 				"texture_width": 64,
 				"texture_height": 64,
 				"visible_bounds_width": 3,
@@ -119,7 +119,7 @@
 		},
 		{
 			"description": {
-				"identifier": "geometry.create.encased_fan_entity",
+				"identifier": "geometry.create_bedrock.create.encased_fan_entity",
 				"texture_width": 64,
 				"texture_height": 64,
 				"visible_bounds_width": 3,

@@ -1,7 +1,7 @@
 {
-    "format_version": "1.8.0",
+    "format_version": "1.10.0",
     "animations": {
-        "animation.create.conveyor_item.block": {
+        "animation.create_bedrock.create.conveyor_item.block": {
             "loop": true,
             "bones": {
                 "right_world_offset": {
@@ -28,7 +28,7 @@
             }
         },
 
-        "animation.create.conveyor_item.item": {
+        "animation.create_bedrock.create.conveyor_item.item": {
             "loop": true,
             "bones": {
                 "right_world_offset": {
@@ -55,7 +55,7 @@
             }
         },
 
-        "animation.create.conveyor_item.hand_equipped": {
+        "animation.create_bedrock.create.conveyor_item.hand_equipped": {
             "loop": true,
             "bones": {
                 "right_world_offset": {

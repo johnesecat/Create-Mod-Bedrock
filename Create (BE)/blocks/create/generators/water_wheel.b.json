@@ -30,7 +30,7 @@
                 }
             },
             "minecraft:geometry": {
-                "identifier": "geometry.create.water_wheel_block"
+                "identifier": "geometry.create_bedrock.create.water_wheel_block"
             },
             "minecraft:item_visual": {
                 "material_instances": {
@@ -41,7 +41,7 @@
                     }
                 },
                 "geometry": {
-                    "identifier": "geometry.create.water_wheel_item"
+                    "identifier": "geometry.create_bedrock.create.water_wheel_item"
                 }
             },
             "minecraft:collision_box": true,

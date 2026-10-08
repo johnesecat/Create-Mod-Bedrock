@@ -3,7 +3,7 @@
 	"minecraft:geometry": [
 		{
 			"description": {
-				"identifier": "geometry.create.clutch",
+				"identifier": "geometry.create_bedrock.create.clutch",
 				"texture_width": 64,
 				"texture_height": 64,
 				"visible_bounds_width": 2,
@@ -219,7 +219,7 @@
 		},
 		{
 			"description": {
-				"identifier": "geometry.create.clutch_entity",
+				"identifier": "geometry.create_bedrock.create.clutch_entity",
 				"texture_width": 64,
 				"texture_height": 64,
 				"visible_bounds_width": 2,

@@ -1,5 +1,5 @@
 {
-    "format_version":  "1.10.0",
+    "format_version":  "1.26.50",
     "minecraft:client_entity":  {
                                     "description":  {
                                                         "identifier":  "create:windmill_sail_construct",
@@ -31,7 +31,7 @@
                                                                          "canvas":  "geometry.windmill_sail_construct_canvas"
                                                                      },
                                                         "animations":  {
-                                                                           "rotate":  "animation.create.windmill_sail_construct.rotate"
+                                                                           "rotate":  "animation.create_bedrock.create.windmill_sail_construct.rotate"
                                                                        },
                                                         "scripts":  {
                                                                         "animate":  [
@@ -48,8 +48,8 @@
                                                                                           ]
                                                                     },
                                                         "render_controllers":  [
-                                                                                   "controller.render.create.windmill_sail_frame",
-                                                                                   "controller.render.create.windmill_sail_canvas"
+                                                                                   "controller.render.create_bedrock.create.windmill_sail_frame",
+                                                                                   "controller.render.create_bedrock.create.windmill_sail_canvas"
                                                                                ]
                                                     }
                                 }

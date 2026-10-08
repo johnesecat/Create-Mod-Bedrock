@@ -17,7 +17,7 @@
                 }
             ]
         },
-        "create_additive:entity_alphablend": {
+        "create_bedrock_additive:entity_alphablend": {
             "-defines": [ "FANCY"],
             "+defines": ["ALPHA_TEST", "USE_OVERLAY", "USE_UV_ANIM" ],
             "+states": [ "Blending",  "DisableDepthWrite" ],

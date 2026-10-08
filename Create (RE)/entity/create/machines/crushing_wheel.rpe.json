@@ -1,5 +1,5 @@
 {
-    "format_version": "1.10.0",
+    "format_version": "1.26.50",
     "minecraft:client_entity": {
         "description": {
             "identifier": "create:crushing_wheel_entity",
@@ -10,7 +10,7 @@
                 "default": "textures/create/common/blocks/crushing_wheel"
             },
             "geometry": {
-                "default": "geometry.create.crushing_wheel"
+                "default": "geometry.create_bedrock.create.crushing_wheel"
             },
             "animations": {
                 "rotation": "animation.create.rpm.rotation",

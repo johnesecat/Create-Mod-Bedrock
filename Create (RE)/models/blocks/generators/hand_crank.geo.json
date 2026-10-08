@@ -3,7 +3,7 @@
 	"minecraft:geometry": [
 		{
 			"description": {
-				"identifier": "geometry.create.hand_crank",
+				"identifier": "geometry.create_bedrock.create.hand_crank",
 				"texture_width": 32,
 				"texture_height": 32,
 				"visible_bounds_width": 2,

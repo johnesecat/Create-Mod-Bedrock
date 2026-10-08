@@ -3,7 +3,7 @@
 	"minecraft:geometry": [
 		{
 			"description": {
-				"identifier": "geometry.create.mechanical_saw",
+				"identifier": "geometry.create_bedrock.create.mechanical_saw",
 				"texture_width": 64,
 				"texture_height": 64,
 				"visible_bounds_width": 2,
@@ -131,7 +131,7 @@
 		},
 		{
 			"description": {
-				"identifier": "geometry.create.mechanical_saw_entity",
+				"identifier": "geometry.create_bedrock.create.mechanical_saw_entity",
 				"texture_width": 64,
 				"texture_height": 64,
 				"visible_bounds_width": 2,

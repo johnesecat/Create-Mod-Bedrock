@@ -1,5 +1,5 @@
 {
-    "format_version": "1.10.0",
+    "format_version": "1.26.50",
     "minecraft:client_entity": {
         "description": {
             "identifier": "create:flywheel_entity",
@@ -10,12 +10,12 @@
                 "default": "textures/create/common/blocks/flywheel"
             },
             "geometry": {
-                "default": "geometry.create.flywheel_entity"
+                "default": "geometry.create_bedrock.create.flywheel_entity"
             },
             "animations": {
                 "rotation": "animation.create.rpm.rotation",
                 "offset": "animation.create.rpm.offsets",
-                "flywheel": "animation.create.flywheel"
+                "flywheel": "animation.create_bedrock.create.flywheel"
             },
             "scripts": {
                 "animate": [ "rotation", "offset", "flywheel" ],

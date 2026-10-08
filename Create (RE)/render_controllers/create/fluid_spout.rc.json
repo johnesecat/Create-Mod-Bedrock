@@ -1,7 +1,7 @@
 {
   "format_version": "1.8.0",
   "render_controllers": {
-    "controller.render.create.fluid_spout": {
+    "controller.render.create_bedrock.create.fluid_spout": {
       "arrays": {
         "textures": {
           "Array.fluid": ["Texture.lava", "Texture.water", "Texture.honey", "Texture.chocolate", "Texture.milk"]

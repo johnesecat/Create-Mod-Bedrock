@@ -14,7 +14,7 @@
                     "ambient_occlusion": false
                 }
             },
-            "minecraft:geometry": "geometry.fluid.block",
+            "minecraft:geometry": "geometry.create_bedrock.fluid.block",
             "minecraft:map_color": "#F3F0DF",
             "minecraft:collision_box": false,
             "minecraft:selection_box": {

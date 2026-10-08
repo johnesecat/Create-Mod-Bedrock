@@ -1,15 +1,15 @@
 {
-  "format_version": "1.10.0",
+  "format_version": "1.26.50",
   "minecraft:client_entity": {
     "description": {
       "identifier": "create:andesite_door_visual_west",
       "materials": { "default": "entity_alphatest" },
       "textures": { "default": "textures/create/common/blocks/andesite_door" },
-      "geometry": { "default": "geometry.create.andesite_door_entity" },
+      "geometry": { "default": "geometry.create_bedrock.create.andesite_door_entity" },
       "animations": {
-        "fixed": "animation.model.fixed_west",
-        "open": "animation.model.open", "close": "animation.model.close",
-        "open_reverse": "animation.model.open_reverse", "close_reverse": "animation.model.close_reverse"
+        "fixed": "animation.create_bedrock.model.fixed_west",
+        "open": "animation.create_bedrock.model.open", "close": "animation.create_bedrock.model.close",
+        "open_reverse": "animation.create_bedrock.model.open_reverse", "close_reverse": "animation.create_bedrock.model.close_reverse"
       },
       "scripts": {
         "animate": [
@@ -18,7 +18,7 @@
           { "open_reverse": "q.property('create:opening') && q.property('create:hinge')" }, { "close_reverse": "!q.property('create:opening') && q.property('create:hinge')" }
         ]
       },
-      "render_controllers": [ "controller.render.create.andesite_door_visual" ]
+      "render_controllers": [ "controller.render.create_bedrock.create.andesite_door_visual" ]
     }
   }
 }

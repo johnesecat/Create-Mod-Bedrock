@@ -1,7 +1,7 @@
 {
-    "format_version": "1.8.0",
+    "format_version": "1.10.0",
     "animations": {
-        "animation.create.mechanical_mixer.mixing.transition_in": {
+        "animation.create_bedrock.create.mechanical_mixer.mixing.transition_in": {
             "loop": "hold_on_last_frame",
             "animation_length": 1.0,
             "bones": {
@@ -13,7 +13,7 @@
                 }
             }
         },
-        "animation.create.mechanical_mixer.mixing.transition_out": {
+        "animation.create_bedrock.create.mechanical_mixer.mixing.transition_out": {
             "animation_length": 1.0,
             "bones": {
                 "mixer": {
@@ -24,7 +24,7 @@
                 }
             }
         },
-        "animation.create.mechanical_mixer.mixing.stop": {
+        "animation.create_bedrock.create.mechanical_mixer.mixing.stop": {
             "animation_length": 0.1,
             "bones": {
                 "mixer": {
@@ -32,7 +32,7 @@
                 }
             }
         },
-        "animation.create.mechanical_mixer.mixing.hold": {
+        "animation.create_bedrock.create.mechanical_mixer.mixing.hold": {
             "loop": true,
             "animation_length": 0.1,
             "bones": {
@@ -41,7 +41,7 @@
                 }
             }
         },
-        "animation.create.mechanical_mixer.spin": {
+        "animation.create_bedrock.create.mechanical_mixer.spin": {
             "loop": true,
             "bones": {
                 "mixerhead": {

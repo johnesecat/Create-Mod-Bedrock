@@ -26,7 +26,7 @@
             	"size": [16, 14, 16]
             },
             "minecraft:geometry": {
-                "identifier": "geometry.create.mechanical_mixer"
+                "identifier": "geometry.create_bedrock.create.mechanical_mixer"
             },
             "minecraft:item_visual": {
                 "material_instances": {
@@ -37,7 +37,7 @@
                     }
                 },
                 "geometry": {
-                    "identifier": "geometry.create.mechanical_mixer_item"
+                    "identifier": "geometry.create_bedrock.create.mechanical_mixer_item"
                 }
             },
             "minecraft:destructible_by_mining": {

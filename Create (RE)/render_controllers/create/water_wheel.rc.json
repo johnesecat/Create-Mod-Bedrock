@@ -1,7 +1,7 @@
 {
     "format_version": "1.10.0",
     "render_controllers": {
-        "controller.render.create.water_wheel_wood": {
+        "controller.render.create_bedrock.create.water_wheel_wood": {
             "arrays": {
                 "textures": {
                     "Array.wood": [

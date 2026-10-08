@@ -19,9 +19,9 @@
             "minecraft:material_instances": {
                 "*": { "texture": "create:brass_tunnel_multi", "render_method": "alpha_test", "ambient_occlusion": false }
             },
-            "minecraft:geometry": { "identifier": "geometry.create.brass_tunnel_multi" },
+            "minecraft:geometry": { "identifier": "geometry.create_bedrock.create.brass_tunnel_multi" },
             "minecraft:item_visual": {
-                "geometry": { "identifier": "geometry.create.brass_tunnel_multi" },
+                "geometry": { "identifier": "geometry.create_bedrock.create.brass_tunnel_multi" },
                 "material_instances": {
                     "*": { "texture": "create:brass_tunnel_multi", "render_method": "alpha_test", "ambient_occlusion": false }
                 }

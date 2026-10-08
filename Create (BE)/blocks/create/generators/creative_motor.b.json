@@ -34,7 +34,7 @@
             },
             "minecraft:item_visual": {
                 "geometry": {
-                    "identifier": "geometry.create.creative_motor"
+                    "identifier": "geometry.create_bedrock.create.creative_motor"
                 },
                 "material_instances": {
                     "*": {
@@ -45,7 +45,7 @@
                 }
             },
             "minecraft:geometry": {
-                "identifier": "geometry.create.creative_motor",
+                "identifier": "geometry.create_bedrock.create.creative_motor",
                 "bone_visibility": {
                     "rpm": false
                 }
@@ -94,7 +94,7 @@
                         "rotation": [-90, 0, 0]
                     },
                     "minecraft:geometry": {
-                        "identifier": "geometry.create.creative_motor",
+                        "identifier": "geometry.create_bedrock.create.creative_motor",
                         "bone_visibility": {
                             "rpm": false,
                             "horizontal": false
@@ -117,7 +117,7 @@
                         "rotation": [90, 0, 0]
                     },
                     "minecraft:geometry": {
-                        "identifier": "geometry.create.creative_motor",
+                        "identifier": "geometry.create_bedrock.create.creative_motor",
                         "bone_visibility": {
                             "rpm": false,
                             "horizontal": false

@@ -486,14 +486,15 @@ export function speedControllerInteract(player, block, dimension, face, faceLoca
     const entity = dimension.getEntities({ location: block.center(), type: `${block.typeId}_entity`, maxDistance: 0.5 })[0]; if (!entity) return;
     const form = new ModalFormData();
 
-    const currentSpeed = entity.getDynamicProperty('create:speed_controller') ?? entity.getProperty('create:rpm');
+    const storedSpeed = entity.getDynamicProperty('create:speed_controller') ?? entity.getProperty('create:rpm');
+    const currentSpeed = typeof storedSpeed === 'number' && Number.isFinite(storedSpeed) ? storedSpeed : 1;
     const blockLocation = { x: block.location.x, y: block.location.y, z: block.location.z };
     const blockTypeId = block.typeId;
     const entityTypeId = `${blockTypeId}_entity`;
-    form.title('create:rpm.speed_controller.title');
+    form.title({ rawtext: [{ text: 'create:rpm.' }, { translate: 'speed_controller.title' }] });
     form.toggle({ translate: 'creative_motor.reverse_rotation.text' }, { defaultValue: currentSpeed >= 0 ? false : true });
-    form.slider({ translate: '%creative_motor.speed.text' }, 1, 256, { defaultValue: Math.abs(currentSpeed) });
-    form.submitButton('Confirm');
+    form.slider({ translate: 'creative_motor.speed.text' }, 1, 256, { defaultValue: Math.min(256, Math.max(1, Math.abs(currentSpeed))) });
+    form.submitButton({ translate: 'creative_motor.confirm.text' });
     form.show(player).then(async resp => {
         if (resp.canceled || !resp.formValues) return;
         const [invert, speed] = resp.formValues;

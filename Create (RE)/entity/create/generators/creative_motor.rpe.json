@@ -1,5 +1,5 @@
 {
-    "format_version": "1.10.0",
+    "format_version": "1.26.50",
     "minecraft:client_entity": {
         "description": {
             "identifier": "create:creative_motor_entity",
@@ -10,7 +10,7 @@
                 "default": "textures/create/common/blocks/creative_motor"
             },
             "geometry": {
-                "default": "geometry.create.creative_motor_entity"
+                "default": "geometry.create_bedrock.create.creative_motor_entity"
             },
             "animations": {
                 "rotation": "animation.create.rpm.rotation",

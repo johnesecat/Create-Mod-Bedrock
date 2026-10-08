@@ -3,7 +3,7 @@
 	"minecraft:geometry": [
 		{
 			"description": {
-				"identifier": "geometry.create.flywheel_block",
+				"identifier": "geometry.create_bedrock.create.flywheel_block",
 				"texture_width": 128,
 				"texture_height": 128,
 				"visible_bounds_width": 4,
@@ -146,7 +146,7 @@
 		},
 		{
 			"description": {
-				"identifier": "geometry.create.flywheel_item",
+				"identifier": "geometry.create_bedrock.create.flywheel_item",
 				"texture_width": 128,
 				"texture_height": 128,
 				"visible_bounds_width": 5,
@@ -868,7 +868,7 @@
 		},
 		{
 			"description": {
-				"identifier": "geometry.create.flywheel_entity",
+				"identifier": "geometry.create_bedrock.create.flywheel_entity",
 				"texture_width": 128,
 				"texture_height": 128,
 				"visible_bounds_width": 4,

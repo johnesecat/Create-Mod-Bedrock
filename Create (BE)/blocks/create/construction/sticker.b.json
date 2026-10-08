@@ -19,12 +19,12 @@
         "min_power": 0,
         "propogates_power": false
       },
-      "minecraft:geometry": { "identifier": "geometry.sticker" },
+      "minecraft:geometry": { "identifier": "geometry.create_bedrock.sticker" },
       "minecraft:material_instances": {
         "*": { "texture": "create:sticker", "render_method": "alpha_test", "ambient_occlusion": false }
       },
       "minecraft:item_visual": {
-        "geometry": { "identifier": "geometry.sticker" },
+        "geometry": { "identifier": "geometry.create_bedrock.sticker" },
         "material_instances": {
           "*": { "texture": "create:sticker", "render_method": "alpha_test", "ambient_occlusion": false }
         }

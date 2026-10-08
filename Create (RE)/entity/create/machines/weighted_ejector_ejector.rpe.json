@@ -1,5 +1,5 @@
 {
-    "format_version": "1.10.0",
+    "format_version": "1.26.50",
     "minecraft:client_entity": {
         "description": {
             "identifier": "create:weighted_ejector_ejector",
@@ -19,7 +19,7 @@
                     "v.rpm2 = v.rpm;"
                 ]
             },
-            "render_controllers": ["controller.render.create.weighted_ejector_ejector"]
+            "render_controllers": ["controller.render.create_bedrock.create.weighted_ejector_ejector"]
         }
     }
 }

@@ -1,7 +1,7 @@
 {
   "format_version": "1.8.0",
   "render_controllers": {
-    "controller.render.create.ladder_construct": {
+    "controller.render.create_bedrock.create.ladder_construct": {
       "geometry": "Geometry.default",
       "materials": [{ "*": "Material.default" }],
       "textures": ["Texture.default"],

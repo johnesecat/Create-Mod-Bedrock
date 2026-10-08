@@ -1,7 +1,7 @@
 {
     "format_version": "1.10.0",
     "animation_controllers": {
-        "controller.animation.create.mechanical_arm_mov": {
+        "controller.animation.create_bedrock.create.mechanical_arm_mov": {
             "initial_state": "initial",
             "states": {
                 "initial": {
@@ -246,7 +246,7 @@
                 }
             }
         },
-        "controller.animation.create.mechanical_arm_pointer": {
+        "controller.animation.create_bedrock.create.mechanical_arm_pointer": {
             "initial_state": "claw",
             "states": {
                 "drill": {
@@ -263,7 +263,7 @@
                 }
             }
         },
-        "controller.animation.create.mechanical_arm_default": {
+        "controller.animation.create_bedrock.create.mechanical_arm_default": {
             "initial_state": "default",
             "states": {
                 "default": {

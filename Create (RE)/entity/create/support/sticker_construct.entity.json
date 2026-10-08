@@ -1,5 +1,5 @@
 {
-  "format_version": "1.10.0",
+  "format_version": "1.26.50",
   "minecraft:client_entity": {
     "description": {
       "identifier": "create:sticker_construct",
@@ -8,7 +8,7 @@
         "default": "textures/create/common/blocks/sticker"
       },
       "geometry": { "default": "geometry.sticker_construct" },
-      "animations": { "rotate": "animation.create.sticker_construct.rotate" },
+      "animations": { "rotate": "animation.create_bedrock.create.sticker_construct.rotate" },
       "scripts": {
         "animate": ["rotate"],
         "pre_animation": [
@@ -21,7 +21,7 @@
           "v.angle_z = q.property('create:rotation_z');"
         ]
       },
-      "render_controllers": ["controller.render.create.sticker_construct"]
+      "render_controllers": ["controller.render.create_bedrock.create.sticker_construct"]
     }
   }
 }

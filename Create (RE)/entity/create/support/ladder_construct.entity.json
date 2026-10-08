@@ -1,14 +1,14 @@
 {
-  "format_version": "1.10.0",
+  "format_version": "1.26.50",
   "minecraft:client_entity": {
     "description": {
       "identifier": "create:ladder_construct",
       "materials": { "default": "entity_alphatest" },
       "textures": { "default": "textures/blocks/ladder" },
-      "geometry": { "default": "geometry.create.ladder_construct" },
+      "geometry": { "default": "geometry.create_bedrock.create.ladder_construct" },
       "animations": {
-        "rotate": "animation.create.mechanical_bearing_construct.rotate",
-        "direction": "animation.create.ladder_construct.direction"
+        "rotate": "animation.create_bedrock.create.mechanical_bearing_construct.rotate",
+        "direction": "animation.create_bedrock.create.ladder_construct.direction"
       },
       "scripts": {
         "animate": ["rotate", "direction"],
@@ -19,7 +19,7 @@
           "v.ladder_direction = q.property('create:ladder_direction');"
         ]
       },
-      "render_controllers": ["controller.render.create.ladder_construct"]
+      "render_controllers": ["controller.render.create_bedrock.create.ladder_construct"]
     }
   }
 }

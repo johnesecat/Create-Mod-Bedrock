@@ -17,7 +17,7 @@
             "create:rpm_system": {},
 
             "minecraft:map_color": "#7C7C7C",
-            "minecraft:geometry": "geometry.create.crushing_wheel_item",
+            "minecraft:geometry": "geometry.create_bedrock.create.crushing_wheel_item",
             "minecraft:material_instances": {
                 "*": {
                     "texture": "create:invisible",
@@ -34,7 +34,7 @@
                     }
                 },
                 "geometry": {
-                    "identifier": "geometry.create.crushing_wheel_item"
+                    "identifier": "geometry.create_bedrock.create.crushing_wheel_item"
                 }
             },
             "minecraft:destruction_particles": {

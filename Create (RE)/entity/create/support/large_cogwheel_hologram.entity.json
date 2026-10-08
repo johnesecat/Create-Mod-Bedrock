@@ -1,4 +1,4 @@
 {
-  "format_version": "1.10.0",
-  "minecraft:client_entity": { "description": { "identifier": "create:large_cogwheel_hologram", "materials": { "hologram": "entity_alphablend" }, "textures": { "default": "textures/create/common/blocks/large_cogwheel_hologram" }, "geometry": { "default": "geometry.create.large_cogwheel" }, "animations": { "rotation": "animation.create.rpm.rotation" }, "scripts": { "pre_animation": ["v.rotation = q.property('create:cardinal_rotation');", "v.visual_sign = 1;", "v.rpm = 0;", "v.rpm2 = 0;"], "animate": ["rotation"] }, "render_controllers": ["controller.render.create.cogwheel_hologram"] } }
+  "format_version": "1.26.50",
+  "minecraft:client_entity": { "description": { "identifier": "create:large_cogwheel_hologram", "materials": { "hologram": "entity_alphablend" }, "textures": { "default": "textures/create/common/blocks/large_cogwheel_hologram" }, "geometry": { "default": "geometry.create_bedrock.create.large_cogwheel" }, "animations": { "rotation": "animation.create.rpm.rotation" }, "scripts": { "pre_animation": ["v.rotation = q.property('create:cardinal_rotation');", "v.visual_sign = 1;", "v.rpm = 0;", "v.rpm2 = 0;"], "animate": ["rotation"] }, "render_controllers": ["controller.render.create_bedrock.create.cogwheel_hologram"] } }
 }

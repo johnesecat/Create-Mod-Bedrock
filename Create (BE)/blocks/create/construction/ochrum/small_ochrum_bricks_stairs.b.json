@@ -29,7 +29,7 @@
                 "condition": "q.block_state('minecraft:cardinal_direction') == 'south'",
                 "components": {
                     "minecraft:geometry": {
-                        "identifier": "geometry.create.stairs",
+                        "identifier": "geometry.create_bedrock.create.stairs",
                         "bone_visibility": {
                             "bottom_se": "q.block_state('minecraft:vertical_half') == 'bottom' || q.block_state('minecraft:corner') == 'none' || q.block_state('minecraft:corner') == 'inner_right' || q.block_state('minecraft:corner') == 'inner_left' || q.block_state('minecraft:corner') == 'outer_left'",
                             "bottom_sw": "q.block_state('minecraft:vertical_half') == 'bottom' || q.block_state('minecraft:corner') == 'none' || q.block_state('minecraft:corner') == 'inner_right' || q.block_state('minecraft:corner') == 'inner_left' || q.block_state('minecraft:corner') == 'outer_right'",
@@ -47,7 +47,7 @@
                 "condition": "q.block_state('minecraft:cardinal_direction') == 'east'",
                 "components": {
                     "minecraft:geometry": {
-                        "identifier": "geometry.create.stairs",
+                        "identifier": "geometry.create_bedrock.create.stairs",
                         "bone_visibility": {
                             "bottom_ne": "q.block_state('minecraft:vertical_half') == 'bottom' || q.block_state('minecraft:corner') == 'none' || q.block_state('minecraft:corner') == 'inner_right' || q.block_state('minecraft:corner') == 'inner_left' || q.block_state('minecraft:corner') == 'outer_left'",
                             "bottom_se": "q.block_state('minecraft:vertical_half') == 'bottom' || q.block_state('minecraft:corner') == 'none' || q.block_state('minecraft:corner') == 'inner_right' || q.block_state('minecraft:corner') == 'inner_left' || q.block_state('minecraft:corner') == 'outer_right'",
@@ -65,7 +65,7 @@
                 "condition": "q.block_state('minecraft:cardinal_direction') == 'west'",
                 "components": {
                     "minecraft:geometry": {
-                        "identifier": "geometry.create.stairs",
+                        "identifier": "geometry.create_bedrock.create.stairs",
                         "bone_visibility": {
                             "bottom_sw": "q.block_state('minecraft:vertical_half') == 'bottom' || q.block_state('minecraft:corner') == 'none' || q.block_state('minecraft:corner') == 'inner_right' || q.block_state('minecraft:corner') == 'inner_left' || q.block_state('minecraft:corner') == 'outer_left'",
                             "bottom_nw": "q.block_state('minecraft:vertical_half') == 'bottom' || q.block_state('minecraft:corner') == 'none' || q.block_state('minecraft:corner') == 'inner_right' || q.block_state('minecraft:corner') == 'inner_left' || q.block_state('minecraft:corner') == 'outer_right'",
@@ -846,7 +846,7 @@
             "minecraft:map_color": [151, 109, 77],
             "minecraft:item_visual": {
                 "geometry": {
-                    "identifier": "geometry.create.stairs",
+                    "identifier": "geometry.create_bedrock.create.stairs",
                     "bone_visibility": {
                         "bottom_se": true,
                         "bottom_sw": true,
@@ -866,7 +866,7 @@
                 }
             },
             "minecraft:geometry": {
-                "identifier": "geometry.create.stairs",
+                "identifier": "geometry.create_bedrock.create.stairs",
                 "bone_visibility": {
                     "bottom_nw": "q.block_state('minecraft:vertical_half') == 'bottom' || q.block_state('minecraft:corner') == 'none' || q.block_state('minecraft:corner') == 'inner_right' || q.block_state('minecraft:corner') == 'inner_left' || q.block_state('minecraft:corner') == 'outer_left'",
                     "bottom_ne": "q.block_state('minecraft:vertical_half') == 'bottom' || q.block_state('minecraft:corner') == 'none' || q.block_state('minecraft:corner') == 'inner_right' || q.block_state('minecraft:corner') == 'inner_left' || q.block_state('minecraft:corner') == 'outer_right'",

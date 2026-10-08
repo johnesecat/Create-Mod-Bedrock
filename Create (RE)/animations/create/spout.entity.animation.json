@@ -1,7 +1,7 @@
 {
-	"format_version": "1.8.0",
+	"format_version": "1.10.0",
 	"animations": {
-		"animation.spout.entity.fluid": {
+		"animation.create_bedrock.spout.entity.fluid": {
 			"animation_length": 1.1667,
 			"bones": {
 				"bick": {

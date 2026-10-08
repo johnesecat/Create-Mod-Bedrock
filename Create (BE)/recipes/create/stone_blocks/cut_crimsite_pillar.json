@@ -1,1 +1,1 @@
-﻿{"format_version":"1.12","minecraft:recipe_shaped":{"description":{"identifier":"create:cut_crimsite_pillar"},"tags":["crafting_table"],"pattern":["A","A"],"key":{"A":{"item":"create:cut_crimsite"}},"result":{"item":"create:cut_crimsite_pillar","count":2}}}
+﻿{"format_version":"1.26.50","minecraft:recipe_shaped":{"description":{"identifier":"create:cut_crimsite_pillar"},"tags":["crafting_table"],"pattern":["A","A"],"key":{"A":{"item":"create:cut_crimsite"}},"result":{"item":"create:cut_crimsite_pillar","count":2}}}

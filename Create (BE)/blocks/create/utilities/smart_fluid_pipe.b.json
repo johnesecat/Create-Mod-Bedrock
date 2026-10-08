@@ -20,7 +20,7 @@
       "create:ticking": {},
       "minecraft:tick": { "interval_range": [100, 140] },
       "minecraft:geometry": {
-        "identifier": "geometry.create.smart_fluid_pipe"
+        "identifier": "geometry.create_bedrock.create.smart_fluid_pipe"
       },
       "minecraft:material_instances": {
         "*": {
@@ -31,7 +31,7 @@
       },
       "minecraft:item_visual": {
         "geometry": {
-          "identifier": "geometry.create.smart_fluid_pipe"
+          "identifier": "geometry.create_bedrock.create.smart_fluid_pipe"
         },
         "material_instances": {
           "*": {

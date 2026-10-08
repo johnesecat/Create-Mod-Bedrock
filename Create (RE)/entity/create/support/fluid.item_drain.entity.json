@@ -1,5 +1,5 @@
 {
-  "format_version": "1.10.0",
+  "format_version": "1.26.50",
   "minecraft:client_entity": {
     "description": {
       "identifier": "create:fluid.item_drain",
@@ -14,13 +14,13 @@
         "milk": "textures/create/common/fluid/milk_spout"
       },
       "geometry": {
-        "default": "geometry.fluid.item_drain"
+        "default": "geometry.create_bedrock.fluid.item_drain"
       },
       "render_controllers": [
-        "controller.render.create.fluid_spout"
+        "controller.render.create_bedrock.create.fluid_spout"
       ],
       "animations": {
-        "flow": "animation.fluid.item_drain.flow"
+        "flow": "animation.create_bedrock.fluid.item_drain.flow"
       },
       "scripts": {
         "animate": [

@@ -1,5 +1,5 @@
 {
-  "format_version": "1.10.0",
+  "format_version": "1.26.50",
   "minecraft:client_entity": {
     "description": {
       "identifier": "create:fluid_tank_fluid",
@@ -14,10 +14,10 @@
         "milk": "textures/create/common/fluid/milk_spout"
       },
       "geometry": {
-        "default": "geometry.create.fluid_tank_fluid"
+        "default": "geometry.create_bedrock.create.fluid_tank_fluid"
       },
       "animations": {
-        "fill": "animation.create.fluid_tank_fluid.fill"
+        "fill": "animation.create_bedrock.create.fluid_tank_fluid.fill"
       },
       "scripts": {
         "initialize": [
@@ -31,7 +31,7 @@
         "animate": ["fill"]
       },
       "render_controllers": [
-        "controller.render.create.fluid_tank_fluid"
+        "controller.render.create_bedrock.create.fluid_tank_fluid"
       ]
     }
   }

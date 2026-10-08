@@ -17,7 +17,7 @@
             "create:rpm_system": {},
 
             "minecraft:map_color": "#DA9733",
-            "minecraft:geometry": "geometry.create.flywheel_block",
+            "minecraft:geometry": "geometry.create_bedrock.create.flywheel_block",
             "minecraft:material_instances": {
                 "*": {
                     "texture": "create:flywheel",
@@ -34,7 +34,7 @@
                     }
                 },
                 "geometry": {
-                    "identifier": "geometry.create.flywheel_item"
+                    "identifier": "geometry.create_bedrock.create.flywheel_item"
                 }
             },
 

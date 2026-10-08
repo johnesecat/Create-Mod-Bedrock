@@ -1,7 +1,7 @@
 ﻿{
-    "format_version":  "1.8.0",
+    "format_version":  "1.10.0",
     "animations":  {
-                       "animation.create.mechanical_bearing_construct.rotate":  {
+                       "animation.create_bedrock.create.mechanical_bearing_construct.rotate":  {
                                                                                     "loop":  true,
                                                                                     "bones":  {
                                                                                                   "rpm":  {
@@ -63,7 +63,7 @@
                                                                                                                         }
                                                                                               }
                                                                                 },
-                       "animation.create.windmill_sail_construct.rotate":  {
+                       "animation.create_bedrock.create.windmill_sail_construct.rotate":  {
                                                                                "loop":  true,
                                                                                "bones":  {
                                                                                              "rpm":  {
@@ -95,7 +95,7 @@
                                                                                          }
                                                                            }
                        ,
-                       "animation.create.radial_chassis_construct.rotate": {
+                       "animation.create_bedrock.create.radial_chassis_construct.rotate": {
                            "loop": true,
                            "bones": {
                                "rpm": {
@@ -106,14 +106,14 @@
                                }
                            }
                        },
-                       "animation.create.sticker_construct.rotate": {
+                       "animation.create_bedrock.create.sticker_construct.rotate": {
                            "loop": true,
                            "bones": {
                                "rpm": { "rotation": [ "v.angle_x", "v.angle_y", "v.angle_z" ] },
                                "sticker": { "rotation": [ "v.base_x", "v.base_y", "v.base_z" ] }
                            }
                        },
-                       "animation.create.stair_construct.rotate": {
+                       "animation.create_bedrock.create.stair_construct.rotate": {
                            "loop": true,
                            "bones": {
                                "rpm": { "rotation": [ "v.angle_x", "v.angle_y", "v.angle_z" ] },

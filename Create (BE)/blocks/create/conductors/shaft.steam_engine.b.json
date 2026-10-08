@@ -17,7 +17,7 @@
         "components": {
             "create:rpm_system": {},
             "minecraft:map_color": "#555555",
-            "minecraft:geometry": "geometry.create.shaft.steam_engine",
+            "minecraft:geometry": "geometry.create_bedrock.create.shaft.steam_engine",
             "minecraft:material_instances": {
                 "*": {
                     "texture": "create:invisible",
@@ -34,7 +34,7 @@
                     }
                 },
                 "geometry": {
-                    "identifier": "geometry.create.shaft.steam_engine"
+                    "identifier": "geometry.create_bedrock.create.shaft.steam_engine"
                 }
             },
             "minecraft:destruction_particles": {

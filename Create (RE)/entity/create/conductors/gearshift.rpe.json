@@ -1,5 +1,5 @@
 {
-    "format_version": "1.10.0",
+    "format_version": "1.26.50",
     "minecraft:client_entity": {
         "description": {
             "identifier": "create:gearshift_entity",
@@ -10,10 +10,10 @@
                 "default": "textures/create/common/blocks/gearshift"
             },
             "geometry": {
-                "default": "geometry.create.gearshift_entity"
+                "default": "geometry.create_bedrock.create.gearshift_entity"
             },
             "animations": {
-                "rotation": "animation.create.gearshift.rotation",
+                "rotation": "animation.create_bedrock.create.gearshift.rotation",
                 "offset": "animation.create.rpm.offsets"
             },
             "scripts": {

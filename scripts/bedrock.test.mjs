@@ -16,6 +16,89 @@ function loadFunction(file, name, globals = {}) {
   return new Function(...Object.keys(globals), `return (${text.slice(node.start, node.end)})`)(...Object.values(globals))
 }
 
+describe('Custom machine UI regression checks (not Minecraft rendering)', () => {
+  const resourceJson = name => JSON.parse(readFileSync(new URL('../Create (RE)/' + name, import.meta.url), 'utf8').replace(/^\uFEFF/, ''))
+
+  it('extends server forms without replacing vanilla cancel mappings or screen animations', () => {
+    const form = resourceJson('ui/server_form.json')
+    expect(form.namespace).toBe('server_form')
+    expect(form['third_party_server_screen@common.base_screen']).toBeUndefined()
+    const factories = form.main_screen_content.modifications[0].value
+    expect(factories).toHaveLength(2)
+    expect(form.custom_form.modifications[0].value.at(-1).source_property_name).toContain('create:rpm.')
+    expect(form.custom_form.modifications[0].value.at(-1).source_property_name).toContain('create:funnel.')
+  })
+
+  it.each(['rpm', 'funnel'])('keeps %s forms responsive and retains every supported control type', name => {
+    const screen = resourceJson(`ui/create/${name}_screen.json`)
+    const panel = screen[`${name}_main_panel`].controls[0].panel
+    expect(panel.size).toEqual(['90%', '100%c + 36px'])
+    expect(panel.max_size).toEqual([400, '90%'])
+    const content = screen[`${name}_screen_content`].controls[0].content
+    expect(content.orientation).toBe('vertical')
+    expect(content.size[1]).toBe('100%c')
+    expect(Object.keys(content.factory.control_ids).sort()).toEqual(['divider', 'dropdown', 'header', 'input', 'label', 'slider', 'step_slider', 'toggle'].sort())
+    expect(content.factory.control_ids.toggle).toBe('@server_form.custom_toggle')
+    expect(content.factory.control_ids.slider).toBe('@server_form.custom_slider')
+    const submit = screen[`${name}_screen_content`].controls[1]['submit_button@common_create.create_button']
+    expect(submit.$pressed_button_name).toBe('button.submit_custom_form')
+    expect(submit.size[1]).toBe(28)
+  })
+
+  it.each([0, NaN, Infinity, '64', -512, 128])('opens speed controller with a bounded numeric default for %s', stored => {
+    const calls = {}
+    class ModalFormData {
+      title(value) { calls.title = value }
+      toggle(_label, options) { calls.toggle = options }
+      slider(label, min, max, options) { calls.slider = { label, min, max, options } }
+      submitButton(value) { calls.submit = value }
+      show() { return Promise.resolve({ canceled: true }) }
+    }
+    const entity = { getDynamicProperty: () => stored, getProperty: () => stored }
+    loadFunction('create/andrielScripts/blocks/rpmConductors.js', 'speedControllerInteract', { ModalFormData })(
+      {}, { typeId: 'create:rotation_speed_controller', location: {}, center: () => ({}) }, { getEntities: () => [entity] },
+    )
+    expect(calls.title).toEqual({ rawtext: [{ text: 'create:rpm.' }, { translate: 'speed_controller.title' }] })
+    expect(calls.slider.label).toEqual({ translate: 'creative_motor.speed.text' })
+    expect(calls.slider.options.defaultValue).toBe(typeof stored === 'number' && Number.isFinite(stored) ? Math.max(1, Math.min(256, Math.abs(stored))) : 1)
+    expect(calls.submit).toEqual({ translate: 'creative_motor.confirm.text' })
+  })
+
+  it.each([
+    { canceled: true }, { canceled: false },
+    { canceled: false, formValues: ['true', 32] },
+    { canceled: false, formValues: [true, NaN] },
+    { canceled: false, formValues: [true, 0] },
+    { canceled: false, formValues: [true, 65] },
+    { canceled: false, formValues: [true, 32] },
+    { canceled: false, formValues: [false, 64] },
+  ])('preserves funnel settings for invalid responses and applies valid responses: %j', async response => {
+    const entity = { isValid: true, setDynamicProperty: vi.fn() }
+    const block = { typeId: 'create:brass_funnel', location: {}, center: () => ({}) }
+    block.dimension = { getBlock: () => block }
+    class ModalFormData {
+      title() {} toggle() {} slider() {} submitButton() {}
+      show() { return Promise.resolve(response) }
+    }
+    loadFunction('create/racoScripts/blocks/brassFunnel.js', 'showBrassFunnelAmountMenu', {
+      ModalFormData, getFunnelEntity: () => entity, getExtractionSettings: () => ({ exact: false, amount: 1 }),
+    })(block, { playSound: vi.fn() })
+    await new Promise(resolve => setImmediate(resolve))
+    const valid = !response.canceled && typeof response.formValues?.[0] === 'boolean' && Number.isFinite(response.formValues?.[1]) && response.formValues[1] >= 1 && response.formValues[1] <= 64
+    if (valid) {
+      expect(entity.setDynamicProperty).toHaveBeenCalledWith('create:brass_funnel_extract_exact', response.formValues[0])
+      expect(entity.setDynamicProperty).toHaveBeenCalledWith('create:brass_funnel_extract_amount', response.formValues[1])
+    } else expect(entity.setDynamicProperty).not.toHaveBeenCalled()
+  })
+
+  it.each(['en_US', 'zh_CN', 'pt_BR'])('includes localized form titles, labels, and submit text in %s', locale => {
+    const text = readFileSync(new URL(`../Create (RE)/texts/${locale}.lang`, import.meta.url), 'utf8')
+    for (const key of ['creative_motor.title', 'speed_controller.title', 'creative_motor.speed.text', 'creative_motor.reverse_rotation.text', 'creative_motor.confirm.text', 'create.ui.funnel.title', 'create.ui.funnel.exact', 'create.ui.funnel.amount']) {
+      expect(text.split(/\r?\n/).filter(line => line.startsWith(key + '='))).toHaveLength(1)
+    }
+  })
+})
+
 describe('Bearing regression checks (isolated functions, not Minecraft)', () => {
   it.each([
     ['create:mechanical_bearing', 64, 64],

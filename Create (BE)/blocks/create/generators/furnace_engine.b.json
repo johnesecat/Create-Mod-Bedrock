@@ -25,7 +25,7 @@
                 }
             },
             "minecraft:geometry": {
-                "identifier": "geometry.create.furnace_engine"
+                "identifier": "geometry.create_bedrock.create.furnace_engine"
             },
             "minecraft:collision_box": true,
             "minecraft:selection_box": true,

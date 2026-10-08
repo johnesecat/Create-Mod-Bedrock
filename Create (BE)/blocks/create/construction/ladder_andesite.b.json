@@ -10,7 +10,7 @@
       "create:before_place": {},
       "create:on_tick": {},
       "minecraft:tick": { "looping": true, "interval_range": [4, 8] },
-      "minecraft:geometry": { "identifier": "geometry.ladder" },
+      "minecraft:geometry": { "identifier": "geometry.create_bedrock.ladder" },
       "minecraft:material_instances": { "*": { "texture": "create:ladder_andesite", "render_method": "alpha_test", "ambient_occlusion": false } },
       "tag:minecraft:is_climbable": {},
       "minecraft:collision_box": { "origin": [-8, 0, 6], "size": [16, 16, 2] },

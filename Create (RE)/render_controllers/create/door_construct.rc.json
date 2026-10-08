@@ -1,7 +1,7 @@
 {
   "format_version": "1.8.0",
   "render_controllers": {
-    "controller.render.create.door_construct": {
+    "controller.render.create_bedrock.create.door_construct": {
       "arrays": {
         "textures": {
           "Array.lower": ["Texture.oak_lower", "Texture.spruce_lower", "Texture.birch_lower", "Texture.jungle_lower", "Texture.acacia_lower", "Texture.dark_oak_lower", "Texture.mangrove_lower", "Texture.cherry_lower", "Texture.bamboo_lower", "Texture.crimson_lower", "Texture.warped_lower", "Texture.iron_lower", "Texture.copper_lower", "Texture.exposed_copper_lower", "Texture.weathered_copper_lower", "Texture.oxidized_copper_lower"],

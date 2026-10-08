@@ -1,5 +1,5 @@
 ﻿{
-    "format_version":  "1.10.0",
+    "format_version":  "1.26.50",
     "minecraft:client_entity":  {
                                     "description":  {
                                                         "identifier":  "create:glue_selection",
@@ -10,10 +10,10 @@
                                                                          "default":  "textures/create/common/entity/glue_squematic"
                                                                      },
                                                         "geometry":  {
-                                                                         "default":  "geometry.create.selection_outline"
+                                                                         "default":  "geometry.create_bedrock.create.selection_outline"
                                                                      },
                                                         "animations":  {
-                                                                           "scale":  "animation.create.glue_selection.scale"
+                                                                           "scale":  "animation.create_bedrock.create.glue_selection.scale"
                                                                        },
                                                         "scripts":  {
                                                                         "scale":  "1.005",
@@ -22,7 +22,7 @@
                                                                                     ]
                                                                     },
                                                         "render_controllers":  [
-                                                                                   "controller.render.create.glue_selection"
+                                                                                   "controller.render.create_bedrock.create.glue_selection"
                                                                                ]
                                                     }
                                 }

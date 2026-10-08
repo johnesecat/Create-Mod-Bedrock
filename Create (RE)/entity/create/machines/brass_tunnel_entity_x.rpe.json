@@ -1,19 +1,19 @@
 {
-    "format_version": "1.10.0",
+    "format_version": "1.26.50",
     "minecraft:client_entity": {
         "description": {
             "identifier": "create:brass_tunnel_entity_x",
             "materials": { "default": "zombie" },
             "textures":  { "default": "textures/create/common/blocks/invisible" },
-            "geometry":  { "default": "geometry.create.brass_tunnel_entity_x" },
+            "geometry":  { "default": "geometry.create_bedrock.create.brass_tunnel_entity_x" },
             "animations": {
-                "constant":    "animation.create.brass_tunnel.constant",
-                "left_item":   "animation.create.brass_tunnel.left_item",
-                "left_hand_equipped": "animation.create.brass_tunnel.left_hand_equipped",
-                "left_block":  "animation.create.brass_tunnel.left_block",
-                "right_item":  "animation.create.brass_tunnel.right_item",
-                "right_hand_equipped": "animation.create.brass_tunnel.right_hand_equipped",
-                "right_block": "animation.create.brass_tunnel.right_block"
+                "constant":    "animation.create_bedrock.create.brass_tunnel.constant",
+                "left_item":   "animation.create_bedrock.create.brass_tunnel.left_item",
+                "left_hand_equipped": "animation.create_bedrock.create.brass_tunnel.left_hand_equipped",
+                "left_block":  "animation.create_bedrock.create.brass_tunnel.left_block",
+                "right_item":  "animation.create_bedrock.create.brass_tunnel.right_item",
+                "right_hand_equipped": "animation.create_bedrock.create.brass_tunnel.right_hand_equipped",
+                "right_block": "animation.create_bedrock.create.brass_tunnel.right_block"
             },
             "scripts": {
                 "animate": [

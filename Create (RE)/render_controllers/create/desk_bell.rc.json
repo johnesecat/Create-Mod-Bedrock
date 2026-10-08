@@ -1,7 +1,7 @@
 {
   "format_version": "1.8.0",
   "render_controllers": {
-    "controller.render.create.desk_bell": {
+    "controller.render.create_bedrock.create.desk_bell": {
       "geometry": "Geometry.default",
       "materials": [
         {

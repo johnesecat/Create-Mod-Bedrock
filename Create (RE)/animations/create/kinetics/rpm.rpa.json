@@ -1,5 +1,5 @@
 {
-	"format_version": "1.8.0",
+	"format_version": "1.10.0",
 	"animations": {
 		"animation.create.rpm.rotation": {
 			"loop": true,
@@ -81,7 +81,7 @@
         		}
             }
         },
-		"animation.create.rpm.gearbox": {
+		"animation.create_bedrock.create.rpm.gearbox": {
 			"loop": true,
 			"bones": {
 				"gearbox": {
@@ -111,7 +111,7 @@
 				}
 			}
 		},
-		"animation.create.rpm.conveyor": {
+		"animation.create_bedrock.create.rpm.conveyor": {
 			"loop": true,
 			"bones": {
 				"belt_diagonal": {

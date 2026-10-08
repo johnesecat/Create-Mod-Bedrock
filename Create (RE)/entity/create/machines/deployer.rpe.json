@@ -1,5 +1,5 @@
 {
-    "format_version": "1.10.0",
+    "format_version": "1.26.50",
     "minecraft:client_entity": {
         "description": {
             "identifier": "create:deployer_entity",
@@ -10,24 +10,24 @@
                 "default": "textures/create/common/blocks/deployer"
             },
             "geometry": {
-                "default": "geometry.create.deployer_entity"
+                "default": "geometry.create_bedrock.create.deployer_entity"
             },
             "animations": {
                 "rotation":      "animation.create.rpm.rotation",
                 "offset":        "animation.create.rpm.offsets",
-                "constant":      "animation.create.deployer.constant",
-                "move_1":        "animation.create.deployer.move_1",
-                "move_2":        "animation.create.deployer.move_2",
-                "move_4":        "animation.create.deployer.move_4",
-                "move_8":        "animation.create.deployer.move_8",
-                "move_16":       "animation.create.deployer.move_16",
-                "move_32":       "animation.create.deployer.move_32",
-                "move_64":       "animation.create.deployer.move_64",
-                "move_128":      "animation.create.deployer.move_128",
-                "move_256":      "animation.create.deployer.move_256",
-                "right_item":    "animation.create.deployer.right_item",
-                "right_hand_equipped": "animation.create.deployer.right_hand_equipped",
-                "right_block":   "animation.create.deployer.right_block"
+                "constant":      "animation.create_bedrock.create.deployer.constant",
+                "move_1":        "animation.create_bedrock.create.deployer.move_1",
+                "move_2":        "animation.create_bedrock.create.deployer.move_2",
+                "move_4":        "animation.create_bedrock.create.deployer.move_4",
+                "move_8":        "animation.create_bedrock.create.deployer.move_8",
+                "move_16":       "animation.create_bedrock.create.deployer.move_16",
+                "move_32":       "animation.create_bedrock.create.deployer.move_32",
+                "move_64":       "animation.create_bedrock.create.deployer.move_64",
+                "move_128":      "animation.create_bedrock.create.deployer.move_128",
+                "move_256":      "animation.create_bedrock.create.deployer.move_256",
+                "right_item":    "animation.create_bedrock.create.deployer.right_item",
+                "right_hand_equipped": "animation.create_bedrock.create.deployer.right_hand_equipped",
+                "right_block":   "animation.create_bedrock.create.deployer.right_block"
             },
             "scripts": {
                 "animate": [
@@ -56,7 +56,7 @@
                 ]
             },
             "render_controllers": [
-                "controller.render.create.deployer_entity"
+                "controller.render.create_bedrock.create.deployer_entity"
             ]
         }
     }
