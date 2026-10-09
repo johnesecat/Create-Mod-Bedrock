@@ -50,8 +50,8 @@ jobs:
           ui_path = Path("Create (RE)/ui/pause_screen.json")
           ui_text = ui_path.read_text(encoding="utf-8-sig")
           asset_refs = (
-              "textures/ui/crafters/machines/mechanical_saw",
-              "ui/crafters/misc/mechanical_saw",
+              "textures/create/bedrock/ui/crafters/machines/mechanical_saw",
+              "create/bedrock/ui/crafters/misc/mechanical_saw",
           )
           for reference in asset_refs:
               if reference not in ui_text:

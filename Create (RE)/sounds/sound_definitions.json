@@ -5,7 +5,7 @@
             "category": "block",
             "max_distance": 48.0,
             "sounds": [
-                { "name": "sounds/whistle", "volume": 1.0 }
+                { "name": "sounds/create/bedrock/whistle", "volume": 1.0 }
             ]
         },
         "create:mechanical_press.impact": {
@@ -26,38 +26,38 @@
             "category": "player",
             "max_distance": 24.0,
             "sounds": [
-                { "name": "sounds/fwoomp", "volume": 3.0 }
+                { "name": "sounds/create/bedrock/fwoomp", "volume": 3.0 }
             ]
         },
         "create:weighted_ejector": {
             "category": "block",
             "max_distance": 24.0,
             "sounds": [
-                { "name": "sounds/weighted_ejector", "volume": 10.0 }
+                { "name": "sounds/create/bedrock/weighted_ejector", "volume": 10.0 }
             ]
         },
         "create:steam": {
             "category": "block",
             "max_distance": 24.0,
             "sounds": [
-                { "name": "sounds/steam", "volume": 0.20 }
+                { "name": "sounds/create/bedrock/steam", "volume": 0.20 }
             ]
         },
         "create:spout": {
             "category": "block",
             "max_distance": 16.0,
             "sounds": [
-                { "name": "sounds/spout", "volume": 1.0 },
-                { "name": "sounds/spout_1", "volume": 1.0 },
-                { "name": "sounds/spout_2", "volume": 1.0 },
-                { "name": "sounds/spout_3", "volume": 1.0 }
+                { "name": "sounds/create/bedrock/spout", "volume": 1.0 },
+                { "name": "sounds/create/bedrock/spout_1", "volume": 1.0 },
+                { "name": "sounds/create/bedrock/spout_2", "volume": 1.0 },
+                { "name": "sounds/create/bedrock/spout_3", "volume": 1.0 }
             ]
         },
         "create:desk_bell": {
             "category": "block",
             "max_distance": 16.0,
             "sounds": [
-                { "name": "sounds/desk_bell", "volume": 1.0 }
+                { "name": "sounds/create/bedrock/desk_bell", "volume": 1.0 }
             ]
         }
     }
