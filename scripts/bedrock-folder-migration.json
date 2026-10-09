@@ -1,0 +1,89 @@
+{
+  "moves": [
+    {
+      "from": "Create (BE)/loot_tables/create/creative_fluid_tank.json",
+      "to": "Create (BE)/loot_tables/create/bedrock/creative_fluid_tank.json",
+      "sha256": "bc9f3b0c22a7d1c7401d42dc436f02c009d24ea744863f148ddd090cb31459c1"
+    },
+    {
+      "from": "Create (BE)/loot_tables/create/empty.json",
+      "to": "Create (BE)/loot_tables/create/bedrock/empty.json",
+      "sha256": "bf411093335dff39d3b0a90d56e8678b9694df808db9b25e73f3c0368ae08ba0"
+    },
+    {
+      "from": "Create (BE)/loot_tables/create/fluid_tank.json",
+      "to": "Create (BE)/loot_tables/create/bedrock/fluid_tank.json",
+      "sha256": "ec4cd6c5abcdd0f5bd8ca6dc8cb008b406b9fabe7fbfbef9f51498e7264ee3bd"
+    },
+    {
+      "from": "Create (BE)/loot_tables/create/glass_pipe.json",
+      "to": "Create (BE)/loot_tables/create/bedrock/glass_pipe.json",
+      "sha256": "edf8d7750ad56827b1c8cfd4335675ee98ec08d4e0712b95509818c88da321bf"
+    },
+    {
+      "from": "Create (BE)/loot_tables/create/zinc_ore.loot.json",
+      "to": "Create (BE)/loot_tables/create/bedrock/zinc_ore.loot.json",
+      "sha256": "e931e2f111e39055e1f79644f1acb886b70de09f6400e3748f839ab511316dd1"
+    },
+    {
+      "from": "Create (RE)/textures/blueprint.png",
+      "to": "Create (RE)/textures/create/bedrock/blueprint.png",
+      "sha256": "fe63e061c1bdaaba2f741387c1ed4bf05afcda22dc725bb1070e8383e577eade"
+    },
+    {
+      "from": "Create (RE)/textures/jei_background.png",
+      "to": "Create (RE)/textures/create/bedrock/jei_background.png",
+      "sha256": "b035ef060ca1e25fabbec7c016f7bccec7bddfeb71f912736bb684f70d2af076"
+    }
+  ],
+  "renames": {
+    "loot_tables/create/creative_fluid_tank.json": "loot_tables/create/bedrock/creative_fluid_tank.json",
+    "loot_tables/create/empty.json": "loot_tables/create/bedrock/empty.json",
+    "loot_tables/create/fluid_tank.json": "loot_tables/create/bedrock/fluid_tank.json",
+    "loot_tables/create/glass_pipe.json": "loot_tables/create/bedrock/glass_pipe.json",
+    "loot_tables/create/zinc_ore.loot.json": "loot_tables/create/bedrock/zinc_ore.loot.json",
+    "textures/blueprint": "textures/create/bedrock/blueprint",
+    "textures/jei_background": "textures/create/bedrock/jei_background"
+  },
+  "references": {
+    "loot_tables/create/creative_fluid_tank.json": 1,
+    "loot_tables/create/empty.json": 0,
+    "loot_tables/create/fluid_tank.json": 1,
+    "loot_tables/create/glass_pipe.json": 1,
+    "loot_tables/create/zinc_ore.loot.json": 2,
+    "textures/blueprint": 1,
+    "textures/jei_background": 1
+  },
+  "edits": [
+    {
+      "file": "Create (BE)/blocks/create/others/deepslate_zinc_ore.b.json",
+      "beforeSha256": "d5134bf61cbf66822daf99824161a5f21e8ff196a0af0e2e733aca54f1651f1b",
+      "afterSha256": "50959e9d629ae8bc8f982d7d3c3768a9eb0d4ad1e976706ba55ab8f69d13f8ad"
+    },
+    {
+      "file": "Create (BE)/blocks/create/others/zinc_ore.b.json",
+      "beforeSha256": "d25da140f4e4d0450ed797e943b6a81389ef06cb07edf0408d07186c41ebb777",
+      "afterSha256": "cc4d07103fc5efa35be7a80e83f63e2a5895070c842f38b7481ba20fec1ebbb0"
+    },
+    {
+      "file": "Create (BE)/blocks/create/utilities/creative_fluid_tank.b.json",
+      "beforeSha256": "4b032d5f590390f9e9109527dad013a4102d1fd70cd36847781bb554d1156d73",
+      "afterSha256": "0de714b3ce0d7c218ad6fccf3fb7e30104444b3764e6f280a2d447def6b41694"
+    },
+    {
+      "file": "Create (BE)/blocks/create/utilities/fluid_tank.b.json",
+      "beforeSha256": "1be7ac09199fdb0730494d9057a58f3ede3a27c9197267e73b26ee80412a56b3",
+      "afterSha256": "023539728cd13f2215c0648d56753c4ced0a162cc0770bd1ad90a2231a970376"
+    },
+    {
+      "file": "Create (BE)/blocks/create/utilities/glass_pipe.b.json",
+      "beforeSha256": "efe1beebac9a8ad3cff0d723d50e29b71aeb64fb8532e2838e9c76596b3de253",
+      "afterSha256": "33aec22e5aee37ad0ebc8f58324edbcb002db105c88e490a51c66b1059b4edbb"
+    },
+    {
+      "file": "Create (RE)/ui/pause_screen.json",
+      "beforeSha256": "0f41ce20e2f19e0705ba030382b9f026572b7791278d908dee8d79088c7e2e0b",
+      "afterSha256": "1eb07098a39ae3cfb6f7f5f3bbdd93e3ef25d55f98d1047519a22e5f3dcc7bbf"
+    }
+  ]
+}

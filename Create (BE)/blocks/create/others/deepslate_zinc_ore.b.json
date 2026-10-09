@@ -6,7 +6,7 @@
             "menu_category": { "category": "items" }
         },
         "components": {
-            "minecraft:loot": "loot_tables/create/zinc_ore.loot.json",
+            "minecraft:loot": "loot_tables/create/bedrock/zinc_ore.loot.json",
             "minecraft:map_color": "#363636",
             "minecraft:geometry": "minecraft:geometry.full_block",
             "minecraft:material_instances": {

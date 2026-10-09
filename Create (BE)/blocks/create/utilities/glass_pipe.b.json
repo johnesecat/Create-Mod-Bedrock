@@ -18,7 +18,7 @@
             "create:on_place": {},
             "create:on_interact": {},
             "create:on_break": {},
-            "minecraft:loot": "loot_tables/create/glass_pipe.json",
+            "minecraft:loot": "loot_tables/create/bedrock/glass_pipe.json",
             "minecraft:geometry": { "identifier": "geometry.pipe_straight_open" },
             "minecraft:material_instances": {
                 "*": {

@@ -102,7 +102,7 @@
                     "render_method": "alpha_test"
                 }
             },
-            "minecraft:loot": "loot_tables/create/creative_fluid_tank.json"
+            "minecraft:loot": "loot_tables/create/bedrock/creative_fluid_tank.json"
         },
         "permutations": [
             {

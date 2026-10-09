@@ -1,0 +1,750 @@
+{
+  "fromPrefix": "textures/ui/",
+  "toPrefix": "textures/create/bedrock/ui/",
+  "moves": [
+    {
+      "from": "Create (RE)/textures/ui/crafters/clip_guia.png",
+      "to": "Create (RE)/textures/create/bedrock/ui/crafters/clip_guia.png",
+      "sha256": "84ea7918534f7df6ed45cc840bdb3a560b80602a8602e2d49b0fab82516166c5"
+    },
+    {
+      "from": "Create (RE)/textures/ui/crafters/default.png",
+      "to": "Create (RE)/textures/create/bedrock/ui/crafters/default.png",
+      "sha256": "6188822298054e7ea6591110c6c5d29d119baf7fe593cfd6cccef78ae74987bf"
+    },
+    {
+      "from": "Create (RE)/textures/ui/crafters/dialog_background_opaque.json",
+      "to": "Create (RE)/textures/create/bedrock/ui/crafters/dialog_background_opaque.json",
+      "sha256": "a9d80071d3f43f0354ced9cb6368722030ddf4d5d4f9d51e7ebf7fc5ceff258d"
+    },
+    {
+      "from": "Create (RE)/textures/ui/crafters/dialog_background_opaque.png",
+      "to": "Create (RE)/textures/create/bedrock/ui/crafters/dialog_background_opaque.png",
+      "sha256": "2a9b892a7546024eebf0c7c22cd0a6c59ec7142f63566fbb0ed464e6b5385d68"
+    },
+    {
+      "from": "Create (RE)/textures/ui/crafters/exit.png",
+      "to": "Create (RE)/textures/create/bedrock/ui/crafters/exit.png",
+      "sha256": "8b87746645d8d57b77e915fe0095db0cf6db19ede116246b1b8a4c48a1e95f49"
+    },
+    {
+      "from": "Create (RE)/textures/ui/crafters/fichi.png",
+      "to": "Create (RE)/textures/create/bedrock/ui/crafters/fichi.png",
+      "sha256": "a97a136903757c971ac0812dc1ce4e176434849817d04e88811c28a536bdd3c1"
+    },
+    {
+      "from": "Create (RE)/textures/ui/crafters/guide_arrow.png",
+      "to": "Create (RE)/textures/create/bedrock/ui/crafters/guide_arrow.png",
+      "sha256": "e4ee9ac13e9661c5df7e255da26ca7e5285480c1c2acc0afcca2ed700cf908da"
+    },
+    {
+      "from": "Create (RE)/textures/ui/crafters/guide_arrow_back.png",
+      "to": "Create (RE)/textures/create/bedrock/ui/crafters/guide_arrow_back.png",
+      "sha256": "7d6323e4debcb33d83ebbf431b878073f637c022acce407039520bfa2d34af0a"
+    },
+    {
+      "from": "Create (RE)/textures/ui/crafters/icons2d/dandelion.png",
+      "to": "Create (RE)/textures/create/bedrock/ui/crafters/icons2d/dandelion.png",
+      "sha256": "eb0cdf11d96f9b0aef8201c05c51f2c6cf1fc00d8a09d26c50530aff2b05ae33"
+    },
+    {
+      "from": "Create (RE)/textures/ui/crafters/icons2d/lilac_top.png",
+      "to": "Create (RE)/textures/create/bedrock/ui/crafters/icons2d/lilac_top.png",
+      "sha256": "9ad01e980d151fa6508f5a0eabdb616bfdca6149c31cef45b30962be214bdbe0"
+    },
+    {
+      "from": "Create (RE)/textures/ui/crafters/icons2d/peony_top.png",
+      "to": "Create (RE)/textures/create/bedrock/ui/crafters/icons2d/peony_top.png",
+      "sha256": "87d001fac3725b1c238bffb6b35fdbfcf134005169db20829e4c185f8b7f84f4"
+    },
+    {
+      "from": "Create (RE)/textures/ui/crafters/icons2d/rose_bush_top.png",
+      "to": "Create (RE)/textures/create/bedrock/ui/crafters/icons2d/rose_bush_top.png",
+      "sha256": "07b97a1e84394a3d38bc199bb39c61c179c06b0e64bf71e61eff277b03184814"
+    },
+    {
+      "from": "Create (RE)/textures/ui/crafters/icons2d/sunflower_front.png",
+      "to": "Create (RE)/textures/create/bedrock/ui/crafters/icons2d/sunflower_front.png",
+      "sha256": "5c68bb4999d1f3763fe19a495006629ab712b94ab2f196d36f33f27695d63b07"
+    },
+    {
+      "from": "Create (RE)/textures/ui/crafters/icons3d/andesite_casing.png",
+      "to": "Create (RE)/textures/create/bedrock/ui/crafters/icons3d/andesite_casing.png",
+      "sha256": "594f60d8fcc334ee704f696a7206cbf324b9d0ef9e10e0e41cdf45fe57475cab"
+    },
+    {
+      "from": "Create (RE)/textures/ui/crafters/icons3d/bone_block_side.png",
+      "to": "Create (RE)/textures/create/bedrock/ui/crafters/icons3d/bone_block_side.png",
+      "sha256": "b5e46ea6c3dc7459196d7c0d64299281fd4df8e4d0462d9ed5dcf3bb6f1ee637"
+    },
+    {
+      "from": "Create (RE)/textures/ui/crafters/icons3d/brass_casing.png",
+      "to": "Create (RE)/textures/create/bedrock/ui/crafters/icons3d/brass_casing.png",
+      "sha256": "d3463f488c28a43bbf02e13db1da0097558c77a94f920db0fe975e12d955540b"
+    },
+    {
+      "from": "Create (RE)/textures/ui/crafters/icons3d/cactus.png",
+      "to": "Create (RE)/textures/create/bedrock/ui/crafters/icons3d/cactus.png",
+      "sha256": "82e13fc2367d368c60ea7d49629f479c277954e22734c39240b5c1d7e19084d6"
+    },
+    {
+      "from": "Create (RE)/textures/ui/crafters/icons3d/calcite.png",
+      "to": "Create (RE)/textures/create/bedrock/ui/crafters/icons3d/calcite.png",
+      "sha256": "5213dbc079a80d7ac426a5cec0ea2600bc47deed3334cbb224c10ebc4cc09d30"
+    },
+    {
+      "from": "Create (RE)/textures/ui/crafters/icons3d/cherry_log_side.png",
+      "to": "Create (RE)/textures/create/bedrock/ui/crafters/icons3d/cherry_log_side.png",
+      "sha256": "964cc69311f936ea339739e353937f5f176c20e0adebc54b7fb8b146a6f3afdb"
+    },
+    {
+      "from": "Create (RE)/textures/ui/crafters/icons3d/clay.png",
+      "to": "Create (RE)/textures/create/bedrock/ui/crafters/icons3d/clay.png",
+      "sha256": "1d68c3147ca1b13d7a6db2234931f3f387aa26b90f4960aa021be1c207671c05"
+    },
+    {
+      "from": "Create (RE)/textures/ui/crafters/icons3d/coal_ore.png",
+      "to": "Create (RE)/textures/create/bedrock/ui/crafters/icons3d/coal_ore.png",
+      "sha256": "ce88507c92e11ee717b7512d32268335b87b38db5e6390a4f28be86b80a816b5"
+    },
+    {
+      "from": "Create (RE)/textures/ui/crafters/icons3d/cobbled_deepslate.png",
+      "to": "Create (RE)/textures/create/bedrock/ui/crafters/icons3d/cobbled_deepslate.png",
+      "sha256": "fc551a26c7d871437841403ac5c1f3bff9b006b55403cf53d06e36ba0f1ee813"
+    },
+    {
+      "from": "Create (RE)/textures/ui/crafters/icons3d/cobblestone.png",
+      "to": "Create (RE)/textures/create/bedrock/ui/crafters/icons3d/cobblestone.png",
+      "sha256": "8c0ee7ff0daf2af43d550fb9628c7d42f6a072b8f68f0b13335e7432435e57a3"
+    },
+    {
+      "from": "Create (RE)/textures/ui/crafters/icons3d/copper_casing.png",
+      "to": "Create (RE)/textures/create/bedrock/ui/crafters/icons3d/copper_casing.png",
+      "sha256": "9da8e5005ea86dd0c6dea845a2fb6143181407d93c9a246a83ba18f7d5dbef4d"
+    },
+    {
+      "from": "Create (RE)/textures/ui/crafters/icons3d/copper_ore.png",
+      "to": "Create (RE)/textures/create/bedrock/ui/crafters/icons3d/copper_ore.png",
+      "sha256": "53123f57c1597552f5f499efe5ec912778b454937b216b5bfc7b90d7adc7de4a"
+    },
+    {
+      "from": "Create (RE)/textures/ui/crafters/icons3d/crimson_stem_side.png",
+      "to": "Create (RE)/textures/create/bedrock/ui/crafters/icons3d/crimson_stem_side.png",
+      "sha256": "f3a20f4701d1a96894e08d99d4f7205b8be5de89181c40fe28d84f4cc3ab642d"
+    },
+    {
+      "from": "Create (RE)/textures/ui/crafters/icons3d/crushing_wheel.png",
+      "to": "Create (RE)/textures/create/bedrock/ui/crafters/icons3d/crushing_wheel.png",
+      "sha256": "ed1bf8c445f2019c280c1ce96404ad78e470b1ec054107ddfa457179e849cb4a"
+    },
+    {
+      "from": "Create (RE)/textures/ui/crafters/icons3d/deepslate.png",
+      "to": "Create (RE)/textures/create/bedrock/ui/crafters/icons3d/deepslate.png",
+      "sha256": "932342b36cbdbcee4268052e2d2ba32553324301f9bdbc50f2fda3996ae46818"
+    },
+    {
+      "from": "Create (RE)/textures/ui/crafters/icons3d/deepslate_copper_ore.png",
+      "to": "Create (RE)/textures/create/bedrock/ui/crafters/icons3d/deepslate_copper_ore.png",
+      "sha256": "0481847d9418cd3c6240b15bfa1748fa4b35d436be24897474256a2d33267170"
+    },
+    {
+      "from": "Create (RE)/textures/ui/crafters/icons3d/deepslate_gold_ore.png",
+      "to": "Create (RE)/textures/create/bedrock/ui/crafters/icons3d/deepslate_gold_ore.png",
+      "sha256": "b509907ef6e43fb55a2d0cc89d68aa43d318ca6832d536541e94ccc9c80bfd00"
+    },
+    {
+      "from": "Create (RE)/textures/ui/crafters/icons3d/deepslate_iron_ore.png",
+      "to": "Create (RE)/textures/create/bedrock/ui/crafters/icons3d/deepslate_iron_ore.png",
+      "sha256": "2c6199b81cd4ed592a1758fd3e07003d1c0642bee4b101100f032b22a7b01022"
+    },
+    {
+      "from": "Create (RE)/textures/ui/crafters/icons3d/dirt.png",
+      "to": "Create (RE)/textures/create/bedrock/ui/crafters/icons3d/dirt.png",
+      "sha256": "8f58bd364f65d38df946a36b0235753f506cdbd09f128b93e8181755dd0a5183"
+    },
+    {
+      "from": "Create (RE)/textures/ui/crafters/icons3d/dripstone_block.png",
+      "to": "Create (RE)/textures/create/bedrock/ui/crafters/icons3d/dripstone_block.png",
+      "sha256": "b620b3d1a8f976dd7dfea8bb3a7bb41bb6f9e32f3f2a65148438761ddf771b65"
+    },
+    {
+      "from": "Create (RE)/textures/ui/crafters/icons3d/glowstone.png",
+      "to": "Create (RE)/textures/create/bedrock/ui/crafters/icons3d/glowstone.png",
+      "sha256": "3b62e0204eb31185736462e5fd5c84e5f944e64cdb66b6977d1eba01ce1854ec"
+    },
+    {
+      "from": "Create (RE)/textures/ui/crafters/icons3d/gold_ore.png",
+      "to": "Create (RE)/textures/create/bedrock/ui/crafters/icons3d/gold_ore.png",
+      "sha256": "359b5d9397c075b9ec998a6de2bb2f360507c810e61f7c0bd760d1f2cfac604a"
+    },
+    {
+      "from": "Create (RE)/textures/ui/crafters/icons3d/grass_block.png",
+      "to": "Create (RE)/textures/create/bedrock/ui/crafters/icons3d/grass_block.png",
+      "sha256": "fe36b7896ec737d385cc671455dbf25ae57aae10c74cc3c9d8b85459e3858dc1"
+    },
+    {
+      "from": "Create (RE)/textures/ui/crafters/icons3d/gravel.png",
+      "to": "Create (RE)/textures/create/bedrock/ui/crafters/icons3d/gravel.png",
+      "sha256": "c9efc287909505ae8855bb2b4af4807e98f0e2f57667ad7b30f25204bf970aa0"
+    },
+    {
+      "from": "Create (RE)/textures/ui/crafters/icons3d/hardened_clay.png",
+      "to": "Create (RE)/textures/create/bedrock/ui/crafters/icons3d/hardened_clay.png",
+      "sha256": "280e3fe1cab5b884e2a5fbb7b503620a020ca56ba5463463ac35b04bb11aa6dd"
+    },
+    {
+      "from": "Create (RE)/textures/ui/crafters/icons3d/honey_block.png",
+      "to": "Create (RE)/textures/create/bedrock/ui/crafters/icons3d/honey_block.png",
+      "sha256": "9221e85a400991394885f15e5213c14ac7668fb5ac74e809b4dd78461a4a7c0f"
+    },
+    {
+      "from": "Create (RE)/textures/ui/crafters/icons3d/iron_ore.png",
+      "to": "Create (RE)/textures/create/bedrock/ui/crafters/icons3d/iron_ore.png",
+      "sha256": "a90e2711bae846a0c08220652a8aec8c33779733052c7065cb62627ef4176589"
+    },
+    {
+      "from": "Create (RE)/textures/ui/crafters/icons3d/log_acacia.png",
+      "to": "Create (RE)/textures/create/bedrock/ui/crafters/icons3d/log_acacia.png",
+      "sha256": "1a1803d41153016d9379c02bec62f5b3023f16351cdb3165856760c0e2dae92b"
+    },
+    {
+      "from": "Create (RE)/textures/ui/crafters/icons3d/log_big_oak.png",
+      "to": "Create (RE)/textures/create/bedrock/ui/crafters/icons3d/log_big_oak.png",
+      "sha256": "e845ee0c737510fcd62cb8dba8ed6b0d19c83452216611b0e083433c0e578bb9"
+    },
+    {
+      "from": "Create (RE)/textures/ui/crafters/icons3d/log_birch.png",
+      "to": "Create (RE)/textures/create/bedrock/ui/crafters/icons3d/log_birch.png",
+      "sha256": "9108fa71233aee526491c257b70bec784b8531861c88c2fee63e9d4237c51465"
+    },
+    {
+      "from": "Create (RE)/textures/ui/crafters/icons3d/log_jungle.png",
+      "to": "Create (RE)/textures/create/bedrock/ui/crafters/icons3d/log_jungle.png",
+      "sha256": "40bce029b2c1ffd97b844aab0593a83b8dbd8cfd4767a584eedb8fb90ac37289"
+    },
+    {
+      "from": "Create (RE)/textures/ui/crafters/icons3d/log_oak.png",
+      "to": "Create (RE)/textures/create/bedrock/ui/crafters/icons3d/log_oak.png",
+      "sha256": "64b9af1e084522eca06d01ee6fa1858c042fca6824198320ea54274d8b2d7507"
+    },
+    {
+      "from": "Create (RE)/textures/ui/crafters/icons3d/log_spruce.png",
+      "to": "Create (RE)/textures/create/bedrock/ui/crafters/icons3d/log_spruce.png",
+      "sha256": "6d6fd8a88afdf8694e613b49eb9e7e1ebcac64730207bd90265f04924e4e85e8"
+    },
+    {
+      "from": "Create (RE)/textures/ui/crafters/icons3d/mangrove_log_side.png",
+      "to": "Create (RE)/textures/create/bedrock/ui/crafters/icons3d/mangrove_log_side.png",
+      "sha256": "ede82bc6277a6e718420f6d7fd86bbde63de354dfa336ab53f291e857e9a0748"
+    },
+    {
+      "from": "Create (RE)/textures/ui/crafters/icons3d/nether_gold_ore.png",
+      "to": "Create (RE)/textures/create/bedrock/ui/crafters/icons3d/nether_gold_ore.png",
+      "sha256": "b4abf6ab307cf3b4e80d8aee10a6a8c35d816690ea93e50046abf04a92d657d7"
+    },
+    {
+      "from": "Create (RE)/textures/ui/crafters/icons3d/netherrack.png",
+      "to": "Create (RE)/textures/create/bedrock/ui/crafters/icons3d/netherrack.png",
+      "sha256": "6a7b0b262e6bf2993bb63e8e02bc04915e3f7cb0908043cdf01a31b1184a6a20"
+    },
+    {
+      "from": "Create (RE)/textures/ui/crafters/icons3d/prismarine_rough.png",
+      "to": "Create (RE)/textures/create/bedrock/ui/crafters/icons3d/prismarine_rough.png",
+      "sha256": "8969891300388b0e5337029a427c7e4774d21849d11bd9e23af70b9761a511c8"
+    },
+    {
+      "from": "Create (RE)/textures/ui/crafters/icons3d/quartz_ore.png",
+      "to": "Create (RE)/textures/create/bedrock/ui/crafters/icons3d/quartz_ore.png",
+      "sha256": "02bda091d7e9f76d35a253ae2a8be89e03d63a725b2bb7fc4e266fe90fd28c7e"
+    },
+    {
+      "from": "Create (RE)/textures/ui/crafters/icons3d/sand.png",
+      "to": "Create (RE)/textures/create/bedrock/ui/crafters/icons3d/sand.png",
+      "sha256": "7257a9e3e8541cb35b8b8075377cf4aea14e445fe612985d605714f1702868c6"
+    },
+    {
+      "from": "Create (RE)/textures/ui/crafters/icons3d/sandstone_normal.png",
+      "to": "Create (RE)/textures/create/bedrock/ui/crafters/icons3d/sandstone_normal.png",
+      "sha256": "363568c014a85f1e76fa6a53a09bb71c9c5db65832d0c9c0944cfe83bd3520b8"
+    },
+    {
+      "from": "Create (RE)/textures/ui/crafters/icons3d/sea_pickle.png",
+      "to": "Create (RE)/textures/create/bedrock/ui/crafters/icons3d/sea_pickle.png",
+      "sha256": "4d094cb0a81ce5257e8458f0e332e09f1e9e75a118f6f2ba9e5e1be16be09b4e"
+    },
+    {
+      "from": "Create (RE)/textures/ui/crafters/icons3d/stone.png",
+      "to": "Create (RE)/textures/create/bedrock/ui/crafters/icons3d/stone.png",
+      "sha256": "6900ad056507a2b0ecff8f1b73a9230f5cf20c24c3d344eb6ccf5eb0756144a1"
+    },
+    {
+      "from": "Create (RE)/textures/ui/crafters/icons3d/stone_andesite.png",
+      "to": "Create (RE)/textures/create/bedrock/ui/crafters/icons3d/stone_andesite.png",
+      "sha256": "4de42a8bb257f0ecffecd0caaded6b11087a3bc17362227b1f649d20bd227214"
+    },
+    {
+      "from": "Create (RE)/textures/ui/crafters/icons3d/stone_diorite.png",
+      "to": "Create (RE)/textures/create/bedrock/ui/crafters/icons3d/stone_diorite.png",
+      "sha256": "135dc97e033d327c2ea7de2b7aa88a4091d9cf76118863c89f4035adefd551b7"
+    },
+    {
+      "from": "Create (RE)/textures/ui/crafters/icons3d/stone_granite.png",
+      "to": "Create (RE)/textures/create/bedrock/ui/crafters/icons3d/stone_granite.png",
+      "sha256": "6337badc9b5a6ccbb4e0e610ca6bde761d84bbf5e5c18dac89aabb44d78aa2ef"
+    },
+    {
+      "from": "Create (RE)/textures/ui/crafters/icons3d/warped_stem_side.png",
+      "to": "Create (RE)/textures/create/bedrock/ui/crafters/icons3d/warped_stem_side.png",
+      "sha256": "6ae0934d2bd215cb771035dd93a11b5045e6c217181f9e21dc7264bbdea1d95d"
+    },
+    {
+      "from": "Create (RE)/textures/ui/crafters/machines/brass_funnel_guia.png",
+      "to": "Create (RE)/textures/create/bedrock/ui/crafters/machines/brass_funnel_guia.png",
+      "sha256": "8f7dd693d6e1acbb9ca0ebd2f90a1fa6d4aa49a80fe56673bb614472b70c57c8"
+    },
+    {
+      "from": "Create (RE)/textures/ui/crafters/machines/brass_tunnel_guia.png",
+      "to": "Create (RE)/textures/create/bedrock/ui/crafters/machines/brass_tunnel_guia.png",
+      "sha256": "795345acfe3dd48b4374da68ecaae77915912801cf9cf6544b07a0c8f79f902b"
+    },
+    {
+      "from": "Create (RE)/textures/ui/crafters/machines/cart_assembler_guia.png",
+      "to": "Create (RE)/textures/create/bedrock/ui/crafters/machines/cart_assembler_guia.png",
+      "sha256": "595af75999166c6ec3849a6c6eb8baa542ffb5f89567629fe780ea52cb48dc2e"
+    },
+    {
+      "from": "Create (RE)/textures/ui/crafters/machines/chute_guia.png",
+      "to": "Create (RE)/textures/create/bedrock/ui/crafters/machines/chute_guia.png",
+      "sha256": "d07e76f489c48d5bb7234d94327e97364fb02e0a5081c01c1681ad0c9f706688"
+    },
+    {
+      "from": "Create (RE)/textures/ui/crafters/machines/crushing_wheel_guia.png",
+      "to": "Create (RE)/textures/create/bedrock/ui/crafters/machines/crushing_wheel_guia.png",
+      "sha256": "e5205e75753c6a3d68cdc65c451c12fd4b7edaf7cc4d6ddf3e382fcb67828332"
+    },
+    {
+      "from": "Create (RE)/textures/ui/crafters/machines/deployer_guia.png",
+      "to": "Create (RE)/textures/create/bedrock/ui/crafters/machines/deployer_guia.png",
+      "sha256": "4d21003afba307d0449908fab0cf66448a82bfcab234111045beba4772f8b7e4"
+    },
+    {
+      "from": "Create (RE)/textures/ui/crafters/machines/drain_guia.png",
+      "to": "Create (RE)/textures/create/bedrock/ui/crafters/machines/drain_guia.png",
+      "sha256": "3b8e0b569946599ad0707c907fa3a6f88c2e823a916981caa15b6e1f27603409"
+    },
+    {
+      "from": "Create (RE)/textures/ui/crafters/machines/drill_guia.png",
+      "to": "Create (RE)/textures/create/bedrock/ui/crafters/machines/drill_guia.png",
+      "sha256": "74269b1fad48bc3ed7c0d567df2b47d07e4d1354c597e5361d6ad923c27dbc79"
+    },
+    {
+      "from": "Create (RE)/textures/ui/crafters/machines/encased_fan_guia.png",
+      "to": "Create (RE)/textures/create/bedrock/ui/crafters/machines/encased_fan_guia.png",
+      "sha256": "87635dae0ea67b1c013224fb0a065bc6001abba75886f0f66c0cc63bcb025c41"
+    },
+    {
+      "from": "Create (RE)/textures/ui/crafters/machines/fluid_tank.png",
+      "to": "Create (RE)/textures/create/bedrock/ui/crafters/machines/fluid_tank.png",
+      "sha256": "1ff8fc6c46b0dbd38f0e64b4472e1403c71bee7141130f466cbe9ff2a39dfcea"
+    },
+    {
+      "from": "Create (RE)/textures/ui/crafters/machines/harvester_guia.png",
+      "to": "Create (RE)/textures/create/bedrock/ui/crafters/machines/harvester_guia.png",
+      "sha256": "de970030621c5e8f23f9094b5fc7cdd9171f54a01a1e9a4b2180ce27c156862f"
+    },
+    {
+      "from": "Create (RE)/textures/ui/crafters/machines/hose_pulley_guia.png",
+      "to": "Create (RE)/textures/create/bedrock/ui/crafters/machines/hose_pulley_guia.png",
+      "sha256": "7551c08b874be0d1159f0e5dcf09379ba06b7d6ef15e421809006f202ec83f58"
+    },
+    {
+      "from": "Create (RE)/textures/ui/crafters/machines/mechanical_arm.png",
+      "to": "Create (RE)/textures/create/bedrock/ui/crafters/machines/mechanical_arm.png",
+      "sha256": "c851211d02b874d40b735d13b5c3d01db2aa8584ec45b415e4d0152024612ab0"
+    },
+    {
+      "from": "Create (RE)/textures/ui/crafters/machines/mechanical_bearing_guia.png",
+      "to": "Create (RE)/textures/create/bedrock/ui/crafters/machines/mechanical_bearing_guia.png",
+      "sha256": "15a6843ab370c2d2f424a7bd2822ffabc94c7d44eace7ba52c963096915de461"
+    },
+    {
+      "from": "Create (RE)/textures/ui/crafters/machines/mechanical_crafter_guia.png",
+      "to": "Create (RE)/textures/create/bedrock/ui/crafters/machines/mechanical_crafter_guia.png",
+      "sha256": "ae87bed6064f483d12c1079989352dafb9659dc40160733bfba0d6d8689f6635"
+    },
+    {
+      "from": "Create (RE)/textures/ui/crafters/machines/mechanical_pump_guia.png",
+      "to": "Create (RE)/textures/create/bedrock/ui/crafters/machines/mechanical_pump_guia.png",
+      "sha256": "d1aa0863d2e6368c37434f0dcb557a661f08cf2d402504ad20654f68f606b6c4"
+    },
+    {
+      "from": "Create (RE)/textures/ui/crafters/machines/mechanical_saw.png",
+      "to": "Create (RE)/textures/create/bedrock/ui/crafters/machines/mechanical_saw.png",
+      "sha256": "8301ff68ae7fd2398f1a431db71b52d60bdde6b5e2bc408965e97c65a261abc0"
+    },
+    {
+      "from": "Create (RE)/textures/ui/crafters/machines/millstone.png",
+      "to": "Create (RE)/textures/create/bedrock/ui/crafters/machines/millstone.png",
+      "sha256": "92e6e030402810ba5f240e6518d51aaf97a9f1b27c1b606d997e39054c7cd5c3"
+    },
+    {
+      "from": "Create (RE)/textures/ui/crafters/machines/poder_index.png",
+      "to": "Create (RE)/textures/create/bedrock/ui/crafters/machines/poder_index.png",
+      "sha256": "a1b90c21f5e275e268830787b04a1c2549b3b9988415715ef2502845e9bca705"
+    },
+    {
+      "from": "Create (RE)/textures/ui/crafters/machines/portable_storage_interface_guia.png",
+      "to": "Create (RE)/textures/create/bedrock/ui/crafters/machines/portable_storage_interface_guia.png",
+      "sha256": "5d0a687f161683ae4a7e54172ffce43789648bac9db315dc44e5cd0d178cee63"
+    },
+    {
+      "from": "Create (RE)/textures/ui/crafters/machines/redstone_link_guia.png",
+      "to": "Create (RE)/textures/create/bedrock/ui/crafters/machines/redstone_link_guia.png",
+      "sha256": "8b84aafa23b041fdb5ddc211678e9d60a793dadafc98a2aed595a60ae9c9ff50"
+    },
+    {
+      "from": "Create (RE)/textures/ui/crafters/machines/sequenced_gearshift_guia.png",
+      "to": "Create (RE)/textures/create/bedrock/ui/crafters/machines/sequenced_gearshift_guia.png",
+      "sha256": "e7c738964d49debb4d0ec46228e0ddd4e7434a4e4af1ca1fe2ac0809ed4d0634"
+    },
+    {
+      "from": "Create (RE)/textures/ui/crafters/machines/smart_chute_guia.png",
+      "to": "Create (RE)/textures/create/bedrock/ui/crafters/machines/smart_chute_guia.png",
+      "sha256": "17aa57ca22a24ec09bf9458cf04fde1d1ab8146a146a42f46555b35affa7f39a"
+    },
+    {
+      "from": "Create (RE)/textures/ui/crafters/machines/smart_fluid_pipe_guia.png",
+      "to": "Create (RE)/textures/create/bedrock/ui/crafters/machines/smart_fluid_pipe_guia.png",
+      "sha256": "4fb161fcfe82d80eb1aa5e1b66c56ccec6223b744bdced7cb95ab8cb1cb5c61e"
+    },
+    {
+      "from": "Create (RE)/textures/ui/crafters/machines/spout_guia.png",
+      "to": "Create (RE)/textures/create/bedrock/ui/crafters/machines/spout_guia.png",
+      "sha256": "8c0173df6a036311da17ec13ce1997ea3548ab6459b6d539eb22b664b32822d1"
+    },
+    {
+      "from": "Create (RE)/textures/ui/crafters/machines/steam_engine_guia.png",
+      "to": "Create (RE)/textures/create/bedrock/ui/crafters/machines/steam_engine_guia.png",
+      "sha256": "cb313720de2b0a132d6dde6356b3c3ccbd4395e34870b89fc239f1ef43c31e71"
+    },
+    {
+      "from": "Create (RE)/textures/ui/crafters/machines/sticker_guia.png",
+      "to": "Create (RE)/textures/create/bedrock/ui/crafters/machines/sticker_guia.png",
+      "sha256": "f1dcb3cea3e4182d3305b9e85b18cb4f24300674e71020a23b8b2388e844f6fc"
+    },
+    {
+      "from": "Create (RE)/textures/ui/crafters/machines/super_glue_guia.png",
+      "to": "Create (RE)/textures/create/bedrock/ui/crafters/machines/super_glue_guia.png",
+      "sha256": "d40efdb907eac762ab24a97ee13ac2daaf91414edc9aa442a252c6efa3a18e65"
+    },
+    {
+      "from": "Create (RE)/textures/ui/crafters/machines/vault_guia.png",
+      "to": "Create (RE)/textures/create/bedrock/ui/crafters/machines/vault_guia.png",
+      "sha256": "dcd7065bf5c988e551c81705523db6bd0f8dcea4a096a1a48f85acb042c2cbb9"
+    },
+    {
+      "from": "Create (RE)/textures/ui/crafters/machines/weighted_ejector_guia.png",
+      "to": "Create (RE)/textures/create/bedrock/ui/crafters/machines/weighted_ejector_guia.png",
+      "sha256": "183a00f9ede0369ccc40d768890c3f89abc3a3b9dff8c57d54a767bbb91103f1"
+    },
+    {
+      "from": "Create (RE)/textures/ui/crafters/machines/windmill_bearing_guia.png",
+      "to": "Create (RE)/textures/create/bedrock/ui/crafters/machines/windmill_bearing_guia.png",
+      "sha256": "a41dce7fb858d942c02ba2f08c38d16fb1f201aca90db515f645774559ea3602"
+    },
+    {
+      "from": "Create (RE)/textures/ui/crafters/misc/blazer_burner.png",
+      "to": "Create (RE)/textures/create/bedrock/ui/crafters/misc/blazer_burner.png",
+      "sha256": "763470d7d5a7d4db8973ec3dbe783c7a146febbd3add0ad103da9323a02799d8"
+    },
+    {
+      "from": "Create (RE)/textures/ui/crafters/misc/brass_funnel.png",
+      "to": "Create (RE)/textures/create/bedrock/ui/crafters/misc/brass_funnel.png",
+      "sha256": "a41a2b379a4c7bcb7a6adae410b2e10ace1f70a2a6dfd0e9574ec8679310a871"
+    },
+    {
+      "from": "Create (RE)/textures/ui/crafters/misc/brass_tunnel.png",
+      "to": "Create (RE)/textures/create/bedrock/ui/crafters/misc/brass_tunnel.png",
+      "sha256": "59175c330e6c92ccc582afab945f0b2f55d1d116df30c0c741545d14326cc526"
+    },
+    {
+      "from": "Create (RE)/textures/ui/crafters/misc/cart_assembler.png",
+      "to": "Create (RE)/textures/create/bedrock/ui/crafters/misc/cart_assembler.png",
+      "sha256": "0910c1142f254d0ef1e0e09956dff5c9bb8f19a58deadc8937f3853f0c21b593"
+    },
+    {
+      "from": "Create (RE)/textures/ui/crafters/misc/chute.png",
+      "to": "Create (RE)/textures/create/bedrock/ui/crafters/misc/chute.png",
+      "sha256": "bdd94f974efa3557b47dd47f482cff3bd0c7cffc829c1e6fb1cb7c74c08bf080"
+    },
+    {
+      "from": "Create (RE)/textures/ui/crafters/misc/crush_ui.png",
+      "to": "Create (RE)/textures/create/bedrock/ui/crafters/misc/crush_ui.png",
+      "sha256": "e686539bcd8493b01ea3ba7d7f697ad8d2b1c015d293179008bede00953d6044"
+    },
+    {
+      "from": "Create (RE)/textures/ui/crafters/misc/deployer.png",
+      "to": "Create (RE)/textures/create/bedrock/ui/crafters/misc/deployer.png",
+      "sha256": "a4cebd0dfb16c75ac82e3f76843988bf3ac42b0bcdf7aa0cd401fc5d7ad98e8b"
+    },
+    {
+      "from": "Create (RE)/textures/ui/crafters/misc/drain.png",
+      "to": "Create (RE)/textures/create/bedrock/ui/crafters/misc/drain.png",
+      "sha256": "e0b09fac37ed88dc09333e7a4084e32bd48c8af1fb10c0f21cc14ef098238ee2"
+    },
+    {
+      "from": "Create (RE)/textures/ui/crafters/misc/drill.png",
+      "to": "Create (RE)/textures/create/bedrock/ui/crafters/misc/drill.png",
+      "sha256": "e5de44e983e89bf4a4035d03d0fc065aa94dbbb0cde3b2a6a1100d21b9392d7d"
+    },
+    {
+      "from": "Create (RE)/textures/ui/crafters/misc/fan_ui.png",
+      "to": "Create (RE)/textures/create/bedrock/ui/crafters/misc/fan_ui.png",
+      "sha256": "95b4924e8373d174d2e17fa39d1e711aef158f6c123c70275f41b8a72eaa3e6d"
+    },
+    {
+      "from": "Create (RE)/textures/ui/crafters/misc/fluid_tank.png",
+      "to": "Create (RE)/textures/create/bedrock/ui/crafters/misc/fluid_tank.png",
+      "sha256": "25abfd6bdd798f1187e7e31d423af70a60bcb1aac82c569321506be931300116"
+    },
+    {
+      "from": "Create (RE)/textures/ui/crafters/misc/harvester.png",
+      "to": "Create (RE)/textures/create/bedrock/ui/crafters/misc/harvester.png",
+      "sha256": "5d7cc1762f030f670e58df18922cd3ffd4fc297e193bc92c02397ee02ea78e77"
+    },
+    {
+      "from": "Create (RE)/textures/ui/crafters/misc/hose_pulley.png",
+      "to": "Create (RE)/textures/create/bedrock/ui/crafters/misc/hose_pulley.png",
+      "sha256": "eeecb1e4567969993983e30a082b0959dd141c601dc38e14c4211e405bb3cc25"
+    },
+    {
+      "from": "Create (RE)/textures/ui/crafters/misc/mechanical_arm.png",
+      "to": "Create (RE)/textures/create/bedrock/ui/crafters/misc/mechanical_arm.png",
+      "sha256": "148ddbc42a8fa1df6f71e509bb65e0c80aad4c27c19f6dd9636a2fe4f46c002f"
+    },
+    {
+      "from": "Create (RE)/textures/ui/crafters/misc/mechanical_bearing.png",
+      "to": "Create (RE)/textures/create/bedrock/ui/crafters/misc/mechanical_bearing.png",
+      "sha256": "d2811d29ef1e8aff346c31d99321c42b25f2888d7203275c0aa6c77a81717eff"
+    },
+    {
+      "from": "Create (RE)/textures/ui/crafters/misc/mechanical_crafter.png",
+      "to": "Create (RE)/textures/create/bedrock/ui/crafters/misc/mechanical_crafter.png",
+      "sha256": "a8fecb325fa3f3728af4da37b0d4dbf876249e8de50bf89391d75ffd19c35752"
+    },
+    {
+      "from": "Create (RE)/textures/ui/crafters/misc/mechanical_pump.png",
+      "to": "Create (RE)/textures/create/bedrock/ui/crafters/misc/mechanical_pump.png",
+      "sha256": "1dd4efbdcef603d52667211ad0b92882e1662e4a1af83ac64500fd76e7acaa8c"
+    },
+    {
+      "from": "Create (RE)/textures/ui/crafters/misc/mechanical_saw.png",
+      "to": "Create (RE)/textures/create/bedrock/ui/crafters/misc/mechanical_saw.png",
+      "sha256": "84ffd0806d3a2059645705e3effc765efd6cfd4d8b4648370ef4d886b40aff64"
+    },
+    {
+      "from": "Create (RE)/textures/ui/crafters/misc/millstone_ui.png",
+      "to": "Create (RE)/textures/create/bedrock/ui/crafters/misc/millstone_ui.png",
+      "sha256": "915dea6a63d444dfca3613fd511ad9484d9a279476224f7fbe258d28cf76b401"
+    },
+    {
+      "from": "Create (RE)/textures/ui/crafters/misc/mixer_ui.png",
+      "to": "Create (RE)/textures/create/bedrock/ui/crafters/misc/mixer_ui.png",
+      "sha256": "36029f461dcd89904741e80019acd80bc2dedc1d09caaf9ef647c1859fac1686"
+    },
+    {
+      "from": "Create (RE)/textures/ui/crafters/misc/portable_storage_interface.png",
+      "to": "Create (RE)/textures/create/bedrock/ui/crafters/misc/portable_storage_interface.png",
+      "sha256": "bae7f4f8154bbe754c6ddc70735a027a5d62e280dd2f3fa740410e2bc2f5528c"
+    },
+    {
+      "from": "Create (RE)/textures/ui/crafters/misc/potato_cannon.png",
+      "to": "Create (RE)/textures/create/bedrock/ui/crafters/misc/potato_cannon.png",
+      "sha256": "f4d1ee458f6fc3ecf94995bb8cbf894b082b95841e213bd474515fd1ee1897a6"
+    },
+    {
+      "from": "Create (RE)/textures/ui/crafters/misc/press_ui.png",
+      "to": "Create (RE)/textures/create/bedrock/ui/crafters/misc/press_ui.png",
+      "sha256": "5a35504eac935ab0eee3360fcbd5d3413b52e5ca002f7fa601b7d6ba9380e178"
+    },
+    {
+      "from": "Create (RE)/textures/ui/crafters/misc/redstone_link.png",
+      "to": "Create (RE)/textures/create/bedrock/ui/crafters/misc/redstone_link.png",
+      "sha256": "c7b3e81f30bb75c0d000b4955b8cdf7f7454bba304a3d28ce8a90393cbb0c687"
+    },
+    {
+      "from": "Create (RE)/textures/ui/crafters/misc/sequenced_gearshift.png",
+      "to": "Create (RE)/textures/create/bedrock/ui/crafters/misc/sequenced_gearshift.png",
+      "sha256": "b6a7ab28f85e45093ade23eccffd5456d9f2ca26e747f782787cc054e3b1187e"
+    },
+    {
+      "from": "Create (RE)/textures/ui/crafters/misc/smart_chute.png",
+      "to": "Create (RE)/textures/create/bedrock/ui/crafters/misc/smart_chute.png",
+      "sha256": "49627557522735cadd8e7d3797fd03fcd08c820b7729fc06e9b57dedbc53bc91"
+    },
+    {
+      "from": "Create (RE)/textures/ui/crafters/misc/smart_fluid_pipe.png",
+      "to": "Create (RE)/textures/create/bedrock/ui/crafters/misc/smart_fluid_pipe.png",
+      "sha256": "e3b37ad33a1ed87a972cfe3ad44ad9ff942c0951828a8b84bd5c4b5d3dbd7067"
+    },
+    {
+      "from": "Create (RE)/textures/ui/crafters/misc/spout_ui.png",
+      "to": "Create (RE)/textures/create/bedrock/ui/crafters/misc/spout_ui.png",
+      "sha256": "d210a6f603fe33166f26dd9a47a242f36b73d14bbc1adae7abda1c697417a983"
+    },
+    {
+      "from": "Create (RE)/textures/ui/crafters/misc/steam_engine.png",
+      "to": "Create (RE)/textures/create/bedrock/ui/crafters/misc/steam_engine.png",
+      "sha256": "75496e9760d32d4c171f866f020581a1c7a45a77de8f89cc7a3edb804482baf7"
+    },
+    {
+      "from": "Create (RE)/textures/ui/crafters/misc/sticker.png",
+      "to": "Create (RE)/textures/create/bedrock/ui/crafters/misc/sticker.png",
+      "sha256": "e7dddb15a969b647b08d8d7bee93069916523978b4746327516870e2f691419f"
+    },
+    {
+      "from": "Create (RE)/textures/ui/crafters/misc/vault.png",
+      "to": "Create (RE)/textures/create/bedrock/ui/crafters/misc/vault.png",
+      "sha256": "5cb7faa74329a5a50cbb678a81834722bf4396bf28778e3f54431db63bdc5749"
+    },
+    {
+      "from": "Create (RE)/textures/ui/crafters/misc/weighted_ejector_casing.png",
+      "to": "Create (RE)/textures/create/bedrock/ui/crafters/misc/weighted_ejector_casing.png",
+      "sha256": "1d1c229a2cb371cc4f8f2473dfbda9ef473769e1771297a261e3c46c9a908c3a"
+    },
+    {
+      "from": "Create (RE)/textures/ui/crafters/misc/windmill_bearing.png",
+      "to": "Create (RE)/textures/create/bedrock/ui/crafters/misc/windmill_bearing.png",
+      "sha256": "825be2860abb151d370e386168a6aa517929f587f412c76289cdfccd980e5bed"
+    },
+    {
+      "from": "Create (RE)/textures/ui/crafters/poder_background.png",
+      "to": "Create (RE)/textures/create/bedrock/ui/crafters/poder_background.png",
+      "sha256": "7c605ae2102e10042a3b272c8dd2f6b9031c0302c1807fd107d98a8e798c3d15"
+    },
+    {
+      "from": "Create (RE)/textures/ui/crafters/recipies/andesite_casing.png",
+      "to": "Create (RE)/textures/create/bedrock/ui/crafters/recipies/andesite_casing.png",
+      "sha256": "2341eff4e9fbf7c79ef1143d55ba204829afc9e0ac2b00c5b244bdeaa69ce1ed"
+    },
+    {
+      "from": "Create (RE)/textures/ui/crafters/recipies/blazer_burner.png",
+      "to": "Create (RE)/textures/create/bedrock/ui/crafters/recipies/blazer_burner.png",
+      "sha256": "ed04951abf4edef9f19b3a17cf7eddd6efed13040ea9ac170190ed26a3cb7fc1"
+    },
+    {
+      "from": "Create (RE)/textures/ui/crafters/recipies/brass_casing.png",
+      "to": "Create (RE)/textures/create/bedrock/ui/crafters/recipies/brass_casing.png",
+      "sha256": "538e6ef8d35369450cc87774f1578cae00148a9d8c84321ad2e096e26c88bd23"
+    },
+    {
+      "from": "Create (RE)/textures/ui/crafters/recipies/copper_casing.png",
+      "to": "Create (RE)/textures/create/bedrock/ui/crafters/recipies/copper_casing.png",
+      "sha256": "dd30275068ea1e06c7cfe3ad62d3efda78d8bd68413b1060b6c662f7749f156d"
+    },
+    {
+      "from": "Create (RE)/textures/ui/crafters/recipies/crushingWheel.png",
+      "to": "Create (RE)/textures/create/bedrock/ui/crafters/recipies/crushingWheel.png",
+      "sha256": "d3f8af62dab3741e07e76a7d5ad8940e8f130441f5de9a0eb0b4284eb0abf599"
+    },
+    {
+      "from": "Create (RE)/textures/ui/crafters/recipies/crushingwheel_recipe.png",
+      "to": "Create (RE)/textures/create/bedrock/ui/crafters/recipies/crushingwheel_recipe.png",
+      "sha256": "6d29cc6dbf28e93436ebfbf71087c8f70d4576cb6e5cdd4aa4944997093fbe52"
+    },
+    {
+      "from": "Create (RE)/textures/ui/crafters/recipies/fam_soul_campfire.png",
+      "to": "Create (RE)/textures/create/bedrock/ui/crafters/recipies/fam_soul_campfire.png",
+      "sha256": "f66a91d1afe895e820b545328bdd1ded8c1ba17b734df77a0303fc068c753b55"
+    },
+    {
+      "from": "Create (RE)/textures/ui/crafters/recipies/fan_campfire.png",
+      "to": "Create (RE)/textures/create/bedrock/ui/crafters/recipies/fan_campfire.png",
+      "sha256": "67ec8e37944ea75470a12c455ce70177c0f36495ceeae67a3593c384ee093a92"
+    },
+    {
+      "from": "Create (RE)/textures/ui/crafters/recipies/fan_lava.png",
+      "to": "Create (RE)/textures/create/bedrock/ui/crafters/recipies/fan_lava.png",
+      "sha256": "ebbd4bc6d875a95cf0d47fa6a05676dc496bd75bb0f535f37ace0dab452c3f38"
+    },
+    {
+      "from": "Create (RE)/textures/ui/crafters/recipies/fan_water.png",
+      "to": "Create (RE)/textures/create/bedrock/ui/crafters/recipies/fan_water.png",
+      "sha256": "df893affc9131ef5903073d87e833d3494ad4f9dbf7307c7ce9358ea471ee5b8"
+    },
+    {
+      "from": "Create (RE)/textures/ui/crafters/recipies/millstone.png",
+      "to": "Create (RE)/textures/create/bedrock/ui/crafters/recipies/millstone.png",
+      "sha256": "39f86e541ab61491e92d01023f2e0bbcdc085ee1feb55d3a3e53951894ec63fe"
+    },
+    {
+      "from": "Create (RE)/textures/ui/crafters/recipies/mixer.png",
+      "to": "Create (RE)/textures/create/bedrock/ui/crafters/recipies/mixer.png",
+      "sha256": "b6fbc4352105e887d63371befeda68d3e4a604e59d0af7c23bd3162af7e54b24"
+    },
+    {
+      "from": "Create (RE)/textures/ui/crafters/recipies/mixer_blazer_burner.png",
+      "to": "Create (RE)/textures/create/bedrock/ui/crafters/recipies/mixer_blazer_burner.png",
+      "sha256": "6496e0af32dd3e6cf79c65cfffc9b0333b39f4b5ac097f754a3fd243fad24b68"
+    },
+    {
+      "from": "Create (RE)/textures/ui/crafters/recipies/num_1.png",
+      "to": "Create (RE)/textures/create/bedrock/ui/crafters/recipies/num_1.png",
+      "sha256": "24a7ab48f31d565b13206ec8d76fbe0e8061b23f42db240c70f8688c0ff6496d"
+    },
+    {
+      "from": "Create (RE)/textures/ui/crafters/recipies/polished_rose_quartz.png",
+      "to": "Create (RE)/textures/create/bedrock/ui/crafters/recipies/polished_rose_quartz.png",
+      "sha256": "3bc11d281348ba7e97777b5ad317e89276bd42f2789c6ebb9fd5c9644507a175"
+    },
+    {
+      "from": "Create (RE)/textures/ui/crafters/recipies/potato_cannon_recipe.png",
+      "to": "Create (RE)/textures/create/bedrock/ui/crafters/recipies/potato_cannon_recipe.png",
+      "sha256": "6dbb563d8ca6bcb31eb971f6a66728531d529ac965cc1e18a76ca9e158afb1a1"
+    },
+    {
+      "from": "Create (RE)/textures/ui/crafters/recipies/press_basin.png",
+      "to": "Create (RE)/textures/create/bedrock/ui/crafters/recipies/press_basin.png",
+      "sha256": "deacd7deafdcccceb2d9efdc3287fec9f7d361e1be0f694273268ba7b58f98fc"
+    },
+    {
+      "from": "Create (RE)/textures/ui/crafters/recipies/press_depot.png",
+      "to": "Create (RE)/textures/create/bedrock/ui/crafters/recipies/press_depot.png",
+      "sha256": "71893583d4dbbae9687c7f5f7db76042e44383c69452498a79914306d0b865b4"
+    },
+    {
+      "from": "Create (RE)/textures/ui/crafters/recipies/spout.png",
+      "to": "Create (RE)/textures/create/bedrock/ui/crafters/recipies/spout.png",
+      "sha256": "4dc3f80351aed02a6ede89ec907b571e14406fc8ff6a62dd46ca3f614a75e74b"
+    },
+    {
+      "from": "Create (RE)/textures/ui/pause/default.png",
+      "to": "Create (RE)/textures/create/bedrock/ui/pause/default.png",
+      "sha256": "688cea473d4f82384a3628f6abd49f8e6cc0f363f5da40a88b30d061e1a3c43d"
+    },
+    {
+      "from": "Create (RE)/textures/ui/pause/default_pressed.png",
+      "to": "Create (RE)/textures/create/bedrock/ui/pause/default_pressed.png",
+      "sha256": "688cea473d4f82384a3628f6abd49f8e6cc0f363f5da40a88b30d061e1a3c43d"
+    },
+    {
+      "from": "Create (RE)/textures/ui/pause/hover.png",
+      "to": "Create (RE)/textures/create/bedrock/ui/pause/hover.png",
+      "sha256": "688cea473d4f82384a3628f6abd49f8e6cc0f363f5da40a88b30d061e1a3c43d"
+    },
+    {
+      "from": "Create (RE)/textures/ui/pause/hover_pressed.png",
+      "to": "Create (RE)/textures/create/bedrock/ui/pause/hover_pressed.png",
+      "sha256": "19881a1590956fa4a57b213781d9af73b127f92c59181bd8d0d60947152c5357"
+    }
+  ],
+  "edits": [
+    {
+      "file": "Create (RE)/ui/pause_screen.json",
+      "beforeSha256": "1eb07098a39ae3cfb6f7f5f3bbdd93e3ef25d55f98d1047519a22e5f3dcc7bbf",
+      "afterSha256": "65e2d5c026cefad8931083464d739e5ebd2bf6169ef8b0700bcfefce64b5b12a",
+      "references": 117,
+      "relativeReferences": 200
+    }
+  ]
+}

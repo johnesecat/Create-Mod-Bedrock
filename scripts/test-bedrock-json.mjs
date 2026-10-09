@@ -1,10 +1,11 @@
-import { readFile, readdir } from 'node:fs/promises'
+import { readFile, readdir, stat } from 'node:fs/promises'
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
 import assert from 'node:assert/strict'
 import { createHash } from 'node:crypto'
 import jsonlint from 'jsonlint'
 import Ajv from 'ajv'
+import { verifyOptimizedPng } from './optimize-bedrock-png.mjs'
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..')
 const ajv = new Ajv({ allErrors: true })
@@ -83,6 +84,179 @@ async function walk(folder) {
 }
 await walk(path.join(root, 'Create (BE)'))
 await walk(path.join(root, 'Create (RE)'))
+const pngOptimization = JSON.parse(await readFile(path.join(root, 'scripts/bedrock-png-optimization.json'), 'utf8'))
+const optimizedPngs = new Map(pngOptimization.files.map(record => [record.file, record]))
+try {
+  assert.equal(optimizedPngs.size, pngOptimization.files.length)
+  let saved = 0
+  for (const record of pngOptimization.files) {
+    assert(/^Create \((BE|RE)\)\/.+\.png$/.test(record.file) && !record.file.split('/').includes('..'))
+    assert(record.beforeBytes - record.afterBytes >= 1000)
+    await verifyOptimizedPng(record.file, record)
+    saved += record.beforeBytes - record.afterBytes
+  }
+  assert.equal(saved, pngOptimization.savedBytes)
+  assert(saved > 320051)
+  console.log(`PASS: ${optimizedPngs.size} optimized PNG CRCs, dimensions, scanlines, pixels and metadata; ${saved} binary bytes saved`)
+} catch (error) { failures.push(error.message) }
+async function hashBeforePngOptimization(file) {
+  const record = optimizedPngs.get(file)
+  if (record) {
+    // Only use the historical digest after independently validating the current PNG.
+    await verifyOptimizedPng(file, record)
+    return record.beforeSha256
+  }
+  return createHash('sha256').update(await readFile(path.join(root, file))).digest('hex')
+}
+// Undo only the separately verified later texture edit when checking historical audits.
+const uiTextureAudit = JSON.parse(await readFile(path.join(root, 'scripts/bedrock-ui-texture-migration.json'), 'utf8'))
+function beforeUiTextureMigration(file, text) {
+  if (!uiTextureAudit.edits.some(edit => edit.file === file)) return text
+  return text.replace(/textures\/create\/bedrock\/ui\/(?=(?:crafters|pause)\/)/g, 'textures/ui/').replace(/"create\/bedrock\/ui\/crafters\//g, '"ui/crafters/')
+}
+try {
+  const audit = uiTextureAudit
+  assert.equal(audit.fromPrefix, 'textures/ui/')
+  assert.equal(audit.toPrefix, 'textures/create/bedrock/ui/')
+  assert.equal(audit.moves.length, 147)
+  assert.equal(new Set(audit.moves.map(move => move.to)).size, 147)
+  const hash = content => createHash('sha256').update(content).digest('hex')
+  for (const move of audit.moves) {
+    assert(/^Create \(RE\)\/textures\/ui\/(crafters|pause)\//.test(move.from) && !move.from.split('/').includes('..'))
+    assert.equal(move.to, move.from.replace(audit.fromPrefix, audit.toPrefix))
+    assert.equal(await hashBeforePngOptimization(move.to), move.sha256, `UI texture baseline changed: ${move.to}`)
+  }
+  assert.equal(await stat(path.join(root, 'Create (RE)/textures/ui')).then(() => true, error => {
+    if (error.code === 'ENOENT') return false
+    throw error
+  }), false, 'Old owned texture directory remains')
+  assert.equal(audit.edits.length, 1)
+  const edit = audit.edits[0]
+  assert.equal(edit.file, 'Create (RE)/ui/pause_screen.json')
+  assert.equal(edit.references, 117)
+  assert.equal(edit.relativeReferences, 200)
+  const text = await readFile(path.join(root, edit.file), 'utf8')
+  assert.equal(hash(text), edit.afterSha256)
+  assert.equal(hash(beforeUiTextureMigration(edit.file, text)), edit.beforeSha256, 'UI structure or non-owned references changed')
+  const data = JSON.parse(text.replace(/^\uFEFF/, ''))
+  const values = []
+  function collect(value) {
+    if (typeof value === 'string') values.push(value)
+    else if (value && typeof value === 'object') Object.values(value).forEach(collect)
+  }
+  collect(data)
+  assert.equal(values.filter(value => value.includes(audit.toPrefix)).length, 117)
+  const relativeImages = values.filter(value => value.startsWith('create/bedrock/ui/crafters/'))
+  assert.equal(relativeImages.length, 200)
+  for (const name of relativeImages) assert((await stat(path.join(root, 'Create (RE)/textures', name + '.png'))).isFile(), `Missing relative UI image: ${name}`)
+  const expressions = values.filter(value => value.includes(audit.toPrefix) && value.includes('+'))
+  assert.deepEqual(expressions, [
+    "('textures/create/bedrock/ui/crafters/' + $recipe_folder + '/num_' + $crafting_bp_num)",
+    "('textures/create/bedrock/ui/crafters/aditaments/num_' + $crafting_bp_num)",
+  ])
+  // Verify the authored default recipe expression resolves to its moved image.
+  assert((await stat(path.join(root, 'Create (RE)/textures/create/bedrock/ui/crafters/recipies/num_1.png'))).isFile())
+  for (const name of ['textures/ui/Black', 'textures/ui/cell_image_normal', 'textures/ui/recipe_book_touch_cell_selected']) assert(values.includes(name), `Vanilla reference changed: ${name}`)
+  async function checkOwnedPrefixes(folder) {
+    for (const entry of await readdir(path.join(root, folder), { withFileTypes: true })) {
+      const file = `${folder}/${entry.name}`
+      if (entry.isDirectory()) await checkOwnedPrefixes(file)
+      else if (/\.(json|js|ts|lang|md|material)$/.test(entry.name)) {
+        assert(!/(?:textures\/ui\/(crafters|pause)\/|"ui\/crafters\/)/.test(await readFile(path.join(root, file), 'utf8')), `Stale owned texture prefix: ${file}`)
+      }
+    }
+  }
+  await checkOwnedPrefixes('Create (BE)')
+  await checkOwnedPrefixes('Create (RE)')
+  console.log('PASS: 147 preserved UI texture baselines (lossless PNGs verified), 117 reversible prefixes, dynamic expressions and vanilla references')
+} catch (error) { failures.push(error.message) }
+try {
+  const audit = JSON.parse(await readFile(path.join(root, 'scripts/bedrock-folder-migration.json'), 'utf8'))
+  assert.equal(audit.moves.length, 7)
+  assert.equal(new Set(audit.moves.map(move => move.to)).size, 7)
+  const hash = content => createHash('sha256').update(content).digest('hex')
+  for (const move of audit.moves) {
+    assert(/^(Create \(BE\)\/loot_tables\/create\/[a-z0-9_.]+\.json|Create \(RE\)\/textures\/(blueprint|jei_background)\.png)$/.test(move.from))
+    assert.equal(move.to, move.from.startsWith('Create (BE)') ? move.from.replace('/create/', '/create/bedrock/') : move.from.replace('/textures/', '/textures/create/bedrock/'))
+    assert.equal(await hashBeforePngOptimization(move.to), move.sha256, `Folder migration payload changed: ${move.to}`)
+    assert.equal(await stat(path.join(root, move.from)).then(() => true, error => {
+      if (error.code === 'ENOENT') return false
+      throw error
+    }), false, `Old folder path remains: ${move.from}`)
+  }
+  const escape = text => text.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
+  const reverseNames = Object.fromEntries(Object.entries(audit.renames).map(([from, to]) => [to, from]))
+  const tokens = names => new RegExp(`(?<![a-zA-Z0-9_./-])(?:${names.map(escape).join('|')})(?![a-zA-Z0-9_./-])`, 'g')
+  const reverse = tokens(Object.keys(reverseNames))
+  assert.equal(audit.edits.length, 6)
+  for (const edit of audit.edits) {
+    assert(edit.file.startsWith('Create (') && !edit.file.split('/').includes('..'))
+    const text = beforeUiTextureMigration(edit.file, await readFile(path.join(root, edit.file), 'utf8'))
+    assert.equal(hash(text), edit.afterSha256, `Folder references changed: ${edit.file}`)
+    assert.equal(hash(text.replace(reverse, name => reverseNames[name])), edit.beforeSha256, `Non-path content changed: ${edit.file}`)
+  }
+  async function checkFolderLinks(folder) {
+    for (const entry of await readdir(path.join(root, folder), { withFileTypes: true })) {
+      const file = `${folder}/${entry.name}`
+      if (entry.isDirectory()) { await checkFolderLinks(file); continue }
+      if (!/\.(json|js|ts|lang|md|material)$/.test(entry.name)) continue
+      const text = await readFile(path.join(root, file), 'utf8')
+      assert.equal([...text.matchAll(tokens(Object.keys(audit.renames)))].length, 0, `Stale folder reference: ${file}`)
+      if (!entry.name.endsWith('.json')) continue
+      const data = JSON.parse(text.replace(/^\uFEFF/, ''))
+      function visit(value) {
+        if (!value || typeof value !== 'object') return
+        if (typeof value['minecraft:loot'] === 'string') {
+          const name = value['minecraft:loot']
+          assert(name.startsWith('loot_tables/') && !name.split('/').includes('..'))
+          // Queue existence checks outside this synchronous object traversal.
+          lootPaths.add(name)
+        }
+        for (const child of Object.values(value)) visit(child)
+      }
+      visit(data)
+    }
+  }
+  const lootPaths = new Set()
+  await checkFolderLinks('Create (BE)')
+  await checkFolderLinks('Create (RE)')
+  for (const name of lootPaths) assert((await stat(path.join(root, 'Create (BE)', name))).isFile(), `Missing loot table: ${name}`)
+  console.log(`PASS: 7 preserved folder asset baselines, 6 reversible reference edits and ${lootPaths.size} loot-file links`)
+} catch (error) { failures.push(error.message) }
+try {
+  const audit = JSON.parse(await readFile(path.join(root, 'scripts/bedrock-sound-migration.json'), 'utf8'))
+  assert.equal(audit.moves.length, 39)
+  assert.equal(new Set(audit.moves.map(move => move.to)).size, 39)
+  const hash = content => createHash('sha256').update(content).digest('hex')
+  for (const move of audit.moves) {
+    assert(/^Create \(RE\)\/sounds\/[a-z0-9_]+\.ogg$/.test(move.from))
+    assert.equal(move.to, move.from.replace('/sounds/', '/sounds/create/bedrock/'))
+    assert.equal(hash(await readFile(path.join(root, move.to))), move.sha256, `Audio bytes changed: ${move.to}`)
+    assert.equal(await stat(path.join(root, move.from)).then(() => true, error => {
+      if (error.code === 'ENOENT') return false
+      throw error
+    }), false, `Old audio path remains: ${move.from}`)
+    const from = move.from.replace('Create (RE)/', '').replace(/\.ogg$/, '')
+    assert.equal(audit.renames[from], move.to.replace('Create (RE)/', '').replace(/\.ogg$/, ''))
+  }
+  assert.equal(audit.catalogFile, 'Create (RE)/sounds/sound_definitions.json')
+  const text = await readFile(path.join(root, audit.catalogFile), 'utf8')
+  assert.equal(hash(text), audit.afterSha256, 'Sound catalog changed; review and refresh the migration audit')
+  const reverse = new Map(Object.entries(audit.renames).map(([from, to]) => [to, from]))
+  const original = text.replace(/"sounds\/[^"\r\n]+"/g, token => JSON.stringify(reverse.get(JSON.parse(token)) ?? JSON.parse(token)))
+  assert.equal(hash(original), audit.beforeSha256, 'Sound IDs or playback settings changed during path migration')
+  const catalog = JSON.parse(text)
+  let links = 0
+  for (const sound of Object.values(catalog.sound_definitions)) {
+    for (const entry of sound.sounds) {
+      const name = typeof entry === 'string' ? entry : entry.name
+      assert(/^sounds\/[a-z0-9_/]+$/.test(name), `Invalid audio path: ${name}`)
+      assert((await stat(path.join(root, 'Create (RE)', name + '.ogg'))).isFile(), `Missing sound: ${name}`)
+      links++
+    }
+  }
+  console.log(`PASS: 39 unchanged audio assets, reversible catalog edit and ${links} sound-file links`)
+} catch (error) { failures.push(error.message) }
 try {
   const audit = JSON.parse(await readFile(path.join(root, 'scripts/bedrock-resource-migration.json'), 'utf8'))
   assert.equal(Object.keys(audit.renames).length, 269)

@@ -1,0 +1,243 @@
+{
+  "moves": [
+    {
+      "from": "Create (RE)/sounds/cardboard_bonk.ogg",
+      "to": "Create (RE)/sounds/create/bedrock/cardboard_bonk.ogg",
+      "sha256": "d5846a1fc5e90516d5cdef75caf8fede118663f5451ca2e42f5aa380f1ab987f"
+    },
+    {
+      "from": "Create (RE)/sounds/chiff.ogg",
+      "to": "Create (RE)/sounds/create/bedrock/chiff.ogg",
+      "sha256": "5f888291770c0feaeb1fbe3ed26434ebea5f93672fb75f1a20ef42815080f1e6"
+    },
+    {
+      "from": "Create (RE)/sounds/clipboard_check.ogg",
+      "to": "Create (RE)/sounds/create/bedrock/clipboard_check.ogg",
+      "sha256": "aab942cc6d979bcafe7a7e6144f7bdb1d418ca2f0b9d6d260c73fdd3487cd351"
+    },
+    {
+      "from": "Create (RE)/sounds/clipboard_erase.ogg",
+      "to": "Create (RE)/sounds/create/bedrock/clipboard_erase.ogg",
+      "sha256": "6d48e1c7c0562e93bdde7599edb6c12c450e20d9d67bdb523f5baddbbb4c1efa"
+    },
+    {
+      "from": "Create (RE)/sounds/cogs.ogg",
+      "to": "Create (RE)/sounds/create/bedrock/cogs.ogg",
+      "sha256": "35596e32c8a6deba17bdd8e925cab9005a4081f27e22b630fbd01da1e0b67fc0"
+    },
+    {
+      "from": "Create (RE)/sounds/confirm_2.ogg",
+      "to": "Create (RE)/sounds/create/bedrock/confirm_2.ogg",
+      "sha256": "e0a560f2f43665ab8f89f8347249e19242a2522ac3b6ad24b22ffefc8efd0a61"
+    },
+    {
+      "from": "Create (RE)/sounds/desk_bell.ogg",
+      "to": "Create (RE)/sounds/create/bedrock/desk_bell.ogg",
+      "sha256": "30d22574f5791a0fe05fa0c0dbd419b24d5618836ce142a8ae89f4ac9a8307f4"
+    },
+    {
+      "from": "Create (RE)/sounds/frogport_catch.ogg",
+      "to": "Create (RE)/sounds/create/bedrock/frogport_catch.ogg",
+      "sha256": "0be5bbb9ddf484d6fafe6b05604fc19f9f8f91e6fd411d2f53c1ed4b612e646c"
+    },
+    {
+      "from": "Create (RE)/sounds/frogport_catch_1.ogg",
+      "to": "Create (RE)/sounds/create/bedrock/frogport_catch_1.ogg",
+      "sha256": "aee3e3a5945c284568d48a369f0a643d258db460330abceec94d0834d6f58f7d"
+    },
+    {
+      "from": "Create (RE)/sounds/frogport_catch_2.ogg",
+      "to": "Create (RE)/sounds/create/bedrock/frogport_catch_2.ogg",
+      "sha256": "ea8dbbe6845757fb9535d6002af9e3a4e00457088c3abb822d17d965f75479c4"
+    },
+    {
+      "from": "Create (RE)/sounds/frogport_catch_3.ogg",
+      "to": "Create (RE)/sounds/create/bedrock/frogport_catch_3.ogg",
+      "sha256": "d9789f60a1fed472b5400d963b28267ace55feb6d7606783aaf8fd262706e454"
+    },
+    {
+      "from": "Create (RE)/sounds/frogport_close.ogg",
+      "to": "Create (RE)/sounds/create/bedrock/frogport_close.ogg",
+      "sha256": "a4dca76a52b952e1e6e2ce0d910bc34f5c04f592e2b19a19b8a1fe0f54021316"
+    },
+    {
+      "from": "Create (RE)/sounds/fwoomp.ogg",
+      "to": "Create (RE)/sounds/create/bedrock/fwoomp.ogg",
+      "sha256": "4b6b3599d0c19d55603b3f6238f41ce3f7c5c9a30daad147f315f8c4987be8e4"
+    },
+    {
+      "from": "Create (RE)/sounds/haunted_bell_convert.ogg",
+      "to": "Create (RE)/sounds/create/bedrock/haunted_bell_convert.ogg",
+      "sha256": "4de3fbf16d2f84a1b49d7b8ddd7f038a0711c82dfd9a733cf5cfe4c4cf541465"
+    },
+    {
+      "from": "Create (RE)/sounds/haunted_bell_use.ogg",
+      "to": "Create (RE)/sounds/create/bedrock/haunted_bell_use.ogg",
+      "sha256": "d259f9dd2fc1bbbf214d363fbcff4acdca88387de8e87d9cc5960887e10d1dc4"
+    },
+    {
+      "from": "Create (RE)/sounds/sanding_long.ogg",
+      "to": "Create (RE)/sounds/create/bedrock/sanding_long.ogg",
+      "sha256": "937b907160bc3eb2eac21c78de3def0a4c86e6324eb36161758ec0ec86398257"
+    },
+    {
+      "from": "Create (RE)/sounds/sanding_short.ogg",
+      "to": "Create (RE)/sounds/create/bedrock/sanding_short.ogg",
+      "sha256": "7dd7201523206b2b79cf9a0e91578b63e1edf8943be71052127587272833480c"
+    },
+    {
+      "from": "Create (RE)/sounds/sanding_short_1.ogg",
+      "to": "Create (RE)/sounds/create/bedrock/sanding_short_1.ogg",
+      "sha256": "babade329c166ad1bafc0690e4aa6063ccc5acd9d395e2ca6339705c92a4b905"
+    },
+    {
+      "from": "Create (RE)/sounds/spout.ogg",
+      "to": "Create (RE)/sounds/create/bedrock/spout.ogg",
+      "sha256": "ee027bf3147347f4d076aff0e6a90c4c7524958e2adb664e782159be2c5ca92b"
+    },
+    {
+      "from": "Create (RE)/sounds/spout_1.ogg",
+      "to": "Create (RE)/sounds/create/bedrock/spout_1.ogg",
+      "sha256": "06432bddcb62236e5285a9a32917c799930465a233e6b75508c681a4a76f4f92"
+    },
+    {
+      "from": "Create (RE)/sounds/spout_2.ogg",
+      "to": "Create (RE)/sounds/create/bedrock/spout_2.ogg",
+      "sha256": "de18d1e301b2498e96b6c26d06a600865c8814a7ab11d0ece9bfee6c0cf0e9cf"
+    },
+    {
+      "from": "Create (RE)/sounds/spout_3.ogg",
+      "to": "Create (RE)/sounds/create/bedrock/spout_3.ogg",
+      "sha256": "8479f132397de2f25db3614a9b94416091dc2cb2281ba1c3067f494260a5fab8"
+    },
+    {
+      "from": "Create (RE)/sounds/steam.ogg",
+      "to": "Create (RE)/sounds/create/bedrock/steam.ogg",
+      "sha256": "83381d5cf1f27bdd405ee1e4237d0473a5466df538bcea8f2a9d7daa46b7ddd4"
+    },
+    {
+      "from": "Create (RE)/sounds/stock_link.ogg",
+      "to": "Create (RE)/sounds/create/bedrock/stock_link.ogg",
+      "sha256": "fa4874de9f056540c0f6f47a5caa4fc6e22ccbf7122d4d061b591c7368a3a948"
+    },
+    {
+      "from": "Create (RE)/sounds/stock_ticker_request.ogg",
+      "to": "Create (RE)/sounds/create/bedrock/stock_ticker_request.ogg",
+      "sha256": "eed3500c340680f653346a32eb11cf734ffb315aeb2ab482a9b69b36d74a51ad"
+    },
+    {
+      "from": "Create (RE)/sounds/stock_ticker_trade.ogg",
+      "to": "Create (RE)/sounds/create/bedrock/stock_ticker_trade.ogg",
+      "sha256": "6417b2f0f9ca56690269167e46c6c690d254410eb6199050bf1b335e73095a25"
+    },
+    {
+      "from": "Create (RE)/sounds/train.ogg",
+      "to": "Create (RE)/sounds/create/bedrock/train.ogg",
+      "sha256": "eb1eab87b5ec779f976bc91b35665997870936ffcf111f3fc9a187b380bd5197"
+    },
+    {
+      "from": "Create (RE)/sounds/train2.ogg",
+      "to": "Create (RE)/sounds/create/bedrock/train2.ogg",
+      "sha256": "3ed98984e82b58175f224839f057114d4ae68c1d946ba451865a17d6120ea38f"
+    },
+    {
+      "from": "Create (RE)/sounds/train3.ogg",
+      "to": "Create (RE)/sounds/create/bedrock/train3.ogg",
+      "sha256": "a234ba9fd5cd51b23942f0f3c2e19887b748d9ffafc0584e794bf65fd34ce14c"
+    },
+    {
+      "from": "Create (RE)/sounds/weighted_ejector.ogg",
+      "to": "Create (RE)/sounds/create/bedrock/weighted_ejector.ogg",
+      "sha256": "952b5996659306b3812ca996a911fd8040d794494acd5084850b969264d95d10"
+    },
+    {
+      "from": "Create (RE)/sounds/whistle.ogg",
+      "to": "Create (RE)/sounds/create/bedrock/whistle.ogg",
+      "sha256": "09809158c52c4826480ba62a0133d96d8294079676a6729c89b89412584f8209"
+    },
+    {
+      "from": "Create (RE)/sounds/whistle_high.ogg",
+      "to": "Create (RE)/sounds/create/bedrock/whistle_high.ogg",
+      "sha256": "c14806bf6e2905f2f791a968c12926ffbe37cec20936171ffc8ce2efb6f5480b"
+    },
+    {
+      "from": "Create (RE)/sounds/whistle_low.ogg",
+      "to": "Create (RE)/sounds/create/bedrock/whistle_low.ogg",
+      "sha256": "b14666c4c8db8f42e0085165af32dcbe7fc83f78adb7d9aea2eb3550f092bd49"
+    },
+    {
+      "from": "Create (RE)/sounds/whistle_train.ogg",
+      "to": "Create (RE)/sounds/create/bedrock/whistle_train.ogg",
+      "sha256": "c18c8c7f809d45f30ec3359bcf83ed99b40e142db0e8feec2ecfe74a449ee8ec"
+    },
+    {
+      "from": "Create (RE)/sounds/whistle_train_low.ogg",
+      "to": "Create (RE)/sounds/create/bedrock/whistle_train_low.ogg",
+      "sha256": "1f640678a010236618931a1251e7a30fad78fb2b8b0d98dafadba820804bb837"
+    },
+    {
+      "from": "Create (RE)/sounds/whistle_train_manual.ogg",
+      "to": "Create (RE)/sounds/create/bedrock/whistle_train_manual.ogg",
+      "sha256": "82b2558d9a4426c322d37bfe015875872730bad5cde536d838b5692ba9a835be"
+    },
+    {
+      "from": "Create (RE)/sounds/whistle_train_manual_end.ogg",
+      "to": "Create (RE)/sounds/create/bedrock/whistle_train_manual_end.ogg",
+      "sha256": "92cf8175a45e0897a8e12fa02aa680855761f2d113f0341792adc6c29719e77d"
+    },
+    {
+      "from": "Create (RE)/sounds/whistle_train_manual_low.ogg",
+      "to": "Create (RE)/sounds/create/bedrock/whistle_train_manual_low.ogg",
+      "sha256": "451e2cfc2aeb236788e295bb2506565450cdb8b1f234586f0fd866cd4d47e77b"
+    },
+    {
+      "from": "Create (RE)/sounds/whistle_train_manual_low_end.ogg",
+      "to": "Create (RE)/sounds/create/bedrock/whistle_train_manual_low_end.ogg",
+      "sha256": "29595ef19a0402a18c0db56a8b5822f71ef18afa4cb45445b4e797a97659f3bb"
+    }
+  ],
+  "renames": {
+    "sounds/cardboard_bonk": "sounds/create/bedrock/cardboard_bonk",
+    "sounds/chiff": "sounds/create/bedrock/chiff",
+    "sounds/clipboard_check": "sounds/create/bedrock/clipboard_check",
+    "sounds/clipboard_erase": "sounds/create/bedrock/clipboard_erase",
+    "sounds/cogs": "sounds/create/bedrock/cogs",
+    "sounds/confirm_2": "sounds/create/bedrock/confirm_2",
+    "sounds/desk_bell": "sounds/create/bedrock/desk_bell",
+    "sounds/frogport_catch": "sounds/create/bedrock/frogport_catch",
+    "sounds/frogport_catch_1": "sounds/create/bedrock/frogport_catch_1",
+    "sounds/frogport_catch_2": "sounds/create/bedrock/frogport_catch_2",
+    "sounds/frogport_catch_3": "sounds/create/bedrock/frogport_catch_3",
+    "sounds/frogport_close": "sounds/create/bedrock/frogport_close",
+    "sounds/fwoomp": "sounds/create/bedrock/fwoomp",
+    "sounds/haunted_bell_convert": "sounds/create/bedrock/haunted_bell_convert",
+    "sounds/haunted_bell_use": "sounds/create/bedrock/haunted_bell_use",
+    "sounds/sanding_long": "sounds/create/bedrock/sanding_long",
+    "sounds/sanding_short": "sounds/create/bedrock/sanding_short",
+    "sounds/sanding_short_1": "sounds/create/bedrock/sanding_short_1",
+    "sounds/spout": "sounds/create/bedrock/spout",
+    "sounds/spout_1": "sounds/create/bedrock/spout_1",
+    "sounds/spout_2": "sounds/create/bedrock/spout_2",
+    "sounds/spout_3": "sounds/create/bedrock/spout_3",
+    "sounds/steam": "sounds/create/bedrock/steam",
+    "sounds/stock_link": "sounds/create/bedrock/stock_link",
+    "sounds/stock_ticker_request": "sounds/create/bedrock/stock_ticker_request",
+    "sounds/stock_ticker_trade": "sounds/create/bedrock/stock_ticker_trade",
+    "sounds/train": "sounds/create/bedrock/train",
+    "sounds/train2": "sounds/create/bedrock/train2",
+    "sounds/train3": "sounds/create/bedrock/train3",
+    "sounds/weighted_ejector": "sounds/create/bedrock/weighted_ejector",
+    "sounds/whistle": "sounds/create/bedrock/whistle",
+    "sounds/whistle_high": "sounds/create/bedrock/whistle_high",
+    "sounds/whistle_low": "sounds/create/bedrock/whistle_low",
+    "sounds/whistle_train": "sounds/create/bedrock/whistle_train",
+    "sounds/whistle_train_low": "sounds/create/bedrock/whistle_train_low",
+    "sounds/whistle_train_manual": "sounds/create/bedrock/whistle_train_manual",
+    "sounds/whistle_train_manual_end": "sounds/create/bedrock/whistle_train_manual_end",
+    "sounds/whistle_train_manual_low": "sounds/create/bedrock/whistle_train_manual_low",
+    "sounds/whistle_train_manual_low_end": "sounds/create/bedrock/whistle_train_manual_low_end"
+  },
+  "catalogFile": "Create (RE)/sounds/sound_definitions.json",
+  "beforeSha256": "f53a1e97914f3cfa24530220accbffe1a68c760ce33f574cd27627da3c0ce705",
+  "afterSha256": "a23f820c19f46685edb47af5710c3b58067c25009e05e5bac75f540e37b0bd2d"
+}
